@@ -24,11 +24,12 @@ In the standard RNA-seq pipeline that we have presented so far in this course, w
 
 [Salmon](http://salmon.readthedocs.io/en/latest/salmon.html#using-salmon) is based on the philosophy of lightweight algorithms. These algorithms use the sequence of genes or transcripts as input (in FASTA format), and do not align the whole read. However, existing methods for transcriptome-wide abundance estimation, including both traditional, alignment-based approaches and the recently-introduced ultra-fast methods, lack sample-specific bias models rich enough to capture many of the important effects, like fragment
 GC content bias, that are observed in experimental data and that can lead to, for example,unacceptable false positive rates in differential expression studies" [[1](http://salmon.readthedocs.io/en/latest/salmon.html#quasi-mapping-based-mode-including-lightweight-alignment)].
-Salmon uses a quasi-mapping approach that is extremely fast at "mapping" reads to the transcriptome and often more accurate, since it is more robust to sequencing errors and natural variation [[2](http://salmon.readthedocs.io/en/latest/salmon.html#quasi-mapping-based-mode-including-lightweight-alignment)]. This quasi-mapping approach is described in more detail for the Rapmap tool [[3,4]](https://academic.oup.com/bioinformatics/article/32/12/i192/2288985/RapMap-a-rapid-sensitive-and-accurate-tool-for). Salmon  for biases commonly encountered in RNA-Seq data, such as GC bias, positional coverage biases, sequence biases at 5' and 3' ends of the fragments, fragment length distribution, and strand-specific methods. The algorithm learns the sample-specific biases and 
+Salmon uses a quasi-mapping approach that is extremely fast at "mapping" reads to the transcriptome and often more accurate, since it is more robust to sequencing errors and natural variation [[2](http://salmon.readthedocs.io/en/latest/salmon.html#quasi-mapping-based-mode-including-lightweight-alignment)]. This quasi-mapping approach is described in more detail for the Rapmap tool [[3,4]](https://academic.oup.com/bioinformatics/article/32/12/i192/2288985/RapMap-a-rapid-sensitive-and-accurate-tool-for). Salmon  for biases commonly encountered in RNA-Seq data, such as GC bias, positional coverage biases, sequence biases at 5' and 3' ends of the fragments, fragment length distribution, and strand-specific methods. The algorithm learns the sample-specific biases and accounts for them in the transcript abundance estimates.
 
-Salmon uses a 2-step process:
 
-**Step 1: Indexing:** The first step is to create an index. Similar to standard, base-to-base alignment, the quasi-mapping approach utilized by Salmon requires a reference index to determine the position and orientation information for where the fragments best map [[1](https://academic.oup.com/bioinformatics/article/32/12/i192/2288985/RapMap-a-rapid-sensitive-and-accurate-tool-for)]. This step involves evaluating the sequences for all possible unique sequences of length k (kmer) in the **transcriptome** (genes/transcripts) to create an index.
+Similar to standard, base-to-base alignment, the quasi-mapping approach utilized by Salmon requires a reference index to determine the position and orientation information for where the fragments best "map" [[1](https://academic.oup.com/bioinformatics/article/32/12/i192/2288985/RapMap-a-rapid-sensitive-and-accurate-tool-for)].
+
+**Step 1: Indexing:** This step involves creating an index to evaluate the sequences for all possible unique sequences of length k (kmer) in the **transcriptome** (genes/transcripts) to create an index.
 
 **The index helps creates a signature for each transcript in our reference transcriptome.** The Salmon index has two components:
 
@@ -54,9 +55,9 @@ As detailed in the figure below, the quasi-alignment procedure performs the foll
 
 <img src="../img/salmon_quasialignment.png", width=550>
 
-	A. Srivastava, H., et.al. Bioinformatics (2016) 32 (12): i192-i200
+>RapMap: a rapid, sensitive and accurate tool for mapping RNA-seq reads to transcriptomes. A. Srivastava, H. Sarkar, N. Gupta, R. Patro. Bioinformatics (2016) 32 (12): i192-i200.
 
-Using the estimates of transcript abundance generated during the quasi-mapping procedure, a dual inference method is used to account for sample-specific biases and parameters. The biases are learned by one phase of the algorithm and model the fragment-transcript assignment scores based on the following [[5](http://biorxiv.org/content/biorxiv/early/2016/08/30/021592.full.pdf)]:
+Using the estimates of transcript abundance generated during the quasi-mapping procedure, a dual inference method is used to account for sample-specific biases and parameters. The biases are learned by one phase of the algorithm, which models the fragment-transcript assignment scores based on the following [[5](http://biorxiv.org/content/biorxiv/early/2016/08/30/021592.full.pdf)]:
 
 - chance of observing a fragment length given a particular transcript (derived from fragment length distribution)
 - chance fragment starts at particular position on transcript
