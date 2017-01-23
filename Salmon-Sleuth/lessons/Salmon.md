@@ -43,9 +43,9 @@ The quasi-mapping approach estimates for numbers of reads mapping to each transc
 - **Step 1:** Determine best mapping for each read/fragment and estimate number of reads/fragments mapping to each transcript
 - **Step 2:** Adjust abundance estimates based on RNA-Seq biases and sample-specific parameters
 
-> *NOTE:* that if there are k-mers in the reads that are not in the index they are not counted. As such, trimming is not required when using this method.
+	> *NOTE:* that if there are k-mers in the reads that are not in the index they are not counted. As such, trimming is not required when using this method.
 
-**Step 1: Determine best mapping for each read/fragment and estimate abundances using quasi-mapping approach**
+	**Step 1: Determine best mapping for each read/fragment and estimate abundances using quasi-mapping approach**
 
 As detailed in the figure below, the quasi-mapping procedure performs the following steps [[1](https://academic.oup.com/bioinformatics/article/32/12/i192/2288985/RapMap-a-rapid-sensitive-and-accurate-tool-for)]:
 
