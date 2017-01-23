@@ -29,7 +29,7 @@ Salmon uses a quasi-mapping approach that is extremely fast at "mapping" reads t
 
 Similar to standard, base-to-base alignment, the quasi-mapping approach utilized by Salmon requires a reference index to determine the position and orientation information for where the fragments best "map" prior to quantification [[1](https://academic.oup.com/bioinformatics/article/32/12/i192/2288985/RapMap-a-rapid-sensitive-and-accurate-tool-for)].
 
-**Indexing:** 
+###**Indexing** 
 This step involves creating an index to evaluate the sequences for all possible unique sequences of length k (kmer) in the **transcriptome** (genes/transcripts) to create an index.
 
 **The index helps creates a signature for each transcript in our reference transcriptome.** The Salmon index has two components:
@@ -37,7 +37,7 @@ This step involves creating an index to evaluate the sequences for all possible 
 - a suffix array (SA) of the reference transcriptome
 - a hash table to map each transcript in the reference transcriptome to it's location in the SA (is not required, but improves the speed of "mapping" drastically)
 
-**Quasi-mapping and quantification:** 
+###**Quasi-mapping and quantification** 
 The quasi-mapping approach estimates for numbers of reads mapping to each transcript, then generates the final transcript abundance estimates after modeling sample-specific parameters and biases. 
 
 - **Step 1:** Determine best mapping for each read/fragment and estimate number of reads/fragments mapping to each transcript
@@ -45,7 +45,7 @@ The quasi-mapping approach estimates for numbers of reads mapping to each transc
 
 > *NOTE:* that if there are k-mers in the reads that are not in the index they are not counted. As such, trimming is not required when using this method.
 
-**Step 1: Determine best mapping for each read/fragment and estimate abundances using quasi-mapping approach**
+####**Step 1: Determine best mapping for each read/fragment and estimate abundances using quasi-mapping approach**
 As detailed in the figure below, the quasi-mapping procedure performs the following steps [[1](https://academic.oup.com/bioinformatics/article/32/12/i192/2288985/RapMap-a-rapid-sensitive-and-accurate-tool-for)]:
 
 1. The read is scanned from left to right until a k-mer that appears in the hash table is discovered.
@@ -59,7 +59,7 @@ As detailed in the figure below, the quasi-mapping procedure performs the follow
 
 >RapMap: a rapid, sensitive and accurate tool for mapping RNA-seq reads to transcriptomes. A. Srivastava, H. Sarkar, N. Gupta, R. Patro. Bioinformatics (2016) 32 (12): i192-i200.
 
-- **Step 2: Adjust abundance estimates based on RNA-Seq biases and sample-specific parameters**
+####**Step 2: Adjust abundance estimates based on RNA-Seq biases and sample-specific parameters**
 Using the estimates of transcript abundance generated during the quasi-mapping procedure, a dual inference method is used to account for sample-specific biases and parameters. The biases are learned by one phase of the algorithm, which models the fragment-transcript assignment scores based on the following [[5](http://biorxiv.org/content/biorxiv/early/2016/08/30/021592.full.pdf)]:
 
 - chance of observing a fragment length given a particular transcript (derived from fragment length distribution)
