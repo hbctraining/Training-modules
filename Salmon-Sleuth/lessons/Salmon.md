@@ -4,7 +4,7 @@ author: "Mary Piper and Meeta Mistry"
 date: "Thursday, January 19th, 2017"
 ---
 
-Contributors: Mary Piper
+Contributors: Mary Piper and Meeta Mistry
 
 Approximate time: 1.25 hours
 
