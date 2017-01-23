@@ -40,8 +40,8 @@ This step involves creating an index to evaluate the sequences for all possible 
 ####**Quantification:** 
 The quasi-mapping approach estimates for numbers of reads mapping to each transcript, then generates the final transcript abundance estimates after modeling sample-specific parameters and biases. It uses a two-step process:
 
-- Step 1. Determine best mapping for each read/fragment and estimate number of reads/fragments mapping to each transcript
-- Step 2. Adjust abundance estimates based on RNA-Seq biases and sample-specific parameters
+- **Step 1:** Determine best mapping for each read/fragment and estimate number of reads/fragments mapping to each transcript
+- **Step 2:** Adjust abundance estimates based on RNA-Seq biases and sample-specific parameters
 
 > *NOTE:* that if there are k-mers in the reads that are not in the index they are not counted. As such, trimming is not required when using this method.
 
