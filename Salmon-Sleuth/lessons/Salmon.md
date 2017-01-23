@@ -31,7 +31,10 @@ Salmon uses a quasi-mapping approach that is extremely fast at "mapping" reads t
 - fragment length distribution
 - strand-specific methods
 
-The algorithm learns the sample-specific biases and accounts for them in the transcript abundance estimates. Similar to standard, base-to-base alignment, the quasi-mapping approach utilized by Salmon requires a reference index to determine the position and orientation information for where the fragments best "map" prior to quantification [[1](https://academic.oup.com/bioinformatics/article/32/12/i192/2288985/RapMap-a-rapid-sensitive-and-accurate-tool-for)].
+The algorithm learns the sample-specific biases and accounts for them in the transcript abundance estimates. 
+
+### How does Salmon estimate transcript abundances?
+Similar to standard, base-to-base alignment, the quasi-mapping approach utilized by Salmon requires a reference index to determine the position and orientation information for where the fragments best "map" prior to quantification [[1](https://academic.oup.com/bioinformatics/article/32/12/i192/2288985/RapMap-a-rapid-sensitive-and-accurate-tool-for)].
 
 ####**> Indexing** 
 This step involves creating an index to evaluate the sequences for all possible unique sequences of length k (kmer) in the **transcriptome** (genes/transcripts) to create an index.
