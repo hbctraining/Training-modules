@@ -127,7 +127,7 @@ $ salmon quant -i /groups/hbctraining/ngs-data-analysis-longcourse/rnaseq/sailfi
 
 You should see a new directory has been created that is named by the string value you provided in the `-o` command. Take a look at what is contained in this directory:
 
-    $ ls -l Mov10_oe_1.subset.sailfish/
+    $ ls -l Mov10_oe_1.subset.salmon/
     
 There is a logs directory, which contains all of the text that was printed to screen as Sailfish was running. Additionally, there is a file called `quant.sf`. 
 
