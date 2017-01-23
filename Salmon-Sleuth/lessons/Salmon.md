@@ -37,6 +37,8 @@ This step involves creating an index to evaluate the sequences for all possible 
 - a suffix array (SA) of the reference transcriptome
 - a hash table to map each transcript in the reference transcriptome to it's location in the SA (is not required, but improves the speed of "mapping" drastically)
 
+	> *NOTE:* that if there are k-mers in the reads that are not in the index they are not counted. As such, trimming is not required when using this method.
+
 ####**Quasi-mapping and quantification** 
 The quasi-mapping approach estimates for numbers of reads mapping to each transcript, then generates the final transcript abundance estimates after modeling sample-specific parameters and biases. 
 
@@ -67,8 +69,6 @@ The quasi-mapping approach estimates for numbers of reads mapping to each transc
 	- positional, sequence-specific, and GC content based on computed mappings
 
 	The model continuously learns and updates the transcript abundance estimates, and the the second phase of the algorithm refines the estimates by using the expectation maximization (EM) or variational Bayes optimization (VBEM)  [[5](http://biorxiv.org/content/biorxiv/early/2016/08/30/021592.full.pdf)]. The maximum likelihood estimates output from the EM or VBEM factorized likelihood function represent the estimated number of fragments derived from each transcript.
-
-	> *NOTE:* that if there are k-mers in the reads that are not in the index they are not counted. As such, trimming is not required when using this method.
 
 ## Running Salmon on Orchestra
 
