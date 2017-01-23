@@ -22,19 +22,18 @@ In the standard RNA-seq pipeline that we have presented so far in this course, w
 
 ### What is Salmon?
 
-[Salmon](http://salmon.readthedocs.io/en/latest/salmon.html#using-salmon) is based on the philosophy of lightweight algorithms. These algorithms use the sequence of genes or transcripts as input (in FASTA format), and do not align the whole read. "However, existing methods for transcriptome-wide abundance estimation, including both traditional, alignment-based approaches and the recently-introduced ultra-fast methods, lack sample-specific bias models rich enough to capture many of the important effects, like fragment
-GC content bias, that are observed in experimental data and that can lead to, for example, unacceptable false positive rates in differential expression studies" [[1](http://salmon.readthedocs.io/en/latest/salmon.html#quasi-mapping-based-mode-including-lightweight-alignment)].
-Salmon uses a quasi-mapping approach that is extremely fast at "mapping" reads to the transcriptome and often more accurate, since it is more robust to sequencing errors and natural variation [[2](http://salmon.readthedocs.io/en/latest/salmon.html#quasi-mapping-based-mode-including-lightweight-alignment)]. This quasi-mapping approach is described in more detail for the Rapmap tool [[3,4]](https://academic.oup.com/bioinformatics/article/32/12/i192/2288985/RapMap-a-rapid-sensitive-and-accurate-tool-for). Salmon accounts for biases commonly encountered in RNA-Seq data, such as:
+[Salmon](http://salmon.readthedocs.io/en/latest/salmon.html#using-salmon) is based on the philosophy of lightweight algorithms, which use the sequence of genes or transcripts as input (in FASTA format) and do not align the whole read. However, many of both these lightweight tools and more traditional alignment-based tools lack sample-specific bias models for transcriptome-wide abundance estimation. Sample-specific bias models are needed to account for known biases present in RNA-Seq data including:
+
 - GC bias
 - positional coverage biases
 - sequence biases at 5' and 3' ends of the fragments
 - fragment length distribution
 - strand-specific methods
 
-The algorithm learns the sample-specific biases and accounts for them in the transcript abundance estimates. 
+If not accounted for, these biases can lead to unacceptable false positive rates in differential expression studies [[1](http://salmon.readthedocs.io/en/latest/salmon.html#quasi-mapping-based-mode-including-lightweight-alignment)]. Salmon algorithm learns these sample-specific biases and accounts for them in the transcript abundance estimates by combining a quasi-mapping approach that is extremely fast at "mapping" reads to the transcriptome and often more accurate, with a dual inference method that is used to account for sample-specific biases and parameters. [[2](http://salmon.readthedocs.io/en/latest/salmon.html#quasi-mapping-based-mode-including-lightweight-alignment)]. 
 
 ### How does Salmon estimate transcript abundances?
-Similar to standard, base-to-base alignment, the quasi-mapping approach utilized by Salmon requires a reference index to determine the position and orientation information for where the fragments best "map" prior to quantification [[1](https://academic.oup.com/bioinformatics/article/32/12/i192/2288985/RapMap-a-rapid-sensitive-and-accurate-tool-for)].
+Similar to standard, base-to-base alignment, the quasi-mapping approach utilized by Salmon requires a reference index to determine the position and orientation information for where the fragments best "map" prior to quantification [[1](https://academic.oup.com/bioinformatics/article/32/12/i192/2288985/RapMap-a-rapid-sensitive-and-accurate-tool-for)]. 
 
 ####**> Indexing** 
 This step involves creating an index to evaluate the sequences for all possible unique sequences of length k (kmer) in the **transcriptome** (genes/transcripts) to create an index.
@@ -45,7 +44,7 @@ This step involves creating an index to evaluate the sequences for all possible 
 - a hash table to map each transcript in the reference transcriptome to it's location in the SA (is not required, but improves the speed of "mapping" drastically)
 
 ####**> Quasi-mapping and quantification** 
-The quasi-mapping approach estimates for numbers of reads mapping to each transcript, then generates the final transcript abundance estimates after modeling sample-specific parameters and biases. 
+The quasi-mapping approach estimates the numbers of reads mapping to each transcript, then generates final transcript abundance estimates after modeling sample-specific parameters and biases. The quasi-mapping approach is described in full detail for the Rapmap tool [[3,4]](https://academic.oup.com/bioinformatics/article/32/12/i192/2288985/RapMap-a-rapid-sensitive-and-accurate-tool-for).
 
 - **Step 1:** Determine best mapping for each read/fragment and estimate number of reads/fragments mapping to each transcript
 
