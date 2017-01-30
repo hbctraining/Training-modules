@@ -22,7 +22,7 @@ In the standard RNA-seq pipeline that we have presented so far in this course, w
 
 ### What is Salmon?
 
-[Salmon](http://salmon.readthedocs.io/en/latest/salmon.html#using-salmon) is based on the philosophy of lightweight algorithms, which use the sequence of genes or transcripts as input (in FASTA format) and do not align the whole read. However, many of these lightweight tools, in addition to more traditional alignment-based tools, lack sample-specific bias models for transcriptome-wide abundance estimation. Sample-specific bias models are needed to account for known biases present in RNA-Seq data including:
+[Salmon](http://salmon.readthedocs.io/en/latest/salmon.html#using-salmon) is based on the philosophy of lightweight algorithms, which use the sequence of genes or transcripts as input (in FASTA format) and do not align the whole read. However, many of these lightweight tools, in addition to the more traditional alignment-based tools, lack sample-specific bias models for transcriptome-wide abundance estimation. Sample-specific bias models are needed to account for known biases present in RNA-Seq data including:
 
 - GC bias
 - positional coverage biases
