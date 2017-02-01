@@ -63,7 +63,7 @@ $ cd ~/ngs_course/rnaseq
 
 $ cp /groups/hbctraining/ngs-data-analysis-longcourse/rnaseq/snapshots/meta/Mov10_full_meta.txt meta/
 
-$ cp -r /groups/hbctraining/ngs-data-analysis-longcourse/rnaseq/snapshots/sailfish/* sailfish/
+$ cp -r /groups/hbctraining/ngs-data-analysis-longcourse/rnaseq/snapshots/salmon/* salmon/
 ```
 
 Now let's make a folder for our sleuth results and load the R module to run it.
