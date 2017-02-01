@@ -50,11 +50,11 @@ In addition to performing differential expression analysis of transcripts, the s
 
 ## Set-up for Running Sleuth on Orchestra
 
-While Sailfish and Sleuth are lightweight algorithms that can be quickly run on a laptop computer [[2](https://rawgit.com/pachterlab/sleuth/master/inst/doc/intro.html)], it is more efficient to run Sleuth on Orchestra. 
+While Salmon and Sleuth are lightweight algorithms that can be quickly run on a laptop computer [[2](https://rawgit.com/pachterlab/sleuth/master/inst/doc/intro.html)], it is more efficient to run Sleuth on Orchestra. 
 
 ### Setting up the filesystem
 
-Let's get started by setting up our directory. First let's copy over our metadata and the full sailfish output files. 
+Let's get started by setting up our directory. First let's copy over our metadata and the full salmon output files. 
 
 ```bash
 $ bsub -Is -R "rusage[mem=16000]" -q interactive bash
