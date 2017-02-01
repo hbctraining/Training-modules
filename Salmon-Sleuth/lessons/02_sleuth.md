@@ -54,7 +54,7 @@ While Salmon and Sleuth are lightweight algorithms that can be quickly run on a 
 
 ### Setting up the filesystem
 
-Let's get started by setting up our directory. First let's copy over our metadata and the full salmon output files. 
+Let's get started by setting up our directory. First let's copy over our metadata and the full Salmon output files. 
 
 ```bash
 $ bsub -Is -R "rusage[mem=16000]" -q interactive bash
