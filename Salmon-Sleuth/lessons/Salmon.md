@@ -48,7 +48,7 @@ The quasi-mapping approach estimates the numbers of reads mapping to each transc
 
 - **Step 1:** Determine best mapping for each read/fragment and estimate number of reads/fragments mapping to each transcript
 
-<img src="../img/salmon_quasialignment.png", width=750>
+	<img src="../../img/salmon_quasialignment.png", width=750>
 	
 	
 	>RapMap: a rapid, sensitive and accurate tool for mapping RNA-seq reads to transcriptomes. A. Srivastava, H. Sarkar, N. Gupta, R. Patro. Bioinformatics (2016) 32 (12): i192-i200.
