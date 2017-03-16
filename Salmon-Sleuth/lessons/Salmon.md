@@ -36,6 +36,7 @@ If not accounted for, these biases can lead to unacceptable false positive rates
 Similar to standard, base-to-base alignment, the quasi-mapping approach utilized by Salmon requires a reference index to determine the position and orientation information for where the fragments best "map" prior to quantification [[1](https://academic.oup.com/bioinformatics/article/32/12/i192/2288985/RapMap-a-rapid-sensitive-and-accurate-tool-for)]. 
 
 ####**Indexing** 
+
 This step involves creating an index to evaluate the sequences for all possible unique sequences of length k (kmer) in the **transcriptome** (genes/transcripts).
 
 **The index helps creates a signature for each transcript in our reference transcriptome.** The Salmon index has two components:
@@ -44,6 +45,7 @@ This step involves creating an index to evaluate the sequences for all possible 
 - a hash table to map each transcript in the reference transcriptome to it's location in the SA (is not required, but improves the speed of "mapping" drastically)
 
 ####**Quasi-mapping and quantification** 
+
 The quasi-mapping approach estimates the numbers of reads mapping to each transcript, then generates final transcript abundance estimates after modeling sample-specific parameters and biases. The quasi-mapping approach is described below, with details provided by the Rapmap tool [[3,4]](https://academic.oup.com/bioinformatics/article/32/12/i192/2288985/RapMap-a-rapid-sensitive-and-accurate-tool-for), which provides the underlying algorithm for the quasi-mapping.
 
 - **Step 1:** Determine best mapping for each read/fragment and estimate number of reads/fragments mapping to each transcript
