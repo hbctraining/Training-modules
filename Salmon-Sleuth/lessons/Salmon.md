@@ -18,7 +18,7 @@ Approximate time: 1.25 hours
 
 In the standard RNA-seq pipeline that we have presented so far in this course, we have taken our reads post-QC and aligned them to the genome using our transcriptome annotation (GTF) as guidance. The goal is to identify the genomic location where these reads originated from. Another strategy for quantification which has more recently been introduced involves **transcriptome mapping**. Tools that fall in this category include [Kallisto](https://pachterlab.github.io/kallisto/about), [Sailfish](http://www.nature.com/nbt/journal/v32/n5/full/nbt.2862.html) and [Salmon](https://combine-lab.github.io/salmon/); each working slightly different from one another. (For this course we will explore Salmon in more detail.) Common to all of these tools is that we **avoid base-to-base alignment of the reads**, which is a time-consuming step, and these tools **provide quantification estimates much faster than do standard approaches** (typically 20 times faster) with improvements in accuracy. These estimates, often referred to as 'pseudocounts' are then converted for use with DEG tools like DESeq2. 
 
-<img src="../img/alignmentfree_workflow.png" width="500">
+<img src="../../img/alignmentfree_workflow.png" width="500">
 
 ### What is Salmon?
 
@@ -48,7 +48,7 @@ The quasi-mapping approach estimates the numbers of reads mapping to each transc
 
 - **Step 1:** Determine best mapping for each read/fragment and estimate number of reads/fragments mapping to each transcript
 
-<img src="../../img/salmon_quasialignment.png", width=750>
+	<img src="../../img/salmon_quasialignment.png", width=750>
 	
 	
 	>RapMap: a rapid, sensitive and accurate tool for mapping RNA-seq reads to transcriptomes. A. Srivastava, H. Sarkar, N. Gupta, R. Patro. Bioinformatics (2016) 32 (12): i192-i200.
