@@ -48,6 +48,8 @@ The quasi-mapping approach estimates the numbers of reads mapping to each transc
 
 - **Step 1:** Determine best mapping for each read/fragment and estimate number of reads/fragments mapping to each transcript
 
+<img src="../img/salmon_quasialignment.png" width="500">
+
 	<img src="../../img/salmon_quasialignment.png", width=750>
 	
 	
