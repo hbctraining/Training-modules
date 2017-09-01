@@ -426,11 +426,16 @@ gseaGO_results <- gseaGO@result
 gseaplot(gseaGO, geneSetID = 'GO:0007423')
 ```
 
-Or we could compare against MSigDB using some special clusterProfiler functions:
+Or we could compare against MSigDB using some special clusterProfiler functions. We downloaded the GMT file from the Broad Institute [website](http://software.broadinstitute.org/gsea/msigdb/collections.jsp) for MSigDB GMTs.
 
 ```r
 biocLite("GSEABase")
 library(GSEABase)
+
+# Load in GMT file of gene sets (we downloaded from the Broad Institute)
+c2 <- read.gmt("/Users/marypiper/Downloads/c2.all.v6.0.entrez.gmt.txt")
+
+egmt <- enricher(gene = names(foldchanges), TERM2GENE=c2)
 
 
 ### Gene set enrichment analysis using GAGE and Pathview
