@@ -52,7 +52,7 @@ Let's open RStudio and create a new project directory for our "Functional Analys
 6. When RStudio opens, you will see three panels in the window.
 7. Go to the `File` menu and select `New File`, and select `R Script`. The RStudio interface should now look like the screenshot below.
 8. Let's create `data` and `results` directories within your working directory by clicking on `New Folder` within the `Files` tab. 
-9. Download the **differential expression results** to the `data` directory by right clicking on [this link](https://github.com/hbctraining/Training-modules/blob/master/DGE-functional-analysis/data/Mov10oe_DE_results.csv)
+9. Download the **differential expression results** to the `data` directory by right clicking on [this link](https://github.com/hbctraining/Training-modules/blob/master/DGE-functional-analysis/data/Mov10oe_DE_results.csv?raw=true)
 
 If you right click on the link, and "Save link as..". Choose `~/Desktop/Functional_analysis/data` as the destination of the file. You should now see the `Mov10oe_DE_results.csv` file appear in your working directory. 
 
