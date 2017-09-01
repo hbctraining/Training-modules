@@ -1,27 +1,36 @@
 # Functional class scoring tools
-Functional class scoring (FCS) tools, such as [GSEA](http://software.broadinstitute.org/gsea/index.jsp), use the gene-level statistics from the differential expression results to determine pathway-level expression changes. The hypothesis of FCS methods is that although large changes in individual genes can have significant effects on pathways (and will be detected via ORA methods), weaker but coordinated changes in sets of functionally related genes (i.e., pathways) can also have significant effects.  Thus, rather than setting an arbitrary threshold to identify 'significant genes', **all genes are considered** in the analysis. The gene-level log2 fold changes from the differential expression analysis are aggregated to generate a single pathway-level statistic and statistical significance of each pathway is reported.
+Functional class scoring (FCS) tools, such as [GSEA](http://software.broadinstitute.org/gsea/index.jsp), use the gene-level statistics from the differential expression results to determine pathway-level expression changes. The hypothesis of FCS methods is that although large changes in individual genes can have significant effects on pathways (and will be detected via ORA methods), weaker but coordinated changes in sets of functionally related genes (i.e., pathways) can also have significant effects.  Thus, rather than setting an arbitrary threshold to identify 'significant genes', **all genes are considered** in the analysis. The gene-level statistics from the dataset are aggregated to generate a single pathway-level statistic and statistical significance of each pathway is reported.
 
 ### Gene set enrichment analysis using clusterProfiler and Pathview
 
-ClusterProfiler is a versatile tool allowing for both over-representation analysis and GSEA analysis. To perform GSEA analysis of KEGG gene sets, we need to obtain the Entrez IDs for all genes in our results dataset. There are a few different tools that we can use to obtain the Entrez IDs
+Using the log2 fold changes obtained from the DESeq2 analysis for every gene, gene set enrichment analysis and pathway analysis was performed using clusterProfiler and Pathview tools.
+
+For gene set or pathway analysis using clusterProfiler, coordinated differential expression over gene sets is tested instead of changes of individual genes. "Gene sets are pre-defined groups of genes, which are functionally related. Commonly used gene sets include those derived from KEGG pathways, Gene Ontology terms, gene groups that share some other functional annotations, etc. Consistent perturbations over such gene sets frequently suggest mechanistic changes" [1]. 
+
+To perform GSEA analysis of KEGG gene sets, clusterProfiler requires the genes to be identified using Entrez IDs for all genes in our results dataset.
 
 ```r
+library(pathview)
+library(clusterProfiler)
+
 # Return all genes with Entrez IDs
 all_results_entrez <- getBM(filters = "external_gene_name", 
                    values = rownames(res_tableOE),
-                   attributes = c("entrezgene","external_gene_name")
+                   attributes = c("entrezgene","external_gene_name"),
                    mart = human)
                    
 merged_all_results_entrez <- merge(data.frame(res_tableOE), all_results_entrez, by.x="row.names", by.y="external_gene_name") 
 ```
 
-When performing our analysis, we need to remove the NA values prior to the analysis:
+When performing our analysis, we need to remove the NA values and duplicates (due to gene ID conversion) prior to the analysis:
 
 ```r
 # Remove any NA values
 all_results_gsea <- subset(merged_all_results_entrez, entrezgene != "NA")
-```
 
+# Remove any duplicates
+all_results_gsea <- all_results_gsea[which(duplicated(all_results_gsea$Row.names) == F), ]
+```
 Finally, extract and name the fold changes:
 
 ```r
@@ -29,11 +38,19 @@ Finally, extract and name the fold changes:
 foldchanges <- all_results_gsea$log2FoldChange
 
 names(foldchanges) <- all_results_gsea$entrezgene
+```
 
-head(foldchanges)
+Order the foldchanges in decreasing order:
 
+```r
 foldchanges <- sort(foldchanges, T)
 
+head(foldchanges)
+```
+
+Perform the GSEA using KEGG gene sets:
+
+```r
 # GSEA using gene sets from KEGG pathways
 gseaKEGG <- gseKEGG(geneList = foldchanges,
               organism = "hsa",
@@ -43,13 +60,40 @@ gseaKEGG <- gseKEGG(geneList = foldchanges,
               verbose = FALSE)
               
 gseaKEGG_results <- gseaKEGG@result
+```
 
+View the enriched pathways:
+
+```r
+gseaKEGG_results
+
+write.csv(gseaKEGG_results, "results/gseaOE.csv", quote=F)
+```
+
+Use Pathview to integrate the pathway data from clusterProfiler into pathway images:
+
+```r
 pathview(gene.data = foldchanges,
-              pathway.id = kkgsea_results$ID[1],
+              pathway.id = "hsa03040",
               species = "hsa",
               limit = list(gene = 2,
               cpd = 1))
+```
 
+>**NOTE:** Printing out Pathview images for all significant pathways can be easily performed as follows:
+> ```r
+> library(purrr)
+> get_kegg_plots <- function(x) {
+>    pathview(gene.data = foldchanges, pathway.id = gsea_results$ID[x], species = "mmu", 
+>        limit = list(gene = 2, cpd = 1))
+> }
+>
+> map(1:length(gsea_results$ID), get_kegg_plots)
+> ```
+
+Instead of exploring enrichment of KEGG gene sets, we can also explore the enrichment of BP Gene Ontology terms: 
+
+```r
 # GSEA using gene sets associated with BP Gene Ontology terms
 gseaGO <- gseGO(geneList = foldchanges, 
               OrgDb = org.Hs.eg.db, 
@@ -61,19 +105,12 @@ gseaGO <- gseGO(geneList = foldchanges,
               verbose = FALSE) 
 
 gseaGO_results <- gseaGO@result
-gseaplot(gseaGO, geneSetID = 'GO:0048812')
+gseaplot(gseaGO, geneSetID = 'GO:0007423')
 ```
 
 ### Gene set enrichment analysis using GAGE and Pathview
 
-Using the log2 fold changes obtained from the DESeq2 analysis for every gene, gene set enrichment analysis and pathway analysis was performed using [GAGE (Generally Applicable Gene-set Enrichment for Pathway Analysis)](http://bioconductor.org/packages/release/bioc/html/gage.html) and [Pathview](http://bioconductor.org/packages/release/bioc/html/pathview.html) tools.
-
-For gene set or pathway analysis using GAGE, coordinated differential expression over gene sets is tested instead of changes of individual genes. "Gene sets are pre-defined groups of genes, which are functionally related. Commonly used gene sets include those derived from KEGG pathways, Gene Ontology terms, gene groups that share some other functional annotations, etc. Consistent perturbations over such gene sets frequently suggest mechanistic changes." [[1](https://www.bioconductor.org/packages/devel/bioc/vignettes/gage/inst/doc/gage.pdf)]
-
-"GAGE assumes a gene set comes from a different distribution than the background and uses two-sample t-test to account for the gene set specific variance as well as the background variance. The two-sample t-test used by GAGE identifies gene sets with modest but consistent changes in gene expression level."[[2](http://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-10-161)]
-
-Pathview allows for the integration of the data generated by GAGE and visualization of the pathways from the dataset.
-
+Gene set enrichment analysis and pathway analysis was also performed using [GAGE (Generally Applicable Gene-set Enrichment for Pathway Analysis)](http://bioconductor.org/packages/release/bioc/html/gage.html) and [Pathview](http://bioconductor.org/packages/release/bioc/html/pathview.html) tools. "GAGE assumes a gene set comes from a different distribution than the background and uses two-sample t-test to account for the gene set specific variance as well as the background variance. The two-sample t-test used by GAGE identifies gene sets with modest but consistent changes in gene expression level."[[2](http://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-10-161)]
 
 #### Exploring enrichment of KEGG pathways
 To get started with GAGE and Pathview analysis, we need to load multiple libraries:
@@ -87,7 +124,6 @@ biocLite('gage', 'pathview', 'gageData', 'biomaRt', 'org.Hs.eg.db', 'DOSE', 'SPI
 # Loading the packages needed for GAGE and Pathview analysis
 
 library(gage)
-library(pathview)
 library(gageData)
 library(biomaRt)
 library(org.Hs.eg.db)
@@ -315,4 +351,3 @@ The way the tools perform clustering is by taking the entire expression matrix a
 
 ***
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
-
