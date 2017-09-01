@@ -1,7 +1,7 @@
 ---
-title: "Functional Analysis for RNA-Seq"
+title: "Functional Analysis for RNA-seq"
 author: "Mary Piper"
-date: "Thursday, December 1, 2016"
+date: "Wednesday, August 30, 2017"
 ---
 
 Approximate time: 105 minutes
@@ -26,8 +26,38 @@ Generally for any differential expression analysis, it is useful to interpret th
 
 ![Pathway analysis tools](../img/pathway_analysis.png)
 
+## Dataset
+
+To better interpret the results of our functional analysis, it is helpful to know about our dataset. We will be using the output from the differential expression analysis of a real RNA-Seq dataset that is part of a larger study described in [Kenny PJ et al, Cell Rep 2014](http://www.ncbi.nlm.nih.gov/pubmed/25464849). 
+
+We used the [RNA-seq](http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE50499) dataset which is publicly available in the [SRA](http://www.ncbi.nlm.nih.gov/sra) to perform differential expression analysis using DESeq2. The authors were investigating interactions between various genes involved in Fragile X syndrome, a disease in which there is aberrant production of the FMRP protein. 
+
+> **FMRP** is “most commonly found in the brain, is essential for normal cognitive development and female reproductive function. Mutations of this gene can lead to fragile X syndrome, mental retardation, premature ovarian failure, autism, Parkinson's disease, developmental delays and other cognitive deficits.” - from [wikipedia](https://en.wikipedia.org/wiki/FMR1)
+
+> **MOV10**, is a putative RNA helicase that is also associated with **FMRP** in the context of the microRNA pathway. 
+
+**The hypothesis [the paper](http://www.ncbi.nlm.nih.gov/pubmed/25464849) is testing is that FMRP and MOV10 associate and regulate the translation of a subset of RNAs.**
+
+<img src="../img/mov10-model.png" width="400">
+
+The data we will be working with is the differential expression results for samples overexpressing the MOV10 gene versus control samples. **Based on the authors' hypothesis, we may expect processes / pathways related to *translation, splicing, and the regulation of mRNAs* to be present in our functional analyses.**
+
+Let's create a new project directory for our "Functional Analysis" lesson today. 
+
+1. Open RStudio
+2. Go to the `File` menu and select `New Project`.
+3. In the `New Project` window, choose `New Directory`. Then, choose `Empty Project`. Name your new directory `Functional_analysis` and then "Create the project as subdirectory of:" the Desktop (or location of your choice).
+4. Click on `Create Project`.
+5. After your project is completed, if the project does not automatically open in RStudio, then go to the `File` menu, select `Open Project`, and choose `Functional_analysis.Rproj`.
+6. When RStudio opens, you will see three panels in the window.
+7. Go to the `File` menu and select `New File`, and select `R Script`. The RStudio interface should now look like the screenshot below.
+8. Let's create `data` and `results` directories within your working directory by clicking on `New Folder` within the `Files` tab. 
+9. Download the **differential expression results** to the `data` directory by right clicking on [this link](https://github.com/hbctraining/Training-modules/blob/master/DGE-functional-analysis/data/Mov10oe_DE_results.csv)
+
+If you right click on the link, and "Save link as..". Choose `~/Desktop/Functional_analysis/data` as the destination of the file. You should now see the file appear in your working directory. 
+
 ## Over-representation analysis
-There are a plethora of functional enrichment tools that perform some type of over-representation analysis by querying databases containing information about gene function and interactions. **Querying these databases for gene function requires the use of a _consistent vocabulary_ to describe gene function.** One of the most widely-used vocabularies is the **Gene Ontology (GO)**. This vocabulary was established by the Gene Ontology project, and the words in the vocabulary are referred to as GO terms. 
+The first main category of functional analysis tools is the over-represenation analysis, which explores whether there is enrichment of known biological functions in a particular set of genes (e.g. significant DE genes). There are a plethora of functional enrichment tools that perform some type of over-representation analysis by querying databases containing information about gene function and interactions. **Querying these databases for gene function requires the use of a _consistent vocabulary_ to describe gene function.** One of the most widely-used vocabularies is the **Gene Ontology (GO)**. This vocabulary was established by the Gene Ontology project, and the words in the vocabulary are referred to as GO terms. 
 
 ### Gene Ontology project
 
@@ -79,9 +109,127 @@ The calculation of probability of k successes follows the formula:
 
 ![hypergeo](../img/hypergeo.png) 
 
+## clusterProfiler
+[clusterProfiler](http://bioconductor.org/packages/release/bioc/html/clusterProfiler.html) performs over-representation analysis on GO terms associated with a list of genes. The tool takes as input a significant gene list and a background gene list and performs statistical enrichment analysis using hypergeometric testing. The basic arguments allows the user to select the appropriate organism and the GO ontology (BP, CC, MF) to test. 
+
+### Running clusterProfiler
+
+We first need to load the libraries and have a dataframe of all of the DE results:
+
+```r
+# Load libraries
+library(clusterProfiler)
+library(DOSE)
+library(org.Hs.eg.db)
+library(biomaRt)
+
+# Create dataframe of all results
+
+all_OE <- data.frame(res_tableOE) 
+```
+
+To run clusterProfiler GO over-represenation analysis, we will change our gene names into Ensembl IDs, since the tool works a bit easier with the Ensembl IDs. There are a few clusterProfiler functions that allow us to map between gene IDs:
+
+```r
+# clusterProfiler does not work as easily using gene names, so turning gene names into Ensembl IDs using clusterProfiler::bitr and merge the IDs back with the DE results
+
+keytypes(org.Hs.eg.db)
+ids <- bitr(rownames(all_OE), fromType = "SYMBOL", toType = "ENSEMBL", OrgDb = "org.Hs.eg.db")
+
+# The gene names can map to more than one Ensembl ID (some genes change ID over time), so we need to remove duplicate IDs prior to assessing enriched GO terms
+
+ids <- ids[which(duplicated(ids$SYMBOL) == F), ] 
+
+# Merge the Ensembl IDs with the results
+        
+merged_genes_ensembl <- merge(all_OE, ids, by.x="row.names", by.y="SYMBOL")             
+                
+sigOE <- subset(merged_genes_ensembl, padj < 0.05)
+
+sigOE_genes <- as.character(sigOE$ENSEMBL)
+
+```
+
+We will use the Ensembl IDs for all genes as the background dataset:
+
+```r
+# Create background dataset for hypergeometric testing using all genes tested for significance in the results
+                   
+allOE_genes <- as.character(merged_genes_ensembl$ENSEMBL)
+```
+
+Now we can perform the GO enrichment analysis:
+
+```r
+# Run GO enrichment analysis 
+ego <- enrichGO(gene = sigOE_genes, 
+                    universe = allOE_genes, 
+                    keytype = "ENSEMBL", 
+                    OrgDb = org.Hs.eg.db, 
+                    ont = "BP", 
+                    pAdjustMethod = "BH", 
+                    qvalueCutoff = 0.05, 
+                    readable = TRUE)
+
+# Output results from GO analysis to a table
+cluster_summary <- data.frame(ego)
+
+write.csv(cluster_summary, "results/clusterProfiler_Mov10oe.csv")
+```
+
+![cluster_summary](../img/cluster_summary.png)
+
+### Visualizing clusterProfiler results
+clusterProfiler has a variety of options for viewing the over-represented GO terms. We will explore the dotplot, enrichment plot, and the category netplot.
+
+The dotplot shows the number of genes associated with the first 50 terms (size) and the p-adjusted values for these terms (color). 
+
+```r
+dotplot(ego, showCategory=50)
+```
+
+<img src="../img/mov10oe_dotplot.png" width="600">
+
+The enrichment GO plot below shows the relationship between the top 50 most significantly enriched GO terms, by grouping similar terms together. The color represents the p-values relative to the other displayed terms (brighter red is more significant) and the size of the terms represents the number of genes that are significant from our list.
+
+```r
+enrichMap(ego, n=50, vertex.label.font=6)
+```
+
+**To save the figure,** click on the `Export` button in the RStudio `Plots` tab and `Save as PDF...`. In the pop-up window, change the `PDF size` to `24 x 32` to give a figure of appropriate size for the text labels.
+
+<img src="../img/mov10oe_enrichmap.png" width="800">
+
+Finally, the category netplot shows the relationships between the genes associated with the top five most significant GO terms and the fold changes of the significant genes associated with these terms (color). The size of the GO terms reflects the pvalues of the terms, with the more significant terms being larger. This plot is particularly useful for hypothesis generation in identifying genes that may be important to several of the most affected processes. 
+
+```r
+# To color genes by log2 fold changes, we need to extract the log2 fold changes from our results table creating a named vector
+OE_foldchanges <- sigOE$log2FoldChange
+
+names(OE_foldchanges) <- sigOE$Row.names
+
+cnetplot(ego, categorySize="pvalue", showCategory = 5, foldChange=OE_foldchanges, vertex.label.font=6)
+```
+
+**Again, to save the figure,** click on the `Export` button in the RStudio `Plots` tab and `Save as PDF...`. Change the `PDF size` to `24 x 32` to give a figure of appropriate size for the text labels.
+
+<img src="../img/mov10oe_cnetplot.png" width="800">
+
+If you are interested in significant processes that are **not** among the top five, you can subset your `ego` dataset to only display these processes:
+
+```r
+ego2 <- ego
+ego2@result <- ego@result[c(1,3,4,8,9),]
+cnetplot(ego2, categorySize="pvalue", foldChange=OE_foldchanges, showCategory = 5)
+```
+
+<img src="../img/mov10oe_cnetplot2.png" width="800">
+
 ### gProfiler
 
-[gProfileR](http://biit.cs.ut.ee/gprofiler/index.cgi) is a tool for the interpretation of large gene lists which can be run using a web interface or through R. The core tool takes a gene list as input and performs statistical enrichment analysis using hypergeometric testing to provide interpretation to user-provided gene lists. Multiple sources of functional evidence are considered, including Gene Ontology terms, biological pathways, regulatory motifs of transcription factors and microRNAs, human disease annotations and protein-protein interactions. The user selects the organism and the sources of evidence to test. There are also additional parameters to change various thresholds and tweak the stringency to the desired level. 
+[gProfileR](http://biit.cs.ut.ee/gprofiler/index.cgi) is a tool for the interpretation of large gene lists which can be run using a web interface or through R. The core tool takes a gene list as input and performs statistical enrichment analysis using hypergeometric testing similar to clusterProfiler. Multiple sources of functional evidence are considered, including Gene Ontology terms, biological pathways, regulatory motifs of transcription factors and microRNAs, human disease annotations and protein-protein interactions. The user selects the organism and the sources of evidence to test. There are also additional parameters to change various thresholds and tweak the stringency to the desired level. 
+
+The GO terms output by gprofileR are generally quite similar to those output by clusterProfiler, but there are small differences due to the different algorithms used by the programs.
 
 ![gprofiler](../img/gProfiler.png)
 
@@ -93,23 +241,20 @@ The color codes in the gProfiler output represent the quality of the evidence fo
 
 Also, due to the hierarchical structure of GO terms, you may return many terms that seem redundant since they are child and parent terms. gProfiler allows for 'hierarchical filtering', returning only the best term per parent term.
 
+We encourage you to explore gProfiler online, for today's class we will be demonstrating how to run it using the R package.
+
 #### Running gProfiler
 
-For our gProfiler analysis, we are going to subset our `res_tableOE` only using a padjusted-value threshold of 0.05 (padj = 0.05). 
+We can run gProfileR relatively easily from R, by loading the library and running the  `gprofiler` function.
 
 ```r
 ### Functional analysis of MOV10 Overexpression using gProfileR (some of these are defaults; check help pages) 
 
 library(gProfileR)
 
-# Subsetting dataset to only include significant genes with padj < 0.05
-
-sig_genes_table <- subset(res_tableOE, padj < 0.05) 
-sig_genes_table <- data.frame(sig_genes_table)
-
 # Running gprofiler to identify enriched processes among significant genes
 
-gprofiler_results_oe <- gprofiler(query = rownames(sig_genes_table), 
+gprofiler_results_oe <- gprofiler(query = sigOE_genes, 
                                   organism = "hsapiens",
                                   ordered_query = F, 
                                   exclude_iea = F, 
@@ -118,30 +263,33 @@ gprofiler_results_oe <- gprofiler(query = rownames(sig_genes_table),
                                   correction_method = "fdr",
                                   hier_filtering = "none", 
                                   domain_size = "annotated",
-                                  custom_bg = "")
+                                  custom_bg = all_genes)
 
 ```
 
 Let's save the gProfiler results to file:
 
 ```r
-## Write results to file
+## Order the results by p-adjusted value and write results to file
 
-write.table(gprofiler_results_oe, 
-            "results/gprofiler_MOV10_oe.txt", 
-            sep="\t", quote=F, row.names=F)
+gprofiler_results_oe_reordered <- gprofiler_results_oe[, c("term.id", "domain", "term.name", "p.value", "overlap.size", "term.size", "intersection")]
+
+gprofiler_results_oe_reordered <- gprofiler_results_oe_reordered[order(gprofiler_results_oe_reordered$p.value), ]
+
+gprofiler_results_oe_GOs <- gprofiler_results_oe_reordered[grep('GO:', gprofiler_results_oe_reordered$term.id)]
+
+write.csv(gprofiler_results_oe_GOs, 
+            "results/gprofiler_MOV10_oe.csv")
 ```
 
-Now, extract only the lines in the gProfiler results with GO term accession numbers for downstream analyses:
+Now, extract only those lines in the gProfiler results with GO term accession numbers for downstream analyses:
 
 ```r
-## Extract GO IDs for downstream analysis
+## Extract only GO IDs for downstream analysis
 
-allterms_oe <- gprofiler_results_oe$term.id
+GOs_oe <- gprofiler_results_oe_GOs$term.id
 
-GOs_oe <- allterms_oe[grep('GO:', allterms_oe)]
-
-write.table(GOs_oe, "results/GOs_oe.txt", sep="\t", quote=F, row.names=F, col.names=F)
+write(GOs_oe, "results/GOs_oe.txt", ncol = 1)
 ```
 
 ### REVIGO
@@ -160,86 +308,9 @@ J. Reimand, T. Arak, P. Adler, L. Kolberg, S. Reisberg, H. Peterson, J. Vilo. g:
 
 Supek F, Bošnjak M, Škunca N, Šmuc T. REVIGO summarizes and visualizes long lists of Gene Ontology terms. PLoS ONE 2011. doi:10.1371/journal.pone.0021800
 
-## clusterProfiler
-Similar to gprofileR, the tool [clusterProfiler](http://bioconductor.org/packages/release/bioc/html/clusterProfiler.html) performs over-representation analysis on GO terms associated with a list of genes. The GO terms output by clusterProfiler are generally quite similar to those output by gprofileR, but there are small differences due to the different algorithms used by the programs.
+## [Other functional analysis methods](https://github.com/hbctraining/Training-modules/blob/master/DGE-functional-analysis/lessons/02_functional_analysis_other_methods.md)
 
-```r
-# Load libraries
-library(clusterProfiler)
-library(DOSE)
-library(org.Hs.eg.db)
-library(biomaRt)
-
-# clusterProfiler does not work as easily using gene names, so turning gene names into Ensembl IDs using biomaRt package for the significant genes and the background genes
-
-mart <- useDataset("hsapiens_gene_ensembl",
-                   useMart('ENSEMBL_MART_ENSEMBL',
-                           host =  'grch37.ensembl.org'))
-                           
-sig_genes_ensembl <- getBM(filters = "external_gene_name", 
-                values = rownames(sig_genes_table),
-                attributes = c("ensembl_gene_id", "external_gene_name"),
-                mart = mart)
-                
-sig_genes <- as.character(sig_genes_ensembl$ensembl_gene_id)
-
-# Create background dataset for hypergeometric testing using all genes tested for significance in the raw counts dataset
-
-all_genes <- getBM(filters = "external_gene_name", 
-                   values = rownames(data),
-                   attributes = "ensembl_gene_id",
-                   mart = mart)
-                   
-all_genes <- as.character(all_genes$ensembl_gene_id)
-
-# Run GO enrichment analysis 
-ego <- enrichGO(gene=sig_genes, universe=all_genes, keytype ="ENSEMBL", OrgDb=org.Hs.eg.db, ont="BP", pAdjustMethod = "BH", qvalueCutoff =0.05, readable=TRUE)
-
-# Output results from GO analysis to a table
-cluster_summary <- summary(ego)
-```
-![cluster_summary](../img/cluster_summary.png)
-
-### Visualizing clusterProfiler results
-ClusterProfiler has a variety of options for viewing the over-represented GO terms. We will explore the dotplot, enrichment plot, and the category netplot.
-
-The dotplot shows the number of genes associated with the first 25 terms (size) and the p-adjusted values for these terms (color). 
-
-```r
-dotplot(ego, showCategory=25)
-```
-
-![dotplot](../img/dotplot.png)
-
-The enrichment plot shows the relationship between the top 25 most significantly enriched GO terms, by grouping similar terms together.
-
-```r
-enrichMap(ego, n=25, vertex.label.font=10)
-```
-
-![enrichplot](../img/enrich.png)
-
-Finally, the category netplot shows the relationships between the genes associated with the top five most significant GO terms and the fold changes of the significant genes associated with these terms (color). This plot is particularly useful for hypothesis generation in identifying genes that may be important to several of the most affected processes. 
-
-```r
-cnetplot(ego, categorySize="pvalue", showCategory = 5, vertex.label.font=6)
-```
-
-![cnetplot](../img/cnet.png)
-
-**NOTE:** You can color genes by foldchanges by adding an argument called `foldChange` with a vector of foldchanges corresponding to the `sig_genes` vector. Also, if you are interested in significant processes that are **not** among the top five, you can subset your `ego` dataset to only display these processes:
-
-```r
-ego2 <- ego
-ego2@result <- ego@result[c(3,16,17,18,25),]
-cnetplot(ego2, categorySize="pvalue", showCategory = 5)
-```
-
-![cnet_example](../img/ego2_example.png)
-
-## [Other functional analysis methods](https://github.com/hbc/NGS-Data-Analysis-long-course/blob/Fall_2016/sessionIII/lessons/functional_analysis_other_methods.md)
-
-Over-representation analyses are only a single type of functional analysis method that is available for teasing apart the biological processes important to your condition of interest. Other types of analyses can be equally important or informative, including functional class scoring and pathway topology methods. Functional class scoring methods most often take as input the foldchanges for all genes, then look to see whether gene sets for particular biological processes are enriched among the high or low fold changes. This type of analysis can be particularly helpful if differential expression analysis only output a small list of significant DE genes. Finally, pathway topology analysis often takes into account both fold changes and adjusted p-values to identify dysregulated pathways and outputs whether pathways are inhibited/activated. We have [materials](https://github.com/hbc/NGS-Data-Analysis-long-course/blob/Fall_2016/sessionIII/lessons/functional_analysis_other_methods.md) to lead you through these other types of functional analyses, and we encourage you to take the time to work through them.
+Over-representation analyses are only a single type of functional analysis method that is available for teasing apart the biological processes important to your condition of interest. Other types of analyses can be equally important or informative, including functional class scoring and pathway topology methods. Functional class scoring methods most often take as input the foldchanges for all genes, then look to see whether gene sets for particular biological processes are enriched among the high or low fold changes. This type of analysis can be particularly helpful if differential expression analysis only output a small list of significant DE genes. Finally, pathway topology analysis often takes into account both fold changes and adjusted p-values to identify dysregulated pathways and outputs whether pathways are inhibited/activated. We have [materials](https://github.com/hbctraining/Training-modules/blob/master/DGE-functional-analysis/lessons/02_functional_analysis_other_methods.md) to lead you through these other types of functional analyses, and we encourage you to take the time to work through them.
 
 ![Pathway analysis tools](../img/pathway_analysis.png)
 
@@ -256,7 +327,7 @@ Over-representation analyses are only a single type of functional analysis metho
 * WGCNA - http://www.genetics.ucla.edu/labs/horvath/CoexpressionNetwork
 * GSEA - http://software.broadinstitute.org/gsea/index.jsp
 * SPIA - https://www.bioconductor.org/packages/release/bioc/html/SPIA.html
-* Gage/Pathview - http://www.bioconductor.org/packages/release/bioc/html/gage.html
+* GAGE/Pathview - http://www.bioconductor.org/packages/release/bioc/html/gage.html
 
 ***
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
