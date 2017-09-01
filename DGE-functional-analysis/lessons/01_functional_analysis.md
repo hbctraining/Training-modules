@@ -114,7 +114,7 @@ The calculation of probability of k successes follows the formula:
 
 ### Running clusterProfiler
 
-We first need to load the libraries and have a dataframe of all of the DE results:
+We first need to load the libraries and read in the DE results:
 
 ```r
 # Load libraries
@@ -123,9 +123,9 @@ library(DOSE)
 library(org.Hs.eg.db)
 library(biomaRt)
 
-# Create dataframe of all results
+# Read in differential expression results
+res_tableOE <- read.csv("data/Mov10oe_DE_results.csv", row.names = 1)
 
-all_OE <- data.frame(res_tableOE) 
 ```
 
 To run clusterProfiler GO over-represenation analysis, we will change our gene names into Ensembl IDs, since the tool works a bit easier with the Ensembl IDs. There are a few clusterProfiler functions that allow us to map between gene IDs:
@@ -134,15 +134,15 @@ To run clusterProfiler GO over-represenation analysis, we will change our gene n
 # clusterProfiler does not work as easily using gene names, so turning gene names into Ensembl IDs using clusterProfiler::bitr and merge the IDs back with the DE results
 
 keytypes(org.Hs.eg.db)
-ids <- bitr(rownames(all_OE), fromType = "SYMBOL", toType = "ENSEMBL", OrgDb = "org.Hs.eg.db")
+ensembl <- bitr(rownames(res_tableOE), fromType = "SYMBOL", toType = "ENSEMBL", OrgDb = "org.Hs.eg.db")
 
 # The gene names can map to more than one Ensembl ID (some genes change ID over time), so we need to remove duplicate IDs prior to assessing enriched GO terms
 
-ids <- ids[which(duplicated(ids$SYMBOL) == F), ] 
+ensembl <- ensembl[which(duplicated(ensembl$SYMBOL) == F), ] 
 
 # Merge the Ensembl IDs with the results
         
-merged_genes_ensembl <- merge(all_OE, ids, by.x="row.names", by.y="SYMBOL")             
+merged_genes_ensembl <- merge(res_tableOE, ensembl, by.x="row.names", by.y="SYMBOL")             
                 
 sigOE <- subset(merged_genes_ensembl, padj < 0.05)
 
