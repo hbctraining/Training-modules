@@ -54,7 +54,7 @@ Let's open RStudio and create a new project directory for our "Functional Analys
 8. Let's create `data` and `results` directories within your working directory by clicking on `New Folder` within the `Files` tab. 
 9. Download the **differential expression results** to the `data` directory by right clicking on [this link](https://github.com/hbctraining/Training-modules/blob/master/DGE-functional-analysis/data/Mov10oe_DE_results.csv)
 
-If you right click on the link, and "Save link as..". Choose `~/Desktop/Functional_analysis/data` as the destination of the file. You should now see the file appear in your working directory. 
+If you right click on the link, and "Save link as..". Choose `~/Desktop/Functional_analysis/data` as the destination of the file. You should now see the `Mov10oe_DE_results.csv` file appear in your working directory. 
 
 ## Over-representation analysis
 The first main category of functional analysis tools is the over-representation analysis, which explores whether there is enrichment of known biological functions in a particular set of genes (e.g. significant DE genes). There are a plethora of functional enrichment tools that perform some type of over-representation analysis by querying databases containing information about gene function and interactions. **Querying these databases for gene function requires the use of a _consistent vocabulary_ to describe gene function.** One of the most widely-used vocabularies is the **Gene Ontology (GO)**. This vocabulary was established by the Gene Ontology project, and the words in the vocabulary are referred to as GO terms. 
