@@ -425,22 +425,24 @@ gseaGO <- gseGO(geneList = foldchanges,
 gseaGO_results <- gseaGO@result
 gseaplot(gseaGO, geneSetID = 'GO:0007423')
 ```
-
-Or we could compare against MSigDB using some special clusterProfiler functions. We downloaded the GMT file from the Broad Institute [website](http://software.broadinstitute.org/gsea/msigdb/collections.jsp) for MSigDB GMTs.
+There are other gene sets available for GSEA analysis in clusterProfiler (Disease Ontology, Reactome pathways, etc.). In addition, it is possible to supply your own gene set GMT file, such as a GMT for MSigDB using special clusterProfiler functions as shown below:
 
 ```r
 biocLite("GSEABase")
 library(GSEABase)
 
-# Load in GMT file of gene sets (we downloaded from the Broad Institute)
-c2 <- read.gmt("/Users/marypiper/Downloads/c2.all.v6.0.entrez.gmt.txt")
+# Load in GMT file of gene sets (we downloaded from the Broad Institute [website](http://software.broadinstitute.org/gsea/msigdb/collections.jsp) for MSigDB)
 
-egmt <- enricher(gene = names(foldchanges), TERM2GENE=c2)
+c2 <- read.gmt("/data/c2.cp.v6.0.entrez.gmt.txt")
 
+msig <- GSEA(foldchanges, TERM2GENE=c2, verbose=FALSE)
+
+msig_df <- data.frame(msig)
+```
 
 ### Gene set enrichment analysis using GAGE and Pathview
 
-Gene set enrichment analysis and pathway analysis was also performed using [GAGE (Generally Applicable Gene-set Enrichment for Pathway Analysis)](http://bioconductor.org/packages/release/bioc/html/gage.html) and [Pathview](http://bioconductor.org/packages/release/bioc/html/pathview.html) tools. "GAGE assumes a gene set comes from a different distribution than the background and uses two-sample t-test to account for the gene set specific variance as well as the background variance. The two-sample t-test used by GAGE identifies gene sets with modest but consistent changes in gene expression level."[[2](http://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-10-161)]
+Gene set enrichment analysis and pathway analysis can be performed using [GAGE (Generally Applicable Gene-set Enrichment for Pathway Analysis)](http://bioconductor.org/packages/release/bioc/html/gage.html) and [Pathview](http://bioconductor.org/packages/release/bioc/html/pathview.html) tools. "GAGE assumes a gene set comes from a different distribution than the background and uses two-sample t-test to account for the gene set specific variance as well as the background variance. The two-sample t-test used by GAGE identifies gene sets with modest but consistent changes in gene expression level."[[2](http://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-10-161)]
 
 #### Exploring enrichment of KEGG pathways
 To get started with GAGE and Pathview analysis, we need to load multiple libraries:
@@ -591,13 +593,11 @@ and visualization. Bioinformatics, 29(14):1830-1831, 2013. doi: 10.1093/bioinfor
 
 
 ## Pathway topology tools
-The previous analyses did not explore how genes interact with each other (e.g. activation, inhibition, phosphorylation, ubiquitination, etc) to determine the pathway-level statistics. Pathway topology-based methods utilize the number and type of interactions between gene product (our DE genes) and other gene products to infer gene function or pathway association. 
+The last main type of functional analysis technique is pathway topology analysis. Pathway topology analysis often takes into account gene interaction information along with the fold changes and adjusted p-values from differential expression analysis to identify dysregulated pathways. Depending on the tool, pathway topology tools explore how genes interact with each other (e.g. activation, inhibition, phosphorylation, ubiquitination, etc) to determine the pathway-level statistics. Pathway topology-based methods utilize the number and type of interactions between gene product (our DE genes) and other gene products to infer gene function or pathway association. 
 
 ### SPIA
-The [SPIA (Signaling Pathway Impact Analysis)](http://bioconductor.org/packages/release/bioc/html/SPIA.html) tool can be used to integrate the lists of differentially expressed genes determined by DESeq2, their fold changes, and pathway topology to identify affected pathways. The blog post from [Getting Genetics Done](http://www.gettinggeneticsdone.com/2012/03/pathway-analysis-for-high-throughput.html) provides a step-by-step procedure for using and understanding SPIA.
+The [SPIA (Signaling Pathway Impact Analysis)](http://bioconductor.org/packages/release/bioc/html/SPIA.html) tool can be used to integrate the lists of differentially expressed genes determined by DESeq2, their fold changes, and pathway topology to identify affected pathways. The blog post from [Getting Genetics Done](http://www.gettinggeneticsdone.com/2012/03/pathway-analysis-for-high-throughput.html) provides a step-by-step procedure for using and understanding SPIA. 
 
-
-Before we run SPIA, we need to remove all NA values and duplicated Entrez IDs:
 
 ```r
 # Set-up
