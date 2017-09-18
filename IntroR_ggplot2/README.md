@@ -1,5 +1,5 @@
-# Intro-to-R
-Intro to R course materials for BCMP retreat 2015
+# Intro-to-R with ggplot2 
+Intro to R course with ggplot2 training module materials
 
 To get started take a look at the right hand panel of the main screen for this repo. You will find at the bottom a button that allows you to 'Download as Zip'. You will need to click on that and a zip file 'Intro-to-R-master.zip' will be dowloaded to your computer, keep note of it's location. These are the materials required for this workshop.
 
