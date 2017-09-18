@@ -17,7 +17,7 @@ These materials are intended to provide a **quick overview** of the R programmin
 * **R syntax**: Understanding the different 'parts of speech' in R; introducing variables and functions, demonstrating how functions work, and modifying arguments for specific use cases.
 * **Data structures in R**: Getting a handle on the classes of data structures and the types of data used by R.
 * **Data inspection and wrangling**: Reading in data from files. Using indices and various functions to subset, merge, and create datasets.
-* **Visualizing data**: Visualizing data using plotting functions in base R as well as from external packages such as ggplot2.
+* **Visualizing data**: Visualizing data using plotting functions from the ggplot2 package.
 * **Exporting data and graphics**: Generating new data tables and plots for use outside of the R environment.
 
 > These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
