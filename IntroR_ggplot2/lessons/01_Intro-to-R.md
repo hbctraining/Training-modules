@@ -8,9 +8,9 @@ Approximate time: 15 minutes
 
 ## Learning Objectives
 
-* Describe what R and RStudio are.
+* Describe R and RStudio.
 * Interact with R using RStudio.
-* Use the various components of RStudio.
+* Use the various features of RStudio.
 
 ## What is R?
 
