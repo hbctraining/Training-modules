@@ -2,7 +2,7 @@
 layout: topic
 title: R Syntax and Data Structures
 authors: Meeta Mistry, Mary Piper
-date: "Wednesday, September 28, 2016"
+date: "Monday, September 18, 2017"
 ---
 Approximate time: 20 min
 
@@ -28,7 +28,7 @@ _NOTE: indentation and consistency in spacing is used to improve clarity and leg
 
 ### Example script
 
-```{r example-script}
+```r
 
 # Load libraries
 library(Biobase)
