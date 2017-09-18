@@ -105,8 +105,10 @@ number <- x + y
 Variables can be given almost any name, such as `x`, `current_temperature`, or
 `subject_id`. However, there are some rules / suggestions you should keep in mind:
 
-- Make your names explicit and not too long.
 - Avoid names starting with a number (`2x` is not valid but `x2` is)
+- Keep in mind that **R is case sensitive** (e.g., `genome_length` is different from `Genome_length`)
+- Make your names explicit and not too long.
+- Be consistent with the styling of your code (where you put spaces, how you name variable, etc.). In R, two popular style guides are [Hadley Wickham's style guide](http://adv-r.had.co.nz/Style.html) and [Google's](https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml).
 - Avoid names of fundamental functions in R (e.g., `if`, `else`, `for`, see [here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html) for a complete list). In general, even if it's allowed, it's best to not use other function names (e.g., `c`, `T`, `mean`, `data`) as variable names. When in doubt
 check the help to see if the name is already in use. 
 - Avoid dots (`.`) within a variable name as in `my.dataset`. There are many functions
@@ -114,8 +116,7 @@ in R with dots in their names for historical reasons, but because dots have a
 special meaning in R (for methods) and other programming languages, it's best to
 avoid them. 
 - Use nouns for object names and verbs for function names
-- Keep in mind that **R is case sensitive** (e.g., `genome_length` is different from `Genome_length`)
-- Be consistent with the styling of your code (where you put spaces, how you name variable, etc.). In R, two popular style guides are [Hadley Wickham's style guide](http://adv-r.had.co.nz/Style.html) and [Google's](https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml).
+
 
 
 ## Data Types
