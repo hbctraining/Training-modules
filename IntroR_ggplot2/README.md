@@ -28,7 +28,7 @@ These materials are intended to provide a **quick overview** of the R programmin
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
 |[Introduction to R and RStudio](lessons/01_Intro-to-R.md) | 20 min |
-|[Syntax and data structures](lessons/02_syntax-and-data-structures.md) | 20 min |
+|[Syntax and data structures](lessons/02_syntax_and_data_structures.md) | 20 min |
 |[Functions, arguments, packages and seeking help in R](lessons/03_functions-and-arguments.md) | 20 min |
 |[Data wrangling](lessons/04_data-wrangling.md) | 30 min |
 |[Data visualization with ggplot2](lessons/05_data-visualization.md) | 30 min |
