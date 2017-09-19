@@ -8,7 +8,7 @@ Duration: 2-hour workshop (~2 hours of trainer-led time)
 ## Introduction to R with ggplot2
 
 ### Description
-This repository has teaching materials for a **2-hour**, hands-on **Introduction to R** workshop. The workshop will give participants an overview of the basics of R and RStudio. R is a simple programming environment that enables the effective handling of data, while providing excellent graphical support. RStudio is a tool that provides a user-friendly environment for working with R. 
+This repository has teaching materials for a **2-hour**, hands-on **Introduction to R** workshop led at a quick pace. The workshop will give participants an overview of the basics of R and RStudio. R is a simple programming environment that enables the effective handling of data, while providing excellent graphical support. RStudio is a tool that provides a user-friendly environment for working with R. 
 
 These materials are intended to provide a **quick overview** of the R programming language and plotting with the ggplot2 package. 
 
