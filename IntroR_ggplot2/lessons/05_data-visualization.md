@@ -7,78 +7,21 @@ date: "Wednesday, September 13, 2017"
 
 Approximate time: 30 minutes
 
-## Learning Objectives 
-
-* Use the "apply" function for iterative tasks on data structures.
-* Plot graphs using the external package "ggplot2".
-* Export plots for use outside of the R environment.
-
-
-## Calculating simple statistics
-
-Let's take a closer look at our counts data. Each column represents a sample in our experiment, and each sample has ~38K values corresponding to the expression of different transcripts. Suppose we wanted to compute the average value of expression for a sample (across all transcripts), the R base package provides many built-in functions such as `mean`, `median`, `min`, `max`, and `range`, just to name a few. Try computing the mean for "sample1" (_Hint: apply what you have learned previously using indexes_)  
-
-```r
-mean(rpkm_data[,'sample1'])
-```
-
-> ### Missing values
-> By default, all **R functions operating on vectors that contains missing data will return NA**. It's a way to make sure that users know they have missing data, and make a conscious decision on how to deal with it. When dealing with simple statistics like the mean, the easiest way to ignore `NA` (the missing data) is to use `na.rm=TRUE` (`rm` stands for remove). 
-> In some cases, it might be useful to remove the missing data from the vector. For this purpose, R comes with the function `na.omit` to generate a vector that has NA's removed. For some applications, it's useful to keep all observations, for others, it might be best to remove all observations that contain missing data. The function
-`complete.cases()` returns a logical vector indicating which rows have no missing values. 
-
-## The `apply` Function
-To obtain mean values for all samples we can use `mean` on each column individually, but there is also an easier way to go about it. Programming languages typically have a way to allow the execution of a single line of code or several lines of code multiple times, or in a "loop". By default R is not very good at looping, hence the `apply()` family of functions are used for this purpose. This family includes several functions, each differing slightly on the inputs or outputs. For example, we can use `apply()` to execute some task on every element in a vector, every row/column in a dataframe, and so on. 
-
-```r
-base::apply             Apply Functions Over Array Margins
-base::by                Apply a Function to a Data Frame Split by Factors
-base::eapply            Apply a Function Over Values in an Environment
-base::lapply            Apply a Function over a List or Vector (returns list)
-base::sapply            Apply a Function over a List or Vector (returns vector)
-base::mapply            Apply a Function to Multiple List or Vector Arguments
-base::rapply            Recursively Apply a Function to a List
-base::tapply            Apply a Function Over a Ragged Array
-```
-
-We will be using `apply` in our examples today, but do take a moment on your own to explore the many options that are available. The `apply` function returns a vector or array or list of values obtained by applying a function to margins of an array or matrix. We know about vectors/arrays and functions, but what are these “margins”? Margins are referring to either the rows (denoted by 1), the columns (denoted by 2) or both (1:2). By “both”, we mean  apply the function to each individual value.
-
-The syntax for the apply function is: 
-
-```r
-## DO NOT RUN
-apply(dataframe/matrix, margin, function_to_apply)
-```
-
-Let's try this to obtain mean expression values for each sample in our RPKM matrix:
-
-```r
-samplemeans <- apply(rpkm_data, 2, mean) 
-```
-
-Now, add `samplemeans` to the end of the `metadata` dataframe:
-	
-```r
-new_metadata <- cbind(metadata, samplemeans)
-```
-
-Before we start to plot, we also want to add an additional metadata column to `new_metadata`, this new column lists the age of each of the mouse samples in days.
-
-```r
-age_in_days <- c(40, 32, 38, 35, 41, 32, 34, 26, 28, 28, 30, 32)    
-# Create a numeric vector with ages. Note that there are 12 elements here.
-	
-new_metadata <- cbind(new_metadata, age_in_days)    
-# add the new vector as the last column to the new_metadata dataframe
-```
-
-We are now ready for plotting and data visualization!
-
 ## Data Visualization with `ggplot2`
 
 When we are working with large sets of numbers it can be useful to display that information graphically to gain more insight. Visualization deserves an entire course of its own (there is that much to know!). If you are interested in learning about plotting with base R functions, we have a short lesson [available here](basic_plots_in_r.md). In this lesson we will be plotting with the popular Bioconductor package [`ggplot2`](http://docs.ggplot2.org/).
 
-More recently, R users have moved away from base graphic options towards `ggplot2` since it offers a lot more functionality as compared to the base R plotting functions. The `ggplot2` syntax takes some getting used to, but once you get it, you will find it's extremely powerful and flexible. We will start with drawing a simple x-y scatterplot of `samplemeans` versus `age_in_days` from the `new_metadata` data frame. `ggplot2` assumes that the input is a  data frame.
+More recently, R users have moved away from base graphic options towards `ggplot2` since it offers a lot more functionality as compared to the base R plotting functions. The `ggplot2` syntax takes some getting used to, but once you get it, you will find it's extremely powerful and flexible. 
+
+For this section, we will be using a modified metadata table, download it [from here](https://raw.githubusercontent.com/hbctraining/Training-modules/master/IntroR_ggplot2/data/new_metadata.csv) and save it in the `data` folder. Next, let's load it into a new object called `new_metadata`.
+
+```{r}
+new_metadata <- read.csv("data/new_metadata.csv")
+
+View(new_metadata)
+```
+
+This data frame has 2 additional columns as compared to `metadata`. The `samplemeans` column has the mean of the expression in each sample, and the `age_in_days` column has the corresponding age of the sampled mouse in days. We will start with drawing a simple X-Y scatterplot of `samplemeans` versus `age_in_days` from the `new_metadata` data frame. 
 
 Let's start by loading the `ggplot2` library.
 
@@ -88,11 +31,14 @@ library(ggplot2)
 
 The `ggplot()` function is used to **initialize the basic graph structure**, then we add to it. The basic idea is that you specify different parts of the plot, and add them together using the `+` operator. These parts are often referred to as layers.
 
+**`ggplot2` required that a data frame as input.**
+
 Let's start: 
 
-```{r, eval=FALSE}
+```{r}
 ggplot(new_metadata) # what happens? 
 ```
+
 You get an blank plot, because you need to **specify layers** using the `+` operator.
 
 One type of layer is **geometric objects**. These are the actual marks we put on a plot. Examples include:
@@ -193,11 +139,9 @@ ggplot(new_metadata) +
  
  ![ggscatter5](../img/ggscatter-5.png)
  
-
 > *NOTE:* You can use the `example("geom_point")` function here to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different geometric object layers available in ggplot2 to learn how you can easily modify your plots! 
 
 > *NOTE:* RStudio provide this very [useful cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) for plotting using `ggplot2`. Different example plots are provided and the associated code (i.e which `geom` or `theme` to use in the appropriate situation.)
-
 
 ***
 
@@ -208,73 +152,15 @@ ggplot(new_metadata) +
 
 ***
 
-
-
-## Histogram
-
-To plot a histogram we require another type of geometric object called `geom_histogram`, which requires a statistical transformation. Some plot types (such as scatterplots) do not require transformations, each point is plotted at x and y coordinates equal to the original value. Other plots, such as boxplots, histograms, prediction lines etc. need to be transformed. Usually these objects have has a default statistic for the transformation, but that can be changed via the `stat_bin` argument. 
-
-Let's plot a histogram of sample mean expression in our data:
-
-```r
-ggplot(new_metadata) +
-  geom_histogram(aes(x = samplemeans))
-```
-
-
- ![gghist1](../img/gghist-1.png) 
- 
-
-You will notice that even though the histogram is plotted, R gives a warning message ``stat_bin()` using `bins = 30`. Pick better value with `binwidth`.` These are the transformations we discussed. Apparently the default is not good enough. 
-
-Let's change the binwidth values. How does the plot differ?
-
-```{r, fig.align='center'}
-ggplot(new_metadata) +
-  geom_histogram(aes(x = samplemeans), stat = "bin", binwidth=0.8)
-```
-
- ![gghist2](../img/gghist-2.png) 
-
-***
-
-**Exercise**
-
-1. Use what you learned previously about the `theme()` layer to make the text larger for x- and y-axis (not the tick labels).
-2. Also, add an appropriate title to this plot.
-
-***
-
-
-## Boxplot
-
-Now that we have all the required information for plotting with ggplot2 let's try plotting a boxplot. A boxplot provides a graphical view of the distribution of data based on a five number summary. The top and bottom of the box represent the (1) first and (2) third quartiles (25th and 75th percentiles, respectively). The line inside the box represents the (3) median (50th percentile). The whiskers extending above and below the box represent the (4) maximum, and (5) minimum of a data set. The whiskers of the plot reach the minimum and maximum values that are not outliers. 
-
-Outliers are determined using the interquartile range (IQR), which is defined as: Q3 - Q1. Any values that exceeds 1.5 x IQR below Q1 or above Q3 are considered outliers and are represented as points above or below the whiskers. These outliers are useful to identify any unexpected observations.
-
-1. Use the `geom_boxplot()` layer to plot the differences in sample means between the Wt and KO genotypes.
-2. Add a title to your plot.
-3. Add 'Genotype' as your x-axis label and 'Mean expression' as your y-axis labels.
-4. Change the size of your axes labels to 1.5x larger than the default.
-5. Change the size of your axes text (the labels on the tick marks) to 1.25x larger than the default.
-6. Change the size of your plot title in the same way that you change the size of the axes text but use `plot.title`.
-
-*BONUS: Use the `fill` aesthetic to look at differences in sample means between celltypes within each genotype.*
-
-
-**Our final figure should look something like that provided below.**
-
- ![ggbox](../img/ggboxplot.png)
-
-
 ## Exporting figures to file
 
-There are two ways in which figures and plots can be output to a file (rather than simply displaying on screen). The first (and easiest) is to export directly from the RStudio 'Plots' panel, by clicking on `Export` when the image is plotted. This will give you the option of `png` or `pdf` and selecting the directory to which you wish to save it to. It will also give you options to dictate the size and resolution of the output image.
+There are two ways in which figures and plots can be output to a file (rather than simply displaying on screen). The first (and easiest) is to export directly from the RStudio 'Plots' panel, by clicking on `Export` when the image is plotted. This will give you the option of `png` or `pdf` and selecting the directory to which you wish to save it to. It will also give you options to modify the size and resolution of the output image.
 
-The second option is to use R functions and have the write to file hard-coded in to your script. This would allow you to run the script from start to finish and automate the process (not requiring human point-and-click actions to save).  In R’s terminology, **output is directed to a particular output device and that dictates the output format that will be produced**.  A device must be created or “opened” in order to receive graphical output and, for devices that create a file
+The second option is to use R functions. This would allow you to run an R script from start to finish and automate the process (not requiring human point-and-click actions to save). In R’s terminology, **output is directed to a particular output device and that dictates the output format that will be produced**.  A device must be created or “opened” in order to receive graphical output and, for devices that create a file
 on disk, the device must also be closed in order to complete the output.
 
 Let's print our scatterplot to a pdf file format. First you need to initialize a plot using a function which specifies the graphical format you intend on creating i.e.`pdf()`, `png()`, `tiff()` etc. Within the function you will need to specify a name for your image, and the with and height (optional). This will open up the device that you wish to write to:
+
 ```r
 pdf("figures/scatterplot.pdf")
 ```
@@ -298,6 +184,24 @@ dev.off()
 ***Note 2:*** *If you had made any additional plots before closing the device, they will all be stored in the same file; each plot usually gets its own page, unless you specify otherwise.*
 
 
+## Boxplot
+
+Now that we have all the required information for plotting with ggplot2 let's try plotting a boxplot. A boxplot provides a graphical view of the distribution of data based on a five number summary. The top and bottom of the box represent the (1) first and (2) third quartiles (25th and 75th percentiles, respectively). The line inside the box represents the (3) median (50th percentile). The whiskers extending above and below the box represent the (4) maximum, and (5) minimum of a data set. The whiskers of the plot reach the minimum and maximum values that are not outliers. 
+
+Outliers are determined using the interquartile range (IQR), which is defined as: Q3 - Q1. Any values that exceeds 1.5 x IQR below Q1 or above Q3 are considered outliers and are represented as points above or below the whiskers. These outliers are useful to identify any unexpected observations.
+
+1. Use the `geom_boxplot()` layer to plot the differences in sample means between the Wt and KO genotypes.
+2. Add a title to your plot.
+3. Add 'Genotype' as your x-axis label and 'Mean expression' as your y-axis labels.
+4. Change the size of your axes labels to 1.5x larger than the default.
+5. Change the size of your axes text (the labels on the tick marks) to 1.25x larger than the default.
+6. Change the size of your plot title in the same way that you change the size of the axes text but use `plot.title`.
+
+*BONUS: Use the `fill` aesthetic to look at differences in sample means between celltypes within each genotype.*
+
+**Our final figure should look something like that provided below.**
+
+ ![ggbox](../img/ggboxplot.png)
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
