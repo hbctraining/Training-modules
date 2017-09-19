@@ -2,7 +2,7 @@
 layout: topic
 title: Functions in R
 author: Data Carpentry contributors
-date: "Wednesday, September 13, 2017"
+date: "Tuesday, September 19, 2017"
 ---
 Approximate time: 20 min
 
@@ -55,7 +55,7 @@ glengths <- c(30, glengths) # adding at the beginning
 
 What happens here is that we take the original vector `glengths` (containing three elements), and we are adding another item to either end. We can do this over and over again to build a vector or a dataset.
 
-Since R is used for statistical computing, many of the base functions involve mathematical operations. One example would be the function `sqrt()`. The input/argument must be a number, and the the output is the square root of that number. Let's try finding the square root of 81:
+Since R is used for statistical computing, many of the base functions involve mathematical operations. If interested, we have linked a [detailed guide](http://www.sthda.com/english/wiki/comparing-means-in-r) for performing basic statistical tests in R. One example of a base R mathematical function would be `sqrt()`. The input/argument must be a number, and the the output is the square root of that number. Let's try finding the square root of 81:
 
 ```r
 sqrt(81)
