@@ -112,8 +112,8 @@ When finished, your working directory should look like:
 
 There are a few files that we will be working with in the next few lessons and you can access them using the links provided below. If you right click on the link, and "Save link as..". Choose `~/Desktop/Intro-to-R/data` as the destination of the file. You should now see the file appear in your working directory. **We will discuss these files a bit later in the lesson.**
 
-* Download the **normalized counts file** by right clicking on [this link](https://github.com/hbctraining/Training-modules/blob/master/IntroR_ggplot2/data/counts.rpkm.csv)
-* Download **metadata file** using [this link](https://github.com/hbctraining/Training-modules/blob/master/IntroR_ggplot2/data/mouse_exp_design.csv)
+* Download the **normalized counts file** by right clicking on [this link](https://raw.githubusercontent.com/hbctraining/Training-modules/master/IntroR_ggplot2/data/counts.rpkm.csv)
+* Download **metadata file** using [this link](https://raw.githubusercontent.com/hbctraining/Training-modules/master/IntroR_ggplot2/data/mouse_exp_design.csv)
 
 > *NOTE:* If the files download automatically to some other location on your laptop, you can move them to the your working directory using your file explorer or finder (outside RStudio), or navigating to the files in the `Files` tab of the bottom right panel of RStudio
 
