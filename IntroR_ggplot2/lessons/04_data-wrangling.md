@@ -14,16 +14,19 @@ Approximate time: 30 min
 ## Reading data into R
 Regardless of the specific analysis in R we are performing, we usually need to bring data in for the analysis. The function in R we use will depend on the type of data file we are bringing in (e.g. text, Stata, SPSS, SAS, Excel, etc.) and how the data in that file are separated, or delimited. The table below lists functions that can be used to import data from common file formats.
 
-| Data Type  | Function | Package
-| -----------:|:----------------:|:---------------:|
-| comma separated (.csv)  | read.csv()	| utils (default) |
-| other delimited formats (.txt) | read.table(); read.csv() | utils (default) |
-| Stata version 7-12 (.dta) | read.dta() | foreign |
-| Stata version 13-14 (.dta) | readdta() | haven |
-| SPSS (.sav) |	read.spss() | foreign |
-| SAS (.sas7bdat) | read.sas7bdat() | sas7bdat |
-| Excel (.xls, .xlsx) | readWorksheetFromFile() | XLConnect |
- 
+| Data type               | Extension | Function          | Package            |
+|:------------------------|:----------|:------------------|:-------------------|
+| Comma separated values  | csv       | `read.csv()`      | utils (default)    |
+|                         |           | `read_csv()`      | readr (tidyverse)  |
+| Tab separated values    | tsv       | `read_tsv()`      | readr              |
+| Other delimited formats | txt       | `read.table()`    | utils              |
+|                         |           | `read_table()`    | readr              |
+|                         |           | `read_delim()`    | readr              |
+| Stata version 13-14     | dta       | `readdta()`       | haven              |
+| Stata version 7-12      | dta       | `read.dta()`      | foreign            |
+| SPSS                    | sav       | `read.spss()`     | foreign            |
+| SAS                     | sas7bdat  | `read.sas7bdat()` | sas7bdat           |
+| Excel                   | xlsx, xls | `read_excel()`    | readxl (tidyverse) |
 
 For example, if we have text file separated by commas (comma-separated values), we could use the function `read.csv`. However, if the data are separated by a different delimiter in a text file, we could use the generic `read.table` function and specify the delimiter as an argument in the function. 
 
