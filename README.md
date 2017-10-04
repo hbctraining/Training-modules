@@ -16,7 +16,12 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 ### Workshops
 
-
+| Lessons            | Prerequisites |
+|:------------------------|:----------:|
+|[Introduction to R](https://github.com/hbctraining/Training-modules/tree/master/IntroR_ggplot2) | None |
+| Visualization in R | Beginner R or [IntroR workshop](https://github.com/hbctraining/Intro-to-R) |
+| Functional analysis of gene lists | Beginner R or [IntroR workshop](https://github.com/hbctraining/Intro-to-R) |
+| Reproducible research using R (Rmarkdown: report generation) | Beginner R or [IntroR workshop](https://github.com/hbctraining/Intro-to-R) |
 
 ***
 
