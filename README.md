@@ -14,7 +14,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 > These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
 
-### Contents
+### Workshops
 
 
 
