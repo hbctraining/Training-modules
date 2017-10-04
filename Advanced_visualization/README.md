@@ -24,7 +24,7 @@ This repository has teaching materials for a **3 hour**, hands-on **Advanced vis
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Basic plotting with ggplot2](lessons/01_basics_ggplot2.md) | 90 min |
-|[Syntax and data structures](lessons/02_syntax_and_data_structures.md) | 90 min |
+|[Basic plotting with ggplot2](lessons/01_basics_ggplot2.md) | 75 min |
+|Advanced visualizations](lessons/02_advanced_visualization.md) | 105 min |
 
 *These materials have been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
