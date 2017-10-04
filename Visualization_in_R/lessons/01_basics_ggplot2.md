@@ -7,6 +7,8 @@ date: "Wednesday, October 4th, 2017"
 
 Approximate time: 75 minutes
 
+# Basic plotting with ggplot2
+
 ## Set-up
 
 To explore the plotting methods in these lessons, we need to first open RStudio, create a project called `Visualizations-in-R`, and organize our project directory.
