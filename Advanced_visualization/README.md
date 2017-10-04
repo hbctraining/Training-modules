@@ -15,7 +15,7 @@ This repository has teaching materials for a **3 hour**, hands-on **Advanced vis
 * **Creating basic plots**: Exploring and customizing basic plots (scatter plots, histograms, boxplots, etc.) using the ggplot2 package.
 * **Exporting graphics**: Saving plots for use outside of the R environment.
 * **Wrangling data for visualization**: Changing data formats for visualization purposes
-* **Data assessment with volcano plots and heatmaps**: Learning how to create volcano plots and label interesting data points and practicing how to create heatmaps with the pheatmap R package and interpretation of the output
+* **Data assessment with volcano plots and heatmaps**: Learning how to create volcano plots and label interesting data points and how to create heatmaps with the pheatmap R package and interpret the output
 
 > These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
 
