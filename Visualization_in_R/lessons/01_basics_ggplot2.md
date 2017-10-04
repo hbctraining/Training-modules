@@ -2,10 +2,75 @@
 layout: topic
 title: Plotting and data visualization in R
 author: Mary Piper, Meeta Mistry, Radhika Khetani
-date: "Wednesday, September 13, 2017"
+date: "Wednesday, October 4th, 2017"
 ---
 
-Approximate time: 30 minutes
+Approximate time: 75 minutes
+
+## Set-up
+
+To explore the plotting methods in these lessons, we need to first open RStudio, create a project called `Visualizations-in-R`, and organize our project directory.
+
+### Creating a new project directory in RStudio
+
+Let's create a new project directory for our "Visualizations in R" lesson today. 
+
+1. Open RStudio
+2. Go to the `File` menu and select `New Project`.
+3. In the `New Project` window, choose `New Directory`. Then, choose `Empty Project`. Name your new directory `Visualizations-in-R` and then "Create the project as subdirectory of:" the Desktop (or location of your choice).
+4. Click on `Create Project`.
+5. After your project is completed, if the project does not automatically open in RStudio, then go to the `File` menu, select `Open Project`, and choose `Visualizations-in-R.Rproj`.
+6. When RStudio opens, you will see three panels in the window.
+7. Go to the `File` menu and select `New File`, and select `R Script`. The RStudio interface should now look like the screenshot below (except in the file directory, `Intro-to-R.Rproj` will be `Visualizations-in-R.Rproj`).
+
+![RStudio interface](../img/Rstudio_interface.png)
+
+### Structuring your working directory
+To organize your working directory for a particular analysis, you should separate the original data (raw data) from intermediate datasets. For instance, you may want to create a `data/` directory within your working directory that stores the raw data, and have a `results/` directory for intermediate datasets and a `figures/` directory for the plots you will generate.
+
+Let's create these three directories within your working directory by clicking on `New Folder` within the `Files` tab. 
+
+![Structuring your working directory](../img/wd_setup.png)
+
+
+When finished, your working directory should look like:
+
+![Your organized working directory](../img/complete_wd_setup.png)
+
+### Adding files to your working directory
+
+There are a couple files that we will be working with and you can access them using the links provided below. If you right click on the link, and "Save link as..". Choose `~/Visualizations-in-R/data` as the destination of the file. You should now see the file appear in your working directory. **We will discuss these files a bit later in the lesson.**
+
+
+We have two files that we will be using for plotting: 
+
+1. A normalized counts file 
+2. A metadata file corresponding to the samples in our normalized counts dataset
+
+Download the files to the `data` folder in your project folder by **right-clicking** the links below. Choose to `Save link as` and navigate to your `Visualizations-in-R/data` folder:
+ 
+ - Normalized counts file: click [here](../data/normalized_counts.txt)
+ - Metadata file: click [here](../data/new_metadata.csv)
+ 
+You should now see the file appear in your working directory.
+
+### R package installation
+
+To perform plotting, we need to install the R packages we will using from the CRAN repository: 
+
+```r
+install.packages(c("ggplot2", "RColorBrewer", "pheatmap", "ggrepel", "reshape"))
+```
+
+_**Note that these package names are case sensitive!**_
+
+
+To check that a package installed successfully, you should be able to load the library (without any error messages) using `library()`:
+
+ ```r
+ library(ggplot2)
+ ```
+
 
 ## Data Visualization with `ggplot2`
 
@@ -13,15 +78,6 @@ When we are working with large sets of numbers it can be useful to display that 
 
 More recently, R users have moved away from base graphic options towards `ggplot2` since it offers a lot more functionality as compared to the base R plotting functions. The `ggplot2` syntax takes some getting used to, but once you get it, you will find it's extremely powerful and flexible. 
 
-For this section, we will be using a modified metadata table, download it [from here](https://raw.githubusercontent.com/hbctraining/Training-modules/master/IntroR_ggplot2/data/new_metadata.csv) and save it in the `data` folder. Next, let's load it into a new object called `new_metadata`.
-
-```{r}
-new_metadata <- read.csv("data/new_metadata.csv")
-
-View(new_metadata)
-```
-
-This data frame has 2 additional columns as compared to `metadata`. The `samplemeans` column has the mean of the expression in each sample, and the `age_in_days` column has the corresponding age of the sampled mouse in days. We will start with drawing a simple X-Y scatterplot of `samplemeans` versus `age_in_days` from the `new_metadata` data frame. 
 
 Let's start by loading the `ggplot2` library.
 
