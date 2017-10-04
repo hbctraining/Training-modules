@@ -1,7 +1,7 @@
 ---
 Audience: Biologists
 Computational Skills: Beginner to Intermediate R
-Prerequisites: Introduction to R and/or Introduction to the Shell
+Prerequisites: Introduction to R and/or Introduction to Unix
 Duration: 2-3 hour workshops
 ---
 
