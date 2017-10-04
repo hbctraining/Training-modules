@@ -2,7 +2,7 @@
 Audience: Biologists
 Computational Skills: Beginner/Intermediate
 Prerequisites: None
-Duration: 3-hour workshop (~3 hours of trainer-led time)
+Duration: 2-3 hour workshop (~2-3 hours of trainer-led time)
 ---
 
 ## Introduction to R with ggplot2
