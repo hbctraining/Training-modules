@@ -77,13 +77,6 @@ When we are working with large sets of numbers it can be useful to display that 
 
 More recently, R users have moved away from base graphic options towards `ggplot2` since it offers a lot more functionality as compared to the base R plotting functions. The `ggplot2` syntax takes some getting used to, but once you get it, you will find it's extremely powerful and flexible. 
 
-
-Let's start by loading the `ggplot2` library.
-
-```{r}
-library(ggplot2)
-```
-
 The `ggplot()` function is used to **initialize the basic graph structure**, then we add to it. The basic idea is that you specify different parts of the plot, and add them together using the `+` operator. These parts are often referred to as layers.
 
 **`ggplot2` required that a data frame as input.**
