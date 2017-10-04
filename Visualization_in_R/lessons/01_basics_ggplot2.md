@@ -48,8 +48,8 @@ We have two files that we will be working with in the lessons:
 
 Download the files to the `data` folder by **right-clicking** the links below. Choose to `Save link as` and navigate to your `Visualizations-in-R/data` folder:
  
- - Normalized counts file: click [here](../data/normalized_counts.txt)
- - Metadata file: click [here](../data/new_metadata.csv)
+ - **Normalized counts file:** click [here](../data/normalized_counts.txt)
+ - **Metadata file:** click [here](../data/new_metadata.csv)
  
 You should now see the files appear in the `data` folder.
 
