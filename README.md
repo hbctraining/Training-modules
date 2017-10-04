@@ -10,7 +10,7 @@ Duration: 2-3 hour workshops
 
 This repository has teaching materials for **2-3 hour**, hands-on workshops covering a variety of topics related to bioinformatics data analysis. The workshops will lead participants through performing different types of analyses using R/RStudio or Linux. 
 
-Some workshops will require a working knowledge of R or completion of the [Introduction to R workshop](https://github.com/hbctraining/Intro-to-R). Other workshops will require a working knowledge of the bash scripting language or completion of the [Introduction to Unix workshop]().
+Some workshops will require a working knowledge of R or completion of the [Introduction to R workshop](https://github.com/hbctraining/Intro-to-R). Other workshops will require a working knowledge of the bash scripting language or completion of the [Introduction to Unix workshop](https://github.com/hbctraining/Intro-to-Unix).
 
 > These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
 
