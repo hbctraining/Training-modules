@@ -41,20 +41,17 @@ When finished, your working directory should look like:
 
 ### Adding files to your working directory
 
-There are a couple files that we will be working with and you can access them using the links provided below. If you right click on the link, and "Save link as..". Choose `~/Visualizations-in-R/data` as the destination of the file. You should now see the file appear in your working directory. **We will discuss these files a bit later in the lesson.**
+We have two files that we will be working with in the lessons: 
 
-
-We have two files that we will be using for plotting: 
-
-1. A normalized counts file 
+1. A normalized counts file (gene expression counts normalized for library size)
 2. A metadata file corresponding to the samples in our normalized counts dataset
 
-Download the files to the `data` folder in your project folder by **right-clicking** the links below. Choose to `Save link as` and navigate to your `Visualizations-in-R/data` folder:
+Download the files to the `data` folder by **right-clicking** the links below. Choose to `Save link as` and navigate to your `Visualizations-in-R/data` folder:
  
  - Normalized counts file: click [here](../data/normalized_counts.txt)
  - Metadata file: click [here](../data/new_metadata.csv)
  
-You should now see the file appear in your working directory.
+You should now see the files appear in the `data` folder.
 
 ### R package installation
 
