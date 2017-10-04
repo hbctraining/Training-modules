@@ -46,12 +46,12 @@ We have two files that we will be working with in the lessons:
 1. A normalized counts file (gene expression counts normalized for library size)
 2. A metadata file corresponding to the samples in our normalized counts dataset
 
-Download the files to the `data` folder by **right-clicking** the links below. Choose to `Save link as` and navigate to your `Visualizations-in-R/data` folder:
+Download the files to the `data` folder by **right-clicking** the links below:
  
  - **Normalized counts file:** right-click [here](../data/normalized_counts.txt)
  - **Metadata file:** right-click [here](../data/new_metadata.csv)
  
-You should now see the files appear in the `data` folder.
+Choose to `Save link as` and navigate to your `Visualizations-in-R/data` folder. You should now see the files appear in the `data` folder in the RStudio file directory.
 
 ### R package installation
 
