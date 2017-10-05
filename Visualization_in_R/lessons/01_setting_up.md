@@ -21,21 +21,21 @@ Let's create a new project directory for our "Visualizations in R" lesson:
 4. Click on `Create Project`.
 5. After your project is completed, if the project does not automatically open in RStudio, then go to the `File` menu, select `Open Project`, and choose `Visualizations-in-R.Rproj`.
 6. When RStudio opens, you will see three panels in the window.
-7. Go to the `File` menu and select `New File`, and select `R Script`. The RStudio interface should now look like the screenshot below (except in the file directory, `Intro-to-R.Rproj` will be `Visualizations-in-R.Rproj`).
+7. Go to the `File` menu and select `New File`, and select `R Script`. The RStudio interface should now look like the screenshot below (except in the file directory, `Intro-to-R.Rproj` will be `Visualizations-in-R.Rproj`). You may or may not have a `.gitignore` file, which is fine.
 
-![RStudio interface](../img/Rstudio_interface.png)
+<img src="../img/generic_Rstudio_interface.png" width="600">
 
 ### Structuring your working directory
 To organize your working directory for a particular analysis, you should separate the original data (raw data) from intermediate datasets. For instance, you may want to create a `data/` directory within your working directory that stores the raw data, and have a `results/` directory for intermediate datasets and a `figures/` directory for the plots you will generate.
 
 Let's create these three directories within your working directory by clicking on `New Folder` within the `Files` tab. 
 
-![Structuring your working directory](../img/wd_setup.png)
+<img src="../img/generic_wd_setup.png" width="400">
 
 
 When finished, your working directory should look like:
 
-![Your organized working directory](../img/complete_wd_setup.png)
+<img src="../img/generic_complete_wd_setup.png" width="300">
 
 ### Adding files to your working directory
 
