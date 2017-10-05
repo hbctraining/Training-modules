@@ -55,7 +55,7 @@ Choose to `Save link as` and navigate to your `Visualizations-in-R/data` folder.
 
 ### R package installation
 
-To perform plotting, we need to install the R packages we will using from the CRAN repository: 
+To perform plotting, we need to install the R packages we will using from the CRAN repository (if not already installed): 
 
 ```r
 install.packages(c("ggplot2", "RColorBrewer", "pheatmap", "ggrepel", "reshape"))
