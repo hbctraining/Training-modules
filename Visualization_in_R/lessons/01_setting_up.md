@@ -39,26 +39,34 @@ When finished, your working directory should look like:
 
 ### Adding files to your working directory
 
-We have two files that we will be working with in the lessons: 
+We have four files that we will be working with in the lessons: 
 
-1. A normalized counts file (gene expression counts normalized for library size)
-2. A metadata file corresponding to the samples in our normalized counts dataset
+1. A practice metadata file to explore basic plotting with ggplot2
+2. A normalized counts file (gene expression counts normalized for library size)
+3. A metadata file corresponding to the samples in our normalized counts dataset
+4. The differential expression results output from our DE analysis using DESeq2
 
 Download the files to the `data` folder by **right-clicking** the links below:
  
- - **Normalized counts file:** right-click [here](https://github.com/hbctraining/Training-modules/raw/master/Visualization_in_R/data/normalized_counts.txt)
- - **Metadata file:** right-click [here](https://github.com/hbctraining/Training-modules/raw/master/Visualization_in_R/data/new_metadata.csv)
+  - **Practice metadata file:** right-click [here](https://github.com/hbctraining/Training-modules/raw/master/Visualization_in_R/data/new_metadata.csv)
+  - **Experimental metadata file:** right-click [here](https://github.com/hbctraining/Training-modules/raw/master/Visualization_in_R/data/Mov10_meta.txt)
+  - **Normalized counts file:** right-click [here](https://github.com/hbctraining/Training-modules/raw/master/Visualization_in_R/data/normalized_counts.txt)
+ - **Differential expression results:** right-click [here](https://github.com/hbctraining/Training-modules/raw/master/Visualization_in_R/data/Mov10oe_DE_results.csv)
  
 Choose to `Save Link As` or `Download Linked File As` and navigate to your `Visualizations-in-R/data` folder. You should now see the files appear in the `data` folder in the RStudio file directory.
 
 ### Reading in the data files
 
-Let's read in both of the files we have downloaded:
+Let's read in all of the files we have downloaded:
 
 ```r
 new_metadata <- read.csv(file="data/new_metadata.csv", row.names = 1)
 
+mov10_meta <- read.table(file = "data/Mov10_meta.txt")
+
 normalized_counts <- read.table(file = "data/normalized_counts.txt")
+
+res_tableOE <- read.table(file = "data/Mov10oe_DE_results.csv")
 ```
 
 ### R package installation
@@ -66,7 +74,7 @@ normalized_counts <- read.table(file = "data/normalized_counts.txt")
 To perform plotting, we need to install the R packages we will using from the CRAN repository (if not already installed): 
 
 ```r
-install.packages(c("ggplot2", "RColorBrewer", "pheatmap", "ggrepel", "reshape"))
+install.packages(c("ggplot2", "RColorBrewer", "pheatmap", "ggrepel", "reshape", "DESeq2"))
 ```
 
 _**Note that these package names are case sensitive!**_
