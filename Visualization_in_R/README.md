@@ -29,8 +29,9 @@ This repository has teaching materials for a **3 hour**, hands-on **Visualizatio
 
 ### Installation requirements
 Download the most recent versions of R and RStudio for your laptop:
- -[R](http://lib.stat.cmu.edu/R/CRAN/) 
- -[RStudio](https://www.rstudio.com/products/rstudio/download/#download)
+
+ - [R](http://lib.stat.cmu.edu/R/CRAN/) 
+ - [RStudio](https://www.rstudio.com/products/rstudio/download/#download)
  
 Install the required R packages by running the following code in RStudio:
 
