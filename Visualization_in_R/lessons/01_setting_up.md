@@ -66,7 +66,7 @@ mov10_meta <- read.table(file = "data/Mov10_meta.txt")
 
 normalized_counts <- read.table(file = "data/normalized_counts.txt")
 
-res_tableOE <- read.table(file = "data/Mov10oe_DE_results.csv")
+res_tableOE <- read.csv(file = "data/Mov10oe_DE_results.csv")
 ```
 
 ### R package installation
