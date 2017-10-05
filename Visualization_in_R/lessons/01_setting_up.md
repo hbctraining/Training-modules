@@ -51,6 +51,16 @@ Download the files to the `data` folder by **right-clicking** the links below:
  
 Choose to `Save Link As` or `Download Linked File As` and navigate to your `Visualizations-in-R/data` folder. You should now see the files appear in the `data` folder in the RStudio file directory.
 
+### Reading in the data files
+
+Let's read in both of the files we have downloaded:
+
+```r
+new_metadata <- read.csv(file="data/new_metadata.csv", row.names = 1)
+
+normalized_counts <- read.table(file = "data/normalized_counts.txt")
+```
+
 ### R package installation
 
 To perform plotting, we need to install the R packages we will using from the CRAN repository (if not already installed): 
