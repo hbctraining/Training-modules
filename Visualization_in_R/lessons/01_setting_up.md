@@ -13,7 +13,7 @@ To explore the plotting methods in these lessons, we need to first open RStudio,
 
 ### Creating a new project directory in RStudio
 
-Let's create a new project directory for our "Visualizations in R" lesson today. 
+Let's create a new project directory for our "Visualizations in R" lesson: 
 
 1. Open RStudio
 2. Go to the `File` menu and select `New Project`.
