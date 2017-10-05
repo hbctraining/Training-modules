@@ -24,64 +24,39 @@ library(reshape)
 library(ggplot2)
 library(ggrepel)
 library(DEGreport)
+library(RColorBrewer)
+library(DESeq2)
+library(pheatmap)
 ```
 
 ### Plotting signicant DE genes
 
 One way to visualize results would be to simply plot the expression data for a handful of genes. We could do that by picking out specific genes of interest or selecting a range of genes:
 
-#### Using DESeq2 `plotCounts()` to plot a single gene
-
-To pick out a specific gene of interest to plot, for example Mov10, we can use the `plotCounts()` from DESeq2:
-
-```r
-# Plot expression for single gene
-plotCounts(dds, gene="MOV10", intgroup="sampletype") 
-```
-![topgene](../img/topgen_plot.png)
-
-**This function only allows for plotting the counts of a single gene at a time.** If you wish to change the appearance of this plot, we can save the output of `plotCounts()` to a variable specifying the `returnData=TRUE` argument, then use `ggplot()`:
-
-```r
-# Save plotcounts to variable
-d <- plotCounts(dds, gene="MOV10", intgroup="sampletype", returnData=TRUE)
-
-# Adding samplenames to data frame
-d$name <- rownames(d)
-
-# Plotting the MOV10 normalized counts
-ggplot(d, aes(x=sampletype, y=count, color=sampletype)) + 
-  geom_point(position=position_jitter(w=0.1,h=0)) +
-  geom_text_repel(aes(label = name)) + 
-  theme_bw() +
-  ggtitle("MOV10") +
-  theme(plot.title=element_text(hjust=0.5))
-```
-
-**Within `ggplot()` we can use the `geom_text_repel()` from the 'ggrepel' R package to label our individual points on the plot.**
-
 <img src="../img/plotCounts_ggrepel.png" width="600">
 
-#### Using `ggplot2` to plot multiple genes (e.g. top 20)
+#### Using `ggplot2` to plot one or more genes (e.g. top 20)
 
-Often it is helpful to check the expression of multiple genes of interest at the same time. While this isn't easily done using the `plotCounts()` function, we can use `ggplot()` to do this after performing some data wrangling.
+Often it is helpful to check the expression of multiple genes of interest at the same time. This often first requires some data wrangling.
 
 We are going to plot the normalized count values for the **top 20 differentially expressed genes (by padj values)**. 
 
-To do this, we first need to determine the gene names of our top 20 genes by ordering our significant results and extracting the top 20 genes:
+To do this, we first need to determine the gene names of our top 20 genes by ordering our results and extracting the top 20 genes (by padj values):
 
 ```r
-## Order significant results by padj values
-sigOE_ordered <- sigOE[order(sigOE$padj), ]
-top20_sigOE_genes <- rownames(sigOE_ordered[1:20, ])
+## Order results by padj values
+res_tableOE_ordered <- res_tableOE[order(res_tableOE$padj), ]
+top20_sigOE_genes <- rownames(res_tableOE_ordered[1:20, ])
 ```
 
 Then, we can extract the normalized count values for these top 20 genes:
 
 ```r
 ## normalized counts for top 20 significant genes
-normalized_counts <- counts(dds, normalized=T)
-top20_sigOE_norm <- normalized_counts[top20_sigOE_genes, ]
+top20_sigOE_norm <- data.frame(normalized_counts[top20_sigOE_genes, ])
+
+## Create a column with the gene names (from row names)
+top20_sigOE_norm$gene <- rownames(top20_sigOE_norm)
 ```
 
 Now that we have the normalized counts for each of the top 20 genes for all 8 samples, to plot using `ggplot()`, we need to gather the counts for all samples into a single column to allow us to give ggplot the one column with the values we want it to plot.
@@ -92,7 +67,7 @@ The `melt()` function in the **reshape** R package will perform this operation a
 
 ```r
 ## use melt to modify the format of the data frame
-melted_top20_sigOE <- data.frame(melt(top20_sigOE_norm))
+melted_top20_sigOE <- melt(top20_sigOE_norm)
 
 ## check the column header in the "melted" data frame
 View(melted_top20_sigOE)
@@ -105,9 +80,9 @@ Now, if we want our counts colored by sample group, then we need to combine the 
 
 ```r
 ## add metadata to "melted" dataframe
-meta$samplename <- rownames(meta)
+mov10_meta$samplename <- rownames(mov10_meta)
 
-melted_top20_sigOE <- merge(melted_top20_sigOE, meta)
+melted_top20_sigOE <- merge(melted_top20_sigOE, mov10_meta)
 ```
 
 The `merge()` will merge 2 data frames with respect to the "samplename" column, i.e. a column with the same colname in both data frames.
@@ -117,7 +92,7 @@ Now that we have a data frame in a format that can be utilised by ggplot easily,
 ```r
 ## plot using ggplot2
 ggplot(melted_top20_sigOE) +
-        geom_point(aes(x = gene, y = normalized_counts, color = sampletype)) +
+        geom_point(aes(x = gene, y = normalized_counts, color = sampletype), position=position_jitter(w=0.1,h=0)) +
         scale_y_log10() +
         xlab("Genes") +
         ylab("Normalized Counts") +
@@ -131,12 +106,13 @@ ggplot(melted_top20_sigOE) +
 
 ### Volcano plot
 
-The above plot would be great to look at the expression levels of good number of genes, but for more of a global view there are other plots we can draw. A commonly used one is a volcano plot; in which you have the log transformed adjusted p-values plotted on the y-axis and log2 fold change values on the x-axis. There is no built-in function for the volcano plot in DESeq2, but we can easily draw it using `ggplot2`. 
+The above plot would be great to look at the expression levels of a good number of genes, but for more of a global view there are other plots we can draw. A commonly used one is a volcano plot; in which you have the log transformed adjusted p-values plotted on the y-axis and log2 fold change values on the x-axis. 
 
-To generate a volcano plot, we first need to have a column in our results data indicating whether or not the gene is considered differentially expressed based on p-adjusted and log2 foldchange values.
+To generate a volcano plot, we first need to have a column in our results data indicating whether or not the gene is considered differentially expressed based on p-adjusted values.
 
 ```r
-threshold_OE <- res_tableOE$padj < padj.cutoff & abs(res_tableOE$log2FoldChange) > lfc.cutoff
+
+threshold_OE <- res_tableOE$padj < 0.05 
 ```
 
 We now have a logical vector of values that has a length which is equal to the total number of genes in the dataset. The elements that have a `TRUE` value correspond to genes that meet the criteria (and `FALSE` means it fails). It should countain the same number of TRUEs as the number of genes in our `sigOE` data frame.
@@ -148,26 +124,25 @@ length(which(threshold_OE))
 To add this vector to our results table we can use the `$` notation to create the column on the left hand side of the assignment operator, and then assign the vector to it instead of using `cbind()`:
 
 ```r
+threshold_OE <- res_tableOE$padj < 0.05
+length(which(threshold_OE))
 res_tableOE$threshold <- threshold_OE 
 
-# We need to convert the DESeq results object to a data frame to use as ggplot input
-resOE_df <- data.frame(res_tableOE)
-
-View(resOE_df)
 ```
 
 Now we can start plotting. The `geom_point` object is most applicable, as this is essentially a scatter plot:
 
 ```r
 # Volcano plot
-ggplot(resOE_df) +
-  geom_point(aes(x=log2FoldChange, y=-log10(padj), colour=threshold)) +
-  ggtitle("Mov10 overexpression") +
-  xlab("log2 fold change") + 
-  ylab("-log10 adjusted p-value") +
-  theme(legend.position = "none",
-        plot.title = element_text(size = rel(1.5), hjust = 0.5),
-        axis.title = element_text(size = rel(1.25)))  
+ggplot(res_tableOE) +
+        geom_point(aes(x=log2FoldChange, y=-log10(padj), colour=threshold)) +
+        ggtitle("Mov10 overexpression") +
+        xlab("log2 fold change") + 
+        ylab("-log10 adjusted p-value") +
+        #scale_y_continuous(limits = c(0,50)) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = rel(1.5), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)))  
 ```
 
 <img src="../img/volcanoplot-1.png" width=500> 
@@ -179,19 +154,19 @@ To make this work we have to take the following 3 steps:
 (Step 2) Indicate in the data frame which genes we want to label by adding a logical vector to it, wherein "TRUE" = genes we want to label.
  
 ```r
-resOE_df_ordered <- resOE_df[order(resOE_df$padj), ] 
+res_tableOE_ordered <- res_tableOE[order(res_tableOE$padj), ] 
 
-resOE_df_ordered$genelabels <- rownames(resOE_df_ordered) %in% rownames(resOE_df_ordered[1:10,])
+res_tableOE_ordered$genelabels <- rownames(res_tableOE_ordered) %in% rownames(res_tableOE_ordered[1:10,])
 
-View(resOE_df_ordered)
+View(res_tableOE_ordered)
 ```
 
 (Step 3) Finally, we need to add the `geom_text_repel()` layer to the ggplot code we used before, and let it know which genes we want labelled. 
 
 ```r
-ggplot(resOE_df_ordered) +
+ggplot(res_tableOE_ordered) +
   geom_point(aes(x = log2FoldChange, y = -log10(padj), colour = threshold)) +
-  geom_text_repel(aes(x = log2FoldChange, y = -log10(padj), label = ifelse(genelabels == T, rownames(resOE_df_ordered),""))) +
+  geom_text_repel(aes(x = log2FoldChange, y = -log10(padj), label = ifelse(genelabels == T, rownames(res_tableOE_ordered),""))) +
   ggtitle("Mov10 overexpression") +
   xlab("log2 fold change") + 
   ylab("-log10 adjusted p-value") +
@@ -202,13 +177,16 @@ ggplot(resOE_df_ordered) +
 
 <img src="../img/volcanoplot-2.png" width=500> 
 
-The `ifelse()` function is a simple function that outputs a vector if a certain condition is T. In the above example, it checks if the value in the `resOE_df_ordered$genelevel` column is TRUE, in which case it will output the row name for that row (`rownames(resOE_df_ordered)`). If the value in the genelevel column is FALSE it will output nothing (`""`). This is good way to inform `geom_point()` about genes we want labeled.
+The `ifelse()` function is a simple function that outputs a vector if a certain condition is T. In the above example, it checks if the value in the `res_tableOE_ordered$genelevel` column is TRUE, in which case it will output the row name for that row (`rownames(res_tableOE_ordered)`). If the value in the genelevel column is FALSE it will output nothing (`""`). This is good way to inform `geom_point()` about genes we want labeled.
 
 ### Heatmap
 
 Alternatively, we could extract only the genes that are identified as significant and the plot the expression of those genes using a heatmap:
 
 ```r
+## Extract significant genes
+sigOE <- subset(res_tableOE_ordered, padj < 0.05)
+
 ### Extract normalized expression for significant genes
 norm_OEsig <- normalized_counts[rownames(sigOE),]
 ```
@@ -217,14 +195,14 @@ Now let's draw the heatmap using `pheatmap`:
 
 ```r
 ### Annotate our heatmap (optional)
-annotation <- data.frame(sampletype=meta[,'sampletype'], 
-                     row.names=rownames(meta))
+annotation <- data.frame(sampletype=mov10_meta[,'sampletype'], 
+                     row.names=rownames(mov10_meta))
 
 ### Set a color palette
-heat.colors <- brewer.pal(6, "YlOrRd")
+heat_colors <- brewer.pal(6, "YlOrRd")
 
 ### Run pheatmap
-pheatmap(norm_OEsig, color = heat.colors, cluster_rows = T, show_rownames=F,
+pheatmap(norm_OEsig, color = heat_colors, cluster_rows = T, show_rownames=F,
 annotation= annotation, border_color=NA, fontsize = 10, scale="row",
      fontsize_row = 10, height=20)
 ```
@@ -238,7 +216,9 @@ annotation= annotation, border_color=NA, fontsize = 10, scale="row",
 Another plot often useful to exploring our results is the MA plot. The MA plot shows the mean of the normalized counts versus the log2 foldchanges for all genes tested. The genes that are significantly DE are colored to be easily identified. The DESeq2 package also offers a simple function to generate this plot:
 
 ```r
-plotMA(res_tableOE, alpha = 0.05, ylim=c(-2,2))
+ma <- res_tableOE[, c("baseMean", "log2FoldChange", "threshold")]
+
+plotMA(ma, ylim=c(-2,2))
 ```
 <img src="../img/MA_plot.png" width="600">
 
@@ -249,7 +229,7 @@ We would expect to see significant genes across the range of expression levels.
 ***NOTE:** The package 'DEGreport' can make the top20 genes and the volcano plots generated above by writing a few lines of simple code. While you can customize the plots above, you may be interested in using the easier code. Below are examples for code to create these plots:*
 
 ```r
-DEGreport::degPlot(dds = dds, res = res, n=20, xs="type", group = "condition")
+DEGreport::degPlot(dds = dds, res = res, n=20, xs="type", group = "condition") # dds object is output from DESeq2
 
 DEGreport::degVolcano(
     as.data.frame(res[,c("log2FoldChange","padj")]), # table - 2 columns
