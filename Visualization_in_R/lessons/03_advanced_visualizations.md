@@ -1,5 +1,5 @@
 ---
-title: "DGE visualization of results"
+title: "Advanced visualizations"
 author: "Meeta Mistry, Mary Piper"
 date: "June 14, 2017"
 ---
@@ -8,7 +8,7 @@ Approximate time: 75 minutes
 
 ## Learning Objectives 
 
-* Exploring our significant genes using data visualization
+* Exploring expression data using data visualization
 * Using volcano plots to evaluate relationships between DEG statistics
 * Plotting expression of significant genes using heatmaps
 
