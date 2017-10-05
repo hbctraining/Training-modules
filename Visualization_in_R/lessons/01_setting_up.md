@@ -49,7 +49,7 @@ Download the files to the `data` folder by **right-clicking** the links below:
  - **Normalized counts file:** right-click [here](https://github.com/hbctraining/Training-modules/raw/master/Visualization_in_R/data/normalized_counts.txt)
  - **Metadata file:** right-click [here](https://github.com/hbctraining/Training-modules/raw/master/Visualization_in_R/data/new_metadata.csv)
  
-Choose to `Save link as` or `Download linked file as` and navigate to your `Visualizations-in-R/data` folder. You should now see the files appear in the `data` folder in the RStudio file directory.
+Choose to `Save Link As` or `Download Linked File As` and navigate to your `Visualizations-in-R/data` folder. You should now see the files appear in the `data` folder in the RStudio file directory.
 
 ### R package installation
 
