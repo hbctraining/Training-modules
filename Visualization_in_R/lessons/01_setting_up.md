@@ -46,8 +46,8 @@ We have two files that we will be working with in the lessons:
 
 Download the files to the `data` folder by **right-clicking** the links below:
  
- - **Normalized counts file:** right-click [here](../data/normalized_counts.txt)
- - **Metadata file:** right-click [here](../data/new_metadata.csv)
+ - **Normalized counts file:** right-click [here](https://github.com/hbctraining/Training-modules/raw/master/Visualization_in_R/data/normalized_counts.txt)
+ - **Metadata file:** right-click [here](https://github.com/hbctraining/Training-modules/raw/master/Visualization_in_R/data/new_metadata.csv)
  
 Choose to `Save link as` and navigate to your `Visualizations-in-R/data` folder. You should now see the files appear in the `data` folder in the RStudio file directory.
 
