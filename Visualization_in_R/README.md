@@ -27,4 +27,16 @@ This repository has teaching materials for a **3 hour**, hands-on **Visualizatio
 |[Basic plotting with ggplot2](lessons/01_basics_ggplot2.md) | 75 min |
 |[Advanced visualizations](lessons/02_advanced_visualization.md) | 105 min |
 
+### Installation requirements
+Download the most recent versions of R and RStudio for your laptop:
+ -[R](http://lib.stat.cmu.edu/R/CRAN/) 
+ -[RStudio](https://www.rstudio.com/products/rstudio/download/#download)
+ 
+Install the required R packages by running the following code in RStudio:
+
+```r
+install.packages(c("ggplot2", "RColorBrewer", "pheatmap", "ggrepel", "reshape"))
+```
+
+
 *These materials have been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
