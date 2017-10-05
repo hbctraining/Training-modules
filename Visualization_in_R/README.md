@@ -27,7 +27,8 @@ This repository has teaching materials for a **3 hour**, hands-on **Visualizatio
 |[Basic plotting with ggplot2](lessons/01_basics_ggplot2.md) | 75 min |
 |[Advanced visualizations](lessons/02_advanced_visualization.md) | 105 min |
 
-### Installation requirements
+### Installation Requirements
+
 Download the most recent versions of R and RStudio for your laptop:
 
  - [R](http://lib.stat.cmu.edu/R/CRAN/) 
