@@ -107,6 +107,7 @@ If we only wanted to look at a single gene, we could extract that gene for plott
 ```r
 ## plot using ggplot2 for a single gene
 mov10 <- subset(melted_top20_sigOE, gene == "MOV10")
+
 ggplot(mov10, aes(x = sampletype, y=normalized_counts,  color = sampletype)) +
         geom_point(position=position_jitter(w=0.1,h=0)) +
 	geom_text_repel(aes(label = samplename)) +
