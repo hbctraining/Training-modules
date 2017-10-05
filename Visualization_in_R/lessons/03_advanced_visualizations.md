@@ -33,8 +33,6 @@ library(pheatmap)
 
 One way to visualize results would be to simply plot the expression data for a handful of genes. We could do that by picking out specific genes of interest or selecting a range of genes:
 
-<img src="../img/plotCounts_ggrepel.png" width="600">
-
 #### Using `ggplot2` to plot one or more genes (e.g. top 20)
 
 Often it is helpful to check the expression of multiple genes of interest at the same time. This often first requires some data wrangling.
@@ -103,6 +101,24 @@ ggplot(melted_top20_sigOE) +
 ```
 
 <img src="../img/sig_genes_melt.png" width="600">
+
+If we only wanted to look at a single gene, we could extract that gene for plotting with ggplot. **Within `ggplot()` we can use the `geom_text_repel()` from the 'ggrepel' R package to label our individual points on the plot.**
+
+```r
+## plot using ggplot2 for a single gene
+mov10 <- subset(melted_top20_sigOE, gene == "MOV10")
+ggplot(mov10, aes(x = sampletype, y=normalized_counts,  color = sampletype)) +
+        geom_point(position=position_jitter(w=0.1,h=0)) +
+	geom_text_repel(aes(label = samplename)) +
+        scale_y_log10() +
+        xlab("Samples") +
+        ylab("Normalized Counts") +
+        ggtitle("MOV10") +
+        theme_bw() +
+        theme(plot.title=element_text(hjust=0.5))
+```
+
+<img src="../img/plotCounts_ggrepel.png" width="600">
 
 ### Volcano plot
 
