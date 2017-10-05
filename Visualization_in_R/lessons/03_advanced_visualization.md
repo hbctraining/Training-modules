@@ -20,7 +20,6 @@ Let's start by loading a few libraries:
 
 ```r
 # load libraries
-library(DESeq2)
 library(reshape)
 library(ggplot2)
 library(ggrepel)
