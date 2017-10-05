@@ -21,7 +21,7 @@ Let's create a new project directory for our "Visualizations in R" lesson:
 4. Click on `Create Project`.
 5. After your project is completed, if the project does not automatically open in RStudio, then go to the `File` menu, select `Open Project`, and choose `Visualizations-in-R.Rproj`.
 6. When RStudio opens, you will see three panels in the window.
-7. Go to the `File` menu and select `New File`, and select `R Script`. The RStudio interface should now look like the screenshot below (except in the file directory, `Intro-to-R.Rproj` will be `Visualizations-in-R.Rproj`). You may or may not have a `.gitignore` file, which is fine.
+7. Go to the `File` menu and select `New File`, and select `R Script`. The RStudio interface should now look like the screenshot below (except in the file directory, `workshop_name.Rproj` will be `Visualizations-in-R.Rproj`). You may or may not have a `.gitignore` file, which is fine.
 
 <img src="../img/generic_rstudio_interface.png" width="600">
 
