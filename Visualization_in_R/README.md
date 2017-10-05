@@ -24,8 +24,9 @@ This repository has teaching materials for a **3 hour**, hands-on **Visualizatio
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Basic plotting with ggplot2](lessons/01_basics_ggplot2.md) | 75 min |
-|[Advanced visualizations](lessons/02_advanced_visualization.md) | 105 min |
+|[Setting up for plotting](lessons/01_setting_up.md) | 15 min |
+|[Basic plotting with ggplot2](lessons/02_basics_ggplot2.md) | 75 min |
+|[Advanced visualizations](lessons/03_advanced_visualization.md) | 90 min |
 
 ### Installation Requirements
 
@@ -38,6 +39,12 @@ Install the required R packages by running the following code in RStudio:
 
 ```r
 install.packages(c("ggplot2", "RColorBrewer", "pheatmap", "ggrepel", "reshape"))
+```
+
+Load the libraries to make sure the packages installed properly:
+
+```r
+library(ggplot2)
 ```
 
 

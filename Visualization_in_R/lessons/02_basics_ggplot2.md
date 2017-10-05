@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: Plotting and data visualization in R
+title: Plotting with ggplot2
 author: Mary Piper, Meeta Mistry, Radhika Khetani
 date: "Wednesday, October 4th, 2017"
 ---
