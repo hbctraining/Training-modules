@@ -59,12 +59,12 @@ Choose to `Save Link As` or `Download Linked File As` and navigate to your `Visu
 
 Let's read in all of the files we have downloaded:
 
-**For basic plotting with *ggplot2*:
+**For basic plotting with *ggplot2*:**
 ```r
 new_metadata <- read.csv(file="data/new_metadata.csv", row.names = 1)
 ```
 
-**For advanced visualizations:
+**For advanced visualizations:**
 
 ```r
 mov10_meta <- read.table(file = "data/Mov10_meta.txt")
