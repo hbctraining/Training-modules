@@ -116,7 +116,7 @@ non_duplicates <- which(duplicated(ids$SYMBOL) == FALSE)
 ids <- ids[non_duplicates, ] 
 
 ## Merge the Ensembl IDs with the results     
-merged_genes_ensembl <- merge(res_tableOE, ids, by.x="row.names", by.y="SYMBOL")             
+merged_genes_ensembl <- merge(x=res_tableOE, y=ids, by.x="row.names", by.y="SYMBOL")             
                 
 sigOE <- subset(merged_genes_ensembl, padj < 0.05)
 
