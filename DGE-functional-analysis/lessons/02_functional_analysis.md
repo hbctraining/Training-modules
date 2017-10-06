@@ -111,7 +111,9 @@ ids <- bitr(rownames(res_tableOE),
             OrgDb = "org.Hs.eg.db")
 
 ## The gene names can map to more than one Ensembl ID (some genes change ID over time), so we need to remove duplicate IDs prior to assessing enriched GO terms
-ids <- ids[which(duplicated(ids$SYMBOL) == F), ] 
+non_duplicates <- which(duplicated(ids$SYMBOL) == FALSE)
+
+ids <- ids[non_duplicates, ] 
 
 ## Merge the Ensembl IDs with the results     
 merged_genes_ensembl <- merge(res_tableOE, ids, by.x="row.names", by.y="SYMBOL")             
