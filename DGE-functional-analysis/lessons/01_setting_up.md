@@ -9,7 +9,7 @@ Approximate time: 15 minutes
 
 ## Set-up
 
-To get started, we need to first open RStudio, create a project called `Functional_analysis`, and organize our project directory.
+Prior to performing the functional analysis of our gene lists, we need to first open RStudio, create a project called `Functional_analysis`, and organize our project directory.
 
 ### Creating a new project directory in RStudio
 
