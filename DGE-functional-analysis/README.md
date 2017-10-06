@@ -53,7 +53,7 @@ library(org.Hs.eg.db)
 library(pathview)
 ```
 
-**NOTE:** # The library used for `org.Hs.eg.db` will change based on organism (e.g. if studying mouse, would need to install and load `org.Mm.eg.db`). The available packages are shown [here]().
+> **NOTE:** The library used for `org.Hs.eg.db` will change based on organism (e.g. if studying mouse, would need to install and load `org.Mm.eg.db`). The available packages are shown [here]().
 
 
 *These materials have been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
