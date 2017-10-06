@@ -52,7 +52,7 @@ Choose to `Save Link As` or `Download Linked File As` and navigate to your `Func
 Let's read in the differential expression results file we have downloaded:
 
 ```r
-# Read in differential expression results
+## Read in differential expression results
 
 res_tableOE <- read.csv("data/Mov10oe_DE_results.csv", row.names = 1)
 ```
@@ -64,7 +64,7 @@ To perform plotting, we need to install the R packages we will using from the Bi
 ```r
 source("http://bioconductor.org/biocLite.R") 
 
-biocLite('insert_package_name_in_quotations') 
+biocLite(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview"))
 ```
 
 _**Note that these package names are case sensitive!**_
@@ -73,11 +73,11 @@ _**Note that these package names are case sensitive!**_
 To check that a package installed successfully, you should be able to load the library (without any error messages) using `library()`:
 
 ```r
-# Load libraries
+## Load libraries
 library(clusterProfiler)
 library(DOSE)
 library(org.Hs.eg.db)
-library(biomaRt)
+library(pathview)
 
 
 
