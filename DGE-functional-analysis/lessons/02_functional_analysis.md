@@ -162,6 +162,7 @@ clusterProfiler has a variety of options for viewing the over-represented GO ter
 The dotplot shows the number of genes associated with the first 50 terms (size) and the p-adjusted values for these terms (color). 
 
 ```r
+## Dotplot gives top 50 genes by gene ratio (# genes related to GO term / total number of sig genes), not padj.
 dotplot(ego, showCategory=50)
 ```
 
@@ -170,6 +171,7 @@ dotplot(ego, showCategory=50)
 The enrichment GO plot below shows the relationship between the top 50 most significantly enriched GO terms, by grouping similar terms together. The color represents the p-values relative to the other displayed terms (brighter red is more significant) and the size of the terms represents the number of genes that are significant from our list.
 
 ```r
+## Enrichmap clusters the 50 most significant (by padj) GO terms to visualize relationships between terms
 enrichMap(ego, n=50, vertex.label.font=6)
 ```
 
@@ -185,6 +187,7 @@ OE_foldchanges <- sigOE$log2FoldChange
 
 names(OE_foldchanges) <- sigOE$Row.names
 
+## Cnetplot details the genes associated with one or more terms - by default gives the top 5 significant terms (by padj)
 cnetplot(ego, categorySize="pvalue", showCategory = 5, foldChange=OE_foldchanges, vertex.label.font=6)
 ```
 
@@ -195,6 +198,7 @@ cnetplot(ego, categorySize="pvalue", showCategory = 5, foldChange=OE_foldchanges
 If you are interested in significant processes that are **not** among the top five, you can subset your `ego` dataset to only display these processes:
 
 ```r
+## Subsetting the ego results
 ego2 <- ego
 ego2@result <- ego@result[c(1,3,4,8,9),]
 cnetplot(ego2, categorySize="pvalue", foldChange=OE_foldchanges, showCategory = 5)
