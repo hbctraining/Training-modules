@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: Setting up for data visualization in R
+title: Setting up for functional analysis
 author: Mary Piper, Meeta Mistry, Radhika Khetani
 date: "Friday, October 6th, 2017"
 ---
