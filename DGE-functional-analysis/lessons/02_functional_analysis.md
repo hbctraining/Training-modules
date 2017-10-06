@@ -252,7 +252,7 @@ We can run gProfileR relatively easily from R, by loading the library and runnin
 
 ## Running gprofiler to identify enriched processes among significant genes
 
-gprofiler_results_oe <- gprofiler(query = sigOE_genes, 
+gprofiler_results_oe <- gprofiler(query = sigOE$Row.names), 
                                   organism = "hsapiens",
                                   ordered_query = F, 
                                   exclude_iea = F, 
@@ -261,7 +261,7 @@ gprofiler_results_oe <- gprofiler(query = sigOE_genes,
                                   correction_method = "fdr",
                                   hier_filtering = "none", 
                                   domain_size = "annotated",
-                                  custom_bg = all_genes)
+                                  custom_bg = merged_genes_ensembl$Row.names)
 
 ```
 
@@ -274,7 +274,7 @@ gprofiler_results_oe_reordered <- gprofiler_results_oe[, c("term.id", "domain", 
 
 gprofiler_results_oe_reordered <- gprofiler_results_oe_reordered[order(gprofiler_results_oe_reordered$p.value), ]
 
-gprofiler_results_oe_GOs <- gprofiler_results_oe_reordered[grep('GO:', gprofiler_results_oe_reordered$term.id)]
+gprofiler_results_oe_GOs <- gprofiler_results_oe_reordered[grep('GO:', gprofiler_results_oe_reordered$term.id), ]
 
 write.csv(gprofiler_results_oe_GOs, 
             "results/gprofiler_MOV10_oe.csv")
