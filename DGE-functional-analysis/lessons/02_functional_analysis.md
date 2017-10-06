@@ -103,17 +103,14 @@ The calculation of probability of k successes follows the formula:
 To run clusterProfiler GO over-representation analysis, we will change our gene names into Ensembl IDs, since the tool works a bit easier with the Ensembl IDs. There are a few clusterProfiler functions that allow us to map between gene IDs:
 
 ```r
-# clusterProfiler does not work as easily using gene names, so turning gene names into Ensembl IDs using clusterProfiler::bitr and merge the IDs back with the DE results
-
+## clusterProfiler does not work as easily using gene names, so turning gene names into Ensembl IDs using clusterProfiler::bitr and merge the IDs back with the DE results
 keytypes(org.Hs.eg.db)
 ids <- bitr(rownames(res_tableOE), fromType = "SYMBOL", toType = c("ENSEMBL", "ENTREZID"), OrgDb = "org.Hs.eg.db")
 
-# The gene names can map to more than one Ensembl ID (some genes change ID over time), so we need to remove duplicate IDs prior to assessing enriched GO terms
-
+## The gene names can map to more than one Ensembl ID (some genes change ID over time), so we need to remove duplicate IDs prior to assessing enriched GO terms
 ids <- ids[which(duplicated(ids$SYMBOL) == F), ] 
 
-# Merge the Ensembl IDs with the results
-        
+## Merge the Ensembl IDs with the results     
 merged_genes_ensembl <- merge(res_tableOE, ids, by.x="row.names", by.y="SYMBOL")             
                 
 sigOE <- subset(merged_genes_ensembl, padj < 0.05)
@@ -125,15 +122,14 @@ sigOE_genes <- as.character(sigOE$ENSEMBL)
 We will use the Ensembl IDs for all genes as the background dataset:
 
 ```r
-# Create background dataset for hypergeometric testing using all genes tested for significance in the results
-                   
+## Create background dataset for hypergeometric testing using all genes tested for significance in the results                 
 allOE_genes <- as.character(merged_genes_ensembl$ENSEMBL)
 ```
 
 Now we can perform the GO enrichment analysis:
 
 ```r
-# Run GO enrichment analysis 
+## Run GO enrichment analysis 
 ego <- enrichGO(gene = sigOE_genes, 
                     universe = allOE_genes, 
                     keytype = "ENSEMBL", 
@@ -143,7 +139,7 @@ ego <- enrichGO(gene = sigOE_genes,
                     qvalueCutoff = 0.05, 
                     readable = TRUE)
 
-# Output results from GO analysis to a table
+## Output results from GO analysis to a table
 cluster_summary <- data.frame(ego)
 
 write.csv(cluster_summary, "results/clusterProfiler_Mov10oe.csv")
@@ -175,7 +171,7 @@ enrichMap(ego, n=50, vertex.label.font=6)
 Finally, the category netplot shows the relationships between the genes associated with the top five most significant GO terms and the fold changes of the significant genes associated with these terms (color). The size of the GO terms reflects the pvalues of the terms, with the more significant terms being larger. This plot is particularly useful for hypothesis generation in identifying genes that may be important to several of the most affected processes. 
 
 ```r
-# To color genes by log2 fold changes, we need to extract the log2 fold changes from our results table creating a named vector
+## To color genes by log2 fold changes, we need to extract the log2 fold changes from our results table creating a named vector
 OE_foldchanges <- sigOE$log2FoldChange
 
 names(OE_foldchanges) <- sigOE$Row.names
@@ -221,10 +217,9 @@ We can run gProfileR relatively easily from R, by loading the library and runnin
 
 ```r
 ### Functional analysis of MOV10 Overexpression using gProfileR (some of these are defaults; check help pages) 
-
 library(gProfileR)
 
-# Running gprofiler to identify enriched processes among significant genes
+## Running gprofiler to identify enriched processes among significant genes
 
 gprofiler_results_oe <- gprofiler(query = sigOE_genes, 
                                   organism = "hsapiens",
