@@ -105,7 +105,10 @@ To run clusterProfiler GO over-representation analysis, we will change our gene 
 ```r
 ## clusterProfiler does not work as easily using gene names, so turning gene names into Ensembl IDs using clusterProfiler::bitr and merge the IDs back with the DE results
 keytypes(org.Hs.eg.db)
-ids <- bitr(rownames(res_tableOE), fromType = "SYMBOL", toType = c("ENSEMBL", "ENTREZID"), OrgDb = "org.Hs.eg.db")
+ids <- bitr(rownames(res_tableOE), 
+            fromType = "SYMBOL", 
+            toType = c("ENSEMBL", "ENTREZID"), 
+            OrgDb = "org.Hs.eg.db")
 
 ## The gene names can map to more than one Ensembl ID (some genes change ID over time), so we need to remove duplicate IDs prior to assessing enriched GO terms
 ids <- ids[which(duplicated(ids$SYMBOL) == F), ] 
