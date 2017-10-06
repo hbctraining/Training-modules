@@ -324,8 +324,7 @@ treemap(
 	position.legend = "none"
 )
 ```
-
-![REVIGO_output](../img/revigo_treemap.pdf)
+<img src="../img/revigo_treemap.pdf" width="800">
 
 ***clusterProfiler, gProfiler and REVIGO are great tools to validate experimental results and to make hypotheses. These tools suggest pathways that may be involved with your condition of interest; you should NOT use these tools to make conclusions about the pathways involved in your experimental process.***
 
