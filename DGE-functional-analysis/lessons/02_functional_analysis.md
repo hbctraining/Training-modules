@@ -114,20 +114,6 @@ The calculation of probability of k successes follows the formula:
 
 ### Running clusterProfiler
 
-We first need to load the libraries and read in the DE results:
-
-```r
-# Load libraries
-library(clusterProfiler)
-library(DOSE)
-library(org.Hs.eg.db)
-library(biomaRt)
-
-# Read in differential expression results
-res_tableOE <- read.csv("data/Mov10oe_DE_results.csv", row.names = 1)
-
-```
-
 To run clusterProfiler GO over-represenation analysis, we will change our gene names into Ensembl IDs, since the tool works a bit easier with the Ensembl IDs. There are a few clusterProfiler functions that allow us to map between gene IDs:
 
 ```r
