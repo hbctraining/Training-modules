@@ -106,6 +106,7 @@ To run clusterProfiler GO over-representation analysis, we will change our gene 
 ## clusterProfiler does not work as easily using gene names, so we will turn gene names into Ensembl IDs using 
 ## clusterProfiler::bitr and merge the IDs back with the DE results
 keytypes(org.Hs.eg.db)
+
 ids <- bitr(rownames(res_tableOE), 
             fromType = "SYMBOL", 
             toType = c("ENSEMBL", "ENTREZID"), 
