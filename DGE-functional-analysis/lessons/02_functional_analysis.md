@@ -301,7 +301,7 @@ Open `GOs_oe.txt` and copy and paste the contents into the REVIGO search box, an
 
 After the program runs, it may not present output, but you can click on the `Treemap` tab. At the bottom of the screen should be a link to an R script to create the treemap; click to download the script.
 
-![revigo_download_link](../img/revigo_download.png)
+![revigo_download_link](../img/revigo_download_link.png)
 
 In RStudio, pull-down the `File` menu and choose `Open File`, then navigate to the `REVIGO_treemap.r` script to open. In the `REVIGO_treemap.r` script tab, scroll down the script to the end and replace with the following:
 
