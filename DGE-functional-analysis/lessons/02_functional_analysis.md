@@ -168,7 +168,7 @@ dotplot(ego, showCategory=50)
 
 **To save the figure,** click on the `Export` button in the RStudio `Plots` tab and `Save as PDF...`. In the pop-up window, change:
 - `Orientation:` to `Landscape`
-- `PDF size` to `14 x 8` to give a figure of appropriate size for the text labels
+- `PDF size` to `8 x 14` to give a figure of appropriate size for the text labels
 
 <img src="../img/mov10oe_dotplot.png" width="600">
 
