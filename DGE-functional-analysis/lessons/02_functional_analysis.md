@@ -103,14 +103,16 @@ The calculation of probability of k successes follows the formula:
 To run clusterProfiler GO over-representation analysis, we will change our gene names into Ensembl IDs, since the tool works a bit easier with the Ensembl IDs. There are a few clusterProfiler functions that allow us to map between gene IDs:
 
 ```r
-## clusterProfiler does not work as easily using gene names, so turning gene names into Ensembl IDs using clusterProfiler::bitr and merge the IDs back with the DE results
+## clusterProfiler does not work as easily using gene names, so turning gene names 
+## into Ensembl IDs using clusterProfiler::bitr and merge the IDs back with the DE results
 keytypes(org.Hs.eg.db)
 ids <- bitr(rownames(res_tableOE), 
             fromType = "SYMBOL", 
             toType = c("ENSEMBL", "ENTREZID"), 
             OrgDb = "org.Hs.eg.db")
 
-## The gene names can map to more than one Ensembl ID (some genes change ID over time), so we need to remove duplicate IDs prior to assessing enriched GO terms
+## The gene names can map to more than one Ensembl ID (some genes change ID over time), 
+## so we need to remove duplicate IDs prior to assessing enriched GO terms
 non_duplicates <- which(duplicated(ids$SYMBOL) == FALSE)
 
 ids <- ids[non_duplicates, ] 
