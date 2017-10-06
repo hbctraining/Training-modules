@@ -26,7 +26,7 @@ This repository has teaching materials for a **3 hour**, hands-on **Visualizatio
 |:------------------------|:----------|
 |[Setting up for plotting](lessons/01_setting_up.md) | 15 min |
 |[Basic plotting with ggplot2](lessons/02_basics_ggplot2.md) | 75 min |
-|[Advanced visualizations](lessons/03_advanced_visualization.md) | 90 min |
+|[Advanced visualizations](lessons/03_advanced_visualizations.md) | 90 min |
 
 ### Installation Requirements
 
