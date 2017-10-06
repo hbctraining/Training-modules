@@ -25,7 +25,6 @@ The output of RNA-Seq differential expression analysis is a list of significant 
 Generally for any differential expression analysis, it is useful to interpret the resulting gene lists using freely available web- and R-based tools.  While tools for functional analysis span a wide variety of techniques, they can loosely be categorized into three main types: over-representation analysis, functional class scoring, and pathway topology [[1](../../resources/pathway_tools.pdf)]. 
 
 ![Pathway analysis tools](../img/pathway_analysis.png)
-
 ## Dataset
 
 To interpret the results of our functional analysis, it is necessary to understand our dataset. We will be using the output from the differential expression analysis of a real RNA-Seq dataset that is part of a larger study described in [Kenny PJ et al, Cell Rep 2014](http://www.ncbi.nlm.nih.gov/pubmed/25464849). 
@@ -42,19 +41,6 @@ The goal of the study was to investigate the interactions between various genes 
 
 The data we will be working with is the differential expression results for samples overexpressing the MOV10 gene versus control samples. **Based on the authors' hypothesis, we may expect the enrichment of processes / pathways related to *translation, splicing, and the regulation of mRNAs*.**
 
-Let's open RStudio and create a new project directory for our "Functional Analysis" lesson. 
-
-1. Open RStudio
-2. Go to the `File` menu and select `New Project`.
-3. In the `New Project` window, choose `New Directory`. Then, choose `Empty Project`. Name your new directory `Functional_analysis` and then "Create the project as subdirectory of:" the Desktop (or location of your choice).
-4. Click on `Create Project`.
-5. After your project is completed, if the project does not automatically open in RStudio, then go to the `File` menu, select `Open Project`, and choose `Functional_analysis.Rproj`.
-6. When RStudio opens, you will see three panels in the window.
-7. Go to the `File` menu and select `New File`, and select `R Script`. The RStudio interface should now look like the screenshot below.
-8. Let's create `data` and `results` directories within your working directory by clicking on `New Folder` within the `Files` tab. 
-9. Download the **differential expression results** to the `data` directory by right clicking on [this link](https://github.com/hbctraining/Training-modules/blob/master/DGE-functional-analysis/data/Mov10oe_DE_results.csv?raw=true)
-
-If you right click on the link, and "Save link as..". Choose `~/Desktop/Functional_analysis/data` as the destination of the file. You should now see the `Mov10oe_DE_results.csv` file appear in your working directory. 
 
 ## Over-representation analysis
 The first main category of functional analysis tools is the over-representation analysis, which explores whether there is enrichment of known biological functions in a particular set of genes (e.g. significant DE genes). There are a plethora of functional enrichment tools that perform some type of over-representation analysis by querying databases containing information about gene function and interactions. **Querying these databases for gene function requires the use of a _consistent vocabulary_ to describe gene function.** One of the most widely-used vocabularies is the **Gene Ontology (GO)**. This vocabulary was established by the Gene Ontology project, and the words in the vocabulary are referred to as GO terms. 
