@@ -283,11 +283,12 @@ write.csv(gprofiler_results_oe_GOs,
 Now, extract only those lines in the gProfiler results with GO term accession numbers for downstream analyses:
 
 ```r
-## Extract only GO IDs for downstream analysis
+## Extract only GO IDs and p-values for downstream analysis
 
-GOs_oe <- gprofiler_results_oe_GOs$term.id
+GOpval_oe <- gprofiler_results_oe_GOs[ , c("term.id", "p.value")]
 
-write(GOs_oe, "results/GOs_oe.txt", ncol = 1)
+write.table(GOpval_oe, "results/GOs_oe.txt", quote=FALSE, row.names = FALSE, col.names = FALSE)
+
 ```
 
 ### REVIGO
