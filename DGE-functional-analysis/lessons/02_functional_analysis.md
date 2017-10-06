@@ -114,7 +114,7 @@ The calculation of probability of k successes follows the formula:
 
 ### Running clusterProfiler
 
-To run clusterProfiler GO over-represenation analysis, we will change our gene names into Ensembl IDs, since the tool works a bit easier with the Ensembl IDs. There are a few clusterProfiler functions that allow us to map between gene IDs:
+To run clusterProfiler GO over-representation analysis, we will change our gene names into Ensembl IDs, since the tool works a bit easier with the Ensembl IDs. There are a few clusterProfiler functions that allow us to map between gene IDs:
 
 ```r
 # clusterProfiler does not work as easily using gene names, so turning gene names into Ensembl IDs using clusterProfiler::bitr and merge the IDs back with the DE results
