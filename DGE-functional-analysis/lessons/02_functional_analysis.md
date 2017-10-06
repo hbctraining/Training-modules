@@ -198,9 +198,12 @@ cnetplot(ego, categorySize="pvalue", showCategory = 5, foldChange=OE_foldchanges
 If you are interested in significant processes that are **not** among the top five, you can subset your `ego` dataset to only display these processes:
 
 ```r
-## Subsetting the ego results
+## Subsetting the ego results without overwriting original ego variable
 ego2 <- ego
+
 ego2@result <- ego@result[c(1,3,4,8,9),]
+
+## Plotting terms of interest
 cnetplot(ego2, categorySize="pvalue", foldChange=OE_foldchanges, showCategory = 5)
 ```
 
