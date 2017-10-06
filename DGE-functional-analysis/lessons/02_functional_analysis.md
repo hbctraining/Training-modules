@@ -297,11 +297,37 @@ write.table(GOpval_oe, "results/GOs_oe.txt", quote=FALSE, row.names = FALSE, col
 
 ![REVIGO_input](../img/revigo_input.png)
 
-Open `GOs_oe.txt` and copy and paste the GO ids into the REVIGO search box, and submit.
+Open `GOs_oe.txt` and copy and paste the contents into the REVIGO search box, and submit.
 
-![REVIGO_output](../img/revigo_output.png)
+After the program runs, it may not present output, but you can click on the `Treemap` tab. At the bottom of the screen should be a link to an R script to create the treemap; click to download the script.
 
-***gProfiler and REVIGO are great tools to validate experimental results and to make hypotheses. These tools suggest pathways that may be involved with your condition of interest; you should NOT use these tools to make conclusions about the pathways involved in your experimental process.***
+![revigo_download_link](../img/revigo_download.png)
+
+In RStudio, pull-down the `File` menu and choose `Open File`, then navigate to the `REVIGO_treemap.r` script to open. In the `REVIGO_treemap.r` script tab, scroll down the script to the end and replace with the following:
+
+```r
+# by default, outputs to a PDF file
+pdf( file="results/revigo_treemap.pdf", width=16, height=9 ) # rename to appropriate path and file name
+
+# check the tmPlot command documentation for all possible parameters - there are a lot more
+treemap(
+	stuff,
+	index = c("representative","description"),
+	vSize = "abslog10pvalue",
+	type = "categorical",
+	vColor = "representative",
+	title = "REVIGO Gene Ontology treemap",
+	inflate.labels = FALSE,      # set this to TRUE for space-filling group labels - good for posters
+	lowerbound.cex.labels = 0,   # try to draw as many labels as possible (still, some small squares may not get a label)
+	bg.labels = "#CCCCCCAA",     # define background color of group labels
+												       # "#CCCCCC00" is fully transparent, "#CCCCCCAA" is semi-transparent grey, NA is opaque
+	position.legend = "none"
+)
+```
+
+![REVIGO_output](../img/revigo_treemap.pdf)
+
+***clusterProfiler, gProfiler and REVIGO are great tools to validate experimental results and to make hypotheses. These tools suggest pathways that may be involved with your condition of interest; you should NOT use these tools to make conclusions about the pathways involved in your experimental process.***
 
 J. Reimand, T. Arak, P. Adler, L. Kolberg, S. Reisberg, H. Peterson, J. Vilo. g:Profiler -- a web server for functional interpretation of gene lists (2016 update). Nucleic Acids Research 2016; doi: 10.1093/nar/gkw199
 
