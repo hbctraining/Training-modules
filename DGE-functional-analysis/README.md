@@ -26,9 +26,8 @@ In this workshop, we will use over-representation analysis (ORA) and functional 
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Setting up for plotting](lessons/01_setting_up.md) | 15 min |
-|[Basic plotting with ggplot2](lessons/02_basics_ggplot2.md) | 75 min |
-|[Advanced visualizations](lessons/03_advanced_visualization.md) | 90 min |
+|[Setting up](lessons/01_setting_up.md) | 15 min |
+|[Functional analysis methods](lessons/02_functional_analysis.md) | 75 min |
 
 ### Installation Requirements
 
@@ -50,9 +49,11 @@ Load the libraries to make sure the packages installed properly:
 ```r
 library(clusterProfiler)
 library(DOSE)
-library(org.Hs.eg.db) # Need to change based on organism
+library(org.Hs.eg.db) 
 library(pathview)
 ```
+
+**NOTE:** # The library used for `org.Hs.eg.db` will change based on organism (e.g. if studying mouse, would need to install and load `org.Mm.eg.db`). The available packages are shown [here]().
 
 
 *These materials have been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
