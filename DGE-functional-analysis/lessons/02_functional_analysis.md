@@ -197,9 +197,18 @@ cnetplot(ego,
          showCategory = 5, 
          foldChange=OE_foldchanges, 
          vertex.label.font=6)
+         
+## If some of the high fold changes are getting drowned out due to a large range, you could set a maximum fold change value
+OE_foldchanges <- ifelse(OE_foldchanges > 2, 2, OE_foldchanges)
+
+cnetplot(ego, 
+         categorySize="pvalue", 
+         showCategory = 5, 
+         foldChange=OE_foldchanges, 
+         vertex.label.font=6)
 ```
 
-**Again, to save the figure,** click on the `Export` button in the RStudio `Plots` tab and `Save as PDF...`. Change the `PDF size` to `24 x 32` to give a figure of appropriate size for the text labels.
+**Again, to save the figure,** click on the `Export` button in the RStudio `Plots` tab and `Save as PDF...`. Change the `PDF size` to `48 x 56` to give a figure of appropriate size for the text labels.
 
 <img src="../img/mov10oe_cnetplot.png" width="800">
 
