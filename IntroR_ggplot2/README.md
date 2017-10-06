@@ -32,3 +32,10 @@ These materials are intended to provide a **quick overview** of the R programmin
 |[Functions, arguments, packages and seeking help in R](lessons/03_functions-and-arguments.md) | 20 min |
 |[Data wrangling](lessons/04_data-wrangling.md) | 45 min |
 |[Data visualization with ggplot2](lessons/05_data-visualization.md) | 45 min |
+
+### Installation Requirements
+
+Download the most recent versions of R and RStudio for your laptop:
+
+ - [R](http://lib.stat.cmu.edu/R/CRAN/) 
+ - [RStudio](https://www.rstudio.com/products/rstudio/download/#download)
