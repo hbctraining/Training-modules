@@ -192,7 +192,11 @@ OE_foldchanges <- sigOE$log2FoldChange
 names(OE_foldchanges) <- sigOE$Row.names
 
 ## Cnetplot details the genes associated with one or more terms - by default gives the top 5 significant terms (by padj)
-cnetplot(ego, categorySize="pvalue", showCategory = 5, foldChange=OE_foldchanges, vertex.label.font=6)
+cnetplot(ego, 
+         categorySize="pvalue", 
+         showCategory = 5, 
+         foldChange=OE_foldchanges, 
+         vertex.label.font=6)
 ```
 
 **Again, to save the figure,** click on the `Export` button in the RStudio `Plots` tab and `Save as PDF...`. Change the `PDF size` to `24 x 32` to give a figure of appropriate size for the text labels.
