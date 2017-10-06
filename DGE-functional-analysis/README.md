@@ -40,8 +40,9 @@ Download the most recent versions of R and RStudio for your laptop:
 Install the required R packages by running the following code in RStudio:
 
 ```r
-install.packages(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview"))
+source("http://bioconductor.org/biocLite.R") 
 
+biocLite(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview"))
 ```
 
 Load the libraries to make sure the packages installed properly:
@@ -49,7 +50,7 @@ Load the libraries to make sure the packages installed properly:
 ```r
 library(clusterProfiler)
 library(DOSE)
-library(org.Hs.eg.db)
+library(org.Hs.eg.db) # Need to change based on organism
 library(pathview)
 ```
 
