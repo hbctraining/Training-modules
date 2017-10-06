@@ -27,7 +27,7 @@ In this workshop, we will use over-representation analysis (ORA) and functional 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
 |[Setting up](lessons/01_setting_up.md) | 15 min |
-|[Functional analysis methods](lessons/02_functional_analysis.md) | 75 min |
+|[Functional analysis methods](lessons/02_functional_analysis.md) | 165 min |
 
 ### Installation Requirements
 
