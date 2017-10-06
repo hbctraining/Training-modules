@@ -159,16 +159,20 @@ write.csv(cluster_summary, "results/clusterProfiler_Mov10oe.csv")
 ### Visualizing clusterProfiler results
 clusterProfiler has a variety of options for viewing the over-represented GO terms. We will explore the dotplot, enrichment plot, and the category netplot.
 
-The dotplot shows the number of genes associated with the first 50 terms (size) and the p-adjusted values for these terms (color). 
+The **dotplot** shows the number of genes associated with the first 50 terms (size) and the p-adjusted values for these terms (color). 
 
 ```r
 ## Dotplot gives top 50 genes by gene ratio (# genes related to GO term / total number of sig genes), not padj.
 dotplot(ego, showCategory=50)
 ```
 
+**To save the figure,** click on the `Export` button in the RStudio `Plots` tab and `Save as PDF...`. In the pop-up window, change:
+- `Orientation:` to `Landscape`
+- `PDF size` to `14 x 8` to give a figure of appropriate size for the text labels
+
 <img src="../img/mov10oe_dotplot.png" width="600">
 
-The enrichment GO plot below shows the relationship between the top 50 most significantly enriched GO terms, by grouping similar terms together. The color represents the p-values relative to the other displayed terms (brighter red is more significant) and the size of the terms represents the number of genes that are significant from our list.
+The next plot is the **enrichment GO plot**, which shows the relationship between the top 50 most significantly enriched GO terms, by grouping similar terms together. The color represents the p-values relative to the other displayed terms (brighter red is more significant) and the size of the terms represents the number of genes that are significant from our list.
 
 ```r
 ## Enrichmap clusters the 50 most significant (by padj) GO terms to visualize relationships between terms
@@ -179,7 +183,7 @@ enrichMap(ego, n=50, vertex.label.font=6)
 
 <img src="../img/mov10oe_enrichmap.png" width="800">
 
-Finally, the category netplot shows the relationships between the genes associated with the top five most significant GO terms and the fold changes of the significant genes associated with these terms (color). The size of the GO terms reflects the pvalues of the terms, with the more significant terms being larger. This plot is particularly useful for hypothesis generation in identifying genes that may be important to several of the most affected processes. 
+Finally, the **category netplot** shows the relationships between the genes associated with the top five most significant GO terms and the fold changes of the significant genes associated with these terms (color). The size of the GO terms reflects the pvalues of the terms, with the more significant terms being larger. This plot is particularly useful for hypothesis generation in identifying genes that may be important to several of the most affected processes. 
 
 ```r
 ## To color genes by log2 fold changes, we need to extract the log2 fold changes from our results table creating a named vector
