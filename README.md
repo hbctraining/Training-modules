@@ -12,7 +12,7 @@ This repository has teaching materials for **2-3 hour**, hands-on workshops cove
 
 Some workshops will require a working knowledge of R or completion of the [Introduction to R workshop](https://github.com/hbctraining/Intro-to-R). Other workshops will require a working knowledge of the bash scripting language or completion of the [Introduction to Unix workshop](https://github.com/hbctraining/Intro-to-Unix).
 
-**Detailed information** and **preparation instructions** for each of the workshops can be by clicking on the workshop links in the table below.**
+**Detailed information** and **preparation instructions** for each of the workshops can be found by clicking on the workshop links in the table below.**
 
 > These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
 
