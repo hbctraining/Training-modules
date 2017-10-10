@@ -4,7 +4,7 @@ author: "Mary Piper"
 date: "Wednesday, August 30, 2017"
 ---
 
-Approximate time: 105 minutes
+Approximate time: 165 minutes
 
 Learning Objectives:
 -------------------
