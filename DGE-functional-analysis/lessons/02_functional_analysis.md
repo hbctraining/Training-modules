@@ -412,7 +412,7 @@ Explore the GSEA plot of enrichment of the pathway-associated genes in the ranke
 gseaplot(gseaKEGG, geneSetID = 'hsa03040')
 ```
 
-Use the [Pathview R package](https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btt285) to integrate the KEGG pathway data from clusterProfiler into pathway images:
+Use the [Pathview R package](http://bioconductor.org/packages/release/bioc/html/pathview.html) to integrate the KEGG pathway data from clusterProfiler into pathway images:
 
 ```r
 ## Output images for a single significant KEGG pathway
