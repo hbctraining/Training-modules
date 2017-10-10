@@ -1,7 +1,7 @@
 ---
 title: "Functional Analysis for RNA-seq"
 author: "Mary Piper"
-date: "Wednesday, August 30, 2017"
+date: "Tuesday, October 10th, 2017"
 ---
 
 Approximate time: 165 minutes
@@ -96,6 +96,7 @@ The calculation of probability of k successes follows the formula:
 ![hypergeo](../img/hypergeo.png) 
 
 ## clusterProfiler
+
 [clusterProfiler](http://bioconductor.org/packages/release/bioc/html/clusterProfiler.html) performs over-representation analysis on GO terms associated with a list of genes. The tool takes as input a significant gene list and a background gene list and performs statistical enrichment analysis using hypergeometric testing. The basic arguments allow the user to select the appropriate organism and GO ontology (BP, CC, MF) to test. 
 
 ### Running clusterProfiler
