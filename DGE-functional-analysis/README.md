@@ -17,7 +17,7 @@ In this workshop, we will use over-representation analysis (ORA) and functional 
 *  **Using GO terms to explore enriched processes:** Determining how functions are attributed to genes using Gene Ontology terms
 *  **Interpreting the results of enrichment tests:** Understanding the theory of how functional enrichment tools yield statistically enriched functions or interactions
 *  **Descibing the different classes of functional analysis tools:** Discussing functional analysis using over-representation analysis, functional class scoring, and pathway topology methods
-*  **Utilizing complementary approaches to generate hypotheses regarding eniched processes/pathwayys: Explore a variety of functional analysis tools
+*  **Utilizing functional analysis tools to generate hypotheses regarding enriched processes/pathways:** Explore a variety of functional analysis tools
 
 > These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
 
