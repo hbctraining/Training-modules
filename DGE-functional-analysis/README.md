@@ -41,7 +41,7 @@ Install the required R packages by running the following code in RStudio:
 ```r
 source("http://bioconductor.org/biocLite.R") 
 
-biocLite(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview", "treemap", "purrr"))
+biocLite(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview", "treemap", "purrr", "SPIA"))
 ```
 
 Load the libraries to make sure the packages installed properly:
@@ -53,6 +53,7 @@ library(org.Hs.eg.db)
 library(pathview)
 library(treemap)
 library(purrr)
+library(SPIA)
 ```
 
 > **NOTE:** The library used for the annotations associated with genes (here we are using `org.Hs.eg.db`) will change based on organism (e.g. if studying mouse, would need to install and load `org.Mm.eg.db`). The list of different organism packages are given [here](img/available_annotations.png).
