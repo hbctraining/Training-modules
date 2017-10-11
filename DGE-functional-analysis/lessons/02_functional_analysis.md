@@ -432,7 +432,6 @@ pathview(gene.data = foldchanges,
 >        limit = list(gene = 2, cpd = 1))
 > }
 >
-> biocLite("purrr") # Tidyverse package
 > library(purrr)
 > map(1:length(gsea_results$ID), get_kegg_plots)
 > ```
@@ -456,6 +455,8 @@ gseaplot(gseaGO, geneSetID = 'GO:0007423')
 There are other gene sets available for GSEA analysis in clusterProfiler (Disease Ontology, Reactome pathways, etc.). In addition, it is possible to supply your own gene set GMT file, such as a GMT for MSigDB using special clusterProfiler functions as shown below:
 
 ```r
+# DO NOT RUN
+
 biocLite("GSEABase")
 library(GSEABase)
 
