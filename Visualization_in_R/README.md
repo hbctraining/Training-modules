@@ -45,6 +45,10 @@ Load the libraries to make sure the packages installed properly:
 
 ```r
 library(ggplot2)
+library(RColorBrewer)
+library(pheatmap)
+library(ggrepel)
+library(reshape)
 ```
 
 
