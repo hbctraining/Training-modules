@@ -85,9 +85,14 @@ install.packages(c("ggplot2", "RColorBrewer", "pheatmap", "ggrepel", "reshape", 
 _**Note that these package names are case sensitive!**_
 
 
-To check that a package installed successfully, you should be able to load the library (without any error messages) using `library()`:
+To check that the packages installed successfully, you should be able to load the library (without any error messages) using `library()`:
 
- ```r
- library(ggplot2)
- ```
+```r
+library(ggplot2)
+library(RColorBrewer)
+library(pheatmap)
+library(ggrepel)
+library(reshape)
+library(DESeq2)
+```
 
