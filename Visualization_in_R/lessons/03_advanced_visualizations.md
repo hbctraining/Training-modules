@@ -44,6 +44,7 @@ To do this, we first need to determine the gene names of our top 20 genes by ord
 ```r
 ## Order results by padj values
 res_tableOE_ordered <- res_tableOE[order(res_tableOE$padj), ]
+
 top20_sigOE_genes <- rownames(res_tableOE_ordered[1:20, ])
 ```
 
