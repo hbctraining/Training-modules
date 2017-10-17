@@ -14,7 +14,7 @@ Approximate time: 75 minutes
 
 ## Visualizing the results
 
-When we are working with large amounts of data it can be useful to display that information graphically to gain more insight. During this lesson, we will get you started with some basic and more advanced plots commonly used when exploring differential gene expression data.
+When we are working with large amounts of data it can be useful to display that information graphically to gain more insight. During this lesson, we will get you started with some basic and more advanced plots commonly used when exploring differential gene expression data, however, many of these plots can be helpful in visualizing other types of data as well.
 
 Let's start by loading a few libraries (if not already loaded):
 
@@ -28,6 +28,13 @@ library(RColorBrewer)
 library(DESeq2)
 library(pheatmap)
 ```
+We will be working with three different files generally created or obtained during a differential expression analysis:
+
+- Metadata for our samples: `mov10_meta`
+- Expression data for every gene in each of our samples: `normalized_counts`
+- Differential expression results: `res_tableOE`
+
+Let's take a look at each of these files before we start plotting.
 
 ### Plotting signicant DE genes
 
