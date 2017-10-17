@@ -136,29 +136,28 @@ The above plot would be great to look at the expression levels of a good number 
 To generate a volcano plot, we first need to have a column in our results data indicating whether or not the gene is considered differentially expressed based on p-adjusted values.
 
 ```r
-
+## Obtain logical vector regarding whether padj values are less than 0.05
 threshold_OE <- res_tableOE$padj < 0.05 
 ```
 
 We now have a logical vector of values that has a length which is equal to the total number of genes in the dataset. The elements that have a `TRUE` value correspond to genes that meet the criteria (and `FALSE` means it fails). It should countain the same number of TRUEs as the number of genes in our `sigOE` data frame.
 
 ```r
+## Determine the number of TRUE values
 length(which(threshold_OE))
 ```
 	
 To add this vector to our results table we can use the `$` notation to create the column on the left hand side of the assignment operator, and then assign the vector to it instead of using `cbind()`:
 
 ```r
-threshold_OE <- res_tableOE$padj < 0.05
-length(which(threshold_OE))
+## Add logical vector as a column (threshold) to the res_tableOE
 res_tableOE$threshold <- threshold_OE 
-
 ```
 
 Now we can start plotting. The `geom_point` object is most applicable, as this is essentially a scatter plot:
 
 ```r
-# Volcano plot
+## Volcano plot
 ggplot(res_tableOE) +
         geom_point(aes(x=log2FoldChange, y=-log10(padj), colour=threshold)) +
         ggtitle("Mov10 overexpression") +
@@ -179,8 +178,10 @@ To make this work we have to take the following 3 steps:
 (Step 2) Indicate in the data frame which genes we want to label by adding a logical vector to it, wherein "TRUE" = genes we want to label.
  
 ```r
+## Sort by ordered padj
 res_tableOE_ordered <- res_tableOE[order(res_tableOE$padj), ] 
 
+## Create a column to indicate which genes to label
 res_tableOE_ordered$genelabels <- rownames(res_tableOE_ordered) %in% rownames(res_tableOE_ordered[1:10,])
 
 View(res_tableOE_ordered)
