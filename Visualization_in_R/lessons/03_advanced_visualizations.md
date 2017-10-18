@@ -110,7 +110,7 @@ ggplot(melted_top20_sigOE) +
 
 <img src="../img/sig_genes_melt.png" width="600">
 
-If we only wanted to look at a single gene, we could extract that gene for plotting with ggplot. **Within `ggplot()` we can use the `geom_text_repel()` from the 'ggrepel' R package to label our individual points on the plot.**
+If we only wanted to look at a single gene, we could extract that gene for plotting with ggplot. **Within `ggplot()` we can use the `geom_text_repel()` from the 'ggrepel' R package to label our individual points on the plot.** A nice tutorial detailing the different options available in the ggrepel package is [available](https://cran.r-project.org/web/packages/ggrepel/vignettes/ggrepel.html).
 
 ```r
 ## plot using ggplot2 for a single gene
