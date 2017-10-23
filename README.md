@@ -20,10 +20,10 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 | Lessons        | Prerequisites |
 |:---------------|:-------------:|
-| [Introduction to R](https://github.com/hbctraining/Training-modules/tree/master/IntroR_ggplot2) | None |
-| [Visualization in R](https://github.com/hbctraining/Training-modules/tree/master/Visualization_in_R) | Beginner R or [IntroR workshop](https://github.com/hbctraining/Intro-to-R) |
-| [Functional analysis of gene lists](https://github.com/hbctraining/Training-modules/tree/master/DGE-functional-analysis) | Beginner R or [IntroR workshop](https://github.com/hbctraining/Intro-to-R) |
-| Reproducible research using R (Rmarkdown: report generation) | Beginner R or [IntroR workshop](https://github.com/hbctraining/Intro-to-R) |
+| [Introduction to R](https://github.com/hbctraining/Training-modules/blob/master/IntroR_ggplot2/README.md) | None |
+| [Visualization in R](https://github.com/hbctraining/Training-modules/blob/master/Visualization_in_R/README.md) | Beginner R or [IntroR workshop](https://github.com/hbctraining/Intro-to-R) |
+| [Functional analysis of gene lists](https://github.com/hbctraining/Training-modules/blob/master/DGE-functional-analysis/README.md) | Beginner R or [IntroR workshop](https://github.com/hbctraining/Intro-to-R) |
+| [Reproducible research using R (Rmarkdown: report generation)(https://github.com/hbctraining/Training-modules/blob/master/Rmarkdown/README.md)] | Beginner R or [IntroR workshop](https://github.com/hbctraining/Intro-to-R) |
 
 ***
 
