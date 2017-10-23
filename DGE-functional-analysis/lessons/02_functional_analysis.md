@@ -39,8 +39,9 @@ The goal of the study was to investigate the interactions between various genes 
 
 <img src="../img/mov10-model.png" width="400">
 
-The data we will be working with is the differential expression results for samples overexpressing the MOV10 gene versus control samples. **Based on the authors' hypothesis, we may expect the enrichment of processes / pathways related to *translation, splicing, and the regulation of mRNAs*.**
+The data we will be working with is the differential expression results for samples overexpressing the MOV10 gene versus control samples. **Based on the authors' hypothesis, we may expect the enrichment of processes/pathways related to *translation, splicing, and the regulation of mRNAs*.**
 
+***Note that all tools described below are great tools to validate experimental results and to make hypotheses. These tools suggest genes/pathways that may be involved with your condition of interest; however, you should NOT use these tools to make conclusions about the pathways involved in your experimental process. You will need to perform experimental validation of any suggested pathways.***
 
 ## Over-representation analysis
 The first main category of functional analysis tools is the over-representation analysis, which explores whether there is enrichment of known biological functions in a particular set of genes (e.g. significant DE genes). There are a plethora of functional enrichment tools that perform some type of over-representation analysis by querying databases containing information about gene function and interactions. **Querying these databases for gene function requires the use of a _consistent vocabulary_ to describe gene function.** One of the most widely-used vocabularies is the **Gene Ontology (GO)**. This vocabulary was established by the Gene Ontology project, and the words in the vocabulary are referred to as GO terms. 
@@ -330,8 +331,6 @@ treemap(
 ```
 
 <img src="../img/revigo_treemap.png" width="800">
-
-***clusterProfiler, gProfiler and REVIGO are great tools to validate experimental results and to make hypotheses. These tools suggest pathways that may be involved with your condition of interest; you should NOT use these tools to make conclusions about the pathways involved in your experimental process.***
 
 Over-representation analyses are only a single type of functional analysis method that is available for teasing apart the biological processes important to your condition of interest. Other types of analyses can be equally important or informative, including functional class scoring and pathway topology methods. 
 
