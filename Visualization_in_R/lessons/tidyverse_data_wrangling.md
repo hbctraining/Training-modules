@@ -1,17 +1,18 @@
 ---
 title: "Tidyverse data wrangling"
 author: "Michael Steinbaugh, Mary Piper"
-date: "October 19th, 2017"
+date: "Friday, October 20th, 2017"
 ---
 
 Approximate time: 75 minutes
 
 # Data Wrangling with Tidyverse
 
-The [Tidyverse suite of integrated packages](https://www.tidyverse.org/packages/) designed to work together to make common data science operations more user friendly. The packages have functions for data wrangling, tidying, reading/writing, parsing, and visualizing, among others. There is a freely available book, [R for Data Science](http://r4ds.had.co.nz/index.html), with detailed descriptions and practical examples of the tools available and how they work together. We will explore the basic syntax for working with these packages, as well as, specific functions for data wrangling with the 'dplyr' package, data tidying with the 'tidyr' package, and data visualization with the 'ggplot2' package.
+The [Tidyverse suite of integrated packages](https://www.tidyverse.org/packages/) are designed to work together to make common data science operations more user friendly. The packages have functions for data wrangling, tidying, reading/writing, parsing, and visualizing, among others. There is a freely available book, [R for Data Science](http://r4ds.had.co.nz/index.html), with detailed descriptions and practical examples of the tools available and how they work together. We will explore the basic syntax for working with these packages, as well as, specific functions for data wrangling with the 'dplyr' package, data tidying with the 'tidyr' package, and data visualization with the 'ggplot2' package.
 
 ![](../img/tidyverse_website.png)
 
+All of these packages use the same style of code, which is `snake_case` formatting for all function names and arguments. When using these functions, we recommend that you follow the [tidy style guide](http://style.tidyverse.org/).
 ## Tidyverse basics
 
 As it is difficult to change how fundamental base R structures/functions work, the Tidyverse suite of packages create and use data structures, functions and operators to make working with data more intuitive. The two most basic changes are in the use of **pipes** and **tibbles**.
@@ -38,6 +39,20 @@ round(sqrt(83), digit = 2)
 sqrt(83) %>% round(digit = 2)
 ```
 
+The pipe represents a much easier way of writing and deciphering R code, and we will be taking advantage of it for all future activities.
+
+***
+**Exercises**
+
+1. Extract the `replicate` column from the `metadata` data frame (use the `$` notation) and save the values to a vector named `rep_number`.
+
+2. Use the pipe (`%>%`) to perform two steps in a single line:
+	
+	1. Turn `rep_number` into a factor.
+	2. Use the `head()` function to return the first six values of the `rep_number` factor.
+
+***
+
 ### Tibbles
 
 A core component of the [tidyverse](http://tidyverse.org/) is the [tibble](http://tibble.tidyverse.org/). Tibbles are a modern rework of the standard data.frame, with some internal improvements to make code more reliable.  They are data frames, but do not follow all of the same rules. For example, tibbles can have column names that are not normally allowed, such as numbers/symbols. 
@@ -52,8 +67,18 @@ Tibbles can be created directly using the `tibble()` function or data frames can
 
 >**NOTE:**The function `as_tibble()` will ignore row names, so if a column representing the row names is needed, then the function `rownames_to_column(name_of_df)` should be run prior to turning the data.frame into a tibble. Also, `as_tibble()` will not coerce character vectors to factors by default.
 
+***
+**Exercises**
 
-The main differences between tibbles and data.frames relate to printing and subsetting. 
+1. Create a tibble called `df_tibble` using the `tibble()` function to combine the vectors `species` and `glengths`.
+
+2. Change the `metadata` data frame to a tibble called `meta_tibble`. Use the `rownames_to_column()` function to preserve the rownames combined with using `%>%` and the `as_tibble()` function.
+
+***
+
+#### Differences between tibbles and data.frames
+
+The main differences between tibbles and data.frames relate to *printing* and *subsetting*. 
 
 #### Printing
 A nice feature of a tibble is that when printing a variable to screen, it will show only the first 10 rows and the columns that fit to the screen by default. This is nice since you don't have to specify head to take a quick look at your dataset. If it is desirable to view more of the dataset, the `print()` function can change the number of rows or columns displayed.
@@ -63,20 +88,19 @@ A nice feature of a tibble is that when printing a variable to screen, it will s
 normalized_counts
 
 # Default printing of tibble
-normalized_counts %>% as_tibble()
+normalized_counts %>% 
+  rownames_to_column() %>% 
+  as_tibble()
 
 # Printing of tibble with print() to change defaults
-normalized_counts %>% as_tibble() %>% print(n = 20, width = Inf)
-```
-
-Also, if we would like the row names of our data.frame included in the tibble:
-
-```r
-# Including row names in tibble
-normalized_counts <- normalized_counts %>% rownames_to_column() %>% as_tibble()
+normalized_counts %>% 
+  rownames_to_column() %>% 
+  as_tibble() %>% 
+  print(n = 20, width = Inf)
 ```
 
 #### Subsetting
+
 When subsetting base R data.frames the default behavior is to simplify the output to the simplest data structure. Therefore, if subsetting a single column from a data.frame, R will output a vector (unless `drop=FALSE` is specified). In contrast, subsetting a single column of a tibble will by default return another tibble, not a vector.
 
 Due to this behavior, some older functions do not work with tibbles, so if you need to convert a tibble to a data.frame, the function `as.data.frame(name_of_tibble)` will easily convert it.
@@ -95,29 +119,22 @@ mov10_meta %>% .$sampletype
 mov10_meta %>% .[ , "sampletype"]
 ```
 
-## Tidyverse code
-
-The Tidyverse is an integrated set of packages, and each package has it's own set of functions to make some aspect of data science more user friendly. All of these packages use the same style of code in contrast to other packages in [R](https://www.r-project.org/), where there is a lack of consistency across packages in how functions and arguments are named.
-
--   Base [R](https://www.r-project.org/) functions are formatted in dotted case: `read.csv()`.
--   [tidyverse](http://tidyverse.org/) functions are formatted in snake\_case: `read_csv()`.
--   [Bioconductor](https://bioconductor.org/) functions are generally formatted in lowerCamelCase (and sometimes UpperCamelCase).
-
-The [tidyverse](http://tidyverse.org/) collection of packages are very opinionated in this regard and consistently use `snake_case` formatting for all function names and arguments. When using these functions, we recommend that you follow the [tidy style guide](http://style.tidyverse.org/).
-
 ## Tidyverse tools
 
 While all of the tools in the Tidyverse suite are deserving of being explored in more depth, we are going to investigate only the tools we will be using most for data wrangling and tidying.
 
 ## Dplyr
 
-The most useful tool in the [tidyverse](http://tidyverse.org/) is [dplyr](http://dplyr.tidyverse.org/). It's a swiss-army knife for data wrangling. [dplyr](http://dplyr.tidyverse.org/) has 5 core functions that we recommend incorporating into your analysis:
+The most useful tool in the [tidyverse](http://tidyverse.org/) is [dplyr](http://dplyr.tidyverse.org/). It's a swiss-army knife for data wrangling. [dplyr](http://dplyr.tidyverse.org/) has many handy functions that we recommend incorporating into your analysis:
 
--   `filter()` picks cases based on their values.
+-   `select()` extracts columns and returns a tibble.
 -   `arrange()` changes the ordering of the rows.
--   `select()` picks variables based on their names.
--   `mutate()` adds new variables that are functions of existing variables
+-   `filter()` picks cases based on their values.
+-   `mutate()` adds new variables that are functions of existing variables.
+-   `rename()` easily changes the name of a column(s)
 -   `summarise()` reduces multiple values down to a single summary.
+-   `pull()` extracts a single column as a vector.
+-   `_join()` group of functions that merge two data frames together, includes (`inner_join()`, `left_join()`, `right_join()`, and `full_join()`).
 
 **Note:** [dplyr](http://dplyr.tidyverse.org/) underwent a massive revision this year, switching versions from 0.5 to 0.7. If you consult other [dplyr](http://dplyr.tidyverse.org/) tutorials online, note that many materials developed prior to 2017 are no longer correct. In particular, this applies to writing functions with [dplyr](http://dplyr.tidyverse.org/) (see Notes section below).
 
@@ -125,7 +142,7 @@ The most useful tool in the [tidyverse](http://tidyverse.org/) is [dplyr](http:/
 `select()`
 ----------
 
-First, we only need a few columns of interest from our results tibble. We can do this easily in [dplyr](http://dplyr.tidyverse.org/) with `select()`.
+To extract columns from a tibble we can use the `select()`.
 
 ``` r
 sub_res <- res_tableOE %>%
@@ -307,20 +324,20 @@ To practice with the join functions, we can use a couple of built-in R datasets.
 
 ## Tidyr
 
-Tidyverse defines 'tidy data' as having:
+The purpose of Tidyr is to have well-organized or tidy data, which Tidyverse defines as having:
 
-1. Each variable is in a column
-2. Each observation is in a row
-3. Each value is a cell
+1. Each variable in a column
+2. Each observation in a row
+3. Each value as a cell
 
-The purpose of Tidyr is to help achieve that goal. There are two main functions in Tidyr, which allow for conversion between long data format and wide data format. Depending on the downstream use of the data will determine which format is required.
+There are two main functions in Tidyr, `gather()` and `spread()`. These functions allow for conversion between long data format and wide data format. The downstream use of the data will determine which format is required.
 
 `gather()`
 --------
 
-The `gather()` function changes a wide data format into a long data format. This function is often helpful when using 'ggplot2' to get all of the values to plot into a single column. 
+The `gather()` function changes a wide data format into a long data format. This function is particularly helpful when using 'ggplot2' to get all of the values to plot into a single column. 
 
-To use the function, you need to give the columns in the data frame you would like to gather together as a single column. Then, provide a name to give the column where all of the column names will be present using the `key` argument, and the name to give the column where all of the values will be present using the `value` argument.
+To use this function, you need to give the columns in the data frame you would like to gather together as a single column. Then, provide a name to give the column where all of the column names will be present using the `key` argument, and the name to give the column where all of the values will be present using the `value` argument.
 
 ```r
 gathered <- normalized_counts %>%
@@ -333,7 +350,7 @@ gathered <- normalized_counts %>%
 `spread()`
 --------
 
-The `spread()` function is the reverse of the `gather()` function. The categories of the `key` column will become separate columns, and the values in the `value` split across the associated `key` columns.
+The `spread()` function is the reverse of the `gather()` function. The categories of the `key` column will become separate columns, and the values in the `value` column split across the associated `key` columns.
 
 ```r
 gathered %>% 
