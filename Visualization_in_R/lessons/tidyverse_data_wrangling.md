@@ -70,7 +70,7 @@ Tibbles can be created directly using the `tibble()` function or data frames can
 
 1. Create a tibble called `df_tibble` using the `tibble()` function to combine the vectors `species` and `glengths` into a tibble.
 
-2. Change the `metadata` data frame to a tibble called `meta_tibble`. Use the `rownames_to_column()` function to preserve the rownames combined with using `%>%` and the `as_tibble()` function.
+2. Change the `metadata` data frame to a tibble called `meta_tibble`. *Hint: You will need to use the `rownames_to_column()` function.*
 
 ***
 
