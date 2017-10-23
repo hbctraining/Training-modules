@@ -74,7 +74,7 @@ Tibbles can be created directly using the `tibble()` function or data frames can
 
 ***
 
-#### Differences between tibbles and data.frames
+### Differences between tibbles and data.frames
 
 The main differences between tibbles and data.frames relate to *printing* and *subsetting*. 
 
