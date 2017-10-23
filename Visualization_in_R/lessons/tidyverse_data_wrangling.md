@@ -42,14 +42,12 @@ sqrt(83) %>% round(digit = 2)
 The pipe represents a much easier way of writing and deciphering R code, and we will be taking advantage of it for all future activities.
 
 ***
-**Exercises**
+**Exercise**
 
-1. Extract the `replicate` column from the `metadata` data frame (use the `$` notation) and save the values to a vector named `rep_number`.
-
-2. Use the pipe (`%>%`) to perform two steps in a single line:
+To perfrom the following exercise, first extract the `replicate` column from the `metadata` data frame (use the `$` notation) and save the values to a vector named `rep_number`. Then, use the pipe (`%>%`) to perform two steps in a single line:
 	
-	1. Turn `rep_number` into a factor.
-	2. Use the `head()` function to return the first six values of the `rep_number` factor.
+1. Turn `rep_number` into a factor.
+2. Use the `head()` function to return the first six values of the `rep_number` factor.
 
 ***
 
