@@ -1,5 +1,4 @@
 ---
-layout: topic
 title: R Syntax and Data Structures
 authors: Meeta Mistry, Mary Piper
 date: "Monday, September 18, 2017"
@@ -167,7 +166,7 @@ For example, if you were to try to create the following vector:
 
 R will coerce it into:
 
-<img src="../img/vector4.png" width=400>
+<img src="../img/vector4.png" width="400">
 
 The analogy for a vector is that your bucket now has different compartments; these compartments in a vector are called *elements*. 
 
