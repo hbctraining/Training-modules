@@ -1,5 +1,4 @@
 ---
-layout: topic
 title: Setting up for data visualization in R
 author: Mary Piper, Meeta Mistry, Radhika Khetani
 date: "Wednesday, October 4th, 2017"
