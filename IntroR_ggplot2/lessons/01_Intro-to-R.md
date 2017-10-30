@@ -42,7 +42,7 @@ R is a powerful, extensible environment. It has a wide range of statistics and g
 
 RStudio is freely available open-source Integrated Development Environment (IDE). RStudio provides an environment with many features to make using R easier and is a great alternative to working on R in the terminal. 
 
-<img src="../img/rstudio_logo.png" width=300>
+<img src="../img/rstudio_logo.png" width="300">
 
 * Graphical user interface, not just a command prompt
 * Great learning tool 
