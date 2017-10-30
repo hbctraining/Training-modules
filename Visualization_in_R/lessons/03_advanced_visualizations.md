@@ -202,7 +202,7 @@ ggplot(res_tableOE_ordered) +
         axis.title = element_text(size = rel(1.25))) 
 ```
 
-<img src="../img/volcanoplot-2.png" width=500> 
+<img src="../img/volcanoplot-2.png" width="500"> 
 
 The `ifelse()` function is a simple function that outputs a vector if a certain condition is T. In the above example, it checks if the value in the `res_tableOE_ordered$genelevel` column is TRUE, in which case it will output the row name for that row (`rownames(res_tableOE_ordered)`). If the value in the genelevel column is FALSE it will output nothing (`""`). This is good way to inform `geom_point()` about genes we want labeled.
 
