@@ -228,23 +228,24 @@ It is very likley that someone else has encountered this same problem already!
 The key to getting help from someone is for them to grasp your problem rapidly. You
 should make it as easy as possible to pinpoint where the issue might be.
 
-1. Try to **use the correct words** to describe your problem. For instance, a package
+(1) Try to **use the correct words** to describe your problem. For instance, a package
 is not the same thing as a library. Most people will understand what you meant,
 but others have really strong feelings about the difference in meaning. The key
 point is that it can make things confusing for people trying to help you. **Be as
 precise as possible when describing your problem.**
 
-2. **Always include the output of `sessionInfo()`** as it provides critical information about your platform, the versions of R and the packages that you are using, and other information that can be very helpful to understand your problem.
+(2) **Always include the output of `sessionInfo()`** as it provides critical information about your platform, the versions of R and the packages that you are using, and other information that can be very helpful to understand your problem.
 
 ```r
 sessionInfo()
 ```
 
-3. If possible, **reproduce the problem using a very small `data.frame`**
+(3) If possible, **reproduce the problem using a very small `data.frame`**
 instead of your 50,000 rows and 10,000 columns one, provide the small one with
 the description of your problem. When appropriate, try to generalize what you
-are doing so even people who are not in your field can understand the question. 
-	- To share an object with someone else, you can provide either the raw file (i.e., your CSV file) with
+are doing so even people who are not in your field can understand the question.
+
+- To share an object with someone else, you can provide either the raw file (i.e., your CSV file) with
 your script up to the point of the error (and after removing everything that is
 not relevant to your issue). Alternatively, in particular if your questions is
 not related to a `data.frame`, you can save any other R data structure that you have in your environment to a file:
