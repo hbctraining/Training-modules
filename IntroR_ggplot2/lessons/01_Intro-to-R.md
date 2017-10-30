@@ -26,7 +26,7 @@ The R environment combines:
 
 ## Why use R?
 
-<img src="../img/why_R.png" width=600>
+<img src="../img/why_R.png" width="600">
 
 
 
