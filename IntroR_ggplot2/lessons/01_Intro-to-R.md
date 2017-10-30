@@ -1,5 +1,4 @@
 ---
-layout: topic
 title: Introduction to R and RStudio
 authors: Mary Piper, Meeta Mistry
 date: "Friday, September 8, 2017"
