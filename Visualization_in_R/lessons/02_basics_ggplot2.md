@@ -1,5 +1,4 @@
 ---
-layout: topic
 title: Plotting with ggplot2
 author: Mary Piper, Meeta Mistry, Radhika Khetani
 date: "Wednesday, October 4th, 2017"
@@ -19,7 +18,7 @@ The `ggplot()` function is used to **initialize the basic graph structure**, the
 
 Let's start: 
 
-```{r}
+```r
 ggplot(new_metadata) # what happens? 
 ```
 
@@ -35,7 +34,7 @@ For a more exhaustive list on all possible geometric objects and when to use the
 
 A plot **must have at least one `geom`**; there is no upper limit. You can add a `geom` to a plot using the `+` operator
 
-```{r, eval=FALSE}
+```r
 ggplot(new_metadata) +
   geom_point() # note what happens here
 ```
@@ -51,7 +50,7 @@ You will find that even though we have added a layer by specifying `geom_point`,
 
 To start, we will add position for the x- and y-axis since `geom_point` requires the most basic information about a scatterplot, i.e. what you want to plot on the x and y axes. All of the others mentioned above are optional.
 
-```{r, fig.align='center'}
+```r
 ggplot(new_metadata) +
      geom_point(aes(x = age_in_days, y= samplemeans))
 ```
@@ -62,7 +61,7 @@ ggplot(new_metadata) +
 Now that we have the required aesthetics, let's add some extras like color to the plot. We can **`color` the points on the plot based on genotype**, by specifying the column header. You will notice that there are a default set of colors that will be used so we do not have to specify. Also, the **legend has been conveniently plotted for us!**
 
 
-```{r, fig.align='center'}
+```r
 ggplot(new_metadata) +
   geom_point(aes(x = age_in_days, y= samplemeans, color = genotype)) 
 ```
@@ -72,7 +71,7 @@ ggplot(new_metadata) +
 
 Alternatively, we could color based on celltype by changing it to `color =celltype`. Let's try something different and have both **celltype and genotype identified on the plot**. To do this we can assign the `shape` aesthetic the column header, so that each celltype is plotted with a different shaped data point. Add in `shape = celltype` to your aesthetic and see how it changes your plot:
 
-```{r, fig.align='center'}
+```r
 ggplot(new_metadata) +
   geom_point(aes(x = age_in_days, y= samplemeans, color = genotype,
   			shape=celltype)) 
@@ -83,7 +82,7 @@ ggplot(new_metadata) +
 
 The **size of the data points** are quite small. We can adjust that within the `geom_point()` layer, but does **not** need to be **included in `aes()`** since we are specifying how large we want the data points, rather than mapping it to a variable. Add in the `size` argument by specifying a number for the size of the data point:
 
-```{r, fig.align='center'}
+```r
 ggplot(new_metadata) +
   geom_point(aes(x = age_in_days, y= samplemeans, color = genotype,
   			shape=celltype), size=3.0) 
@@ -103,7 +102,7 @@ There are built-in themes we can use (i.e. `theme_bw()`) that mostly change the 
 
 Let's add a layer `theme_bw()`. Do the axis labels or the tick labels get any larger by changing themes?
 
-```{r, fig.align='center'}
+```r
 ggplot(new_metadata) +
   geom_point(aes(x = age_in_days, y= samplemeans, color = genotype,
   			shape=celltype), size=3.0) +
@@ -112,7 +111,7 @@ ggplot(new_metadata) +
 
 Not in this case. But we can add arguments using `theme()` to change it ourselves. Since we are adding this layer on top (i.e later in sequence), any features we change will override what is set in the `theme_bw()`. Here we'll **increase the size of the axes labels and axes tick labels to be 1.5 times the default size.** When modfying the size of text we often use the `rel()` function. In this way the size we specify is relative to the default (similar to `cex` for base plotting). We can also provide the number vaue as we did with the data point size, but can be cumbersome if you don't know what the default font size is to begin with. 
 
-```{r, fig.align='center'}
+```r
 ggplot(new_metadata) +
   geom_point(aes(x = age_in_days, y= samplemeans, color = genotype,
   			shape=celltype), size=3.0) +
