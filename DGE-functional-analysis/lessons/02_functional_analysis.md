@@ -375,18 +375,11 @@ Using the log2 fold changes obtained from the differential expression analysis f
 
 For gene set or pathway analysis using clusterProfiler, coordinated differential expression over gene sets is tested instead of changes of individual genes. "Gene sets are pre-defined groups of genes, which are functionally related. Commonly used gene sets include those derived from KEGG pathways, Gene Ontology terms, MSigDB, Reactome, or gene groups that share some other functional annotations, etc. Consistent perturbations over such gene sets frequently suggest mechanistic changes" [1]. 
 
-To perform GSEA analysis of KEGG gene sets, clusterProfiler requires the genes to be identified using Entrez IDs for all genes in our results dataset.
-
-```r
-library(pathview)
-## library(clusterProfiler)
-```
-
-When performing our analysis, we need to remove the NA values and duplicates (due to gene ID conversion) prior to the analysis:
+To perform GSEA analysis of KEGG gene sets, clusterProfiler requires the genes to be identified using Entrez IDs for all genes in our results dataset. We also need to remove the NA values and duplicates (due to gene ID conversion) prior to the analysis:
 
 ```r
 ## Remove any NA values
-all_results_gsea <- subset(merged_gene_ids, entrezgene != "NA")
+all_results_gsea <- subset(merged_gene_ids, ENTREZID != "NA")
 
 ## Remove any duplicates
 all_results_gsea <- all_results_gsea[which(duplicated(all_results_gsea$Row.names) == F), ]
@@ -398,7 +391,7 @@ Finally, extract and name the fold changes:
 foldchanges <- all_results_gsea$log2FoldChange
 
 ## Name each fold change with the corresponding Entrez ID
-names(foldchanges) <- all_results_gsea$entrezgene
+names(foldchanges) <- all_results_gsea$ENTREZID
 ```
 
 Order the foldchanges in decreasing order:
