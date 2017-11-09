@@ -351,6 +351,13 @@ pathview(gene.data = foldchanges,
 > map(1:length(gseaKEGG_results$ID), get_kegg_plots)
 > ```
 
+*** 
+**Exercise**
+
+You are interested in some pathways that are comprised of only ~50 genes, how can you modify the `gseaKEGG()` to include these pathways for enrichment testing? How would you change the function if your organism was rat?
+
+***
+
 Instead of exploring enrichment of KEGG gene sets, we can also explore the enrichment of BP Gene Ontology terms using gene set enrichment analysis: 
 
 ```r
@@ -453,14 +460,17 @@ In this plot, each pathway is a point and the coordinates are the log of pNDE (u
 If we choose to explore the significant genes from our dataset occurring in these pathways, we can subset our SPIA results:
 
 ```r
-## Look at pathway 05222 and view kegglink
-subset(spia_result, ID == "05222")
+## Look at pathway 03013 and view kegglink
+subset(spia_result, ID == "03013")
 ```
 
 Then, click on the KEGGLINK, we can view the genes within our dataset from these perturbed pathways:
-![perturbed_pathway](../img/hsa05222.png)
+![perturbed_pathway](../img/hsa03013.png)
 
-Tarca AL, Kathri P and Draghici S (2013). SPIA: Signaling Pathway Impact Analysis (SPIA) using combined evidence of pathway over-representation and unusual signaling perturbations. [http://bioinformatics.oxfordjournals.org/cgi/reprint/btn577v1](http://bioinformatics.oxfordjournals.org/cgi/reprint/btn577v1).
+***
+**Exercise**
+
+You are mainly interested in pathways containing genes that are significantly enriched (over-represented) and highly perturbing to the pathway. Based on the spia plot, which pathways might you explore?
 
 ***
 
