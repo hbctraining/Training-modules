@@ -422,8 +422,6 @@ View the enriched pathways:
 
 ```r
 ## Write GSEA results to file
-gseaKEGG_results
-
 write.csv(gseaKEGG_results, "results/gseaOE.csv", quote=F)
 ```
 
@@ -454,7 +452,7 @@ pathview(gene.data = foldchanges,
 > }
 >
 > library(purrr)
-> map(1:length(gsea_results$ID), get_kegg_plots)
+> map(1:length(gseaKEGG_results$ID), get_kegg_plots)
 > ```
 
 Instead of exploring enrichment of KEGG gene sets, we can also explore the enrichment of BP Gene Ontology terms using gene set enrichment analysis: 
