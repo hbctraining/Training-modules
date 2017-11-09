@@ -158,6 +158,14 @@ write.csv(cluster_summary, "results/clusterProfiler_Mov10oe.csv")
 
 ![cluster_summary](../img/cluster_summary.png)
 
+***
+**Exercises**
+
+1. Using the same conditions, return the enriched GO processes for Cellular Component and Molecular Function.
+
+2. How would the `enrichGO()` function change if our organism was mouse?
+***
+
 ### Visualizing clusterProfiler results
 clusterProfiler has a variety of options for viewing the over-represented GO terms. We will explore the dotplot, enrichment plot, and the category netplot.
 
