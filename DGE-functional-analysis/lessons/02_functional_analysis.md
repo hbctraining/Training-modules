@@ -471,7 +471,7 @@ gseaGO_results <- gseaGO@result
 
 gseaplot(gseaGO, geneSetID = 'GO:0007423')
 ```
-There are other gene sets available for GSEA analysis in clusterProfiler (Disease Ontology, Reactome pathways, etc.). In addition, it is possible to supply your own gene set GMT file, such as a GMT for MSigDB using special clusterProfiler functions as shown below:
+There are other gene sets available for GSEA analysis in clusterProfiler (Disease Ontology, Reactome pathways, etc.). In addition, it is possible to supply your own gene set GMT file, such as a GMT for MSigDB downloaded from the Broad Institute [website](http://software.broadinstitute.org/gsea/msigdb/collections.jsp) using special clusterProfiler functions as shown below:
 
 ```r
 # DO NOT RUN
@@ -479,7 +479,7 @@ There are other gene sets available for GSEA analysis in clusterProfiler (Diseas
 biocLite("GSEABase")
 library(GSEABase)
 
-# Load in GMT file of gene sets (we downloaded from the Broad Institute [website](http://software.broadinstitute.org/gsea/msigdb/collections.jsp) for MSigDB)
+# Load in GMT file of gene sets (we downloaded MSigDB GMT from Broad)
 
 c2 <- read.gmt("/data/c2.cp.v6.0.entrez.gmt.txt")
 
