@@ -470,7 +470,7 @@ Then, click on the KEGGLINK, we can view the genes within our dataset from these
 ***
 **Exercise**
 
-You are mainly interested in pathways containing genes that are significantly enriched (over-represented) and highly perturbing to the pathway. Based on the spia plot, which pathways might you explore?
+Let's suppose you want to focus on pathways with genes enriched within the list of significant genes compared to the background AND highly perturbing to the pathway. Based on the spia plot, which pathways might you explore?
 
 ***
 
@@ -491,8 +491,6 @@ Co-expression clustering is often used to identify genes of novel pathways or ne
 You can visualize co-expression clustering using heatmaps, which should be viewed as suggestive only; serious classification of genes needs better methods.  
 
 The way the tools perform clustering is by taking the entire expression matrix and computing pair-wise co-expression values. A network is then generated from which we explore the topology to make inferences on gene co-regulation. The [WGCNA](http://www.genetics.ucla.edu/labs/horvath/CoexpressionNetwork ) package (in R) is one example of a more sophisticated method for co-expression clustering.
-
-Functional class scoring methods most often take as input the foldchanges for all genes, then look to see whether gene sets for particular biological processes are enriched among the large positive or negative fold changes. This type of analysis can be particularly helpful if differential expression analysis only output a small list of significant DE genes. Finally, pathway topology analysis often takes into account both fold changes and adjusted p-values to identify dysregulated pathways and outputs whether pathways are inhibited/activated. We have [materials](https://github.com/hbctraining/Training-modules/blob/master/DGE-functional-analysis/lessons/02_functional_analysis_other_methods.md) to lead you through these other types of functional analyses, and we encourage you to take the time to work through them.
 
 ![Pathway analysis tools](../img/pathway_analysis.png)
 
