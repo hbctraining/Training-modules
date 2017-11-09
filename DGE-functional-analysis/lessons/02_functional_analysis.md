@@ -246,6 +246,8 @@ cnetplot(ego2, categorySize="pvalue", foldChange=OE_foldchanges, showCategory = 
 
 3. Create a **category netplot** for the `egoMF` results using only the following GO ids: "GO:0043021", "GO:0003729", "GO:0003730", "GO:0004386", "GO:0045296".
 
+***
+
 ### gProfiler
 
 [gProfileR](http://biit.cs.ut.ee/gprofiler/index.cgi) is a tool for the interpretation of large gene lists which can be run using a web interface or through R. The core tool takes a gene list as input and performs statistical enrichment analysis using hypergeometric testing similar to clusterProfiler. Multiple sources of functional evidence are considered, including Gene Ontology terms, biological pathways, regulatory motifs of transcription factors and microRNAs, human disease annotations and protein-protein interactions. The user selects the organism and the sources of evidence to test. There are also additional parameters to change various thresholds and tweak the stringency to the desired level. 
