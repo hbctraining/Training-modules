@@ -501,9 +501,11 @@ The [SPIA (Signaling Pathway Impact Analysis)](http://bioconductor.org/packages/
 
 ## Convert ensembl to entrez ids
 
-sig_genes <- subset(all_results_gsea, padj< 0.05, select = log2FoldChange)
+sig_genes_entrez <- subset(all_results_gsea, padj< 0.05)
 
-names(sig_genes) <- subset(all_results_gsea, padj< 0.05, select = entrezgene)
+sig_genes <- sig_genes_entrez$log2FoldChange
+
+names(sig_genes) <- sig_genes_entrez$ENTREZID
 
 head(sig_genes)
 
@@ -513,7 +515,9 @@ sig_genes <- sig_genes[!is.na(names(sig_genes))]
 
 sig_genes <- sig_genes[!duplicated(names(sig_genes))]
 
-background_genes <- entrez_results$entrezgene
+background_genes <- merged_gene_ids$ENTREZID
+
+background_genes <- background_genes[!is.na(names(background_genes))]
 
 background_genes <- background_genes[!duplicated(background_genes)]
 
