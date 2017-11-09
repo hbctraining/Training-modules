@@ -161,7 +161,7 @@ write.csv(cluster_summary, "results/clusterProfiler_Mov10oe.csv")
 ***
 **Exercises**
 
-1. Using the same conditions, return the enriched GO processes for the Cellular Component and Molecular Function ontologies as `egoCC` and `egoMF`, respectively.
+1. Using the same conditions, return the enriched GO processes for the Molecular Function ontology as `egoMF`.
 
 2. How would the `enrichGO()` function change if our organism was mouse?
 ***
