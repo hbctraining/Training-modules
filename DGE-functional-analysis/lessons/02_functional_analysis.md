@@ -304,7 +304,7 @@ Perform the GSEA using KEGG gene sets:
 ```r
 ## GSEA using gene sets from KEGG pathways
 gseaKEGG <- gseKEGG(geneList = foldchanges, # ordered named vector of fold changes (Entrez IDs are the associated names)
-              organism = "hsa", # supported organisms listed [here](http://www.genome.jp/kegg/catalog/org_list.html)
+              organism = "hsa", 
               nPerm = 1000, # default number permutations
               minGSSize = 120, # minimum gene set size (# genes in set) - change to test more sets or recover sets with fewer # genes
               pvalueCutoff = 0.05, # padj cutoff value
@@ -313,6 +313,8 @@ gseaKEGG <- gseKEGG(geneList = foldchanges, # ordered named vector of fold chang
 ## Extract the GSEA results
 gseaKEGG_results <- gseaKEGG@result
 ```
+
+>**NOTE:** The organisms with KEGG pathway information are listed [here](http://www.genome.jp/kegg/catalog/org_list.html).
 
 View the enriched pathways:
 
