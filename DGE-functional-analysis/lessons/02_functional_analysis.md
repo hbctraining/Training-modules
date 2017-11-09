@@ -347,9 +347,18 @@ treemap(
 												       # "#CCCCCC00" is fully transparent, "#CCCCCCAA" is semi-transparent grey, NA is opaque
 	position.legend = "none"
 )
+
+dev.off()
 ```
 
 <img src="../img/revigo_treemap.png" width="800">
+
+***
+**Exercise**
+
+Using the REVIGO output webpage, create a treemap for enriched GO processes for the Molecular Function ontology.
+
+***
 
 Over-representation analyses are only a single type of functional analysis method that is available for teasing apart the biological processes important to your condition of interest. Other types of analyses can be equally important or informative, including functional class scoring and pathway topology methods. 
 
