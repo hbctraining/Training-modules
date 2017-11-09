@@ -63,7 +63,10 @@ To perform plotting, we need to install the R packages we will using from the Bi
 ```r
 source("http://bioconductor.org/biocLite.R") 
 
-biocLite(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview", "gProfileR", "treemap"))
+biocLite(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview", "SPIA", "purrr")
+
+# Optional for the lesson:
+biocLite(c("gProfileR", "treemap"))
 ```
 
 _**Note that these package names are case sensitive!**_
@@ -77,6 +80,10 @@ library(clusterProfiler)
 library(DOSE)
 library(org.Hs.eg.db)
 library(pathview)
+library(SPIA)
+library(purrr)
+
+# Optional for the lesson
 library(gProfileR)
 library(treemap)
 ```
