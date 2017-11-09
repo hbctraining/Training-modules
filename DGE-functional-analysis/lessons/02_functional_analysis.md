@@ -252,7 +252,7 @@ cnetplot(ego2, categorySize="pvalue", foldChange=OE_foldchanges, showCategory = 
 
 [gProfileR](http://biit.cs.ut.ee/gprofiler/index.cgi) is another tool for performing ORA, similar to clusterProfiler. gProfileR considers multiple sources of functional evidence, including Gene Ontology terms, biological pathways, regulatory motifs of transcription factors and microRNAs, human disease annotations and protein-protein interactions. The user selects the organism and the sources of evidence to test. There are also additional parameters to change various thresholds and tweak the stringency to the desired level. 
 
-The GO terms output by gprofileR are generally quite similar to those output by clusterProfiler, but there are small differences due to the different algorithms used by the tools. We often use gProfiler with [REVIGO](http://revigo.irb.hr/) to collapse redundant GO terms by semantic similarity and summarize them graphically. If you are interested in exploring gProfileR/REVIGO on your own, we have provided the [instructional materials](functional_analysis_other_methods.md).
+The GO terms output by gprofileR are generally quite similar to those output by clusterProfiler, but there are small differences due to the different algorithms used by the tools. We often use gProfiler with [REVIGO](http://revigo.irb.hr/) to collapse redundant GO terms by semantic similarity and summarize them graphically. If you are interested in exploring gProfileR/REVIGO on your own, we have provided the [instructional materials](gProfileR_REVIGO.md).
 
 <img src="../img/revigo_treemap.png" width="800">
 
