@@ -80,15 +80,35 @@ Some genes with less information may only be associated with general 'parent' te
 
 ### Hypergeometric testing
 
-In a set of genes, the frequency of GO terms can be determined, and the comparison of frequencies between a gene list & a “background” set will inform us about the over- or under-representation of the GO terms. This type of testing can inform us about over- or under-representation of other entities such as *particular motifs or pathways* too.
+So, how do we work with a database of controlled vocabularies like GO? 
+
+One of the analysis you can perform is to test if certain GO terms are enriched in you small dataset relative by determining **if they occur more or less frequently than in a "background" set of genes** (often all the genes in a given organism). This can inform us about whether certain **GO terms are over- or under-represented in a given gene list**, and can be tested using the **hypergeometric test**. 
+
+> This type of testing can also be utilized to test for over- or under-representation of other entities such as *particular motifs* or *pathways* as well.
 
 ![go_frequencies](../img/go_freq.png)
 
-To determine whether GO terms (or motifs and pathways) are over- or under-represented, you can determine the **probability of having the observed proportion of genes associated with a specific GO term in your gene list based on the proportion of genes associated with the same GO term in the background set**. The background dataset can be all genes in genome for your organism or you can select your own background to use.
+To determine whether GO terms (or motifs and pathways) are over- or under-represented, you can use the hypergeometric test to determine the **probability of having the observed proportion of genes associated with a specific GO term in your gene list based on the proportion of genes associated with the same GO term in the background set**. See example below.
 
-For example, let's suppose there are 13,000 total genes in the honeybee genome and 85 genes are associated with the GO term "DNA repair". In your gene list, there are 50 genes associated with "DNA repair" out of 1,000 genes in gene list. 
+> The "background gene set" can be all genes in the genome of an organism, or you can select your own background to use.
 
-By comparing the ratios, 85/13,000 in "background" dataset and 50/1,000 in your gene list, it's evident that the GO term "DNA repair" is over-represented in your dataset.
+***
+
+**Background set:**
+
+Of the **13,000** genes in the *honeybee genome*, **85** genes are associated with the GO term **"DNA repair"**. 
+
+Proportion of **"DNA repair"** genes = **85/13,000** = 0.65%
+
+**Gene list of interest:**
+
+Your gene list of **1,000** genes has **50** genes associated with **"DNA repair"**. 
+
+Proportion of **"DNA repair"** genes = **50/1,000** = 5%
+
+***
+
+Based on the above example, it is evident that the GO term "DNA repair" is over-represented in the gene list of interest.
 
 To determine whether a GO term or pathway is *significantly* over- or under-represented, tools often perform **hypergeometric testing**. Using our honeybee example, the hypergeometric distribution is a probability distribution that describes the probability of 50 genes (k) being associated with "DNA repair", for all genes in our gene list (n=1,000), from a population of all of the genes in entire genome (N=13,000) which contains 85 genes (K) associated with "DNA repair" [[4](https://en.wikipedia.org/wiki/Hypergeometric_distribution)].
 
