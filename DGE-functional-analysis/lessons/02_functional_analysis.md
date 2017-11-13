@@ -28,25 +28,7 @@ Generally for any differential expression analysis, it is useful to interpret th
 
 <cite>Illustration adapted from [Khatri, P., Sirota, M. & Butte, A.J., PLoS Comput Biol 2012](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002375)</cite>
 
-## Dataset
-
-To interpret the results of our functional analysis, it is necessary to understand our dataset. We will be using the output from the differential expression analysis of a real RNA-Seq dataset that is part of a larger study described in [Kenny PJ et al, Cell Rep 2014](http://www.ncbi.nlm.nih.gov/pubmed/25464849). 
-
-The goal of the study was to investigate the interactions between various genes involved in Fragile X syndrome, a disease in which there is aberrant production of the FMRP protein that results in cognitive impairment and autistic-like features.. 
-
-> **FMRP** is “most commonly found in the brain and is essential for normal cognitive development and female reproductive function. Mutations of this gene can lead to fragile X syndrome, mental retardation, premature ovarian failure, autism, Parkinson's disease, developmental delays and other cognitive deficits.” - from [wikipedia](https://en.wikipedia.org/wiki/FMR1)
-
-> **MOV10**, is a putative RNA helicase that is also associated with **FMRP** in the context of the microRNA pathway. 
-
-**The hypothesis tested by [the paper](http://www.ncbi.nlm.nih.gov/pubmed/25464849) is that FMRP and MOV10 associate and regulate the translation of a subset of RNAs.**
-
-<img src="../img/mov10-model.png" width="400">
-
-<cite>Illustration adapted from [Kenny PJ et al, Cell Rep 2014](http://www.ncbi.nlm.nih.gov/pubmed/25464849)</cite>
-
-The data we will be working with is the differential expression results for samples overexpressing the MOV10 gene versus control samples. **Based on the authors' hypothesis, we may expect the enrichment of processes/pathways related to *translation, splicing, and the regulation of mRNAs*.**
-
-> **Note:** *All tools described below are excellent to validate experimental results and to make hypotheses. These tools suggest genes/pathways that may be involved with your condition of interest; however, **you should NOT use these tools to make conclusions about the pathways involved in your experimental process**. You will need to perform experimental validation of any suggested pathways.*
+**Note:** *All tools described below are excellent to validate experimental results and to make hypotheses. These tools suggest genes/pathways that may be involved with your condition of interest; however, **you should NOT use these tools to make conclusions about the pathways involved in your experimental process**. You will need to perform experimental validation of any suggested pathways.*
 
 ## Over-representation analysis
 The first main category of functional analysis tools is the over-representation analysis, which explores whether there is enrichment of known biological functions in a particular set of genes (e.g. significant DE genes). There are a plethora of functional enrichment tools that perform some type of over-representation analysis by querying databases containing information about gene function and interactions. **Querying these databases for gene function requires the use of a _controlled vocabulary_ to describe gene function.** One of the most widely-used vocabularies is the **Gene Ontology (GO)**. This vocabulary was established by the Gene Ontology project, and the words in the vocabulary are referred to as GO terms. 
@@ -128,6 +110,10 @@ The calculation of probability of k successes follows the formula:
 [clusterProfiler](http://bioconductor.org/packages/release/bioc/html/clusterProfiler.html) performs over-representation analysis on GO terms associated with a list of genes. The tool takes as input a significant gene list and a background gene list and performs statistical enrichment analysis using hypergeometric testing. The basic arguments allow the user to select the appropriate organism and GO ontology (BP, CC, MF) to test. 
 
 ### Running clusterProfiler
+
+The data we will be working with is the differential expression results for samples overexpressing the MOV10 gene versus control samples, as we discussed earlier. **Based on the authors' hypothesis, we may expect the enrichment of processes/pathways related to *translation, splicing, and the regulation of mRNAs*.**
+
+Let's get started with the `res_tableOE` dataframe we created during set up.
 
 To run clusterProfiler GO over-representation analysis, we will change our gene names into Ensembl IDs, since the tool works a bit easier with the Ensembl IDs. There are a few clusterProfiler functions that allow us to map between gene IDs:
 
