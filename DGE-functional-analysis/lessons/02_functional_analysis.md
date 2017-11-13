@@ -481,6 +481,8 @@ We can view the significantly dysregulated pathways by viewing the over-represen
 plotP(spia_result, threshold=0.05)
 ```
 
+<img src="../img/spia_plotP.png" width="600">
+
 In this plot, each pathway is a point and the coordinates are the log of pNDE (using a hypergeometric model) and the p-value from perturbations, pPERT. The oblique lines in the plot show the significance regions based on the combined evidence.
 
 If we choose to explore the significant genes from our dataset occurring in these pathways, we can subset our SPIA results:
