@@ -82,31 +82,31 @@ Some genes with less information may only be associated with general 'parent' te
 
 So, how do we work with a database of controlled vocabularies like GO? 
 
-One of the analysis you can perform is to test if certain GO terms are enriched in you small dataset relative by determining **if they occur more or less frequently than in a "background" set of genes** (often all the genes in a given organism). This can inform us about whether certain **GO terms are over- or under-represented in a given gene list**, and can be tested using the **hypergeometric test**. 
+One of the analysis you can perform is to test if certain GO terms are enriched in you small dataset relative by determining **if they occur more or less frequently than in a "background" set of genes**. This can inform us about whether certain GO terms are over- or under-represented in a given gene list, and can be tested using the **hypergeometric test**. 
 
 > This type of testing can also be utilized to test for over- or under-representation of other entities such as *particular motifs* or *pathways* as well.
 
 ![go_frequencies](../img/go_freq.png)
 
-To determine whether GO terms (or motifs and pathways) are over- or under-represented, you can use the hypergeometric test to determine the **probability of having the observed proportion of genes associated with a specific GO term in your gene list based on the proportion of genes associated with the same GO term in the background set**. See example below.
-
-> The "background gene set" can be all genes in the genome of an organism, or you can select your own background to use.
+To determine whether GO terms (or motifs and pathways) are over- or under-represented, you can use the hypergeometric test to determine the **probability of having the observed proportion of genes associated with a specific GO term in your gene list based on the proportion of genes associated with the same GO term in the background set**. See example below:
 
 ***
 
 **Background set:**
 
-Of the **13,000** genes in the *honeybee genome*, **85** genes are associated with the GO term **"DNA repair"**. 
+            Of the **13,000** genes in the *honeybee genome*, **85** genes are associated with the GO term **"DNA repair"**. 
 
-Proportion of **"DNA repair"** genes = **85/13,000** = 0.65%
+            Proportion of **"DNA repair"** genes = **85/13,000** = 0.65%
 
 **Gene list of interest:**
 
-Your gene list of **1,000** genes has **50** genes associated with **"DNA repair"**. 
+            Your gene list of **1,000** genes has **50** genes associated with **"DNA repair"**. 
 
-Proportion of **"DNA repair"** genes = **50/1,000** = 5%
+            Proportion of **"DNA repair"** genes = **50/1,000** = 5%
 
 ***
+
+> The "background gene set" can be all genes from an organism, or a selected subset.
 
 Based on the above example, it is evident that the GO term "DNA repair" is over-represented in the gene list of interest.
 
