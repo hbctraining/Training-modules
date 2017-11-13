@@ -176,7 +176,14 @@ ego <- enrichGO(gene = sigOE_genes,
                     pAdjustMethod = "BH", 
                     qvalueCutoff = 0.05, 
                     readable = TRUE)
+```
 
+
+> **NOTE:** The library used for the annotations associated with genes (here we are using `org.Hs.eg.db`) will change based on organism (e.g. if studying mouse, would need to install and load `org.Mm.eg.db`). The list of different organism packages are given [here](https://github.com/hbctraining/Training-modules/raw/master/DGE-functional-analysis/img/available_annotations.png).
+
+Output results to data frame and save to file:
+
+```r
 ## Output results from GO analysis to a table
 cluster_summary <- data.frame(ego)
 
