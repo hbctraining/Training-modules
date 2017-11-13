@@ -266,7 +266,11 @@ cnetplot(ego2, categorySize="pvalue", foldChange=OE_foldchanges, showCategory = 
 
 2. Create an **enrichment GO plot** for the `egoMF` results and show only the top 25 most significant processes.
 
-3. Create a **category netplot** for the `egoMF` results using only the following GO ids: "GO:0043021", "GO:0003729", "GO:0003730", "GO:0004386", "GO:0045296".
+3. Create a **category netplot** for the `egoMF` results using only the following GO ids: 
+
+```
+"GO:0043021", "GO:0003729", "GO:0003730", "GO:0004386", "GO:0045296"
+```
 
 ***
 
