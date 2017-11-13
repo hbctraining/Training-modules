@@ -81,6 +81,8 @@ Some genes with less information may only be associated with general 'parent' te
 
 ![Nature Reviews Cancer 7, 23-34 (January 2007)](../img/go_heirarchy.jpg)
 
+<cite>Illustration adapted from [Hu P et al, Nature Reviews Cancer 2007](https://www.nature.com/articles/nrc2036)</cite>
+
 [Tips for working with GO terms](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003343)
 
 ### Hypergeometric testing
