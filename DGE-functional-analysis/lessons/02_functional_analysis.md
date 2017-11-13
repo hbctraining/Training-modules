@@ -26,7 +26,7 @@ Generally for any differential expression analysis, it is useful to interpret th
 
 ![Pathway analysis tools](../img/pathway_analysis.png)
 
-<cite>Illustration adapted from [Khatri, P., Sirota, M. & Butte, A.J., PLoS Comput. Biol. 2012](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002375)</cite>
+<cite>Illustration adapted from [Khatri, P., Sirota, M. & Butte, A.J., PLoS Comput Biol 2012](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002375)</cite>
 
 ## Dataset
 
