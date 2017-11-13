@@ -16,7 +16,7 @@ Learning Objectives:
 
 # Functional analysis 
 
-The output of RNA-Seq differential expression analysis is a list of significant differentially expressed genes (DEGs). To gain greater biological insight on the DEGs there are various analyses that can be done:
+The output of RNA-Seq differential expression analyses, proteomic analyses, as well as other genetic/genomic analyses is a list of significant genes. To gain greater biological insight into the list of significant genes there are various analyses that can be done:
 
 - determine whether there is enrichment of known biological functions, interactions, or pathways
 - identify genes' involvement in novel pathways or networks by grouping genes together based on similar trends
