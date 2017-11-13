@@ -6,7 +6,7 @@ date: "Friday, October 6th, 2017"
 
 Approximate time: 15 minutes
 
-## Set-up
+## Set up
 
 Prior to performing the functional analysis of our gene lists, we need to first open RStudio, create a project called `Functional_analysis`, and organize our project directory.
 
@@ -36,11 +36,11 @@ When finished, your working directory should look like:
 
 <img src="../img/generic_complete_wd_setup.png" width="300">
 
-### Adding file to your working directory
+### Adding files to your working directory
 
-We have the differential expression results output from our DE analysis using DESeq2 that we will be working with in the lessons.
+We can use gene lists output from various different types of experiments to perform functional analysis. For today's workshop we will be using the output of differential gene expression (DGE) analysis performed on an RNA-seq dataset using the R package DESeq2.
 
-Download the files to the `data` folder by **right-clicking** the links below:
+Download the DGE result file to the `data` folder by **right-clicking** the link below:
  
  - **Differential expression results:** right-click [here](https://github.com/hbctraining/Training-modules/raw/master/Visualization_in_R/data/Mov10oe_DE_results.csv)
  
@@ -58,21 +58,23 @@ res_tableOE <- read.csv("data/Mov10oe_DE_results.csv", row.names = 1)
 
 ### R package installation
 
-To perform plotting, we need to install the R packages we will using from the Bioconductor repository (if not already installed): 
-
+We now need to install the R packages we will using for this workshop (if not already installed): 
+ 
 ```r
 source("http://bioconductor.org/biocLite.R") 
 
-biocLite(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview", "SPIA", "purrr")
+biocLite(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview", "SPIA", "purrr"))
 
 # Optional for the lesson:
 biocLite(c("gProfileR", "treemap"))
 ```
 
+> When installing if it asks you whether you want to update the dependencies say "n" for no, this will expedite the installation.
+
 _**Note that these package names are case sensitive!**_
 
 
-To check that a package installed successfully, you should be able to load the library (without any error messages) using `library()`:
+To check that a package installed successfully, load the library (without any error messages) using `library()`:
 
 ```r
 ## Load libraries
