@@ -94,15 +94,15 @@ To determine whether GO terms (or motifs and pathways) are over- or under-repres
 
 **Background set:**
 
-            Of the **13,000** genes in the *honeybee genome*, **85** genes are associated with the GO term **"DNA repair"**. 
+* Of the **13,000** genes in the *honeybee genome*, **85** genes are associated with the GO term **"DNA repair"**. 
 
-            Proportion of **"DNA repair"** genes = **85/13,000** = 0.65%
+* Proportion of **"DNA repair"** genes = **85/13,000** = 0.65%
 
 **Gene list of interest:**
 
-            Your gene list of **1,000** genes has **50** genes associated with **"DNA repair"**. 
+* Your gene list of **1,000** genes has **50** genes associated with **"DNA repair"**. 
 
-            Proportion of **"DNA repair"** genes = **50/1,000** = 5%
+* Proportion of **"DNA repair"** genes = **50/1,000** = 5%
 
 ***
 
