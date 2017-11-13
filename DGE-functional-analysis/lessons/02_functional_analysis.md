@@ -22,11 +22,11 @@ The output of RNA-Seq differential expression analyses, proteomic analyses, as w
 - identify genes' involvement in novel pathways or networks by grouping genes together based on similar trends
 - use global changes in gene expression by visualizing all genes being significantly up- or down-regulated in the context of external interaction data
 
-Generally for any differential expression analysis, it is useful to interpret the resulting gene lists using freely available web- and R-based tools.  While tools for functional analysis span a wide variety of techniques, they can loosely be categorized into three main types: over-representation analysis, functional class scoring, and pathway topology [[1](../resources/pathway_tools.pdf)]. 
+Generally for any differential expression analysis, it is useful to interpret the resulting gene lists using freely available web- and R-based tools.  While tools for functional analysis span a wide variety of techniques, they can loosely be categorized into three main types: over-representation analysis, functional class scoring, and pathway topology [[1](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002375)]. 
 
 ![Pathway analysis tools](../img/pathway_analysis.png)
 
-<cite>Illustration adapted from [Kenny PJ et al, Cell Rep 2014](http://www.ncbi.nlm.nih.gov/pubmed/25464849)</cite>
+<cite>Illustration adapted from [Khatri, P., Sirota, M. & Butte, A.J., PLoS Comput. Biol. 2012](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002375)</cite>
 
 ## Dataset
 
