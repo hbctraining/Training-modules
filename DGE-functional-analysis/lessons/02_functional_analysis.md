@@ -96,19 +96,19 @@ To determine whether GO terms (or motifs and pathways) are over- or under-repres
 
 * Of the **13,000** genes in the *honeybee genome*, **85** genes are associated with the GO term **"DNA repair"**. 
 
-* Proportion of "DNA repair" genes = **85/13,000** = 0.65%
+* Proportion of genes associated with "DNA repair" is **85/13000** which is **0.65%**
 
 **Gene list of interest:**
 
 * Your gene list of **1,000** genes has **50** genes associated with **"DNA repair"**. 
 
-* Proportion of "DNA repair" genes = **50/1,000** = 5%
+* Proportion of genes associated with "DNA repair" is **50/1000** which is **5%**
 
-***
+In this example it is evident that the GO term "DNA repair" is over-represented in the gene list of interest relative to the background set.
 
 > The "background gene set" can be all genes from an organism, or a selected subset.
 
-Based on the above example, it is evident that the GO term "DNA repair" is over-represented in the gene list of interest.
+***
 
 To determine whether a GO term or pathway is *significantly* over- or under-represented, tools often perform **hypergeometric testing**. Using our honeybee example, the hypergeometric distribution is a probability distribution that describes the probability of 50 genes (k) being associated with "DNA repair", for all genes in our gene list (n=1,000), from a population of all of the genes in entire genome (N=13,000) which contains 85 genes (K) associated with "DNA repair" [[4](https://en.wikipedia.org/wiki/Hypergeometric_distribution)].
 
