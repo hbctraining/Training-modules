@@ -363,6 +363,8 @@ pathview(gene.data = foldchanges,
               cpd = 1))
 ```
 
+<img src="../img/hsa03040.pathview.png" width="600">
+
 >**NOTE:** Printing out Pathview images for all significant pathways can be easily performed as follows:
 > ```r
 >## Output images for all significant KEGG pathways
