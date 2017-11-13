@@ -42,7 +42,7 @@ The goal of the study was to investigate the interactions between various genes 
 
 <img src="../img/mov10-model.png" width="400">
 
-
+<cite>Illustration adapted from [Kenny PJ et al, Cell Rep 2014](http://www.ncbi.nlm.nih.gov/pubmed/25464849)</cite>
 
 The data we will be working with is the differential expression results for samples overexpressing the MOV10 gene versus control samples. **Based on the authors' hypothesis, we may expect the enrichment of processes/pathways related to *translation, splicing, and the regulation of mRNAs*.**
 
