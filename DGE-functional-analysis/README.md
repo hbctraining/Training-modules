@@ -5,7 +5,7 @@ Prerequisites: Introductin to R
 Duration: 3 hour workshop (~3 hours of trainer-led time)
 ---
 
-## DGE Functional Analysis
+## Functional Analysis of Gene Lists
 
 ### Description
 
