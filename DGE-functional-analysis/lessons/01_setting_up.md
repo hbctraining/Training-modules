@@ -69,8 +69,6 @@ biocLite(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview", "SPIA", "purrr
 biocLite(c("gProfileR", "treemap"))
 ```
 
-> When installing if it asks you whether you want to update the dependencies say "n" for no, this will expedite the installation.
-
 _**Note that these package names are case sensitive!**_
 
 
