@@ -451,7 +451,7 @@ sig_genes <- sig_genes[!duplicated(names(sig_genes))]
 
 background_genes <- merged_gene_ids$ENTREZID
 
-background_genes <- background_genes[!is.na(names(background_genes))]
+background_genes <- background_genes[!is.na(background_genes)]
 
 background_genes <- background_genes[!duplicated(background_genes)]
 
@@ -460,9 +460,7 @@ background_genes <- background_genes[!duplicated(background_genes)]
 Now that we have our background and significant genes in the appropriate format, we can run SPIA:
 
 ```r
-## Load library and run SPIA.
-
-library(SPIA)
+## Run SPIA.
 
 spia_result <- spia(de=sig_genes, all=background_genes, organism="hsa")
 
@@ -495,7 +493,8 @@ If we choose to explore the significant genes from our dataset occurring in thes
 subset(spia_result, ID == "03013")
 ```
 
-Then, click on the KEGGLINK, we can view the genes within our dataset from these perturbed pathways:
+Copy the link KEGGLINK output on the console into a web browser to view the genes within our dataset from these perturbed pathways:
+
 ![perturbed_pathway](../img/hsa03013.png)
 
 ***
