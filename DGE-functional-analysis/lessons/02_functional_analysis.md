@@ -25,6 +25,9 @@ The output of RNA-Seq differential expression analyses, proteomic analyses, as w
 Generally for any differential expression analysis, it is useful to interpret the resulting gene lists using freely available web- and R-based tools.  While tools for functional analysis span a wide variety of techniques, they can loosely be categorized into three main types: over-representation analysis, functional class scoring, and pathway topology [[1](../resources/pathway_tools.pdf)]. 
 
 ![Pathway analysis tools](../img/pathway_analysis.png)
+
+<cite>Illustration adapted from [Kenny PJ et al, Cell Rep 2014](http://www.ncbi.nlm.nih.gov/pubmed/25464849)</cite>
+
 ## Dataset
 
 To interpret the results of our functional analysis, it is necessary to understand our dataset. We will be using the output from the differential expression analysis of a real RNA-Seq dataset that is part of a larger study described in [Kenny PJ et al, Cell Rep 2014](http://www.ncbi.nlm.nih.gov/pubmed/25464849). 
@@ -38,7 +41,7 @@ The goal of the study was to investigate the interactions between various genes 
 **The hypothesis tested by [the paper](http://www.ncbi.nlm.nih.gov/pubmed/25464849) is that FMRP and MOV10 associate and regulate the translation of a subset of RNAs.**
 
 <img src="../img/mov10-model.png" width="400">
-<cite>Illustration adapted from [Kenny PJ et al, Cell Rep 2014](http://www.ncbi.nlm.nih.gov/pubmed/25464849)</cite>
+
 
 
 The data we will be working with is the differential expression results for samples overexpressing the MOV10 gene versus control samples. **Based on the authors' hypothesis, we may expect the enrichment of processes/pathways related to *translation, splicing, and the regulation of mRNAs*.**
