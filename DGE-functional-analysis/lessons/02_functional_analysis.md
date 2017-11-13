@@ -198,7 +198,7 @@ write.csv(cluster_summary, "results/clusterProfiler_Mov10oe.csv")
 
 1. Using the same conditions, return the enriched GO processes for the Molecular Function ontology as `egoMF`.
 
-2. How would the `enrichGO()` function change if our organism was mouse?
+2. How would the `enrichGO()` function change if our organism was rat?
 
 ***
 
