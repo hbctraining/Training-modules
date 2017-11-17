@@ -197,7 +197,7 @@ sub_res
 `filter()`
 ----------
 
-Let's keep only genes that are expressed (`baseMean` above 0) with an adjusted P value below 0.01. You can perform multiple `filter()` operations together in a single command.
+Let's use `filter()` to keep only genes that are expressed (`baseMean` above 0) with an adjusted P value below 0.01. We can perform these multiple `filter()` operations together in a single command.
 
 ``` r
 sub_res <- sub_res %>%
