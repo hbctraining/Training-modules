@@ -32,7 +32,7 @@ As RMarkdown grows as an acceptable [reproducible manuscript](https://elifescien
 
 The basic idea is that you can write your analysis workflow in plain text and intersperse chunks of R code delimited with a special marker (\`\`\`). Backticks (\`) commonly indicate code and are also used on [GitHub](https://github.com). Each code chunk should be given a **unique** name. [knitr](https://yihui.name/knitr/) isn't very picky how you name the code chunks, but we recommend using `snake_case` for the names whenever possible. 
 
-<img src="../img/r-chunk.png">
+<img src="img/r-chunk.png">
 
 Additionally, you can write inline [R](https://www.r-project.org/) code enclosed by single backticks (\`) containing a lowercase `r` (like \`\`\` code chunks). This allows for variable returns outside of code chunks, and is extremely useful for making report text more dynamic. For example, you can print the current date inline with this syntax: `` ` r Sys.Date() ` `` (no spaces).
 
@@ -40,7 +40,7 @@ Additionally, you can write inline [R](https://www.r-project.org/) code enclosed
 
 knitr provides a lot of customization options for code chunks, which are written in the form of `tag=value`.
 
-<img src="../img/r-chunkoptions.png">
+<img src="img/r-chunkoptions.png">
 
 There is a [comprehensive list](https://yihui.name/knitr/options/#code-chunk) of all the options available, however when starting out this can be overwhelming. Here, we provide a short list of some options commonly use in chunks:
 
