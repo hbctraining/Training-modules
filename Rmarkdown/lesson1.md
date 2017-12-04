@@ -56,15 +56,17 @@ There is a [comprehensive list](https://yihui.name/knitr/options/#code-chunk) of
 The `setup` chunk is a special knitr chunk that should be placed at the start of the document. We recommend storing all `library()` loads required for the script and other `load()` requests for external files here. In our RMarkdown templates, such as the bcbioRnaseq [differential expression template](https://github.com/hbc/bcbioRnaseq/blob/master/inst/rmarkdown/templates/differential_expression/skeleton/skeleton.Rmd), we store all the user-defined parameters in the `setup` chunk that are required for successful knitting.
 
 ```r
+\`\`\`
 {r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+\`\`\`
 ```
 
 ### Global options
 
 knitr allows for global options to be set on all chunks in an [RMarkdown](http://rmarkdown.rstudio.com/) file. These are options that should be placed inside your `setup` chunk at the top of your RMarkdown document.
 
-``` r
+```r
 opts_chunk$set(
     autodep = TRUE,
     cache = TRUE,
