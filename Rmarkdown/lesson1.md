@@ -26,11 +26,17 @@ The [Markdown language](https://en.wikipedia.org/wiki/Markdown) for formatting p
 
 As RMarkdown grows as an acceptable [reproducible manuscript](https://elifesciences.org/labs/cad57bcf/composing-reproducible-manuscripts-using-r-markdown) format, using `knitr` to generate a report summary is becoming common practice. 
 
-Before we learn more about how to create a report, let's [take a look at a report]() and [the Rmarkdown file]() it was generated from.
+Before we learn more about how to create a report, let's [take a look at a report](https://www.dropbox.com/s/m5e1z3anecwmami/workshop-example.html?dl=0) and [the Rmarkdown file](https://www.dropbox.com/s/oiuekbu91xbjlqp/workshop-example.Rmd?dl=0) it was generated from.
 
 ### Text
 
-The text in the 
+The syntax to format the text portion of the report is relatively easy. You can easily get text that is **bolded**, *italicized*, ***bolded & italicized***. You can create "headers" and "sub-headers" by placing an "#" or "##" and so on in front of a line of text, generate numbered and bulleted lists, add hyperlinks to words or phrases, and so on.
+
+Let's take a look at the syntax of how to do this in Rmarkdown before we move on to formatting and adding code chunks:
+
+<img src="img/rmd-syntax.png" width="400">
+
+You can also get more information at [here](http://rmarkdown.rstudio.com/lesson-1.html) and [here](http://rmarkdown.rstudio.com/authoring_basics.html).
 
 ### Code chunks
 
