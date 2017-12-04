@@ -14,18 +14,15 @@ author: Michael J. Steinbaugh, Meeta Mistry, Radhika Khetani
 
 Usually R code is written, saved and executed in the form of an R script (a file with a `.R` extension). Any figures generated using the script are either plotted to a device (in R or Rstudio) and/or exported to file. 
 
-But, wouldn't it be nice to be able to save/share the code with collaborators along with tables, figures, and text describing the interpretation in a single, cleaned up report file? The **`knitr`** package in RStudio along with a simple text-markup language called **RMarkdown**, allows us to do exactly that.  
+But, wouldn't it be nice to be able to save/share the code with collaborators along with tables, figures, and text describing the interpretation in a single, cleaned up report file? The **`knitr`** package in RStudio along with a simple text-markup language called **RMarkdown**, allows us to do exactly that.   
 
-In this workshop we will become familiar with both `knitr` and the markdown language. We will then use them to generate a short HTML report that can be viewed in a web browser.
-
-## Introduction to knitr
-
-[knitr](https://yihui.name/knitr/), developed by [Yihui Xie](https://yihui.name), is an R package designed for report generation within RStudio. It enables dynamic generation of multiple file formats from an [RMarkdown](http://rmarkdown.rstudio.com/) file, including HTML and PDF documents. As [RMarkdown](http://rmarkdown.rstudio.com/) grows as an acceptable [reproducible manuscript](https://elifesciences.org/labs/cad57bcf/composing-reproducible-manuscripts-using-r-markdown) format, using [knitr](https://yihui.name/knitr/) to generate a report summary is becoming common practice. Knit report generation is now integrated into RStudio, and can be accessed using the GUI or console.
+In this workshop we will become familiar with both `knitr` and the Rmarkdown language. We will then use them to generate a short HTML report that can be viewed in a web browser.
 
 ## RMarkdown
 
-Markdown has proved so useful that many different coding groups adopted it, but also adding there own ‘flavours’. RStudio implements something called “R-flavoured markdown” (or RMarkdown) which has various features that we describe below.
+The [Markdown language](https://en.wikipedia.org/wiki/Markdown) for formatting plain text format has been adopted by many different coding groups, and some have added their own "flavours". RStudio implements something called **"R-flavoured markdown" or "RMarkdown"** which has really nice features for text and code formatting as described below.
 
+(https://elifesciences.org/labs/cad57bcf/composing-reproducible-manuscripts-using-r-markdown) 
 
 # Features of knitr with RMarkdown
 
@@ -118,7 +115,11 @@ mtcars %>%
 
 There are some other functions that allow for more powerful customization of tables, including `pander::pander()` and `xtable::xtable()`, but I generally prefer the simplicity and cross-platform reliability of `knitr::kable()`.
 
+## Introduction to knitr
 
+[knitr](https://yihui.name/knitr/), developed by [Yihui Xie](https://yihui.name), is an R package designed for report generation within RStudio. It enables dynamic generation of multiple file formats from an [RMarkdown](http://rmarkdown.rstudio.com/) file, including HTML and PDF documents. 
+
+Essentially, a document written in [RMarkdown](http://rmarkdown.rstudio.com/) format can be used by the `knitr` package to generate a report summary. Knit report generation is now integrated into RStudio, and can be accessed using the GUI or console.
 
 
 # Generating the report
