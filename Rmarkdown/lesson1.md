@@ -1,13 +1,13 @@
 ---
 title: Creating reports in R
-subtitle: knitr and Rmarkdown
+subtitle: knitr and RMarkdown
 author: Michael J. Steinbaugh, Meeta Mistry, Radhika Khetani
 ---
 
 ## Learning Objectives
 
-* What is Rmarkdown?
-* What are the uses of Rmarkdown 
+* What is RMarkdown?
+* What are the uses of RMarkdown 
 * Creating html reports using knitr
 
 # Reproducible reports in R
@@ -18,7 +18,7 @@ But, wouldn't it be nice to be able to save/share the code with collaborators al
 
 The [knitr](https://yihui.name/knitr/) package, developed by [Yihui Xie](https://yihui.name), is designed to generate reports within RStudio. It enables dynamic generation of multiple file formats from an [RMarkdown](http://rmarkdown.rstudio.com/) file, including HTML and PDF documents. Knit report generation is now integrated into RStudio, and can be accessed using the GUI or console.
 
-In this workshop we will become familiar with both `knitr` and the Rmarkdown language. We will then use them to generate a short HTML report that can be viewed in a web browser.
+In this workshop we will become familiar with both `knitr` and the RMarkdown language. We will then use them to generate a short HTML report that can be viewed in a web browser.
 
 ## RMarkdown basics
 
@@ -26,13 +26,13 @@ The [Markdown language](https://en.wikipedia.org/wiki/Markdown) for formatting p
 
 As RMarkdown grows as an acceptable [reproducible manuscript](https://elifesciences.org/labs/cad57bcf/composing-reproducible-manuscripts-using-r-markdown) format, using `knitr` to generate a report summary is becoming common practice. 
 
-Before we learn more about how to create a report, let's [take a look at a report](https://www.dropbox.com/s/m5e1z3anecwmami/workshop-example.html?dl=0) and [the Rmarkdown file](https://www.dropbox.com/s/oiuekbu91xbjlqp/workshop-example.Rmd?dl=0) it was generated from.
+Before we learn more about how to create a report, let's [take a look at a report](https://www.dropbox.com/s/m5e1z3anecwmami/workshop-example.html?dl=0) and [the RMarkdown file](https://www.dropbox.com/s/oiuekbu91xbjlqp/workshop-example.Rmd?dl=0) it was generated from.
 
 ### Text
 
 The syntax to format the text portion of the report is relatively easy. You can easily get text that is **bolded**, *italicized*, ***bolded & italicized***. You can create "headers" and "sub-headers" by placing an "#" or "##" and so on in front of a line of text, generate numbered and bulleted lists, add hyperlinks to words or phrases, and so on.
 
-Let's take a look at the syntax of how to do this in Rmarkdown before we move on to formatting and adding code chunks:
+Let's take a look at the syntax of how to do this in RMarkdown before we move on to formatting and adding code chunks:
 
 <img src="img/rmd-syntax.png" width="650">
 
@@ -120,29 +120,16 @@ mtcars %>%
 
 There are some other functions that allow for more powerful customization of tables, including `pander::pander()` and `xtable::xtable()`, but the simplicity and cross-platform reliability of `knitr::kable()` makes it an easy pick.
 
+
 ### Generating the report
 
-`knit()` (recommended)
-----------------------
+Once we've finished creating an [RMarkdown](http://rmarkdown.rstudio.com/) file containing code chunks, we finally need to knit the report. You can knit it by using the `knit()` function, or by just saying clicking on knit in the panel above the script.
 
-``` r
-help("knit", "knitr")
-```
+When executing `knit()` on a document, by default this will generate an HTML report. If you would prefer a different document format, this can be specified in the YAML header with the `output:` parameter. You can also click on the button in the panel above the script and click on "Knit" to get the various options as shown below:
 
-Once we've finished creating an [RMarkdown](http://rmarkdown.rstudio.com/) file containing code chunks, we finally need to knit the report. When executing `knit()` on a document, by default this will generate an HTML report. If you would prefer a different document format, this can be specified in the YAML header with the `output:` parameter:
+<img src="img/r-knit-button.png">
 
--   html\_document
--   pdf\_document
--   github\_document
-
-RStudio now supports a [number of formats](http://rmarkdown.rstudio.com/formats.html), each with their own customization options. Consult their website for more details.
-
-`render()` (advanced)
----------------------
-
-``` r
-help("render", "rmarkdown")
-```
+RStudio supports a [number of formats](http://rmarkdown.rstudio.com/formats.html), each with their own customization options. Consult their website for more details.
 
 The `knit()` command works great if you only need to generate a single document format. [RMarkdown](http://rmarkdown.rstudio.com/) also supports a more advanced function named `rmarkdown::render()`, allows for output of multiple document formats. To accomplish this, we recommend saving a special file named `_output.yaml` in your project root. Here's an [example](https://github.com/hbc/bcbioRnaseq/blob/master/docs/downloads/_output.yaml) from our [bcbioRnaseq](https://github.com/hbc/bcbioRnaseq) package:
 
@@ -157,36 +144,30 @@ The `knit()` command works great if you only need to generate a single document 
         toc: true
         toc_depth: 1
 
-**Note**: PDF rendering is sometimes problematic, especially when running [R](https://www.r-project.org/) remotely, like on the Orchestra cluster. If you run into problems, it's likely an issue related to [pandoc](http://pandoc.org).
+**Note**: PDF rendering is sometimes problematic, especially when running [R](https://www.r-project.org/) remotely, like on the cluster (Odyssey or O2). If you run into problems, it's likely an issue related to [pandoc](http://pandoc.org).
 
+### Generating an RMarkdown knit report
 
-> ### Working directory behavior
-> 
-> knitr redefines the working directory of an RMarkdown file in a manner that can be confusing. If you're working in RStudio with an RMarkdown file that is not at the same location as the current R working directory (`getwd()`), you can run into problems with broken file paths. Suppose you have RStudio open without a project loaded. My working directory is set to `~/Users/mike`. Now, if I load an RMarkdown file from my desktop at `~/Users/mike/Desktop`, knitr will set the working directory within chunks to be relative to my desktop. We advise against coding paths in a script to only work with knitr and not base R.
-> 
-> A simple way to resolve this issue is by creating an R project for the analysis, and saving all RMarkdown files at the top level, to avoid running into unexpected problems related to this behavior.
-
-Convert an R script to an RMarkdown knit report
-===============================================
-
-Now that we know some of the basics of RMarkdown, let's convert our Mov10 DE analysis script into an RMarkdown report! 
-
-1. [Download the .Rmd file](https://raw.githubusercontent.com/hbctraining/In-depth-NGS-Data-Analysis-Course/may2017/sessionVI/scripts/de_script_toknit.Rmd)
-2. Open up your DEanalysis R project in Rstudio.
-3. Move your RMarkdown file into the project working directory.
-4. Open up the .Rmd file and <kbd>Knit</kbd> the report.
-
-Once the report has been knit, it should open up in a separate window. If not, you will now see an html file in your workindg directory (`de_script_toknit.html`) which you can open in a web browser. **This report contains some of the commands we ran in Session III.**  This report is a great template but it can use a **few tweaks** to make it a bit more aesthetically pleasing.
-
+* Create a new project in a new directory called `rmd_workshop`
+* Download [this RMarkdown file]() to it
+* Download and uncompress [this data folder]() within your project directory
+* Install the `ggplot2` package if you don't have it. `install.pacakges("ggplot2")`
+* knit the markdown 
 * Add a **title** to your report
 * Only the first code chunk has a name. Go through and **add names to the remaining code chunks**.
-* Loading the libraries is very verbose and we do no need this output in our final report. To **suppress this messaging** you will need to set the code chunk options `warning=FALSE` and `message=FALSE`.
-* **Remove the verbosity** from the DESeq code chunk as well.
-* For the QC section we are ony really interested in displaying figures. To **hide the code** in the report the code chunk option `echo=FALSE`. Do the same for the Volcano Plot and Heatmap chunks.
-* **Separate** the QC code chunk into two code chunks one for PCA and one for the heatmap. **Add subheadings** for each chunk and be sure the code is not displayed for either. 
-* Take a look at the "Summarizing and Visualizing Results" section to see how we have incorporated **inline R code**
-* **Remove the warnings** from the Volcano Plot code chunk and change the **width of the figure** output using `fig.width=12`.
-* Separate the code for the last set of heatmaps into OE and KD. Add a sub-heading for each.
+* Modify the `Author` parameter at the top of the script to your name
+* Add a new header to the beginning of the script
+* Correct the first code chunk formatting
+* Add a new code chunk at the end with `sessionInfo()`
+* knit the markdown again
+
+***
+
+> **Note about working directory behavior**
+> 
+> knitr redefines the working directory of an RMarkdown file in a manner that can be confusing. If you're working in RStudio with an RMarkdown file that is not at the same location as the current R working directory (`getwd()`), you can run into problems with broken file paths. Make sure that any paths to files specified in the RMarkdown document is relative to its location, and not your current working directory.
+> 
+> A simple way to make sure that the paths are not an issue is by creating an R project for the analysis, and saving all RMarkdown files at the top level and referring to the data and output files within the project directory. This will prevent unexpected problems related to this behavior.
 
 ***
 
