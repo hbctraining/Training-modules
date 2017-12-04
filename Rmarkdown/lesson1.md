@@ -129,24 +129,9 @@ When executing `knit()` on a document, by default this will generate an HTML rep
 
 <img src="img/r-knit-button.png">
 
-RStudio supports a [number of formats](http://rmarkdown.rstudio.com/formats.html), each with their own customization options. Consult their website for more details.
-
-The `knit()` command works great if you only need to generate a single document format. [RMarkdown](http://rmarkdown.rstudio.com/) also supports a more advanced function named `rmarkdown::render()`, allows for output of multiple document formats. To accomplish this, we recommend saving a special file named `_output.yaml` in your project root. Here's an [example](https://github.com/hbc/bcbioRnaseq/blob/master/docs/downloads/_output.yaml) from our [bcbioRnaseq](https://github.com/hbc/bcbioRnaseq) package:
-
-    rmarkdown::html_document:
-        code_folding: hide
-        df_print: kable
-        highlight: pygments
-        number_sections: false
-        toc: true
-    rmarkdown::pdf_document:
-        number_sections: false
-        toc: true
-        toc_depth: 1
-
 **Note**: PDF rendering is sometimes problematic, especially when running [R](https://www.r-project.org/) remotely, like on the cluster (Odyssey or O2). If you run into problems, it's likely an issue related to [pandoc](http://pandoc.org).
 
-### Generating an RMarkdown knit report
+## Generating an RMarkdown knit report!
 
 * Create a new project in a new directory called `rmd_workshop`
 * Download [this RMarkdown file]() to it
@@ -163,7 +148,28 @@ The `knit()` command works great if you only need to generate a single document 
 
 ***
 
-> **Note about working directory behavior**
+> **Note1: output formats**
+> 
+> RStudio supports a [number of formats](http://rmarkdown.rstudio.com/formats.html), each with their own customization options. Consult their website for more details.
+> 
+> The `knit()` command works great if you only need to generate a single document format. [RMarkdown](http://rmarkdown.rstudio.com/) also supports a more advanced function named `rmarkdown::render()`, allows for output of multiple document formats. To accomplish this, we recommend saving a special file named `_output.yaml` in your project root. Here's an [example](https://github.com/hbc/bcbioRnaseq/blob/master/docs/downloads/_output.yaml) from our [bcbioRnaseq](https://github.com/hbc/bcbioRnaseq) package:
+
+> ```r
+> rmarkdown::html_document:
+>         code_folding: hide
+>         df_print: kable
+>         highlight: pygments
+>         number_sections: false
+>         toc: true
+> rmarkdown::pdf_document:
+>         number_sections: false
+>         toc: true
+>         toc_depth: 1
+> ```
+
+***
+
+> **Note2: working directory behavior**
 > 
 > knitr redefines the working directory of an RMarkdown file in a manner that can be confusing. If you're working in RStudio with an RMarkdown file that is not at the same location as the current R working directory (`getwd()`), you can run into problems with broken file paths. Make sure that any paths to files specified in the RMarkdown document is relative to its location, and not your current working directory.
 > 
