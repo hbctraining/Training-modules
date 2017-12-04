@@ -26,7 +26,11 @@ The [Markdown language](https://en.wikipedia.org/wiki/Markdown) for formatting p
 
 As RMarkdown grows as an acceptable [reproducible manuscript](https://elifesciences.org/labs/cad57bcf/composing-reproducible-manuscripts-using-r-markdown) format, using `knitr` to generate a report summary is becoming common practice. 
 
+Before we learn more about how to create a report, let's [take a look at a report]() and [the Rmarkdown file]() it was generated from.
+
 ### Text
+
+The text in the 
 
 ### Code chunks
 
@@ -84,7 +88,7 @@ An additional cool trick is that you can save `opts_chunk$set` settings in `~/.R
 
 A neat feature of knitr is how much simpler it makes generating figures. You can simply return a plot in a chunk, and knitr will automatically write the files to disk, in an organized subfolder. By specifying options in the `setup` chunk, you can have R automatically save your plots in multiple file formats at once, including PNG, PDF, and SVG. A single chunk can support multiple plots, and they will be arranged in squares below the chunk in RStudio.
 
-There are also a few options commonly used for plots to easily resize the figures in the final report. One can specify in the height and width of the figure when setting up the code chunk.
+There are also a few options commonly used for plots to easily resize the figures in the final report. You can specify the height and width of the figure when setting up the code chunk.
 
 <img src="img/r-figure.png">
 
@@ -108,7 +112,7 @@ mtcars %>%
 | Hornet Sportabout |  18.7|    8|   360|  175|  3.15|  3.440|  17.02|    0|    0|     3|     2|
 | Valiant           |  18.1|    6|   225|  105|  2.76|  3.460|  20.22|    1|    0|     3|     1|
 
-There are some other functions that allow for more powerful customization of tables, including `pander::pander()` and `xtable::xtable()`, but I generally prefer the simplicity and cross-platform reliability of `knitr::kable()`.
+There are some other functions that allow for more powerful customization of tables, including `pander::pander()` and `xtable::xtable()`, but the simplicity and cross-platform reliability of `knitr::kable()` makes it an easy pick.
 
 ### Generating the report
 
