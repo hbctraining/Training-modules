@@ -14,28 +14,29 @@ author: Michael J. Steinbaugh, Meeta Mistry, Radhika Khetani
 
 Usually R code is written, saved and executed in the form of an R script (a file with a `.R` extension). Any figures generated using the script are either plotted to a device (in R or Rstudio) and/or exported to file. 
 
-But, wouldn't it be nice to be able to save/share the code with collaborators along with tables, figures, and text describing the interpretation in a single, cleaned up report file? The **`knitr`** package in RStudio along with a simple text-markup language called **RMarkdown**, allows us to do exactly that.   
+But, wouldn't it be nice to be able to save/share the code with collaborators along with tables, figures, and text describing the interpretation in a single, cleaned up report file? 
+
+The [knitr](https://yihui.name/knitr/) package, developed by [Yihui Xie](https://yihui.name), is designed to generate reports within RStudio. It enables dynamic generation of multiple file formats from an [RMarkdown](http://rmarkdown.rstudio.com/) file, including HTML and PDF documents. Knit report generation is now integrated into RStudio, and can be accessed using the GUI or console.
 
 In this workshop we will become familiar with both `knitr` and the Rmarkdown language. We will then use them to generate a short HTML report that can be viewed in a web browser.
 
-## RMarkdown
+## RMarkdown basics
 
 The [Markdown language](https://en.wikipedia.org/wiki/Markdown) for formatting plain text format has been adopted by many different coding groups, and some have added their own "flavours". RStudio implements something called **"R-flavoured markdown" or "RMarkdown"** which has really nice features for text and code formatting as described below.
 
-(https://elifesciences.org/labs/cad57bcf/composing-reproducible-manuscripts-using-r-markdown) 
+As RMarkdown grows as an acceptable [reproducible manuscript](https://elifesciences.org/labs/cad57bcf/composing-reproducible-manuscripts-using-r-markdown) format, using `knitr` to generate a report summary is becoming common practice. 
 
-# Features of knitr with RMarkdown
+### Text
 
-## Code chunks
+### Code chunks
 
-The basic idea of [knitr](https://yihui.name/knitr/) (along with [RMarkdown](http://rmarkdown.rstudio.com/)) is that you can write your analysis workflow in plain text and intersperse chunks of code delimited with a special marker (\`\`\`). Backticks (\`) commonly indicate code and are also used on [GitHub](https://github.com). Each chunk should be given a **unique** name. [knitr](https://yihui.name/knitr/) isn't very picky how you name the code chunks, but we recommend using `snake_case` for the names whenever possible. 
+The basic idea is that you can write your analysis workflow in plain text and intersperse chunks of R code delimited with a special marker (\`\`\`). Backticks (\`) commonly indicate code and are also used on [GitHub](https://github.com). Each code chunk should be given a **unique** name. [knitr](https://yihui.name/knitr/) isn't very picky how you name the code chunks, but we recommend using `snake_case` for the names whenever possible. 
 
 <img src="../img/r-chunk.png">
 
 Additionally, you can write inline [R](https://www.r-project.org/) code enclosed by single backticks (\`) containing a lowercase `r` (like \`\`\` code chunks). This allows for variable returns outside of code chunks, and is extremely useful for making report text more dynamic. For example, you can print the current date inline with this syntax: `` ` r Sys.Date() ` `` (no spaces).
 
-
-## Per chunk options
+### Options for code chunks
 
 knitr provides a lot of customization options for code chunks, which are written in the form of `tag=value`.
 
@@ -50,21 +51,16 @@ There is a [comprehensive list](https://yihui.name/knitr/options/#code-chunk) of
 * `message = TRUE`: whether to preserve messages emitted by message() (similar to warning)
 * `results = "asis"`: output as-is, i.e., write raw results from R into the output document
 
-There are also a few options commonly used for plots to easily resize images:
-
-* `fig.height = 6`
-* `fig.width = 4`
-
-
-## The setup chunk
+### The setup chunk
 
 The `setup` chunk is a special knitr chunk that should be placed at the start of the document. We recommend storing all `library()` loads required for the script and other `load()` requests for external files here. In our RMarkdown templates, such as the bcbioRnaseq [differential expression template](https://github.com/hbc/bcbioRnaseq/blob/master/inst/rmarkdown/templates/differential_expression/skeleton/skeleton.Rmd), we store all the user-defined parameters in the `setup` chunk that are required for successful knitting.
 
-    {r setup, include=FALSE}
-    knitr::opts_chunk$set(echo = TRUE)
+```r
+{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-
-## Global options
+### Global options
 
 knitr allows for global options to be set on all chunks in an [RMarkdown](http://rmarkdown.rstudio.com/) file. These are options that should be placed inside your `setup` chunk at the top of your RMarkdown document.
 
@@ -87,13 +83,23 @@ opts_chunk$set(
 
 An additional cool trick is that you can save `opts_chunk$set` settings in `~/.Rprofile` and these knitr options will apply to all of your RMarkdown documents.
 
-
-## Figures
+### Figures
 
 A neat feature of knitr is how much simpler it makes generating figures. You can simply return a plot in a chunk, and knitr will automatically write the files to disk, in an organized subfolder. By specifying options in the `setup` chunk, you can have R automatically save your plots in multiple file formats at once, including PNG, PDF, and SVG. A single chunk can support multiple plots, and they will be arranged in squares below the chunk in RStudio.
 
+There are also a few options commonly used for plots to easily resize the figures in the final report. One can specify in the height and width of the figure when setting up the code chunk.
 
-## Tables
+```
+{r volcano_plot fig.height = 6, fig.width = 4}
+
+ggplot(resOE_df) +
+  geom_point(aes(x=log2FoldChange, y=-log10(padj), colour=threshold)) +
+  ggtitle("Mov10 overexpression") +
+  xlab("log2 fold change") + 
+  ylab("-log10 adjusted p-value") +
+```
+
+### Tables
 
 knitr includes a simple but powerful function for generating stylish tables in a knit report named `kable()`. Here's an example using R's built-in `mtcars` dataset:
 
@@ -115,14 +121,7 @@ mtcars %>%
 
 There are some other functions that allow for more powerful customization of tables, including `pander::pander()` and `xtable::xtable()`, but I generally prefer the simplicity and cross-platform reliability of `knitr::kable()`.
 
-## Introduction to knitr
-
-[knitr](https://yihui.name/knitr/), developed by [Yihui Xie](https://yihui.name), is an R package designed for report generation within RStudio. It enables dynamic generation of multiple file formats from an [RMarkdown](http://rmarkdown.rstudio.com/) file, including HTML and PDF documents. 
-
-Essentially, a document written in [RMarkdown](http://rmarkdown.rstudio.com/) format can be used by the `knitr` package to generate a report summary. Knit report generation is now integrated into RStudio, and can be accessed using the GUI or console.
-
-
-# Generating the report
+### Generating the report
 
 `knit()` (recommended)
 ----------------------
@@ -162,7 +161,7 @@ The `knit()` command works great if you only need to generate a single document 
 **Note**: PDF rendering is sometimes problematic, especially when running [R](https://www.r-project.org/) remotely, like on the Orchestra cluster. If you run into problems, it's likely an issue related to [pandoc](http://pandoc.org).
 
 
-> ## Working directory behavior
+> ### Working directory behavior
 > 
 > knitr redefines the working directory of an RMarkdown file in a manner that can be confusing. If you're working in RStudio with an RMarkdown file that is not at the same location as the current R working directory (`getwd()`), you can run into problems with broken file paths. Suppose you have RStudio open without a project loaded. My working directory is set to `~/Users/mike`. Now, if I load an RMarkdown file from my desktop at `~/Users/mike/Desktop`, knitr will set the working directory within chunks to be relative to my desktop. We advise against coding paths in a script to only work with knitr and not base R.
 > 
@@ -190,15 +189,16 @@ Once the report has been knit, it should open up in a separate window. If not, y
 * **Remove the warnings** from the Volcano Plot code chunk and change the **width of the figure** output using `fig.width=12`.
 * Separate the code for the last set of heatmaps into OE and KD. Add a sub-heading for each.
 
+***
 
-
-
-Additional resources
+**Additional resources**
 ================
 
 -   [knitr in a knutshell](http://kbroman.org/knitr_knutshell/)
 -   [knitr book](https://www.amazon.com/gp/product/1498716962)
 -   [knitr examples](https://yihui.name/knitr/demos)
 -   [knitr vignettes](https://github.com/yihui/knitr/tree/master/vignettes)
+
 ***
+
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
