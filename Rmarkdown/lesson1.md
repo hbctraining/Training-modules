@@ -55,12 +55,7 @@ There is a [comprehensive list](https://yihui.name/knitr/options/#code-chunk) of
 
 The `setup` chunk is a special knitr chunk that should be placed at the start of the document. We recommend storing all `library()` loads required for the script and other `load()` requests for external files here. In our RMarkdown templates, such as the bcbioRnaseq [differential expression template](https://github.com/hbc/bcbioRnaseq/blob/master/inst/rmarkdown/templates/differential_expression/skeleton/skeleton.Rmd), we store all the user-defined parameters in the `setup` chunk that are required for successful knitting.
 
-```r
-\`\`\`
-{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-\`\`\`
-```
+<img src="img/r-setup.png">
 
 ### Global options
 
@@ -91,21 +86,13 @@ A neat feature of knitr is how much simpler it makes generating figures. You can
 
 There are also a few options commonly used for plots to easily resize the figures in the final report. One can specify in the height and width of the figure when setting up the code chunk.
 
-```
-{r volcano_plot fig.height = 6, fig.width = 4}
-
-ggplot(resOE_df) +
-  geom_point(aes(x=log2FoldChange, y=-log10(padj), colour=threshold)) +
-  ggtitle("Mov10 overexpression") +
-  xlab("log2 fold change") + 
-  ylab("-log10 adjusted p-value") +
-```
+<img src="img/r-figure.png">
 
 ### Tables
 
 knitr includes a simple but powerful function for generating stylish tables in a knit report named `kable()`. Here's an example using R's built-in `mtcars` dataset:
 
-``` r
+```r
 help("kable", "knitr")
 mtcars %>%
     head %>%
