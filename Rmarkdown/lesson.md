@@ -129,7 +129,7 @@ When executing `knit()` on a document, by default this will generate an HTML rep
 
 <img src="img/r-knit-button.png">
 
-**Note**: PDF rendering is sometimes problematic, especially when running [R](https://www.r-project.org/) remotely, like on the cluster (Odyssey or O2). If you run into problems, it's likely an issue related to [pandoc](http://pandoc.org).
+> **Note**: *PDF rendering is sometimes problematic, especially when running [R](https://www.r-project.org/) remotely, like on the cluster (Odyssey or O2). If you run into problems, it's likely an issue related to [pandoc](http://pandoc.org).*
 
 ## Generating an RMarkdown knit report!
 
