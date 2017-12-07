@@ -34,12 +34,12 @@ Download the most recent versions of R and RStudio for your laptop:
 Install the required R package by running the following code in RStudio:
 
 ```r
-source("http://bioconductor.org/biocLite.R") 
+install.packages("knitr")
 
-biocLite("knitr")
+install.packages("ggplot2")
 ```
 
-Load the library to make sure the packages installed properly:
+Load the `knitr` library to make sure the packages installed properly:
 
 ```r
 library(knitr)
