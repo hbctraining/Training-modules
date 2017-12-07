@@ -1,11 +1,8 @@
----
-Audience: Biologists
-Computational Skills: Beginner/Intermediate R
-Prerequisites: Introduction to R
-Duration: 3 hour workshop (~3 hours of trainer-led time)
----
-
 ## Reproducible Research using R
+
+| Audience | Computational Skills | Prerequisites | Duration |
+:----------|:----------|:----------|:----------|
+| Anyone | Beginner/Intermediate R | Working knowledge of R/RStudio | 3 hour workshop|
 
 ### Description
 
