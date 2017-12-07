@@ -39,10 +39,11 @@ install.packages("knitr")
 install.packages("ggplot2")
 ```
 
-Load the `knitr` library to make sure the packages installed properly:
+Load the libraries to make sure the packages installed properly:
 
 ```r
 library(knitr)
+library(ggplot2)
 ```
 
 
