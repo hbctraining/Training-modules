@@ -133,18 +133,21 @@ When executing `knit()` on a document, by default this will generate an HTML rep
 
 ## Generating an RMarkdown knit report!
 
-* Create a new project in a new directory called `rmd_workshop`
-* Download [this RMarkdown file]() to it
-* Download and uncompress [this data folder]() within your project directory
+* **Create a new project** in a new directory called `rmd_workshop`
+* **Download [this RMarkdown file](https://www.dropbox.com/s/vlqstxylwjry3cb/workshop-example.html?dl=0)** to it
+* **Download and uncompress [this data folder](https://www.dropbox.com/s/icatfa8fzzqsfju/data.zip?dl=0)** within your project directory
 * Install the `ggplot2` package if you don't have it. `install.pacakges("ggplot2")`
-* knit the markdown 
-* Add a **title** to your report
-* Only the first code chunk has a name. Go through and **add names to the remaining code chunks**.
-* Modify the `Author` parameter at the top of the script to your name
-* Add a new header to the beginning of the script
-* Correct the first code chunk formatting
-* Add a new code chunk at the end with `sessionInfo()`
-* knit the markdown again
+**knit the markdown** 
+
+* Only the first 2 code chunks have names; go through and **add names to the remaining code chunks**.
+* Choose a code chunk that you do not want displayed in the report, and modify it's options within the `{}`
+* Without removing the last code chunk (for box plot) from the Rmd file, add options such that it does not appear in your html report
+* **knit the markdown**
+
+* **Add a new code chunk** at the end with `sessionInfo()`
+* **Modify the `Author`** parameter at the top of the script to your name
+* **Modify the script header**
+* **knit the markdown**
 
 ***
 
