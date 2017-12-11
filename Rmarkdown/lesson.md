@@ -131,7 +131,7 @@ There are some other functions that allow for more powerful customization of tab
 
 As the final chunk in the analysis, it is recommended to run the `sessionInfo()` function. This function will output the R version and the versions of all libraries loaded in the R environment. The versions of the tools used is important information for reproduction of your analysis in the future.
 
-Once we've finished creating an [RMarkdown](http://rmarkdown.rstudio.com/) file containing code chunks, we finally need to knit the report. You can knit it by using the `knit()` function, or by just clicking on knit in the panel above the script.
+Once we've finished creating an [RMarkdown](http://rmarkdown.rstudio.com/) file containing code chunks, we finally need to knit the report. You can knit it by using the `knit()` function, or by just clicking on "knit" in the panel above the script.
 
 When executing `knit()` on a document, by default this will generate an HTML report. If you would prefer a different document format, this can be specified in the YAML header with the `output:` parameter. You can also click on the button in the panel above the script and click on "Knit" to get the various options as shown below:
 
@@ -145,25 +145,27 @@ When executing `knit()` on a document, by default this will generate an HTML rep
 
 1. **Create a new project** in a new directory called `rmd_workshop`
 2. **Download [this RMarkdown file](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-example.Rmd)** to it
-3. **Download and uncompress [this data folder](data/data.zip?raw=true)** within your project directory
-4. **knit the markdown** 
+3. **Download and uncompress [this data folder](data/data.zip?raw=true)** within the project directory
+4. **Open the .rmd file** in RStudio
+5. **knit the markdown** 
 
 ___
 
 ### Exercise 2
 
 1. Only the some of the code chunks have names; go through and **add names to the unnamed code chunks**.
-* For the code chunk named `data-ordering` **modify the options (`{r}`)** such that its output shows up in the report, but not the actual code
-* Without removing the last code chunk (for boxplot) from the Rmd file, **modify its options** such that neither the code nor its output appear in the report
+2. For the code chunk named `data-ordering` **modify the options (`{r}`)** such that its output shows up in the report, but not the actual code
+3. Without removing the last code chunk (for boxplot) from the Rmd file, **modify its options** such that neither the code nor its output appear in the report
+4. **knit the markdown** 
 
 ___
 
 ### Exercise 3
 
 1. **knit the markdown**
-* **Add a new code chunk** at the end with `sessionInfo()`
-* **Modify the `Author` and `Title`** parameters at the top of the script
-* **knit the markdown**
+2. **Add a new code chunk** at the end with `sessionInfo()`
+3. **Modify the `Author` and `Title`** parameters at the top of the script
+4. **knit the markdown** 
 
 ***
 
