@@ -145,11 +145,13 @@ When executing `knit()` on a document, by default this will generate an HTML rep
 * **Download [this RMarkdown file](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-example.Rmd)** to it
 * **Download and uncompress [this data folder](data/data.zip?raw=true)** within your project directory
 * **knit the markdown** 
+
 ___
 
 * Only the some of the code chunks have names; go through and **add names to the unnamed code chunks**.
 * For the code chunk named `data-ordering` **modify the options (`{r}`)** such that its output shows up in the report, but not the actual code
 * Without removing the last code chunk (for boxplot) from the Rmd file, **modify its options** such that neither the code nor its output appear in the report
+
 ___
 
 * **knit the markdown**
