@@ -141,7 +141,7 @@ When executing `knit()` on a document, by default this will generate an HTML rep
 
 ## Generating an RMarkdown knit report!
 
-### Exercise 1
+#### Activity 1
 
 1. **Create a new project** in a new directory called `rmd_workshop`
 2. **Download [this RMarkdown file](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-example.Rmd)** to it
@@ -151,7 +151,7 @@ When executing `knit()` on a document, by default this will generate an HTML rep
 
 ___
 
-### Exercise 2
+#### Activity 2
 
 1. Only the some of the code chunks have names; go through and **add names to the unnamed code chunks**.
 2. For the code chunk named `data-ordering` **modify the options (`{r}`)** such that its output shows up in the report, but not the actual code
@@ -160,7 +160,7 @@ ___
 
 ___
 
-### Exercise 3
+#### Activity 3
 
 1. **knit the markdown**
 2. **Add a new code chunk** at the end with `sessionInfo()`
