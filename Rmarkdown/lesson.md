@@ -32,8 +32,6 @@ The [Markdown language](https://en.wikipedia.org/wiki/Markdown) for formatting p
 
 As RMarkdown grows as an acceptable [reproducible manuscript](https://elifesciences.org/labs/cad57bcf/composing-reproducible-manuscripts-using-r-markdown) format, using `knitr` to generate a report summary is becoming common practice. 
 
-
-
 ### Text
 
 The syntax to format the text portion of the report is relatively easy. You can easily get text that is **bolded**, *italicized*, ***bolded & italicized***. You can create "headers" and "sub-headers" by placing an "#" or "##" and so on in front of a line of text, generate numbered and bulleted lists, add hyperlinks to words or phrases, and so on.
@@ -42,19 +40,21 @@ Let's take a look at the syntax of how to do this in RMarkdown before we move on
 
 <img src="img/rmd-syntax.png" width="650">
 
-You can also get more information at [here](http://rmarkdown.rstudio.com/lesson-1.html) and [here](http://rmarkdown.rstudio.com/authoring_basics.html).
+You can also get more information about text formatting [here](http://rmarkdown.rstudio.com/lesson-1.html) and [here](http://rmarkdown.rstudio.com/authoring_basics.html).
 
 ### Code chunks
 
-The basic idea is that you can write your analysis workflow in plain text and intersperse chunks of R code delimited with a special marker (\`\`\`). Backticks (\`) commonly indicate code and are also used on [GitHub](https://github.com). Each code chunk should be given a **unique** name. [knitr](https://yihui.name/knitr/) isn't very picky how you name the code chunks, but we recommend using `snake_case` for the names whenever possible. 
+The basic idea is that you can write your analysis workflow in plain text and intersperse chunks of R code delimited with a special marker (\`\`\`). Backticks (\`) commonly indicate code and are also used for formatting on [GitHub](https://github.com). 
+
+Each individual code chunk should be given a **unique** name. [knitr](https://yihui.name/knitr/) isn't very picky how you name the code chunks, but we recommend using `snake_case` for the names whenever possible. 
 
 <img src="img/r-chunk.png">
 
-Additionally, you can write inline [R](https://www.r-project.org/) code enclosed by single backticks (\`) containing a lowercase `r` (like \`\`\` code chunks). This allows for variable returns outside of code chunks, and is extremely useful for making report text more dynamic. For example, you can print the current date inline with this syntax: `` ` r Sys.Date() ` `` (no spaces).
+Additionally, you can write inline [R](https://www.r-project.org/) code enclosed by single backticks (\`) containing a lowercase `r` (like \`\`\` code chunks). This allows for variable returns outside of code chunks, and is extremely useful for making report text more dynamic. For example, you can print the current date inline within the report with this syntax: `` `r Sys.Date()` `` (no spaces).
 
 ### Options for code chunks
 
-knitr provides a lot of customization options for code chunks, which are written in the form of `tag=value`.
+The knitr package provides a lot of customization options for code chunks, which are written in the form of `tag=value`.
 
 <img src="img/r-chunkoptions.png">
 
@@ -143,7 +143,7 @@ When executing `knit()` on a document, by default this will generate an HTML rep
 
 * **Create a new project** in a new directory called `rmd_workshop`
 * **Download [this RMarkdown file](https://www.dropbox.com/s/irwv6v9dd5fywrz/workshop-example.Rmd?dl=0)** to it
-* **Download and uncompress [this data folder](https://www.dropbox.com/s/icatfa8fzzqsfju/data.zip?dl=0)** within your project directory
+* **Download and uncompress [this data folder](data/data.zip?raw=true)** within your project directory
 * Install the `ggplot2` package if you don't have it. `install.pacakges("ggplot2")`
 **knit the markdown** 
 
