@@ -75,7 +75,7 @@ The `setup` chunk is a special knitr chunk that should be placed at the start of
 
 ### Global options
 
-knitr allows for global options to be set on all chunks in an [RMarkdown](http://rmarkdown.rstudio.com/) file. These are options that should be placed inside your `setup` chunk at the top of your RMarkdown document.
+knitr allows for global options to be set on all chunks in an [RMarkdown](http://rmarkdown.rstudio.com/) file. These are options that should be placed inside your `setup` chunk at the top of your RMarkdown document. These will be the default options used for all the code chunks in the document, however they can be modified for each code chunk.
 
 ```r
 opts_chunk$set(
@@ -94,7 +94,7 @@ opts_chunk$set(
     warning = FALSE)
 ```
 
-An additional cool trick is that you can save `opts_chunk$set` settings in `~/.Rprofile` and these knitr options will apply to all of your RMarkdown documents.
+An additional cool trick is that you can save `opts_chunk$set` settings in `~/.Rprofile` and these knitr options will apply to all of your RMarkdown documents, and not just the one.
 
 ### Figures
 
