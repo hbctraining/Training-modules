@@ -162,10 +162,9 @@ ___
 
 #### Activity 3
 
-1. **knit the markdown**
-2. **Add a new code chunk** at the end with `sessionInfo()`
-3. **Modify the `Author` and `Title`** parameters at the top of the script
-4. **knit the markdown** 
+1. **Add a new code chunk** at the end with `sessionInfo()`
+2. **Modify the `Author` and `Title`** parameters at the top of the script
+3. **knit the markdown** 
 
 ***
 
