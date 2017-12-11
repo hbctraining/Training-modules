@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, eval=FALSE, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -39,7 +39,7 @@ kable(meta, format="markdown")
 
 The original metadata file did not have the average expression for each sample. So we will use the counts data to generate that information and add it to the metadata data frame along with the age of the mice (in days).
 
-```{r}
+```{r data-ordering}
 # Ensure that sample names in data columns are in the same order as the sameple names in the meta rows 
 data_ordered <- data[ ,match(rownames(meta), colnames(data))]
 ```
@@ -60,7 +60,7 @@ kable(new_meta, format="markdown")
 
 ## Does average expression change with age of mouse?
 
-```{r}
+```{r scatterplot}
 ggplot(new_meta) +
     geom_point(aes(x=age_in_days, y=samplemeans, color=genotype, shape=celltype), size=rel(3.0)) +
     theme_bw() +
@@ -74,7 +74,7 @@ ggplot(new_meta) +
 
 ## Distribution of expression in the 2 genotypes
 
-```{r}
+```{r boxplot}
 ggplot(new_meta) +
     geom_boxplot(aes(x=genotype, y=samplemeans, fill=celltype)) +
     ggtitle("Genotype differences in average gene expression") +
@@ -84,4 +84,3 @@ ggplot(new_meta) +
     xlab("Genotype") +
     ylab("Mean expression")
 ```
-
