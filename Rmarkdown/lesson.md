@@ -142,7 +142,7 @@ When executing `knit()` on a document, by default this will generate an HTML rep
 ## Generating an RMarkdown knit report!
 
 * **Create a new project** in a new directory called `rmd_workshop`
-* **Download [this RMarkdown file](https://www.dropbox.com/s/irwv6v9dd5fywrz/workshop-example.Rmd?dl=0)** to it
+* **Download [this RMarkdown file](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-example.Rmd)** to it
 * **Download and uncompress [this data folder](data/data.zip?raw=true)** within your project directory
 * Install the `ggplot2` package if you don't have it. `install.pacakges("ggplot2")`
 **knit the markdown** 
