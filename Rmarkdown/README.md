@@ -21,8 +21,7 @@ Reproducible research is as important for computational analysis as it is at the
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|Setting up | 15 min |
-|Generating reports| 165 min |
+|[Introduction to RMarkdown and report generation with the knitr package](lesson.md)| 120 min |
 
 ### Installation Requirements
 
