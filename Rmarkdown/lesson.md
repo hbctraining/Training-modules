@@ -10,7 +10,7 @@ author: Michael J. Steinbaugh, Meeta Mistry, Radhika Khetani
 * What are the uses of RMarkdown 
 * Creating html reports using knitr
 
-# Reproducible research using RMarkdown
+# Reproducible research using RMarkdown - report generation
  
 For any experimental analysis, it is critical to keep detailed notes for the future reproduction of the experiment and for the interpretation of results. For laboratory work, lab notebooks allow us to organize our methods, results, and conclusions to allow for future retrieval and reproduction. Computational analysis requires the same diligence, but it is often easy to forget to completely document the analysis and/or interpret the results in a transparent fashion. 
  
