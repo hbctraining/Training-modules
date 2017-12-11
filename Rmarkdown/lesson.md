@@ -125,7 +125,9 @@ There are some other functions that allow for more powerful customization of tab
 
 ### Generating the report
 
-Once we've finished creating an [RMarkdown](http://rmarkdown.rstudio.com/) file containing code chunks, we finally need to knit the report. You can knit it by using the `knit()` function, or by just saying clicking on knit in the panel above the script.
+As the final chunk in the analysis, it is recommended to run the `sessionInfo()` function. This function will output the R version and the versions of all libraries loaded in the R environment. The versions of the tools used is important information for reproduction of your analysis in the future.
+
+Once we've finished creating an [RMarkdown](http://rmarkdown.rstudio.com/) file containing code chunks, we finally need to knit the report. You can knit it by using the `knit()` function, or by just clicking on knit in the panel above the script.
 
 When executing `knit()` on a document, by default this will generate an HTML report. If you would prefer a different document format, this can be specified in the YAML header with the `output:` parameter. You can also click on the button in the panel above the script and click on "Knit" to get the various options as shown below:
 
