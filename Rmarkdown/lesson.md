@@ -20,7 +20,11 @@ Wouldn't it be nice to be able to save/share the code with collaborators along w
 
 The [knitr](https://yihui.name/knitr/) package, developed by [Yihui Xie](https://yihui.name), is designed to generate reports within RStudio. It enables dynamic generation of multiple file formats from an [RMarkdown](http://rmarkdown.rstudio.com/) file, including HTML and PDF documents. Knit report generation is now integrated into RStudio, and can be accessed using the GUI or console.
 
-In this workshop we will become familiar with both `knitr` and the RMarkdown language. We will then use them to generate a short HTML report that can be viewed in a web browser.
+In this workshop we will become familiar with both `knitr` and the RMarkdown language. We will then use them to generate a short HTML report that can be viewed in a web browser. 
+
+Before we start, let's take a look at a "knitted" HTML report and the RMarkdown file used to generate it. 
+* [Final report of differential expression analysis](https://www.dropbox.com/s/m5e1z3anecwmami/workshop-example.html?dl=0) 
+* [RMarkdown file that was used to create the above report](https://www.dropbox.com/s/oiuekbu91xbjlqp/workshop-example.Rmd?dl=0)
 
 ## RMarkdown basics
 
@@ -28,7 +32,7 @@ The [Markdown language](https://en.wikipedia.org/wiki/Markdown) for formatting p
 
 As RMarkdown grows as an acceptable [reproducible manuscript](https://elifesciences.org/labs/cad57bcf/composing-reproducible-manuscripts-using-r-markdown) format, using `knitr` to generate a report summary is becoming common practice. 
 
-Before we learn more about how to create a report, let's [take a look at a report](https://www.dropbox.com/s/m5e1z3anecwmami/workshop-example.html?dl=0) and [the RMarkdown file](https://www.dropbox.com/s/oiuekbu91xbjlqp/workshop-example.Rmd?dl=0) it was generated from.
+
 
 ### Text
 
@@ -138,7 +142,7 @@ When executing `knit()` on a document, by default this will generate an HTML rep
 ## Generating an RMarkdown knit report!
 
 * **Create a new project** in a new directory called `rmd_workshop`
-* **Download [this RMarkdown file](https://www.dropbox.com/s/vlqstxylwjry3cb/workshop-example.html?dl=0)** to it
+* **Download [this RMarkdown file](https://www.dropbox.com/s/irwv6v9dd5fywrz/workshop-example.Rmd?dl=0)** to it
 * **Download and uncompress [this data folder](https://www.dropbox.com/s/icatfa8fzzqsfju/data.zip?dl=0)** within your project directory
 * Install the `ggplot2` package if you don't have it. `install.pacakges("ggplot2")`
 **knit the markdown** 
