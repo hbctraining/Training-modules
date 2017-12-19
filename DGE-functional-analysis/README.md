@@ -1,11 +1,9 @@
----
-Audience: Biologists
-Computational Skills: Beginner/Intermediate R
-Prerequisites: Introductin to R
-Duration: 3 hour workshop (~3 hours of trainer-led time)
----
-
 ## Functional Analysis of Gene Lists
+
+| Audience | Computational Skills | Prerequisites | Duration |
+:----------|:----------|:----------|:----------|
+| Biologists | Beginner/Intermediate R | Introduction to R | 3 hour workshop (~3 hours of trainer-led time)|
+
 
 ### Description
 
