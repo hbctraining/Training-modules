@@ -1,12 +1,9 @@
----
-Audience: Biologists
-Computational Skills: Beginner to Intermediate R
-Prerequisites: Introduction to R and/or Introduction to Unix
-Duration: 2-3 hour workshops
----
-
-
 # Current Topics in Bioinformatics workshops
+
+| Audience | Computational Skills | Prerequisites | Duration |
+:----------|:----------|:----------|:----------|
+| Biologists | Beginner/Intermediate R | Introduction to R and/or Introduction to shell | 2-3 hour workshops |
+
 
 This repository has teaching materials for **2-3 hour**, hands-on workshops covering a variety of topics related to bioinformatics data analysis. The workshops will lead participants through performing different types of analyses using R/RStudio or Linux. 
 
