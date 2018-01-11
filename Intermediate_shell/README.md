@@ -1,4 +1,4 @@
-## Introduction to the Command Line Interface
+## Intermediate bash
 
 | Audience | Computational Skills | Prerequisites | Duration |
 :----------|:----------|:----------|:----------|
