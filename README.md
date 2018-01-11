@@ -17,7 +17,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 | Lessons        | Prerequisites |
 |:---------------|:-------------:|
-| [Introduction to shell](https://hbctraining.github.io/Training-modules/Intro_shell) | None |
+| [Introduction to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_CLI/) | None |
 | [Intermediate bash](https://hbctraining.github.io/Training-modules/Intro_shell) | Beginner bash or Intro to shell |
 | [Version control using Git and Github](https://hbctraining.github.io/Training-modules/Intro_shell) | Beginner bash or Intro to shell |
 | [Accessing public sequencing data](https://hbctraining.github.io/Training-modules/Intro_shell) | Beginner bash or Intro to shell |
