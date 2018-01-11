@@ -18,10 +18,10 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | Lessons        | Prerequisites |
 |:---------------|:-------------:|
 | [Introduction to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/) | None |
-| [Intermediate bash](https://hbctraining.github.io/Training-modules/Intro_shell) | Beginner bash or Intro to the command-line interface |
-| [Version control using Git and Github](https://hbctraining.github.io/Training-modules/Intro_shell) | Beginner bash or Intro to the command-line interface  |
-| [Accessing public sequencing data](https://hbctraining.github.io/Training-modules/Intro_shell) | Beginner bash or Intro to the command-line interface  |
-| [Using GEMINI for variant analysis](https://hbctraining.github.io/Training-modules/Intro_shell) | Beginner bash or Intro to the command-line interface  |
+| [Intermediate bash](https://hbctraining.github.io/Training-modules/Intro_shell) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/) |
+| [Version control using Git and Github](https://hbctraining.github.io/Training-modules/Intro_shell) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/)  |
+| [Accessing public sequencing data](https://hbctraining.github.io/Training-modules/Intro_shell) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/)  |
+| [Using GEMINI for variant analysis](https://hbctraining.github.io/Training-modules/Intro_shell) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/) |
 
 ### Previous Workshops
 
