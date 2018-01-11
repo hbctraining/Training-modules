@@ -26,7 +26,7 @@ This repository has teaching materials for a **2 hour**, hands-on **Introduction
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Introduction to the command line](https://hbctraining.github.io/Intro-to-Shell/) | 75 min |
+|[Introduction to the command line]() | 75 min |
 |[Searching and redirection](https://hbctraining.github.io/Intro-to-Shell/lessons/02_searching_files.html) | 45 min |
 
 ### Installation Requirements
