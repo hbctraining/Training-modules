@@ -13,7 +13,17 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 > These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
 
-### Workshops
+### Current Workshops
+
+| Lessons        | Prerequisites |
+|:---------------|:-------------:|
+| [Introduction to shell](https://hbctraining.github.io/Training-modules/Intro_shell) | None |
+| [Intermediate bash](https://hbctraining.github.io/Training-modules/Intro_shell) | Beginner bash or Intro to shell |
+| [Version control using Git and Github](https://hbctraining.github.io/Training-modules/Intro_shell) | Beginner bash or Intro to shell |
+| [Accessing public sequencing data](https://hbctraining.github.io/Training-modules/Intro_shell) | Beginner bash or Intro to shell |
+| [Using GEMINI for variant analysis](https://hbctraining.github.io/Training-modules/Intro_shell) | Beginner bash or Intro to shell |
+
+### Previous Workshops
 
 | Lessons        | Prerequisites |
 |:---------------|:-------------:|
