@@ -6,7 +6,7 @@
 
 ### Description
 
-This repository has teaching materials for a 3 hour Introduction to Git and Github workshop. 
+This repository has teaching materials for a 3-hour Introduction to Git and Github workshop. 
 
 Git and Github provide an easy way to track changes in documents over time, while facilitating collaboration with other team members. Git allows for saving changes and creating new versions of documents, while Github allows for public access to the different versions, as well as, collaboration among individuals on a team. Together, Git and Github, allow for project development between multiple individuals while being able to retrieve all previous versions of the tracked documents. 
 
