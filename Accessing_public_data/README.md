@@ -31,11 +31,9 @@ For many types of sequencing analyses, we need access to public data stored in v
 ### Installation Requirements
 
 ***Mac users:***
-
 No installation requirements.
 
 ***Windows users:***
-
 [GitBash](https://git-scm.com/download/win)
 
 
