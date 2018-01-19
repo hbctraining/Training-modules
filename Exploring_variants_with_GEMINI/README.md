@@ -23,7 +23,7 @@ This repository has teaching materials for a **3 hour**, hands-on **Exploring ge
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Exploring genomic variants using GEMINI](https://hbctraining.github.io/Intro-to-Shell/lessons/04_loops_and_scripts.html) | 75 min |
+|Exploring genomic variants using GEMINI | 75 min |
 
 ### Installation Requirements
 
