@@ -7,7 +7,9 @@
 
 ### Description
 
-This repository has teaching materials for a **2 hour**, hands-on **Introduction to the command-line interface** workshop led at a relaxed pace. Many tools for the analysis of big data require knowledge of the command line, and this workshop will teach the basic skills needed to interact with the command-line interface, specifically the bash shell. The lessons include learning the basic commands for interacting with your file directory and searching files. Specifically, you will learn commands for navigating the file system, exploring the contents of files, searching the contents of files, and performing basic file operations, such as moving, copying, and renaming files.
+This repository has teaching materials for a **2 hour**, hands-on **Introduction to the command-line interface** workshop led at a relaxed pace. 
+
+Many data analysis tools and computational resources require users to have a basic working knowledge of the command line interface (also referred to as *UNIX, Linux, bash, shell*). In this workshop participants will learn basic commands for navigating the file system, exploring file contents, and performing basic operations, such as moving, copying, and renaming files/folders. 
 
 ### Learning Objectives
 
