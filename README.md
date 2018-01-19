@@ -20,7 +20,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | [Introduction to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/) | None |
 | [Intermediate bash](https://hbctraining.github.io/Training-modules/Intermediate_shell/) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/) |
 | [Version control using Git and Github](https://hbctraining.github.io/Training-modules/Git-Github) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/)  |
-| [Accessing genomic reference and experimental sequencing data](https://hbctraining.github.io/Training-modules/Accessing_public_data) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Accessing_public_data/)  |
+| [Accessing genomic reference and experimental sequencing data](https://hbctraining.github.io/Training-modules/Accessing_public_data) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Accessing_public_genomic_data/)  |
 | [Exploring genomic variants using GEMINI](https://hbctraining.github.io/Training-modules/Exploring_variants_with_GEMINI) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/) |
 
 ### Previous Workshops
