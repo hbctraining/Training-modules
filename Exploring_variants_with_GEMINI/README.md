@@ -7,7 +7,9 @@
 
 ### Description
 
-This repository has teaching materials for a **3 hour**, hands-on **Exploring genomic variants using GEMINI** workshop led at a relaxed pace. [GEMINI (GEnome MINIng)](https://github.com/arq5x/gemini) is a tool that helps turn those giant, sparse VCF variant matrices (millions of rows, thousands of columns) into a simple, accessible database. Within the database GEMINI annotates with just about everything out there. ENCODE, OMIM, dbSNP… plus internal annotations like regions of interest, candidate genes, etc. The resulting framework supports an interactive exploration of variant information in the context of numerous third-party genomic annotations.
+This repository has teaching materials for a **3 hour**, hands-on **Exploring genomic variants using GEMINI** workshop led at a relaxed pace. 
+
+Exome-seq and WGS experiments result in large VCF (Variant Call Format) files with information about variants (SNPs, indels, etc.) present in the dataset. [GEMINI (GEnome MINIng)](https://github.com/arq5x/gemini) is a framework that helps turn VCF files with millions of rows and thousands of columns into simple and easily accessible databases. Within the database, GEMINI annotates variants with publicly available information, including ENCODE, OMIM, dbSNP, plus internal annotations like regions of interest, candidate genes, etc. The resulting framework/database supports an interactive exploration of variants in the dataset in the context of known information as well as sample information to rapidly get to the biology at play.
 
 ### Learning Objectives
 
