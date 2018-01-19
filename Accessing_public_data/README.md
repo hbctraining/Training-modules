@@ -25,8 +25,8 @@ For many types of sequencing analyses, we need access to public data stored in v
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Accessing genome reference data]() | 60 min |
-|[Accessing publically available experimental data]() | 90 min |
+|Accessing genome reference data | 60 min |
+|Accessing publically available experimental data | 90 min |
 
 ### Installation Requirements
 
