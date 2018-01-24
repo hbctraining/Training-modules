@@ -17,59 +17,26 @@ date: "August 7, 2017"
 
 We will spend most of our time learning about the basics of the shell by exploring experimental data.
 
-Since we are going to be working with this data on our remote server, **Orchestra 2 (O2)**, we first need to log onto the server. After we're logged on, we will each make our own copy of the example data folder.
+### Downloading data
 
-### Logging in
+We will be exploring the capabilities of the shell by working with some RNA-Seq data. We need to download the linked folder to our home folder.
+
+### Openning the shell
 
 **With Macs**
 
-Macs have a utility application called "**Terminal**" for performing tasks on the command line (shell), both locally and on remote machines. We will be using it to log into O2.
+Macs have a utility application called "**Terminal**" for performing tasks on the command line (shell). We can open this utility to access the shell.
 
 **With Windows**
 
 By default, there is no terminal for the bash shell available in the Windows OS, so you have to use a downloaded program, "**Git BASH**". Git BASH is part of the [Git for Windows](https://git-for-windows.github.io/) download, and is a shell (bash) emulator.
 
-> You can also use [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log in to remote machines from Windows computers, but it is a little more involved and has different capabilities.
-
-#### Let's log in! 
-
-Type in the following command with your username to login:
+## Command prompt
+Once you have opened the shell, you should see the command prompt `$`. It will have some characters before it, something like `[MacBook-Pro-5:~]`, this is telling you what the name of the computer you are working on is.
 
 ```bash
-ssh username@o2.hms.harvard.edu
+[MacBook-Pro-5:~]$ 
 ```
-
-You will receive a prompt for your password, and you should type in your associated password; note that the cursor will *not move* as you type in your password.
-
-A warning might pop up the first time you try to connect to a remote machine, type "Yes" or "Y". 
-
-#### Copying example data folder
-
-Once logged in, you should see the O2 icon, some news, and the command prompt: 
-
-```bash
-[rc_training10@login01 ~]$ 
-```
-
-The command prompt will have some characters before it, something like `[rc_training01@login01 ~]`, this is telling you what the name of the computer you are working on is.
-
-The first command we will type on the command prompt will be to start a so-called "interactive session" on O2.
-
-```bash
-$ srun --pty -p short -t 0-12:00 --mem 8G --reservation=HSPH bash
-```
-
-Press enter after you type in that command. You will get a couple of messages, but in a few seconds you should get back the command prompt `$`; the string of characters before the command prompt, however, have changed. They should say something like `[rc_training01@compute-a-16-73 ~]`. *We will be explaining what this means in more detail later when we talk about HPC and O2.* 
-
-Make sure that your command prompt is now preceded by a character string that contains the word "compute".
-
-Copy our example data folder to your home directory using the following command:
-
-```bash
-$ cp -r /n/groups/hbctraining/unix_lesson/ .
-```
-
->'cp' is the command for copy. This command required you to specify the location of the item you want to copy (/groups/hbctraining/unix_lesson/) and the location of the destination (.); please note the space between the 2 in the command. The "-r" is an option that modifies the copy command to do something slightly different than usual. The "." means "here", i.e. the destination location is where you currently are.
 
 ## Starting with the shell
 
