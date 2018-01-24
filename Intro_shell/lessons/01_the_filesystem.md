@@ -576,8 +576,7 @@ General help:
 - Google - if you don't know how to do something, try Googling it. Other people
 have probably had the same question.
 - Learn by doing. There's no real other way to learn this than by trying it
-out.  Write your next paper in vim (really emacs or vi), open pdfs from
-the command line, automate something you don't really need to automate.
+out.  
 
 ---
 
