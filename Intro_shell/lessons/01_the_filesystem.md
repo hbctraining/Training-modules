@@ -62,7 +62,7 @@ Finally, to decompress the folder, we can use the `unzip` command:
 $ unzip unix_lesson.zip 
 ```
 
-You output stating the contents of the folder are being decompressed or inflated; this is good. Now when you run the 'ls' command again you should see a folder called `unix_lesson`.
+You should see output stating the contents of the folder are being decompressed or inflated; this is good. Now when you run the 'ls' command again you should see a folder called `unix_lesson`.
 
 ```bash
 $ ls
@@ -70,7 +70,7 @@ $ ls
 
 ### Exploring the data directory
 
-Now we have each created our own copy of the example data folder into our home directory, **unix_lesson**. Let's go into the data folder and explore the data using the shell.
+Now we have each created our own copy of the example data folder into our home directory, **`unix_lesson`**. Let's go into the data folder and explore the data using the shell.
 
 ```bash
 $ cd unix_lesson
@@ -89,7 +89,7 @@ You will see:
 ```
 genomics_data  other  raw_fastq  README.txt  reference_data
 ```
-> ls stands for 'list' and it lists the contents of a directory.
+> `ls` stands for 'list' and it lists the contents of a directory.
 
 There are five items listed. What types of files are they? We can use a "modifier" with `ls` to get more information; this modifier is called an argument (more below).
 
@@ -99,7 +99,7 @@ $ ls -F
 genomics_data/  other/  raw_fastq/  README.txt  reference_data/
 ```
 
-Anything with a "/" after it is a directory. Things with a "*" after them are programs.  If there are no decorations after the name, it's a file.
+Anything with a forward slash `/` after it is a directory. Things with an asterik `*` after them are programs.  If there are no decorations after the name, it's a file.
 
 > All commands are essentially programs that are able to perform specific, commonly-used tasks.
 
@@ -119,7 +119,7 @@ drwxrwsr-x 2 mp298 mp298 228 Sep 30 10:47 raw_fastq
 drwxrwsr-x 2 mp298 mp298 238 Sep 30 10:47 reference_data
 ```
 
-Let's go into the raw_fastq directory and see what is in there.
+Let's go into the `raw_fastq` directory and see what is in there.
 
 ```bash
 $ cd raw_fastq/
@@ -163,11 +163,11 @@ We're going to work in that `unix_lesson` directory.
 
 First we did something like go to the folder of our username. Then we opened `unix_lesson` then `raw_fastq`
 
-Like on any computer you have used before the file structure within unix is hierarchical, like an upside down tree with root (/) as the starting point of the tree-like structure:
+Like on any computer you have used before the file structure within unix is hierarchical, like an upside down tree with root (`/`) as the starting point of the tree-like structure:
 
 ![Unix](../img/Slide1.jpg)
 
-That root (/) is often also called the 'top' level.
+That root (`/`) is often also called the 'top' level.
 
 When you log in to a remote computer you are on one of the branches of that tree, your home directory (e.g. /home/username)
 
@@ -240,9 +240,11 @@ You should now be in `raw_fastq` and you got there without having to go through 
 
 
 ****
+
 **Exercise**
 
-List the `Mov10_oe_1.subset.fq` file from your home directory without changing directories
+List the `Mov10_oe_1.subset.fq` file from your home directory without changing directories.
+
 ****
 
 ## Full vs. Relative Paths
@@ -283,9 +285,11 @@ You can usually use either a full path or a relative path depending on what is m
 Over time, it will become easier for you to keep a mental note of the structure of the directories that you are using and how to quickly navigate among them.
 
 ***
+
 **Exercise**
 
 Change directories to `/home/username/unix_lesson/raw_fastq/`, and list the contents of `unix_lesson/other` without changing directories again.
+
 ***
 
 ### Saving time with tab completion, wildcards and other shortcuts 
@@ -339,6 +343,7 @@ So how does this actually work? The shell (bash) considers an asterisk "*" to be
 > An asterisk/star is only one of the many wildcards in UNIX, but this is the most powerful one and we will be using this one the most for our exercises.
 
 ****
+
 **Exercise**
 
 Do each of the following using a single `ls` command without
@@ -351,6 +356,7 @@ navigating to a different directory.
 BONUS: List all of the files in `/bin` that contain the letter 'a' or 'c'.
 
 ****
+
 #### Shortcuts
 
 There are some shortcuts which you should know about. Dealing with the
