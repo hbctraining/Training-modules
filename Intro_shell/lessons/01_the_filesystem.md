@@ -13,10 +13,6 @@ date: "August 7, 2017"
   - automating tasks
 - What is it good for?
 
-## Setting up
-
-We will spend most of our time learning about the basics of the shell by exploring experimental data.
-
 ## Starting with the shell
 
 **With Macs**
