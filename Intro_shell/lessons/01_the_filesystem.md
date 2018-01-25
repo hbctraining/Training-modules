@@ -40,7 +40,7 @@ We will be exploring the capabilities of the shell by working with some RNA-Seq 
 $ pwd
 ```
 
-On a Mac your current folder should be something like `/Users/yourname/`, but on a Windows machine it can vary.
+On a Mac your current folder should be something like `/Users/marypiper/`, but on a Windows machine it can vary.
 
 Once you know to which folder you are downloading your data, right click on the link below:
 
@@ -249,22 +249,22 @@ List the `Mov10_oe_1.subset.fq` file from your home directory without changing d
 
 ## Full vs. Relative Paths
 
-The `cd` command takes an argument which is the directory name. Directories can be specified using either a *relative path* or a *full path*. As we know, the directories on the computer are arranged into a hierarchy. The full path tells you where a directory is in that hierarchy. Navigate to the home directory (`cd`). Now, enter the `pwd` command and you should see:
+The `cd` command takes an argument which is the directory name. Directories can be specified using either a *relative path* or a *full path*. As we know, the directories on the computer are arranged into a hierarchy. The full path tells you where a directory is in that hierarchy. Navigate to the home directory (`cd`). Now, enter the `pwd` command and you should see something like:
 
 ```bash
 $ pwd
 ```
 
 ```
-/home/username
+/Users/marypiper/
 ```
 
-which is the full path for your home directory. This tells you that you are in a directory called `username`, which sits inside a directory called `home` which sits inside the very top directory in the hierarchy, the *root directory*. So, to summarize: `username` is a directory in `home` which is a directory in `/`.
+which is the full path for your home directory. This tells you that you are in a directory called `marypiper`, which sits inside a directory called `Users` which sits inside the very top directory in the hierarchy, the *root directory*. So, to summarize: `marypiper` is a directory in `Users` which is a directory in `/`.
 
 Now enter the following command:
 
 ```bash
-$ cd /home/username/unix_lesson/raw_fastq/
+$ cd /Users/marypiper/unix_lesson/raw_fastq/
 ```
 
 This jumps to `raw_fastq`. Now go back to the home directory (`cd`). We saw
@@ -274,7 +274,7 @@ earlier that the command:
 $ cd unix_lesson/raw_fastq/
 ```
 
-had the same effect - it took us to the `raw_fastq` directory. But, instead of specifying the full path (`/home/username/unix_lesson/raw_fastq`), we specified a *relative path*. In other words, we specified the path **relative to our current working directory**. 
+had the same effect - it took us to the `raw_fastq` directory. But, instead of specifying the full path (`/Users/marypiper/unix_lesson/raw_fastq`), we specified a *relative path*. In other words, we specified the path **relative to our current working directory**. 
 
 **A full path always starts with a `/`, a relative path does not.**
 
@@ -288,7 +288,7 @@ Over time, it will become easier for you to keep a mental note of the structure 
 
 **Exercise**
 
-Change directories to `/home/username/unix_lesson/raw_fastq/`, and list the contents of `unix_lesson/other` without changing directories again.
+Change directories to `~/unix_lesson/raw_fastq/`, and list the contents of `unix_lesson/other` without changing directories again.
 
 ***
 
@@ -316,7 +316,7 @@ Tab completion can also fill in the names of commands. For example, enter `e<tab
 
 #### Wild cards
 
-Navigate to the `~/unix_lesson/raw_fastq` directory. This directory contains FASTQ files from a next-generation sequencing dataset. 
+Navigate to the `raw_fastq` directory, which is inside the `unix_lesson` directory. This directory contains FASTQ files from a next-generation sequencing dataset. 
 
 The '*' character is a shortcut for "everything". Thus, if you enter `ls *`, you will see all of the contents of a given directory. Now try this command:
 
@@ -327,10 +327,10 @@ $ ls *fq
 This lists every file that ends with a `fq`. This command:
 
 ```bash
-$ ls /usr/bin/*.sh
+$ ls /bin/*sh
 ```
 
-Lists every file in `/usr/bin` that ends in the characters `.sh`.
+Lists every file in `/bin` that ends in the characters `sh`.
 
 ```bash
 $ ls Mov10*fq
@@ -378,7 +378,7 @@ Then enter the command:
 $ ls ~
 ```
 
-This prints the contents of your home directory, without you having to type the full path because the tilde "~" is equivalent to "/home/username".
+This prints the contents of your home directory, without you having to type the full path because the tilde "~" is equivalent to `/Users/marypiper/`.
 
 Another shortcut is the "..":
 
@@ -392,12 +392,12 @@ The shortcut `..` always refers to the directory above your current directory. S
 $ ls ../..
 ```
 
-prints the contents of `/home/username` which is your home directory. 
+prints the contents of `/Users/marypiper/` which is your home directory. 
 
 Finally, the special directory `.` always refers to your current directory. So, `ls`, `ls .`, and `ls ././././.` all do the same thing, they print the contents of the current directory. This may seem like a useless shortcut right now, but we used it earlier when we copied over the data to our home directory.
 
 
-To summarize, while you are in your home directory, the commands `ls ~`, `ls ~/.`, and `ls /home/username` all do exactly the same thing. These shortcuts are not necessary, but they are really convenient!
+To summarize, while you are in your home directory, the commands `ls ~`, `ls ~/.`, and `ls /Users/marypiper/` all do exactly the same thing. These shortcuts are not necessary, but they are really convenient!
 
 #### Command History
 
