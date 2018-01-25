@@ -17,11 +17,7 @@ date: "August 7, 2017"
 
 We will spend most of our time learning about the basics of the shell by exploring experimental data.
 
-### Downloading data
-
-We will be exploring the capabilities of the shell by working with some RNA-Seq data. We need to download the linked folder to our home folder.
-
-### Openning the shell
+## Starting with the shell
 
 **With Macs**
 
@@ -31,16 +27,30 @@ Macs have a utility application called "**Terminal**" for performing tasks on th
 
 By default, there is no terminal for the bash shell available in the Windows OS, so you have to use a downloaded program, "**Git BASH**". Git BASH is part of the [Git for Windows](https://git-for-windows.github.io/) download, and is a shell (bash) emulator.
 
-## Command prompt
-Once you have opened the shell, you should see the command prompt `$`. It will have some characters before it, something like `[MacBook-Pro-5:~]`, this is telling you what the name of the computer you are working on is.
+#### Command prompt
+
+Once you have opened the shell, you should see the command prompt `$`. It will have some characters before it, something like `[MacBook-Pro-5:~]`, this is telling you what the name of the computer you are working on is. 
 
 ```bash
 [MacBook-Pro-5:~]$ 
 ```
 
-## Starting with the shell
 
-We have each created our own copy of the example data folder into our home directory, **unix_lesson**. Let's go into the data folder and explore the data using the shell.
+### Downloading data
+
+We will be exploring the capabilities of the shell by working with some RNA-Seq data. We need to **download the data to our current folder** using the link below. To know what folder we are currently inside, we can use the 'print working directory' command:
+
+```bash
+$ pwd
+```
+
+On a Mac your current folder should be something like `/Users/yourname/`, but on a Windows machine it can vary.
+
+Once you know to which folder you are download your data, right click on the link below and choose **Save link as**:
+
+**Download RNA-Seq data:** right-click [here](https://github.com/hbctraining/Training-modules/blob/master/Intro_shell/data/unix_lesson.zip?raw=true)
+
+Now we have each created our own copy of the example data folder into our home directory, **unix_lesson**. Let's go into the data folder and explore the data using the shell.
 
 ```bash
 $ cd unix_lesson
