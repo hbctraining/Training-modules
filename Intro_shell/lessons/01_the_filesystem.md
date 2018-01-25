@@ -42,7 +42,7 @@ $ pwd
 
 On a Mac your current folder should be something like `/Users/yourname/`, but on a Windows machine it can vary.
 
-Once you know to which folder you are download your data, right click on the link below and choose **Save link as**:
+Once you know to which folder you are downloading your data, right click on the link below and choose **Save link as**:
 
 **Download RNA-Seq data:** right-click [here](https://github.com/hbctraining/Training-modules/blob/master/Intro_shell/data/unix_lesson.zip?raw=true)
 
