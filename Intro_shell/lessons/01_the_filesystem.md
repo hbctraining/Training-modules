@@ -50,6 +50,12 @@ Once you know to which folder you are download your data, right click on the lin
 
 **Download RNA-Seq data:** right-click [here](https://github.com/hbctraining/Training-modules/blob/master/Intro_shell/data/unix_lesson.zip?raw=true)
 
+If you downloaded it to the correct location we should see the `unix_lesson.zip` in our current folder when we type the 'list' command:
+
+```bash
+$ ls
+```
+
 Now we have each created our own copy of the example data folder into our home directory, **unix_lesson**. Let's go into the data folder and explore the data using the shell.
 
 ```bash
