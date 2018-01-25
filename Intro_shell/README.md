@@ -28,7 +28,7 @@ Many data analysis tools and computational resources require users to have a bas
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Introduction to the command line]() | 75 min |
+|[Introduction to the command line](https://hbctraining.github.io/Training-modules/Intro_shell/lessons/01_the_filesystem.html) | 75 min |
 |[Searching and redirection](https://hbctraining.github.io/Intro-to-Shell/lessons/02_searching_files.html) | 45 min |
 
 ### Installation Requirements
