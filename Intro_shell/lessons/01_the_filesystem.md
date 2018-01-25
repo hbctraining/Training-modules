@@ -42,15 +42,19 @@ $ pwd
 
 On a Mac your current folder should be something like `/Users/yourname/`, but on a Windows machine it can vary.
 
-Once you know to which folder you are downloading your data, right click on the link below and choose **Save link as**:
+Once you know to which folder you are downloading your data, right click on the link below:
 
 **Download RNA-Seq data:** right-click [here](https://github.com/hbctraining/Training-modules/blob/master/Intro_shell/data/unix_lesson.zip?raw=true)
 
-If you downloaded it to the correct location we should see the `unix_lesson.zip` in our current folder when we type the 'list' command:
+Choose **Save link as**.
+
+If you have downloaded the file to the correct location, type the 'list' command:
 
 ```bash
 $ ls
 ```
+
+You should see `unix_lesson.zip` as part of the output to the screen.
 
 Finally, to decompress the folder, we can use the `unzip` command:
 
@@ -58,7 +62,7 @@ Finally, to decompress the folder, we can use the `unzip` command:
 $ unzip unix_lesson.zip 
 ```
 
-You should see output stating the contents of the folder are being decompressed or inflated; this is good. Now when you run the 'ls' command again you should see a folder called `unix_lesson`.
+You should see output stating the contents of the folder are being decompressed or inflated; this is good. Now when you run the `ls` command again you should see a folder called `unix_lesson`.
 
 ```bash
 $ ls
