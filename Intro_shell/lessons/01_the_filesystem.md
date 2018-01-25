@@ -25,7 +25,7 @@ By default, there is no terminal for the bash shell available in the Windows OS,
 
 #### Command prompt
 
-Once you have opened the shell, you should see the command prompt `$`. It will have some characters before it, something like `[MacBook-Pro-5:~]`, this is telling you what the name of the computer you are working on is. 
+Once you have opened the shell, you should see the command prompt ending with `$`. It will have some characters before the `$`, something like `[MacBook-Pro-5:~]`, this is telling you what the name of the computer you are working on is. 
 
 ```bash
 [MacBook-Pro-5:~]$ 
