@@ -46,9 +46,7 @@ On a **Windows** machine your current folder should be something starting with `
 
 Once you know to which folder you are downloading your data, right click on the link below:
 
-**Download RNA-Seq data:** right-click [here](https://github.com/hbctraining/Training-modules/blob/master/Intro_shell/data/unix_lesson.zip?raw=true)
-
-Choose **Save link as**.
+**Download RNA-Seq data to your working directory:** right-click [here](https://github.com/hbctraining/Training-modules/blob/master/Intro_shell/data/unix_lesson.zip?raw=true) and choose **Save link as**.
 
 If you have downloaded the file to the correct location, type the 'list' command:
 
