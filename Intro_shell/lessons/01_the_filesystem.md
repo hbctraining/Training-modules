@@ -40,7 +40,9 @@ We will be exploring the capabilities of the shell by working with some RNA-Seq 
 $ pwd
 ```
 
-On a Mac your current folder should be something starting with `/Users/`, like `/Users/marypiper/`, but on a Windows machine it can vary.
+On a **Mac** your current folder should be something starting with `/Users/`, like `/Users/marypiper/`.
+
+On a **Windows** machine your current folder should be something starting with `/c/Users/marypiper`. To find this in your File explorer try clicking on PC and navigating to that path.
 
 Once you know to which folder you are downloading your data, right click on the link below:
 
