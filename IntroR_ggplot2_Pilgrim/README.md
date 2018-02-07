@@ -1,13 +1,9 @@
-## Introduction to R with ggplot2
-
-| Audience | Computational Skills | Prerequisites | Duration |
-:----------|:----------|:----------|:----------|
-| Biologists | Beginner/Intermediate | None | 32-3 hour workshop (~2-3 hours of trainer-led time)|
+## Introduction to R and data visualization with ggplot2
 
 ### Description
-This repository has teaching materials for a **2-3 hour**, hands-on **Introduction to R** workshop led at a quick pace. The workshop will give participants an overview of the basics of R and RStudio. R is a simple programming environment that enables the effective handling of data, while providing excellent graphical support. RStudio is a tool that provides a user-friendly environment for working with R. 
+These are training materials for a **2-3 hour**, hands-on **Introduction to R** workshop led at a quick pace. The workshop will give participants an overview of the basics of R and RStudio. R is a simple programming environment that enables the effective handling of data, while providing excellent graphical support. RStudio is a tool that provides a user-friendly environment for working with R. 
 
-These materials are intended to provide a **quick overview** of the R programming language and plotting with the ggplot2 package. 
+These materials are intended to provide a **quick overview** of the R programming language and plotting with the `ggplot2` package. 
 
 ### Learning Objectives
 
@@ -18,7 +14,6 @@ These materials are intended to provide a **quick overview** of the R programmin
 * **Exporting data and graphics**: Generating new data tables and plots for use outside of the R environment.
 
 > These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
-
 
 ### Contents
 
