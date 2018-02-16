@@ -1,4 +1,4 @@
-## Starting with the shell
+## Opening the shell
 
 **With Macs**
 
@@ -10,7 +10,7 @@ By default, there is no terminal for the bash shell available in the Windows OS,
 
 #### Command prompt
 
-Once you have opened the shell, you should see the command prompt ending with `$`. It will have some characters before the `$`, something like `[MacBook-Pro-5:~]`, this is telling you what the name of the computer you are working on is. 
+Once you have opened the shell, you should see the command prompt ending with `$`. 
 
 ```bash
 [MacBook-Pro-5:~]$ 
@@ -19,7 +19,7 @@ Once you have opened the shell, you should see the command prompt ending with `$
 
 ### Downloading data
 
-We will be exploring the capabilities of the shell by working with some RNA-Seq data. We need to **download the data to our current folder** using the link below. To know what folder we are currently inside, we can use the 'print working directory' command:
+We will be exploring the capabilities of the shell by working with some RNA-Seq data. We need to **download the data to our current folder** using the link below. Let's check the folder we are currently inside:
 
 ```bash
 $ pwd
@@ -50,15 +50,5 @@ $ unzip unix_lesson.zip
 You should see output stating the contents of the folder are being decompressed or inflated; this is good. Now when you run the `ls` command again you should see a folder called `unix_lesson`.
 
 ```bash
-$ ls -l
-```
-
-### Exploring the data directory
-
-Now we have each created our own copy of the example data folder into our home directory, **`unix_lesson`**. Let's go into the data folder and explore the data using the shell.
-
-```bash
-$ cd unix_lesson
-
 $ ls -l
 ```
