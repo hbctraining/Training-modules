@@ -23,6 +23,7 @@ This repository has teaching materials for a **2 hour**, hands-on **Intermediate
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
+|[Setting up](https://hbctraining.github.io/Intermediate_shell/lessons/setting_up.html) | 10 min |
 |[Introduction to Vim](https://hbctraining.github.io/Intro-to-Shell/lessons/03_vim.html) | 35 min |
 |[Shell scripts and for loops](https://hbctraining.github.io/Intro-to-Shell/lessons/04_loops_and_scripts.html) | 75 min |
 
