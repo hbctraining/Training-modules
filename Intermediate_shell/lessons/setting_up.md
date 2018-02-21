@@ -47,7 +47,31 @@ Finally, to decompress the folder, we can use the `unzip` command:
 $ unzip unix_lesson.zip 
 ```
 
-You should see output stating the contents of the folder are being decompressed or inflated; this is good. Now when you run the `ls` command again you should see a folder called `unix_lesson`.
+You should see output stating the contents of the folder are being decompressed or inflated; this is good.
+
+```bash
+
+Archive:  unix_lesson.zip
+   creating: unix_lesson/
+   creating: unix_lesson/.my_hidden_directory/
+  inflating: unix_lesson/.my_hidden_directory/hidden.txt  
+   creating: unix_lesson/genomics_data/
+   creating: unix_lesson/other/
+  inflating: unix_lesson/other/Mov10_rnaseq_metadata.txt  
+  inflating: unix_lesson/other/sequences.fa  
+   creating: unix_lesson/raw_fastq/
+  inflating: unix_lesson/raw_fastq/Irrel_kd_1.subset.fq  
+  inflating: unix_lesson/raw_fastq/Irrel_kd_2.subset.fq  
+  inflating: unix_lesson/raw_fastq/Irrel_kd_3.subset.fq  
+  inflating: unix_lesson/raw_fastq/Mov10_oe_1.subset.fq  
+  inflating: unix_lesson/raw_fastq/Mov10_oe_2.subset.fq  
+  inflating: unix_lesson/raw_fastq/Mov10_oe_3.subset.fq  
+  inflating: unix_lesson/README.txt  
+   creating: unix_lesson/reference_data/
+  inflating: unix_lesson/reference_data/chr1-hg19_genes.gtf  
+```
+
+Now when you run the `ls` command again you should see a folder called `unix_lesson`.
 
 ```bash
 $ ls -l
