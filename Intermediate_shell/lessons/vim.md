@@ -3,19 +3,17 @@
 
 * Learn basic operations using the Vim text editor
 
-## Writing files
+## Creating text files
 
-You can do a lot of work with files that already exist, using command like `less`, `head`, `tail`, `cat`, `wc`, and so on, but what if you wanted to write or create your own files on the command line? Obviously, you're not going to type in loads of information like a FASTA file, but there are a lot of reasons you might want to to write/create a small file or edit an existing file.
+You can easily create text files on your computer by opening up a text editor program such as [TextWrangler](http://www.barebones.com/products/textwrangler/), [Sublime](http://www.sublimetext.com/), and [Notepad++](http://notepad-plus-plus.org/), and start typing. These text editors often have features to easily search text, extract text, and highlight syntax from multiple programming languages. We refer to these as **GUI text editors** since they have a **G**raphical **U**ser **I**nterface that has buttons and menus that you can click on to issue commands to the computer and you can move about the interface just by pointing and clicking.  
 
-To create or edit files you will need to use a **text editor**. When we say, "text editor," we really do mean "text": these editors can only work with plain character data, not tables, images, or any other media and it explicitly excludes *Microsoft Word* or *TextEdit*. These tools can generally be grouped into **graphical user interface (GUI) text editors** and **command-line editors**.
+> **NOTE:** When we say, "text editor," we really do mean "text": these editors can only work with plain character data, not tables, images, or any other media and it explicitly excludes *Microsoft Word* or *TextEdit*. 
 
-**GUI text editors:** A GUI is an interface that has buttons and menus that you can click on to issue commands to the computer and you can move about the interface just by pointing and clicking. You might be familar with GUI text editors, such as [TextWrangler](http://www.barebones.com/products/textwrangler/), [Sublime](http://www.sublimetext.com/), and [Notepad++](http://notepad-plus-plus.org/), which allow you to write and edit plain text documents. These editors often have features to easily search text, extract text, and highlight syntax from multiple programming languages. They are great tools, but since they are 'point-and-click', we cannot use them from the command line/shell.
-
-**Command-line editors:** For our purpose, we need a text editor that functions from the command line interface. When using these editors, you cannot 'point-and-click', you must navigate the interface using the the keyboard. Some popular command-line editors include [nano](http://www.nano-editor.org/), [Emacs](http://www.gnu.org/software/emacs/) or [Vim](http://www.vim.org/). These editors are available by default on any shell environment, including on high-performance compute environments (local or cloud).
+But what if we need **a text editor that functions from the command line interface?** If we are working on remote computer (i.e. high-performance compute environments) we don't have access to a GUI and so we need to use **Command-line editors** to create, modify and save files. When using these types of editors, you cannot 'point-and-click', you must navigate the interface using only the keyboard. Some popular command-line editors include [nano](http://www.nano-editor.org/), [Emacs](http://www.gnu.org/software/emacs/) or [Vim](http://www.vim.org/). These editors are available by default on any shell environment, including on high-performance compute environments (local or cloud).
 
 ### Introduction to Vim 
 
-Today, we are going to use a text editor called 'Vim'. Vim is a very powerful text editor with extensive text editing options. However, in this introduction we are going to focus on exploring some of the more basic functions. We hope that after this introduction you will become more comfortable using it and explore the advanced functionality as needed. 
+Today, we are going to introduce a text editor called 'Vim'. Vim is a very powerful text editor with extensive text editing options. However, in this introduction we are going to focus on exploring some of the more basic functions. We hope that after this introduction you will become more comfortable using it and will explore the advanced functionality as needed. 
 
 To help you remember some of the keyboard shortcuts that are introduced below and to allow you to explore additional functionality on your own, we have compiled [a cheatsheet](https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/resources/VI_CommandReference.pdf).
 
