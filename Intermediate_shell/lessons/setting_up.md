@@ -1,6 +1,6 @@
 ## Accessing the shell
 
-Since this workshop assumes that you have a working knowledge of *bash* and in turn know how to access it on your own computer. If you are not sure, we have this information below.
+This workshop assumes that you have a working knowledge of *bash* and in turn know how to access it on your own computer. If you are not sure, we have this information below.
 
 > **With Macs** use the "**Terminal**" utility. 
 > 
