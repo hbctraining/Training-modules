@@ -39,6 +39,8 @@ $ ls raw_fastq/M*1*fq
 $ ls raw_fastq/M*1.*fq
 ```
 
+> An asterisk/star is only one of the many wildcards in UNIX, but this is the most powerful one.
+
 **Tab completion**
 
 ```bash
@@ -48,12 +50,6 @@ $ ls raw_fastq/Mov10_oe_<tab><tab>
 When you hit the first tab, nothing happens. The reason is that there are multiple files that start with `Mov10_oe_`. Thus, the shell does not know which one to fill in. When you hit tab again, the shell will list the possible choices.
 
 > **Tab completion is your friend!** It helps prevent spelling mistakes, and speeds up the process of typing in the full command.
-
-**Wild cards**
-
-The shell (bash) considers an asterisk "*" to be a wildcard character that can be used to substitute for any other single character or a string of characters. 
-
-> An asterisk/star is only one of the many wildcards in UNIX, but this is the most powerful one.
 
 **Examining Files**
 
