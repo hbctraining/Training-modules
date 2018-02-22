@@ -23,9 +23,10 @@ This repository has teaching materials for a **2 hour**, hands-on **Intermediate
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Setting up](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/setting_up.html) | 10 min |
-|[Introduction to Vim](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/vim.html) | 35 min |
-|[Shell scripts and for loops](https://hbctraining.github.io/Intro-to-Shell/lessons/04_loops_and_scripts.html) | 75 min |
+|[Setting up](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/setting_up.html) | 15 min |
+|[Exploring the basics](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/exploring_basics.html) | 25 min |
+|[Introduction to Vim](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/vim.html) | 25 min |
+|[Shell scripts and `for` loops](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/loops_and_scripts.html) | 75 min |
 
 ### Installation Requirements
 
