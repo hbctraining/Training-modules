@@ -10,7 +10,9 @@ Since this workshop assumes that you have a working knowledge of *bash* and in t
 
 Once again, you are likely familiar with what a command prompt is, but to ensure that everyone in the class is on the same page, we have a short description below.
 
-> It is essentially the space where you enter the command to do anything on the command line interface. It usually ends with `$` which can be preceded by information about your computer and your present working directory; e.g. **`[MacBook-Pro-5:~]$`**.
+> It is a string of characters ending with `$` after which you enter the command to ask shell to do something. 
+>
+> The string of charaters before the `$` usually represent information about the computer you are working on and your current directory; e.g. **`[MacBook-Pro-5:~]$`**.
 
 ## Downloading data
 
