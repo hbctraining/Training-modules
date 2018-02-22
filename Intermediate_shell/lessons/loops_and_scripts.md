@@ -7,21 +7,23 @@ Approximate time: 60 minutes
 
 ## Learning Objectives
 
-* Capture previous commands into a script to re-run in one single command
-* Understanding variables and storing information
+* Capture multiple commands into a script to re-run as one single command
+* Understanding variables and storing information in variables
 * Learn how to use variables to operate on multiple files
-
-
-Now that you've been introduced to a number of commands to interrogate your data, wouldn't it be great if you could do this for each set of data that comes in, without having to manually re-type the commands?
-
-Welcome to the beauty and purpose of shell scripts.
 
 ## Shell scripts
 
+Within the command-line interface we have at our fingertips, access to various commands which allow you to interrogate your data (i.e `cat`, `less`, `wc`).
+
+> **NOTE:** If you are unsure about any of these commands and what they do, you may want to review the [Exploring Basics lesson](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/exploring_basics.html).
+
+When you are working with data, it can often be useful to run a set of commands one after another. Further, you may want to re-run this set of commands on every single set of data that you have. Wouldn't it be great if you could do all of this by simply typing out one single command? 
+
+Welcome to the beauty and purpose of shell scripts.
+
 Shell scripts are **text files that contain commands we want to run**. As with any file, you can give a shell script any name and usually have the extension `.sh`. For historical reasons, a bunch of commands saved in a file is usually called a shell script, but make no mistake, this is actually a small program. 
 
-
-We are finally ready to see what makes the shell such a powerful programming environment. We are going to take the commands we repeat frequently and save them into a file so that we can **re-run all those operations** again later by typing **one single command**. Let's write a shell script that will do two things:
+Since we now know how to create text files in the command-line interface, we are going to use that knowledge to create a shell script and see what makes the shell such a powerful programming environment. We will use commands that you should be familiar with and save them into a file so that we can **re-run all those operations** again later by typing **one single command**. Let's write a shell script that will do two things:
 
 1. Tell us our current working directory
 2. List the contents of the directory 
@@ -51,7 +53,7 @@ $ sh listing.sh
 > 
 > Were the `echo` commands helpful in letting you know what came next?
 
-This is a very simple shell script. In this session and in upcoming sessions, we will be learning how to write more complex ones, and use the power of scripts to make our lives much easier.
+This is a very simple shell script. In this lesson, we will be learning how to write more complex ones and show you how to use the power of scripts to make our lives much easier.
 
 ## Bash variables
 A *variable* is a common concept shared by many programming languages. Variables are essentially a symbolic/temporary name for, or a reference to, some information. Variables are analogous to "buckets", where information can be stored, maintained and modified without too much hassle. 
@@ -141,15 +143,15 @@ What just happened? Because our variable contains multiple values, the shell run
 
 **Exercise**
 
-* Use some of the other commands we learned in previous lessons (i.e. `head`, `tail`) on the `filenames` variable. 
+* Use some of the other commands you are familiar with (i.e. `head`, `tail`) on the `filenames` variable. 
 
 ***
 
 ## Loops
 
-Another powerful concept in the Unix shell and useful when writing scripts is the concept of "Loops". We have just shown you that you can run a single command on multiple files by creating a variable whose values are the filenames that you wish to work on. But what if you want to **run a sequence of multiple commands, on multiple files**? This is where loop come in handy!
+Another powerful concept in the Unix shell and useful when writing scripts is the concept of "Loops". We have just shown you that you can run a single command on multiple files by creating a variable whose values are the filenames that you wish to work on. But what if you want to **run a sequence of multiple commands, on multiple files**? This is where loops come in handy!
 
-Looping is a concept shared by several programming languages, and its implementation in bash is very similar to other languages. 
+Looping is a concept shared by several programming languages, and its implementation in *bash* is very similar to other languages. 
 
 The structure or the syntax of (*for*) loops in bash is as follows:
 
@@ -190,7 +192,7 @@ It doesn't matter what variable name we use, but it is advisable to make it some
 
 ### The `basename` command
 
-Before we get started on creating more complex scripts, we want to introduce you to a command that will be useful for future scripting. The `basename` command is used for extracting the base name of a file, which is accomplished using **string splitting to strip the directory and any suffix from filenames**. Let's try an example, by first moving back to your home directory:
+Before we get started on creating more complex scripts, we want to introduce you to a command that will be useful for future shell scripting. The `basename` command is used for extracting the base name of a file, which is accomplished using **string splitting to strip the directory and any suffix from filenames**. Let's try an example, by first moving back to your home directory:
 
 ```bash
 $ cd
@@ -267,7 +269,7 @@ do
   base=`basename $filename .subset.fq`
 ```
 
-and then we execute the commands for each loop:
+and then we execute the following commands for each file:
 
 ```bash
   # tell us what file we're working on
@@ -285,7 +287,7 @@ We'll also count the number of these reads and put that in a new file, using the
 done
 ```
 
-If you've noticed, we used a new `grep` flag `-H` above; this flag will report the filename along with the match string. This is useful for when we generate the summary file.
+> **NOTE:** If you've noticed, we used a new `grep` flag `-H` above; this flag will report the filename along with the match string. 
 
 Save and exit `vim`, and voila! You now have a script you can use to assess the quality of all your new datasets. Your finished script, complete with comments, should look like the following:
 
