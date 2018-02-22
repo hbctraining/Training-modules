@@ -97,7 +97,7 @@ Let's try another command using the variable that we have created. We can also c
 $ wc -l $file
 ```
 
-> *NOTE:* The variables we create in a session are system-wide, and independent of where you are in the filesystem. This is why we can reference it from any directory. However, it is only available for your current session. If you exit the cluster and login again at a later time, the variables you have created will no longer exist.
+> *NOTE:* The variables we create in a session are system-wide, and independent of where you are in the filesystem. This is why we can reference it from any directory. However, it is only available for your current session. If you exit the close your Terminal and come back again at a later time, the variables you have created will no longer exist.
 
 ***
 
