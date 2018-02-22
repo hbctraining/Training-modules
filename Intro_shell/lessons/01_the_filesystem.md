@@ -570,7 +570,7 @@ $ rm -ri backup_ref_data/ backup_fastq/
 
 ## Commands, options, and keystrokes covered
 
-```bash
+```
 ## Commands
 
 cd            # change directory to "~" or to specified directory
