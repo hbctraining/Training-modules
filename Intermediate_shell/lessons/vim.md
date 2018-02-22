@@ -72,9 +72,11 @@ Create the document `spider.txt` in vim. Enter the text as follows:
 
 ![image](../img/vim_spider.png)
 
-To make it easier to refer to distinct lines, we can add line numbers by typing <kbd>:set number</kbd>. **Save the document.** Later, if you choose to remove the line numbers you can type <kbd>:set nonumber</kbd>. Note that you have to do this in the *command mode*.
+To make it easier to refer to distinct lines, we can add line numbers by typing <kbd>:set number</kbd>. Note that you have to do this in the *command mode*.
 
 ![image](../img/vim_spider_number.png)
+
+**Save the document.** If you choose to remove the line numbers later you can type <kbd>:set nonumber</kbd>. 
 
 While we cannot point and click to navigate the document, we can use the arrow keys to move around. Navigating with arrow keys can be very slow, so `vim` has shortcuts (which are completely unituitive, but very useful as you get used to them over time). Check to see what mode you are currently in. While in command mode, try moving around the screen and familarizing yourself with some of these shortcuts:    
 
@@ -126,7 +128,8 @@ practice what we just learned in a brief challenge.
 | <button>:w</button>     | to write to file (save) |
 | <button>:wq</button>     | to write to file and quit     |
 | <button>:q!</button>     | to quit without saving |
-
+| <button>:set number</button>     | to display line numbers |
+| <button>:set nonumber</button>     | to not display line numbers |
 ***
 
 [Next Lesson](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/loops_and_scripts.html)
