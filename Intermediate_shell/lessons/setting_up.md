@@ -1,12 +1,18 @@
 ## Accessing the shell
 
-Since this workshop assumes that you have a working knowledge of *bash* and in turn how to access it on your computer, irrespective of the OS. If you are not sure, we have this information below.
+Since this workshop assumes that you have a working knowledge of *bash* and in turn know how to access it on your own computer. If you are not sure, we have this information below.
 
 > **With Macs** use the "**Terminal**" utility. 
 > 
 > **With Windows** you can use your favorite utility or follow our suggestion of using "**Git BASH**". Git BASH is part of the [Git for Windows](https://git-for-windows.github.io/) download, and is a *bash* emulator.
 
-### Downloading data
+## The command prompt
+
+Once again, you are likely familiar with what a command prompt is, but to ensure that everyone in the class is on the same page, we have a short description below.
+
+> It is essentially the space where you enter the command to do anything on the command line interface. It usually ends with `$` which can be preceded by information about your computer and your present working directory; e.g. **`[MacBook-Pro-5:~]$`**.
+
+## Downloading data
 
 We will be exploring slightly more advanced capabilities of the shell by working with data from an RNA sequencing experiment. 
 
