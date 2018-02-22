@@ -4,11 +4,11 @@ author: "Sheldon  McKay, Mary Piper, Radhika Khetani"
 ---
 
 ## Learning Objectives
-- Review basic commands in shell
+- This lesson briefly describes commands that will be used in this workshop. We are assuming that as an someone with a basic knowledge of *bash*, you are already familiar with most of these commands.
 
 ## The basics
 
-The following lesson briefly describes commands that will be used in this module. We assume that as an intermediate user of *bash* you are already familiar with these commands.
+Let's explore the contents of the data we just downloaded.
 
 ```bash
 $ ls -l ~/unix_lesson
@@ -18,6 +18,8 @@ $ cd ~/unix_lesson
 $ ls -l
 ```
 
+> The tilde `~` is a short way of referring to your home directory
+> 
 > 'cd' = 'change directory'
 >
 > `ls` = 'list' and it lists the contents of a directory.
@@ -34,7 +36,6 @@ Now try these commands:
 $ ls -l */
 
 $ ls raw_fastq/M*fq
-
 ```
 
 > An asterisk/star is only one of the many wildcards in UNIX, but this is the most powerful one.
