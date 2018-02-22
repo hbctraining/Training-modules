@@ -121,7 +121,7 @@ practice what we just learned in a brief challenge.
 | <button>esc</button>     | command mode - to issue commands / shortcuts  |
 
 
-**Saving and quiting:**
+**Saving and quitting:**
 
 | key              | action                 |
 | ---------------- | ---------------------- |
@@ -130,6 +130,7 @@ practice what we just learned in a brief challenge.
 | <button>:q!</button>     | to quit without saving |
 | <button>:set number</button>     | to display line numbers |
 | <button>:set nonumber</button>     | to not display line numbers |
+
 ***
 
 [Next Lesson](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/loops_and_scripts.html)
