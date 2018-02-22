@@ -570,29 +570,32 @@ $ rm -ri backup_ref_data/ backup_fastq/
 
 ## Commands, options, and keystrokes covered
 
-```
-bash
-cd
-ls
-man
-pwd
-~           # home dir
-.           # current dir
-..          # parent dir
-*           # wildcard
-echo
-ctrl + c    # cancel current command
-ctrl + a    # start of line
-ctrl + e    # end of line
-history
-cat
-less
-head
-tail
-cp
-mdkir
-mv
-rm
+```bash
+## Commands
+
+cd            # change directory to "~" or to specified directory
+ls            # list contents of current or specified directory
+man <command> # display manual for specified command
+pwd           # specify present working directory
+echo "..."    # display content in quotes on the standard output
+history       # display previous "historical" commands
+cat <file>    # display all contents of a file on the standard output
+less <file>   # open a buffer with the contents of a file
+head <file>   # display the first 10 lines of a file
+tail <file>   # display the last 10 lines of a file
+cp <..> <..>  # copy files or directories
+mdkir         # make a new directory/folder
+mv <..> <..>  # move or rename files or directories
+rm <file>     # remove a file or a folder (-r)
+
+## Other
+~             # home directory
+.             # current directory
+..            # parent directory
+*             # wildcard
+ctrl + c      # cancel current command
+ctrl + a      # start of line
+ctrl + e      # end of line
 ```
 
 #### Information on the shell
