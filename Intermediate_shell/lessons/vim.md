@@ -123,6 +123,10 @@ practice what we just learned in a brief challenge.
 | <button>:wq</button>     | to write to file and quit     |
 | <button>:q!</button>     | to quit without saving |
 
----
+***
+
+[Next Lesson](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/loops_and_scripts.html)
+
+***
 
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
