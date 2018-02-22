@@ -15,16 +15,17 @@ You can easily create text files on your computer by opening up a text editor pr
 
 ### Command-line text editors
 
-But what if we need **a text editor that functions from the command line interface**? If we are working on remote computer (i.e. high-performance compute environments) we don't have access to a GUI and so we need to use **Command-line editors** to create, modify and save files. When using these types of editors, you cannot 'point-and-click', you must navigate the interface using only the keyboard. Some popular command-line editors include [nano](http://www.nano-editor.org/), [Emacs](http://www.gnu.org/software/emacs/) or [Vim](http://www.vim.org/). These editors are available by default on any shell environment, including on high-performance compute environments (local or cloud).
+But what if we need **a text editor that functions from the command line interface**? If we are working on remote computer (i.e. high-performance compute environments) we don't have access to a GUI and so we need to use **Command-line editors** to create, modify and save files. When using these types of editors, you cannot 'point-and-click', you must navigate the interface using only the keyboard.
+
+Some popular command-line editors include [nano](http://www.nano-editor.org/), [Emacs](http://www.gnu.org/software/emacs/) or [Vim](http://www.vim.org/). These editors are available by default on any shell environment, including on high-performance compute environments (local or cloud).
 
 ### Introduction to Vim 
 
-Today, we are going to introduce a text editor called 'Vim'. Vim is a very powerful text editor with extensive text editing options. However, in this introduction we are going to focus on exploring some of the more basic functions. We hope that after this introduction you will become more comfortable using it and will explore the advanced functionality as needed. 
+Today, we are going to introduce the text editor 'vim'. It is a powerful text editor with extensive text editing options; however, in this introduction we are going to focus on exploring some of the more basic functions. We hope that after this introduction you will become more comfortable using it and will explore the advanced functionality as needed. 
 
 To help you remember some of the keyboard shortcuts that are introduced below and to allow you to explore additional functionality on your own, we have compiled [a cheatsheet](https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/resources/VI_CommandReference.pdf).
 
-
-### Vim Interface
+#### Vim Interface
 
 You can create a document by calling a text editor and providing the name of the document you wish to create. Change directories to the `unix_lesson/other` folder and create a document using `vim` entitled `draft.txt`:
 
@@ -37,7 +38,7 @@ $ vim draft.txt
 Notice the `"draft.txt" [New File]` typed at the bottom left-hand section of the screen. This tells you that you just created a new file in vim. 
 
 
-### Vim Modes
+#### Vim Modes
 
 Vim has **_two basic modes_** that will allow you to create documents and edit your text:   
 
@@ -46,37 +47,36 @@ Vim has **_two basic modes_** that will allow you to create documents and edit y
 - **_insert (or edit) mode:_** will allow you to write and edit text
 
 
-Upon creation of a file, vim is automatically in command mode. Let's _change to insert mode_ by typing <kbd>i</kbd>. Notice the `--INSERT--` at the bottom left hand of the screen. Now type in a few lines of text:
+Upon creation of a file, `vim` is automatically in command mode. Let's _change to insert mode_ by typing <kbd>i</kbd>. Notice the `--INSERT--` at the bottom left hand of the screen. 
 
-![vim-insert-mode](../img/vim_insert.png)
+Now let's type in a few lines of text:
+```
+While vim offers great functionality, it takes time to get used to get familiar and learn the shortcuts.
+```
 
 After you have finished typing, press <kbd>esc</kbd> to enter command mode. Notice the `--INSERT--` disappeared from the bottom of the screen.
 
 ### Vim Saving and Quitting
 To **write to file (save)**, type <kbd>:w</kbd>. You can see the commands you type in the bottom left-hand corner of the screen. 
 
-![vim-save](../img/vim_save.png)
-
 After you have saved the file, the total number of lines and characters in the file will print out at the bottom left-hand section of the screen.
 
-![vim-postsave](../img/vim_postsave.png)
+Alternatively, we can **write to file (save) and quit** all at once. Let's do that by typing <kbd>:wq</kbd>. Now, you should have exited `vim` and returned back to the command prompt.
 
-Alternatively, we can **write to file (save) and quit** all at once. Let's do that by typing <kbd>:wq</kbd>. Now, you should have exited vim and returned back to the command prompt.
+To edit your `draft.txt` document, open up the file again using the same command you used to create the file: `vim draft.txt`. 
 
-To edit your `draft.txt` document, open up the file again by calling vim and entering the file name: `vim draft.txt`. Change to insert mode and type a few more lines (you can move around the lines using the arrows on the keyboard). This time we decide to **quit without saving** by typing <kbd>:q!</kbd>
- 
-![vim-quit](../img/vim_quit.png)
+Change into the insert mode and type a few more lines (you can move around the lines of text using the arrows on the keyboard). This time we decide to **quit without saving** by typing <kbd>:q!</kbd>
 
 ### Vim Editing
 Create the document `spider.txt` in vim. Enter the text as follows: 
 
 ![image](../img/vim_spider.png)
 
-To make it easier to refer to distinct lines, we can add line numbers by typing <kbd>:set number</kbd>. **Save the document.** Later, if you choose to remove the line numbers you can type <kbd>:set nonumber</kbd>.
+To make it easier to refer to distinct lines, we can add line numbers by typing <kbd>:set number</kbd>. **Save the document.** Later, if you choose to remove the line numbers you can type <kbd>:set nonumber</kbd>. Note that you have to do this in the *command mode*.
 
 ![image](../img/vim_spider_number.png)
 
-While we cannot point and click to navigate the document, we can use the arrow keys to move around. Navigating with arrow keys can be very slow, so Vim has shortcuts (which are completely unituitive, but very useful as you get used to them over time). Check to see what mode you are currently in. While in command mode, try moving around the screen and familarizing yourself with some of these shortcuts:    
+While we cannot point and click to navigate the document, we can use the arrow keys to move around. Navigating with arrow keys can be very slow, so `vim` has shortcuts (which are completely unituitive, but very useful as you get used to them over time). Check to see what mode you are currently in. While in command mode, try moving around the screen and familarizing yourself with some of these shortcuts:    
 
 | key              | action                 |
 | ---------------- | ---------------------- |
@@ -97,12 +97,12 @@ In addition to shortcuts for navigation, vim also offers editing shortcuts such 
 
 **Exercise**
 
-We have covered some basic commands in vim, but practice is key for getting comfortable with the program. Let's
+We have covered some basic commands in `vim`, but practice is key for getting comfortable with the program. Let's
 practice what we just learned in a brief challenge.
 
 1. Open `spider.txt`, and delete line #2.
 2. Quit without saving.
-3. Open `spider.txt` again, and delete the last line. 
+3. Open `spider.txt` again, go to the last line and delete it. 
 4. Undo your previous deletion.
 5. Redo your previous deletion.
 6. Save the file and see whether your results match your neighbors.
