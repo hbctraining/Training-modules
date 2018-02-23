@@ -113,14 +113,25 @@ To re-direct output to a file rather than the screen you can use `>`:
 
 ```bash
 $ grep -B 1 -A 2 NNNNNNNNNN Mov10_oe_1.subset.fq > bad_reads.txt
+
+$ wc -l bad_reads.txt        # How many lines in the bad_reads.txt file?
+```
+
+We can also use th pipe `|` to redirect the output of a command as input for a different command.
+
+```bash
+$ grep -B 1 -A 2 NNNNNNNNNN Mov10_oe_3.subset.fq | wc -l
 ```
 
 If we use `>>`, it will append to rather than overwrite a file.  This can be useful for saving more than one search, for example.
     
 ```bash
-$ grep -B 1 -A 2 NNNNNNNNNN Irrel_kd_1.subset.fq >> bad_reads.txt
+$ grep -B 1 -A 2 NNNNNNNNNN Mov10_oe_3.subset.fq >> bad_reads.txt
+
+$ wc -l bad_reads.txt        # You should see an increase in the number of lines here compared to running this command earlier
 ```
 
+> The philosophy behind these **redirection** commands is that none of them really do anything all that impressive on their own. BUT, when you start chaining them together, you can do some really powerful things and very efficiently. 
 
 ## Basic commands, shortcuts, and keystrokes of note
 Below is a key of the basic commands you should be familiar with in order to be able to follow this module.
