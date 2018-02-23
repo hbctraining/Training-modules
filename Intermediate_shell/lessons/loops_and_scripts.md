@@ -36,7 +36,7 @@ $ vim listing.sh
 
 Then type in the following lines in the `listing.sh` file:
 
-```bash
+```
 echo "Your current working directory is:"
 pwd
 echo "These are the contents of this directory:"
@@ -49,6 +49,14 @@ Exit `vim` and save the file. Now let's run the new script we have created. To r
 $ sh listing.sh
 ```
 
+Now, let's run this script when we are in a different folder.
+
+```bash
+$ cd ../raw_fastq/
+
+$ sh ../other/listing.sh
+```
+
 > Did it work like you expected?
 > 
 > Were the `echo` commands helpful in letting you know what came next?
@@ -56,6 +64,7 @@ $ sh listing.sh
 This is a very simple shell script. In this lesson, we will be learning how to write more complex ones and show you how to use the power of scripts to make our lives much easier.
 
 ## Bash variables
+
 A *variable* is a common concept shared by many programming languages. Variables are essentially a symbolic/temporary name for, or a reference to, some information. Variables are analogous to "buckets", where information can be stored, maintained and modified without too much hassle. 
 
 Extending the bucket analogy: the bucket has a name associated with it, i.e. the name of the variable, and when referring to the information in the bucket, we use the name of the bucket, and do not directly refer to the actual data stored in it.
