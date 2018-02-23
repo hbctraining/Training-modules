@@ -30,7 +30,7 @@ To help you remember some of the keyboard shortcuts that are introduced below an
 You can create a document by calling a text editor and providing the name of the document you wish to create. Change directories to the `unix_lesson/other` folder and create a document using `vim` entitled `draft.txt`:
 
 ```bash
-$ cd ../other
+$ cd ~/unix_lesson/other
 	
 $ vim draft.txt
 ```
