@@ -35,7 +35,7 @@ Now try these commands:
 ```bash
 $ ls -l */
 
-$ ls raw_fastq/M*fq
+$ ls -l raw_fastq/M*fq
 ```
 
 > An asterisk/star is only one of the many wildcards in UNIX, but this is the most powerful one.
@@ -43,7 +43,7 @@ $ ls raw_fastq/M*fq
 **Tab completion**
 
 ```bash
-$ ls raw_fastq/Mov10_oe_<tab><tab>
+$ ls -l raw_fastq/Mov10_oe_<tab><tab>
 ```
 
 When you hit the first tab, nothing happens. The reason is that there are multiple files that start with `Mov10_oe_`. Thus, the shell does not know which one to fill in. When you hit tab again, the shell will list the possible choices.
