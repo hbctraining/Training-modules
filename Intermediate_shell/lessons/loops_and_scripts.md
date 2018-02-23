@@ -190,8 +190,6 @@ Most simply, it writes to the terminal (`echo`) the name of the file and the num
 
 In this case the list of files is specified using the asterisk wildcard: `*.fq`, i.e. all files that end in `.fq`. 
 
-> **What else could we have used in place of the `ls *.fq`?**
-
 Then, we execute 2 commands between the `do` and `done`. With a loop, we execute these commands for each file at a time. Once the commands are executed for one file, the loop then executes the same commands on the next file in the list. 
 
 Essentially, **the number of items in the list (variable name) == number of times the code will loop through**, in our case that is 2 times since we have 2 files in `~/unix_lesson/raw_fastq` that end in `.fq`, and these filenames are stored in the `filename` variable.
