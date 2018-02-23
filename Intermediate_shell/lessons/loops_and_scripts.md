@@ -267,7 +267,7 @@ cd ~/unix_lesson/raw_fastq
 And now we loop over all the FASTQs:
 
 ```bash
-# enter directory with raw FASTQs
+# count bad reads for each FASTQ file in our directory
 for filename in *.fq
 ```
 
