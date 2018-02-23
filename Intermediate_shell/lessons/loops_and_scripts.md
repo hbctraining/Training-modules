@@ -192,10 +192,11 @@ In this case the list of files is specified using the asterisk wildcard: `*.fq`,
 
 Then, we execute 2 commands between the `do` and `done`. With a loop, we execute these commands for each file at a time. Once the commands are executed for one file, the loop then executes the same commands on the next file in the list. 
 
-Essentially, **the number of items in the list (variable name) == number of times the code will loop through**, in our case that is 2 times since we have 2 files in `~/unix_lesson/raw_fastq` that end in `.fq`, and these filenames are stored in the `filename` variable.
+Essentially, **the number of items in the list (variable name) == number of times the code will loop through**. 
 
-It doesn't matter what variable name we use, but it is advisable to make it something more intuitive. In the long run, it's best to use a name that will help point out a variable's functionality, so your future self will understand what you are thinking now.
+In our case that is 6 times since we have 6 files in `~/unix_lesson/raw_fastq` that end in `.fq`, and these filenames are stored in the `filename` variable.
 
+It doesn't matter what variable name we use in a loop structure, but it is advisable to make it something intuitive. In the long run, it's best to use a name that will help point out a variable's functionality, so your future self will understand what you are thinking now.
 
 ### The `basename` command
 
@@ -231,14 +232,14 @@ You should now see that only `Mov10_oe_1.subset` is returned.
 	
 Now that you've learned how to use loops and variables, let's put this processing power to work. Imagine, if you will, a script that will run a series of commands that would do the following for us each time we get a new data set:
 
-- Use for loop to iterate over each FASTQ file
+- Use the `for` loop to iterate over each FASTQ file
 - Generate a prefix to use for naming our output files
 - Dump out bad reads into a new file
 - Get the count of the number of bad reads and generate a summary for each file
 
 You might not realize it, but this is something that you now know how to do. Let's get started...
 
-Rather than doing all of this in the terminal we are going to create a script file with all relevant commands. Move back in to `unix_lesson` and use `vim` to create our new script file:
+Rather than doing all of this in the terminal we are going to create a script file with all relevant commands. Move back into `unix_lesson` and use `vim` to create our new script file:
 
 ```bash
 $ cd ~/unix_lesson
@@ -252,9 +253,11 @@ We always want to start our scripts with a shebang line:
 #!/bin/bash
 ```
 
-This line is the absolute path to the Bash interpreter. The shebang line ensures that the bash shell interprets the script even if it is executed using a different shell.
+This line is the absolute path to the Bash interpreter on almost all computers. The shebang line ensures that the bash shell interprets the script even if it is executed using a different shell. 
 
-After the shebang line, we enter the commands we want to execute. First we want to move into our `raw_fastq` directory:
+> Your script will still work without the shebang line if you run it with the `sh` or `bash` commands, but it is best practice to have it in your shell script.
+
+After the shebang line, we enter the commands we want to execute. First, we want to move into our `raw_fastq` directory:
 
 ```bash
 # enter directory with raw FASTQs
@@ -294,7 +297,7 @@ We'll also count the number of these reads and put that in a new file, using the
 done
 ```
 
-> **NOTE:** If you've noticed, we used a new `grep` flag `-H` above; this flag will report the filename along with the match string. 
+> **NOTE:** If you've noticed, we used a new `grep` flag `-H` above; this flag will report the filename the search was performed on along with the matching string. 
 
 Save and exit `vim`, and voila! You now have a script you can use to assess the quality of all your new datasets. Your finished script, complete with comments, should look like the following:
 
