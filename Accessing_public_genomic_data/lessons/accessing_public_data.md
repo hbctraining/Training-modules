@@ -16,7 +16,7 @@ The 'Datasets' link will open the GEO Dataset Browser; click on 'Advanced Search
 
 <img src="../img/geo_browser.png" width="500">
 
-All results will appear in a new window with clickable filters on the left-hand side. You can choose the filters, such as 'Organism' (human, mouse), 'Study type' (Expression profiling by high throughput sequencing), 'publication dates' (1 year), etc. to filter the data for the desired attributes.
+All results will appear in a new window with clickable filters on the left-hand side. You can choose the filters, such as 'Organism' (human, mouse), 'Study type' (Expression profiling by high throughput sequencing), 'Publication dates' (1 year), etc. to filter the data for the desired attributes.
 
 <img src="../img/geo_filter.png" width="500">
 
