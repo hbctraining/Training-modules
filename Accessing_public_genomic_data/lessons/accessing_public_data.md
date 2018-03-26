@@ -1,19 +1,30 @@
 # Accessing public data
 
-## GEO
+## Finding and accessing data on GEO
 
-Navigate the GEO website similar to the Galaxy Intro to RNA-Seq. Use those materials here. Show how to download to local computer using link.
-<img src="../img/mov10_paper.png" width="500">
+### Searching GEO
+
+To search GEO for particular types of data is relatively straight forward. Once on the GEO website various filters are available. For example, you can choose Organism (human, mouse), Study type (Expression profiling by high throughput sequencing), publication dates (1 year), etc.
+
+### Finding GEO data for a particular publication
+
+To find data from a published paper on GEO, the paper will often provide the GEO accession number. For example, let's find the data associated with the paper, *MOV10 and FRMP regulate AGO2 association with microRNA recognition elements*. First, we can navigate to the [article](http://tinyurl.com/mov10-paper).
 
 <img src="../img/mov10_accession.png" width="500">
 
+Then, we can search for the term **"GEO"**; different papers have different requirements for where this information is located. In this article, it is available in a separate section entitled "Accession Numbers".
+
+<img src="../img/mov10_accession.png" width="500">
+
+By clicking on the GEO accession number for the experiment of interest, the GEO page for this experiment will open.
+
 <img src="../img/mov10_geo.png" width="500">
 
-## Finding data with GEO
 
-Go to GEO datasets and choose Organism (human, mouse), Study type (Expression profiling by high throughput sequencing), publication dates (1 year).
 
 ## Using the command line to download from GEO
+
+Once you have found the data of interest, there are various methods available for downloading the data. Often it is most useful to download large data files to directory on a high performance computing cluster (such as Odyssey or O2).
 
 ### Downloading on a cluster
 
