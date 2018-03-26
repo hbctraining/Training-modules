@@ -3,7 +3,11 @@
 ## GEO
 
 Navigate the GEO website similar to the Galaxy Intro to RNA-Seq. Use those materials here. Show how to download to local computer using link.
+<img src="../img/mov10_paper.png" width="500">
 
+<img src="../img/mov10_accession.png" width="500">
+
+<img src="../img/mov10_geo.png" width="500">
 
 ## Finding data with GEO
 
