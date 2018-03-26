@@ -10,7 +10,7 @@ To search GEO for particular types of data is relatively straight forward. Once 
 
 The most straight-forward method can be found by clicking on 'Datasets' under the 'Browse Content' column. 
 
-<img src="../img/geo_dataset.png" width="500">
+<img src="../img/geo_dataset.png" width="300">
 
 The 'Datasets' link will open the GEO Dataset Browser; click on 'Advanced Search'.
 
@@ -18,7 +18,7 @@ The 'Datasets' link will open the GEO Dataset Browser; click on 'Advanced Search
 
 All results will appear in a new window with clickable filters on the left-hand side. You can choose the filters, such as 'Organism' (human, mouse), 'Study type' (Expression profiling by high throughput sequencing), 'publication dates' (1 year) to filter the data for the desired attributes.
 
-<img src="../img/geo_search.png" width="500">
+<img src="../img/geo_filter.png" width="500">
 
 ### Finding GEO data for a particular publication
 
