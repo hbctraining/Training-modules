@@ -182,3 +182,7 @@ Also, it's worth noting that we don't need to navigate the FTP site to find indi
 
 ## Finding and accessing reference data on igenomes
 - shared_databases
+
+# Flybase
+
+## Finding and accessing reference data on Flybase
