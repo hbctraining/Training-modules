@@ -6,7 +6,7 @@ To find and download next-generation sequencing data and associated reference da
 
 # Gene Expression Omnibus
 
-To find public experimental sequencing data, the NCBI's Gene Expression Omnibus (GEO) website is a useful place to search. The requirement for many grants is that the experimental data be uploaded to GEO and the sequence read archive (SRA). The interface for finding data on GEO is relatively user-friendly and easily searchable.
+To find public experimental sequencing data, the NCBI's Gene Expression Omnibus (GEO) website is a useful place to search. The requirement for many grants is that experimental data be uploaded to GEO and the sequence read archive (SRA). The interface for finding data on GEO is relatively user-friendly and easily searchable.
 
 ## Finding and accessing data on GEO
 
