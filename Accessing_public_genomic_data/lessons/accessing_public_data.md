@@ -123,6 +123,8 @@ To download the data associated with the paper, "MOV10 and FMRP Regulate AGO2 As
 
 First we navigate the FTP site to the `series/` folder, then find the `GSE50nnn/` directory and enter the `GSE50499/` folder. The data files available are in the `suppl/` directory. If we choose to download all associated data, we can download the entire `suppl/` directory using the `wget` command and copying the link to the `suppl/` directory by right-clicking. 
 
+<img src="../img/geo_folder_cp.png" width="300">
+
 Since we are copying a directory, the `-r/--recursive` option is required. Also, the `-np/--no-parent` option is used to avoid the `wget`'s  default copying of any parent directories.
 
 ```bash
