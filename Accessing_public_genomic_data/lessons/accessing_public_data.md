@@ -160,5 +160,5 @@ Unfortunately, we cannot download folders with `curl`; however, for MacOS, the [
 
 Also, it's worth noting that we don't need to navigate the FTP site to find individual files to download, since the link on the GEO site should list a link to the file. By right-clicking on the `ftp` link on GEO, you can copy the 'ftp address' to use with the `wget` or `curl` command.
 
-<img src="../img/geo_ftp_cl.png" width="300">
+<img src="../img/geo_ftp_cl.png" width="500">
 					   
