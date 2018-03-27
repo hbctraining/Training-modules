@@ -125,7 +125,7 @@ First we navigate the FTP site to the `series/` folder, then find the `GSE50nnn/
 
 <img src="../img/geo_folder_cp.png" width="500">
 
-Since we are copying a directory, the `-r/--recursive` option is required. Also, the `-np/--no-parent` option is used to avoid the `wget`'s  default copying of any parent directories.
+Using the `wget` command to copy this directory requires a few options. Since we are copying a directory, the `-r/--recursive` option is required. Also, the `-np/--no-parent` option is used to avoid the `wget`'s  default copying of any parent directories.
 
 ```bash
 wget --recursive --no-parent ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE50499/suppl/
