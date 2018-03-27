@@ -1,5 +1,13 @@
 # Accessing public data
 
+All types of bioinformatics analyses require access to public data, regardless of whether we are analyzing our own data or the data output from another's project. Reference data is available online as well as the experimental data from many published (and unpublished) studies. To access this data generally requires the basic knowledge of the command line and an understanding about the associated tools and databases.
+
+To find and download next-generation sequencing data and associated reference data, we will explore several different repositories. For accessing experimental data, we will explore the Gene Expression Omnibus and the Sequence Read Archive. For finding reference data, we will navigate the Ensembl database, igenome and flybase. We will focus on these repositories even though other databases are also useful for exploring and downloading experimental and reference data, including UCSC Table Browser and the NCBI Genomes.
+
+# Gene Expression Omnibus
+
+To find public experimental sequencing data, the NCBI's Gene Expression Omnibus (GEO) website is a useful place to search. The requirement for many grants is that the experimental data be uploaded to GEO and the sequence read archive (SRA). The interface for finding data on GEO is relatively user-friendly and easily searchable.
+
 ## Finding and accessing data on GEO
 
 ### Searching GEO
@@ -161,4 +169,16 @@ Unfortunately, we cannot download folders with `curl`; however, for MacOS, the [
 Also, it's worth noting that we don't need to navigate the FTP site to find individual files to download, since the link on the GEO site should list a link to the file. By right-clicking on the `ftp` link on GEO, you can copy the 'ftp address' to use with the `wget` or `curl` command.
 
 <img src="../img/geo_ftp_cl.png" width="700">
-					   
+
+# Sequence Read Archive
+
+## Finding and accessing data on the SRA
+
+# Ensembl
+
+## Finding and accessing reference data on Ensembl
+
+# igenomes
+
+## Finding and accessing reference data on igenomes
+- shared_databases
