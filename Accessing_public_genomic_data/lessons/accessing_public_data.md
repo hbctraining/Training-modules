@@ -133,7 +133,7 @@ wget -r -np -R "index.html*" ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE5
 
 	<img src="../img/study_exercise_head.png" width="500">
 	
-
+	>
 	>_**NOTE:** If you wanted to unpack the `.tar` file and decompress the `.gz` files, you could use the following commands:_
 	>
 	>```bash
