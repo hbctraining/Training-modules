@@ -52,7 +52,7 @@ The GEO page contains information about the experiment, including:
 - metadata (matrix file)
 - supplementary data
 	
-If we were interested in downloading the raw counts matrix (`GSE50499_GEO_Ceman_counts.txt.gz`), giving the number of reads/sequences aligning to each gene, then we could scroll down to supplementary data at the bottom of the page. 
+If we were interested in downloading the raw counts matrix (`GSE50499_GEO_Ceman_counts.txt.gz`), which gives the number of reads/sequences aligning to each gene, then we could scroll down to supplementary data at the bottom of the page. 
 
 We could download this file by clicking on the `ftp` link. In addition to the counts matrix file, we would probably also want the metadata for the file to know which sample belongs to which conditions by clicking on the "Series Matrix File(s)" link.
 
