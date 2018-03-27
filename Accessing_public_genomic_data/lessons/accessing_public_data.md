@@ -58,7 +58,7 @@ While navigating the GEO website is a perfectly fine way to download data from G
 
 ### Downloading on a cluster
 
-We will demo downloading data to a high-performance computing cluster using the FAS RC Odyssey cluster.  
+We will demo downloading data to a high-performance computing cluster using the Odyssey cluster.  
 
 To access the Odyssey cluster we need to use the secure shell (`ssh`) command using the 'Terminal' program for Macs or 'GitBash' for Windows. In the console from these programs, type:
 
@@ -93,7 +93,7 @@ This will transfer us onto a 'compute' computer, where we can do our work.
 > Now on a 'compute' computer, all other commands should be the same.
 
 
-Now, we can download our data to an appropriate directory. Good data management practices will ensure we have an organized project directory for our analysis. Then, we can change directories to the folder to which we plan to download the data.
+Now, we can download our data to an appropriate directory. Good data management practices will ensure we have an organized project directory for our analysis. We can create and change directories to the folder to which we plan to download the data.
 
 ```bash
 mkdir -p mov10_rnaseq_project/data/counts
@@ -101,7 +101,7 @@ mkdir -p mov10_rnaseq_project/data/counts
 cd mov10_rnaseq_project/data/counts
 ```
 
-Now that we are ready on the cluster, we can find the link to use to transfer the data by using GEO's FTP site. To access the FTP site, return to the [GEO home page](https://www.ncbi.nlm.nih.gov/geo/) and under the "Tools" header, click on "FTP site".
+Now that we are ready on the cluster, we can find the link to transfer the data using GEO's FTP site. To access the FTP site, return to the [GEO home page](https://www.ncbi.nlm.nih.gov/geo/) and under the "Tools" header, click on "FTP site".
 
 <img src="../img/geo_ftp.png" width="300">
 
@@ -109,11 +109,11 @@ This will take you to the directory to access all GEO data.
 
 <img src="../img/geo_dir.png" width="300">
 
-To download the data associated with the paper, "MOV10 and FMRP Regulate AGO2 Association with MicroRNA Recognition Elements", use the GEO ID given in the paper, GSE50499.
+To download the data associated with the paper, "MOV10 and FMRP Regulate AGO2 Association with MicroRNA Recognition Elements", use the GEO ID given in the paper, `GSE50499`.
 
 First we navigate the FTP site to the `series/` folder, then find the `GSE50nnn/` directory and enter the `GSE50499/` folder. The data files available are in the `suppl/` directory. If we choose to download all associated data, we can download the entire `suppl/` directory using the `wget` command. 
 
-Since we are copying a directory, the `-r/--recursive` option is required. Also, the `-np/--no-parent` option is used to avoid the default copying of any parent directories.
+Since we are copying a directory, the `-r/--recursive` option is required. Also, the `-np/--no-parent` option is used to avoid the `wget`'s  default copying of any parent directories.
 
 ```bash
 wget --recursive --no-parent ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE50499/suppl/
@@ -135,12 +135,12 @@ wget -r -np -R "index.html*" ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE5
 	
 
 	>_**NOTE:** If you wanted to unpack the `.tar` file and decompress the `.gz` files, you could use the following commands:_
->
->```bash
->tar -xvf GSE111889_RAW.tar 
->
->for all in *.gz; do gunzip $all; done
->```
+	>
+	>```bash
+	>tar -xvf GSE111889_RAW.tar 
+	>
+	>for all in *.gz; do gunzip $all; done
+	>```
 
 
 2. How would you download the associated metadata?
