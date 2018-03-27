@@ -121,7 +121,7 @@ This will take you to the directory to access all GEO data.
 
 To download the data associated with the paper, "MOV10 and FMRP Regulate AGO2 Association with MicroRNA Recognition Elements", use the GEO ID given in the paper, `GSE50499`.
 
-First we navigate the FTP site to the `series/` folder, then find the `GSE50nnn/` directory and enter the `GSE50499/` folder. The data files available are in the `suppl/` directory. If we choose to download all associated data, we can download the entire `suppl/` directory using the `wget` command. 
+First we navigate the FTP site to the `series/` folder, then find the `GSE50nnn/` directory and enter the `GSE50499/` folder. The data files available are in the `suppl/` directory. If we choose to download all associated data, we can download the entire `suppl/` directory using the `wget` command and copying the link to the `suppl/` directory by right-clicking. 
 
 Since we are copying a directory, the `-r/--recursive` option is required. Also, the `-np/--no-parent` option is used to avoid the `wget`'s  default copying of any parent directories.
 
@@ -180,9 +180,9 @@ Also, it's worth noting that we don't need to navigate the FTP site to find indi
 
 ## Finding and accessing reference data on Ensembl
 
-# igenomes
+# iGenomes
 
-## Finding and accessing reference data on igenomes
+## Finding and accessing reference data on iGenomes
 - shared_databases
 
 # Flybase
