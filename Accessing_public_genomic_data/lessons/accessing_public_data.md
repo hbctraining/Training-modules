@@ -76,7 +76,7 @@ srun -p test --pty --mem 1G -t 0-08:00 /bin/bash
 
 This will transfer us onto a 'compute' computer, where we can do our work. 
 
->_**NOTE:** Downloading data to the HMS O2 cluster uses the same commands as Odyssey; the only difference is the `ssh` command to log onto the cluster and the command to transfer to a 'compute' computer. To log onto O2 run:
+>**NOTE:** Downloading data to the HMS O2 cluster uses the same commands as Odyssey; the only difference is the `ssh` command to log onto the cluster and the command to transfer to a 'compute' computer. To log onto O2 run:
 >	
 >	```bash
 >	# Logging onto the O2 cluster
