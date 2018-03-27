@@ -36,13 +36,13 @@ By clicking on the GEO accession number for the experiment of interest, the GEO 
 
 The GEO page contains information about the experiment, including:
 	
-	- an experimental summary
-	- literature citation
-	- contact information
-	- links to the sample GEO pages
-	- link to the SRA project containing the raw FASTQ files
-	- metadata (matrix file)
-	- supplementary data
+- an experimental summary
+- literature citation
+- contact information
+- links to the sample GEO pages
+- link to the SRA project containing the raw FASTQ files
+- metadata (matrix file)
+- supplementary data
 	
 If we were interested in downloading the raw counts matrix (`GSE50499_GEO_Ceman_counts.txt.gz`), giving the number of reads/sequences aligning to each gene, then we could scroll down to supplementary data at the bottom of the page. 
 
