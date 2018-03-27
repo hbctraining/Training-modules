@@ -24,7 +24,7 @@ All results will appear in a new window with clickable filters on the left-hand 
 
 To find data from a published paper on GEO, the paper will often provide the GEO accession number. For example, let's find the data associated with the paper, *MOV10 and FRMP regulate AGO2 association with microRNA recognition elements*. First, we can navigate to the [article](http://tinyurl.com/mov10-paper).
 
-<img src="../img/mov10_accession.png" width="500">
+<img src="../img/mov10_paper.png" width="500">
 
 Then, we can search for the term **"GEO"**; different papers have different requirements for where this information is located. In this article, it is available in a separate section entitled "Accession Numbers".
 
