@@ -176,6 +176,20 @@ Also, it's worth noting that we don't need to navigate the FTP site to find indi
 
 # Sequence Read Archive
 
+```bash
+# Start a new interactive session in Orchestra 
+
+# Load the sratoolkit module
+module load sratoolkit/2.8.1
+
+#Download the dataset of interest
+$ prefetch -v SRR390728
+
+# convert the .sra file to fastq format
+$ fastq-dump -h
+$ fastq-dump <options> <SRR390728.sra>
+```
+
 ## Finding and accessing data on the SRA
 
 # Ensembl
