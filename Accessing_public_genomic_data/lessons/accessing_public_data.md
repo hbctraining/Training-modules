@@ -48,13 +48,17 @@ If we were interested in downloading the raw counts matrix (`GSE50499_GEO_Ceman_
 
 We could download this file by clicking on the `ftp` link. In addition to the counts matrix file, we would probably also want the metadata for the file to know which sample belongs to which conditions by clicking on the "Series Matrix File(s)" link.
 
-<img src="../img/mov10_paper.png" width="500">
+<img src="../img/mov10_download.png" width="500">
 
 Now that we have these files, if we wanted to perform differential expression analysis, we could bring them into R to perform some data wrangling and analysis.
 
 ## Using the command line to download from GEO
 
-While navigating the GEO website is a perfectly fine way to download data from GEO, oftentimes you may want to download multiple files at the same time or download large files that you don't want to store on your personal computer. Generally, the best way to do this is by using a local cluster. We will demo downloading data to a local cluster using the FAS RC Odyssey cluster. 
+While navigating the GEO website is a perfectly fine way to download data from GEO, oftentimes you may want to download multiple files at the same time or download large files that you don't want to store on your personal computer. Generally, the best way to do this is by using a high-performance computing cluster, such as FAS Odyssey or HMS O2.
+
+### Downloading on a cluster
+
+We will demo downloading data to a high-performance computing cluster using the FAS RC Odyssey cluster.  
 
 To access the Odyssey cluster we need to use the secure shell (`ssh`) command using the 'Terminal' program for Macs or 'GitBash' for Windows. In the console from these programs, type:
 
@@ -70,6 +74,8 @@ Now we are logged onto a 'login' computer, but to perform any work we should tra
 srun -p test --pty --mem 1G -t 0-08:00 /bin/bash
 ```
 
+This will transfer us onto a 'compute' computer, where we can do our work. 
+
 >_**NOTE:** Downloading data to the HMS O2 cluster uses the same commands as Odyssey; the only difference is the `ssh` command to log onto the cluster and the command to transfer to a 'compute' computer. To log onto O2 run:
 >	
 >	```bash
@@ -80,14 +86,14 @@ srun -p test --pty --mem 1G -t 0-08:00 /bin/bash
 > You will be asked for a password, then logged onto a 'login' computer. To transfer to a compute computer, run the following:
 >
 >	```bash
->	# Creating an interactive session on the O2 cluster
+>	# Transferring to a compute computer on the O2 cluster
 >	srun -p interactive --pty --mem 1G -t 0-08:00 /bin/bash
 >	```
 >
 > Now on a 'compute' computer, all other commands should be the same.
 
 
-We can now download our data to an appropriate directory. Good data management practices will lead us to create an organized project directory for our analysis. Then, we can change directories to the folder to which we plan to download the data.
+Now, we can download our data to an appropriate directory. Good data management practices will ensure we have an organized project directory for our analysis. Then, we can change directories to the folder to which we plan to download the data.
 
 ```bash
 mkdir -p mov10_rnaseq_project/data/counts
@@ -97,20 +103,17 @@ cd mov10_rnaseq_project/data/counts
 
 Now that we are ready on the cluster, we can find the link to use to transfer the data by using GEO's FTP site. To access the FTP site, return to the [GEO home page](https://www.ncbi.nlm.nih.gov/geo/) and under the "Tools" header, click on "FTP site".
 
-<img src="../img/.png" width="500">
+<img src="../img/geo_ftp.png" width="300">
 
 This will take you to the directory to access all GEO data.
 
-<img src="../img/.png" width="500">
+<img src="../img/geo_dir.png" width="300">
 
+To download the data associated with the paper, "MOV10 and FMRP Regulate AGO2 Association with MicroRNA Recognition Elements", use the GEO ID given in the paper, GSE50499.
 
-Once you have found the data of interest, there are various methods available for downloading the data. Often it is most useful to download large data files to directory on a high performance computing cluster (such as Odyssey or O2).
+First we navigate the FTP site to the `series/` folder, then find the `GSE50nnn/` directory and enter the `GSE50499/` folder. The data files available are in the `suppl/` directory. If we choose to download all associated data, we can download the entire `suppl/` directory using the `wget` command. 
 
-### Downloading on a cluster
-
-Navigate the [GEO website](https://www.ncbi.nlm.nih.gov/geo/) and find the FTP site under the "Tools" header. Click on the FTP link to access all GEO data. To download the data associated with the paper, "MOV10 and FMRP Regulate AGO2 Association with MicroRNA Recognition Elements", use the GEO ID given in the paper, GSE50499.
-
-First we navigate the FTP site to the `series/` folder, then find the `GSE50nnn/` directory and enter the `GSE50499/` folder. The data files available are in the `suppl/` directory. If we choose to download all data, we can download the entire directory
+Since we are copying a directory, the `-r/--recursive` option is required. Also, the `-np/--no-parent` option is used to avoid the default copying of any parent directories.
 
 ```bash
 wget --recursive --no-parent ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE50499/suppl/
