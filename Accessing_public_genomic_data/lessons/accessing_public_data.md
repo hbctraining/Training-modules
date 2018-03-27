@@ -150,10 +150,14 @@ wget -r -np -R "index.html*" ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE5
 
 ### Downloading on a local computer
 
-On a Mac or using GitBash on Windows, the following will work to download individual files:
+If we are downloading a small file(s) to use on our personal computer, then it makes sense to just directly download to our computer. Unfortunately, `wget` is not automatically available using the Mac Terminal or using GitBash on Windows; however, the `curl` command is available and will work to download individual files:
 
 ```bash
 curl -O ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE50499/suppl/GSE50499_GEO_Ceman_counts.txt.gz
 ```
 
-Unfortunately, we cannot download folders with `curl`, and `wget` is not automatically available to use on these operating systems. However, for MacOS, the [Homebrew package manager](https://brew.sh/) is a wonderful way to install programs/commands that may not be installed on your operating system, such as `wget`.
+Unfortunately, we cannot download folders with `curl`, but for MacOS, the [Homebrew package manager](https://brew.sh/) is a wonderful way to install programs/commands that may not be installed on your operating system, such as `wget`.
+
+It's worth noting that we don't need to navigate the FTP site to find individual files to download, since the link on the GEO site should directly link to the file. By right-clicking on the `ftp` link on GEO, you can copy the 'ftp address' to use with the `wget` or `curl` command.
+
+<img src="../img/geo_ftp_cl.png width="300">
