@@ -156,8 +156,8 @@ If we are downloading a small file(s) to use on our personal computer, then it m
 curl -O ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE50499/suppl/GSE50499_GEO_Ceman_counts.txt.gz
 ```
 
-Unfortunately, we cannot download folders with `curl`, but for MacOS, the [Homebrew package manager](https://brew.sh/) is a wonderful way to install programs/commands that may not be installed on your operating system, such as `wget`.
+Unfortunately, we cannot download folders with `curl`; however, for MacOS, the [Homebrew package manager](https://brew.sh/) is a wonderful way to install programs/commands that may not be installed on your operating system, such as `wget`.
 
-It's worth noting that we don't need to navigate the FTP site to find individual files to download, since the link on the GEO site should directly link to the file. By right-clicking on the `ftp` link on GEO, you can copy the 'ftp address' to use with the `wget` or `curl` command.
+Also, it's worth noting that we don't need to navigate the FTP site to find individual files to download, since the link on the GEO site should list a link to the file. By right-clicking on the `ftp` link on GEO, you can copy the 'ftp address' to use with the `wget` or `curl` command.
 
 <img src="../img/geo_ftp_cl.png width="300">
