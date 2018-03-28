@@ -162,7 +162,15 @@ wget -r -np -R "index.html*" ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE5
 
 ### Downloading on a local computer
 
-If we are downloading a small file(s) to use on our personal computer, then it makes sense to directly download to our computer. Unfortunately, `wget` is not automatically available using the Mac Terminal or using GitBash on Windows. However, the `curl` command is available and will work to download individual files:
+If we are downloading a small file(s) to use on our personal computer, then it makes sense to directly download to our computer. Unfortunately, `wget` is not automatically available using the Mac Terminal or using GitBash on Windows. However, the `curl` command is available to transfer data from (or to) a server. 
+
+To see how this works, we can visualize partyparrot by using `curl` to connect to the server displaying the dancing parrot:
+
+```bash
+curl parrot.live
+```
+
+We can also download individual files using `curl` by connecting to the FTP:
 
 ```bash
 curl -O ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE50499/suppl/GSE50499_GEO_Ceman_counts.txt.gz
