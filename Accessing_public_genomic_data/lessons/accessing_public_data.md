@@ -200,7 +200,12 @@ $ fastq-dump <options> <SRR390728.sra>
 
 ## Finding and accessing data on the SRA
 
-# Ensembl
+# Reference Data
+
+During an NGS experiment, the sequences in the raw FASTQ files, or sequence reads, need to be mapped or aligned to the reference genome to determine from where these sequences originated. Therefore, we need a reference genome (in FASTA format) in which to align our sequences. In addition, many NGS methods require knowing where known genes or exons are located on the genome in order to quantify the number of reads aligning to different genome features, such as exons, introns, transcription start sites, etc. These analyses require reference data containing specific information about genomic coordinates of various
+genomic “features”, such as genomic annotation references (in GTF, GFF, BED, etc. formats).
+
+## Ensembl
 
 ## Finding and accessing reference data on Ensembl
 
