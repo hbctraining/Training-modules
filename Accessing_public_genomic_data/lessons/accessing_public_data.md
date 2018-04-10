@@ -245,10 +245,10 @@ When using Ensembl, note that it uses the following format for naming biological
 - ENSP###########	Ensembl Peptide ID
 - ENSE###########	Ensembl Exon ID
 	
-		For non-human species a suffix is added:
-	
-		- MUS (Mus musculus) for mouse ENSMUSG###
-		- DAR (Danio rerio) for zebrafish: ENSDARG###
+For non-human species a suffix is added:
+
+- MUS (Mus musculus) for mouse ENSMUSG###
+- DAR (Danio rerio) for zebrafish: ENSDARG###
 	
 ## Finding and accessing reference data on Ensembl
 
