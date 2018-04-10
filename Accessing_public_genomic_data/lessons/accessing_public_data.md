@@ -240,10 +240,10 @@ While we are not going to explore the Ensembl database in this workshop, we have
 
 When using Ensembl, note that it uses the following format for naming biological components:
 	
-		- ENSG###########	Ensembl Gene ID
-		- ENST###########	Ensembl Transcript ID
-		- ENSP###########	Ensembl Peptide ID
-		- ENSE###########	Ensembl Exon ID
+- ENSG###########	Ensembl Gene ID
+- ENST###########	Ensembl Transcript ID
+- ENSP###########	Ensembl Peptide ID
+- ENSE###########	Ensembl Exon ID
 	
 		For non-human species a suffix is added:
 	
