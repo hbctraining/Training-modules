@@ -7,8 +7,8 @@ To download reference data, there are a few different sources available:
 
 - **General biological databases:** Ensembl, NCBI, UCSC, EMBL-EBI, DDBJ, etc.
 - **Organism-specific biological databases:** Flybase, Wormbase, etc. (often updated more frequently, so may be more comprehensive)
-- **Reference data collections:** Illumina's iGenomes, one location to access genome reference data from Ensembl, UCSC and NCBI
-- **Local access:** shared databases on FAS Odyssey cluster or HMS O2 cluster
+- **Reference data collections:** Illumina's iGenomes, one location to access genome reference data from **Ensembl, UCSC and NCBI**
+- **Local access:** shared databases on FAS Odyssey cluster or HMS O2 cluster with access to genome reference data from **Ensembl and UCSC**
 
 ## General biological databases: Ensembl
 
