@@ -207,12 +207,13 @@ genomic “features”, such as gene annotation files (in GTF, GFF, etc. formats
 
 To download reference data, there are a few different sources available:
 
-- General biological databases: Ensembl, NCBI, UCSC, EMBL-EBI, DDBJ, etc.
-- Organism-specific biological databases: Flybase, Wormbase, etc. (often updated more frequently, so may be more comprehensive)
-- Reference data collections: Illumina's iGenomes
-- Local access: shared databases on FAS Odyssey cluster or HMS O2 cluster
+- **General biological databases:** Ensembl, NCBI, UCSC, EMBL-EBI, DDBJ, etc.
+- **Organism-specific biological databases:** Flybase, Wormbase, etc. (often updated more frequently, so may be more comprehensive)
+- **Reference data collections:** Illumina's iGenomes
+- **Local access:** shared databases on FAS Odyssey cluster or HMS O2 cluster
 
-## Ensembl genome database and browser
+## General biological databases: Ensembl
+
 #### Overview
 [*Ensembl*](http://useast.ensembl.org/index.html) provides a website that acts as a **single point of access to annotated genomes** for vertebrate species. 
 
