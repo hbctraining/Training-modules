@@ -24,9 +24,9 @@ Genome databases incorporate these genomes and generate the gene annotations wit
 	- GRCh38 = hg38; GRCh37 = hg19
 	- Patches or minor revisions of the genome (don't change genome coordinates) provided by the GRC, are **updated by the genome databases at different intervals**; therefore, the genome reference sequence for the same genome version can vary slightly between databases
 
-- Each biological database independently determines the gene annotations; therefore, gene annotations between these databases can differ, even though the genome assembly is more or less the same. Naming conventions are also different (chr1=1)
+- Each biological database **independently determines the gene annotations**; therefore, gene annotations between these databases can differ, even though the genome assembly is more or less the same. Naming conventions are also different (chr1=1)
 
-**Always use the same biological database for all reference data!**
+- **Always use the same biological database for all reference data!**
 
 ### Ensembl
 
@@ -78,6 +78,32 @@ For non-human species a suffix is added:
 The interface for downloading reference data from Ensembl is straight-forward. On the home page, you can click on `Downloads`.
 
 <img src="../img/ensembl_download_tab.png" width="500">
+
+Then click on the section to `Download a sequence or region`.
+
+<img src="../img/ensembl_download_data.png" width="500">
+
+In the 'Export Data' window, click on the link for the `FTP site`.
+
+<img src="../img/ensembl_export_data.png" width="500">
+
+Finally, right-click on the link to the reference genome (DNA FASTA), reference transcriptome (cDNA FASTA), gene annotation file (Gene sets, GTF or GFF), or other required reference data to download. Copy the link address.
+
+<img src="../img/ensembl_ftp.png" width="500">
+
+Now, on an HPC environment (O2 or Odyssey) use would use the `wget` command to download the reference data:
+
+```bash
+## DO NOT RUN
+wget ftp://ftp.ensembl.org/pub/release-92/fasta/homo_sapiens/dna/
+```
+
+This would take a really long time, so instead, you would probably want to submit a batch job using a script similar to the one below:
+
+```bash
+```
+
+>**NOTE:** If you desired an archived version of the genome, then on the Ensembl home page for the organism of interest, you would click on the `View in archive site` link in the lower right-hand corner of the page. Then you would navigate as described above.
 
 # iGenomes
 
