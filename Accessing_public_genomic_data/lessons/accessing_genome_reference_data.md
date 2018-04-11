@@ -77,6 +77,7 @@ For non-human species a suffix is added:
 
 The interface for downloading reference data from Ensembl is straight-forward. On the home page, you can click on `Downloads`.
 
+<img src="../img/ensembl_download_tab.png" width="500">
 
 # iGenomes
 
