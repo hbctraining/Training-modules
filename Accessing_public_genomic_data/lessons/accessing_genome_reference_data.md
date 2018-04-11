@@ -16,15 +16,17 @@ To download reference data, there are a few different sources available:
 
 Biological databases for gene expression data store genome assemblies and provide annotations regarding where the genes, transcripts, and other genomic features. 
 
-Genome assemblies give us the **nucleotide sequence of the reference genome**. Although the Human Genome Project was "completed" in 2003, small gaps in the sequence remained (estimated 1% of gene-containing portions). As technology improves and more genomes are sequenced, these gaps are filled, mistakes are corrected and alternate alleles are provided. Therefore, every several years a new genome build is released that contains these improvements. The most current **genome build** is GRCh38/hg38 for the human, released in 2013 and maintained by the Genome Reference Consortium (GRC). Usually the biological databases will include this version as soon as it is stably released, as well as access to archived versions.
+Genome assemblies give us the **nucleotide sequence of the reference genome**. Although the Human Genome Project was "completed" in 2003, small gaps in the sequence remained (estimated 1% of gene-containing portions). As technology improves and more genomes are sequenced, these gaps are filled, mistakes are corrected and alternate alleles are provided. Therefore, every several years a **new genome build** is released that contains these improvements. 
 
-Genome databases incorporate these genomes and generate the gene annotations with the following similarities/differences:
+The most current **genome build** is GRCh38/hg38 for the human, which was released in 2013 and is maintained by the Genome Reference Consortium (GRC). Usually the biological databases will include this updated versions as soon as they are stably released, in addition to access to archived versions.
 
-- Ensembl, NCBI, and UCSC all use the **same genome assemblies** provided by the GRC
+Genome databases incorporate these genomes and generate the gene annotations with the following **similarities/differences**:
+
+- **Ensembl, NCBI, and UCSC** all use the **same genome assemblies or builds** provided by the GRC
 	- GRCh38 = hg38; GRCh37 = hg19
-	- Patches or minor revisions of the genome (don't change genome coordinates) provided by the GRC, are **updated by the genome databases at different intervals**; therefore, the genome reference sequence for the same genome version can vary slightly between databases
+	- Patches or minor revisions of the genome, which don't change the genome coordinates, are frequently provided by the GRC. The reference genomes on different genome databases **incorporate these updates at different intervals**; therefore, the genome reference sequence for the same genome build can vary slightly between databases
 
-- Each biological database **independently determines the gene annotations**; therefore, gene annotations between these databases can differ, even though the genome assembly is more or less the same. Naming conventions are also different (chr1=1)
+- Each biological database **independently determines the gene annotations**; therefore, gene annotations between these databases can differ, even though the genome assembly is more or less the same. Naming conventions are also different (chr1=1) between databases.
 
 - **Always use the same biological database for all reference data!**
 
@@ -73,7 +75,7 @@ For non-human species a suffix is added:
 - **ENSMUSG###:** MUS (Mus musculus) for mouse 
 - **ENSDARG###:** DAR (Danio rerio) for zebrafish
 	
-#### Finding and accessing reference data on Ensembl
+### Finding and accessing reference data on Ensembl
 
 The interface for downloading reference data from Ensembl is straight-forward. On the home page, you can click on `Downloads`.
 
@@ -101,9 +103,21 @@ wget ftp://ftp.ensembl.org/pub/release-92/fasta/homo_sapiens/dna/
 This would take a really long time for large genomes, so instead, you would probably want to submit a batch job using a script similar to the one below:
 
 ```bash
+#!/bin/bash
+
+#SBATCH -p shared 	# partition name (small partition on O2)
+#SBATCH -t 0-6:00 	# hours:minutes runlimit after which job will be killed
+#SBATCH -n 1 		# number of cores requested 
+#SBATCH -o %j.out	# File to which standard out will be written
+#SBATCH -e %j.err 	# File to which standard err will be written
+
+wget ftp://ftp.ensembl.org/pub/release-92/fasta/homo_sapiens/dna/
 ```
 
 >**NOTE:** If you desired to download an archived version of the genome, then on the Ensembl home page for the organism of interest, you would click on the `View in archive site` link in the lower right-hand corner of the page. Then you would navigate as described above.
+
+Genomic reference data could be downloaded similarly by FTP from the [NCBI FTP (or through Aspera)](https://www.ncbi.nlm.nih.gov/home/download/) or the [UCSC FTP](https://genome.ucsc.edu/goldenpath/help/ftp.html).
+
 
 # iGenomes
 
