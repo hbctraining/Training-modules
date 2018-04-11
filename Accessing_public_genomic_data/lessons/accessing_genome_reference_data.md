@@ -1,6 +1,5 @@
 # Reference Data
 
-## Reference genome
 During an NGS experiment, the sequences in the raw FASTQ files, or "sequence reads", need to be mapped or aligned to the reference genome to determine from where these sequences originated. Therefore, we need a reference genome (in FASTA format) in which to align our sequences.
 
 In addition, many NGS methods require knowing where known genes or exons are located on the genome in order to quantify the number of reads aligning to different genome features, such as exons, introns, transcription start sites, etc. These analyses require reference data containing specific information about genomic coordinates of various
@@ -74,7 +73,7 @@ For non-human species a suffix is added:
 - **ENSMUSG###:** MUS (Mus musculus) for mouse 
 - **ENSDARG###:** DAR (Danio rerio) for zebrafish
 	
-## Finding and accessing reference data on Ensembl
+#### Finding and accessing reference data on Ensembl
 
 The interface for downloading reference data from Ensembl is straight-forward. On the home page, you can click on `Downloads`.
 
