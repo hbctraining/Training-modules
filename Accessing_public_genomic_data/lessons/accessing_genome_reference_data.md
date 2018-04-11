@@ -42,7 +42,7 @@ Genome databases incorporate these genomes and generate the gene annotations wit
 
 #### Using Ensembl
 
-![ensembl_homepage](../img/ensembl_interface.png)
+<img src="../img/ensembl_interface.png" width="500">
 
 - **Searching Ensembl**:  Look for a gene, location, variant and more using the search box on the homepage or the box that is provided in the top right corner of any Ensembl page.
 
