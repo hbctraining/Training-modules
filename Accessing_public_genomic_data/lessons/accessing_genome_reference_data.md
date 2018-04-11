@@ -1,4 +1,4 @@
-# Reference Data
+# Accessing Genomic Reference Data
 
 During an NGS experiment, the sequences in the raw FASTQ files, or "sequence reads", need to be mapped or aligned to the reference genome to determine from where these sequences originated. Therefore, we need a reference genome (in FASTA format) in which to align our sequences.
 
