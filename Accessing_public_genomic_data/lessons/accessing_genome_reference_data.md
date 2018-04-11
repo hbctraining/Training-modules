@@ -65,7 +65,7 @@ While we are not going to explore the Ensembl database in this workshop, we have
 
 #### Ensembl identifiers
 
-When using Ensembl, note that it uses the following format for naming biological components:
+When using Ensembl, note that it uses the following format for biological identifiers:
 	
 - **ENSG###########:**	Ensembl Gene ID
 - **ENST###########:**	Ensembl Transcript ID
@@ -81,7 +81,7 @@ For non-human species a suffix is added:
 
 The interface for downloading reference data from Ensembl is straight-forward. On the home page, you can click on `Downloads`.
 
-<img src="../img/ensembl_download_tab.png" width="500">
+<img src="../img/ensembl_download_tab.png" width="400">
 
 Then click on the section to `Download a sequence or region`.
 
@@ -121,10 +121,41 @@ wget ftp://ftp.ensembl.org/pub/release-92/fasta/homo_sapiens/dna/
 Genomic reference data could be downloaded similarly by FTP from the [NCBI FTP (or through Aspera)](https://www.ncbi.nlm.nih.gov/home/download/) or the [UCSC FTP](https://genome.ucsc.edu/goldenpath/help/ftp.html).
 
 
-# iGenomes
+## iGenomes
 
-## Finding and accessing reference data on iGenomes
-- shared_databases
+If working on a commonly analyzed organism, Illumina's iGenomes has facilitated the process of downloading reference data. On the [iGenomes website](https://support.illumina.com/sequencing/sequencing_software/igenome.html) reference data from Ensembl, UCSC and NCBI for various genome builds are available for download. In addition, the download is a compressed file containing the matching reference genome (FASTA) and gene annotation (GTF/GFF) files. 
+
+To download from iGenomes, we can right-click and copy the link to the file and use our `wget` command.
+
+<img src="../img/igenomes_download.png" width="500">
+
+```bash
+#!/bin/bash
+
+#SBATCH -p shared 	# partition name (small partition on O2)
+#SBATCH -t 0-6:00 	# hours:minutes runlimit after which job will be killed
+#SBATCH -n 1 		# number of cores requested 
+#SBATCH -o %j.out	# File to which standard out will be written
+#SBATCH -e %j.err 	# File to which standard err will be written
+
+wget ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/Homo_sapiens/NCBI/GRCh38/Homo_sapiens_NCBI_GRCh38.tar.gz
+```
+
+Then use the `tar` command to unpack, which you may want to include in the script above:
+
+```bash
+tar -xzf Homo_sapiens_NCBI_GRCh38.tar.gz
+```
+
+## Local access via Odyssey or O2
+
+Downloading the reference data from biological database or iGenomes might not be necessary since the Harvard Odyssey and O2 clusters have **shared reference data** downloaded from iGenomes available to its users. The Odyssey shared data is located at `/n/regal/informatics_public/ref/igenome/` and the O2 folder is located at `/n/groups/shared_databases/igenome/`. Instead of using storage space inside your folder, give the path to the reference data in these shared databases instead.
+
+Let's explore what's available within the `igenome` folder and how to find the reference sequence and gene annotation files.
+
+```bash
+cd /n/regal/informatics_public/ref/igenome/
+```
 
 # Flybase
 
