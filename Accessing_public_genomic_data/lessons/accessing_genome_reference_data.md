@@ -18,7 +18,7 @@ Biological databases for gene expression data store genome assemblies and provid
 
 Genome assemblies give us the **nucleotide sequence of the reference genome**. Although the Human Genome Project was "completed" in 2003, small gaps in the sequence remained (estimated 1% of gene-containing portions). As technology improves and more genomes are sequenced, these gaps are filled, mistakes are corrected and alternate alleles are provided. Therefore, every several years a **new genome build** is released that contains these improvements. 
 
-The most current **genome build** is GRCh38/hg38 for the human, which was released in 2013 and is maintained by the Genome Reference Consortium (GRC). Usually the biological databases will include this updated versions as soon as they are stably released, in addition to access to archived versions.
+The **current genome build** is GRCh38/hg38 for the human, which was released in 2013 and is maintained by the Genome Reference Consortium (GRC). Usually the biological databases will include the updated versions as soon as they are stably released, in addition to access to archived versions.
 
 Genome databases incorporate these genomes and generate the gene annotations with the following **similarities/differences**:
 
