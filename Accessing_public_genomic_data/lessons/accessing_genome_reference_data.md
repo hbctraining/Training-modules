@@ -63,6 +63,8 @@ Genome databases incorporate these genomes and generate the gene annotations wit
  
 While we are not going to explore the Ensembl database in this workshop, we have [materials available](https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/sessionIII/lessons/10_Ensembl_biomart.html) if you wish to explore on your own.
 
+#### Ensembl identifiers
+
 When using Ensembl, note that it uses the following format for naming biological components:
 	
 - **ENSG###########:**	Ensembl Gene ID
