@@ -85,7 +85,7 @@ The interface for downloading reference data from Ensembl is straight-forward. O
 
 Then click on the section to `Download a sequence or region`.
 
-<img src="../img/ensembl_download_data.png" width="500">
+<img src="../img/ensembl_download_data.png" width="200">
 
 In the 'Export Data' window, click on the link for the `FTP site`.
 
