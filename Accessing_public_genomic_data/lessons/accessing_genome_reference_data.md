@@ -98,12 +98,12 @@ Now, on an HPC environment (O2 or Odyssey) use would use the `wget` command to d
 wget ftp://ftp.ensembl.org/pub/release-92/fasta/homo_sapiens/dna/
 ```
 
-This would take a really long time, so instead, you would probably want to submit a batch job using a script similar to the one below:
+This would take a really long time for large genomes, so instead, you would probably want to submit a batch job using a script similar to the one below:
 
 ```bash
 ```
 
->**NOTE:** If you desired an archived version of the genome, then on the Ensembl home page for the organism of interest, you would click on the `View in archive site` link in the lower right-hand corner of the page. Then you would navigate as described above.
+>**NOTE:** If you desired to download an archived version of the genome, then on the Ensembl home page for the organism of interest, you would click on the `View in archive site` link in the lower right-hand corner of the page. Then you would navigate as described above.
 
 # iGenomes
 
