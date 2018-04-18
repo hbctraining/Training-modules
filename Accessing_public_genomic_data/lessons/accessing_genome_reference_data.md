@@ -204,7 +204,7 @@ On the homepage, there is direct access to WormBase, links to all species genome
 To download from WormBase ParaSite is intuitive and simple. All that is needed is to click on the `Downloads` tab.
 
 <p align="center">
-<img src="../img/wormbase_homepage_download.png" width="500">
+<img src="../img/wormbase_homepage_download.png" width="300">
 </p>
 
 This will take you to the FTP site, where you can right-click to copy the link address of the reference data of interest.
