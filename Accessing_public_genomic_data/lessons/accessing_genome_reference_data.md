@@ -229,3 +229,7 @@ wget ftp://ftp.ebi.ac.uk/pub/databases/wormbase/parasite/releases/WBPS10/species
 
 In general, whether downloading data from a general database, an organism-specific database, or an iGenomes collection, the download should be straight-forward using the `wget` command and the link to the corresponding FTP site.
 
+```bash
+wget link_to_FTP
+```
+
