@@ -14,7 +14,7 @@ To download reference data, there are a few different sources available:
 
 ## General biological databases
 
-Biological databases for gene expression data store genome assemblies and provide annotations regarding where the genes, transcripts, and other genomic features. 
+Biological databases for gene expression data store genome assemblies and provide annotations regarding where the genes, transcripts, and other genomic features are located on the genome. 
 
 Genome assemblies give us the **nucleotide sequence of the reference genome**. Although the Human Genome Project was "completed" in 2003, small gaps in the sequence remained (estimated 1% of gene-containing portions). As technology improves and more genomes are sequenced, these gaps are filled, mistakes are corrected and alternate alleles are provided. Therefore, every several years a **new genome build** is released that contains these improvements. 
 
