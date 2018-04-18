@@ -201,7 +201,7 @@ On the homepage, there is direct access to WormBase, links to all species genome
 
 ## Finding and accessing reference data on Wormbase
 
-To download from WormBase ParaSite is intuitive and simple. All that is needed is to click on the `Downloads` tab.
+Downloading reference data from WormBase ParaSite is intuitive and simple. All that is needed is to click on the `Downloads` tab.
 
 <p align="center">
 <img src="../img/wormbase_homepage_download.png" width="300">
