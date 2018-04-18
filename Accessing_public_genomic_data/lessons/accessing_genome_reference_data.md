@@ -44,7 +44,7 @@ Genome databases incorporate these genomes and generate the gene annotations wit
 	- Manual curation by the HAVANA group is performed for human, mouse, zebrafish, and rat species, providing better confidence of transcript annotations
 	- Directly imports annotations from FlyBase, WormBase and SGD
 
-### Using Ensembl
+### Using the Ensembl genomic database and genome browser
 
 <p align="center">
   <img src="../img/ensembl_interface.png" width="500">
