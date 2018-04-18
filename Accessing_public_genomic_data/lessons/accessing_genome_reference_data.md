@@ -150,6 +150,8 @@ To download from iGenomes, we can right-click and copy the link to the file and 
 </p>
 
 ```bash
+# DO NOT RUN
+
 #!/bin/bash
 
 #SBATCH -p shared 	# partition name (small partition on O2)
@@ -169,7 +171,9 @@ tar -xzf Homo_sapiens_NCBI_GRCh38.tar.gz
 
 ## Local access via Odyssey or O2
 
-Downloading the reference data from biological database or iGenomes might not be necessary since the Harvard Odyssey and O2 clusters have **shared reference data** downloaded from iGenomes available to its users. The Odyssey shared data is located at `/n/regal/informatics_public/ref/igenome/` and the O2 folder is located at `/n/groups/shared_databases/igenome/`. Instead of using storage space inside your folder, give the path to the reference data in these shared databases instead.
+Downloading the reference data from biological database or iGenomes might not be necessary since the Harvard Odyssey and O2 clusters have **shared reference data** downloaded from iGenomes available to its users. 
+
+The Odyssey shared data is located at `/n/regal/informatics_public/ref/igenome/` and the O2 folder is located at `/n/groups/shared_databases/igenome/`. Instead of using storage space inside your folder, give the path to the reference data in these shared databases instead.
 
 Let's explore what's available within the `igenome` folder and how to find the reference sequence and gene annotation files.
 
