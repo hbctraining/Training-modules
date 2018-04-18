@@ -111,7 +111,7 @@ Finally, right-click on the link to the reference genome (DNA FASTA), reference 
 </p>
 
 
-Now, on an HPC environment (O2 or Odyssey) use would use the `wget` command to download the reference data:
+Now, on an HPC environment (O2 or Odyssey) you could use the `wget` command to download the reference data:
 
 ```bash
 ## DO NOT RUN
@@ -132,7 +132,7 @@ This would take a really long time for large genomes, so instead, you would prob
 wget ftp://ftp.ensembl.org/pub/release-92/fasta/homo_sapiens/dna/
 ```
 
->**NOTE:** If you desired to download an archived version of the genome, then on the Ensembl home page for the organism of interest, you would click on the `View in archive site` link in the lower right-hand corner of the page. Then you would navigate as described above.
+>**NOTE:** If you desired an archived version of the genome, on the Ensembl home page for the organism of interest you would click on the `View in archive site` link in the lower right-hand corner of the page. Then you would navigate as described above.
 
 Genomic reference data could be downloaded similarly by FTP from the [NCBI FTP (or through Aspera)](https://www.ncbi.nlm.nih.gov/home/download/) or the [UCSC FTP](https://genome.ucsc.edu/goldenpath/help/ftp.html).
 
