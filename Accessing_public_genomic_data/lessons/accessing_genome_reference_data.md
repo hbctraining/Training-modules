@@ -46,7 +46,9 @@ Genome databases incorporate these genomes and generate the gene annotations wit
 
 ### Using Ensembl
 
-<img src="../img/ensembl_interface.png" width="500">
+<p align="center">
+  <img src="../img/ensembl_interface.png" width="500">
+</p>
 
 - **Searching Ensembl**:  Look for a gene, location, variant and more using the search box on the homepage or the box that is provided in the top right corner of any Ensembl page.
 
@@ -85,19 +87,29 @@ For non-human species a suffix is added:
 
 The interface for downloading reference data from Ensembl is straight-forward. On the home page, you can click on `Downloads`.
 
+<p align="center">
 <img src="../img/ensembl_download_tab.png" width="400">
+</p>
 
 Then click on the section to `Download a sequence or region`.
 
+<p align="center">
 <img src="../img/ensembl_download_data.png" width="200">
+</p>
+
 
 In the 'Export Data' window, click on the link for the `FTP site`.
 
+<p align="center">
 <img src="../img/ensembl_export_data.png" width="500">
+</p>
 
 Finally, right-click on the link to the reference genome (DNA FASTA), reference transcriptome (cDNA FASTA), gene annotation file (Gene sets, GTF or GFF), or other required reference data to download. Copy the link address.
 
+<p align="center">
 <img src="../img/ensembl_ftp.png" width="500">
+</p>
+
 
 Now, on an HPC environment (O2 or Odyssey) use would use the `wget` command to download the reference data:
 
@@ -131,7 +143,9 @@ If working on a commonly analyzed organism, Illumina's iGenomes has facilitated 
 
 To download from iGenomes, we can right-click and copy the link to the file and use our `wget` command.
 
+<p align="center">
 <img src="../img/igenomes_download.png" width="500">
+</p>
 
 ```bash
 #!/bin/bash
