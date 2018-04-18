@@ -46,6 +46,8 @@ Genome databases incorporate these genomes and generate the gene annotations wit
 
 ### Using the Ensembl genomic database and genome browser
 
+Navigate to the [Ensembl website](http://useast.ensembl.org/index.html) to view the interface. The homepage for Ensembl has a lot to offer, with the a lot of information and access to a range of functionality and tools.
+
 <p align="center">
   <img src="../img/ensembl_interface.png" width="500">
 </p>
