@@ -187,9 +187,11 @@ Let's explore what's available within the `igenome` folder and how to find the r
 cd /n/regal/informatics_public/ref/igenome/
 ```
 
-# Wormbase
+## Organism-specific databases
 
 Although the general genomic databases update the genome builds and annotations for all species, organism-specific databases often update the genome patches and gene annotations more frequently. In addition, these databases also offer genomes for other species that may not be present in the general databases. Additional tools and information regarding these organisms are also accessible.
+
+### Wormbase
 
 As an example, we will explore [WormBase ParaSite](http://parasite.wormbase.org/index.html), which is devoted to the study of *C. elegans* and other nematodes, in addition to, helminths. This site is closely linked with *WormBase*, and incorporates the information for *C. elegans* and other nematodes from this repository. 
 
@@ -199,7 +201,7 @@ On the homepage, there is direct access to WormBase, links to all species genome
 <img src="../img/wormbase_homepage.png" width="500">
 </p>
 
-## Finding and accessing reference data on Wormbase
+### Finding and accessing reference data on Wormbase
 
 Downloading reference data from WormBase ParaSite is intuitive and simple. All that is needed is to click on the `Downloads` tab.
 
