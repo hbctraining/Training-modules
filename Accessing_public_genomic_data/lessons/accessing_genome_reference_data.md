@@ -145,7 +145,7 @@ sbatch name_of_script.slurm
 Genomic reference data could be downloaded similarly by FTP from the [NCBI FTP (or through Aspera)](https://www.ncbi.nlm.nih.gov/home/download/) or the [UCSC FTP](https://genome.ucsc.edu/goldenpath/help/ftp.html).
 
 
-## iGenomes
+## Reference data collections: iGenomes
 
 If working on a commonly analyzed organism, Illumina's iGenomes has facilitated the process of downloading reference data. On the [iGenomes website](https://support.illumina.com/sequencing/sequencing_software/igenome.html) reference data from Ensembl, UCSC and NCBI for various genome builds are available for download. In addition, the download is a compressed file containing the matching reference genome (FASTA) and gene annotation (GTF/GFF) files. 
 
