@@ -1,4 +1,4 @@
-# Accessing public data
+# Accessing public NGS sequencing data
 
 All types of bioinformatics analyses require access to public data, regardless of whether we are analyzing our own data or the data output from someone else's experiment. Reference data is available online as well as the experimental data from many published (and unpublished) studies. To access this data generally requires the basic knowledge of the **command line** and an understanding about the **associated tools and databases**.
 
