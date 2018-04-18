@@ -34,11 +34,14 @@ Genome databases incorporate these genomes and generate the gene annotations wit
 
 [*Ensembl*](http://useast.ensembl.org/index.html) provides a website that acts as a **single point of access to annotated genomes** for vertebrate species. For all other organisms there are additional Ensembl databases available through [Ensembl Genomes](http://ensemblgenomes.org/); however, they do not include viruses (NCBI does).
 
-- Genome assemblies are updated every two years (to include patches), or less often depending on the species
-- Gene annotations are created or updated using a variety of sources (ENA, UniProtKB, NCBI RefSeq, RFAM, miRBase, and tRNAscan-SE databases)
-- Automatic annotation is performed for all species using identified proteins and transcripts
-- Manual curation by the HAVANA group is performed for human, mouse, zebrafish, and rat species, providing better confidence of transcript annotations
-- Directly imports annotations from FlyBase, WormBase and SGD
+- Genome assemblies (reference genomes)
+	- Genome assemblies are updated every two years (to include patches), or less often depending on the species
+
+- Gene annotations
+	- Gene annotations are created or updated using a variety of sources (ENA, UniProtKB, NCBI RefSeq, RFAM, miRBase, and tRNAscan-SE databases)
+	- Automatic annotation is performed for all species using identified proteins and transcripts
+	- Manual curation by the HAVANA group is performed for human, mouse, zebrafish, and rat species, providing better confidence of transcript annotations
+	- Directly imports annotations from FlyBase, WormBase and SGD
 
 #### Using Ensembl
 
