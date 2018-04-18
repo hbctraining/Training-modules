@@ -8,7 +8,7 @@ genomic “features”, such as gene annotation files (in GTF, GFF, etc.).
 To download reference data, there are a few different sources available:
 
 - **General biological databases:** Ensembl, NCBI, and UCSC
-- **Organism-specific biological databases:** Flybase, Wormbase, etc. (often updated more frequently, so may be more comprehensive)
+- **Organism-specific biological databases:** Wormbase, Flybase, etc. (often updated more frequently, so may be more comprehensive)
 - **Reference data collections:** Illumina's iGenomes, one location to access genome reference data from **Ensembl, UCSC and NCBI**
 - **Local access:** shared databases on FAS Odyssey cluster or HMS O2 cluster with access to genome reference data from **Ensembl, UCSC and NCBI**
 
@@ -136,6 +136,12 @@ wget ftp://ftp.ensembl.org/pub/release-92/fasta/homo_sapiens/dna/
 
 >**NOTE:** If you desired an archived version of the genome, on the Ensembl home page for the organism of interest you would click on the `View in archive site` link in the lower right-hand corner of the page. Then you would navigate as described above.
 
+To run the script, you would use the following `sbatch` command:
+
+```bash
+sbatch name_of_script.slurm
+```
+
 Genomic reference data could be downloaded similarly by FTP from the [NCBI FTP (or through Aspera)](https://www.ncbi.nlm.nih.gov/home/download/) or the [UCSC FTP](https://genome.ucsc.edu/goldenpath/help/ftp.html).
 
 
@@ -150,8 +156,6 @@ To download from iGenomes, we can right-click and copy the link to the file and 
 </p>
 
 ```bash
-# DO NOT RUN
-
 #!/bin/bash
 
 #SBATCH -p shared 	# partition name (small partition on O2)
@@ -163,11 +167,13 @@ To download from iGenomes, we can right-click and copy the link to the file and 
 wget ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/Homo_sapiens/NCBI/GRCh38/Homo_sapiens_NCBI_GRCh38.tar.gz
 ```
 
-Then use the `tar` command to unpack, which you may want to include in the script above:
+After running the script with the `sbatch` command, you could use the `tar` command to unpack it. 
 
 ```bash
 tar -xzf Homo_sapiens_NCBI_GRCh38.tar.gz
 ```
+
+If desired you could just run the `tar` command after the `wget` command in the above script to automatically unpack the reference data. 
 
 ## Local access via Odyssey or O2
 
@@ -181,6 +187,42 @@ Let's explore what's available within the `igenome` folder and how to find the r
 cd /n/regal/informatics_public/ref/igenome/
 ```
 
-# Flybase
+# Wormbase
 
-## Finding and accessing reference data on Flybase
+Although the general genomic databases update the genome builds and annotations for all species, organism-specific databases often update the genome patches and gene annotations more frequently. In addition, these databases also offer genomes for other species that may not be present in the general databases. Additional tools and information regarding these organisms are also accessible.
+
+As an example, we will explore [WormBase ParaSite](http://parasite.wormbase.org/index.html), which is devoted to the study of *C. elegans* and other nematodes, in addition to, helminths. This site is closely linked with *WormBase*, and incorporates the information for *C. elegans* and other nematodes from this repository. 
+
+On the homepage, there is direct access to WormBase, links to all species genomes available, tools, and news.
+
+<p align="center">
+<img src="../img/wormbase_homepage.png" width="500">
+</p>
+
+## Finding and accessing reference data on Wormbase
+
+To download from WormBase ParaSite is intuitive and simple. All that is needed is to click on the `Downloads` tab.
+
+<p align="center">
+<img src="../img/wormbase_homepage_download.png" width="500">
+</p>
+
+This will take you to the FTP site, where you can right-click to copy the link address of the reference data of interest.
+
+<p align="center">
+<img src="../img/wormbase_downloads.png" width="500">
+</p>
+
+Then, similar to the other methods, the `wget` command can be used to download to the cluster.
+
+```bash
+#!/bin/bash
+
+#SBATCH -p shared 	# partition name (small partition on O2)
+#SBATCH -t 0-6:00 	# hours:minutes runlimit after which job will be killed
+#SBATCH -n 1 		# number of cores requested 
+#SBATCH -o %j.out	# File to which standard out will be written
+#SBATCH -e %j.err 	# File to which standard err will be written
+
+wget ftp://ftp.ebi.ac.uk/pub/databases/wormbase/parasite/releases/WBPS10/species/acanthocheilonema_viteae/PRJEB4306/acanthocheilonema_viteae.PRJEB4306.WBPS10.genomic.fa.gz
+```
