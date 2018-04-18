@@ -34,8 +34,9 @@ Genome databases incorporate these genomes and generate the gene annotations wit
 
 [*Ensembl*](http://useast.ensembl.org/index.html) provides a website that acts as a **single point of access to annotated genomes** for vertebrate species. For all other organisms there are additional Ensembl databases available through [Ensembl Genomes](http://ensemblgenomes.org/); however, they do not include viruses (NCBI does).
 
-- Genome assemblies (reference genomes)
-	- Genome assemblies are updated every two years (to include patches), or less often depending on the species
+- Genome assemblies/builds (reference genomes)
+	- New genome builds are released every several years or more depending on the species
+	- Genome assemblies are updated every two years to include patches, or less often depending on the species
 
 - Gene annotations
 	- Gene annotations are created or updated using a variety of sources (ENA, UniProtKB, NCBI RefSeq, RFAM, miRBase, and tRNAscan-SE databases)
