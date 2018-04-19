@@ -2,8 +2,7 @@
 
 During an NGS experiment, the nucleotide sequences stored inside the raw FASTQ files, or "sequence reads", need to be mapped or aligned to the reference genome to determine from where these sequences originated. Therefore, we need a reference genome (in FASTA format) in which to align our sequences.
 
-In addition, many NGS methods require knowing where known genes or exons are located on the genome in order to quantify the number of reads aligning to different genome features, such as exons, introns, transcription start sites, etc. These analyses require reference data containing specific information about genomic coordinates of various
-genomic “features”, such as gene annotation files (in GTF, GFF, etc.). 
+In addition, many NGS methods require knowing where known genes or exons are located on the genome in order to quantify the number of reads aligning to different genome features, such as exons, introns, transcription start sites, etc. These analyses require reference data containing specific information about genomic coordinates of various genomic “features”, such as gene annotation files (in GTF, GFF, etc.). 
 
 To download reference data, there are a few different sources available:
 
@@ -11,6 +10,8 @@ To download reference data, there are a few different sources available:
 - **Organism-specific biological databases:** Wormbase, Flybase, etc. (often updated more frequently, so may be more comprehensive)
 - **Reference data collections:** Illumina's iGenomes, one location to access genome reference data from **Ensembl, UCSC and NCBI**
 - **Local access:** shared databases on FAS Odyssey cluster or HMS O2 cluster with access to genome reference data from **Ensembl, UCSC and NCBI**
+
+*Note that these reference data sources are relevant to most types of genomic analyses, not just NGS analyses.
 
 ## General biological databases
 
