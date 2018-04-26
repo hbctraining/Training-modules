@@ -30,7 +30,7 @@ All results will appear in a new window with clickable filters on the left-hand 
 
 ### Finding GEO data for a particular publication
 
-To find data from a published paper on GEO, the paper will often provide the GEO accession number. For example, let's find the data associated with the paper, "MOV10 and FRMP regulate AGO2 association with microRNA recognition elements". First, we can navigate to the [article](http://tinyurl.com/mov10-paper).
+To find data from a published paper on GEO, the paper will often provide the GEO accession number. For example, let's find the data associated with the paper, "MOV10 and FRMP regulate AGO2 association with microRNA recognition elements". First, we can navigate to the [article](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4268400/).
 
 <img src="../img/mov10_paper.png" width="500">
 
