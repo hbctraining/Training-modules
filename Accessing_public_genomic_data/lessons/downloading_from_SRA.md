@@ -1,9 +1,7 @@
 ---
-title: ""
-author: ""
-output: 
-  html_document:
-    css: custom.css
+title: "Accessing public genomic data: SRA"
+author: "Kayleigh Rutherford, Mary Piper"
+date: "April 26th, 2018"
 ---
 
 # Downloading data from SRA
