@@ -161,7 +161,9 @@ $ sbatch sra_fqdump.slurm
 > **NOTE: SRRs from Multiple Studies:**
 > Sometimes, in a publication, the relevant samples under study are given as sample numbers (GSM numbers), not SRRs, and sometimes belong to different GEO datasets (eg: different parts of a series, or separate studies for case and control experiments/data). If this is the case, download the RunInfoTables for each of the relevant studies as shown, selecting only the relevant GSMs/SRRs in the table before download, and copy them into one file. The starting point for the parallel fastq dump is a list of SRRs - so it does not matter if they came from different studies.
 
-### Downloading from SRA on O2 (HMS-RC cluster) *[Not for running in class]*
+***
+
+#### Downloading from SRA on O2 (HMS-RC cluster)
 
 The following set of commands will perform the same analysis on O2:
 ```
@@ -230,3 +232,7 @@ do
 sbatch inner_script.slurm $srr
 done
 ```
+
+---
+*This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
+
