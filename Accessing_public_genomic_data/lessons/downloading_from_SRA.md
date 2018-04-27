@@ -47,14 +47,19 @@ Also on this page is a listing of each run and the corresponding sample it came 
 
 <img src="../img/accession_list_red.png" width="600">
 
-**Download the Accession list** for the data you are interested in to your desktop (everything included by default). **Copy it to your HPC cluster** using the following command:
+**Download the Accession list** for the data you are interested in to your desktop (everything included by default). 
+**Copy the contents of this downloaded file to a new file on the cluster** using the following commands:
 
 ```bash
-$ scp /path/on/your/computer/to/list_of_SRRs.txt USERNAME@login.rc.fas.harvard.edu:/n/regal/USERNAME
+$ mkdir -p ~/mov10_rnaseq_project/data/sra_1    # make a new directory
+
+$ cd ~/mov10_rnaseq_project/data/sra_1   # change to that directory
+
+$ vim SRR_Acc_List_GSE51443.txt   # paste into this new file and save
 ```
 
 > **NOTE: Storage considerations:**
-> When downloading large datasets to the server, note that the maximum storage limit in your home directory is limited. This can be a problem when downloading tens or hundreds of fastq files. The scratch space on is a location with much greater storage, and a better place to run large downloads.
+> When downloading large datasets to the server, note that the maximum storage limit in your home directory is limited. This can be a problem when downloading tens or hundreds of fastq files. We are doing this demo run using our home directory, but this download should ideally be done in a location that has been assigned to your group (scratch space or regular storage space) and not in the home directory. *The scratch space is a location on most clusters with much greater storage available, with the caveat that it may not be backed up*.
 >
 > During download, in addition to writing the fastq files, SRA-toolkit writes additional cache files, which are automatically directed to your home directory by default, even if you are working elsewhere. Because of this, we may need to write a **short configuration file** to tell SRA-toolkit to **write its cache files to the scratch space**, instead of our home, to avoid running out of storage.
 >
@@ -76,10 +81,10 @@ Given one single SRR, it is possible to convert that directly to a fastq file on
 
 ```bash
 $ module load sratoolkit/2.8.0-fasrc01 
-$ fastq-dump <SRR>
+$ fastq-dump SRR1013512
 ```
 
-But, doing this individually for many SRR's could be painful. Unfortunately the SRA-toolkit doesn't have its own methods for downloading multiple SRR files at once in parallel, so we've written two scripts to help you do this. 
+But, doing this individually for many SRR's could be painful. Unfortunately the SRA-toolkit doesn't have its own methods for downloading multiple SRR files at once in parallel, so we've written two scripts to help you do this, we will be walking through these scripts and not running them.
 
 The **first script** contains the **command to do a fastq dump on a given SRR number**, where the SRR variable is given using a positional parameter. You can learn more about positional parameters [here](https://github.com/hbctraining/Intro-to-rnaseq-hpc-O2/blob/master/lessons/07_automating_workflow.md#more-flexibility-with-variables).
 
@@ -161,53 +166,53 @@ $ sbatch sra_fqdump.slurm
 > # write configuration file with a line that redirects the cache
 > echo '/repository/user/main/public/root = "/n/scratch2/USERNAME/sra-cache"' > ~/.ncbi/user-settings.mkfg
 >```
-
-$ module load sratoolkit/2.8.1
-$ fastq-dump <SRR>
-  
-```bash
-$ vim inner_script.slurm
-```
-
-```bash
-#!/bin/bash
-#SBATCH -t 0-10:00       # Runtime - asking for 10 hours
-#SBATCH -p short            # Partition (queue) - asking for short queue
-#SBATCH -J sra_download             # Job name
-#SBATCH -o run.o             # Standard out
-#SBATCH -e run.e             # Standard error
-#SBATCH --cpus-per-task=1    # CPUs per task
-#SBATCH --mem-per-cpu=8G     # Memory needed per core
-#SBATCH --mail-type=NONE      # Mail when the job ends
-
-# for single end reads only
-fastq-dump $1
-
-# for paired end reads only
-# fastq-dump --split-3  $1
-```
-
-```bash
-$ vim sra_fqdump.slurm
-```
-
-```bash
-#!/bin/bash
-#SBATCH -t 0-10:00       # Runtime
-#SBATCH -p short            # Partition (queue)
-#SBATCH -J your_job_name             # Job name
-#SBATCH -o run.o             # Standard out
-#SBATCH -e run.e             # Standard error
-#SBATCH --cpus-per-task=1    # CPUs per task
-#SBATCH --mem-per-cpu=8G     # Memory needed per core
-#SBATCH --mail-type=NONE      # Mail when the job ends
-
-module load sratoolkit/2.8.1
-
-# for each SRR in the list of SRRs file
-for srr in list_of_SRRs.txt
-do
-# call the bash script that does the fastq dump, passing it the SRR number next in file
-sbatch inner_script.slurm $srr
-done
-```
+> 
+> $ module load sratoolkit/2.8.1
+> $ fastq-dump <SRR>
+>   
+> ```bash
+> $ vim inner_script.slurm
+> ```
+> 
+> ```bash
+> #!/bin/bash
+> #SBATCH -t 0-10:00       # Runtime - asking for 10 hours
+> #SBATCH -p short            # Partition (queue) - asking for short queue
+> #SBATCH -J sra_download             # Job name
+> #SBATCH -o run.o             # Standard out
+> #SBATCH -e run.e             # Standard error
+> #SBATCH --cpus-per-task=1    # CPUs per task
+> #SBATCH --mem-per-cpu=8G     # Memory needed per core
+> #SBATCH --mail-type=NONE      # Mail when the job ends
+> 
+> # for single end reads only
+> fastq-dump $1
+> 
+> # for paired end reads only
+> # fastq-dump --split-3  $1
+> ```
+> 
+> ```bash
+> $ vim sra_fqdump.slurm
+> ```
+> 
+> ```bash
+> #!/bin/bash
+> #SBATCH -t 0-10:00       # Runtime
+> #SBATCH -p short            # Partition (queue)
+> #SBATCH -J your_job_name             # Job name
+> #SBATCH -o run.o             # Standard out
+> #SBATCH -e run.e             # Standard error
+> #SBATCH --cpus-per-task=1    # CPUs per task
+> #SBATCH --mem-per-cpu=8G     # Memory needed per core
+> #SBATCH --mail-type=NONE      # Mail when the job ends
+> 
+> module load sratoolkit/2.8.1
+> 
+> # for each SRR in the list of SRRs file
+> for srr in list_of_SRRs.txt
+> do
+> # call the bash script that does the fastq dump, passing it the SRR number next in file
+> sbatch inner_script.slurm $srr
+> done
+> ```
