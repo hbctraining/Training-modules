@@ -32,7 +32,7 @@ Clicking on this link takes you to a page that lists all the biological samples 
 
 <img src="../img/send_to_run_selector.png" width="600">
 
-# Run selector
+## Run selector
 You'll notice that the Run Selector has aggregated all the information for the study samples, including a table of metadata at the top, giving information on: 
 
 - LibraryLayout (whether the reads were sequenced using single or paired end sequencing)
@@ -58,6 +58,8 @@ $ cd ~/mov10_rnaseq_project/data/sra_1   # change to that directory
 $ vim SRR_Acc_List_GSE51443.txt   # paste into this new file and save
 ```
 
+> **NOTE:** Instead of copying and pasting you can also use `scp` to copy over the downloaded file to the cluster.
+> 
 > **NOTE: Storage considerations:**
 > When downloading large datasets to the server, note that the maximum storage limit in your home directory is limited. This can be a problem when downloading tens or hundreds of fastq files. We are doing this demo run using our home directory, but this download should ideally be done in a location that has been assigned to your group (scratch space or regular storage space) and not in the home directory. *The scratch space is a location on most clusters with much greater storage available, with the caveat that it may not be backed up*.
 >
@@ -75,16 +77,20 @@ $ vim SRR_Acc_List_GSE51443.txt   # paste into this new file and save
 
 Now we have what we need to run a `fastq-dump` for **all of the SRRs** we want.
 
-# Parallelizing the SRR download
+## Downloading a single SRR
 
-Given one single SRR, it is possible to convert that directly to a fastq file on the server, using SRA toolkit
+Given one single SRR, it is possible to convert that directly to a fastq file on the server, using [SRA toolkit](https://github.com/ncbi/sra-tools/wiki/HowTo:-Access-SRA-Data) which is a toolkit created by NCBI. This should be already downloaded and installed on most clusters used for biomedical purposes.
 
 ```bash
 $ module load sratoolkit/2.8.0-fasrc01 
+
+## The fastq-dump command will only download the fastq version of the SRR, given the SRR number and an internet connection
 $ fastq-dump SRR1013512
 ```
 
-But, doing this individually for many SRR's could be painful. Unfortunately the SRA-toolkit doesn't have its own methods for downloading multiple SRR files at once in parallel, so we've written two scripts to help you do this, we will be walking through these scripts and not running them.
+## Parallelizing the SRR download of multiple FASTQ files
+
+Downloading individual SRRs can become painful if the experiment you are downloading has loads of SRRs. Unfortunately, the SRA-toolkit doesn't have its own methods for downloading multiple SRR files at once; so, we've written two scripts to help you do this efficiently **in parallel**. Note that we will be walking through these scripts and not demoing them in class.
 
 The **first script** contains the **command to do a fastq dump on a given SRR number**, where the SRR variable is given using a positional parameter. You can learn more about positional parameters [here](https://github.com/hbctraining/Intro-to-rnaseq-hpc-O2/blob/master/lessons/07_automating_workflow.md#more-flexibility-with-variables).
 
@@ -103,13 +109,16 @@ $ vim inner_script.slurm
 #SBATCH --mem-per-cpu=8G     # Memory needed per core
 #SBATCH --mail-type=NONE      # Mail when the job ends
 
+module load sratoolkit/2.8.0-fasrc01 
+
 # for single end reads only
 fastq-dump $1
 
 # for paired end reads only
 # fastq-dump --split-3  $1
 ```
-> **NOTE: Paired End Data:**
+
+> **NOTE: Downloading Paired End Data:**
 > Unlike the standard format for paired end data, where we normally find two fastq files labeled as `sample1_001.fastq` and `sample1_002.fastq`, **SRR files can be very misleading in that even paired end reads are found in one single file**, with sequence pairs concatenated alongside each other. Because of this format, **paired files need to be split down the middle** at the download step. 
 >
 > SRA toolkit has an option for this called `--split-files`. By using this, one single SRR file will download as `SRRxxx_1.fastq` and `SRRxxx_2.fastq`.
@@ -133,16 +142,17 @@ $ vim sra_fqdump.slurm
 #SBATCH --mem-per-cpu=8G     # Memory needed per core
 #SBATCH --mail-type=NONE      # Mail when the job ends
 
-module load sratoolkit/2.8.0-fasrc01 
-
 # for every SRR in the list of SRRs file
-for srr in list_of_SRRs.txt
+for srr in SRR_Acc_List_GSE51443.txt
 do
 # call the bash script that does the fastq dump, passing it the SRR number next in file
 sbatch inner_script.slurm $srr
 done
 ```
-In this way (by calling a script within a script) we will start a new job for each SRR download, and download all the files at once in parallel -- much quicker than if we had to wait for each one to run sequentially. To **run the main script:**
+
+In this way (by calling a script within a script) we will start a new job for each SRR download, and download all the files at once **in parallel** -- much quicker than if we had to wait for each one to run sequentially. 
+
+The following will **run the main (second) script** on Odyssey:
 
 ```bash
 $ sbatch sra_fqdump.slurm
@@ -151,68 +161,72 @@ $ sbatch sra_fqdump.slurm
 > **NOTE: SRRs from Multiple Studies:**
 > Sometimes, in a publication, the relevant samples under study are given as sample numbers (GSM numbers), not SRRs, and sometimes belong to different GEO datasets (eg: different parts of a series, or separate studies for case and control experiments/data). If this is the case, download the RunInfoTables for each of the relevant studies as shown, selecting only the relevant GSMs/SRRs in the table before download, and copy them into one file. The starting point for the parallel fastq dump is a list of SRRs - so it does not matter if they came from different studies.
 
-> **NOTE: Running on O2**
-> The following set of commands will perform the same analysis on O2:
-> ```
-> $ scp /path/on/your/computer/to/list_of_SRRs.txt USERNAME@hms.harvard.edu:/n/scratch2/USERNAME/
-> ```
->
->```bash
-> # Create config file by navigating to your scratch space (replace 'username' with your username) and running the following:
-> cd /n/scratch2/username
->
-> # make a directory for ncbi configuration settings
-> mkdir -p ~/.ncbi
-> # write configuration file with a line that redirects the cache
-> echo '/repository/user/main/public/root = "/n/scratch2/USERNAME/sra-cache"' > ~/.ncbi/user-settings.mkfg
->```
-> 
-> $ module load sratoolkit/2.8.1
-> $ fastq-dump <SRR>
->   
-> ```bash
-> $ vim inner_script.slurm
-> ```
-> 
-> ```bash
-> #!/bin/bash
-> #SBATCH -t 0-10:00       # Runtime - asking for 10 hours
-> #SBATCH -p short            # Partition (queue) - asking for short queue
-> #SBATCH -J sra_download             # Job name
-> #SBATCH -o run.o             # Standard out
-> #SBATCH -e run.e             # Standard error
-> #SBATCH --cpus-per-task=1    # CPUs per task
-> #SBATCH --mem-per-cpu=8G     # Memory needed per core
-> #SBATCH --mail-type=NONE      # Mail when the job ends
-> 
-> # for single end reads only
-> fastq-dump $1
-> 
-> # for paired end reads only
-> # fastq-dump --split-3  $1
-> ```
-> 
-> ```bash
-> $ vim sra_fqdump.slurm
-> ```
-> 
-> ```bash
-> #!/bin/bash
-> #SBATCH -t 0-10:00       # Runtime
-> #SBATCH -p short            # Partition (queue)
-> #SBATCH -J your_job_name             # Job name
-> #SBATCH -o run.o             # Standard out
-> #SBATCH -e run.e             # Standard error
-> #SBATCH --cpus-per-task=1    # CPUs per task
-> #SBATCH --mem-per-cpu=8G     # Memory needed per core
-> #SBATCH --mail-type=NONE      # Mail when the job ends
-> 
-> module load sratoolkit/2.8.1
-> 
-> # for each SRR in the list of SRRs file
-> for srr in list_of_SRRs.txt
-> do
-> # call the bash script that does the fastq dump, passing it the SRR number next in file
-> sbatch inner_script.slurm $srr
-> done
-> ```
+### Downloading from SRA on O2 (HMS-RC cluster) *[Not for running in class]*
+
+The following set of commands will perform the same analysis on O2:
+```
+$ scp /path/on/your/computer/to/list_of_SRRs.txt USERNAME@hms.harvard.edu:/n/scratch2/USERNAME/
+```
+
+```bash
+# Create config file by navigating to your scratch space (replace 'username' with your username) and running the following:
+cd /n/scratch2/username
+
+# make a directory for ncbi configuration settings
+mkdir -p ~/.ncbi
+# write configuration file with a line that redirects the cache
+echo '/repository/user/main/public/root = "/n/scratch2/USERNAME/sra-cache"' > ~/.ncbi/user-settings.mkfg
+``
+
+```bash
+$ module load sratoolkit/2.8.1
+$ fastq-dump <SRR>
+```
+```bash
+$ vim inner_script.slurm
+```
+
+```bash
+#!/bin/bash
+#SBATCH -t 0-10:00       # Runtime - asking for 10 hours
+#SBATCH -p short            # Partition (queue) - asking for short queue
+#SBATCH -J sra_download             # Job name
+#SBATCH -o run.o             # Standard out
+#SBATCH -e run.e             # Standard error
+#SBATCH --cpus-per-task=1    # CPUs per task
+#SBATCH --mem-per-cpu=8G     # Memory needed per core
+#SBATCH --mail-type=NONE      # Mail when the job ends
+
+module load sratoolkit/2.8.1
+
+# for single end reads only
+fastq-dump $1
+
+# for paired end reads only
+# fastq-dump --split-3  $1
+```
+
+```bash
+$ vim sra_fqdump.slurm
+```
+
+```bash
+#!/bin/bash
+#SBATCH -t 0-10:00       # Runtime
+#SBATCH -p short            # Partition (queue)
+#SBATCH -J your_job_name             # Job name
+#SBATCH -o run.o             # Standard out
+#SBATCH -e run.e             # Standard error
+#SBATCH --cpus-per-task=1    # CPUs per task
+#SBATCH --mem-per-cpu=8G     # Memory needed per core
+#SBATCH --mail-type=NONE      # Mail when the job ends
+
+module load sratoolkit/2.8.1
+
+# for each SRR in the list of SRRs file
+for srr in list_of_SRRs.txt
+do
+# call the bash script that does the fastq dump, passing it the SRR number next in file
+sbatch inner_script.slurm $srr
+done
+```
