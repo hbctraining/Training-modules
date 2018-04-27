@@ -141,6 +141,7 @@ wget ftp://ftp.ensembl.org/pub/release-92/fasta/homo_sapiens/dna/
 To run the script, you would use the following `sbatch` command:
 
 ```bash
+## DO NOT RUN
 sbatch name_of_script.slurm
 ```
 
