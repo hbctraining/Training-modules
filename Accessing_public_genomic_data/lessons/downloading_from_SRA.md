@@ -143,7 +143,7 @@ $ vim sra_fqdump.slurm
 #SBATCH --mail-type=NONE      # Mail when the job ends
 
 # for every SRR in the list of SRRs file
-for srr in SRR_Acc_List_GSE51443.txt
+for srr in $(cat SRR_Acc_List_GSE51443.txt)
 do
 # call the bash script that does the fastq dump, passing it the SRR number next in file
 sbatch inner_script.slurm $srr
@@ -227,7 +227,7 @@ $ vim sra_fqdump.slurm
 module load sratoolkit/2.8.1
 
 # for each SRR in the list of SRRs file
-for srr in list_of_SRRs.txt
+for srr in $(cat list_of_SRRs.txt)
 do
 # call the bash script that does the fastq dump, passing it the SRR number next in file
 sbatch inner_script.slurm $srr
