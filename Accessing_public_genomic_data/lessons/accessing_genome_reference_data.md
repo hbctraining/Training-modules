@@ -130,8 +130,8 @@ This would take a really long time for large genomes, so instead, you would prob
 #SBATCH -p shared 	# partition name (small partition on O2)
 #SBATCH -t 0-6:00 	# hours:minutes runlimit after which job will be killed
 #SBATCH -n 1 		# number of cores requested 
-#SBATCH -o %j.out	# File to which standard out will be written
-#SBATCH -e %j.err 	# File to which standard err will be written
+#SBATCH -o %J.out	# File to which standard out will be written
+#SBATCH -e %J.err 	# File to which standard err will be written
 
 wget ftp://ftp.ensembl.org/pub/release-92/fasta/homo_sapiens/dna/
 ```
@@ -164,8 +164,8 @@ To download from iGenomes, we can right-click and copy the link to the file and 
 #SBATCH -p shared 	# partition name (small partition on O2)
 #SBATCH -t 0-6:00 	# hours:minutes runlimit after which job will be killed
 #SBATCH -n 1 		# number of cores requested 
-#SBATCH -o %j.out	# File to which standard out will be written
-#SBATCH -e %j.err 	# File to which standard err will be written
+#SBATCH -o %J.out	# File to which standard out will be written
+#SBATCH -e %J.err 	# File to which standard err will be written
 
 $ wget ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/Homo_sapiens/NCBI/GRCh38/Homo_sapiens_NCBI_GRCh38.tar.gz
 ```
@@ -226,8 +226,8 @@ Then, similar to the other methods, the `wget` command can be used to download t
 #SBATCH -p shared 	# partition name (small partition on O2)
 #SBATCH -t 0-6:00 	# hours:minutes runlimit after which job will be killed
 #SBATCH -n 1 		# number of cores requested 
-#SBATCH -o %j.out	# File to which standard out will be written
-#SBATCH -e %j.err 	# File to which standard err will be written
+#SBATCH -o %J.out	# File to which standard out will be written
+#SBATCH -e %J.err 	# File to which standard err will be written
 
 wget ftp://ftp.ebi.ac.uk/pub/databases/wormbase/parasite/releases/WBPS10/species/acanthocheilonema_viteae/PRJEB4306/acanthocheilonema_viteae.PRJEB4306.WBPS10.genomic.fa.gz
 ```
