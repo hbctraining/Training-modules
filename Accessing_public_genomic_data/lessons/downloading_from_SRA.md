@@ -178,12 +178,13 @@ cd /n/scratch2/username
 mkdir -p ~/.ncbi
 # write configuration file with a line that redirects the cache
 echo '/repository/user/main/public/root = "/n/scratch2/USERNAME/sra-cache"' > ~/.ncbi/user-settings.mkfg
-``
+```
 
 ```bash
 $ module load sratoolkit/2.8.1
 $ fastq-dump <SRR>
 ```
+
 ```bash
 $ vim inner_script.slurm
 ```
