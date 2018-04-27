@@ -25,7 +25,8 @@ Genome databases incorporate these genomes and generate the gene annotations wit
 
 - **Ensembl, NCBI, and UCSC** all use the **same genome assemblies or builds** provided by the GRC
 	- GRCh38 = hg38; GRCh37 = hg19
-	- Patches or minor revisions of the genome, which don't change the genome coordinates, are frequently provided by the GRC. The reference genomes on different genome databases **incorporate these updates at different intervals**; therefore, the genome reference sequence for the same genome build can vary slightly between databases
+	- Patches or minor revisions of the genome, which don't change the genome coordinates, are frequently provided by the GRC. Each database makes the patches available for users at different intervals. When the patches are applied, the genome reference sequence may be differ between databases.
+		- GRCh38p1 != GRCh38p2
 
 - Each biological database **independently determines the gene annotations**; therefore, gene annotations between these databases can differ, even though the genome assembly is more or less the same. Naming conventions are also different (chr1=1) between databases.
 
