@@ -51,9 +51,9 @@ Also on this page is a listing of each run and the corresponding sample it came 
 **Copy the contents of this downloaded file to a new file on the cluster** using the following commands:
 
 ```bash
-$ mkdir -p ~/mov10_rnaseq_project/data/sra_1    # make a new directory
+$ mkdir -p ~/mov10_rnaseq_project/data/GSE51443    # make a new directory
 
-$ cd ~/mov10_rnaseq_project/data/sra_1   # change to that directory
+$ cd ~/mov10_rnaseq_project/data/GSE51443   # change to that directory
 
 $ vim SRR_Acc_List_GSE51443.txt   # paste into this new file and save
 ```
