@@ -119,7 +119,7 @@ Now, on an HPC environment (O2 or Odyssey) you could use the `wget` command to d
 
 ```bash
 ## DO NOT RUN
-wget ftp://ftp.ensembl.org/pub/release-92/fasta/homo_sapiens/dna/
+$ wget ftp://ftp.ensembl.org/pub/release-92/fasta/homo_sapiens/dna/
 ```
 
 This would take a really long time for large genomes, so instead, you would probably want to submit a batch job using a script similar to the one below:
@@ -142,7 +142,7 @@ To run the script, you would use the following `sbatch` command:
 
 ```bash
 ## DO NOT RUN
-sbatch name_of_script.slurm
+$ sbatch name_of_script.slurm
 ```
 
 Genomic reference data could be downloaded similarly by FTP from the [NCBI FTP (or through Aspera)](https://www.ncbi.nlm.nih.gov/home/download/) or the [UCSC FTP](https://genome.ucsc.edu/goldenpath/help/ftp.html).
@@ -167,13 +167,13 @@ To download from iGenomes, we can right-click and copy the link to the file and 
 #SBATCH -o %j.out	# File to which standard out will be written
 #SBATCH -e %j.err 	# File to which standard err will be written
 
-wget ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/Homo_sapiens/NCBI/GRCh38/Homo_sapiens_NCBI_GRCh38.tar.gz
+$ wget ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/Homo_sapiens/NCBI/GRCh38/Homo_sapiens_NCBI_GRCh38.tar.gz
 ```
 
 After running the script with the `sbatch` command, you could use the `tar` command to unpack it. 
 
 ```bash
-tar -xzf Homo_sapiens_NCBI_GRCh38.tar.gz
+$ tar -xzf Homo_sapiens_NCBI_GRCh38.tar.gz
 ```
 
 If desired you could just run the `tar` command after the `wget` command in the above script to automatically unpack the reference data. 
@@ -187,7 +187,7 @@ The Odyssey shared data is located at `/n/regal/informatics_public/ref/igenome/`
 Let's explore what's available within the `igenome` folder and how to find the reference sequence and gene annotation files.
 
 ```bash
-cd /n/regal/informatics_public/ref/igenome/
+$ cd /n/regal/informatics_public/ref/igenome/
 ```
 
 ## Organism-specific databases
@@ -235,7 +235,7 @@ wget ftp://ftp.ebi.ac.uk/pub/databases/wormbase/parasite/releases/WBPS10/species
 In general, whether downloading data from a general database, an organism-specific database, or an iGenomes collection, the download should be straight-forward using the `wget` command and the link to the corresponding FTP site.
 
 ```bash
-wget link_to_FTP
+$ wget link_to_FTP
 ```
 
 ---
