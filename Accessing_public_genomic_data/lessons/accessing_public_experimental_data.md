@@ -73,7 +73,7 @@ We will demo downloading data to a high-performance computing cluster using the 
 To access the Odyssey cluster we need to use the secure shell (`ssh`) command using the 'Terminal' program for Macs or 'GitBash' for Windows. In the console from these programs, type:
 
 ```bash
-ssh USERNAME@login.rc.fas.harvard.edu
+$ ssh USERNAME@login.rc.fas.harvard.edu
 ```
 
 Odyssey will then ask for the associated password and verification code (2-factor authentication). For more information on 2-factor authentication, please see the [Odyssey resources](https://www.rc.fas.harvard.edu/resources/odyssey-quickstart-guide/).
@@ -81,7 +81,7 @@ Odyssey will then ask for the associated password and verification code (2-facto
 Now we are logged onto a 'login' computer, but to perform any work we should transfer to a 'compute' computer by running the `srun` command.
 
 ```bash
-srun -p test --pty --mem 1G -t 0-08:00 /bin/bash
+$ srun -p test --pty --mem 1G -t 0-08:00 /bin/bash
 ```
 
 This will transfer us onto a 'compute' computer, where we can do our work. 
@@ -92,14 +92,14 @@ This will transfer us onto a 'compute' computer, where we can do our work.
 >	
 >	```bash
 >	# Logging onto the O2 cluster
->	ssh USERNAME@o2.hms.harvard.edu
+>	$ ssh USERNAME@o2.hms.harvard.edu
 >	```
 >
 > You will be asked for a password, then logged onto a 'login' computer. To transfer to a compute computer, run the following:
 >
 >	```bash
 >	# Transferring to a compute computer on the O2 cluster
->	srun -p interactive --pty --mem 1G -t 0-08:00 /bin/bash
+>	$ srun -p interactive --pty --mem 1G -t 0-08:00 /bin/bash
 >	```
 >
 > Now on a 'compute' computer, all other commands should be the same.
@@ -108,9 +108,9 @@ This will transfer us onto a 'compute' computer, where we can do our work.
 Now, we can download our data to an appropriate directory. Good data management practices will ensure we have an organized project directory for our analysis. We can create and change directories to the folder to which we plan to download the data.
 
 ```bash
-mkdir -p mov10_rnaseq_project/data/counts
+$ mkdir -p mov10_rnaseq_project/data/counts
 
-cd mov10_rnaseq_project/data/counts
+$ cd mov10_rnaseq_project/data/counts
 ```
 
 Now that we are ready on the cluster, we can find the link to transfer the data using GEO's FTP site. To access the FTP site, return to the [GEO home page](https://www.ncbi.nlm.nih.gov/geo/) and under the "Tools" header, click on "FTP site".
@@ -130,13 +130,13 @@ First we navigate the FTP site to the `series/` folder, then find the `GSE50nnn/
 Using the `wget` command to copy this directory requires a few options. Since we are copying a directory, the `-r/--recursive` option is required. Also, the `-np/--no-parent` option is used to avoid the `wget`'s  default copying of any parent directories.
 
 ```bash
-wget --recursive --no-parent ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE50499/suppl/
+$ wget --recursive --no-parent ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE50499/suppl/
 ```
 
 If you would prefer not to download the automatically generated `index.html` file, then another useful flag would be `-R`/`--reject`.
 
 ```bash
-wget -r -np -R "index.html*" ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE50499/suppl/
+$ wget -r -np -R "index.html*" ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE50499/suppl/
 ```
 
 ***
@@ -151,9 +151,9 @@ wget -r -np -R "index.html*" ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE5
 	>_**NOTE:** If you wanted to unpack the `.tar` file and decompress the `.gz` files, you could use the following commands:_
 	>
 	>```bash
-	>tar -xvf GSE111889_RAW.tar 
+	>$ tar -xvf GSE111889_RAW.tar 
 	>
-	>for all in *.gz; do gunzip $all; done
+	>$ for all in *.gz; do gunzip $all; done
 	>```
 
 
@@ -164,15 +164,7 @@ wget -r -np -R "index.html*" ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE5
 
 ### Downloading on a local computer
 
-If we are downloading a small file(s) to use on our personal computer, then it makes sense to directly download to our computer. Unfortunately, `wget` is not automatically available using the Mac Terminal or using GitBash on Windows. However, the `curl` command is available to transfer data from (or to) a server. 
-
-To see how this works, we can visualize partyparrot by using `curl` to connect to the server displaying the dancing parrot:
-
-```bash
-curl parrot.live
-```
-
-We can also download individual files using `curl` by connecting to the FTP:
+If we are downloading a small file(s) to use on our personal computer, then it makes sense to directly download to our computer. Unfortunately, `wget` is not automatically available using the Mac Terminal or using GitBash on Windows. However, the `curl` command is available to transfer data from (or to) a server. We can  **download individual files** using `curl` by connecting to the FTP:
 
 ```bash
 curl -O ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE50499/suppl/GSE50499_GEO_Ceman_counts.txt.gz
