@@ -18,7 +18,9 @@ The minimum publishable unit in the SRA, is an EXPERIMENT (SRX)
 
 <img src="../img/sra_structure_infograph.png" width="600">
 
-But most commonly, we find data we are interested in starting from a publication (or study) in GEO. Using the GEO study accession number as previously shown, we can **navigate to the summary page for the study.** 
+But most commonly, we find data we are interested in starting from a publication (or study) in GEO. 
+
+This time let's use the other GEO dataset from the paper "GSE51443", this is the one for the "Mov10 iCLIP-SEQ" dataset. [Click here to access the GEO summary page](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE51443) for this second (smaller) dataset.
 
 <img src="../img/mov10_geo.png" width="600">
 
