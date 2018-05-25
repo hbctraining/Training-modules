@@ -82,7 +82,7 @@ Though often used synonymously, Git and GitHub are two different things:
 
 * Git is a particular implementation of version control originally designed by Linus Torvalds as a way of managing the Linux source code. Git can be used to refer both to a particular approach taken to version control and the software underlying it.
 
-* GitHub is a company which hosts Git repositories (more on this below) and provides software for using Git. This includes ‘GitHub Desktop’ which will be covered in this tutorial. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity). But other hosts exist, including [SourceForge](https://sourceforge.net/), [BitBucket](https://bitbucket.org/), and [Gitlab](https://about.gitlab.com/), to name a few.
+* GitHub is a company which hosts Git repositories (more on this below) and provides software for using Git. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity). But other hosts exist, including [SourceForge](https://sourceforge.net/), [BitBucket](https://bitbucket.org/), and [Gitlab](https://about.gitlab.com/), to name a few.
 
 Although GitHub’s focus is primarily on source code, other projects are increasingly making use of version control systems like GitHub to manage the work-flows of journal publishing, open textbooks, other humanities projects, and teaching materials.
 
