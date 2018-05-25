@@ -25,9 +25,9 @@ While initially designed for saving and developing code collaboratively, there a
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Introduction to Git](lessons/01_git_intro.md) | 30 min |
-|[Git basics](lessons/02_git_basics.md) | 90 min |
-|[Introduction to Github](lessons/03_git_github.md) | 70 min |
+|[Introduction to Git](lessons/01_git_intro.md) | 20 min |
+|[Git basics](lessons/02_git_basics.md) | 75 min |
+|[Introduction to Github](lessons/03_git_github.md) | 50 min |
 
 *These materials have been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
 
