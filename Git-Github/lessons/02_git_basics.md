@@ -151,7 +151,7 @@ Dracula starts a new project, `moons`, related to his `planets` project. Despite
 
 Dracula creates a file called `mars.txt` that contains some notes
 about the Red Planet's suitability as a base.
-(We'll use `vim` to create and edit the file;
+(We'll use [`vim`](https://hbctraining.github.io/Intro-to-Shell/lessons/03_vim.html) to create and edit the file;
 you can use whatever editor you like.
 In particular, this does not have to be the `core.editor` you set globally earlier.)
 
