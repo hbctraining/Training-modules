@@ -144,6 +144,7 @@ Dracula starts a new project, `moons`, related to his `planets` project. Despite
  
  Why is it a bad idea to do this?
  How can Dracula "undo" his last `git init`?
+ 
 ***
 
 ## Tracking changes with Git
