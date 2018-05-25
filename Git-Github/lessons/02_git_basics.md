@@ -941,7 +941,6 @@ Luckily, she has been keeping track of her project's versions using Git!
 2. What is the output of `cat venus.txt` at the end of this set of commands?
 
 ```bash
-
 $ cd planets
 $ vim venus.txt #input the following text: Venus is beautiful and full of love
 $ git add venus.txt
@@ -951,20 +950,15 @@ $ git checkout HEAD venus.txt
 $ cat venus.txt #this will print the contents of venus.txt to the screen
 ```
 
-	a. `Venus is too hot to be suitable as a base`
+a. `Venus is too hot to be suitable as a base`
 
-	b. `Venus is beautiful and full of love`
+b. `Venus is beautiful and full of love`
 
-	c. 
-		
-		
-		Venus is beautiful and full of love
-		
-		Venus is too hot to be suitable as a base
-		
+c. ```Venus is beautiful and full of love
+Venus is too hot to be suitable as a base```
 
-	d. Error because you have changed venus.txt without committing the changes
-     	
+d. Error because you have changed venus.txt without committing the changes
+	
 ***
 
 *These materials were adapted from [Software Carpentry](https://software-carpentry.org/lessons/), the Licensing information can be [found here](LICENSE_SWC_git_materials.md).*
