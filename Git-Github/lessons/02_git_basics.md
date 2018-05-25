@@ -940,7 +940,7 @@ Luckily, she has been keeping track of her project's versions using Git!
 
 2. What is the output of `cat venus.txt` at the end of this set of commands?
 
- 	~~~ {.bash}
+ 	```bash
  	$ cd planets
  	$ vim venus.txt #input the following text: Venus is beautiful and full of love
  	$ git add venus.txt
@@ -948,9 +948,9 @@ Luckily, she has been keeping track of her project's versions using Git!
  	$ git commit -m "comments on Venus as an unsuitable base"
  	$ git checkout HEAD venus.txt
  	$ cat venus.txt #this will print the contents of venus.txt to the screen
-	~~~
+	```
 
-	a.  `Venus is too hot to be suitable as a base`
+	a. `Venus is too hot to be suitable as a base`
 
 	b. `Venus is beautiful and full of love`
 
