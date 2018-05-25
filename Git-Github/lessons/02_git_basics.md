@@ -957,8 +957,12 @@ b. `Venus is beautiful and full of love`
 c. ```Venus is beautiful and full of love
 Venus is too hot to be suitable as a base```
 
-d. Error because you have changed venus.txt without committing the changes
-	
+d. Error because you have changed venus.txt without committing the change
+
+***
+
+[Next Lesson](https://hbctraining.github.io/Training-modules/Git-Github/lessons/03_git_github.html)
+
 ***
 
 *These materials were adapted from [Software Carpentry](https://software-carpentry.org/lessons/), the Licensing information can be [found here](LICENSE_SWC_git_materials.md).*
