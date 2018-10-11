@@ -956,8 +956,9 @@ a. `Venus is too hot to be suitable as a base`
 
 b. `Venus is beautiful and full of love`
 
-c. ```Venus is beautiful and full of love
-Venus is too hot to be suitable as a base```
+c. `Venus is beautiful and full of love`
+
+`Venus is too hot to be suitable as a base`
 
 d. Error because you have changed venus.txt without committing the change
 
