@@ -927,17 +927,18 @@ moving backward and forward in time becomes much easier.
 1. Jennifer has made changes to the Python script that she has been working on for weeks, and the modifications she made this morning "broke" the script and it no longer runs. She has spent ~ 1hr trying to fix it, with no luck...
 Luckily, she has been keeping track of her project's versions using Git! 
 
-	Which of the options below will let her recover the last committed version of her Python script called `data_cruncher.py`?
+Which of the options below will let her recover the last committed version of her Python script called `data_cruncher.py`?
 	
-	a. `$ git checkout HEAD`
-     	
-	b. `$ git checkout HEAD data_cruncher.py`
-     	
-	c. `$ git checkout HEAD~1 data_cruncher.py`
-	
-	d. `$ git checkout <unique ID of last commit> data_cruncher.py`
- 	
- 	e. Both b & d
+a. `$ git checkout HEAD`
+
+b. `$ git checkout HEAD data_cruncher.py`
+
+c. `$ git checkout HEAD~1 data_cruncher.py`
+
+d. `$ git checkout <unique ID of last commit> data_cruncher.py`
+
+e. Both b & d
+
 
 2. What is the output of `cat venus.txt` at the end of this set of commands?
 
