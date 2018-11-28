@@ -79,9 +79,11 @@ res_tableOE <- read.csv("data/Mov10oe_DE_results.csv", row.names = 1)
 We now need to install the R packages we will using for this workshop (if not already installed): 
  
 ```r
-source("http://bioconductor.org/biocLite.R") 
+# Install CRAN packages
+install.packages(c("BiocManager", "devtools"))
 
-biocLite(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview", "SPIA", "purrr"))
+# Install Bioconductor packages
+BiocManager::install(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview", "purrr", "SPIA"))
 
 # Optional for the lesson:
 biocLite(c("gProfileR", "treemap"))
