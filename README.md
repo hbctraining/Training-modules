@@ -1,7 +1,7 @@
 # Current Topics in Bioinformatics workshops
 
 | Audience | Computational Skills | Duration |
-:----------|:----------|:----------|:----------|
+:----------|:----------|:----------|
 | Biologists | Beginner/Intermediate R and/or beginner bash | 2-3 hour workshops |
 
 
