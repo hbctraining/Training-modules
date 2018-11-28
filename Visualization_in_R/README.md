@@ -25,6 +25,10 @@ This repository has teaching materials for a **3 hour**, hands-on **Visualizatio
 |[Basic plotting with ggplot2](lessons/02_basics_ggplot2.md) | 75 min |
 |[Advanced visualizations](lessons/03_advanced_visualizations.md) | 90 min |
 
+### Dataset
+
+All the files used for the above lessons are linked within, but can also be [accessed here](https://github.com/hbctraining/Intro-to-R-with-DGE/tree/master/data).
+
 ### Installation Requirements
 
 Download the most recent versions of R and RStudio for your laptop:
