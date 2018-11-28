@@ -24,7 +24,7 @@ In this workshop, we will use over-representation analysis (ORA) and functional 
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Setting up](lessons/01_setting_up.md) | 15 min |
+|[Setting up](https://hbctraining.github.io/Training-modules/DGE-functional-analysis/lessons/01_setting_up.md) | 15 min |
 |[Functional analysis methods](https://hbctraining.github.io/DGE_workshop/lessons/10_functional_analysis.html) | 165 min |
 
 ### Dataset
