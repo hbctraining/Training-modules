@@ -1,8 +1,8 @@
 ## Functional Analysis of Gene Lists
 
-| Audience | Computational Skills | Prerequisites | Duration |
+| Audience | Computational skills required | Duration |
 :----------|:----------|:----------|:----------|
-| Biologists | Beginner/Intermediate R | Introduction to R | 3 hour workshop (~3 hours of trainer-led time)|
+| Biologists | [Beginner/Intermediate R](https://hbctraining.github.io/Intro-to-R/) | 3-hour workshop (~3 hours of trainer-led time)|
 
 
 ### Description
@@ -24,8 +24,12 @@ In this workshop, we will use over-representation analysis (ORA) and functional 
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Setting up](lessons/01_setting_up.md) | 15 min |
-|[Functional analysis methods](lessons/02_functional_analysis.md) | 165 min |
+|[Setting up](lessons/01_setting_up.html) | 15 min |
+|[Functional analysis methods](https://hbctraining.github.io/DGE_workshop/lessons/10_functional_analysis.html) | 165 min |
+
+### Dataset
+
+All the files used for the above lessons are linked within, but can also be [accessed here](https://github.com/hbctraining/Training-modules/raw/master/Visualization_in_R/data/Mov10oe_DE_results.csv).
 
 ### Installation Requirements
 
@@ -37,9 +41,11 @@ Download the most recent versions of R and RStudio for your laptop:
 Install the required R packages by running the following code in RStudio:
 
 ```r
-source("http://bioconductor.org/biocLite.R") 
+# Install CRAN packages
+install.packages(c("BiocManager", "devtools"))
 
-biocLite(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview", "treemap", "purrr", "SPIA"))
+# Install Bioconductor packages
+BiocManager::install(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview", "purrr", "SPIA"))
 ```
 
 Load the libraries to make sure the packages installed properly:
@@ -49,7 +55,6 @@ library(clusterProfiler)
 library(DOSE)
 library(org.Hs.eg.db) 
 library(pathview)
-library(treemap)
 library(purrr)
 library(SPIA)
 ```
