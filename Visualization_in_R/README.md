@@ -1,8 +1,8 @@
 ## Visualization in R
 
-| Audience | Computational Skills | Prerequisites | Duration |
-:----------|:----------|:----------|:----------|
-| Biologists | Beginner/Intermediate R | Introduction to R | 3 hour workshop (~3 hours of trainer-led time)|
+| Audience | Computational Skills | Duration |
+:----------|:----------|:----------|
+| Biologists | [Beginner R](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/) | 3 hour workshop (~3 hours of trainer-led time)|
 
 ### Description
 This repository has teaching materials for a **3 hour**, hands-on **Visualization in R** workshop led at a relaxed pace. The workshop will give participants an overview of the basics of the R package, ggplot2, for the generation of publication-worthy figures. Participants will also use several R packages (ggrepel, pheatmap, etc.) for more advanced plotting methods, such as learning how to change from a wide data format to a long data format for plotting purposes, how to label and/or repel individual data points on a scatter plot, and how to create heatmaps and volcano plots. 
