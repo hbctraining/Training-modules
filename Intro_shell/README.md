@@ -1,8 +1,8 @@
 ## Introduction to the Command Line Interface
 
-| Audience | Computational Skills | Prerequisites | Duration |
-:----------|:----------|:----------|:----------|
-| Biologists | Beginner | None | 2 hour workshop (~2 hours of trainer-led time)|
+| Audience | Computational skills required | Duration |
+:----------|:----------|:----------|
+| Biologists | None | 2-hour workshop (~2 hours of trainer-led time)|
 
 
 ### Description
@@ -30,6 +30,9 @@ Many data analysis tools and computational resources require users to have a bas
 |:------------------------|:----------|
 |[Introduction to the command line](https://hbctraining.github.io/Training-modules/Intro_shell/lessons/01_the_filesystem.html) | 75 min |
 |[Searching and redirection](https://hbctraining.github.io/Intro-to-Shell/lessons/02_searching_files.html) | 45 min |
+
+### Dataset
+[Introduction to Shell: Dataset](https://www.dropbox.com/s/3lua2h1oo18gbug/unix_lesson.tar.gz?dl=1)
 
 ### Installation Requirements
 

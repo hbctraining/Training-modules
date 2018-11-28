@@ -1,8 +1,8 @@
 ## Intermediate bash
 
-| Audience | Computational Skills | Prerequisites | Duration |
+| Audience | Computational skills required | Duration |
 :----------|:----------|:----------|:----------|
-| Biologists | Intermediate bash | Introduction to the command-line interface | 2 hour workshop (~2 hours of trainer-led time)|
+| Biologists | [Beginner bash](https://hbctraining.github.io/Training-modules/Intro_shell/) | 2 hour workshop (~2 hours of trainer-led time)|
 
 
 ### Description
@@ -27,6 +27,10 @@ This repository has teaching materials for a **2 hour**, hands-on **Intermediate
 |[Exploring the basics](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/exploring_basics.html) | 25 min |
 |[Introduction to Vim](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/vim.html) | 25 min |
 |[Shell scripts and `for` loops](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/loops_and_scripts.html) | 75 min |
+
+### Dataset
+
+[Introduction to Shell: Dataset](https://www.dropbox.com/s/3lua2h1oo18gbug/unix_lesson.tar.gz?dl=1)
 
 ### Installation Requirements
 
