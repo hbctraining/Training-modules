@@ -1,8 +1,8 @@
 ## Functional Analysis of Gene Lists
 
 | Audience | Computational skills required | Duration |
-:----------|:----------|:----------|:----------|
-| Biologists | [Beginner/Intermediate R](https://hbctraining.github.io/Intro-to-R/) | 3-hour workshop (~3 hours of trainer-led time)|
+:----------|:----------|:----------|
+| Biologists | [Beginner/Intermediate R](https://hbctraining.github.io/Intro-to-R/) | 3-hour workshop (~3 hours of trainer-led time) |
 
 
 ### Description
@@ -24,7 +24,7 @@ In this workshop, we will use over-representation analysis (ORA) and functional 
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Setting up](lessons/01_setting_up.html) | 15 min |
+|[Setting up](https://hbctraining.github.io/Training-modules/DGE-functional-analysis/lessons/01_setting_up.html) | 15 min |
 |[Functional analysis methods](https://hbctraining.github.io/DGE_workshop/lessons/09_functional_analysis.html) | 165 min |
 
 ### Dataset
