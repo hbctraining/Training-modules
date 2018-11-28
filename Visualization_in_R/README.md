@@ -21,9 +21,9 @@ This repository has teaching materials for a **3 hour**, hands-on **Visualizatio
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Setting up for plotting](lessons/01_setting_up.md) | 15 min |
-|[Basic plotting with ggplot2](lessons/02_basics_ggplot2.md) | 75 min |
-|[Advanced visualizations](lessons/03_advanced_visualizations.md) | 90 min |
+|[Setting up for plotting](https://hbctraining.github.io/Training-modules/Visualization_in_R/lessons/01_setting_up.html) | 15 min |
+|[Basic plotting with ggplot2](https://hbctraining.github.io/Training-modules/Visualization_in_R/lessons/02_basics_ggplot2.html) | 75 min |
+|[Advanced visualizations](https://hbctraining.github.io/Training-modules/Visualization_in_R/lessons/03_advanced_visualizations.html) | 90 min |
 
 ### Dataset
 
