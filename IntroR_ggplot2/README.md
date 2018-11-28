@@ -2,7 +2,7 @@
 
 | Audience | Computational Skills | Prerequisites | Duration |
 :----------|:----------|:----------|:----------|
-| Biologists | Beginner/Intermediate | None | 32-3 hour workshop (~2-3 hours of trainer-led time)|
+| Biologists | Beginner/Intermediate | None | 2-3 hour workshop (~2-3 hours of trainer-led time)|
 
 ### Description
 This repository has teaching materials for a **2-3 hour**, hands-on **Introduction to R** workshop led at a quick pace. The workshop will give participants an overview of the basics of R and RStudio. R is a simple programming environment that enables the effective handling of data, while providing excellent graphical support. RStudio is a tool that provides a user-friendly environment for working with R. 
