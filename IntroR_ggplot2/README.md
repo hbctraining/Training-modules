@@ -30,6 +30,10 @@ These materials are intended to provide a **quick overview** of the R programmin
 |[Data wrangling](lessons/04_data-wrangling.md) | 45 min |
 |[Data visualization with ggplot2](lessons/05_data-visualization.md) | 45 min |
 
+### Dataset
+
+All the files used for the above lessons are linked within, but can also be [accessed here](https://github.com/hbctraining/Intro-to-R-with-DGE/tree/master/data).
+
 ### Installation Requirements
 
 Download the most recent versions of R and RStudio for your laptop:
