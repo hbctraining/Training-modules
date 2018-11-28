@@ -1,8 +1,8 @@
 ## Introduction to R with ggplot2
 
-| Audience | Computational Skills | Prerequisites | Duration |
-:----------|:----------|:----------|:----------|
-| Biologists | Beginner/Intermediate | None | 2-3 hour workshop (~2-3 hours of trainer-led time)|
+| Audience | Computational skills required | Duration |
+:----------|:----------|:----------|
+| Biologists | None | 2-3 hour workshop (~2-3 hours of trainer-led time) |
 
 ### Description
 This repository has teaching materials for a **2-3 hour**, hands-on **Introduction to R** workshop led at a quick pace. The workshop will give participants an overview of the basics of R and RStudio. R is a simple programming environment that enables the effective handling of data, while providing excellent graphical support. RStudio is a tool that provides a user-friendly environment for working with R. 
@@ -24,11 +24,11 @@ These materials are intended to provide a **quick overview** of the R programmin
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Introduction to R and RStudio](lessons/01_Intro-to-R.md) | 20 min |
-|[Syntax and data structures](lessons/02_syntax_and_data_structures.md) | 20 min |
-|[Functions, arguments, packages and seeking help in R](lessons/03_functions-and-arguments.md) | 20 min |
-|[Data wrangling](lessons/04_data-wrangling.md) | 45 min |
-|[Data visualization with ggplot2](lessons/05_data-visualization.md) | 45 min |
+|[Introduction to R and RStudio](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/lessons/01_Intro-to-R.html) | 20 min |
+|[Syntax and data structures](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/lessons/02_syntax_and_data_structures.html) | 20 min |
+|[Functions, arguments, packages and seeking help in R](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/lessons/03_functions-and-arguments.html) | 20 min |
+|[Data wrangling](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/lessons/04_data-wrangling.html) | 45 min |
+|[Data visualization with ggplot2](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/lessons/05_data-visualization.html) | 45 min |
 
 ### Dataset
 
