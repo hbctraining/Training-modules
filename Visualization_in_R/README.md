@@ -1,6 +1,6 @@
 ## Visualization in R
 
-| Audience | Computational Skills | Duration |
+| Audience | Computational skills required | Duration |
 :----------|:----------|:----------|
 | Biologists | [Beginner R](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/) | 3 hour workshop (~3 hours of trainer-led time)|
 
