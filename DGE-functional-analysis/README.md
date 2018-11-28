@@ -1,8 +1,8 @@
 ## Functional Analysis of Gene Lists
 
 | Audience | Computational skills required | Duration |
-:----------|:----------|:----------|:----------|
-| Biologists | [Beginner/Intermediate R](https://hbctraining.github.io/Intro-to-R/) | 3-hour workshop (~3 hours of trainer-led time)|
+:----------|:----------|:----------|
+| Biologists | [Beginner/Intermediate R](https://hbctraining.github.io/Intro-to-R/) | 3-hour workshop (~3 hours of trainer-led time) |
 
 
 ### Description
