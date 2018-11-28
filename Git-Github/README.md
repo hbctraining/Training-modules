@@ -1,8 +1,8 @@
 # Git-Github
 
-| Audience | Computational Skills | Prerequisites | Duration |
-:----------|:----------|:----------|:----------|
-| Biologists | Beginner/Intermediate | None | 3-hour workshop (~3 hours of trainer-led time)|
+| Audience | Computational skills required | Duration |
+:----------|:----------|:----------|
+| Biologists | [Beginner bash](https://hbctraining.github.io/Intro-to-Shell/) | 3-hour workshop (~3 hours of trainer-led time)|
 
 ### Description
 
@@ -28,6 +28,24 @@ While initially designed for saving and developing code collaboratively, there a
 |[Introduction to Git](lessons/01_git_intro.md) | 20 min |
 |[Git basics](lessons/02_git_basics.md) | 75 min |
 |[Introduction to Github](lessons/03_git_github.md) | 50 min |
+
+### Dataset
+
+We will be creating the data in the lessons.
+
+### Installation Requirements
+
+***Mac users:***
+
+- [Git](https://git-scm.com/downloads)
+
+***Windows users:***
+
+- [GitBash](https://git-scm.com/download/win)
+- [Git](https://git-scm.com/downloads)
+
+
+***
 
 *These materials have been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
 
