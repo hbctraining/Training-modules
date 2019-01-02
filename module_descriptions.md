@@ -1,8 +1,6 @@
 **R modules**
 
 _**Introduction to R:**_  In this brief introduction to the R programming environment, we will cover the basics of R and RStudio. We will explore basic R syntax and data structures, functions and packages, and the basics of data wrangling with R.
- 
---- 
 
 *All of the following workshops have a prerequisite: working knowledge of beginner R or having taken the 'Introduction to R' workshop.*
 
@@ -18,8 +16,6 @@ _**Reproducible research using R (RMarkdown: report generation):**_ Reproducible
 **Unix modules**
 
 _**Introduction to the command-line interface (bash):**_  Many data analysis tools and computational resources require users to have a basic working knowledge of the command line interface (also referred to as UNIX, Linux, bash, shell). In this workshop participants will learn basic commands for navigating the file system, exploring file contents, and performing basic operations, such as moving, copying, and renaming files/folders.  
-
----
 
 *All of the following workshops have a prerequisite: working knowledge of beginner bash or having taken the 'Introduction to the command-line interface' workshop.*
 
