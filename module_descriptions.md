@@ -2,7 +2,9 @@
 
 _**Introduction to R:**_  In this brief introduction to the R programming environment, we will cover the basics of R and RStudio. We will explore basic R syntax and data structures, functions and packages, and the basics of data wrangling with R.
  
-* *All of the following workshops have a prerequisite: working knowledge of beginner R or having taken the 'Introduction to R' workshop.*
+--- 
+
+*All of the following workshops have a prerequisite: working knowledge of beginner R or having taken the 'Introduction to R' workshop.*
 
 _**Visualizations in R with ggplot2:**_ For this workshop, we will be using the ggplot2 R package for the generation of publication-worthy figures. We will also explore a variety of advanced plotting methods using several R packages (ggplot2, ggrepel, pheatmap, etc.) to learn how to change from a wide data format to a long data format for plotting purposes, how to label and/or repel individual data points on a scatter plot, and how to create heatmaps and volcano plots.
 
@@ -17,7 +19,9 @@ _**Reproducible research using R (RMarkdown: report generation):**_ Reproducible
 
 _**Introduction to the command-line interface (bash):**_  Many data analysis tools and computational resources require users to have a basic working knowledge of the command line interface (also referred to as UNIX, Linux, bash, shell). In this workshop participants will learn basic commands for navigating the file system, exploring file contents, and performing basic operations, such as moving, copying, and renaming files/folders.  
 
-* *All of the following workshops have a prerequisite: working knowledge of beginner bash or having taken the 'Introduction to the command-line interface' workshop.*
+---
+
+*All of the following workshops have a prerequisite: working knowledge of beginner bash or having taken the 'Introduction to the command-line interface' workshop.*
 
 _**Intermediate bash:**_ This workshop will build on the basic skills taught in the Introduction to the command-line interface workshop to allow for greater automation. This workshop will include lessons on using the command-line text editor, Vim, to create and edit files, utilizing for-loops for automation, using variables to store information, and writing scripts to perform a series of commands in a sequential order. 
 
