@@ -20,7 +20,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | [Introduction to R](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/) | None |
 | Introduction to the tidyverse data science packages and visualizations with ggplot2 | Beginner R or [IntroR workshop](https://hbctraining.github.io/Intro-to-R/) |
 | Gene annotations and functional analysis of gene lists | Beginner R or [IntroR workshop](https://hbctraining.github.io/Intro-to-R/) |
-| [Generating research analysis reports with RMarkdown](https://hbctraining.github.io/Training-modules/Rmarkdown/) | Beginner R or [IntroR workshop](https://hbctraining.github.io/Intro-to-R/) |
+| Generating research analysis reports with RMarkdown | Beginner R or [IntroR workshop](https://hbctraining.github.io/Intro-to-R/) |
 
 ### Previous Workshops
 
