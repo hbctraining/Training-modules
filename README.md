@@ -17,16 +17,20 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 | Lessons        | Prerequisites |
 |:---------------|:-------------:|
-| [Introduction to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/) | None |
-| [Intermediate bash](https://hbctraining.github.io/Training-modules/Intermediate_shell/) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/) |
-| [Version control using Git and Github](https://hbctraining.github.io/Training-modules/Git-Github) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/)  |
-| [Accessing genomic reference and experimental sequencing data](https://hbctraining.github.io/Accessing_public_genomic_data) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/)  |
-| [Exploring genomic variants using GEMINI](https://hbctraining.github.io/Training-modules/Exploring_variants_with_GEMINI) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/) |
+| [Introduction to R](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/) | None |
+| Introduction to the tidyverse data science packages and visualizations with ggplot2 | Beginner R or [IntroR workshop](https://hbctraining.github.io/Intro-to-R/) |
+| Gene annotations and functional analysis of gene lists | Beginner R or [IntroR workshop](https://hbctraining.github.io/Intro-to-R/) |
+| [Generating research analysis reports with RMarkdown](https://hbctraining.github.io/Training-modules/Rmarkdown/) | Beginner R or [IntroR workshop](https://hbctraining.github.io/Intro-to-R/) |
 
 ### Previous Workshops
 
 | Lessons        | Prerequisites |
 |:---------------|:-------------:|
+| [Introduction to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/) | None |
+| [Intermediate bash](https://hbctraining.github.io/Training-modules/Intermediate_shell/) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/) |
+| [Version control using Git and Github](https://hbctraining.github.io/Training-modules/Git-Github) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/)  |
+| [Accessing genomic reference and experimental sequencing data](https://hbctraining.github.io/Accessing_public_genomic_data) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/)  |
+| [Exploring genomic variants using GEMINI](https://hbctraining.github.io/Training-modules/Exploring_variants_with_GEMINI) | Beginner bash or [Intro to the command-line interface](https://hbctraining.github.io/Training-modules/Intro_shell/) |
 | [Introduction to R](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/) | None |
 | [Visualization in R](https://hbctraining.github.io/Training-modules/Visualization_in_R/) | Beginner R or [IntroR workshop](https://hbctraining.github.io/Intro-to-R/) |
 | [Functional analysis of gene lists](https://hbctraining.github.io/Training-modules/DGE-functional-analysis/) | Beginner R or [IntroR workshop](https://hbctraining.github.io/Intro-to-R/) |
