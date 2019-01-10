@@ -169,7 +169,7 @@ Alternatively, if you wanted the reverse could try `4:1` for instance, and see w
 > [1] 52 73 81
 > ```
 >
-> More details regarding using logical expression to subset data can be found [here](https://github.com/hbctraining/Intro-to-R/blob/master/lessons/04_introR-data-wrangling.md#selecting-using-indices-with-logical-operators)
+> More details about using logical expressions to subset data can be found [here](https://github.com/hbctraining/Intro-to-R/blob/master/lessons/04_introR-data-wrangling.md#selecting-using-indices-with-logical-operators)
 
 ### Dataframes
 
