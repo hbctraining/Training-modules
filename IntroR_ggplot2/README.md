@@ -1,4 +1,4 @@
-## Introduction to R with ggplot2
+## Introduction to R
 
 | Audience | Computational skills required | Duration |
 :----------|:----------|:----------|
