@@ -43,7 +43,7 @@ The **defaults** represent standard values that the author of the function speci
 
 We have already used a few examples of basic functions in the previous lessons i.e `getwd()`, `c()`, and  `factor()`. These functions are available as part of R's built in capabilities, and we will explore a few more of these base functions below. 
 
-You can also get functions from external [*packages or libraries*](https://github.com/hbc/NGS_Data_Analysis_Course/blob/master/sessionII/lessons/07_introR-functions-and-arguments.md#packages-and-libraries) (which we'll talk about in a bit), or even write your own. 
+You can also get functions from external [*packages or libraries*](https://github.com/hbc/NGS_Data_Analysis_Course/blob/master/sessionII/lessons/07_introR-functions-and-arguments.md#packages-and-libraries) (which we'll talk about in a bit), or [even write your own](https://campus.datacamp.com/courses/writing-functions-in-r/a-quick-refresher?ex=1). 
 
 Let's revisit a function that we have used previously to combine data `c()` into vectors. The *arguments* it takes is a collection of numbers, characters or strings (separated by a comma). The `c()` function performs the task of combining the numbers or characters into a single vector. You can also use the function to add elements to an existing vector:
 
@@ -78,7 +78,7 @@ round(3.14159)
 We can see that we get `3`. That's because the default is to round to the nearest whole number. **What if we want a different number of significant digits?**
 
 
-#### Seeking help
+#### Seeking help on arguments for functions
 
 The best way of finding out this information is to use the `?` followed by the name of the function. Doing this will open up the help manual in the bottom right panel of RStudio that will provide a description of the function, usage, arguments, details, and examples: 
 
@@ -120,7 +120,7 @@ Another commonly used base function is `mean()`. Use this function to calculate 
 
 ## Packages and Libraries
 
-**Packages** are collections of R functions, data, and compiled code in a well-defined format, created to add specific functionality. There are 7,000+ user contributed packages and growing.
+**Packages** are collections of R functions, data, and compiled code in a well-defined format, created to add specific functionality. There are 10,000+ user contributed packages and growing.
 
 There are a set of **standard (or base) packages** which are considered part of the R source code and automatically available as part of your R installation. Base packages contain the **basic functions** that allow R to work, and enable standard statistical and graphical functions on datasets; for example, all of the functions that we have been using so far in our examples. 
 
@@ -154,21 +154,25 @@ Alternatively, packages can also be installed from [Bioconductor](https://www.bi
 
 <img src="../img/bioconductor_logo.png" width="300">
 
-There are many packages that are available in CRAN and Bioconductor, but there are also packages that are specific to one repository. Generally, you can find out this information with a Google search or by trial and error. To install from Bioconductor, you will first need to install Bioconductor and all the standard packages. *This only needs to be done once ever for your R installation.* 
+There are many packages that are available in CRAN and Bioconductor, but there are also packages that are specific to one repository. Generally, you can find out this information with a Google search or by trial and error. To install from Bioconductor, you will first need to install BiocManager. *This only needs to be done once ever for your R installation.* 
 
 **If you were successful with the installation from CRAN, you do not need to run this**
 
 ```r
-source("http://bioconductor.org/biocLite.R")
-biocLite()
+# DO NOT RUN THIS!
+
+install.packages(BiocManager)
 ```
 
-Once you have the standard packages installed, you can install additional packages using the `biocLite.R` script. If it's a new R session you will also have to source the script again. Here we show that the same package `ggplot2` is available through Bioconductor:
-
+Then you can use the `install()` function to install a package by providing the name in quotations. Here we show that the same package `ggplot2` is available through Bioconductor:
 
 ```r
-biocLite('ggplot2')
+# DO NOT RUN THIS!
+
+library(BiocManager)
+install("ggplot2")
 ```
+
 ### Package installation from source
 
 Finally, R packages can also be installed from source. This is useful when you do not have an internet connection (and have the source files locally), since the other two methods are retrieving the source files from remote sites. 
@@ -192,6 +196,8 @@ You can also check what is loaded in your current environment by using `sessionI
 other attached packages:
 [1] ggplot2_2.0.0
 ```
+
+In this case there are several other packages that were also loaded along with `ggplot2`.
 
 ### Finding functions specific to a package
 
