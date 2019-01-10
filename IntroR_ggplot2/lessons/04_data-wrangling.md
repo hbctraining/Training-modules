@@ -344,7 +344,7 @@ write(glengths, file="genome_lengths.txt", ncolumns=1)
 
 ***
 
-> ### An R package for data manipulation
+> ### An R package for data science
 > The methods presented above are using base R functions for data manipulation. For more advanced R users, 
 > the `tidyverse` package, which contains a suite of packages providing tools for the most common data science tasks. 
 
