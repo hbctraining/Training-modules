@@ -241,6 +241,41 @@ df <- data.frame(species, glengths)
 
 *Note that you can view your data.frame object by clicking on its name in the `Environment` window.*
 
+
+### Lists
+
+Lists are a data structure in R that can be perhaps a bit daunting at first, but soon become amazingly useful. A list is a data structure that can hold any number of any types of other data structures.
+
+![list](../img/list.png)
+
+
+If you have variables of different data structures you wish to combine, you can put all of those into one list object by using the `list()` function and placing all the items you wish to combine within parentheses:
+
+```r
+list1 <- list(species, df, number)
+```
+
+Print out the list to screen to take a look at the components:
+
+```r
+list1
+	
+[[1]]
+[1] "ecoli" "human" "corn" 
+
+[[2]]
+  species glengths
+1   ecoli      4.6
+2   human   3000.0
+3    corn  50000.0
+
+[[3]]
+[1] 5
+
+```
+
+There are three components corresponding to the three different variables we passed in, and what you see is that structure of each is retained.
+
 ---
 
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
