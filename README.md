@@ -12,6 +12,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 ** **NOTE: Detailed information** and **preparation instructions** for each of the workshops can be found by clicking on the workshop links in the table below.
 
 > These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
+> Introductory slides available [here](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics.pdf).
 
 ### Current Workshops
 
