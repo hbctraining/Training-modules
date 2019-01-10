@@ -160,9 +160,7 @@ age[1:4]
 
 Alternatively, if you wanted the reverse could try `4:1` for instance, and see what is returned. 
 
-> **NOTE:** Selection can also be performed using indices with logical operators
->
-> Logical operators include greater than (>), less than (<), and equal to (==). We can use logical expressions to determine whether a particular condition is true or false. Then, subset out the TRUE values: 
+> **NOTE:** Selection can also be performed using logical expressions. Logical operators include greater than (>), less than (<), and equal to (==). We can use logical expressions to determine whether a particular condition is true or false. Then, subset out the TRUE values: 
 >	
 > ```r
 > age[age > 50]
@@ -348,15 +346,7 @@ write(glengths, file="genome_lengths.txt", ncolumns=1)
 
 > ### An R package for data manipulation
 > The methods presented above are using base R functions for data manipulation. For more advanced R users, 
-> the package `dplyr` is a fairly new (2014) package that tries to provide easy
-> tools for the most common data manipulation tasks. It is built to work directly
-> with data frames. The thinking behind it was largely inspired by the package
-> `plyr` which has been in use for some time but suffered from being slow in some
-> cases.` dplyr` addresses this by porting much of the computation to C++. An
-> additional feature is the ability to work with data stored directly in an
-> external database. The benefits of doing this are that the data can be managed
-> natively in a relational database, queries can be conducted on that database, and only the results of the query returned.
-
+> the `tidyverse` package, which contains a suite of packages providing tools for the most common data science tasks. 
 
 ---
 
