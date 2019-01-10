@@ -160,6 +160,18 @@ age[1:4]
 
 Alternatively, if you wanted the reverse could try `4:1` for instance, and see what is returned. 
 
+> **NOTE:** Selection can also be performed using indices with logical operators
+>
+> Logical operators include greater than (>), less than (<), and equal to (==). We can use logical expressions to determine whether a particular condition is true or false. Then, subset out the TRUE values: 
+>	
+> ```r
+> age[age > 50]
+> ```
+> ```r
+> [1] 52 73 81
+> ```
+>
+> More details regarding using logical expression to subset data can be found [here](https://github.com/hbctraining/Intro-to-R/blob/master/lessons/04_introR-data-wrangling.md#selecting-using-indices-with-logical-operators)
 
 ### Dataframes
 
