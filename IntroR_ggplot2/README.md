@@ -24,8 +24,8 @@ These materials are intended to provide a **quick overview** of the R programmin
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
 |[Introduction to R and RStudio](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/lessons/01_Intro-to-R.html) | 20 min |
-|[Syntax and data structures](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/lessons/02_syntax_and_data_structures.html) | 20 min |
-|[Functions, arguments, packages and seeking help in R](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/lessons/03_functions-and-arguments.html) | 20 min |
+|[Syntax and data structures](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/lessons/02_syntax_and_data_structures.html) | 35 min |
+|[Functions, arguments, packages and seeking help in R](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/lessons/03_functions-and-arguments.html) | 35 min |
 |[Data wrangling](https://hbctraining.github.io/Training-modules/IntroR_ggplot2/lessons/04_data-wrangling.html) | 45 min |
 
 ### Dataset
