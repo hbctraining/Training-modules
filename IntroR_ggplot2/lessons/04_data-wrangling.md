@@ -293,6 +293,21 @@ Which columns are left?
 sub_meta <- subset(metadata, replicate < 3, select = c('genotype', 'celltype'))
 ```
 
+### Lists
+
+Selecting components from a list requires a slightly different notation, even though in theory a list is a vector (that contains multiple data structures). To select a specific component of a list, you need to use double bracket notation `[[]]`. Let's use the `list1` that we created previously, and index the second component:
+
+```r
+list1[[2]]
+```
+
+What do you see printed to the console? Using the double bracket notation is useful for **accessing the individual components whilst preserving the original data structure.** When creating this list we know we had originally stored a dataframe in the second component. With the `class` function we can check if that is what we retrieve:
+
+```r
+comp2 <- list1[[2]]
+class(comp2)
+```
+
 ### Writing to file 
 
 Everything we have done so far has only modified the data in R; the files have remained unchanged. Whenever we want to save our datasets to file, we need to use a `write` function in R. 
