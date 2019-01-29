@@ -9,7 +9,7 @@ This repository has teaching materials for **2-3 hour**, hands-on workshops cove
 
 Some workshops will require a working knowledge of R or completion of the [Introduction to R workshop](https://hbctraining.github.io/Training-modules/IntroR). Other workshops will require a working knowledge of the bash scripting language or completion of the [Introduction to Unix workshop](https://hbctraining.github.io/Training-modules/Intro_shell/). 
 
-See our current workshop schedule on our [training website](http://bioinformatics.sph.harvard.edu/training/).
+See our current workshop schedule on our [training website](http://bioinformatics.sph.harvard.edu/training/#current-topics-in-bioinformatics---spring-2019).
 
 ** **NOTE: Detailed information** and **preparation instructions** for each of the workshops can be found by clicking on the workshop links in the table below.
 
