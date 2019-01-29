@@ -7,11 +7,13 @@
 
 This repository has teaching materials for **2-3 hour**, hands-on workshops covering a variety of topics related to bioinformatics data analysis. The workshops will lead participants through performing different types of analyses using R/RStudio or Linux. 
 
-Some workshops will require a working knowledge of R or completion of the [Introduction to R workshop](https://hbctraining.github.io/Training-modules/IntroR). Other workshops will require a working knowledge of the bash scripting language or completion of the [Introduction to Unix workshop](https://hbctraining.github.io/Training-modules/Intro_shell/).
+Some workshops will require a working knowledge of R or completion of the [Introduction to R workshop](https://hbctraining.github.io/Training-modules/IntroR). Other workshops will require a working knowledge of the bash scripting language or completion of the [Introduction to Unix workshop](https://hbctraining.github.io/Training-modules/Intro_shell/). 
+
+See our current workshop schedule on our [training website](http://bioinformatics.sph.harvard.edu/training/).
 
 ** **NOTE: Detailed information** and **preparation instructions** for each of the workshops can be found by clicking on the workshop links in the table below.
 
-> These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
+
 
 > Workshop introduction slides are available [here](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics.pdf).
 
