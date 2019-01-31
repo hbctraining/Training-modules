@@ -14,7 +14,7 @@ The [Tidyverse suite of integrated packages](https://www.tidyverse.org/packages/
 
 ## Setting up the working directory
 
-We will be bringing in a new file with results from a functional analysis to work with in this lesson. Let's set up our working directory:
+Let's set up our working directory and bring in data:
 
 1. Create new project called `Tidyverse`.
 2. Click on the "Files" tab to show the file directory, and click on the "New Folder" button to create the following folders:
