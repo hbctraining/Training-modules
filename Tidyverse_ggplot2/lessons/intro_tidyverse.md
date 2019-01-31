@@ -11,34 +11,6 @@ The [Tidyverse suite of integrated packages](https://www.tidyverse.org/packages/
 
 ![](../img/tidyverse_website.png)
 
-## Setting up the working directory
-
-Let's set up our working directory and bring in data:
-
-1. Create new project called `Tidyverse`.
-	
-	- Open RStudio
-	- Go to the `File` menu and select `New Project`.
-	- In the `New Project` window, choose `New Directory`. Then, choose `Empty Project`. Name your new directory `Tidyverse` and then "Create the project as subdirectory of:" the Desktop (or location of your choice).
-	- Click on `Create Project`.
-	- After your project is completed, if the project does not automatically open in RStudio, then go to the `File` menu, select `Open Project`, and choose `Tidyverse.Rproj`.
-	- When RStudio opens, you will see three panels in the window.
-	- Go to the `File` menu and select `New File`, and select `R Script`. The RStudio interface should now look like the screenshot below.
-
-	![RStudio interface](../img/generic_rstudio_interface.png)
-
-2. Click on the "Files" tab to show the file directory, and click on the "New Folder" button.
-
-	![RStudio interface](../img/generic_wd_setup.png)
-
-	Create the following folders:
-	
-	- data
-	- results
-	- figures
-	
-3. Right-click [here](../data/gprofiler_results_Mov10oe.csv) to download the file to your `data` folder (choose to `Save Link As` or `Download Linked File As`). You should see it in `data` folder in the RStudio "Files" tab.
-
 ## Tidyverse basics
 
 The Tidyverse suite of packages introduces users to a set of data structures, functions and operators to make working with data more intuitive, but is slightly different from the way we do things in base R. **Two important new concepts we will focus on are pipes and tibbles**.
@@ -270,6 +242,8 @@ Our final data for plotting should look like the table below:
 Now that we have worked our results into a state that's ready for plotting, we can use the [ggplot2](https://ggplot2.tidyverse.org) package to plot our results.
 
 The [ggplot2](https://ggplot2.tidyverse.org) package uses a syntax for plotting based on [The Grammar for Graphics](http://amzn.to/2ef1eWp), and the next lesson will dive into how to use the special graphics syntax to create detailed custom plots.
+
+[Click here to go to next lesson]()
 
 ## Additional resources
 
