@@ -43,12 +43,14 @@ Install the required R packages by running the following code in RStudio:
 ```r
 # Install CRAN packages
 install.packages("tidyverse")
+install.packages("RColorBrewer")
 ```
 
 Load the libraries to make sure the packages installed properly:
 
 ```r
 library(tidyverse)
+library(RColorBrewer)
 ```
 
 > **NOTE:** The library used for the annotations associated with genes (here we are using `org.Hs.eg.db`) will change based on organism (e.g. if studying mouse, would need to install and load `org.Mm.eg.db`). The list of different organism packages are given [here](https://github.com/hbctraining/Training-modules/raw/master/DGE-functional-analysis/img/available_annotations.png).
