@@ -95,7 +95,7 @@ The functional analysis that we will focus on involves **gene ontology (GO) term
 
 ## Analysis goal and workflow
 
-**Goal:** *Visually compare the significance and number of differentially expressed genes associated with the most significant biological processes (BP).*
+**Goal:** *Visually compare the most significant biological processes (BP) for significance values and number of associated differentially expressed genes.*
 
 We are going to use the Tidyverse suite of tools to wrangle and visualize our data through several steps:
 
