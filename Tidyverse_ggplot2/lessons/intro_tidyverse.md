@@ -258,6 +258,8 @@ Create a column in `bp_oe` called `term_percent` to determine the percent of DE 
 
 ***
 
+Our final data for plotting should look like the table below:
+
 <img src="../img/bp_oe_ready_to_plot.png" width="1200">
 
 # 7. Plot results
