@@ -209,7 +209,9 @@ bp_oe <- bp_oe %>%
                 GO_term = term.name)
 ```
 
->> In the case of two packages with functions named exactly the same (or if you want to use a function from a library that has not been loaded), you can use `::` with the package name before it and the function name after it. In the example above, we wanted to use the `rename` function specifically from the `dplyr` package and not any of the other packages (or base R) which may have the `rename` function.
+> **NOTE:**  In the case of two packages with identical function names, you can use `::` with the package name before and the function name after (e.g `stats::filter()`) to ensure that the correct function is implemented. The `::` can also be used to bring in a function from a library without loading it first.
+
+In the example above, we wanted to use the `rename` function specifically from the `dplyr` package, and not any of the other packages (or base R) which may have the `rename()` function.
 
 ***
 **Exercise**
