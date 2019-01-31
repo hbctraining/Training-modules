@@ -1,7 +1,6 @@
 ---
 title: "Tidyverse data wrangling"
 author: "Michael Steinbaugh, Mary Piper"
-date: "Monday, April 2nd, 2018"
 ---
 
 Approximate time: 75 minutes
