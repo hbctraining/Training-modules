@@ -15,6 +15,10 @@ The [Tidyverse suite of integrated packages](https://www.tidyverse.org/packages/
 
 The Tidyverse suite of packages introduces users to a set of data structures, functions and operators to make working with data more intuitive, but is slightly different from the way we do things in base R. **Two important new concepts we will focus on are pipes and tibbles**.
 
+Before we get started with pipes or tibbles, let's load the library:
+
+	library(tidyverse)
+
 ### Pipes
 
 Stringing together commands in R can be quite daunting. Also, trying to understand code that has many nested functions can be confusing. 
@@ -105,8 +109,7 @@ While the base R packages have perfectly fine methods for reading in data, the `
 
 ```r
 # Read in the functional analysis results
-functional_GO_results <- read_delim(file = "~/Documents/github_repos/hbctraining/Training-modules/Tidyverse_ggplot2/gprofiler_results_Mov10oe.csv", 
-                                    delim = "\t" )
+functional_GO_results <- read_delim(file = "data/gprofiler_results_Mov10oe.csv", delim = "\t" )
 
 # Take a look at the results
 functional_GO_results
@@ -160,7 +163,7 @@ bp_oe <- bp_oe %>%
   select(term.id, term.name, p.value, query.size, term.size, overlap.size, intersection)
 ```
 
-The `select()` function also allows for negative selection. So we could have alternately removed columns with negative selection. Note that we need to put the column names inside of the `-c()` function for this functionality.
+The `select()` function also allows for negative selection. So we could have alternately removed columns with negative selection. Note that we need to put the column names inside of the combine (`c()`) function with a `-` preceding it for this functionality.
 
 ``` r
 # DO NOT RUN
@@ -205,6 +208,8 @@ bp_oe <- bp_oe %>%
   dplyr::rename(GO_id = term.id, 
                 GO_term = term.name)
 ```
+
+>> In the case of two packages with functions named exactly the same (or if you want to use a function from a library that has not been loaded), you can use `::` with the package name before it and the function name after it. In the example above, we wanted to use the `rename` function specifically from the `dplyr` package and not any of the other packages (or base R) which may have the `rename` function.
 
 ***
 **Exercise**
