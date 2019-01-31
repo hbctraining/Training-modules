@@ -1,4 +1,4 @@
-## Functional Analysis of Gene Lists
+## Data Wrangling and Visualization with Tidyverse
 
 | Audience | Computational skills required | Duration |
 :----------|:----------|:----------|
@@ -7,15 +7,12 @@
 
 ### Description
 
-This repository has teaching materials for a **3 hour**, hands-on **Functional Analysis** workshop led at a relaxed pace. Functional analysis methods help us to gain insight about the biology underlying a list of genes. These genes could be output from a differential expression analysis, a GWAS analysis, proteomics analysis, etc. Regardless of the source of the gene list, functional analysis can explore whether particular pathways or processes are enriched among a list of genes. 
-
-In this workshop, we will use over-representation analysis (ORA) and functional class scoring (FCS) methods to identify potential pathways that are associated with our list of genes. We will be using the clusterProfiler R package to determine whether there is enrichment of any gene ontology (GO) processes in a list of genes and generate plots from the results. We will also give a brief introduction to using clusterProfiler to perform FCS with gene set enrichment analysis (GSEA) followed by the Pathview R package for visualization.
+This repository has teaching materials for a **3 hour**, hands-on workshop led at a relaxed pace. 
 
 ### Learning Objectives
-*  **Using GO terms to explore enriched processes:** Determining how functions are attributed to genes using Gene Ontology terms
-*  **Interpreting the results of enrichment tests:** Understanding the theory of how functional enrichment tools yield statistically enriched functions or interactions
-*  **Descibing the different classes of functional analysis tools:** Discussing functional analysis using over-representation analysis, functional class scoring, and pathway topology methods
-*  **Utilizing functional analysis tools to generate hypotheses regarding enriched processes/pathways:** Explore a variety of functional analysis tools
+* **Understanding Tidyverse syntax:** Tidyverse syntax is a bit different from base R with pipes, tibbles, and heavy opinions about row names
+* **Wrangling data for use with analysis or plotting:** Explore the functions available from the dplyr package to turn your data into the format you need it 
+* **Describe and utilize the ggplot2 grammar of graphics syntax:** Create elaborate custom plots by learning the functions and structure for plotting with ggplot2
 
 > These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
 
@@ -25,7 +22,10 @@ In this workshop, we will use over-representation analysis (ORA) and functional 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
 |[Setting up](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/set_up.html) | 15 min |
-|[Data wrangling with Tidyverse](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html) | 165 min |
+|[Data wrangling with Tidyverse](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html) | 75 min |
+|[Data visualization with ggplot2]() | 90 min |
+|[Advanced wrangling and plotting]() | Extra |
+
 
 ### Dataset
 
