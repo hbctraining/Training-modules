@@ -1,6 +1,6 @@
-# Plot term name relative to p-value
+```# Plot term name relative to p-value
 
-```ggplot(bp_oe[1:30, ]) +
+ggplot(bp_oe[1:30, ]) +
   geom_point(aes(x = gene_ratio, y = go_term))
 
 ggplot(bp_oe[1:30, ]) +
@@ -62,10 +62,10 @@ ggplot(bp_oe[1:30, ]) +
                          colors = mypalette) +
   theme(legend.title = element_text(size=10, 
                                     face="bold"))
-```
+
 # Exercise - make a dotplot with termPercent
 
-```bp_oe_term_percent <- bp_oe %>%
+bp_oe_term_percent <- bp_oe %>%
   arrange(termPercent)
 
 bp_oe_term_percent$term.name <- factor(bp_oe_term_percent$term.name, levels = bp_oe_term_percent$term.name)
@@ -86,11 +86,10 @@ ggplot(tail(bp_oe_term_percent, n = 50)) +
   scale_colour_gradientn(name = "Significance \n(-log10(padj))", 
                          colors = mypalette) +
   theme(legend.title = element_text(size=10, 
-                                    face="bold"))
-```
+
 # Number of genes per category
 
-```ggplot(bp_oe[1:30, ]) +
+ggplot(bp_oe[1:30, ]) +
   geom_bar(aes(x = go_term, y = overlap.size), 
            stat = "identity",
            fill = "royalblue",
@@ -114,10 +113,10 @@ ggplot(bp_oe[1:30, ]) +
   theme(axis.text = element_text(size=rel(0.65)),
         axis.text.x = element_text(angle = 45, hjust = 1)) +
   theme(plot.margin = unit(c(1,1,1,2), "cm"))
-```
+
 
 # Distribution of term sizes - probably won't add this, but here if I decide I want to
-```ggplot(bp_oe) +
+ggplot(bp_oe) +
   geom_histogram(aes(x = term.size, y = ..density..)) +
   theme_light()
 
