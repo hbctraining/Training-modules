@@ -5,11 +5,9 @@ author: "Mary Piper"
 
 ## Install the `tidyverse` package
 
-If you have not done so already, please install the suite of packages called `tidyverse`.
+If you have not done so already, please install the suite of packages called `tidyverse` using the code below.
 
-```
-install.packages("tidyverse")
-```
+	install.packages("tidyverse")
 
 ## Setting up the working directory
 
