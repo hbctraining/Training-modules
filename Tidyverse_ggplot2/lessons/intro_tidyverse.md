@@ -25,9 +25,13 @@ Let's set up our working directory and bring in data:
 	- When RStudio opens, you will see three panels in the window.
 	- Go to the `File` menu and select `New File`, and select `R Script`. The RStudio interface should now look like the screenshot below.
 
-![RStudio interface](../img/Rstudio_interface.png)
+	![RStudio interface](../img/generic_rstudio_interface.png)
 
-2. Click on the "Files" tab to show the file directory, and click on the "New Folder" button to create the following folders:
+2. Click on the "Files" tab to show the file directory, and click on the "New Folder" button.
+
+	![RStudio interface](../img/generic_wd_setup.png)
+
+	Create the following folders:
 	
 	- data
 	- results
