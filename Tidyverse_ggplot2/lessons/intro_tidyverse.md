@@ -237,7 +237,7 @@ Our final data for plotting should look like the table below:
 
 <img src="../img/bp_oe_ready_to_plot.png" width="1200">
 
-# 7. Plot results
+## 7. Plot results
 
 Now that we have worked our results into a state that's ready for plotting, we can use the [ggplot2](https://ggplot2.tidyverse.org) package to plot our results.
 
@@ -245,7 +245,7 @@ The [ggplot2](https://ggplot2.tidyverse.org) package uses a syntax for plotting 
 
 [Click here to go to next lesson]()
 
-## Additional resources
+### Additional resources
 
 -   [R for Data Science](http://r4ds.had.co.nz)
 -   [teach the tidyverse](http://varianceexplained.org/r/teach-tidyverse/)
