@@ -3,9 +3,17 @@ title: "Tidyverse directory set-up"
 author: "Mary Piper"
 ---
 
+## Install the `tidyverse` package
+
+If you have not done so already, please install the suite of packages called `tidyverse`.
+
+```
+install.packages("tidyverse")
+```
+
 ## Setting up the working directory
 
-Let's set up our working directory and bring in data:
+Next, let's set up our working directory and bring in data:
 
 1. Create new project called `Tidyverse`.
 	
