@@ -1,10 +1,10 @@
 ---
 title: Plotting and data visualization in R
 author: Mary Piper, Meeta Mistry, Radhika Khetani
-date: "Wednesday, September 8, 2017"
+date: "Monday, February 4th, 2019"
 ---
 
-Approximate time: 60 minutes
+Approximate time: 90 minutes
 
 ## Learning Objectives 
 
@@ -20,10 +20,13 @@ More recently, R users have moved away from base graphic options towards `ggplot
 
 The `ggplot()` function is used to **initialize the basic graph structure**, then we add to it. The basic idea is that you specify different parts of the plot, and add them together using the `+` operator. These parts are often referred to as layers.
 
-Let's start: 
+Let's start. First subset the `bp_oe` dataframe to only contain the top 30 most significant GO terms: 
 
 ```r
-ggplot(bp_oe) # what happens? 
+# Subset data frame
+bp_plot <- bp_oe[1:30, ]
+
+ggplot(bp_plot) # what happens? 
 ```
 
 You get an blank plot, because you need to **specify layers** using the `+` operator.
@@ -39,7 +42,7 @@ For a more exhaustive list on all possible geometric objects and when to use the
 A plot **must have at least one `geom`**; there is no upper limit. You can add a `geom` to a plot using the `+` operator
 
 ```r
-ggplot(bp_oe) +
+ggplot(bp_plot) +
   geom_point() # note what happens here
 ```
 
@@ -55,7 +58,7 @@ You will find that even though we have added a layer by specifying `geom_point`,
 To start, we will add position for the x- and y-axis since `geom_point` requires the most basic information about a scatterplot, i.e. what you want to plot on the x and y axes. All of the others mentioned above are optional.
 
 ```r
-ggplot(bp_oe[1:30, ]) +
+ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = go_term))
 ```
 
@@ -66,7 +69,7 @@ Now that we have the required aesthetics, let's add some extras like color to th
 
 
 ```r
-ggplot(bp_oe[1:30, ]) +
+ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = go_term, color = p.value))
 ```
 
@@ -75,7 +78,7 @@ ggplot(bp_oe[1:30, ]) +
 Alternatively, we could color number of DE gene associated with each term (`overlap.size`). 
 
 ```r
-ggplot(bp_oe[1:30, ]) +
+ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = go_term, color = overlap.size))
 ```
 
@@ -85,7 +88,7 @@ ggplot(bp_oe[1:30, ]) +
 The **size of the data points** are quite small. We can adjust that within the `geom_point()` layer, but does **not** need to be **included in `aes()`** since we are specifying how large we want the data points, rather than mapping it to a variable. Add in the `size` argument by specifying a number for the size of the data point:
 
 ```
-ggplot(bp_oe[1:30, ]) +
+ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = go_term, , color = p.value), 
              size = 1)
 ```
@@ -93,7 +96,7 @@ ggplot(bp_oe[1:30, ]) +
 The size of the points is personal preference, and you may need to play around with the parameter to decide which size is best.
 
 ```r
-ggplot(bp_oe[1:30, ]) +
+ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = go_term, , color = p.value), 
              size = 5)
 ```
@@ -101,7 +104,7 @@ ggplot(bp_oe[1:30, ]) +
 That seems a bit too big, so we can return the points to a smaller size. There are other attributes that we can play with as well, such as the shape of the points. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](). Let's explore this parameter by changing all of the points to squares:
 
 ```r
-ggplot(bp_oe[1:30, ]) +
+ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = go_term, , color = p.value), 
              size = 2, 
              shape = "square")
@@ -121,7 +124,7 @@ There are built-in themes we can use (i.e. `theme_bw()`) that mostly change the 
 Let's add a layer `theme_bw()`. Do the axis labels or the tick labels get any larger by changing themes?
 
 ```r
-ggplot(bp_oe[1:30, ]) +
+ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = go_term, , color = p.value), 
              size = 2) +
   theme_bw()
@@ -130,7 +133,7 @@ ggplot(bp_oe[1:30, ]) +
 Not in this case. But we can add arguments using `theme()` to change it ourselves. Since we are adding this layer on top (i.e later in sequence), any features we change will override what is set in the `theme_bw()`. Here we'll **increase the size of the axes labels to be 1.15 times the default size and the x-axis tick labels to be 1.15 times the default.** When modfying the size of text we often use the `rel()` function. In this way the size we specify is relative to the default. We can also provide the number value as we did with the data point size, but can be cumbersome if you don't know what the default font size is to begin with. 
 
 ```r
-ggplot(bp_oe[1:30, ]) +
+ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = go_term, color = p.value), 
              size = 2) +
   theme_bw() +
@@ -201,7 +204,7 @@ personal_theme <- function(){
 Now to run our personal theme with any plot, we can use this function in place of the `theme()` code:
 
 ```r
-ggplot(bp_oe[1:30, ]) +
+ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = go_term, color = p.value), 
              size = 2) +
   personal_theme() +
@@ -252,7 +255,7 @@ That's not too bad, so let's test it in our plot. We can add a color scale layer
 By default, `scale_color_gradient()` creates a two color gradient from low to high. Since we plan to use more colors, we will use the more flexible `scale_color_gradientn()` function.
 
 ```r
-ggplot(bp_oe[1:30, ]) +
+ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = go_term, color = -log10(p.value)), 
              size = 2) +
   personal_theme() +
@@ -266,49 +269,75 @@ ggplot(bp_oe[1:30, ]) +
 ***
 **Exercises**
 
-1. Create a dotplot using the `termPercent`.
-2. Color the plot using the palette of your choice.
+1. Arrange `bp_oe` by `termPercent`.
+2. Create a dotplot with the top 30 GO terms with highest `termPercent`, with `termPercent` as x-axis and `GO_term` as the y-axis.
+3. Color the plot using the palette of your choice.
 
 ***
 
-# Number of genes per category
+So far we have explored many layers that can be added to any plot with the ggplot2 package. However, we haven't explored the different geoms available. The type of data you are plotting will determine the type of geom needed, but a nice summary of the main geoms is available on the [RStudio ggplot2 cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf).
 
-ggplot(bp_oe[1:30, ]) +
-  geom_bar(aes(x = go_term, y = overlap.size), 
-           stat = "identity",
-           fill = "royalblue",
-           color = "black") +
-  labs(title = "DE genes per GO process", x = NULL, y =  "# DE genes") +
-  theme_classic() +
-  theme(plot.title=element_text(hjust=0.5, 
-                                size = 14, 
-                                face = "bold"))
+Let's explore different geoms by creating a couple of different plots. We'll start with a bar plot of the number of genes per category. We can start with the most basic plot by specifying the dataframe, geom, and aesthetics. 
 
-ggplot(bp_oe[1:30, ]) +
-  geom_bar(aes(x = go_term, y = overlap.size), 
-           stat = "identity",
-           fill = "royalblue",
-           color = "black") +
-  labs(title = "DE genes per GO process", x = NULL, y =  "# DE genes") +
-  theme_classic() +
-  theme(plot.title=element_text(hjust=0.5, 
-                                size = 14, 
-                                face = "bold")) +
-  theme(axis.text = element_text(size=rel(0.65)),
-        axis.text.x = element_text(angle = 45, hjust = 1)) +
-  theme(plot.margin = unit(c(1,1,1,2), "cm"))
-
-
-# Distribution of term sizes - probably won't add this, but here if I decide I want to
-ggplot(bp_oe) +
-  geom_histogram(aes(x = term.size, y = ..density..)) +
-  theme_light()
-
-ggplot(bp_oe) +
-  geom_density(aes(x = term.size), fill = "royalblue") +
-  theme_light()
-
-ggplot(bp_oe[1:30, ]) +
-  geom_density(aes(x = term.size), fill = "royalblue") +
-  theme_light()
+```r
+ggplot(bp_plot) +
+  geom_col(aes(x = go_term, y = overlap.size)
 ```
+
+This is a good base to start from. Now let's start to customize. To add color to the bars, we can use the `fill` argument, and if we would like to add an outline color to the bars, we can use the `color` argument.
+
+```r
+ggplot(bp_plot) +
+  geom_col(aes(x = go_term, y = overlap.size),
+           fill = "royalblue",
+           color = "black")
+```
+
+Then we can provide our theme preferences. Let's add our personal theme and name our axes:
+
+```r
+ggplot(bp_plot) +
+  geom_col(aes(x = go_term, y = overlap.size),
+           fill = "royalblue",
+           color = "black") +
+  personal_theme() +
+  labs(title = "DE genes per GO process", x = NULL, y =  "# DE genes")
+```
+
+Note that instead of using the functions `xlab()`, `ylab()`, and `ggtitle()`, we can provide all as arguments to the `labs()` function.
+
+Now we might be fairly happy with our plot, except for all of our categories overlapping on the x-axis. Within the `theme()` layer, we change the orientiation of the x-axis labels with the `angle` argument and align the labels to the x-axis with the `hjust` argument.
+
+```r
+ggplot(bp_plot) +
+  geom_col(aes(x = go_term, y = overlap.size),
+           fill = "royalblue",
+           color = "black") +
+  personal_theme() +
+  labs(title = "DE genes per GO process", x = NULL, y =  "# DE genes") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+This is almost what we were looking for, but the labels are getting cut-off because the plotting area is too small. The `plot.margin` argument of the theme's `element_text()` function can be used to alter the plotting dimensions to make room for our labels.
+
+```r
+ggplot(bp_plot) +
+  geom_col(aes(x = go_term, y = overlap.size),
+           fill = "royalblue",
+           color = "black") +
+  personal_theme() +
+  labs(title = "DE genes per GO process", x = NULL, y =  "# DE genes") +
+  theme(axis.text.x = element_text(angle = 45, 
+                                   hjust = 1), 
+        plot.margin = unit(c(1,1,1,3), "cm"))
+```
+
+>**NOTE:** If we wanted to remove the space between the x-axis and the labels, we could add an additional layer for `scale_y_continuous(expand = c(0, 0))`, which would not expand the y-axis past the plotting limits.
+        
+
+***
+**Exercise**
+Create the following boxplot:
+
+***
+
