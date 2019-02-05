@@ -251,7 +251,7 @@ Since our adjusted p-values are sequential, we will choose from these palettes. 
 display.brewer.pal(6, "YlOrRd")
 ```
 
-The yellow might be a bit to light, and we might not need so many different colors. Let's test with three different colors:
+The yellow might be a bit too light, and we might not need so many different colors. Let's test with three different colors:
 
 ```r
 # Testing the palette with three colors
