@@ -236,7 +236,7 @@ bp_oe <- bp_oe %>%
 ***
 **Exercise**
 
-1. Create a column in `bp_oe` called `term_percent` to determine the percent of DE genes associated with the GO term relative to the total number of genes associated with the GO term (`overlap.size` / `term.size`)
+Create a column in `bp_oe` called `term_percent` to determine the percent of DE genes associated with the GO term relative to the total number of genes associated with the GO term (`overlap.size` / `term.size`)
 
 ***
 
