@@ -250,7 +250,7 @@ Now that we have worked our results into a state that's ready for plotting, we c
 
 The [ggplot2](https://ggplot2.tidyverse.org) package uses a syntax for plotting based on [The Grammar for Graphics](http://amzn.to/2ef1eWp), and the next lesson will dive into how to use the special graphics syntax to create detailed custom plots.
 
-[Click here to go to next lesson]()
+[Click here to go to next lesson](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/ggplot2.html)
 
 ### Additional resources
 
