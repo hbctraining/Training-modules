@@ -216,7 +216,7 @@ bp_oe <- bp_oe %>%
 ***
 **Exercise**
 
-1. Rename the `intersection` column to `genes` to reflect the fact that these are the DE genes associated with the GO process.
+Rename the `intersection` column to `genes` to reflect the fact that these are the DE genes associated with the GO process.
 
 ***
 
