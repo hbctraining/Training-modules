@@ -145,8 +145,8 @@ Now we have returned only those rows with a `domain` of `BP`. **How have the dim
 
 We would like to perform an additional round of filtering to only keep the most specific GO terms. 
 
-- Use the `filter()` function to only keep those rows where the `relative.depth` is greater than 4
-- Save output to overwrite our `bp_oe` variable.
+1. Use the `filter()` function to only keep those rows where the `relative.depth` is greater than 4.
+2. Save output to overwrite our `bp_oe` variable.
 
 ***
 
@@ -216,7 +216,7 @@ bp_oe <- bp_oe %>%
 ***
 **Exercise**
 
-Rename the `intersection` column to `genes` to refect the fact that these are the DE genes associated with the GO process.
+1. Rename the `intersection` column to `genes` to reflect the fact that these are the DE genes associated with the GO process.
 
 ***
 
@@ -236,7 +236,7 @@ bp_oe <- bp_oe %>%
 ***
 **Exercise**
 
-Create a column in `bp_oe` called `term_percent` to determine the percent of DE genes associated with the GO term relative to the total number of genes associated with the GO term (`overlap.size` / `term.size`)
+1. Create a column in `bp_oe` called `term_percent` to determine the percent of DE genes associated with the GO term relative to the total number of genes associated with the GO term (`overlap.size` / `term.size`)
 
 ***
 
