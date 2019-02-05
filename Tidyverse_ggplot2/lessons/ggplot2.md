@@ -57,6 +57,17 @@ You will find that even though we have added a layer by specifying `geom_point`,
 
 To start, we will add position for the x- and y-axis since `geom_point` requires the most basic information about a scatterplot, i.e. what you want to plot on the x and y axes. All of the others mentioned above are optional.
 
+Typically, a scatterplot is used to illustrate the relationship between two numeric variables. The x-axis represents the independent variable and the y-axis represents the dependent variable. We can test this out using two numeric columns from our `bp_plot` tibble:
+
+```r
+ggplot(bp_plot) +
+  geom_point(aes(x = overlap.size, y = p.value))
+```
+
+ ![ggscatter1](../img/) 
+
+However, we are not going to use the `x` and `y` defined above. Instead, we will be plotting the gene ratio values for each of the GO terms:
+
 ```r
 ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = GO_term))
