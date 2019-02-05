@@ -16,7 +16,7 @@ Approximate time: 90 minutes
 
 When we are working with large sets of numbers it can be useful to display that information graphically to gain more insight. Visualization deserves an entire course of its own (there is that much to know!). If you are interested in learning about plotting with base R functions, we have a short lesson [available here](basic_plots_in_r.md). In this lesson we will be plotting with the popular Bioconductor package [`ggplot2`](http://docs.ggplot2.org/).
 
-More recently, R users have moved away from base graphic options towards `ggplot2` since it offers a lot more functionality as compared to the base R plotting functions. The `ggplot2` syntax takes some getting used to, but once you get it, you will find it's extremely powerful and flexible. We will start with drawing a simple x-y scatterplot of `gene_ratio` versus `go_term` from the `bp_oe` data frame. `ggplot2` assumes that the input is a  data frame.
+More recently, R users have moved away from base graphic options towards `ggplot2` since it offers a lot more functionality as compared to the base R plotting functions. The `ggplot2` syntax takes some getting used to, but once you get it, you will find it's extremely powerful and flexible. We will start with drawing a simple x-y scatterplot of `gene_ratio` versus `GO_term` from the `bp_oe` data frame. `ggplot2` assumes that the input is in a data frame.
 
 The `ggplot()` function is used to **initialize the basic graph structure**, then we add to it. The basic idea is that you specify different parts of the plot, and add them together using the `+` operator. These parts are often referred to as layers.
 
@@ -29,7 +29,7 @@ bp_plot <- bp_oe[1:30, ]
 ggplot(bp_plot) # what happens? 
 ```
 
-You get an blank plot, because you need to **specify layers** using the `+` operator.
+You get a blank plot, because you need to **specify layers** using the `+` operator.
 
 One type of layer is **geometric objects**. These are the actual marks we put on a plot. Examples include:
 
@@ -59,7 +59,7 @@ To start, we will add position for the x- and y-axis since `geom_point` requires
 
 ```r
 ggplot(bp_plot) +
-  geom_point(aes(x = gene_ratio, y = go_term))
+  geom_point(aes(x = gene_ratio, y = GO_term))
 ```
 
  ![ggscatter1](../img/) 
@@ -70,7 +70,7 @@ Now that we have the required aesthetics, let's add some extras like color to th
 
 ```r
 ggplot(bp_plot) +
-  geom_point(aes(x = gene_ratio, y = go_term, color = p.value))
+  geom_point(aes(x = gene_ratio, y = GO_term, color = p.value))
 ```
 
  ![ggscatter1.1](../img/) 
@@ -79,7 +79,7 @@ Alternatively, we could color number of DE gene associated with each term (`over
 
 ```r
 ggplot(bp_plot) +
-  geom_point(aes(x = gene_ratio, y = go_term, color = overlap.size))
+  geom_point(aes(x = gene_ratio, y = GO_term, color = overlap.size))
 ```
 
  ![ggscatter3](../img/) 
@@ -89,7 +89,7 @@ The **size of the data points** are quite small. We can adjust that within the `
 
 ```
 ggplot(bp_plot) +
-  geom_point(aes(x = gene_ratio, y = go_term, , color = p.value), 
+  geom_point(aes(x = gene_ratio, y = GO_term, , color = p.value), 
              size = 1)
 ```
 
@@ -97,15 +97,15 @@ The size of the points is personal preference, and you may need to play around w
 
 ```r
 ggplot(bp_plot) +
-  geom_point(aes(x = gene_ratio, y = go_term, , color = p.value), 
+  geom_point(aes(x = gene_ratio, y = GO_term, , color = p.value), 
              size = 5)
 ```
 
-That seems a bit too big, so we can return the points to a smaller size. There are other attributes that we can play with as well, such as the shape of the points. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](). Let's explore this parameter by changing all of the points to squares:
+That seems a bit too big, so we can return the points to a smaller size. There are other attributes that we can play with as well, such as the shape of the points. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf). Let's explore this parameter by changing all of the points to squares:
 
 ```r
 ggplot(bp_plot) +
-  geom_point(aes(x = gene_ratio, y = go_term, , color = p.value), 
+  geom_point(aes(x = gene_ratio, y = GO_term, , color = p.value), 
              size = 2, 
              shape = "square")
 ```
@@ -125,16 +125,16 @@ Let's add a layer `theme_bw()`. Do the axis labels or the tick labels get any la
 
 ```r
 ggplot(bp_plot) +
-  geom_point(aes(x = gene_ratio, y = go_term, , color = p.value), 
+  geom_point(aes(x = gene_ratio, y = GO_term, , color = p.value), 
              size = 2) +
   theme_bw()
 ```
 
-Not in this case. But we can add arguments using `theme()` to change it ourselves. Since we are adding this layer on top (i.e later in sequence), any features we change will override what is set in the `theme_bw()`. Here we'll **increase the size of the axes labels to be 1.15 times the default size and the x-axis tick labels to be 1.15 times the default.** When modfying the size of text we often use the `rel()` function. In this way the size we specify is relative to the default. We can also provide the number value as we did with the data point size, but can be cumbersome if you don't know what the default font size is to begin with. 
+Not in this case. But we can add arguments using `theme()` to change it ourselves. Since we are adding this layer on top (i.e later in sequence), any features we change will override what is set in the `theme_bw()`. Here we'll **increase the size of the axes labels to be 1.15 times the default size and the x-axis tick labels to be 1.15 times the default.** When modifying the size of text we often use the `rel()` function. In this way the size we specify is relative to the default. We can also provide the number value as we did with the data point size, but it can be cumbersome if you don't know what the default font size is to begin with. 
 
 ```r
 ggplot(bp_plot) +
-  geom_point(aes(x = gene_ratio, y = go_term, color = p.value), 
+  geom_point(aes(x = gene_ratio, y = GO_term, color = p.value), 
              size = 2) +
   theme_bw() +
   theme(axis.text.x = element_text(size=rel(1.15)),
