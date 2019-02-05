@@ -8,6 +8,7 @@ author: "Mary Piper"
 If you have not done so already, please install the suite of packages called `tidyverse` using the code below.
 
 	install.packages("tidyverse")
+	install.packages("RColorBrewer")
 
 ## Setting up the working directory
 
