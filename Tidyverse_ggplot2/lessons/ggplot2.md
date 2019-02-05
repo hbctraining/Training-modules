@@ -241,8 +241,8 @@ display.brewer.all()
 The output is separated into three sections based on the suggested palettes for sequential, qualitative, and diverging data. 
 
 - **Sequential palettes (top):** For sequential data, with lighter colors for low values and darker colors for high values.
-- **Qualitative palettes (bottom):** For categorical data, where the color does not denote differences in magnitude or value.
-- **Diverging palettes (middle):** For data with emphasis on mid-range values and extremes.
+- **Qualitative palettes (middle):** For categorical data, where the color does not denote differences in magnitude or value.
+- **Diverging palettes (bottom):** For data with emphasis on mid-range values and extremes.
 
 Since our adjusted p-values are sequential, we will choose from these palettes. Let's go with the "Yellow, orange, red" palette. We can choose how many colors from the palette to include, which may take some trial and error. We can test the colors included in a palette by using the `display.brewer.pal()` function, and changing if desired:
 
