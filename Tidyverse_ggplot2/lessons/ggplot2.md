@@ -205,7 +205,7 @@ Now to run our personal theme with any plot, we can use this function in place o
 
 ```r
 ggplot(bp_plot) +
-  geom_point(aes(x = gene_ratio, y = go_term, color = p.value), 
+  geom_point(aes(x = gene_ratio, y = GO_term, color = p.value), 
              size = 2) +
   personal_theme() +
   xlab("Gene ratios") +
@@ -245,6 +245,10 @@ The yellow might be a bit to light, and we might not need so many different colo
 ```r
 # Testing the palette with three colors
 display.brewer.pal(3, "YlOrRd")
+
+# Define a palette
+mypalette <- brewer.pal(3, "YlOrRd")
+
 ```
 
 That's not too bad, so let's test it in our plot. We can add a color scale layer, and most often one of the following two scales will work:
@@ -252,11 +256,13 @@ That's not too bad, so let's test it in our plot. We can add a color scale layer
 - **`scale_color_manual()`:** for categorical data or quantiles
 - **`scale_color_gradient()` family:** for continuous data. 
 
-By default, `scale_color_gradient()` creates a two color gradient from low to high. Since we plan to use more colors, we will use the more flexible `scale_color_gradientn()` function.
+By default, `scale_color_gradient()` creates a two color gradient from low to high. Since we plan to use more colors, we will use the more flexible `scale_color_gradientn()` function. To make the legend a bit cleaner, we will also -log10 transform our p-values (higher values means more significant p-values).
 
 ```r
+
+
 ggplot(bp_plot) +
-  geom_point(aes(x = gene_ratio, y = go_term, color = -log10(p.value)), 
+  geom_point(aes(x = gene_ratio, y = GO_term, color = -log10(p.value)), 
              size = 2) +
   personal_theme() +
   xlab("Gene ratios") +
@@ -269,8 +275,8 @@ ggplot(bp_plot) +
 ***
 **Exercises**
 
-1. Arrange `bp_oe` by `termPercent`.
-2. Create a dotplot with the top 30 GO terms with highest `termPercent`, with `termPercent` as x-axis and `GO_term` as the y-axis.
+1. Arrange `bp_oe` by `term_percent`.
+2. Create a dotplot with the top 30 GO terms with highest `term_percent`, with `term_percent` as x-axis and `GO_term` as the y-axis.
 3. Color the plot using the palette of your choice.
 
 ***
@@ -281,14 +287,14 @@ Let's explore different geoms by creating a couple of different plots. We'll sta
 
 ```r
 ggplot(bp_plot) +
-  geom_col(aes(x = go_term, y = overlap.size)
+  geom_col(aes(x = GO_term, y = overlap.size))
 ```
 
 This is a good base to start from. Now let's start to customize. To add color to the bars, we can use the `fill` argument, and if we would like to add an outline color to the bars, we can use the `color` argument.
 
 ```r
 ggplot(bp_plot) +
-  geom_col(aes(x = go_term, y = overlap.size),
+  geom_col(aes(x = GO_term, y = overlap.size),
            fill = "royalblue",
            color = "black")
 ```
@@ -297,7 +303,7 @@ Then we can provide our theme preferences. Let's add our personal theme and name
 
 ```r
 ggplot(bp_plot) +
-  geom_col(aes(x = go_term, y = overlap.size),
+  geom_col(aes(x = GO_term, y = overlap.size),
            fill = "royalblue",
            color = "black") +
   personal_theme() +
@@ -310,7 +316,7 @@ Now we might be fairly happy with our plot, except for all of our categories ove
 
 ```r
 ggplot(bp_plot) +
-  geom_col(aes(x = go_term, y = overlap.size),
+  geom_col(aes(x = GO_term, y = overlap.size),
            fill = "royalblue",
            color = "black") +
   personal_theme() +
@@ -322,7 +328,7 @@ This is almost what we were looking for, but the labels are getting cut-off beca
 
 ```r
 ggplot(bp_plot) +
-  geom_col(aes(x = go_term, y = overlap.size),
+  geom_col(aes(x = GO_term, y = overlap.size),
            fill = "royalblue",
            color = "black") +
   personal_theme() +
