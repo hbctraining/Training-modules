@@ -182,6 +182,8 @@ ggplot(bp_plot) +
 2. Add a `ggtitle()` layer to add a title to your plot. 
 
 *NOTE: Useful code to center your title over your plot can be done using `theme(plot.title=element_text(hjust=0.5, face = "bold"))`.*
+
+
 ***
 
 ### Customizing data point colors
