@@ -38,4 +38,8 @@ Next, let's set up our working directory and bring in data:
 	
 3. Right-click [here](../data/gprofiler_results_Mov10oe.csv) to download the file to your `data` folder (choose to `Save Link As` or `Download Linked File As`). You should see it in `data` folder in the RStudio "Files" tab.
 
-[Click here to go to next lesson](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html)
+***
+
+[Click here to go to next lesson](intro_tidyverse.html)
+
+***
