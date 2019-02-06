@@ -16,13 +16,17 @@ Approximate time: 90 minutes
 
 When we are working with large sets of numbers it can be useful to display that information graphically to gain more insight. Visualization deserves an entire course of its own (there is that much to know!). If you are interested in learning about plotting with base R functions, we have a short lesson [available here](basic_plots_in_r.md). In this lesson we will be plotting with the popular Bioconductor package [`ggplot2`](http://docs.ggplot2.org/).
 
-More recently, R users have moved away from base graphic options towards `ggplot2` since it offers a lot more functionality as compared to the base R plotting functions. The `ggplot2` syntax takes some getting used to, but once you get it, you will find it's extremely powerful and flexible. We will start with drawing a simple x-y scatterplot of `gene_ratio` versus `GO_term` from the `bp_oe` data frame. `ggplot2` assumes that the input is in a data frame.
+More recently, R users have moved away from base graphic options towards `ggplot2` since it offers a lot more functionality as compared to the base R plotting functions. The `ggplot2` syntax takes some getting used to, but once you get it, you will find it's extremely powerful and flexible. We will start with drawing a simple x-y scatterplot of `gene_ratio` versus `GO_term` from the `bp_oe` tibble. `ggplot2` expects that the information being plotted is contained in a data frame or tibble (data frame-like).
 
-The `ggplot()` function is used to **initialize the basic graph structure**, then we add to it. The basic idea is that you specify different parts of the plot, and add them together using the `+` operator. These parts are often referred to as layers.
+We would typically start by loading the `ggplot2` library, but it is a part of the `tidyverse` suite, so it was loaded in the last lesson.
 
-Let's start. First subset the `bp_oe` dataframe to only contain the top 30 most significant GO terms: 
+**ggplot2 syntax:** To **initialize the basic graph structure** with this package we have to use the `ggplot()`, then we add "layers" to it using the `+` operator. The idea is that you create a basic plot first, then additional functions are added on to build the final plot.
+
+Let's start by first subsetting the `bp_oe` dataframe to only contain the top 30 most significant GO terms: 
 
 ```r
+## Visualizing data with ggplot2
+
 # Subset data frame
 bp_plot <- bp_oe[1:30, ]
 
@@ -31,22 +35,24 @@ ggplot(bp_plot) # what happens?
 
 You get a blank plot, because you need to **specify layers** using the `+` operator.
 
-One type of layer is **geometric objects**. These are the actual marks we put on a plot. Examples include:
+One type of layer is **geometric objects**. This is a mandatory layer and it specifies what type of plot you are interested in making. Examples include:
 
-* points (`geom_point`, `geom_jitter` for scatter plots, dot plots, etc)
-* lines (`geom_line`, for time series, trend lines, etc)
-* boxplot (`geom_boxplot`, for, well, boxplots!)
+* points (`geom_point()`, `geom_jitter()` for scatter plots, dot plots, etc)
+* lines (`geom_line()`, for time series, trend lines, etc)
+* boxplot (`geom_boxplot()`, for, well, boxplots!)
 
 For a more exhaustive list on all possible geometric objects and when to use them check out [Hadley Wickham's RPubs](http://rpubs.com/hadley/ggplot2-layers) or the [RStudio cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf). 
 
-A plot **must have at least one `geom`**; there is no upper limit. You can add a `geom` to a plot using the `+` operator
+A plot **must have at least one `geom`**, and there can be multiple complementary `geom`s; there is no upper limit. 
+
+Let's add a `geom` to make a scatter plot, i.e. the `geom_point()` function
 
 ```r
 ggplot(bp_plot) +
-  geom_point() # note what happens here
+  geom_point() 
 ```
 
-You will find that even though we have added a layer by specifying `geom_point`, we get an error. This is because each type of geom usually has a **required set of aesthetics** to be set. Aesthetic mappings are set with the `aes()` function and can be set inside `geom_point()` to be specifically applied to that layer. If we supplied aesthetics within `ggplot()`, they will be used as defaults for every layer. Examples of aesthetics include:
+You will find that even though we have added a layer by specifying `geom_point`, we get an error. This is because each type of geom usually has a required set of **aesthetics**. Aesthetic mappings are set with the `aes()` function which can be nested within the `geom` function and can be set inside `geom_point()` to be specifically applied to that layer. If we supplied aesthetics within `ggplot()`, they will be used as defaults for every layer. Below are some examples of what is categorized as aesthetics in the ggplot2 context:
 
 * position (i.e., on the x and y axes)
 * color ("outside" color)
@@ -55,7 +61,7 @@ You will find that even though we have added a layer by specifying `geom_point`,
 * linetype
 * size
 
-To start, we will add position for the x- and y-axis since `geom_point` requires the most basic information about a scatterplot, i.e. what you want to plot on the x and y axes. All of the others mentioned above are optional.
+To start, we will specify the columns for the x- and y-axis since `geom_point()` requires the most basic information about a scatterplot, i.e. what you want to plot on the x and y axes.
 
 Typically, a scatterplot is used to illustrate the relationship between two numeric variables. The x-axis represents the independent variable and the y-axis represents the dependent variable. We can test this out using two numeric columns from our `bp_plot` tibble:
 
@@ -64,27 +70,30 @@ ggplot(bp_plot) +
   geom_point(aes(x = overlap.size, y = p.value))
 ```
 
- ![ggscatter1](../img/) 
+![ggscatter1](../img/) 
 
-However, we are not going to use the `x` and `y` defined above; we would like to create a typical dotplot for visualizing functional analysis data, which plots the gene ratio values  on the x-axis and the GO terms on the y-axis:
+However, instead of a scatterplot with numeric values on both axes, we would like to create a dotplot for visualizing the top 30 functional categories in our dataset, and how prevalent they are in out dataset. Basically, we want a dotplot for visualizing functional analysis data, which plots the gene ratio values  on the x-axis and the GO terms on the y-axis.
+
+Let's see what happens wehne we add a non-numeric value to the y-axis and change the x-axis to the "gene_ratio" column:
 
 ```r
 ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = GO_term))
 ```
 
- ![ggscatter1](../img/) 
+![dotplot1](../img/) 
 
 
-Now that we have the required aesthetics, let's add some extras like color to the plot. We can **`color` the points on the plot based on p-values**, by specifying the column header. You will notice that there are a default set of colors that will be used so we do not have to specify. Also, the **legend has been conveniently plotted for us!**
-
+Now that we have the required aesthetics, let's add some extras like color to the plot. Let's say we wanted *to quickly visualize significance of the GO terms* in the plot, we can **`color` the points on the plot based on p-values**, by specifying the column header.
 
 ```r
 ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = GO_term, color = p.value))
 ```
 
- ![ggscatter1.1](../img/) 
+![dotplot2](../img/) 
+
+You will notice that there are a default set of colors that will be used so we do not have to specify. Also, the **legend has been conveniently plotted for us!**
 
 Alternatively, we could color number of DE genes associated with each term (`overlap.size`). 
 
@@ -93,26 +102,27 @@ ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = GO_term, color = overlap.size))
 ```
 
- ![ggscatter3](../img/) 
+![dotplot3](../img/) 
 
+Moving forward, we are going to stick with coloring the dots based on the p.value column. Let's explore some of the other arguments the can be specified in the `geom` layer.
 
-The **size of the data points** are quite small. We can adjust that within the `geom_point()` layer, but does **not** need to be **included in `aes()`** since we are specifying how large we want the data points, rather than mapping it to a variable. Add in the `size` argument by specifying a number for the size of the data point:
+To modify the **size of the data points** we can use the `size` argument. 
+* If we add `size` inside `aes()` we could assign a numeric column to it and the size of the data points would change according to that column. 
+* However, if we add `size` inside the `geom_point()` but outside `aes()`, we would uniformly change the size of all the data points.
+
+> **Note:** This is true for several arguments, including `color`, `shape` etc. E.g. we can change all shapes to square by adding this argument to be outside the `aes()` function; if we put the argument inside the `aes()` function we could change the shape according to some variable in our data frame.
+
+We have decided that we want to change the size of all the data point to a uniform size instead of typing it to a numeric column in the input tibble. Add in the `size` argument by specifying a number for the size of the data point:
 
 ```
 ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = GO_term, , color = p.value), 
-             size = 1)
+             size = 2)
 ```
 
-The size of the points is personal preference, and you may need to play around with the parameter to decide which size is best.
+> **Note:** The size of the points is personal preference, and you may need to play around with the parameter to decide which size is best. That seems a bit too small, so we can try out a slightly larger size. 
 
-```r
-ggplot(bp_plot) +
-  geom_point(aes(x = gene_ratio, y = GO_term, , color = p.value), 
-             size = 5)
-```
-
-That seems a bit too big, so we can return the points to a smaller size. There are other attributes that we can play with as well, such as the shape of the points. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf). Let's explore this parameter by changing all of the points to squares:
+As we do that, let's see how we can change the shape of the data point. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf). Let's explore this parameter by changing all of the points to squares:
 
 ```r
 ggplot(bp_plot) +
@@ -121,18 +131,18 @@ ggplot(bp_plot) +
              shape = "square")
 ```
 
-Note that we can change all shapes to square by adding this argument to be outside the `aes()` function; if we put the argument inside the `aes()` function we could change the shape according to some variable in our data frame.
+![dotplot4](../img/) 
 
-Now we can start updating the plot to suit our preferences for how we want the data displayed. The labels on the x- and y-axis are also quite small and not very descriptive. To change their size and content, we need to add an additional **theme layer**. The ggplot2 `theme` system handles non-data plot elements such as:
+Now we can start updating the plot to suit our preferences for how we want the data displayed. The labels on the x- and y-axis are also quite small and not very descriptive. To change their size and labeling, we need to add additional **theme layers**. The ggplot2 `theme()` system handles modification of non-data plot elements such as:
 
 * Axis label aesthetics
 * Plot background
 * Facet label backround
 * Legend appearance
 
-There are built-in themes we can use (i.e. `theme_bw()`) that mostly change the background/foreground colours, by adding it as additional layer. Or we can adjust specific elements of the current default theme by adding the `theme()` layer and passing in arguments for the things we wish to change. Or we can use both.
+There are built-in themes that we can use (i.e. `theme_bw()`) that mostly change the background/foreground colours, by adding it as additional layer. Alternatively, we can adjust specific elements of the current default theme by adding a `theme()` layer and passing in arguments for the things we wish to change. Or we can use both, a built-in theme layer and a custom theme layer!
 
-Let's add a layer `theme_bw()`. Do the axis labels or the tick labels get any larger by changing themes?
+Let's add a built-in theme layer `theme_bw()` first. 
 
 ```r
 ggplot(bp_plot) +
@@ -140,8 +150,9 @@ ggplot(bp_plot) +
              size = 2) +
   theme_bw()
 ```
+Do the axis labels or the tick labels get any larger by changing themes?
 
-Not in this case. But we can add arguments using `theme()` to change it ourselves. Since we are adding this layer on top (i.e later in sequence), any features we change will override what is set in the `theme_bw()`. Here we'll **increase the size of the axes labels to be 1.15 times the default size and the x-axis tick labels to be 1.15 times the default.** When modifying the size of text we often use the `rel()` function. In this way the size we specify is relative to the default. We can also provide the number value as we did with the data point size, but it can be cumbersome if you don't know what the default font size is to begin with. 
+Not in this case. But we can add arguments using `theme()` to change it ourselves. Since we are adding this layer on top (i.e later in sequence), any features we change will override what is set in the `theme_bw()`. Here we'll **increase the size of the axes labels to be 1.15 times the default size and the x-axis tick labels to be 1.15 times the default.** 
 
 ```r
 ggplot(bp_plot) +
@@ -154,13 +165,13 @@ ggplot(bp_plot) +
                                     face="bold"))
 ```
 
- ![ggscatter5](../img/)
+ ![dotplot5](../img/)
  
-
-> *NOTE:* You can use the `example("geom_point")` function here to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different geometric object layers available in ggplot2 to learn how you can easily modify your plots! 
+> **Note #1:** When modifying the size of text we often use the `rel()` function to specify the size we want relative to the default. We can also provide a numeric value as we did with the data point size, but it can be cumbersome if you don't know what the default font size is to begin with. 
+>
+> **Note #2:** You can use the `example("geom_point")` function here to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different geometric object layers available in ggplot2 to learn how you can easily modify your plots! 
 > 
-
-> *NOTE:* RStudio provide this very [useful cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) for plotting using `ggplot2`. Different example plots are provided and the associated code (i.e which `geom` or `theme` to use in the appropriate situation.)
+> **Note #3:** RStudio provide this very [useful cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) for plotting using `ggplot2`. Different example plots are provided and the associated code (i.e which `geom` or `theme` to use in the appropriate situation.)
 > 
 
 ***
@@ -171,58 +182,13 @@ ggplot(bp_plot) +
 	- **x-axis label:** "Gene ratios"
 	- **y-axis label:** "Top 30 significant GO terms"
 	- **legend title:** "Adjusted p-value"
-2. Use the `ggtitle` layer to add a title to your plot. *NOTE: Useful code to center your title over your plot can be done using `theme(plot.title=element_text(hjust=0.5, 
-                                face = "bold"))`.*
+2. Add a `ggtitle()` layer to add a title to your plot. 
 
+*NOTE: Useful code to center your title over your plot can be done using `theme(plot.title=element_text(hjust=0.5, 
+                                face = "bold"))`.*
 ***
 
-### Consistent formatting using custom functions
-
-When publishing, it is helpful to ensure all plots have similar formatting. To do this we can create a custom function with our preferences for the theme. Remember the structure of a function is:
-
-```r
-name_of_function <- function(arguments) {
-    statements or code that does something
-}
-```
-
-Now, let's suppose we always wanted our theme to include the following:
-
-```r
-theme_bw() +
-    theme(axis.text.x = element_text(size=rel(1.15)),
-        axis.title = element_text(size=rel(1.15)),
-        legend.title = element_text(size=10, 
-                                    face="bold"),
-          plot.title=element_text(hjust=0.5, 
-                                face = "bold"))
-```
-
-If there is nothing that we want to change when we run this, then we do not need to specify any arguments. Creating the function is simple; we can just put the code inside the `{}`:
-
-```r
-personal_theme <- function(){
-  theme_bw() +
-    theme(axis.text.x = element_text(size=rel(1.15)),
-        axis.title = element_text(size=rel(1.15)),
-        legend.title = element_text(size=10, 
-                                    face="bold"),
-          plot.title=element_text(hjust=0.5, 
-                                face = "bold"))
-}
-```
-
-Now to run our personal theme with any plot, we can use this function in place of the `theme()` code:
-
-```r
-ggplot(bp_plot) +
-  geom_point(aes(x = gene_ratio, y = GO_term, color = p.value), 
-             size = 2) +
-  personal_theme() +
-  xlab("Gene ratios") +
-  ylab("Top 30 significant GO terms") +
-  ggtitle("Dotplot of top 30 significant GO terms")
-```
+### Customizing data point colors
 
 The plot is looking better, but it is hard to distinguish differences in significance based on the colors used. There are cheatsheets available for specifying the base R colors by [name](https://greggilbertlab.sites.ucsc.edu/teaching/rtransition/) or [hexidecimal](http://www.r-graph-gallery.com/41-value-of-the-col-function/) code. We could specify other colors available or use pre-created color palettes from an external R package. 
 
@@ -350,11 +316,68 @@ ggplot(bp_plot) +
 ```
 
 >**NOTE:** If we wanted to remove the space between the x-axis and the labels, we could add an additional layer for `scale_y_continuous(expand = c(0, 0))`, which would not expand the y-axis past the plotting limits.
-        
+  
 
 ***
 **Exercise**
 Create the following boxplot:
 
 ***
+### Consistent formatting using custom functions
 
+When publishing, it is helpful to ensure all plots have similar formatting. To do this we can create a custom function with our preferences for the theme. Remember the structure of a function is:
+
+```r
+name_of_function <- function(arguments) {
+    statements or code that does something
+}
+```
+
+Now, let's suppose we always wanted our theme to include the following:
+
+```r
+theme_bw() +
+    theme(axis.text.x = element_text(size=rel(1.15)),
+        axis.title = element_text(size=rel(1.15)),
+        legend.title = element_text(size=10, 
+                                    face="bold"),
+          plot.title=element_text(hjust=0.5, 
+                                face = "bold"))
+```
+
+If there is nothing that we want to change when we run this, then we do not need to specify any arguments. Creating the function is simple; we can just put the code inside the `{}`:
+
+```r
+personal_theme <- function(){
+  theme_bw() +
+    theme(axis.text.x = element_text(size=rel(1.15)),
+        axis.title = element_text(size=rel(1.15)),
+        legend.title = element_text(size=10, 
+                                    face="bold"),
+          plot.title=element_text(hjust=0.5, 
+                                face = "bold"))
+}
+```
+
+Now to run our personal theme with any plot, we can use this function in place of the `theme()` code:
+
+```r
+ggplot(bp_plot) +
+  geom_point(aes(x = gene_ratio, y = GO_term, color = p.value), 
+             size = 2) +
+  personal_theme() +
+  xlab("Gene ratios") +
+  ylab("Top 30 significant GO terms") +
+  ggtitle("Dotplot of top 30 significant GO terms")
+```
+
+## Resources
+
+Helpful packages to add functionality to ggplot2:
+* [cowplot](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html)
+* [ggpubr](https://rpkgs.datanovia.com/ggpubr/index.html)
+* [bbplot](https://medium.com/bbc-visual-and-data-journalism/how-the-bbc-visual-and-data-journalism-team-works-with-graphics-in-r-ed0b35693535)
+* [ggrepel](https://cran.r-project.org/web/packages/ggrepel/vignettes/ggrepel.html)
+
+---
+*This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
