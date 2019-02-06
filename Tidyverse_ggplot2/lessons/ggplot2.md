@@ -110,7 +110,7 @@ To modify the **size of the data points** we can use the `size` argument.
 * If we add `size` inside `aes()` we could assign a numeric column to it and the size of the data points would change according to that column. 
 * However, if we add `size` inside the `geom_point()` but outside `aes()`, we would uniformly change the size of all the data points.
 
-> **Note:** This is true for several arguments, including `color`, `shape` etc. E.g. we can change all shapes to square by adding this argument to be outside the `aes()` function; if we put the argument inside the `aes()` function we could change the shape according to some variable in our data frame.
+> **Note:** This is true for several arguments, including `color`, `shape` etc. E.g. we can change all shapes to square by adding this argument to be outside the `aes()` function; if we put the argument inside the `aes()` function we could change the shape according to a (categorical) variable in our data frame or tibble.
 
 We have decided that we want to change the size of all the data point to a uniform size instead of typing it to a numeric column in the input tibble. Add in the `size` argument by specifying a number for the size of the data point:
 
