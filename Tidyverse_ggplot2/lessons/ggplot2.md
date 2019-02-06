@@ -72,9 +72,9 @@ ggplot(bp_plot) +
 
 ![ggscatter1](../img/ggscatter1.png) 
 
-However, instead of a scatterplot with numeric values on both axes, we would like to create a dotplot for visualizing the top 30 functional categories in our dataset, and how prevalent they are in out dataset. Basically, we want a dotplot for visualizing functional analysis data, which plots the gene ratio values  on the x-axis and the GO terms on the y-axis.
+However, instead of a scatterplot with numeric values on both axes, we would like to create a dotplot for visualizing the top 30 functional categories in our dataset, and how prevalent they are. Basically, we want a dotplot for visualizing functional analysis data, which plots the gene ratio values on the x-axis and the GO terms on the y-axis.
 
-Let's see what happens wehne we add a non-numeric value to the y-axis and change the x-axis to the "gene_ratio" column:
+Let's see what happens when we add a non-numeric value to the y-axis and change the x-axis to the "gene_ratio" column:
 
 ```r
 ggplot(bp_plot) +
@@ -93,7 +93,7 @@ ggplot(bp_plot) +
 
 ![dotplot2](../img/dotplot2.png) 
 
-You will notice that there are a default set of colors that will be used so we do not have to specify. Also, the **legend has been conveniently plotted for us!**
+You will notice that there are a default set of colors that will be used so we do not have to specify which colors to use. Also, the **legend has been conveniently plotted for us!**
 
 Alternatively, we could color number of DE genes associated with each term (`overlap.size`). 
 
@@ -104,11 +104,11 @@ ggplot(bp_plot) +
 
 ![dotplot3](../img/dotplot3.png) 
 
-Moving forward, we are going to stick with coloring the dots based on the p.value column. Let's explore some of the other arguments the can be specified in the `geom` layer.
+Moving forward, we are going to stick with coloring the dots based on the p.value column. Let's explore some of the other arguments that can be specified in the `geom` layer.
 
 To modify the **size of the data points** we can use the `size` argument. 
 * If we add `size` inside `aes()` we could assign a numeric column to it and the size of the data points would change according to that column. 
-* However, if we add `size` inside the `geom_point()` but outside `aes()`, we would uniformly change the size of all the data points.
+* However, if we add `size` inside the `geom_point()` but outside `aes()` we can't assign a column to it, instead we have to give it a numeric value. This use of `size` will uniformly change the size of all the data points.
 
 > **Note:** This is true for several arguments, including `color`, `shape` etc. E.g. we can change all shapes to square by adding this argument to be outside the `aes()` function; if we put the argument inside the `aes()` function we could change the shape according to a (categorical) variable in our data frame or tibble.
 
@@ -150,7 +150,7 @@ ggplot(bp_plot) +
              size = 2) +
   theme_bw()
 ```
-Do the axis labels or the tick labels get any larger by changing themes?
+***Do the axis labels or the tick labels get any larger by changing themes?***
 
 Not in this case. But we can add arguments using `theme()` to change it ourselves. Since we are adding this layer on top (i.e later in sequence), any features we change will override what is set in the `theme_bw()`. Here we'll **increase the size of the axes labels to be 1.15 times the default size and the x-axis tick labels to be 1.15 times the default.** 
 
@@ -167,9 +167,9 @@ ggplot(bp_plot) +
  
 > **Note #1:** When modifying the size of text we often use the `rel()` function to specify the size we want relative to the default. We can also provide a numeric value as we did with the data point size, but it can be cumbersome if you don't know what the default font size is to begin with. 
 >
-> **Note #2:** You can use the `example("geom_point")` function here to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different geometric object layers available in ggplot2 to learn how you can easily modify your plots! 
+> **Note #2:** You can use the `example("geom_point")` function here to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different `geom` layers available in `ggplot2` to learn how you can easily modify your plots! 
 > 
-> **Note #3:** RStudio provide this very [useful cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) for plotting using `ggplot2`. Different example plots are provided and the associated code (i.e which `geom` or `theme` to use in the appropriate situation.)
+> **Note #3:** RStudio provides this very [useful cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) for plotting using `ggplot2`. Different example plots are provided and the associated code (i.e which `geom` or `theme` to use in the appropriate situation.)
 > 
 
 ***
@@ -186,7 +186,7 @@ ggplot(bp_plot) +
 
 ### Customizing data point colors
 
-The plot is looking better, but it is hard to distinguish differences in significance based on the colors used. There are cheatsheets available for specifying the base R colors by [name](https://greggilbertlab.sites.ucsc.edu/teaching/rtransition/) or [hexidecimal](http://www.r-graph-gallery.com/41-value-of-the-col-function/) code. We could specify other colors available or use pre-created color palettes from an external R package. 
+The plot is looking better, but it is hard to distinguish differences in significance based on the colors used. There are cheatsheets available for specifying the base R colors by [name](https://greggilbertlab.sites.ucsc.edu/teaching/rtransition/) or [hexadecimal](http://www.r-graph-gallery.com/41-value-of-the-col-function/) code. We could specify other colors available or use pre-created color palettes from an external R package. 
 
 To make additional color palettes available for plotting, we can load the RColorBrewer library, which contains color palettes designed specifically for the different types of data being compared.
 
@@ -221,14 +221,17 @@ display.brewer.pal(3, "YlOrRd")
 
 # Define a palette
 mypalette <- brewer.pal(3, "YlOrRd")
+
+# how are the colors represented in the mypalette vector?
+mypalette
 ```
 
-That's not too bad, so let's test it in our plot. We can add a color scale layer, and most often one of the following two scales will work:
+Those colors look okay, so let's test them in our plot. We can add a color scale layer, and most often one of the following two scales will work:
 
 - **`scale_color_manual()`:** for categorical data or quantiles
 - **`scale_color_gradient()` family:** for continuous data. 
 
-By default, `scale_color_gradient()` creates a two color gradient from low to high. Since we plan to use more colors, we will use the more flexible `scale_color_gradientn()` function. To make the legend a bit cleaner, we will also -log10 transform our p-values (higher values means more significant).
+By default, `scale_color_gradient()` creates a two color gradient from low to high. Since we plan to use more colors, we will use the more flexible `scale_color_gradientn()` function. To make the legend a bit cleaner, we will also perform a -log10 transform on the p-values (higher values means more significant).
 
 ```r
 ggplot(bp_plot) +
@@ -246,7 +249,7 @@ ggplot(bp_plot) +
 			 
 ```
 
-This looks better, but we want to add better name for the legend and we want to make sure the legend title is centered and bold. To do this, we can add a `name` argument to `scale_color_gradientn()` and a new theme layer for the legend title.
+This looks good, but we want to add better name for the legend and we want to make sure the legend title is centered and bold. To do this, we can add a `name` argument to `scale_color_gradientn()` and a new theme layer for the legend title.
 
 ```r
 ggplot(bp_plot) +
@@ -289,7 +292,7 @@ ggplot(bp_plot) +
 
 ![barplot1](../img/barplot1.png)
 
-This is a good base to start from. Now let's start to customize. To add color to the bars, we can use the `fill` argument, and if we would like to add an outline color to the bars, we can use the `color` argument.
+This is a good base to start from, now let's start to customize. To add color to the bars, we can use the `fill` argument, and if we would like to add an outline color to the bars, we can use the `color` argument.
 
 ```r
 ggplot(bp_plot) +
@@ -298,7 +301,7 @@ ggplot(bp_plot) +
            color = "black")
 ```
 
-Then we can provide our theme preferences and name our axes:
+Then we can provide our theme preferences, give the plot a title, and label our axes:
 
 ```r
 ggplot(bp_plot) +
@@ -316,7 +319,7 @@ ggplot(bp_plot) +
 
 Note that instead of using the functions `xlab()`, `ylab()`, and `ggtitle()`, we can provide all as arguments to the `labs()` function.
 
-Now we might be fairly happy with our plot, except for all of our categories overlapping on the x-axis. Within the `theme()` layer, we change the orientiation of the x-axis labels with the `angle` argument and align the labels to the x-axis with the `hjust` argument.
+Now we might be fairly happy with our plot, but the x-axis labelling needs some help. Within the `theme()` layer, we can change the orientiation of the x-axis labels with the `angle` argument and align the labels to the x-axis with the `hjust` argument.
 
 ```r
 ggplot(bp_plot) +
@@ -414,7 +417,7 @@ ggplot(bp_plot) +
 ***
 **Exercises**
 
-Based on the number of genes associated with each GO term ("term.size" column) we can categorize them in to small, large or medium categories. Once we have done that, we want to determine what the spread of p-values is for each category. We can do this by drawing a boxplot.
+Based on the number of genes associated with each GO term ("term.size" column) we can categorize them into "small", "large" or "medium" categories. Once we have done that, we want to determine what the spread of p-values is for each category; we can do this by drawing a boxplot.
 
 1. Use the following code to create a new column in `bp_oe` tibble for the new categories.
 	```r
@@ -437,7 +440,7 @@ Based on the number of genes associated with each GO term ("term.size" column) w
 
 ## Resources
 
-Helpful packages to add functionality to ggplot2:
+Helpful packages to add additional functionality to ggplot2:
 * [cowplot](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html)
 * [ggpubr](https://rpkgs.datanovia.com/ggpubr/index.html)
 * [bbplot](https://medium.com/bbc-visual-and-data-journalism/how-the-bbc-visual-and-data-journalism-team-works-with-graphics-in-r-ed0b35693535)
