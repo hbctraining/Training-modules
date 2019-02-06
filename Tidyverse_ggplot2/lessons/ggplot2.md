@@ -66,7 +66,7 @@ ggplot(bp_plot) +
 
  ![ggscatter1](../img/) 
 
-However, we are not going to use the `x` and `y` defined above. Instead, we will be plotting the gene ratio values for each of the GO terms:
+However, we are not going to use the `x` and `y` defined above; we would like to create a typical dotplot for visualizing functional analysis data, which plots the gene ratio values  on the x-axis and the GO terms on the y-axis:
 
 ```r
 ggplot(bp_plot) +
