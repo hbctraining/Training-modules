@@ -86,7 +86,7 @@ ggplot(bp_plot) +
 
  ![ggscatter1.1](../img/) 
 
-Alternatively, we could color number of DE gene associated with each term (`overlap.size`). 
+Alternatively, we could color number of DE genes associated with each term (`overlap.size`). 
 
 ```r
 ggplot(bp_plot) +
