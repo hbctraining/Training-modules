@@ -70,7 +70,7 @@ ggplot(bp_plot) +
   geom_point(aes(x = overlap.size, y = p.value))
 ```
 
-![ggscatter1](../img/ggscatter1) 
+![ggscatter1](../img/ggscatter1.png) 
 
 However, instead of a scatterplot with numeric values on both axes, we would like to create a dotplot for visualizing the top 30 functional categories in our dataset, and how prevalent they are in out dataset. Basically, we want a dotplot for visualizing functional analysis data, which plots the gene ratio values  on the x-axis and the GO terms on the y-axis.
 
@@ -81,7 +81,7 @@ ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = GO_term))
 ```
 
-![dotplot1](../img/dotplot1) 
+![dotplot1](../img/dotplot1.png) 
 
 
 Now that we have the required aesthetics, let's add some extras like color to the plot. Let's say we wanted *to quickly visualize significance of the GO terms* in the plot, we can **`color` the points on the plot based on p-values**, by specifying the column header.
@@ -91,7 +91,7 @@ ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = GO_term, color = p.value))
 ```
 
-![dotplot2](../img/dotplot2) 
+![dotplot2](../img/dotplot2.png) 
 
 You will notice that there are a default set of colors that will be used so we do not have to specify. Also, the **legend has been conveniently plotted for us!**
 
@@ -102,7 +102,7 @@ ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = GO_term, color = overlap.size))
 ```
 
-![dotplot3](../img/dotplot3dotplot4) 
+![dotplot3](../img/dotplot3.png) 
 
 Moving forward, we are going to stick with coloring the dots based on the p.value column. Let's explore some of the other arguments the can be specified in the `geom` layer.
 
@@ -131,7 +131,7 @@ ggplot(bp_plot) +
              shape = "square")
 ```
 
-![dotplot4](../img/dotplot4) 
+![dotplot4](../img/dotplot4.png) 
 
 Now we can start updating the plot to suit our preferences for how we want the data displayed. The labels on the x- and y-axis are also quite small and not very descriptive. To change their size and labeling, we need to add additional **theme layers**. The ggplot2 `theme()` system handles modification of non-data plot elements such as:
 
@@ -165,7 +165,7 @@ ggplot(bp_plot) +
                                     face="bold"))
 ```
 
- ![dotplot5](../img/dotplot5)
+ ![dotplot5](../img/dotplot5.png)
  
 > **Note #1:** When modifying the size of text we often use the `rel()` function to specify the size we want relative to the default. We can also provide a numeric value as we did with the data point size, but it can be cumbersome if you don't know what the default font size is to begin with. 
 >
