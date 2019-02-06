@@ -40,6 +40,6 @@ Next, let's set up our working directory and bring in data:
 
 ***
 
-[Click here to go to next lesson](intro_tidyverse.html)
+[Click here to go to next lesson](intro_tidyverse.md)
 
 ***
