@@ -350,7 +350,7 @@ ggplot(bp_plot) +
   theme(plot.margin = unit(c(1,1,1,3), "cm"))
 ```
 
-![barplot4](../img/barplot4.png)
+![barplot4](../img/barplot5.png)
 
 >**NOTE:** If we wanted to remove the space between the x-axis and the labels, we could add an additional layer for `scale_y_continuous(expand = c(0, 0))`, which would not expand the y-axis past the plotting limits.
   
