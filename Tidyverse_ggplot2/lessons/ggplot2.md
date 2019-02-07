@@ -81,8 +81,7 @@ ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = GO_term))
 ```
 
-![dotplot1](../img/dotplot1.png) 
-
+<img src="../img/dotplot1.png">
 
 Now that we have the required aesthetics, let's add some extras like color to the plot. Let's say we wanted *to quickly visualize significance of the GO terms* in the plot, we can **`color` the points on the plot based on p-values**, by specifying the column header.
 
