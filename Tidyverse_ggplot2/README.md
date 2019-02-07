@@ -35,7 +35,7 @@ All the files used for the above lessons are linked within, but can also be [acc
 
 Download the most recent versions of R and RStudio for your laptop:
 
- - [R](http://lib.stat.cmu.edu/R/CRAN/) 
+ - [R](http://lib.stat.cmu.edu/R/CRAN/) (Version 3.4 or higher)
  - [RStudio](https://www.rstudio.com/products/rstudio/download/#download)
  
 Install the required R packages by running the following code in RStudio:
