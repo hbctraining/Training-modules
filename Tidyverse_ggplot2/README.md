@@ -29,7 +29,7 @@ This repository has teaching materials for a **3 hour**, hands-on workshop led a
 
 ### Dataset
 
-All the files used for the above lessons are linked within, but can also be [accessed here](https://github.com/hbctraining/Training-modules/raw/master/Tidyverse_ggplot2/data/.csv).
+All the files used for the above lessons are linked within, but can also be [accessed here](https://github.com/hbctraining/Training-modules/raw/master/Tidyverse_ggplot2/data/gprofiler_results_Mov10oe.csv).
 
 ### Installation Requirements
 
