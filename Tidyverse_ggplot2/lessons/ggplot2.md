@@ -446,6 +446,7 @@ Helpful packages to add additional functionality to ggplot2:
 * [ggpubr](https://rpkgs.datanovia.com/ggpubr/index.html)
 * [bbplot](https://medium.com/bbc-visual-and-data-journalism/how-the-bbc-visual-and-data-journalism-team-works-with-graphics-in-r-ed0b35693535)
 * [ggrepel](https://cran.r-project.org/web/packages/ggrepel/vignettes/ggrepel.html)
+* [Fundamentals of Data Visualization](https://serialmentor.com/dataviz/) by [Claus 0. Wilke](https://github.com/clauswilke)
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
