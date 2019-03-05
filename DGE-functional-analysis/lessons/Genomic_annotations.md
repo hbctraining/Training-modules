@@ -55,7 +55,7 @@ However, there are many other databases that are also queried depending on the i
 
 When performing functional analysis there are tools that extract information from these databases. Within R, there are many popular packages used for this purpose:
 
-**Interface tools:** for accessing/querying annotations from multiple different annotation tools
+**Interface tools:** for accessing/querying annotations from multiple different annotation databases
 
 - **AnnotationDbi:** queries the *OrgDb*, *TxDb*, *Go.db*, *EnsDb*, and *BioMart* annotations.  
 - **AnnotationHub:** queries large collection of whole genome resources, including ENSEMBL, UCSC, ENCODE, Broad Institute, KEGG, NIH Pathway Interaction Database, etc.
