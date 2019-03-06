@@ -60,13 +60,13 @@ When performing functional analysis, the tools will take the list of genes you p
 - **AnnotationDbi:** queries the *OrgDb*, *TxDb*, *Go.db*, *EnsDb*, and *BioMart* annotations.  
 - **AnnotationHub:** queries large collection of whole genome resources, including ENSEMBL, UCSC, ENCODE, Broad Institute, KEGG, NIH Pathway Interaction Database, etc.
 
-**Annotation tools:** for accessing/querying annotations from different databases
+**Annotation tools:** for accessing/querying annotations from a specific database
 
 - **org.*Gs*.eg.db:** these *OrgDb* annotation tools query gene feature information for the organism of interest, including gene IDs and associated GO and KEGG IDs - but unable to get previous gene build information easily
 - **EnsDb.*Gspecies*.v86:** Ensembl database for transcript and gene-level information directly fetched from Ensembl API (similar to TxDb, but with filtering ability and versioned by Ensembl release) or can create using the *ensembldb* package
 - **TxDb.*Gspecies*.UCSC.hg19.knownGene:** UCSC database for transcript and gene-level information or can create own *TxDb* from an SQLite database file using the *GenomicFeatures* package.
 - **annotables:** easy-to-use package making gene-level feature information immediately available for the current and most recent genome builds for human/mouse
-- **biomaRt:** wealth of information available by querying Ensembl's database using their [BioMart online tool](http://www.ensembl.org/biomart/martview/70dbbbe3f1c5389418b5ea1e02d89af3) - all previous genome builds and gene feature, structure, homology, variant, and sequence information available and connects to external databases; however, currently being deprecated
+- **biomaRt:** wealth of information available by querying Ensembl's database using their [BioMart online tool](http://www.ensembl.org/biomart/martview/70dbbbe3f1c5389418b5ea1e02d89af3) - all previous genome builds and gene feature, structure, homology, variant, and sequence information available and connects to external databases; **however, currently being deprecated**
 
 
 | Tool | Pros | Cons | Materials |
