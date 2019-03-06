@@ -134,7 +134,7 @@ We can easily extract information from this database using *AnnotationDbi* with 
 ```r
 # Return the Ensembl IDs for a set of genes
 annotations_orgDb <- AnnotationDbi::select(org.Hs.eg.db, # database
-                                     keys = sigOE$gene,  # data to use for retrieval
+                                     keys = res_tableOE_tb$gene,  # data to use for retrieval
                                      columns = c("ENSEMBL", "ENTREZID","GENENAME"), # information to retreive for given data
                                      keytype = "SYMBOL") # type of data given in 'keys' argument
 ```
@@ -182,7 +182,7 @@ Now we can return all gene IDs for our gene list:
 ```r
 # Return the Ensembl IDs for a set of genes
 annotations_edb <- AnnotationDbi::select(EnsDb.Hsapiens.v75,
-                                           keys = sigOE$gene,
+                                           keys = res_tableOE_tb$gene,
                                            columns = c("GENEID", "ENTREZID","GENEBIOTYPE"),
                                            keytype = "SYMBOL")
 ```
