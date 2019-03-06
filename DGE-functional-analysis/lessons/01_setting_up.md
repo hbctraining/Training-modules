@@ -79,9 +79,7 @@ res_tableOE <- read.csv("data/Mov10oe_DE_results.csv", row.names = 1)
 res_tableOE_tb <- res_tableOE %>%
   rownames_to_column(var="gene") %>% 
   as_tibble()
-  
-### Create a significant genes tibble
-sigOE <- filter(res_tableOE_tb, padj < 0.05)
+
 
 ```
 
