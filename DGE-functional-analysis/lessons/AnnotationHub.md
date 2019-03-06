@@ -3,8 +3,9 @@ AnnotationHub is a wonderful resource for accessing genomic data or querying lar
 To get started with AnnotationHub, we can load the library and connect:
 
 ```r
-# Load library
+# Load libraries
 library(AnnotationHub)
+library(ensembldb)
 
 # Connect to AnnotationHub
 ah <- AnnotationHub()
@@ -43,13 +44,43 @@ AnnotationHub with 47474 records
   AH67899 | org.Salinispora_arenicola_CNS-205.eg.sqlite
   ```
   
-  Notice the note on retrieving records with `object[[AH2]]` - this will be how we can extract a single record from the AnnotationHub object.
+Notice the note on retrieving records with `object[[AH2]]` - this will be how we can extract a single record from the AnnotationHub object.
   
-  If you would like to see more information about any of the classes of data you can extract that information as well. For example, if you wanted to determine all species information available, you could subset the AnnotationHub object:
+If you would like to see more information about any of the classes of data you can extract that information as well. For example, if you wanted to determine all species information available, you could subset the AnnotationHub object:
   
-  ```r
-  # Explore all species information available
-  unique(ah$species)
-  ```
+```r
+# Explore all species information available
+unique(ah$species)
+```
   
-  Now that we know the types of information available from AnnotationHub we can query it for the information we want using the `query()` function. Let's say we would like to return the Ensembl `EnsDb` information for the mouse. To return the records available, we need to 
+Now that we know the types of information available from AnnotationHub we can query it for the information we want using the `query()` function. Let's say we would like to return the Ensembl `EnsDb` information for the mouse. To return the records available, we need to use the terms as they are output from the `ah` object to extract the desired data.
+  
+```r
+# Query AnnotationHub
+mouse_ens <- query(ah, c("Mus musculus", "EnsDb"))
+```
+
+The output for the `EnsDb` objects only goes back in time to Ensembl release 87, corresponding to 2016, after the prior mouse genome build. If you need a build of a genome that was output prior to 2016, you might need to load the `EnsDb` package if available for that release, or you might need to build your own with `ensembldb`.
+
+Often we are looking for the latest Ensembl release so that the annotations are the most up-to-date. To extract this information from AnnotationHub, we can use the AnnotationHub ID to subset the object:
+
+```r
+# Extract annotations of interest
+mouse_ens <- mouse_ens[["AH64944"]]
+```
+
+Now we can use `ensembldb` functions to extract the information at the gene, transcript, or exon levels. We are interested in the gene-level annotations, so we can extract that information as follows:
+
+```r
+# Extract gene-level information
+annotations <- genes(mouse_ens, return.type = "data.frame")
+```
+But note that it is just as easy to get the transcript- or exon-level information:
+
+```r
+# Extract transcript-level information
+transcripts(mouse_ens)
+
+# Extract exon-level information
+exons(mouse_ens)
+```
