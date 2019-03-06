@@ -58,7 +58,7 @@ When performing functional analysis there are tools that extract information fro
 **Interface tools:** for accessing/querying annotations from multiple different annotation databases
 
 - **AnnotationDbi:** queries the *OrgDb*, *TxDb*, *Go.db*, *EnsDb*, and *BioMart* annotations.  
-- [**AnnotationHub:**](https://github.com/hbctraining/Training-modules/blob/master/DGE-functional-analysis/lessons/AnnotationHub.md) queries large collection of whole genome resources, including ENSEMBL, UCSC, ENCODE, Broad Institute, KEGG, NIH Pathway Interaction Database, etc.
+- **AnnotationHub:** queries large collection of whole genome resources, including ENSEMBL, UCSC, ENCODE, Broad Institute, KEGG, NIH Pathway Interaction Database, etc.
 
 **Annotation tools:** for accessing/querying annotations from different databases
 
