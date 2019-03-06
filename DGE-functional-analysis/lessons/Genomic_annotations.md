@@ -15,17 +15,17 @@ Learning Objectives:
 
 # Genomic annotations
 
-The analysis of next-generation sequencing results often requires associating genes, transcripts, proteins, etc. with functional or regulatory information. To perform functional analysis on gene lists, we often need to link our genes with the associated biological processes or pathways, among other information.
+The analysis of next-generation sequencing results requires associating genes, transcripts, proteins, etc. with functional or regulatory information. To perform functional analysis on gene lists, we often need to obtain gene identifiers that are compatible with the tools we wish to use and this is not always trivial. Here, we discuss ways in which you can obtain gene annotation information and some of advantages and disadvantages of each method.
 
 ## Genome builds
 
-The annotations regarding genome features (gene, transcript, exon, etc.) is for specific builds of the genome, since the names and/or coordinate location of those features may change as the genome is updated or new information is acquired. Therefore, we need to make sure that our annotations are relevant for the genes in our gene list. You should know which **build of the genome** was used to generate your gene list and use the **same build for the annotations** during functional analysis. 
+When a new genome build is acquired, the names and/or coordinate location of genomic features (gene, transcript, exon, etc.) may change. Therefore, the annotations regarding genome features (gene, transcript, exon, etc.) is genome-build specific  and we need to make sure that our annotations are obtained from the appropriate resource. You should know which **build of the genome** was used to generate your gene list and make sure you use the **same build for the annotations** during functional analysis. 
 
 For example, if we used the GRCh38 build of the human genome to quantify gene expression used for differential expression analysis, then we should use the **same GRCh38 build** of the genome to convert between gene IDs and to identify annotations for each of the genes. 
 
 ## Databases
 
-To access the processes, pathways, etc. for which a gene is involved, requires extracting the information from the necessary database where the information is stored. Depending on the information desired for annotations, determines the database that is queried. Examples of databases that are often queried, include:
+To access the processes, pathways, etc. for which a gene is involved, requires extracting the information from the necessary database where the information is stored. The database you query will depend on the information desired for annotations. Examples of databases that are often queried, include:
 
 **General databases** 
 
@@ -38,7 +38,7 @@ Offer comprehensive information on genome features, feature coordinates, homolog
 
 **Annotation-specific databases**
 
-Provide annoations related to a specific topic:
+Provide annotations related to a specific topic:
 
 - **Gene Ontology (GO):** database of gene ontology biological processes, cellular components and molecular functions - based on Ensembl or Entrez gene IDs or official gene symbols
 - **KEGG:** database of biological pathways - based on Entrez gene IDs
@@ -48,12 +48,12 @@ Provide annoations related to a specific topic:
 - **CORUM:** database of protein complexes for human, mouse, rat
 - **...**
 
-However, there are many other databases that are also queried depending on the information desired. 
+This is by no means an exhaustive list, there are many other databases that are also queried depending on the information desired. 
 
 
 ## Tools
 
-When performing functional analysis there are tools that extract information from these databases. Within R, there are many popular packages used for this purpose:
+When performing functional analysis, the tools will take the list of genes you provide and retrieve information for each gene using one or more of these databases. Within R, there are many popular packages used for gene/transcript-level annotation:
 
 **Interface tools:** for accessing/querying annotations from multiple different annotation databases
 
