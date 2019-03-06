@@ -170,9 +170,9 @@ is.na(annotations_edb$GENEID) %>%
   length()
 ```
 
-While we were using *AnnotationDbi* to query the Ensembl database, `ensembldb` package can also be quite helpful for extracting or filtering content from the database. Nice documentation for using `ensembldb` is [available](https://bioconductor.org/packages/release/bioc/vignettes/ensembldb/inst/doc/ensembldb.html) for more complex queries.
+While we were using *AnnotationDbi* to query the Ensembl database, `AnnotationHub` and/or `ensembldb` package can also be quite helpful for extracting or filtering content from the database. Nice documentation for using [`AnnotationHub`]() and [`ensembldb`](https://bioconductor.org/packages/release/bioc/vignettes/ensembldb/inst/doc/ensembldb.html) is available for more complex queries.
 
-> **NOTE:** If using the previous genome build for human (GRCh37/hg19), the *annotables* package is a super easy annotation package to use. It is not updated frequently, so it's not great for getting the most up-to-date information for the current builds and no has information for other organisms than human and mouse. However, it's super easy to use:
+> **NOTE:** If using the previous genome build for human (GRCh37/hg19), the *annotables* package is a super easy annotation package to use. It is not updated frequently, so it's not great for getting the most up-to-date information for the current builds and does not have information for other organisms than human and mouse. However, it's super easy to use:
 >
 >```r
 ># Load library
