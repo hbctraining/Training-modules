@@ -162,7 +162,7 @@ Although there will always be some attrition, using a different genome build wil
 
 ### EnsDb.Hsapiens.v75
 
-To generate the Ensembl annotations, the *EnsDb* database can also be easily queried using AnnotationDbi. You will need to decide the release of Ensembl you would like to query. All Ensembl releases are listed [here](http://useast.ensembl.org/index.html). We know that our data is for GRCh37, which corresponds to release 75, so we can install this release of the *EnsDb* database.
+To generate the Ensembl annotations, the *EnsDb* database can also be easily queried using AnnotationDbi. You will need to decide the release of Ensembl you would like to query. All Ensembl releases are listed [here](http://useast.ensembl.org/info/website/archives/index.html). We know that our data is for GRCh37, which corresponds to release 75, so we can install this release of the *EnsDb* database.
 
 Since we are using *AnnotationDbi* to query the database, we can use the same functions that we used previously:
 
@@ -182,7 +182,7 @@ Now we can return all gene IDs for our gene list:
 ```r
 # Return the Ensembl IDs for a set of genes
 annotations_edb <- AnnotationDbi::select(EnsDb.Hsapiens.v75,
-                                           keys = sig$symbol,
+                                           keys = sigOE$gene,
                                            columns = c("GENEID", "ENTREZID","GENEBIOTYPE"),
                                            keytype = "SYMBOL")
 ```
