@@ -87,7 +87,6 @@ There are a plethora of organism-specific *orgDb* packages, such as `org.Hs.eg.d
 
 ```r
 # Load libraries
-library(tidyverse)
 library(org.Hs.eg.db)
 library(AnnotationDbi)
 
@@ -97,17 +96,50 @@ org.Hs.eg.db
 
 We can see the metadata for the database by just typing the name of the database, including the species, last updates for the different source information, and the source urls. Note the KEGG data from this database was last updated in 2011, so may not be the best site for that information.
 
+```r
+OrgDb object:
+| DBSCHEMAVERSION: 2.1
+| Db type: OrgDb
+| Supporting package: AnnotationDbi
+| DBSCHEMA: HUMAN_DB
+| ORGANISM: Homo sapiens
+| SPECIES: Human
+| EGSOURCEDATE: 2018-Oct11
+| EGSOURCENAME: Entrez Gene
+| EGSOURCEURL: ftp://ftp.ncbi.nlm.nih.gov/gene/DATA
+| CENTRALID: EG
+| TAXID: 9606
+| GOSOURCENAME: Gene Ontology
+| GOSOURCEURL: ftp://ftp.geneontology.org/pub/go/godatabase/archive/latest-lite/
+| GOSOURCEDATE: 2018-Oct10
+| GOEGSOURCEDATE: 2018-Oct11
+| GOEGSOURCENAME: Entrez Gene
+| GOEGSOURCEURL: ftp://ftp.ncbi.nlm.nih.gov/gene/DATA
+| KEGGSOURCENAME: KEGG GENOME
+| KEGGSOURCEURL: ftp://ftp.genome.jp/pub/kegg/genomes
+| KEGGSOURCEDATE: 2011-Mar15
+| GPSOURCENAME: UCSC Genome Bioinformatics (Homo sapiens)
+| GPSOURCEURL: 
+| GPSOURCEDATE: 2018-Oct2
+| ENSOURCEDATE: 2018-Oct05
+| ENSOURCENAME: Ensembl
+| ENSOURCEURL: ftp://ftp.ensembl.org/pub/current_fasta
+| UPSOURCENAME: Uniprot
+| UPSOURCEURL: http://www.UniProt.org/
+| UPSOURCEDATE: Thu Oct 18 05:22:10 2018
+```
+
 We can easily extract information from this database using *AnnotationDbi* with the methods: `columns`, `keys`, `keytypes`, and `select`. For example, we will use our `org.Hs.eg.db` database to acquire information, but know that the same methods work for the *TxDb*, *Go.db*, *EnsDb*, and *BioMart* annotations.
 
 ```r
 # Return the Ensembl IDs for a set of genes
 annotations_orgDb <- AnnotationDbi::select(org.Hs.eg.db, # database
-                                     keys = sig$symbol,  # data to use for retrieval
+                                     keys = sigOE$gene,  # data to use for retrieval
                                      columns = c("ENSEMBL", "ENTREZID","GENENAME"), # information to retreive for given data
                                      keytype = "SYMBOL") # type of data given in 'keys' argument
 ```
 
-This easily returned to us the information that we desired, but note the *warning* returned: *'select()' returned 1:many mapping between keys and columns*. This is always going to happen with converting between different gene IDs. Unless we would like to keep multiple mappings for a single gene, then we probably want to deduplicate our data before using it.
+This easily returned to us the information that we desired, but note the *warning* returned: *'select()' returned 1:many mapping between keys and columns*. This is always going to happen with converting between different gene IDs. Unless we would like to keep multiple mappings for a single gene, then we probably want to de-duplicate our data before using it.
 
 ```r
 # Determine the indices for the non-duplicated genes
