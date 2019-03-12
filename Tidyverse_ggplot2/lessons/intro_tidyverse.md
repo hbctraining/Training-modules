@@ -19,8 +19,6 @@ Before we get started with pipes or tibbles, let's load the library:
 
 	library(tidyverse)
 	
-> ***NOTE:** If you haven't downloaded the data, right-click [here](https://github.com/hbctraining/Training-modules/blob/master/Tidyverse_ggplot2/data/gprofiler_results_Mov10oe.csv?raw=true) and save to the `data` folder.*
-
 ### Pipes
 
 Stringing together commands in R can be quite daunting. Also, trying to understand code that has many nested functions can be confusing. 
@@ -86,6 +84,8 @@ The functional analysis that we will focus on involves **gene ontology (GO) term
 	- molecular functions (MF)
 
 <img src="../img/mov10_FA.png" width="1200">
+
+> ***NOTE:** If you haven't downloaded the data, right-click [here](https://github.com/hbctraining/Training-modules/blob/master/Tidyverse_ggplot2/data/gprofiler_results_Mov10oe.csv?raw=true) and save to the `data` folder.*
 
 ## Analysis goal and workflow
 
