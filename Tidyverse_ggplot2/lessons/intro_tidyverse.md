@@ -18,6 +18,8 @@ The Tidyverse suite of packages introduces users to a set of data structures, fu
 Before we get started with pipes or tibbles, let's load the library:
 
 	library(tidyverse)
+	
+***NOTE:** If you haven't downloaded the data, right-click [here](https://github.com/hbctraining/Training-modules/blob/master/Tidyverse_ggplot2/data/gprofiler_results_Mov10oe.csv?raw=true) and save to the `data` folder.*
 
 ### Pipes
 
