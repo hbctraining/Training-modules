@@ -248,9 +248,9 @@ Our final data for plotting should look like the table below:
 
 ## 7. Plot results
 
-Now that we have worked our results into a state that's ready for plotting, we can use the [ggplot2](https://ggplot2.tidyverse.org) package to plot our results.
+Now that we have our results ready for plotting, we can use the [ggplot2](https://ggplot2.tidyverse.org) package to plot our results.
 
-The [ggplot2](https://ggplot2.tidyverse.org) package uses a syntax for plotting based on [The Grammar for Graphics](http://amzn.to/2ef1eWp), and the next lesson will dive into how to use the special graphics syntax to create detailed custom plots.
+The [ggplot2](https://ggplot2.tidyverse.org) package uses a syntax for plotting based on [The Grammar for Graphics](http://amzn.to/2ef1eWp), and the next lesson will dive into how to use the special graphics syntax to create our detailed custom plots.
 
 ### Additional resources
 
