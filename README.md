@@ -24,7 +24,7 @@ See our current workshop schedule on our [training website](http://bioinformatic
 | [Introduction to R](https://hbctraining.github.io/Training-modules/IntroR) | None |
 | [Introduction to the tidyverse data science packages and visualizations with ggplot2](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2) | Beginner R or [IntroR workshop](https://hbctraining.github.io/Training-modules/IntroR) |
 | [Gene annotations and functional analysis of gene lists](https://hbctraining.github.io/Training-modules/DGE-functional-analysis/) | Beginner R or [IntroR workshop](https://hbctraining.github.io/Training-modules/IntroR) |
-| Generating research analysis reports with RMarkdown | Beginner R or [IntroR workshop](https://hbctraining.github.io/Training-modules/IntroR) |
+| [Generating research analysis reports with RMarkdown](https://hbctraining.github.io/Training-modules/Rmarkdown/) | Beginner R or [IntroR workshop](https://hbctraining.github.io/Training-modules/IntroR) |
 
 ### Previous Workshops
 
