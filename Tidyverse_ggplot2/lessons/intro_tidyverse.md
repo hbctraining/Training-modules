@@ -252,7 +252,7 @@ Now that we have our results ready for plotting, we can use the [ggplot2](https:
 
 The [ggplot2](https://ggplot2.tidyverse.org) package uses a syntax for plotting based on [The Grammar for Graphics](http://amzn.to/2ef1eWp), and the next lesson will dive into how to use the special graphics syntax to create our detailed custom plots.
 
-If you would like to explore additional Tidyverse packages and functions, we have additional materials [avaialble](https://hbctraining.github.io/Intro-to-R/lessons/08_intro_tidyverse.html).
+If you would like to explore additional Tidyverse packages and functions, we have additional materials [available](https://hbctraining.github.io/Intro-to-R/lessons/08_intro_tidyverse.html).
 
 ### Additional resources
 
