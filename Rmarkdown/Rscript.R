@@ -45,6 +45,10 @@ res_tableOE_tb_sig <- res_tableOE_tb %>%
 norm_OEsig <- normalized_counts %>% 
   filter(gene %in% res_tableOE_tb_sig$gene) 
 
+meta <- mov10_meta %>%
+column_to_rownames("samplename") %>%
+data.frame()
+
 ## Run pheatmap using the metadata data frame for the annotation
 pheatmap(norm_OEsig[2:9], 
          cluster_rows = T, 
