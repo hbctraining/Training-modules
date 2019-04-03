@@ -35,6 +35,7 @@ Install the required R package by running the following code in RStudio:
 ```r
 install.packages("knitr")
 install.packages("tidyverse")
+install.packages("BiocManager")
 BiocManager::install("pheatmap")
 ```
 
