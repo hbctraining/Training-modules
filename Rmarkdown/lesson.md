@@ -166,6 +166,15 @@ ___
 2. **Modify the `Author` and `Title`** parameters at the top of the script
 3. **knit the markdown** 
 
+___
+
+#### Activity 4
+
+1. **Download this [R script]().**
+2. **Turn the script into an Rmarkdown report** with the following specifications:
+ - 
+3. **knit the markdown** 
+
 ***
 
 > **Note1: output formats**
