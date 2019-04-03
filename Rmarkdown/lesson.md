@@ -170,7 +170,7 @@ ___
 
 #### Activity 4
 
-1. **Download this [R script](https://github.com/hbctraining/Training-modules/raw/master/Rmarkdown/Rscript.R).**
+1. **Use this [R script](https://github.com/hbctraining/Training-modules/raw/master/Rmarkdown/Rscript.R) to create an RMarkdown file.**
 2. **Download the [RData object](https://github.com/hbctraining/Training-modules/raw/master/Rmarkdown/data/Rmarkdown_data.Rdata)** by right-clicking and save to `data` folder.
 3. **Turn the script into an Rmarkdown report** with the following specifications:
     - Create an R chunk for all code underneath each `#` comment
