@@ -34,16 +34,16 @@ Install the required R package by running the following code in RStudio:
 
 ```r
 install.packages("knitr")
-
-install.packages("ggplot2")
+install.packages("tidyverse")
+BiocManager::install("pheatmap")
 ```
 
 Load the libraries to make sure the packages installed properly:
 
 ```r
 library(knitr)
-
-library(ggplot2)
+library(tidyverse)
+library(pheatmap)
 ```
 
 ***
