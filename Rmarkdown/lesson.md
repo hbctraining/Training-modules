@@ -10,7 +10,7 @@ author: Michael J. Steinbaugh, Meeta Mistry, Radhika Khetani
 * What are the uses of RMarkdown 
 * Creating html reports using knitr
 
-# Reproducible research using RMarkdown - report generation
+# Generating research analysis reports with RMarkdown
  
 For any experimental analysis, it is critical to keep detailed notes for the future reproduction of the experiment and for the interpretation of results. For laboratory work, lab notebooks allow us to organize our methods, results, and conclusions to allow for future retrieval and reproduction. Computational analysis requires the same diligence, but it is often easy to forget to completely document the analysis and/or interpret the results in a transparent fashion. 
  
@@ -170,10 +170,12 @@ ___
 
 #### Activity 4
 
-1. **Download this [R script]().**
-2. **Turn the script into an Rmarkdown report** with the following specifications:
- - 
-3. **knit the markdown** 
+1. **Download this [R script](https://github.com/hbctraining/Training-modules/raw/master/Rmarkdown/Rscript.R).**
+2. **Download the [RData object](https://github.com/hbctraining/Training-modules/raw/master/Rmarkdown/data/Rmarkdown_data.Rdata)** by right-clicking and save to `data` folder.
+3. **Turn the script into an Rmarkdown report** with the following specifications:
+    - Create an R chunk for all code underneath each `#` comment
+    - Comment on the plots for interpretation of results
+4. **knit the markdown** 
 
 ***
 
