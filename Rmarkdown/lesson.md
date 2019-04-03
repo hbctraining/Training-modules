@@ -23,8 +23,8 @@ The [knitr](https://yihui.name/knitr/) package, developed by [Yihui Xie](https:/
 In this workshop we will become familiar with both `knitr` and the RMarkdown language. We will then use them to generate a short HTML report that can be viewed in a web browser. 
 
 Before we start, let's take a look at a "knitted" HTML report and the RMarkdown file used to generate it. 
-* [Final report of differential expression analysis](https://www.dropbox.com/s/m5e1z3anecwmami/workshop-example.html?dl=0) 
-* [RMarkdown file that was used to create the above report](https://www.dropbox.com/s/oiuekbu91xbjlqp/workshop-example.Rmd?dl=0)
+* [Final report of differential expression analysis](https://www.dropbox.com/s/m5e1z3anecwmami/workshop-example.html?dl=1) 
+* [RMarkdown file that was used to create the above report](https://www.dropbox.com/s/oiuekbu91xbjlqp/workshop-example.Rmd?dl=1)
 
 ## RMarkdown basics
 
