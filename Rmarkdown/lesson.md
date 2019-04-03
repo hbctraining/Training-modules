@@ -175,6 +175,7 @@ ___
 3. **Turn the script into an Rmarkdown report** with the following specifications:
     - Create an R chunk for all code underneath each `#` comment
     - Comment on the plots for interpretation of results
+    - Add a floating table of contents
 4. **knit the markdown** 
 
 ***
