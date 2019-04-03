@@ -1,5 +1,11 @@
+# Set-up libraries and data
+
+## Load libraries
 library(tidyverse)
 library(pheatmap)
+
+## Load data
+load("data/Rmarkdown_data.Rdata")
 
 # Top 20 significant genes
 
