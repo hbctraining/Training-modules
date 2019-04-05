@@ -32,15 +32,14 @@ The [Markdown language](https://en.wikipedia.org/wiki/Markdown) for formatting p
 
 As RMarkdown grows as an acceptable [reproducible manuscript](https://elifesciences.org/labs/cad57bcf/composing-reproducible-manuscripts-using-r-markdown) format, using `knitr` to generate a report summary is becoming common practice. 
 
-### Text
+### YAML Header
 
-The syntax to format the text portion of the report is relatively easy. You can easily get text that is **bolded**, *italicized*, ***bolded & italicized***. You can create "headers" and "sub-headers" by placing an "#" or "##" and so on in front of a line of text, generate numbered and bulleted lists, add hyperlinks to words or phrases, and so on.
+What is Yaml?
+Syntax
+Options for the header
 
-Let's take a look at the syntax of how to do this in RMarkdown before we move on to formatting and adding code chunks:
+Exercise:
 
-<img src="img/rmd-syntax.png" width="650">
-
-You can also get more information about text formatting [here](http://rmarkdown.rstudio.com/lesson-1.html) and [here](http://rmarkdown.rstudio.com/authoring_basics.html).
 
 ### Code chunks
 
@@ -52,7 +51,23 @@ Each individual code chunk should be given a **unique** name. [knitr](https://yi
 
 Additionally, you can write inline [R](https://www.r-project.org/) code enclosed by single backticks (\`) containing a lowercase `r` (like \`\`\` code chunks). This allows for variable returns outside of code chunks, and is extremely useful for making report text more dynamic. For example, you can print the current date inline within the report with this syntax: `` `r Sys.Date()` `` (no spaces).
 
-### Options for code chunks
+Exercise:
+
+
+
+
+### The setup chunk
+
+The `setup` chunk is a special knitr chunk that should be placed at the start of the document. We recommend storing all `library()` loads required for the script and other `load()` requests for external files here. In our RMarkdown templates, such as the bcbioRnaseq [differential expression template](https://github.com/hbc/bcbioRnaseq/blob/master/inst/rmarkdown/templates/differential_expression/skeleton/skeleton.Rmd), we store all the user-defined parameters in the `setup` chunk that are required for successful knitting.
+
+<img src="img/r-setup.png">
+
+Exercise:
+
+
+
+
+#### Options for code chunks
 
 The knitr package provides a lot of customization options for code chunks, which are written in the form of `tag=value`.
 
@@ -67,15 +82,14 @@ There is a [comprehensive list](https://yihui.name/knitr/options/#code-chunk) of
 * `message = TRUE`: whether to preserve messages emitted by message() (similar to warning)
 * `results = "asis"`: output as-is, i.e., write raw results from R into the output document
 
-### The setup chunk
+Exercise:
 
-The `setup` chunk is a special knitr chunk that should be placed at the start of the document. We recommend storing all `library()` loads required for the script and other `load()` requests for external files here. In our RMarkdown templates, such as the bcbioRnaseq [differential expression template](https://github.com/hbc/bcbioRnaseq/blob/master/inst/rmarkdown/templates/differential_expression/skeleton/skeleton.Rmd), we store all the user-defined parameters in the `setup` chunk that are required for successful knitting.
 
-<img src="img/r-setup.png">
 
-### Global options
 
-knitr allows for global options to be set on all chunks in an [RMarkdown](http://rmarkdown.rstudio.com/) file. These are options that should be placed inside your `setup` chunk at the top of your RMarkdown document. These will be the default options used for all the code chunks in the document, however they can be modified for each code chunk.
+##### Global options
+
+`knitr` allows for global options to be set on all chunks in an [RMarkdown](http://rmarkdown.rstudio.com/) file. These are options that should be placed inside your `setup` chunk at the top of your RMarkdown document. These will be the default options used for all the code chunks in the document, however they can be modified for each code chunk.
 
 ```r
 opts_chunk$set(
@@ -94,7 +108,22 @@ opts_chunk$set(
     warning = FALSE)
 ```
 
-An additional cool trick is that you can save `opts_chunk$set` settings in `~/.Rprofile` and these knitr options will apply to all of your RMarkdown documents, and not just the one.
+> Note: You can save `opts_chunk$set` settings in `~/.Rprofile` and these knitr options will apply to all of your RMarkdown documents, and not just the one.
+
+### Text
+
+The syntax to format the text portion of the report is relatively easy. You can easily get text that is **bolded**, *italicized*, ***bolded & italicized***. You can create "headers" and "sub-headers" by placing an "#" or "##" and so on in front of a line of text, generate numbered and bulleted lists, add hyperlinks to words or phrases, and so on.
+
+Let's take a look at the syntax of how to do this in RMarkdown before we move on to formatting and adding code chunks:
+
+<img src="img/rmd-syntax.png" width="650">
+
+You can also get more information about text formatting [here](http://rmarkdown.rstudio.com/lesson-1.html) and [here](http://rmarkdown.rstudio.com/authoring_basics.html).
+
+Exercise:
+
+
+
 
 ### Figures
 
@@ -103,6 +132,11 @@ A neat feature of knitr is how much simpler it makes generating figures. You can
 There are also a few options commonly used for plots to easily resize the figures in the final report. You can specify the height and width of the figure when setting up the code chunk.
 
 <img src="img/r-figure.png">
+
+Exercise:
+
+
+
 
 ### Tables
 
@@ -126,6 +160,9 @@ mtcars %>%
 
 There are some other functions that allow for more powerful customization of tables, including `pander::pander()` and `xtable::xtable()`, but the simplicity and cross-platform reliability of `knitr::kable()` makes it an easy pick.
 
+Exercise:
+
+
 
 ### Generating the report
 
@@ -139,36 +176,14 @@ When executing `knit()` on a document, by default this will generate an HTML rep
 
 > **Note**: *PDF rendering is sometimes problematic, especially when running [R](https://www.r-project.org/) remotely, like on the cluster (Odyssey or O2). If you run into problems, it's likely an issue related to [pandoc](http://pandoc.org).*
 
-## Generating an RMarkdown knit report!
+Exercise:
 
-#### Activity 1
 
-1. **Create a new project** in a new directory called `rmd_workshop`
-2. **Download [this RMarkdown file](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-example.Rmd)** to it
-3. **Download and uncompress [this data folder](data/data.zip?raw=true)** within the project directory
-4. **Open the .rmd file** in RStudio
-5. **knit the markdown** 
 
-___
 
-#### Activity 2
+## Generating an RMarkdown knit report from an r script
 
-1. Only the some of the code chunks have names; go through and **add names to the unnamed code chunks**.
-2. For the code chunk named `data-ordering` **modify the options (`{r}`)** such that its output shows up in the report, but not the actual code
-3. Without removing the last code chunk (for boxplot) from the Rmd file, **modify its options** such that neither the code nor its output appear in the report
-4. **knit the markdown** 
-
-___
-
-#### Activity 3
-
-1. **Add a new code chunk** at the end with `sessionInfo()`
-2. **Modify the `Author` and `Title`** parameters at the top of the script
-3. **knit the markdown** 
-
-___
-
-#### Activity 4
+Exercise:
 
 1. **Use this [R script](https://github.com/hbctraining/Training-modules/raw/master/Rmarkdown/Rscript.R) to create an RMarkdown file.**
 2. **Download the [RData object](https://github.com/hbctraining/Training-modules/raw/master/Rmarkdown/data/Rmarkdown_data.Rdata)** by right-clicking and save to `data` folder.
