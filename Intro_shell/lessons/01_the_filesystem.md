@@ -44,7 +44,7 @@ On a **Mac** your current folder should be something starting with `/Users/`, li
 
 On a **Windows** machine your current folder should be something starting with `/c/Users/marypiper`. To find this in your File explorer try clicking on PC and navigating to that path.
 
-Once you know to which folder you are downloading your data, right click on the link below:
+Once you have identified which folder you are in, this is where we will be downloading your data. Right click on the link below, and be sure to **Save link as**. You will be prompted to choose a folder within a Finder/File Explorer window. Navigate to the directory that was listed when running `pwd`.
 
 **Download RNA-Seq data to your working directory:** right-click [here](https://github.com/hbctraining/Training-modules/blob/master/Intro_shell/data/unix_lesson.zip?raw=true) and choose **Save link as**.
 
