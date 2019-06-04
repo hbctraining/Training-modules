@@ -49,18 +49,18 @@ Vim has **_two basic modes_** that will allow you to create documents and edit y
 
 Upon creation of a file, vim is automatically in command mode. Let's _change to insert mode_ by typing <kbd>i</kbd>. Notice the `--INSERT--` at the bottom left hand of the screen. Now type in a few lines of text:
 
-![vim-insert-mode](../img/vim_spider.png)
+<img src="../img/vim-insert-mode.png">
 
 After you have finished typing, press <kbd>esc</kbd> to enter command mode. Notice the `--INSERT--` disappeared from the bottom of the screen.
 
 ### Vim Saving and Quitting
 To **write to file (save)**, type <kbd>:w</kbd>. You can see the commands you type in the bottom left-hand corner of the screen. 
 
-![vim-save](../img/vim_save.png)
+<img src="../img/vim-save.png">
 
 After you have saved the file, the total number of lines and characters in the file will print out at the bottom left-hand section of the screen.
 
-![vim-postsave](../img/vim_postsave.png)
+<img src="../img/vim-postsave.png">
 
 Alternatively, we can **write to file (save) and quit**. Let's do that by typing <kbd>:wq</kbd>. Now, you should have exited vim and returned back to your terminal window.
 
