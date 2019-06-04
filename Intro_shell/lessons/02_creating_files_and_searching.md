@@ -77,7 +77,36 @@ We have barely scratched the surface of Vim's functionality. There are many more
 * [A full lesson on working with Vim](https://hbctraining.github.io/Intro-to-Shell/lessons/03_vim.html) (HBC materials)
 * [Cheatsheet with various commands and shortcuts](https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/resources/VI_CommandReference.pdf).
 
-## Searching within files
+
+## Searching files
+
+We went over how to search within a file using `less`. We can also search within files without even opening them, using `grep`. Grep is a command-line utility for searching plain-text data sets for lines matching a pattern or regular expression (regex).
+
+Let's give it a try!
+
+We are going to practice searching with `grep` using the `spider.txt` file that we just created. Suppose we want to see which lines contain the word spider, we would use that as our pattern input: 
+
+```bash
+
+$ grep spider spider.txt
+```
+
+It might be helpful to know which line numbers contain these patter matches:
+
+```bash
+
+$ grep --line-number spider spider.txt
+```
+
+Alternatively, if we wanted a count of the number of lines that match we could add the `-c` argument:
+
+```bash
+
+$ grep -c spider spider.txt
+```
+
+These are just a few examples of using `grep`, if you are interested in learning more we encourage you to look through [our materials on Searching and Redirection](https://hbctraining.github.io/Intro-to-Shell/lessons/02_searching_files.html). This lesson goes through examples that utilize the data you have already downloaded.
+
 
 ***
 
