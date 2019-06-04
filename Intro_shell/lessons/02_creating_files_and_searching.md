@@ -28,15 +28,15 @@ To write and edit files, we're going to use a text editor called 'Vim'. Vim is a
 
 ### Vim Interface
 
-You can create a document by providing the name of text editor and providing the name of the document you wish to create. Change directories to the `unix_lesson/other` folder and create a document using `vim` entitled `draft.txt`:
+You can create a document by providing the name of text editor and providing the name of the document you wish to create. Change directories to the `unix_lesson/other` folder and create a document using `vim` entitled `spider.txt`:
 
 ```bash
 $ cd ~/unix_lesson/other
 	
-$ vim draft.txt
+$ vim spider.txt
 ```
 
-Notice the `"draft.txt" [New File]` typed at the bottom left-hand section of the screen. This tells you that you just created a new file in vim. 
+Notice the `"spider.txt" [New File]` typed at the bottom left-hand section of the screen. This tells you that you just created a new file in vim. 
 
 
 ### Vim Modes
@@ -64,13 +64,18 @@ After you have saved the file, the total number of lines and characters in the f
 
 Alternatively, we can **write to file (save) and quit**. Let's do that by typing <kbd>:wq</kbd>. Now, you should have exited vim and returned back to your terminal window.
 
-To edit your `draft.txt` document, open up the file again by calling vim and entering the file name: `vim draft.txt`. Change to insert mode and type a few more lines (you can move around the lines using the arrows on the keyboard). This time we decide to **quit without saving** by typing <kbd>:q!</kbd>
+### Vim Quit Without Saving
+To edit your `spider.txt` document, open up the file again by calling vim and entering the file name: `vim spider.txt`. Change to insert mode and type a few more lines (you can move around the lines using the arrows on the keyboard). This time we decide to **quit without saving** by typing <kbd>:q!</kbd>
+
+<img src="../img/vim-nosave.png">
+
  
+### Vim Resources
 
-### Resources
+We have barely scratched the surface of Vim's functionality. There are many more commands and helpful shortcuts that really highlight why Vim is our editor of choice. If you decide to continue with Vim, we have below some helpful resources:
 
-* [our materials]()
-* [cheatsheet](https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/resources/VI_CommandReference.pdf).
+* [A full lesson on working with Vim](https://hbctraining.github.io/Intro-to-Shell/lessons/03_vim.html) (HBC materials)
+* [Cheatsheet with various commands and shortcuts](https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/resources/VI_CommandReference.pdf).
 
 ## Searching within files
 
