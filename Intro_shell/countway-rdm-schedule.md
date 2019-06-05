@@ -27,7 +27,7 @@ Many data analysis tools and computational resources require users to have a bas
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
 |[Introduction to the command line](https://hbctraining.github.io/Training-modules/Intro_shell/lessons/01_the_filesystem.html) | 75 min |
-|[Creating files and Searching within them](https://hbctraining.github.io/Training-modules/Intro_shell/lessons/02_creating_files_and_searching.html) | 45 min |
+|[Creating files and Searching within them](https://hbctraining.github.io/Training-modules/Intro_shell/lessons/02_creating_files_and_searching.html) | 15 min |
 
 ### Dataset
 [Introduction to Shell: Dataset](https://www.dropbox.com/s/3lua2h1oo18gbug/unix_lesson.tar.gz?dl=1)
