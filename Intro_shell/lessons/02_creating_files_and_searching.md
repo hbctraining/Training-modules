@@ -87,21 +87,18 @@ Let's give it a try!
 We are going to practice searching with `grep` using the `spider.txt` file that we just created. Suppose we want to see which lines contain the word spider, we would use that as our pattern input: 
 
 ```bash
-
 $ grep spider spider.txt
 ```
 
-It might be helpful to know which line numbers contain these patter matches:
+It might be helpful to know which line numbers contain these pattern matches:
 
 ```bash
-
 $ grep --line-number spider spider.txt
 ```
 
 Alternatively, if we wanted a count of the number of lines that match we could add the `-c` argument:
 
 ```bash
-
 $ grep -c spider spider.txt
 ```
 
