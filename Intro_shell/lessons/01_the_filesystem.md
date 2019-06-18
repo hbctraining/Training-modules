@@ -42,7 +42,7 @@ $ pwd
 
 On a **Mac** your current folder should be something starting with `/Users/`, like `/Users/marypiper/`.
 
-On a **Windows** machine your current folder should be something starting with `/c/Users/marypiper`. To find this in your File explorer try clicking on PC and navigating to that path.
+On a **Windows** machine your current folder should be something starting with `C:/Users/marypiper`. To find this in your File explorer try clicking on PC and navigating to that path.
 
 Once you have identified which folder you are in, this is where we will be downloading your data. Right click on the link below, and be sure to **Save link as**. You will be prompted to choose a folder within a Finder/File Explorer window. Navigate to the directory that was listed when running `pwd`.
 
