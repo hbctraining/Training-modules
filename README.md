@@ -15,7 +15,6 @@ See our current workshop schedule on our [training website](http://bioinformatic
 > Workshop introduction slides are available [here](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics.pdf).
 
 ### Current Workshops
-### All topics
 
 | Lessons        | Prerequisites |
 |:---------------|:-------------:|
