@@ -25,19 +25,19 @@ The focus of this workshop is to outline current standards and required resource
 
 | Lessons            | Duration | Presenter | 
 |:------------------------|:----------|:----------|
-| [Introduction]() | 15 mins | Radhika Khetani |
-| [Library Prep](https://hbctraining.github.io/GCC-BOSC-2018/slides/library_prep.pdf) | 30 mins | Radhika Khetani |
-| [Sequencing steps & sequencers](https://hbctraining.github.io/GCC-BOSC-2018/slides/sequencing_technologies_mm.pdf) | 25 mins | Meeta Mistry |
-| [Experimental planning considerations](lessons/experimental_planning_considerations.md) | 35 mins | Mary Piper |
-| [Strategies for bulk RNA-seq analysis](https://hbctraining.github.io/GCC-BOSC-2018/slides/RNAseq-strategies_mm.pdf) | 30 mins | Meeta Mistry |
-| [Data management](https://hbctraining.github.io/GCC-BOSC-2018/slides/data_management.pdf) | 15 mins | Radhika Khetani |
+| [Introduction](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/) | 15 mins | Radhika Khetani |
+| [Library Prep](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/slides/library_prep.pdf) | 30 mins | Radhika Khetani |
+| [Sequencing steps & sequencers](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/slides/sequencing_technologies_mm.pdf) | 25 mins | Meeta Mistry |
+| [Experimental planning considerations](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/lessons/experimental_planning_considerations.md) | 35 mins | Mary Piper |
+| [Strategies for bulk RNA-seq analysis](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/slides/RNAseq-strategies_mm.pdf) | 30 mins | Meeta Mistry |
+| [Data management](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/slides/data_management.pdf) | 15 mins | Radhika Khetani |
 | Break | 30 mins |  |
-| [Raw data QC](https://hbctraining.github.io/GCC-BOSC-2018/slides/QC_rawdata_mp.pdf) | 30 mins | Mary Piper |
-| [Mapping/quantification](https://hbctraining.github.io/GCC-BOSC-2018/slides/alignment_quantification.pdf)| 25 mins | Meeta Mistry |
-| [Sample-level assessment](https://hbctraining.github.io/GCC-BOSC-2018/lessons/sample_level_QC.html) | 30 mins | Mary Piper |
-| [Count modeling and hypothesis testing](lessons/count_modeling.md) | 30 mins | Meeta Mistry |
-| [Visualization of results](lessons/data_visualization.md)| 15 mins | Radhika Khetani |
-| [Functional analysis](https://hbctraining.github.io/GCC-BOSC-2018/slides/functional_analysis_mp.pdf) | 20 mins | Mary Piper |
+| [Raw data QC](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/slides/QC_rawdata_mp.pdf) | 30 mins | Mary Piper |
+| [Mapping/quantification](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/slides/alignment_quantification.pdf)| 25 mins | Meeta Mistry |
+| [Sample-level assessment](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/lessons/sample_level_QC.html) | 30 mins | Mary Piper |
+| [Count modeling and hypothesis testing](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/lessons/count_modeling.md) | 30 mins | Meeta Mistry |
+| [Visualization of results](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/lessons/data_visualization.md)| 15 mins | Radhika Khetani |
+| [Functional analysis](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/slides/functional_analysis_mp.pdf) | 20 mins | Mary Piper |
 
 ### Dataset
 
