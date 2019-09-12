@@ -14,9 +14,19 @@ See our current workshop schedule on our [training website](http://bioinformatic
 
 > Workshop introduction slides are available [here](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics.pdf).
 
+### Current Workshops
 ### All topics
 
 | Lessons        | Prerequisites |
+|:---------------|:-------------:|
+| [Planning a bulk RNA-seq analysis: Part I](https://hbctraining.github.io/Training-modules/) | None |
+| [Planning a bulk RNA-seq analysis: Part II](https://hbctraining.github.io/Training-modules/) | None |
+| [Make your (RNA-seq) data analysis reproducible](https://hbctraining.github.io/Training-modules/) | None |
+| [Improving your (RNA-seq) data analysis using version control (Git)](https://hbctraining.github.io/Training-modules/) | None |
+
+### All topics
+
+| Lessons        | Prerequisites |Planning a bulk RNA-seq analysis: Part II
 |:---------------|:-------------:|
 | [Introduction to R](https://hbctraining.github.io/Training-modules/IntroR) | None |
 | [Introduction to the tidyverse data science packages and visualizations with ggplot2](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2) | Beginner R or [IntroR workshop](https://hbctraining.github.io/Training-modules/IntroR) |
