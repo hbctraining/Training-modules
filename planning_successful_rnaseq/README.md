@@ -25,7 +25,7 @@ The focus of this workshop is to outline current standards and required resource
 
 | Lessons            | Duration | Presenter | 
 |:------------------------|:----------|:----------|
-| [Introduction](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/) | 15 mins | Radhika Khetani |
+| Introduction | 15 mins | Radhika Khetani |
 | [Library Prep](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/slides/library_prep.pdf) | 30 mins | Radhika Khetani |
 | [Sequencing steps & sequencers](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/slides/sequencing_technologies_mm.pdf) | 25 mins | Meeta Mistry |
 | [Experimental planning considerations](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/lessons/experimental_planning_considerations.html) | 35 mins | Mary Piper |
