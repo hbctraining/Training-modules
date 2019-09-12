@@ -4,6 +4,8 @@
 :----------|:----------|:----------|:----------|
 | Novice to Experienced Researchers | None | None | 2 sessions (3 hours)|
 
+## Description
+
 This two-part workshop is geared towards researchers who are thinking about conducting an RNA-seq experiment and are interested in knowing more about what is involved. The planning process requires taking a step back to evaluate various factors and ultimately assess the feasibility of the experiment, including thinking about potential pitfalls and how to avoid them. The workshop will go into detail about the different strategies for working with RNA-seq data depending on the biological question being addressed. Specific topics include:
 
 * Best practice guidelines for experimental design (Biological replicates, Paired-end vs Single-end, Sequencing depth).
@@ -12,14 +14,14 @@ This two-part workshop is geared towards researchers who are thinking about cond
 
 The focus of this workshop is to outline current standards and required resources for the analysis of RNA sequencing data. This workshop will not provide an exhaustive list of software tools or pipelines available; rather it aims to provide a fruitful discussion on how best to prepare for performing RNA-seq data analysis from the lab to manuscript preparation.
 
-### Learning Objectives
+## Learning Objectives
 
 * Describe the resources needed to perform an experiment to identify differentially expressed genes using RNA sequencing, including in the laboratory and computationally.
 * Describe key experimental design considerations.
 * Explain the analysis workflow (including QC) starting with raw data and finishing with a list of differentially expressed genes. 
 * List tools and computational skills necessary to implement the various steps in the above-mentioned workflow.
 
-### Contents/Schedule
+## Contents
 
 | Lessons            | Duration | Presenter | 
 |:------------------------|:----------|:----------|
@@ -36,6 +38,14 @@ The focus of this workshop is to outline current standards and required resource
 | [Count modeling and hypothesis testing](lessons/count_modeling.md) | 30 mins | Meeta Mistry |
 | [Visualization of results](lessons/data_visualization.md)| 15 mins | Radhika Khetani |
 | [Functional analysis](https://hbctraining.github.io/GCC-BOSC-2018/slides/functional_analysis_mp.pdf) | 20 mins | Mary Piper |
+
+## Dataset
+
+None
+
+## Installation Requirements
+
+None
 
 ### Resources
 
