@@ -25,7 +25,7 @@ See our current workshop schedule on our [training website](http://bioinformatic
 
 ### All topics
 
-| Lessons        | Prerequisites |Planning a bulk RNA-seq analysis: Part II
+| Lessons        | Prerequisites |
 |:---------------|:-------------:|
 | [Introduction to R](https://hbctraining.github.io/Training-modules/IntroR) | None |
 | [Introduction to the tidyverse data science packages and visualizations with ggplot2](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2) | Beginner R or [IntroR workshop](https://hbctraining.github.io/Training-modules/IntroR) |
