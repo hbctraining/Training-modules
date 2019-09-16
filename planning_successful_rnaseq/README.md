@@ -2,7 +2,7 @@
 
 | Audience | Computational Skills | Prerequisites | Duration |
 :----------|:----------|:----------|:----------|
-| Novice to Experienced Researchers | None | None | 2 sessions (3 hours)|
+| Novice to Experienced Researchers | None | None | 2 sessions (3 hours each)|
 
 ### Description
 
