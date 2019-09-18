@@ -17,7 +17,10 @@ RNA-seq is an exciting experimental technique that is utilized to explore and/or
 
 As we know, genes provide instructions to make proteins, which perform some function within the cell. Although **all cells contain the same DNA sequence**, muscle cells are different from nerve cells and other types of cells because of the **different genes that are turned on in these cells and the different RNAs and proteins produced**. 
 
- <img src="../img/gene_expression_cells.png" width="600">
+<p align="center">
+<img src="gene_expression_cells.png" width="600">
+</p>
+
 
 Different biological processes, as well as mutations, can affect which genes are turned on and which are turned off, in addition to, *how much* specific genes are turned on/off.
 
