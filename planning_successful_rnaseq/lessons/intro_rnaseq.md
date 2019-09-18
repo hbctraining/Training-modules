@@ -40,19 +40,19 @@ To be translated into proteins, the RNA must undergo processing to generate the 
 
 The transcriptome is defined as a collection of all the transcript readouts present in a cell. RNA-seq data can be used to explore and/or quantify the transcriptome of an organism, which can be utilized for the following types of experiments:
 
-- **Differential Gene Expression**: *quantitative* evaluation and comparison of transcript levels
-- **Transcriptome assembly**: building the profile of transcribed regions of the genome, a *qualitative* evaluation. 
-- Can be used to **help build better gene models**, and verify them using the assembly
-- **Metatranscriptomics** or community transcriptome analysis
+- **Differential Gene Expression**: *quantitative* evaluation and comparison of transcript levels between conditions
+- **Transcriptome assembly**: building the profile of transcribed regions of the genome, a *qualitative* evaluation
+- **Refinement of gene models**: building better gene models and verifying them using transcriptome assembly
+- **Metatranscriptomics**: community transcriptome analysis
 
 #### Differential gene expression
 
-We will be focused on the application of differential gene expression analysis. Using this analysis we can answer questions, such as:
+We will be focused on the application of differential gene expression analysis for this workshop. Differential gene expression analysis allows us to explore the gene expression changes that occur in disease or between different conditions, by measuring the quantity of RNA expressed by all genes in each of the different conditions. Using this analysis we can answer questions such as:
 
-- What genes are differentially expressed between sample groups?
+- What genes are differentially expressed between conditions?
 
-- Are there any trends in gene expression over time or across conditions.
+- Are there any trends in gene expression over time or across conditions?
 
-- Which groups of genes change similarly over time or across conditions.
+- Which groups of genes change similarly over time or across conditions?
 
 - What processes or pathways are important for my condition of interest?
