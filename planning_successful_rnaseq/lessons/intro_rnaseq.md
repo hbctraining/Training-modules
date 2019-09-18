@@ -14,13 +14,11 @@ Approximate time: 15 minutes
 
 RNA-seq is an exciting experimental technique that is utilized to explore and/or quantify gene expression within or between conditions. 
 
-
 As we know, genes provide instructions to make proteins, which perform some function within the cell. Although **all cells contain the same DNA sequence**, muscle cells are different from nerve cells and other types of cells because of the **different genes that are turned on in these cells and the different RNAs and proteins produced**. 
 
 <p align="center">
 <img src="../img/gene_expression_cells.png" width="600"/>
 </p>
-
 
 Different biological processes, as well as mutations, can affect which genes are turned on and which are turned off, in addition to, *how much* specific genes are turned on/off.
 
@@ -30,7 +28,7 @@ To make proteins, the DNA is transcribed into messenger RNA, or mRNA, which is t
 <img src="../img/Gene_products.png" width="400"/>
 </p>
 
-To be translated into proteins, the RNA must undergo processing to generate the mRNA. In the figure below, the top strand in the image represents a gene in the DNA, comprised of the untranslated regions (UTRs) and the open read frame. Genes are transcribed into pre-mRNA, which still contains the intronic sequences.  After post-transciptional processing, the introns are spliced out and a polyA tail and 5' cap are added to yield mature mRNA transcripts, which can be translated into proteins.
+To be translated into proteins, the RNA must undergo processing to generate the mRNA. In the figure below, the top strand in the image represents a gene in the DNA, comprised of the untranslated regions (UTRs) and the open read frame. Genes are transcribed into pre-mRNA, which still contains the intronic sequences.  After post-transciptional processing, a 5' cap and polyA tail are added and the introns are spliced out to yield mature mRNA transcripts, which can be translated into proteins.
 
 <p align="center">
 <img src="../img/Gene_structure.png" width="600"/>
