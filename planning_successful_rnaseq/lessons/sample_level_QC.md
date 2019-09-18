@@ -4,16 +4,21 @@ The next step in the RNA-seq workflow is the differential expression analysis. T
 
 The steps outlined in the gray box below we have already discussed, and we will now continue to describe the steps in an **end-to-end gene-level RNA-seq differential expression workflow**. 
 
+<p align="center">
 <img src="../img/rnaseq_full_workflow.png" width="400">
-
+</p>
 
 So what does the count data actually represent? The count data used for differential expression analysis represents the number of sequence reads that originated from a particular gene. The higher the number of counts, the more reads associated with that gene, and the assumption that there was a higher level of expression of that gene in the sample. 
 
+<p align="center">
 <img src="../img/deseq_counts_overview.png" width="600">
+</p>
 
 **The differential expression analysis steps are shown in the flowchart below in green**. First, the count data needs to be normalized to account for differences in library sizes and RNA composition between samples. Then, we will use the normalized counts to make some plots for QC at the gene and sample level. Finally, the differential expression analysis is performed using your tool of interest.
 
+<p align="center">
 <img src="../img/deseq_workflow_full.png" width="200">
+</p>
 
 ## Normalization
 
@@ -24,20 +29,26 @@ The counts of mapped reads for each gene is proportional to the expression of RN
 The main factors often considered during normalization are:
  
  - **Sequencing depth:** Accounting for sequencing depth is necessary for comparison of gene expression between samples. In the example below, each gene appears to have doubled in expression in *Sample A* relative to *Sample B*, however this is a consequence of *Sample A* having double the sequencing depth. 
-
+    
+    <p align="center">
     <img src="../img/normalization_methods_depth.png" width="400">
-  
+    </p>
+    
 	>***NOTE:** In the figure above, each pink and green rectangle represents a read aligned to a gene. Reads connected by dashed lines connect a read spanning an intron.*
  
  - **Gene length:** Accounting for gene length is necessary for comparing expression between different genes within the same sample. In the example, *Gene X* and *Gene Y* have similar levels of expression, but the number of reads mapped to *Gene X* would be many more than the number mapped to *Gene Y* because *Gene X* is longer.
- 
+    
+    <p align="center">
     <img src="../img/normalization_methods_length.png" width="200">
- 
+    </p>
+    
  - **RNA composition:** A few highly differentially expressed genes between samples, differences in the number of genes expressed between samples, or presence of contamination can skew some types of normalization methods. Accounting for RNA composition is recommended for accurate comparison of expression between samples, and is particularly important when performing differential expression analyses [[1](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-10-r106)]. 
  
 	In the example, if we were to divide each sample by the total number of counts to normalize, the counts would be greatly skewed by the DE gene, which takes up most of the counts for *Sample A*, but not *Sample B*. Most other genes for *Sample A* would be divided by the larger number of total counts and appear to be less expressed than those same genes in *Sample B*.  
 	
+    <p align="center">
     <img src="../img/normalization_methods_composition.png" width="400">
+    </p>
     
 ***While normalization is essential for differential expression analyses, it is also necessary for exploratory data analysis, visualization of data, and whenever you are exploring or comparing counts between or within samples.***
  
@@ -77,7 +88,9 @@ For example, in the table above, SampleA has a greater proportion of counts asso
 
 The next step in the differential expression workflow is QC, which includes sample-level and gene-level steps to perform QC checks on the count data to help us ensure that the samples/replicates look good. 
 
+<p align="center">
 <img src="../img/deseq_workflow_qc.png" width="200">
+</p>
 
 ## Sample-level QC
 
@@ -89,40 +102,56 @@ A useful initial step in an RNA-seq analysis is often to assess overall similari
 
 Log2-transformed normalized counts are used to assess similarity between samples using Principal Component Analysis (PCA) and hierarchical clustering. Using log2 transformation, tools aim to moderate the variance across the mean, thereby improving the distances/clustering for these visualization methods.
 
+<p align="center">
 <img src="../img/rlog_transformation.png" width="500">
+</p>
 
 Sample-level QC allows us to see how well our replicates cluster together, as well as, observe whether our experimental condition represents the major source of variation in the data. Performing sample-level QC can also identify any sample outliers, which may need to be explored to determine whether they need to be removed prior to DE analysis. 
 
+<p align="center">
 <img src="../img/sample_qc.png" width="700">
+</p>
 
 ### [Principal Component Analysis (PCA)](https://hbctraining.github.io/DGE_workshop/lessons/principal_component_analysis.html)
 Principal Component Analysis (PCA) is a dimensionality reduction technique that finds the greatest amounts of variation in a dataset and assigns it to principal components. The principal component (PC) explaining the greatest amount of variation in the dataset is PC1, while the PC explaining the second greatest amount is PC2, and so on and so forth. For a more detailed explanation, please see additional materials [here](https://hbctraining.github.io/DGE_workshop/lessons/principal_component_analysis.html).
 
 Generally, we focus on PC1 and PC2 (which explain the largest amounts of variation in the data) and plot them against each other. In an ideal experiment, we would expect all replicates for each sample group to cluster together and the sample groups to cluster apart in the PCA plot as shown below.
 
+<p align="center">
 <img src="../img/wt_pca.png" width="700">
+</p>
 
 #### Example PCA
 
 In this example, the metadata for the experiment is displayed below. The main condition of interest is `treatment`.
 
+<p align="center">
 <img src="../img/example_metadata.png" width="600">
+</p>
 
 When visualizing on PC1 and PC2, we don't see the samples separate by `treatment`, so we decide to explore other sources of variation present in the data. We hope that we have included all possible known sources of variation in our metadata table, and we can use these factors to color the PCA plot. 
 
+<p align="center">
 <img src="../img/example_PCA_treatmentPC1.png" width="600">
+</p>
 
 We start with the factor `cage`, but the `cage` factor does not seem to explain the variation on PC1 or PC2.
 
+<p align="center">
 <img src="../img/example_PCA_cage.png" width="600">
+</p>
 
 Then, we color by the `sex` factor, which appears to separate samples on PC2. This is good information to take note of, as we can use it downstream to account for the variation due to sex in the model and regress it out.
 
+<p align="center">
 <img src="../img/example_PCA_sex.png" width="600">
+</p>
 
 Next we explore the `strain` factor and find that it explains the variation on PC1. 
 
+<p align="center">
 <img src="../img/example_PCA_strain.png" width="600">
+</p>
 
 It's great that we have been able to identify the sources of variation for both PC1 and PC2. By accounting for it in our model, we should be able to detect more genes differentially expressed due to `treatment`.
 
@@ -130,7 +159,9 @@ Worrisome about this plot is that we see two samples that do not cluster with th
 
 Still we haven't found if `treatment` is a major source of variation after `strain` and `sex`. So, we explore PC3 and PC4 to see if `treatment` is driving the variation represented by either of these PCs.
 
+<p align="center">
 <img src="../img/example_PCA_treatmentPC3.png" width="600">
+</p>
 
 We find that the samples separate by `treatment` on PC3, and are optimistic about our DE analysis since our condition of interest, `treatment`, is separating on PC3 and we can regress out the variation driving PC1 and PC2.
 
@@ -149,7 +180,9 @@ The figure below was generated from a time course experiment with sample groups,
 - Are there any outliers in the data?
 - Should we have any other concerns regarding the samples in the dataset?
 
+<p align="center">
 <img src="../img/PCA_example3.png" width="600">
+</p>
 
 ***
 
@@ -161,7 +194,9 @@ The hierarchical tree can indicate which samples are more similar to each other 
 
 In the plot below, we would be a bit concerned about 'Wt_3' and 'KO_3' samples not clustering with the other replicates. We would want to explore the PCA to see if we see the same clustering of samples.
 
+<p align="center">
 <img src="../img/heatmap_example.png" width="500">
+</p>
 
 ***
 **Exercise**
@@ -185,6 +220,8 @@ In addition to examining how well the samples/replicates cluster together, there
 - Genes with an extreme count outlier
 - Genes with a low mean normalized counts
 
+<p align="center">
 <img src="../img/gene_filtering.png" width="600">
+</p>
 
 **DESeq2 will perform this filtering by default; however other DE tools, such as EdgeR will not.**  Filtering is a necessary step, even if you are using limma-voom and/or edgeR's quasi-likelihood methods. Be sure to follow pre-filtering steps when using these tools, as outlined in their user guides found on Bioconductor as they generally perform much better. 
