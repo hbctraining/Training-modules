@@ -59,6 +59,7 @@ We will be focused on the application of differential gene expression analysis f
 
 To perform differential gene expression analysis, we perform the following steps:
 
+
 <p align="center">
-<img src="../img/de_workflow2019.png" width="400"/>
+<img src="../img/de_workflow2019.png" width="300"/>
 </p>
