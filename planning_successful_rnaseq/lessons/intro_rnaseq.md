@@ -26,11 +26,15 @@ Different biological processes, as well as mutations, can affect which genes are
 
 To make proteins, the DNA is transcribed into messenger RNA, or mRNA, which is translated by the ribosome into protein. However, some genes encode RNA that does not get translated into protein; these RNAs are called non-coding RNAs, or ncRNAs. Often these RNAs have a function in and of themselves and include rRNAs, tRNAs, and siRNAs, among others. All RNAs transcribed from genes are called transcripts.
 
- <img src="../img/Gene_products.png" width="400">
+<p align="center">
+<img src="../img/Gene_products.png" width="400"/>
+</p>
 
 To be translated into proteins, the RNA must undergo processing to generate the mRNA. In the figure below, the top strand in the image represents a gene in the DNA, comprised of the untranslated regions (UTRs) and the open read frame. Genes are transcribed into pre-mRNA, which still contains the intronic sequences.  After post-transciptional processing, the introns are spliced out and a polyA tail and 5' cap are added to yield mature mRNA transcripts, which can be translated into proteins.
 
- <img src="../img/Gene_structure.png" width="600">
+<p align="center">
+<img src="../img/Gene_structure.png" width="600"/>
+</p>
 
 **While mRNA transcripts have a polyA tail, many of the non-coding RNA transcripts do not as the post-transcriptional processing is different for these transcripts.**
 
