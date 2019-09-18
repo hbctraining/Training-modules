@@ -56,3 +56,9 @@ We will be focused on the application of differential gene expression analysis f
 - Which groups of genes change similarly over time or across conditions?
 
 - What processes or pathways are important for my condition of interest?
+
+To perform differential gene expression analysis, we perform the following steps:
+
+<p align="center">
+<img src="../img/de_workflow2019.png" width="600"/>
+</p>
