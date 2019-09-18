@@ -27,7 +27,7 @@ The focus of this workshop is to outline current standards and required resource
 
 | Lessons            | Duration | Presenter | 
 |:------------------------|:----------|:----------|
-| Introduction to RNA-seq | 15 mins | Mary Piper |
+| [Introduction to RNA-seq](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/lessons/intro_rnaseq.html) | 15 mins | Mary Piper |
 | [Library Prep](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/slides/library_prep.pdf) | 30 mins | Sarah Boswell/Radhika Khetani |
 | [Sequencing steps & sequencers](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/slides/sequencing_technologies_mm.pdf) | 25 mins | Meeta Mistry |
 | [Experimental planning considerations](https://hbctraining.github.io/Intro-to-rnaseq-hpc-salmon/lessons/experimental_planning_considerations.html) | 45 mins | Mary Piper |
