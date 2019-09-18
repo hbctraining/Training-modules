@@ -45,3 +45,14 @@ The transcriptome is defined as a collection of all the transcript readouts pres
 - Can be used to **help build better gene models**, and verify them using the assembly
 - **Metatranscriptomics** or community transcriptome analysis
 
+#### Differential gene expression
+
+We will be focused on the application of differential gene expression analysis. Using this analysis we can answer questions, such as:
+
+- What genes are differentially expressed between sample groups?
+
+- Are there any trends in gene expression over time or across conditions.
+
+- Which groups of genes change similarly over time or across conditions.
+
+- What processes or pathways are important for my condition of interest?
