@@ -1,4 +1,4 @@
-## Setting up for Success: Everything you need to know when planning for an RNA-seq analysis
+## Setting up for Success: Everything you need to know when planning an RNA-seq experiment
 
 | Audience | Computational Skills | Prerequisites | Duration |
 :----------|:----------|:----------|:----------|
