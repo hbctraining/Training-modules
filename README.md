@@ -18,8 +18,8 @@ See our current workshop schedule on our [training website](http://bioinformatic
 
 | Lessons        | Prerequisites |
 |:---------------|:-------------:|
-| [Planning a bulk RNA-seq analysis: Part I](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq) | None |
-| [Planning a bulk RNA-seq analysis: Part II](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq) | None |
+| [Planning a bulk RNA-seq analysis: Part I](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq#part-i) | None |
+| [Planning a bulk RNA-seq analysis: Part II](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq#part-ii) | None |
 | [Make your (RNA-seq) data analysis reproducible](https://hbctraining.github.io/Training-modules/) | None |
 | [Improving your (RNA-seq) data analysis using version control (Git)](https://hbctraining.github.io/Training-modules/) | None |
 
