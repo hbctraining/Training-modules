@@ -15,7 +15,7 @@ duration: 45 minutes
 The first step in the RNA-Seq workflow is to take the FASTQ files received from the sequencing facility and assess the quality of the sequence reads. 
 
 <p align="center">
-<img src="../img/dge_workflow_with_qc.png" width="300">
+<img src="../img/dge_workflow_with_qc.png" width="400">
 </p>
 
 ### Unmapped read data (FASTQ)
