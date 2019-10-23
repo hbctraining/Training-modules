@@ -75,11 +75,6 @@ The main functions of FastQC are:
 * Summary graphs and tables to quickly assess your data
 * Export of results as an HTML-based report
 
-## Assessing quality metrics
-
-
-Now that we have run FASTQC and downloaded the report, we can take a look at the metrics and assess the quality of our sequencing data!
-
 FastQC has a really well documented [manual page](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) with [detailed explanations](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/) about every plot in the report. 
 
 Within our report, a summary of all of the modules is given on the left-hand side of the report. Don't take the **yellow "WARNING"s** and **red "FAIL"s** too seriously; they should be interpreted as flags for modules to check out. 
