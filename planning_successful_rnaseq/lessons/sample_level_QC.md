@@ -47,7 +47,7 @@ The main factors often considered during normalization are:
 	In the example, if we were to divide each sample by the total number of counts to normalize, the counts would be greatly skewed by the DE gene, which takes up most of the counts for *Sample A*, but not *Sample B*. Most other genes for *Sample A* would be divided by the larger number of total counts and appear to be less expressed than those same genes in *Sample B*.  
 	
     <p align="center">
-    <img src="../img/normalization_methods_composition.png" width="400">
+    <img src="../img/normalization_methods_composition_updated.png" width="400">
     </p>
     
 ***While normalization is essential for differential expression analyses, it is also necessary for exploratory data analysis, visualization of data, and whenever you are exploring or comparing counts between or within samples.***
