@@ -1,33 +1,26 @@
 ---
-title: "Quality control using FASTQC"
+title: "Quality control using FastQC"
 author: "Mary Piper, Radhika Khetani"
-date: Wednesday, September 20, 2017
+date: Wednesday, October 23, 2019
 duration: 45 minutes
 ---
 
 ## Learning Objectives:
 
 * Understanding the quality values in a FASTQ file
-* Understanding metrics output in FASTQC quality report
+* Understanding metrics output in FastQC quality report
 
 ## Quality Control of FASTQ files
 
 The first step in the RNA-Seq workflow is to take the FASTQ files received from the sequencing facility and assess the quality of the sequence reads. 
 
 <p align="center">
-<img src="../img/DE_workflow2019.png" width="400">
+<img src="../img/dge_workflow_with_qc.png" width="400">
 </p>
 
 ### Unmapped read data (FASTQ)
 
-The [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) file format is the defacto file format for sequence reads generated from next-generation sequencing technologies. This file format evolved from FASTA in that it contains sequence data, but also contains quality information. Similar to FASTA, the FASTQ file begins with a header line. The difference is that the FASTQ header is denoted by a `@` character. For a single record (sequence read) there are four lines, each of which are described below:
-
-|Line|Description|
-|----|-----------|
-|1|Always begins with '@' and then information about the read|
-|2|The actual DNA sequence|
-|3|Always begins with a '+' and sometimes the same info in line 1|
-|4|Has a string of characters which represent the quality scores; must have same number of characters as line 2|
+The [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) file format is the defacto file format for sequence reads generated from next-generation sequencing technologies. This file format evolved from FASTA in that it contains sequence data, but also contains quality information. Similar to FASTA, the FASTQ file begins with a header line. The difference is that the FASTQ header is denoted by a `@` character. 
 
 Let's use the following read as an example:
 
@@ -37,6 +30,15 @@ CACTTGTAAGGGCAGGCCCCCTTCACCCTCCCGCTCCTGGGGGANNNNNNNNNNANNNCGAGGCCCTGGGGTAGAGGGNN
 +
 @?@DDDDDDHHH?GH:?FCBGGB@C?DBEGIIIIAEF;FCGGI#########################################################
 ```
+
+For a single record (sequence read) there are four lines, each of which are described below:
+
+|Line|Description|
+|----|-----------|
+|1|Always begins with '@' and then information about the read|
+|2|The actual DNA sequence|
+|3|Always begins with a '+' and sometimes the same info in line 1|
+|4|Has a string of characters which represent the quality scores; must have same number of characters as line 2|
 
 The line 4 has characters encoding the quality of each nucleotide in the read. The legend below provides the mapping of quality scores (Phred-33) to the quality encoding characters. *Different quality encoding scales exist (differing by offset in the ASCII table), but note the most commonly used one is fastqsanger, which is the scale output by Illumina since mid-2011.* 
  ```
@@ -169,10 +171,24 @@ Since our data is just a subset of the original data and it contains the over-ex
 
 As our report only represents a subset of reads (chromosome 1) for `Mov10_oe_1.subset.fq`, which can skew the QC results. We encourage you to look at the [full set of reads](../fastqc/Mov10oe_1-fastqc_report.html) and note how the QC results differ when using the entire dataset.
 
-After exploring the quality of the data, we determine from which gene or transcript the reads originated from using mapping tools. The quality of the data is important when determining where it aligns to on the genome or transcriptome, but the mapping tools we use (salmon and STAR) are able to account for adapter contamination, vector contamination and low-quality bases at the ends of reads. Therefore, after noting any QC issues, we can use our raw reads for the alignment or mapping to the reference genome or transcriptome.
+After exploring the quality of the data, we determine from which gene or transcript the reads originated from using mapping tools. The quality of the data is important when determining where it aligns to on the genome or transcriptome; however most mapping tools are able to account for adapter contamination, vector contamination and low-quality bases at the ends of reads. Therefore, after noting any QC issues, we can use our raw reads for the alignment or mapping to the reference genome or transcriptome.
+
+## Raw data quality control goals
+
+All NGS analyses require that the **quality of the raw data** is assessed prior to any downstream analysis.
+
+The **quality checks** at this stage in the workflow include:
+
+1. Checking the **quality of the base calls** to ensure that there were no issues during sequencing
+2. Examining the reads to ensure their **quality metrics adhere to our expectations** for our experiment
+3. Exploring reads for **contamination**
+
+The **raw data QC goals** include:
+
+- Identifying sequencing problems and determine whether there is a need to contact the sequencing facility
+- Identifying over-represented contaminating sequences
+- Gaining insight into library complexity (rRNA contamination, duplications)
+- Ensuring organism is properly represented by %GC content (although sometimes this metric may be off if a lot of overexpressed genes)
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
-
-* *The materials used in this lesson was derived from work that is Copyright © Data Carpentry (http://datacarpentry.org/). 
-All Data Carpentry instructional material is made available under the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0).*

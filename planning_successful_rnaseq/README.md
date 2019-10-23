@@ -39,7 +39,7 @@ The focus of this workshop is to outline current standards and required resource
 
 | Lessons            | Duration | Presenter | 
 |:------------------------|:----------|:----------|
-| [Raw data QC](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/slides/QC_rawdata_mp.pdf) | 30 mins | Mary Piper |
+| [Raw data QC](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/lessons/QC_raw_data.html) | 30 mins | Mary Piper |
 | [Mapping/quantification](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/slides/alignment_quantification.pdf)| 25 mins | Meeta Mistry |
 | [Sample-level assessment](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/lessons/sample_level_QC.html) | 30 mins | Mary Piper |
 | [Count modeling and hypothesis testing](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq/lessons/count_modeling.html) | 30 mins | Meeta Mistry |
