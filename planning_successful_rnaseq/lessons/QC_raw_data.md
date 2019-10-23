@@ -173,7 +173,7 @@ As our report only represents a subset of reads (chromosome 1) for `Mov10_oe_1.s
 
 After exploring the quality of the data, we determine from which gene or transcript the reads originated from using mapping tools. The quality of the data is important when determining where it aligns to on the genome or transcriptome; however most mapping tools are able to account for adapter contamination, vector contamination and low-quality bases at the ends of reads. Therefore, after noting any QC issues, we can use our raw reads for the alignment or mapping to the reference genome or transcriptome.
 
-## Raw data quality checks
+## Raw data quality control goals
 
 All NGS analyses require that the **quality of the raw data** is assessed prior to any downstream analysis.
 
