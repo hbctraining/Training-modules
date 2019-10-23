@@ -55,7 +55,7 @@ With RNA-Seq data, **a very large number of RNAs are represented and the probabi
 
 In the figure below we have plotted the mean against the variance for three replicate samples in a study. Each data point represents a gene and the red line represents x = y. 
 
-<img src="../img/deseq_mean_vs_variance.png" width="600">
+<img src="../img/deseq_mean_variance2.png" width="600">
 
 There's two things to note here:
 

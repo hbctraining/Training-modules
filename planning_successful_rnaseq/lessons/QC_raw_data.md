@@ -15,7 +15,7 @@ duration: 45 minutes
 The first step in the RNA-Seq workflow is to take the FASTQ files received from the sequencing facility and assess the quality of the sequence reads. 
 
 <p align="center">
-<img src="../img/rnaseq_salmon_workflow.png" width="400">
+<img src="../img/DE_workflow2019.png" width="400">
 </p>
 
 ### Unmapped read data (FASTQ)
@@ -74,11 +74,6 @@ The main functions of FastQC are:
 * Quick overview of any likely sequencing problems
 * Summary graphs and tables to quickly assess your data
 * Export of results as an HTML-based report
-
-## Assessing quality metrics
-
-
-Now that we have run FASTQC and downloaded the report, we can take a look at the metrics and assess the quality of our sequencing data!
 
 FastQC has a really well documented [manual page](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) with [detailed explanations](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/) about every plot in the report. 
 
