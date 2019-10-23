@@ -1,7 +1,7 @@
 ---
 title: "Quality control using FASTQC"
 author: "Mary Piper, Radhika Khetani"
-date: Wednesday, September 20, 2017
+date: Wednesday, October 23, 2019
 duration: 45 minutes
 ---
 
@@ -173,6 +173,3 @@ After exploring the quality of the data, we determine from which gene or transcr
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
-
-* *The materials used in this lesson was derived from work that is Copyright © Data Carpentry (http://datacarpentry.org/). 
-All Data Carpentry instructional material is made available under the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0).*
