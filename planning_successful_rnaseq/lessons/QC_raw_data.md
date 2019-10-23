@@ -1,5 +1,5 @@
 ---
-title: "Quality control using FASTQC"
+title: "Quality control using FastQC"
 author: "Mary Piper, Radhika Khetani"
 date: Wednesday, October 23, 2019
 duration: 45 minutes
@@ -8,7 +8,7 @@ duration: 45 minutes
 ## Learning Objectives:
 
 * Understanding the quality values in a FASTQ file
-* Understanding metrics output in FASTQC quality report
+* Understanding metrics output in FastQC quality report
 
 ## Quality Control of FASTQ files
 
