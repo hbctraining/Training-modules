@@ -5,7 +5,7 @@ The next step in the RNA-seq workflow is the differential expression analysis. T
 The steps outlined in the gray box below we have already discussed, and we will now continue to describe the steps in an **end-to-end gene-level RNA-seq differential expression workflow**. 
 
 <p align="center">
-<img src="../img/de_workflow2019.png" width="250">
+<img src="../img/de_workflow2019.png" width="300">
 </p>
 
 So what does the count data actually represent? The count data used for differential expression analysis represents the number of sequence reads that originated from a particular gene. The higher the number of counts, the more reads associated with that gene, and the assumption that there was a higher level of expression of that gene in the sample. 
