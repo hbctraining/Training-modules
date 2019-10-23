@@ -20,14 +20,7 @@ The first step in the RNA-Seq workflow is to take the FASTQ files received from 
 
 ### Unmapped read data (FASTQ)
 
-The [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) file format is the defacto file format for sequence reads generated from next-generation sequencing technologies. This file format evolved from FASTA in that it contains sequence data, but also contains quality information. Similar to FASTA, the FASTQ file begins with a header line. The difference is that the FASTQ header is denoted by a `@` character. For a single record (sequence read) there are four lines, each of which are described below:
-
-|Line|Description|
-|----|-----------|
-|1|Always begins with '@' and then information about the read|
-|2|The actual DNA sequence|
-|3|Always begins with a '+' and sometimes the same info in line 1|
-|4|Has a string of characters which represent the quality scores; must have same number of characters as line 2|
+The [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) file format is the defacto file format for sequence reads generated from next-generation sequencing technologies. This file format evolved from FASTA in that it contains sequence data, but also contains quality information. Similar to FASTA, the FASTQ file begins with a header line. The difference is that the FASTQ header is denoted by a `@` character. 
 
 Let's use the following read as an example:
 
@@ -37,6 +30,15 @@ CACTTGTAAGGGCAGGCCCCCTTCACCCTCCCGCTCCTGGGGGANNNNNNNNNNANNNCGAGGCCCTGGGGTAGAGGGNN
 +
 @?@DDDDDDHHH?GH:?FCBGGB@C?DBEGIIIIAEF;FCGGI#########################################################
 ```
+
+For a single record (sequence read) there are four lines, each of which are described below:
+
+|Line|Description|
+|----|-----------|
+|1|Always begins with '@' and then information about the read|
+|2|The actual DNA sequence|
+|3|Always begins with a '+' and sometimes the same info in line 1|
+|4|Has a string of characters which represent the quality scores; must have same number of characters as line 2|
 
 The line 4 has characters encoding the quality of each nucleotide in the read. The legend below provides the mapping of quality scores (Phred-33) to the quality encoding characters. *Different quality encoding scales exist (differing by offset in the ASCII table), but note the most commonly used one is fastqsanger, which is the scale output by Illumina since mid-2011.* 
  ```
