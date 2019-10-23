@@ -61,5 +61,5 @@ To perform differential gene expression analysis, we perform the following steps
 
 
 <p align="center">
-<img src="../img/de_workflow2019.png" width="300"/>
+<img src="../img/de_workflow2019.png" width="400"/>
 </p>
