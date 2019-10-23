@@ -171,5 +171,22 @@ As our report only represents a subset of reads (chromosome 1) for `Mov10_oe_1.s
 
 After exploring the quality of the data, we determine from which gene or transcript the reads originated from using mapping tools. The quality of the data is important when determining where it aligns to on the genome or transcriptome; however most mapping tools are able to account for adapter contamination, vector contamination and low-quality bases at the ends of reads. Therefore, after noting any QC issues, we can use our raw reads for the alignment or mapping to the reference genome or transcriptome.
 
+## Raw data quality checks
+
+All NGS analyses require that the **quality of the raw data** is assessed prior to any downstream analysis.
+
+The **quality checks** at this stage in the workflow include:
+
+1. Checking the **quality of the base calls** to ensure that there were no issues during sequencing
+2. Examining the reads to ensure their **quality metrics adhere to our expectations** for our experiment
+3. Exploring reads for **contamination**
+
+The **raw data QC goals** include:
+
+- Identifying sequencing problems and determine whether there is a need to contact the sequencing facility
+- Identifying over-represented contaminating sequences
+- Gaining insight into library complexity (rRNA contamination, duplications)
+- Ensuring organism is properly represented by %GC content (although sometimes this metric may be off if a lot of overexpressed genes)
+
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
