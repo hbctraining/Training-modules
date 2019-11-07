@@ -1,8 +1,8 @@
-## Setting up for Success: Everything you need to know when planning an RNA-seq experiment
+## Make your (RNA-seq) data analysis reproducible
 
 | Audience | Computational Skills | Prerequisites | Duration |
 :----------|:----------|:----------|:----------|
-| Novice to Experienced Researchers | None | None | 2 sessions (3 hours each)|
+| Novice to Experienced Researchers | None | None | 2 - 3 hours|
 
 ### Description
 
