@@ -20,7 +20,7 @@ See our current workshop schedule on our [training website](http://bioinformatic
 |:---------------|:-------------:|
 | [Planning a bulk RNA-seq analysis: Part I](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq#part-i) | None |
 | [Planning a bulk RNA-seq analysis: Part II](https://hbctraining.github.io/Training-modules/planning_successful_rnaseq#part-ii) | None |
-| Make your (RNA-seq) data analysis reproducible- *Taught by [Julie Goldman](https://scholar.harvard.edu/julie_goldman) from Countway Library* | None |
+| [Make your (RNA-seq) data analysis reproducible](https://hbctraining.github.io/Training-modules/reproducible_analyses/reproducible_data_analysis.md)- *Taught by [Julie Goldman](https://scholar.harvard.edu/julie_goldman) from Countway Library* | None |
 | Improving your (RNA-seq) data analysis using version control (Git) | None |
 
 ### All topics
