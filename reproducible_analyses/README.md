@@ -22,7 +22,7 @@ Join us for a workshop on reproducible research, led by [Julie Goldman](https://
 
 | Lessons            | Duration | Presenter | 
 |:------------------------|:----------|:----------|
-| [Make your (RNA-seq) data analysis reproducible]() | 2 - 3 hours | [Julie Goldman](https://scholar.harvard.edu/julie_goldman) |
+| [Make your (RNA-seq) data analysis reproducible](https://github.com/hbctraining/Training-modules/raw/master/reproducible_analyses/20191115-Data-Analysis-Reproducible.pdf) | 2 - 3 hours | [Julie Goldman](https://scholar.harvard.edu/julie_goldman) |
 
 
 ### Dataset
