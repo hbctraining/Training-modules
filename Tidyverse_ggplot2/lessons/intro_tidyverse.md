@@ -147,7 +147,7 @@ Now we have returned only those rows with a `domain` of `BP`. **How have the dim
 
 We would like to perform an additional round of filtering to only keep the most specific GO terms. 
 
-1. Use the `filter()` function to only keep those rows where the `relative.depth` is greater than 4.
+1. For `bp_oe`, use the `filter()` function to only keep those rows where the `relative.depth` is greater than 4.
 2. Save output to overwrite our `bp_oe` variable.
 
 ***
