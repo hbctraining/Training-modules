@@ -4,6 +4,8 @@
 :----------|:----------|:----------|
 | Biologists | Beginner or intermediate R and/or beginner bash | 2-3 hour workshops |
 
+**Use https://tinyurl.com/hcbc-modules to access this page.**
+
 This repository has teaching materials for **2-3 hour**, hands-on workshops covering a variety of topics related to bioinformatics data analysis. The workshops will lead participants through performing different types of analyses using R/RStudio or Linux. 
 
 Some workshops will require a working knowledge of R or completion of the [Introduction to R workshop](https://hbctraining.github.io/Training-modules/IntroR). Other workshops will require a working knowledge of the bash scripting language or completion of the [Introduction to Unix workshop](https://hbctraining.github.io/Training-modules/Intro_shell/). 
