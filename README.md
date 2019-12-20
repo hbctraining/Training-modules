@@ -33,7 +33,6 @@ See our current workshop schedule on our [training website](http://bioinformatic
 |:---------------|:-------------:|
 | [Visualization in R](Visualization_in_R/) | Beginner R or [IntroR workshop](IntroR) |
 | [Functional analysis of gene lists](DGE-functional-analysis/) | Beginner R or [IntroR workshop](IntroR) |
-| [Reproducible research using R (Rmarkdown: report generation)](Rmarkdown) | Beginner R or [IntroR workshop](IntroR) |
 | [Introduction to the command-line interface](Intro_shell) | None |
 | [Intermediate bash](Intermediate_shell) | Beginner bash or [Intro to the command-line interface](Intro_shell) |
 | [Version control using Git and Github](Git-Github) | Beginner bash or [Intro to the command-line interface](Intro_shell)  |
