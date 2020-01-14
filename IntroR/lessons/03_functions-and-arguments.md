@@ -210,14 +210,6 @@ If your library is successfully loaded you will see the box checked, as in the s
 
 An alternative is to find the help manual online, which can be less technical and sometimes easier to follow. For example, [this website](http://docs.ggplot2.org/current/) is much more comprehensive for ggplot2 and is the result of a Google search. Many of the Bioconductor packages also have very helpful vignettes that include comprehensive tutorials with mock data that you can work with.
 
-### Finding functions but not knowing which package it is a part of
-
-If you are looking for a function to do a particular task, you can use `help.search()` (*but only looks through the installed packages*):
-
-```r
-help.search("scatter")
-```
-
 If you can't find what you are looking for, you can use the [rdocumention.org](http://www.rdocumentation.org) website that search through the help files across all packages available.
 
 ### Cryptic error messages
