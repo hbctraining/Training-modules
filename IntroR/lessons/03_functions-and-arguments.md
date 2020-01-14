@@ -43,7 +43,7 @@ The **defaults** represent standard values that the author of the function speci
 
 We have already used a few examples of basic functions in the previous lessons i.e `getwd()`, `c()`, and  `factor()`. These functions are available as part of R's built in capabilities, and we will explore a few more of these base functions below. 
 
-You can also get functions from external [*packages or libraries*](https://github.com/hbctraining/Intro-to-R/blob/master/lessons/03_introR-functions-and-arguments.md#packages-and-libraries) (which we'll talk about in a bit), or [even write your own](https://campus.datacamp.com/courses/writing-functions-in-r/a-quick-refresher?ex=1). 
+You can also get functions from external [*packages or libraries*](https://github.com/hbctraining/Intro-to-R/blob/master/lessons/03_introR-functions-and-arguments.md#packages-and-libraries) (which we'll talk about in a bit), or [even write your own](https://hbctraining.github.io/Intro-to-R/lessons/03_introR-functions-and-arguments.html#user-defined-functions). 
 
 Let's revisit a function that we have used previously to combine data `c()` into vectors. The *arguments* it takes is a collection of numbers, characters or strings (separated by a comma). The `c()` function performs the task of combining the numbers or characters into a single vector. You can also use the function to add elements to an existing vector:
 
