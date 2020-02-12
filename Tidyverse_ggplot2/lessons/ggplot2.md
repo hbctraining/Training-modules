@@ -16,11 +16,11 @@ Approximate time: 90 minutes
 
 When we are working with large sets of numbers it can be useful to display that information graphically to gain more insight. Visualization deserves an entire course of its own (there is that much to know!). In this lesson we will be plotting with the popular package [`ggplot2`](http://docs.ggplot2.org/).
 
-More recently, R users have moved away from base graphic options towards `ggplot2` since it offers a lot more functionality as compared to the base R plotting functions. The `ggplot2` syntax takes some getting used to, but once you get it, you will find it's extremely powerful and flexible. We will start with drawing a simple x-y scatterplot of `gene_ratio` versus `GO_term` from the `bp_oe` tibble. `ggplot2` expects that the information being plotted is contained in a data frame or tibble (data frame-like).
+More recently, R users have moved away from base graphic options towards `ggplot2` since it offers a lot more functionality as compared to the base R plotting functions. The `ggplot2` syntax takes some getting used to, but once you get it, you will find it's extremely powerful and flexible. We will start with drawing a simple X-Y scatterplot of `gene_ratio` versus `GO_term` from the `bp_oe` tibble. `ggplot2` expects that the information being plotted is contained in a data frame or tibble (data frame-like).
 
 We would typically start by loading the `ggplot2` library, but it is a part of the `tidyverse` suite, so it was loaded in the last lesson.
 
-**ggplot2 syntax:** To **initialize the basic graph structure** with this package we have to use the `ggplot()`, then we add "layers" to it using the `+` operator. The idea is that you create a basic plot first, then additional functions are added on to build the final plot.
+**ggplot2 syntax:** To **initialize the basic graph structure** with this package we have to use the `ggplot()` function, then we add "layers" to it using the `+` operator. The idea is that you create a basic plot first, then additional functions are added on to build the final plot.
 
 Let's start by first subsetting the `bp_oe` dataframe to only contain the top 30 most significant GO terms: 
 
@@ -43,7 +43,7 @@ One type of layer is **geometric objects**. This is a mandatory layer and it spe
 
 For a more exhaustive list on all possible geometric objects and when to use them check out [Hadley Wickham's RPubs](http://rpubs.com/hadley/ggplot2-layers) or the [RStudio cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf). 
 
-A plot **must have at least one `geom`**, and there can be multiple complementary `geom`s; there is no upper limit. 
+A plot **must have at least one `geom`**, and there can be multiple *complementary* `geom`s; there is no upper limit. 
 
 Let's add a `geom` to make a scatter plot, i.e. the `geom_point()` function
 
@@ -54,12 +54,12 @@ ggplot(bp_plot) +
 
 You will find that even though we have added a layer by specifying `geom_point`, we get an error. This is because each type of geom usually has a required set of **aesthetics**. Aesthetic mappings are set with the `aes()` function which can be nested within the `geom` function and can be set inside `geom_point()` to be specifically applied to that layer. If we supplied aesthetics within `ggplot()`, they will be used as defaults for every layer. Below are some examples of what is categorized as aesthetics in the ggplot2 context:
 
-* position (i.e., on the x and y axes)
-* color ("outside" color)
-* fill ("inside" color) 
-* shape (of points)
+* position (i.e. columns to be used for the x and y axes)
+* color ("outside" color of the data point/bar being plotted)
+* fill ("inside" colorof the data point/bar being plotted) 
+* shape (of data points)
 * linetype
-* size
+* size (of data points)
 
 To start, we will specify the columns for the x- and y-axis since `geom_point()` requires the most basic information about a scatterplot, i.e. what you want to plot on the x and y axes.
 
