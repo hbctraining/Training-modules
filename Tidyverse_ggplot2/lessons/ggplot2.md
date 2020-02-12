@@ -121,7 +121,7 @@ ggplot(bp_plot) +
 
 > **Note:** The size of the points is personal preference, and you may need to play around with the parameter to decide which size is best. That seems a bit too small, so we can try out a slightly larger size. 
 
-As we do that, let's see how we can change the shape of the data point. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf). Let's explore this parameter by changing all of the points to squares:
+As we do that, let's see how we can change the shape of the data point. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf). Let's explore this parameter by changing all of the points to squares:
 
 ```r
 ggplot(bp_plot) +
