@@ -251,9 +251,7 @@ Our final data for plotting should look like the table below:
 
 Now that we have our results ready for plotting, we can use the [ggplot2](https://ggplot2.tidyverse.org) package to plot our results.
 
-The [ggplot2](https://ggplot2.tidyverse.org) package uses a syntax for plotting based on [The Grammar for Graphics](http://amzn.to/2ef1eWp), and the next lesson will dive into how to use the special graphics syntax to create our detailed custom plots.
-
-If you would like to explore additional Tidyverse packages and functions, we have additional materials [available](https://hbctraining.github.io/Intro-to-R/lessons/08_intro_tidyverse.html).
+The [ggplot2](https://ggplot2.tidyverse.org) package uses a syntax for plotting based on [The Grammar for Graphics](http://amzn.to/2ef1eWp), and [this lesson](https://github.com/hbctraining/Training-modules/Tidyverse_ggplot2/lessons/ggplot2.html) will dive into how to use the special graphics syntax to create our detailed custom plots.
 
 ### Additional resources
 
@@ -263,7 +261,7 @@ If you would like to explore additional Tidyverse packages and functions, we hav
 
 ***
 
-[Click here to go to next lesson](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/ggplot2.html)
+[Click here to go to the visualization lesson](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/ggplot2.html)
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
