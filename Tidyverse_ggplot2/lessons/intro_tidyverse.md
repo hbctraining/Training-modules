@@ -82,6 +82,7 @@ The functional analysis that we will focus on involves **gene ontology (GO) term
 	- molecular functions (MF)
 
 **Download the dataset (if you haven't already):**
+
 Right-click [here](https://github.com/hbctraining/Training-modules/blob/master/Tidyverse_ggplot2/data/gprofiler_results_Mov10oe.csv?raw=true) and save to the `data` folder.
 
 <img src="../img/mov10_FA.png" width="1200">
