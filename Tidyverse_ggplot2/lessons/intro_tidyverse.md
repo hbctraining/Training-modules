@@ -81,10 +81,9 @@ The functional analysis that we will focus on involves **gene ontology (GO) term
 	- cellular components (CC)
 	- molecular functions (MF)
 
-<img src="../img/mov10_FA.png" width="1200">
-
 **Download the dataset (if you haven't already) by right-clicking [here](https://github.com/hbctraining/Training-modules/blob/master/Tidyverse_ggplot2/data/gprofiler_results_Mov10oe.csv?raw=true) and saving to the `data` folder.**
 
+<img src="../img/mov10_FA.png" width="1200">
 
 ## Analysis goal and workflow
 
