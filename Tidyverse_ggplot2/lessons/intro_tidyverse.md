@@ -90,7 +90,7 @@ The functional analysis that we will focus on involves **gene ontology (GO) term
 
 ## Analysis goal and workflow
 
-**Goal:** *Visually compare the most significant biological processes (BP) based on the number of associated differentially expressed genes by creating the plot below*
+**Goal:** *Visually compare the most significant biological processes (BP) based on the number of associated differentially expressed genes (gene ratios) and significance values by creating the following plot:*
 
 ![dotplot6](../img/dotplot6.png)
 
