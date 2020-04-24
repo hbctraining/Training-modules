@@ -69,7 +69,7 @@ There is a [comprehensive list](https://yihui.name/knitr/options/#code-chunk) of
 
 ### The setup chunk
 
-The `setup` chunk is a special knitr chunk that should be placed at the start of the document. We recommend storing all `library()` loads required for the script and other `load()` requests for external files here. In our RMarkdown templates, such as the bcbioRnaseq [differential expression template](https://github.com/hbc/bcbioRnaseq/blob/master/inst/rmarkdown/templates/differential_expression/skeleton/skeleton.Rmd), we store all the user-defined parameters in the `setup` chunk that are required for successful knitting.
+The `setup` chunk is a special knitr chunk that should be placed at the start of the document. We recommend storing all `library()` loads required for the script and other `load()` requests for external files here. In our RMarkdown templates, such as the bcbioRnaseq [differential expression template](DE_template.Rmd), we store all the user-defined parameters in the `setup` chunk that are required for successful knitting.
 
 <img src="img/r-setup.png">
 
