@@ -154,7 +154,9 @@ ___
 #### Activity 2
 
 1. Only some of the code chunks have names; go through and **add names to the unnamed code chunks**.
-2. For the code chunk named `data-ordering` **modify the options (`{r data-ordering}`)** such that the output from the line of code within that chunk shows up in the report, but not the code
+2. For the code chunk named `data-ordering` do the following:
+    - First, add a new line of code that displays the a small part of the newly created `data_ordered` data frame using  `head()`
+    - Next, **modify the options (`{r data-ordering}`)** such that the output from the new line of code shows up in the report, but not the code
 3. Without removing the last code chunk (for boxplot) from the Rmd file, **modify its options** such that neither the code nor its output appear in the report
 4. **knit the markdown** 
 
