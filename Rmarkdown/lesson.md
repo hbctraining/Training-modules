@@ -179,7 +179,7 @@ ___
     - Create an R chunk for all code underneath each `#` comment in the original R script
     - Comment on the plots (you may have to run the code from the R script to see the plots first)
     - Add a floating table of contents
-4. **Knit the RMarkdown into an html document** 
+4. **knit the markdown** 
 
 ***
 
