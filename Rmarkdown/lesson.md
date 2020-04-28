@@ -144,7 +144,7 @@ When executing `knit()` on a document, by default this will generate an HTML rep
 #### Activity 1
 
 1. **Create a new project** in a new directory called `rmd_workshop`
-2. **Download [this RMarkdown file](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-example.Rmd)** to it
+2. **Download [this RMarkdown file](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-example.Rmd)** and save within the `rmd_workshop` project directory
 3. **Download and uncompress [this data folder](data/data.zip?raw=true)** within the project directory
 4. **Open the .rmd file** in RStudio
 5. **knit the markdown** 
@@ -153,8 +153,8 @@ ___
 
 #### Activity 2
 
-1. Only the some of the code chunks have names; go through and **add names to the unnamed code chunks**.
-2. For the code chunk named `data-ordering` **modify the options (`{r}`)** such that its output shows up in the report, but not the actual code
+1. Only some of the code chunks have names; go through and **add names to the unnamed code chunks**.
+2. For the code chunk named `data-ordering` **modify the options (`{r data-ordering}`)** such that the output from the line of code within that chunk shows up in the report, but not the code
 3. Without removing the last code chunk (for boxplot) from the Rmd file, **modify its options** such that neither the code nor its output appear in the report
 4. **knit the markdown** 
 
@@ -162,21 +162,22 @@ ___
 
 #### Activity 3
 
-1. **Add a new code chunk** at the end with `sessionInfo()`
-2. **Modify the `Author` and `Title`** parameters at the top of the script
-3. **knit the markdown** 
+1. **Add a new section header** in the same size as the "Project details" header at the end
+2. Next, **add a new code chunk** below it to display the output of `sessionInfo()`
+3. **Modify the `Author` and `Title`** parameters at the top of the script
+4. **knit the markdown** 
 
 ___
 
 #### Activity 4
 
-1. **Use this [R script](https://github.com/hbctraining/Training-modules/raw/master/Rmarkdown/Rscript.R) to create an RMarkdown file.**
-2. **Download the [RData object](https://github.com/hbctraining/Training-modules/raw/master/Rmarkdown/data/Rmarkdown_data.Rdata)** by right-clicking and save to `data` folder.
-3. **Turn the script into an Rmarkdown report** with the following specifications:
-    - Create an R chunk for all code underneath each `#` comment
-    - Comment on the plots for interpretation of results
+1. **Download the linked [R script](https://github.com/hbctraining/Training-modules/raw/master/Rmarkdown/Rscript.R)**
+2. **Download the linked [RData object](https://github.com/hbctraining/Training-modules/raw/master/Rmarkdown/data/Rmarkdown_data.Rdata)** by right-clicking and save to `data` folder.
+3. **Transform the R script into a new RMarkdown file** with the following specifications:
+    - Create an R chunk for all code underneath each `#` comment in the original R script
+    - Comment on the plots (you may have to run the code from the R script to see the plots first)
     - Add a floating table of contents
-4. **knit the markdown** 
+4. **Knit the RMarkdown into an html document** 
 
 ***
 
