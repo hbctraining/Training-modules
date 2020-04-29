@@ -168,7 +168,8 @@ ___
     - Next, **modify the options (`{r data-ordering}`)** such that the output from the new line of code shows up in the report, but not the code
 3. Without removing the last code chunk (for boxplot) from the Rmd file, **modify its options** such that neither the code nor its output appear in the report
 4. **knit the markdown** 
-[Answer Key](../data/workshop-answer-activity2.Rmd)
+
+[Answer Key](./data/workshop-answer-activity2.Rmd)
 
 ___
 
