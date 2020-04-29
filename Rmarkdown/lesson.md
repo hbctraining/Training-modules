@@ -50,7 +50,7 @@ Each individual code chunk should be given a **unique** name. [knitr](https://yi
 
 <img src="img/r-chunk.png">
 
-Additionally, you can write inline [R](https://www.r-project.org/) code enclosed by single backticks (\`) containing a lowercase `r` (like \`\`\` code chunks). This allows for variable returns outside of code chunks, and is extremely useful for making report text more dynamic. For example, you can print the current date inline within the report with this syntax: `` `r Sys.Date()` `` (no spaces).
+Additionally, you can write inline R code enclosed by single backticks (\`) containing a lowercase `r` (like \`\`\` code chunks). This allows for variable returns outside of code chunks, and is extremely useful for making report text more dynamic. For example, you can print the current date inline within the report with this syntax: `` `r Sys.Date()` `` (no spaces).
 
 ### Options for code chunks
 
@@ -58,11 +58,11 @@ The knitr package provides a lot of customization options for code chunks, which
 
 <img src="img/r-chunkoptions.png">
 
-There is a [comprehensive list](https://yihui.name/knitr/options/#code-chunk) of all the options available, however when starting out this can be overwhelming. Here, we provide a short list of some options commonly use in chunks:
+There is a [comprehensive list](https://yihui.org/knitr/options/) of all the options available, however when starting out this can be overwhelming. Here, we provide a short list of some options commonly use in chunks:
 
-* `echo = TRUE`: whether to include R source code in the output file
+* `echo = TRUE`: whether to include R source code in the final document. If echo = FALSE, R source code will not be written into the final document. But the code is still evaluated and its output will be included in the final document
 * `eval = TRUE`: whether to evaluate/execute the code 
-* `include = TRUE`: whether to include the chunk output in the final output document; if include=FALSE, nothing will be written into the output document, but the code is still evaluated and plot files are generated if there are any plots in the chunk, so you can manually insert figures
+* `include = TRUE`: whether to include R source code and its output in the final document. If include = FALSE, nothing (R source code and its output) will be written into the final document. But the code is still evaluated and plot files are generated if there are any plots in the chunk
 * `warning = TRUE`: whether to preserve warnings in the output like we run R code in a terminal (if FALSE, all warnings will be printed in the console instead of the output document)
 * `message = TRUE`: whether to preserve messages emitted by message() (similar to warning)
 * `results = "asis"`: output as-is, i.e., write raw results from R into the output document
@@ -75,7 +75,7 @@ The `setup` chunk is a special knitr chunk that should be placed at the start of
 
 ### Global options
 
-knitr allows for global options to be set on all chunks in an [RMarkdown](http://rmarkdown.rstudio.com/) file. These are options that should be placed inside your `setup` chunk at the top of your RMarkdown document. These will be the default options used for all the code chunks in the document, however they can be modified for each code chunk.
+knitr allows for global options to be set on all chunks in an RMarkdown file. These are options that should be placed inside your `setup` chunk at the top of your RMarkdown document. These will be the default options used for all the code chunks in the document, however they can be modified for each code chunk.
 
 ```r
 opts_chunk$set(
@@ -131,13 +131,13 @@ There are some other functions that allow for more powerful customization of tab
 
 As the final chunk in the analysis, it is recommended to run the `sessionInfo()` function. This function will output the R version and the versions of all libraries loaded in the R environment. The versions of the tools used is important information for reproduction of your analysis in the future.
 
-Once we've finished creating an [RMarkdown](http://rmarkdown.rstudio.com/) file containing code chunks, we finally need to knit the report. You can knit it by using the `knit()` function, or by just clicking on "knit" in the panel above the script.
+Once we've finished creating an RMarkdown file containing code chunks, we finally need to knit the report. You can knit it by using the `knit()` function, or by just clicking on "knit" in the panel above the script.
 
 When executing `knit()` on a document, by default this will generate an HTML report. If you would prefer a different document format, this can be specified in the YAML header with the `output:` parameter. You can also click on the button in the panel above the script and click on "Knit" to get the various options as shown below:
 
 <img src="img/r-knit-button.png">
 
-> **Note**: *PDF rendering is sometimes problematic, especially when running [R](https://www.r-project.org/) remotely, like on the cluster (Odyssey or O2). If you run into problems, it's likely an issue related to [pandoc](http://pandoc.org).*
+> **Note**: *PDF rendering is sometimes problematic, especially when running R remotely, like on the cluster (Odyssey or O2). If you run into problems, it's likely an issue related to [pandoc](http://pandoc.org).*
 
 ## Generating an RMarkdown knit report!
 
@@ -155,7 +155,7 @@ ___
 
 1. Only some of the code chunks have names; go through and **add names to the unnamed code chunks**.
 2. For the code chunk named `data-ordering` do the following:
-    - First, **add a new line of code** that displays a small part of the newly created `data_ordered` data frame using  `head()`
+    - First, **add a new line of code** that displays a small part of the newly created `data_ordered` data frame using `head()`
     - Next, **modify the options (`{r data-ordering}`)** such that the output from the new line of code shows up in the report, but not the code
 3. Without removing the last code chunk (for boxplot) from the Rmd file, **modify its options** such that neither the code nor its output appear in the report
 4. **knit the markdown** 
@@ -187,7 +187,7 @@ ___
 > 
 > RStudio supports a [number of formats](http://rmarkdown.rstudio.com/formats.html), each with their own customization options. Consult their website for more details.
 > 
-> The `knit()` command works great if you only need to generate a single document format. [RMarkdown](http://rmarkdown.rstudio.com/) also supports a more advanced function named `rmarkdown::render()`, allows for output of multiple document formats. To accomplish this, we recommend saving a special file named `_output.yaml` in your project root. Here's an example from our [bcbioRnaseq](https://github.com/hbc/bcbioRnaseq) package:
+> The `knit()` command works great if you only need to generate a single document format. RMarkdown also supports a more advanced function named `rmarkdown::render()`, allows for output of multiple document formats. To accomplish this, we recommend saving a special file named `_output.yaml` in your project root. Here's an example from our [bcbioRnaseq](https://github.com/hbc/bcbioRnaseq) package:
 >
 > ```r
 > rmarkdown::html_document:
