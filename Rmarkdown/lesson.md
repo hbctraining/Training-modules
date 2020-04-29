@@ -180,6 +180,8 @@ ___
 3. **Modify the `Author` and `Title`** parameters at the top of the script
 4. **knit the markdown** 
 
+[Answer Key](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-answer-activity3.Rmd)
+
 ___
 
 #### Activity 4
@@ -191,6 +193,8 @@ ___
     - Comment on the plots (you may have to run the code from the R script to see the plots first)
     - Add a floating table of contents
 4. **knit the markdown** 
+
+[Answer Key](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-answer-activity4.Rmd)
 
 ***
 
