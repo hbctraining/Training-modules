@@ -169,7 +169,7 @@ ___
 3. Without removing the last code chunk (for boxplot) from the Rmd file, **modify its options** such that neither the code nor its output appear in the report
 4. **knit the markdown** 
 
-[Answer Key](./data/workshop-answer-activity2.Rmd)
+[Answer Key](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-answer-activity2.Rmd)
 
 ___
 
