@@ -48,11 +48,11 @@ The basic idea is that you can write your analysis workflow in plain text and in
 
 Each individual code chunk should be given a **unique** name. [knitr](https://yihui.name/knitr/) isn't very picky how you name the code chunks, but we recommend using `snake_case` for the names whenever possible. 
 
-<img src="img/code_chunk_example.png">
+<img src="img/code_chunk_example.png" width = 400>
 
 There is a handy `Insert` button within RStudio that allows for the insertion of an empty R chunk if desired.
 
-<img src="chunk_insert_button.png">
+<img src="chunk_insertion_button.png">
 
 Additionally, you can write inline R code enclosed by single backticks (\`) containing a lowercase `r` (like \`\`\` code chunks). This allows for variable returns outside of code chunks, and is extremely useful for making report text more dynamic. For example, you can print the current date inline within the report with this syntax: `` `r Sys.Date()` `` (no spaces).
 
