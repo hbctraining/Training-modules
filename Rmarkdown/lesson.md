@@ -154,9 +154,9 @@ The [RStudio cheatsheet for Rmarkdown](https://github.com/rstudio/cheatsheets/bl
 3. **Download and uncompress [this data folder](data/data.zip?raw=true)** within the project directory
 4. **Open the .rmd file** in RStudio
 5. **knit the markdown**
-> Note: If you run into error when kniting the markdown, make sure your data structure is set properly:
-> 1. The `data` folder is in the same directory as `workshop-example.rmd` file
-> 2. Two files (`counts.rpkm.csv` and `mouse_exp_design.csv`) are located inside the `data` folder
+> Note: If you run into error when kniting the markdown, make sure your data structure is set properly as below:
+> - The `data` folder is in the same directory as `workshop-example.rmd` file
+> - Two files (`counts.rpkm.csv` and `mouse_exp_design.csv`) are located inside the `data` folder
 
 ___
 
