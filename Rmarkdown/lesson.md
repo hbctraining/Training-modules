@@ -69,7 +69,7 @@ There is a [comprehensive list](https://yihui.org/knitr/options/) of all the opt
 * `include = TRUE`: whether to include R source code and its output in the final document. If include = FALSE, nothing (R source code and its output) will be written into the final document. But the code is still evaluated and plot files are generated if there are any plots in the chunk
 * `warning = TRUE`: whether to preserve warnings in the output like we run R code in a terminal (if FALSE, all warnings will be printed in the console instead of the output document)
 * `message = TRUE`: whether to preserve messages emitted by message() (similar to warning)
-* `results = "asis"`: output as-is, i.e., write raw results from R into the output document
+* `results = "asis"`: output as-is, i.e., write raw results from R into the output document instead of LaTeX-formatted output. Another useful option for this option is "hide", which will hide the results, or all normal R output
 
 ### The setup chunk
 
@@ -142,6 +142,8 @@ When executing `knit()` on a document, by default this will generate an HTML rep
 <img src="img/r-knit-button.png">
 
 > **Note**: *PDF rendering is sometimes problematic, especially when running R remotely, like on the cluster (Odyssey or O2). If you run into problems, it's likely an issue related to [pandoc](http://pandoc.org).*
+
+The [RStudio cheatsheet for Rmarkdown](https://github.com/rstudio/cheatsheets/blob/master/rmarkdown-2.0.pdf) is quite daunting, but includes more advanced Rmarkdown options that may be helpful as you become familiar with report generation, including options for adding interactive plots RShiny.
 
 ## Generating an RMarkdown knit report!
 
