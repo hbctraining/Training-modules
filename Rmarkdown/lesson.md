@@ -48,7 +48,7 @@ The basic idea is that you can write your analysis workflow in plain text and in
 
 Each individual code chunk should be given a **unique** name. [knitr](https://yihui.name/knitr/) isn't very picky how you name the code chunks, but we recommend using `snake_case` for the names whenever possible. 
 
-<img src="img/code_chunk_example">
+<img src="img/code_chunk_example.png">
 
 There is a handy `Insert` button within RStudio that allows for the insertion of an empty R chunk if desired.
 
