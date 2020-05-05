@@ -20,11 +20,21 @@ Wouldn't it be nice to be able to save/share the code with collaborators along w
 
 The [knitr](https://yihui.name/knitr/) package, developed by [Yihui Xie](https://yihui.name), is designed to generate reports within RStudio. It enables dynamic generation of multiple file formats from an [RMarkdown](http://rmarkdown.rstudio.com/) file, including HTML and PDF documents. Knit report generation is now integrated into RStudio, and can be accessed using the GUI or console.
 
-In this workshop we will become familiar with both `knitr` and the RMarkdown language. We will then use them to generate a short HTML report that can be viewed in a web browser. 
+In this workshop we will become familiar with both `knitr` and the RMarkdown language. Before we delve into the details we will start with an activity to show you what an RMarkdown file looks like and the HTML report once you have used the `knit()` function.
 
-Before we start, let's take a look at a "knitted" HTML report and the RMarkdown file used to generate it. 
-* [Final report of differential expression analysis](https://www.dropbox.com/s/vlqstxylwjry3cb/workshop-example.html?dl=1) 
-* [RMarkdown file that was used to create the above report](https://www.dropbox.com/s/irwv6v9dd5fywrz/workshop-example.Rmd?dl=1)
+___
+
+#### Activity 1
+
+1. **Create a new project** in a new directory called `rmd_workshop`
+2. **Download [this RMarkdown file](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-example.Rmd)** and save within the `rmd_workshop` project directory
+3. **Download and uncompress [this data folder](data/data.zip?raw=true)** within the project directory
+4. **Open the .rmd file** in RStudio
+5. **knit the markdown**
+> Note: If you run into error when kniting the markdown, make sure your data structure is set properly as below:
+> - The `data` folder is in the same directory as `workshop-example.rmd` file
+> - Two files (`counts.rpkm.csv` and `mouse_exp_design.csv`) are located inside the `data` folder
+
 
 ## RMarkdown basics
 
@@ -55,6 +65,17 @@ There is a handy `Insert` button within RStudio that allows for the insertion of
 <img src="img/rmd_chunk_insert_button.png" width = "400">
 
 Additionally, you can write inline R code enclosed by single backticks (\`) containing a lowercase `r` (like \`\`\` code chunks). This allows for variable returns outside of code chunks, and is extremely useful for making report text more dynamic. For example, you can print the current date inline within the report with this syntax: `` `r Sys.Date()` `` (no spaces).
+
+___
+
+#### Activity 2
+
+1. **Add a new section header** in the same size as the "Project details" header at the end
+2. Next, **add a new code chunk** below it to display the output of `sessionInfo()`
+3. **Modify the `Author` and `Title`** parameters at the top of the script
+4. **knit the markdown** 
+
+[Answer Key](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-answer-activity3.Rmd)
 
 ### Options for code chunks
 
@@ -100,6 +121,19 @@ opts_chunk$set(
 
 An additional cool trick is that you can save `opts_chunk$set` settings in `~/.Rprofile` and these knitr options will apply to all of your RMarkdown documents, and not just the one.
 
+___
+
+#### Activity 3
+
+1. Only some of the code chunks have names; go through and **add names to the unnamed code chunks**.
+2. For the code chunk named `data-ordering` do the following:
+    - First, **add a new line of code** that displays a small part of the newly created `data_ordered` data frame using `head()`
+    - Next, **modify the options for (`{r data-ordering}`)** such that the output from the new line of code shows up in the report, but not the code
+3. Without removing the last code chunk (for boxplot) from the Rmd file, **modify its options** such that neither the code nor its output appear in the report
+4. **knit the markdown** 
+
+[Answer Key](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-answer-activity2.Rmd)
+
 ### Figures
 
 A neat feature of knitr is how much simpler it makes generating figures. You can simply return a plot in a chunk, and knitr will automatically write the files to disk, in an organized subfolder. By specifying options in the `setup` chunk, you can have R automatically save your plots in multiple file formats at once, including PNG, PDF, and SVG. A single chunk can support multiple plots, and they will be arranged in squares below the chunk in RStudio.
@@ -144,43 +178,6 @@ When executing `knit()` on a document, by default this will generate an HTML rep
 > **Note**: *PDF rendering is sometimes problematic, especially when running R remotely, like on the cluster (Odyssey or O2). If you run into problems, it's likely an issue related to [pandoc](http://pandoc.org).*
 
 The [RStudio cheatsheet for Rmarkdown](https://github.com/rstudio/cheatsheets/blob/master/rmarkdown-2.0.pdf) is quite daunting, but includes more advanced Rmarkdown options that may be helpful as you become familiar with report generation, including options for adding interactive plots RShiny.
-
-## Generating an RMarkdown knit report!
-
-#### Activity 1
-
-1. **Create a new project** in a new directory called `rmd_workshop`
-2. **Download [this RMarkdown file](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-example.Rmd)** and save within the `rmd_workshop` project directory
-3. **Download and uncompress [this data folder](data/data.zip?raw=true)** within the project directory
-4. **Open the .rmd file** in RStudio
-5. **knit the markdown**
-> Note: If you run into error when kniting the markdown, make sure your data structure is set properly as below:
-> - The `data` folder is in the same directory as `workshop-example.rmd` file
-> - Two files (`counts.rpkm.csv` and `mouse_exp_design.csv`) are located inside the `data` folder
-
-___
-
-#### Activity 2
-
-1. Only some of the code chunks have names; go through and **add names to the unnamed code chunks**.
-2. For the code chunk named `data-ordering` do the following:
-    - First, **add a new line of code** that displays a small part of the newly created `data_ordered` data frame using `head()`
-    - Next, **modify the options (`{r data-ordering}`)** such that the output from the new line of code shows up in the report, but not the code
-3. Without removing the last code chunk (for boxplot) from the Rmd file, **modify its options** such that neither the code nor its output appear in the report
-4. **knit the markdown** 
-
-[Answer Key](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-answer-activity2.Rmd)
-
-___
-
-#### Activity 3
-
-1. **Add a new section header** in the same size as the "Project details" header at the end
-2. Next, **add a new code chunk** below it to display the output of `sessionInfo()`
-3. **Modify the `Author` and `Title`** parameters at the top of the script
-4. **knit the markdown** 
-
-[Answer Key](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-answer-activity3.Rmd)
 
 ___
 
