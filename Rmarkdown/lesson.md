@@ -35,6 +35,7 @@ ___
 > - The `data` folder is in the same directory as `workshop-example.rmd` file
 > - Two files (`counts.rpkm.csv` and `mouse_exp_design.csv`) are located inside the `data` folder
 
+___
 
 ## RMarkdown basics
 
@@ -76,6 +77,8 @@ ___
 4. **knit the markdown** 
 
 [Answer Key](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-answer-activity3.Rmd)
+
+___
 
 ### Options for code chunks
 
@@ -133,6 +136,8 @@ ___
 4. **knit the markdown** 
 
 [Answer Key](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-answer-activity2.Rmd)
+
+___
 
 ### Figures
 
