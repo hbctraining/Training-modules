@@ -67,6 +67,8 @@ There is a handy `Insert` button within RStudio that allows for the insertion of
 
 Additionally, you can write inline R code enclosed by single backticks (\`) containing a lowercase `r` (like \`\`\` code chunks). This allows for variable returns outside of code chunks, and is extremely useful for making report text more dynamic. For example, you can print the current date inline within the report with this syntax: `` `r Sys.Date()` `` (no spaces).
 
+As the **final chunk in your analysis, it is recommended to run the `sessionInfo()`** function. This function will output the R version and the versions of all libraries loaded in the R environment. The versions of the tools used is important information for reproduction of your analysis in the future.
+
 ___
 
 #### Activity 2
@@ -172,9 +174,7 @@ There are some other functions that allow for more powerful customization of tab
 
 ### Generating the report
 
-As the final chunk in the analysis, it is recommended to run the `sessionInfo()` function. This function will output the R version and the versions of all libraries loaded in the R environment. The versions of the tools used is important information for reproduction of your analysis in the future.
-
-Once we've finished creating an RMarkdown file containing code chunks, we finally need to knit the report. You can knit it by using the `knit()` function, or by just clicking on "knit" in the panel above the script.
+Once we've finished creating an RMarkdown file containing code chunks, we finally need to knit the report. You can knit it by using the `knit()` function, or by just clicking on "knit" in the panel above the script as we had done in our first activity in this lesson.
 
 When executing `knit()` on a document, by default this will generate an HTML report. If you would prefer a different document format, this can be specified in the YAML header with the `output:` parameter. You can also click on the button in the panel above the script and click on "Knit" to get the various options as shown below:
 
