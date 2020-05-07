@@ -253,7 +253,7 @@ Our final data for plotting should look like the table below:
 
 Now that we have our results ready for plotting, we can use the [ggplot2](https://ggplot2.tidyverse.org) package to plot our results.
 
-The [ggplot2](https://ggplot2.tidyverse.org) package uses a syntax for plotting based on [The Grammar for Graphics](http://amzn.to/2ef1eWp), and [this lesson](https://github.com/hbctraining/Training-modules/Tidyverse_ggplot2/lessons/ggplot2.html) will dive into how to use the special graphics syntax to create our detailed custom plots.
+The [ggplot2](https://ggplot2.tidyverse.org) package uses a syntax for plotting based on [The Grammar for Graphics](http://amzn.to/2ef1eWp), and [this lesson](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/ggplot2.html) will dive into how to use the special graphics syntax to create our detailed custom plots.
 
 ### Additional resources
 
