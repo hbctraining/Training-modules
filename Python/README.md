@@ -9,6 +9,7 @@ This course covers most foundamental knowledge of Python, including:
 - Create and manipulation Python list
 - Use internal functions, and define user-specific functions
 - Apply conditional statements
+
 By the end of this course, students should be able to create Python scripts and perform some simple tasks. The course also set foundatation for learning advanced topics of Python.
 
 ## Requirements
@@ -26,5 +27,5 @@ You may find this course not that helpful, if you:
 - Have tremendous experiences in Python programming already, and are looking for tutorials of more advanced topics
 > Note: we might be developing advanced topics of Python based on general interest, so stay tuned!
 
-## I am interested in this course. Can you show me the course material?
-Sure! Please find it here.
+## I am interested in this course. How can I access the course material?
+Please find it [here](https://colab.research.google.com/drive/1s7V_vIzy3WckbVbenOAfx65LKscKmeRN?usp=sharing)!
