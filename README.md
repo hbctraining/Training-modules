@@ -25,6 +25,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | [Gene annotations and functional analysis of gene lists](DGE-functional-analysis) | Beginner R or [IntroR workshop](IntroR) |
 | [Generating research analysis reports with RMarkdown](Rmarkdown/) | Beginner R or [IntroR workshop](IntroR) |
 | [Interactive Data Visualization with Shiny in R (with Ista Zahn from the Harvard Business School)](https://github.com/hbs-rcs/datafest/tree/master/DataFest-2020/R_Shiny_Web_Apps#required-software) | Beginner R or [IntroR workshop](IntroR) |
+| [Introduction to Python](Python/) | None |
 
 ### All topics
 
