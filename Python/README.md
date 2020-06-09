@@ -18,16 +18,16 @@ To complete this course, you will need a computer and a Google account (to asses
 ## Who are recommended to take this course
 You will find this course helpful, if you:
 - Have no/little background in computer programming, and would like to start learning a programming language
-- Have some knowledge in other programming languages (for example, R), but would like to learn and apply Python
-- Have sparsely learnt Python somewhere preveiously, but would like to quickly pick up fundamental concepts, and prepare for more in-depth learning
+- Have knowledge in other programming languages (for example, R), but would like to learn and apply Python
+- Have sparsely learnt Python somewhere before, but would like to quickly pick up fundamental concepts, and prepare for more in-depth learning
 > Note: while this course is developed with teaching life science researchers in mind, it can be used for students of any technical background.
 
 ## Who are NOT recommended to take this course
 You may find this course not that helpful, if you:
-- Have tremendous experiences in Python programming already, and are looking for tutorials of more advanced topics
+- Already have tremendous experiences in Python programming, and are looking for tutorials of more advanced topics
 > Note: we might be developing advanced topics of Python based on general interest, so stay tuned!
 
 ## I am interested in this course. How can I access the course material?
-[**In class version**](https://colab.research.google.com/drive/18raJW2yNykpfKVxEAlNuvkzMFtB2VBD1?usp=sharing): for use during the workshop
+Material for use during workshop - [**In class version**](https://colab.research.google.com/drive/18raJW2yNykpfKVxEAlNuvkzMFtB2VBD1?usp=sharing)
 
-[**Full version**](https://colab.research.google.com/drive/1s7V_vIzy3WckbVbenOAfx65LKscKmeRN?usp=sharing): for use after the workshop
+Material for use after workshop - [**Full version**](https://colab.research.google.com/drive/1s7V_vIzy3WckbVbenOAfx65LKscKmeRN?usp=sharing)
