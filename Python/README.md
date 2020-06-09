@@ -3,14 +3,14 @@
 ## Description
 Python is a powerful open source programming language for many applications. In this 3 hour, hands-on workshop, we will teach basic topics related to Python programming. The materials are developed for a trainer-led workshop, but are also amenable to self-guided learning.
 
-## Course objectives
-This course covers most foundamental knowledge of Python, including:
+## Objectives
+This workshop covers most foundamental knowledge of Python, including:
 - Learn basic Python syntax
 - Create and manipulation Python list
-- Use internal functions, and define user-specific functions
+- Use built-in functions, and define user-specific functions
 - Apply conditional statements
 
-By the end of this course, students should be able to create Python scripts and perform some simple tasks. The course also set foundatation for learning advanced topics of Python.
+By the end of this workshop, students should be able to create Python scripts and perform some simple programming tasks. The course also sets foundatation for learning advanced topics of Python.
 
 ## Requirements
 To complete this course, you will need a computer and a Google account (to assess Colab). **Installation of Python or any other tools is not needed for this course.**
@@ -28,4 +28,5 @@ You may find this course not that helpful, if you:
 > Note: we might be developing advanced topics of Python based on general interest, so stay tuned!
 
 ## I am interested in this course. How can I access the course material?
-Please find it [here](https://colab.research.google.com/drive/1s7V_vIzy3WckbVbenOAfx65LKscKmeRN?usp=sharing)!
+[In class version](https://colab.research.google.com/drive/18raJW2yNykpfKVxEAlNuvkzMFtB2VBD1?usp=sharing)
+[Full version](https://colab.research.google.com/drive/1s7V_vIzy3WckbVbenOAfx65LKscKmeRN?usp=sharing)
