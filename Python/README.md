@@ -26,4 +26,6 @@ You will find this workshop helpful, if you:
 > Note: we might be developing advanced topics of Python based on general interest, so stay tuned!
 
 ## Lessons
-Materials coming soon! 
+Material for use **during** workshop - [**In-class version**](https://colab.research.google.com/drive/18raJW2yNykpfKVxEAlNuvkzMFtB2VBD1?usp=sharing)
+
+Material for use **post** workshop - [**Post-class version**](https://colab.research.google.com/drive/1aU4fep0YTCL4hrUPXn5y_xgKECS2GgaK?usp=sharing)
