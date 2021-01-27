@@ -14,7 +14,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 ** **NOTE: Detailed information** and **preparation instructions** for each of the workshops can be found by clicking on the workshop links in the table below.
 
-> Workshop introduction slides are available [here](Intro_current_topics_online_2020.pdf).
+> Workshop introduction slides are available [here](Intro_current_topics_online_2021.pdf).
 
 ### Current Workshops ([click here for the schedule](http://bioinformatics.sph.harvard.edu/training#hbcs-monthly-short-workshops))
 
