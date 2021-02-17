@@ -9,6 +9,8 @@ Approximate time: 75 minutes
 
 The [Tidyverse suite of integrated packages](https://www.tidyverse.org/packages/) are designed to work together to make common data science operations more user friendly. The packages have functions for data wrangling, tidying, reading/writing, parsing, and visualizing, among others. There is a freely available book, [R for Data Science](http://r4ds.had.co.nz/index.html), with detailed descriptions and practical examples of the tools available and how they work together. We will explore the basic syntax for working with these packages, as well as, specific functions for data wrangling with the 'dplyr' package and data visualization with the 'ggplot2' package.
 
+>_**NOTE:** Download the [R project directory](https://github.com/hbctraining/Training-modules/blob/master/data/tidyverse.zip?raw=true) for this workshop if you have not already._
+
 ![](../img/tidyverse_website.png)
 
 ## Tidyverse basics
