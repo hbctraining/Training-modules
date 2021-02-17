@@ -21,14 +21,13 @@ This repository has teaching materials for a **3 hour**, hands-on workshop led a
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Setting up](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/set_up.html) | 15 min |
 |[Data wrangling with Tidyverse](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html) | 75 min |
 |[Data visualization with ggplot2](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/ggplot2.html) | 90 min |
 
 
 ### Dataset
 
-All the files used for the above lessons are linked within, but can also be [accessed here](https://github.com/hbctraining/Training-modules/raw/master/Tidyverse_ggplot2/data/gprofiler_results_Mov10oe.csv).
+Download the R project and data for this workshop [here](https://github.com/hbctraining/Training-modules/blob/master/data/tidyverse.zip?raw=true). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
 
 ### Installation Requirements
 
