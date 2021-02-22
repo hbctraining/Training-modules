@@ -27,4 +27,4 @@ Perform the following data wrangling steps. You may concatenate several steps wi
 
 Check your result: if you finish the data wrangling successfully, the `mtcars_final` should have 13 entries with 5 features. The first entry should be `Toyota Corolla`, and the last entry should be `Maserati Bora`.
 
-[Answer key]()
+[Answer key](./tidyverse_exercise_answer.R)
