@@ -36,10 +36,10 @@ An example of using the pipe to run multiple commands:
 sqrt(83)
 
 ## Base R method of running more than one command
-round(sqrt(83), digit = 2)
+round(sqrt(83), digits = 2)
 
 ## Running more than one command with piping
-sqrt(83) %>% round(digit = 2)
+sqrt(83) %>% round(digits = 2)
 ```
 
 The pipe represents a much easier way of writing and deciphering R code, and so we will be taking advantage of it, when possible, as we work through the remaining lesson.
@@ -47,12 +47,16 @@ The pipe represents a much easier way of writing and deciphering R code, and so 
 ***
 **Exercises**
 
-1. Extract the `replicate` column from the `metadata` data frame (use the `$` notation) and save the values to a vector named `rep_number`.
+1. Create a vector of random numbers using the code below:
+
+	```r
+	random_numbers <- c(81, 90, 65, 43, 71)
+	```
 
 2. Use the pipe (`%>%`) to perform two steps in a single line:
 	
-	1. Turn `rep_number` into a factor.
-	2. Use the `head()` function to return the first six values of the `rep_number` factor.
+	1. Take the mean of `random_numbers` using the `mean()` function.
+	2. Round the output to three digits using the `round()` function.
 
 ***
 
