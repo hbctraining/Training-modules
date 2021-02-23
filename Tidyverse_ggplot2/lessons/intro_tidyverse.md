@@ -50,7 +50,7 @@ The pipe represents a much easier way of writing and deciphering R code, and so 
 1. Create a vector of random numbers using the code below:
 
 	```r
-	random_numbers <- c(81, 90, 65, 43, 71)
+	random_numbers <- c(81, 98, 65, 42, 71)
 	```
 
 2. Use the pipe (`%>%`) to perform two steps in a single line:
