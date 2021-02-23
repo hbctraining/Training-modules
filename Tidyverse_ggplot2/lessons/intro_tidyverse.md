@@ -89,11 +89,6 @@ The functional analysis that we will focus on involves **gene ontology (GO) term
 
 <img src="../img/mov10_FA.png" width="1200">
 
-**Download the dataset (if you haven't already):**
-
-- Right-click [here](https://github.com/hbctraining/Training-modules/blob/master/Tidyverse_ggplot2/data/gprofiler_results_Mov10oe.csv?raw=true) and choose to `Save link as` or `Download link as`.
-- Save the file to the `data` folder.
-
 ## Analysis goal and workflow
 
 **Goal:** *Visually compare the most significant biological processes (BP) based on the number of associated differentially expressed genes (gene ratios) and significance values by creating the following plot:*
