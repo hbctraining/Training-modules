@@ -71,7 +71,7 @@ ggplot(bp_plot) +
 ```
 
 <p align="center">
-<img src="../img/dotplot1.png" width="500">
+<img src="../img/dotplot1.png" width="600">
 </p> 
 
 However, instead of a scatterplot with numeric values on both axes, we would like to create a dotplot for visualizing the top 30 functional categories in our dataset, and how prevalent they are. Basically, we want a dotplot for visualizing functional analysis data, which plots the gene ratio values on the x-axis and the GO terms on the y-axis.
