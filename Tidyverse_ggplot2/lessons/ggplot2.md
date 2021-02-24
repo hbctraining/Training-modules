@@ -173,7 +173,7 @@ ggplot(bp_plot) +
 ```
 
 <p align="center">
-<img src="../img/dotplot6.png" width="600" height="600">
+<img src="../img/dotplot5.png" width="700">
 </p>
  
 > **Note #1:** When modifying the size of text we often use the `rel()` function to specify the size we want relative to the default. We can also provide a numeric value as we did with the data point size, but it can be cumbersome if you don't know what the default font size is to begin with. 
@@ -285,7 +285,10 @@ ggplot(bp_plot) +
 			 
 ```
 
-![dotplot6](../img/final_dotplot.png)
+
+<p align="center">
+<img src="../img/dotplot6.png" width="700">
+</p>
 
 ***
 **Exercises**
