@@ -211,7 +211,9 @@ library(RColorBrewer)
 display.brewer.all()
 ```
 
-![rcolorbrewer_palettes](../img/Rcolorbrewer_palettes.png)
+<p align="center">
+<img src="../img/Rcolorbrewer_palettes.png" width="600">
+</p>
 
 The output is separated into three sections based on the suggested palettes for sequential, qualitative, and diverging data. 
 
