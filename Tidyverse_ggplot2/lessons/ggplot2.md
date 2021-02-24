@@ -138,7 +138,9 @@ ggplot(bp_plot) +
              shape = "square")
 ```
 
-![dotplot4](../img/dotplot5.png) 
+<p align="center">
+<img src="../img/dotplot5.png" width="600" height="600">
+</p>
 
 Now we can start updating the plot to suit our preferences for how we want the data displayed. The labels on the x- and y-axis are also quite small and not very descriptive. To change their size and labeling, we need to add additional **theme layers**. The ggplot2 `theme()` system handles modification of non-data plot elements such as:
 
@@ -170,7 +172,9 @@ ggplot(bp_plot) +
         axis.title = element_text(size=rel(1.15)))
 ```
 
-![dotplot5](../img/dotplot6.png)
+<p align="center">
+<img src="../img/dotplot6.png" width="600" height="600">
+</p>
  
 > **Note #1:** When modifying the size of text we often use the `rel()` function to specify the size we want relative to the default. We can also provide a numeric value as we did with the data point size, but it can be cumbersome if you don't know what the default font size is to begin with. 
 >
@@ -299,7 +303,9 @@ ggplot(bp_plot) +
   geom_col(aes(x = GO_term, y = overlap.size))
 ```
 
-![barplot1](../img/barplot1.png)
+<p align="center">
+<img src="../img/barplot1.png" width="600">
+</p>
 
 This is a good base to start from, now let's start to customize. To add color to the bars, we can use the `fill` argument, and if we would like to add an outline color to the bars, we can use the `color` argument.
 
@@ -324,7 +330,9 @@ ggplot(bp_plot) +
   labs(title = "DE genes per GO process", x = NULL, y =  "# DE genes")
 ```
 
-![barplot2](../img/barplot2.png)
+<p align="center">
+<img src="../img/barplot2.png" width="600">
+</p>
 
 Note that instead of using the functions `xlab()`, `ylab()`, and `ggtitle()`, we can provide all as arguments to the `labs()` function.
 
@@ -343,7 +351,9 @@ ggplot(bp_plot) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-![barplot3](../img/barplot3.png)
+<p align="center">
+<img src="../img/barplot3.png" width="600">
+</p>
 
 This is almost what we were looking for, but the labels are getting cut-off because the plotting area is too small. The `plot.margin` argument of the theme's `element_text()` function can be used to alter the plotting dimensions to make room for our labels.
 
@@ -362,7 +372,9 @@ ggplot(bp_plot) +
   theme(plot.margin = unit(c(1,1,1,3), "cm"))
 ```
 
-![barplot4](../img/barplot4.png)
+<p align="center">
+<img src="../img/barplot4.png" width="600">
+</p>
 
 >**NOTE:** If we wanted to remove the space between the x-axis and the labels, we could add an additional layer for `scale_y_continuous(expand = c(0, 0))`, which would not expand the y-axis past the plotting limits.
   
