@@ -20,7 +20,7 @@ More recently, R users have moved away from base graphic options towards `ggplot
 
 We would typically start by loading the `ggplot2` library, but it is a part of the `tidyverse` suite, so it was loaded in the last lesson.
 
-> Please click [here](https://github.com/hbctraining/Training-modules/blob/master/Tidyverse_ggplot2/data/GOs_for_plotting.RData?raw=true) if you need to download the data to be used for plotting.
+> Please click [here](https://github.com/hbctraining/Training-modules/blob/master/Tidyverse_ggplot2/data/GOs_for_plotting.RData?raw=true) to download the data output from the previous lesson if you do not have it.
 
 **ggplot2 syntax:** To **initialize the basic graph structure** with this package we have to use the `ggplot()` function, then we add "layers" to it using the `+` operator. The idea is that you create a basic plot first, then additional functions are added on to build the final plot.
 
