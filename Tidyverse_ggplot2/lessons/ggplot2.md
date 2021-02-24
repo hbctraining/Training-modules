@@ -108,7 +108,7 @@ ggplot(bp_plot) +
 ```
 
 <p align="center">
-<img src="../img/dotplot3.png" width="600">
+<img src="../img/dotplot3.png" width="700">
 </p>
 
 Moving forward, we are going to stick with coloring the dots based on the p.value column. Let's explore some of the other arguments that can be specified in the `geom` layer.
@@ -139,7 +139,7 @@ ggplot(bp_plot) +
 ```
 
 <p align="center">
-<img src="../img/dotplot4.png" width="600">
+<img src="../img/dotplot4.png" width="700">
 </p>
 
 Now we can start updating the plot to suit our preferences for how we want the data displayed. The labels on the x- and y-axis are also quite small and not very descriptive. To change their size and labeling, we need to add additional **theme layers**. The ggplot2 `theme()` system handles modification of non-data plot elements such as:
