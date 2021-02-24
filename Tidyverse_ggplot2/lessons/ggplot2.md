@@ -71,7 +71,7 @@ ggplot(bp_plot) +
 ```
 
 <p align="center">
-<img src="../img/dotplot1.png" width="600">
+<img src="../img/scatterplot1.png" width="600">
 </p> 
 
 However, instead of a scatterplot with numeric values on both axes, we would like to create a dotplot for visualizing the top 30 functional categories in our dataset, and how prevalent they are. Basically, we want a dotplot for visualizing functional analysis data, which plots the gene ratio values on the x-axis and the GO terms on the y-axis.
@@ -84,7 +84,7 @@ ggplot(bp_plot) +
 ```
 
 <p align="center">
-<img src="../img/dotplot2.png" width="600" height="600">
+<img src="../img/dotplot1.png">
 </p>
 
 Now that we have the required aesthetics, let's add some extras like color to the plot. Let's say we wanted *to quickly visualize significance of the GO terms* in the plot, we can **`color` the points on the plot based on p-values**, by specifying the column header.
@@ -95,7 +95,7 @@ ggplot(bp_plot) +
 ```
 
 <p align="center">
-<img src="../img/dotplot3.png" width="600">
+<img src="../img/dotplot2.png" width="600">
 </p>
 
 You will notice that there are a default set of colors that will be used so we do not have to specify which colors to use. Also, the **legend has been conveniently plotted for us!**
@@ -108,7 +108,7 @@ ggplot(bp_plot) +
 ```
 
 <p align="center">
-<img src="../img/dotplot2.png" width="600" height="600">
+<img src="../img/dotplot3.png" width="600">
 </p>
 
 Moving forward, we are going to stick with coloring the dots based on the p.value column. Let's explore some of the other arguments that can be specified in the `geom` layer.
@@ -139,7 +139,7 @@ ggplot(bp_plot) +
 ```
 
 <p align="center">
-<img src="../img/dotplot5.png" width="600" height="600">
+<img src="../img/dotplot4.png" width="600">
 </p>
 
 Now we can start updating the plot to suit our preferences for how we want the data displayed. The labels on the x- and y-axis are also quite small and not very descriptive. To change their size and labeling, we need to add additional **theme layers**. The ggplot2 `theme()` system handles modification of non-data plot elements such as:
