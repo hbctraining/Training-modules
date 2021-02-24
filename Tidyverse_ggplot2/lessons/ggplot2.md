@@ -95,7 +95,7 @@ ggplot(bp_plot) +
 ```
 
 <p align="center">
-<img src="../img/dotplot2.png" width="600">
+<img src="../img/dotplot2.png">
 </p>
 
 You will notice that there are a default set of colors that will be used so we do not have to specify which colors to use. Also, the **legend has been conveniently plotted for us!**
