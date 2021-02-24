@@ -70,7 +70,9 @@ ggplot(bp_plot) +
   geom_point(aes(x = overlap.size, y = p.value))
 ```
 
-![ggscatter1](../img/dotplot1.png) 
+<p align="center">
+<img src="../img/dotplot1.png" width="500">
+</p> 
 
 However, instead of a scatterplot with numeric values on both axes, we would like to create a dotplot for visualizing the top 30 functional categories in our dataset, and how prevalent they are. Basically, we want a dotplot for visualizing functional analysis data, which plots the gene ratio values on the x-axis and the GO terms on the y-axis.
 
@@ -105,7 +107,9 @@ ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = GO_term, color = overlap.size))
 ```
 
-![dotplot3](../img/dotplot4.png) 
+<p align="center">
+<img src="../img/dotplot2.png" width="600" height="600">
+</p>
 
 Moving forward, we are going to stick with coloring the dots based on the p.value column. Let's explore some of the other arguments that can be specified in the `geom` layer.
 
