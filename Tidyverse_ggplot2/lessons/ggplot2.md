@@ -56,7 +56,7 @@ You will find that even though we have added a layer by specifying `geom_point`,
 
 * position (i.e. columns to be used for the x and y axes)
 * color ("outside" color of the data point/bar being plotted)
-* fill ("inside" colorof the data point/bar being plotted) 
+* fill ("inside" color of the data point/bar being plotted) 
 * shape (of data points)
 * linetype
 * size (of data points)
@@ -81,7 +81,9 @@ ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = GO_term))
 ```
 
-<img src="../img/dotplot2.png">
+<p align="center">
+<img src="../img/dotplot2.png" width="600" height="600">
+</p>
 
 Now that we have the required aesthetics, let's add some extras like color to the plot. Let's say we wanted *to quickly visualize significance of the GO terms* in the plot, we can **`color` the points on the plot based on p-values**, by specifying the column header.
 
@@ -89,8 +91,6 @@ Now that we have the required aesthetics, let's add some extras like color to th
 ggplot(bp_plot) +
   geom_point(aes(x = gene_ratio, y = GO_term, color = p.value))
 ```
-
-![dotplot2](../img/dotplot3.png) 
 
 <p align="center">
 <img src="../img/dotplot3.png" width="600">
