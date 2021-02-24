@@ -25,6 +25,8 @@ This repository has teaching materials for a **3 hour**, hands-on workshop led a
 |[Data visualization with ggplot2](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/ggplot2.html) | 90 min |
 
 
+[Tidyverse practice exercises](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/tidyverse_exercise.html)
+
 ### Dataset
 
 Download the R project and data for this workshop [here](https://github.com/hbctraining/Training-modules/blob/master/data/tidyverse.zip?raw=true). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
