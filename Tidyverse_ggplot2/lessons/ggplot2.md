@@ -92,6 +92,10 @@ ggplot(bp_plot) +
 
 ![dotplot2](../img/dotplot3.png) 
 
+<p align="center">
+<img src="../img/dotplot3.png" width="600">
+</p>
+
 You will notice that there are a default set of colors that will be used so we do not have to specify which colors to use. Also, the **legend has been conveniently plotted for us!**
 
 Alternatively, we could color number of DE genes associated with each term (`overlap.size`). 
