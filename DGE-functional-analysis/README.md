@@ -30,7 +30,7 @@ In this workshop, we will use over-representation analysis (ORA) and functional 
 
 ### Dataset
 
-All the files used for the above lessons are linked within, but can also be [accessed here](https://github.com/hbctraining/Training-modules/raw/master/Visualization_in_R/data/Mov10oe_DE_results.csv).
+The project directory containing all data can be [downloaded here](https://github.com/hbctraining/Training-modules/blob/master/data/Functional_analysis.zip?raw=true).
 
 ### Installation Requirements
 
