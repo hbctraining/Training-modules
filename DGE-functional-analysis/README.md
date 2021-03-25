@@ -30,7 +30,7 @@ In this workshop, we will use over-representation analysis (ORA) and functional 
 
 ### Dataset
 
-The project directory containing all data can be [downloaded here](https://github.com/hbctraining/Training-modules/blob/master/data/Functional_analysis.zip?raw=true).
+Download the R project and data for this workshop [here](https://github.com/hbctraining/Training-modules/blob/master/data/Functional_analysis.zip?raw=true). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
 
 ### Installation Requirements
 
