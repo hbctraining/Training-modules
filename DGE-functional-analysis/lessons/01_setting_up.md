@@ -16,10 +16,15 @@ Open up the folder. The contents will look like the screenshot below:
 
 <img src="../img/directory_structure.png" width="300">
 
-Locate the `.Rproj file`. Double-clicking it will open up RStudio with the project loaded. An example of the RStudio interface is shown below. You will want to make sure that you have the directory structure (sub-directories and files) as shown in the screenshot below. Once you have reached this stage, you are ready to get started with the lessons!
+**Locate the `.Rproj file` and double-click on it.** This will open up RStudio with the "Functional_analysis" project loaded. 
 
-<img src="../img/rstudio_interface.png" width="500">
+An example of the **RStudio interface is shown below**. You will want to make sure that you have the directory structure (sub-directories and files) as shown in the screenshot below. 
 
+Once you have reached this stage, you are ready to get started with the lessons!
+
+<p align="center">
+<img src="../img/rstudio_interface.png" >
+</p>
 
 ### Dataset
 
