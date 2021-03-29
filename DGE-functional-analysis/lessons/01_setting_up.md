@@ -1,7 +1,7 @@
 ---
 title: Setting up for functional analysis
-author: Mary Piper, Meeta Mistry, Radhika Khetani
-date: "Friday, October 6th, 2017"
+author: Mary Piper, Meeta Mistry, Radhika Khetani, Jihe Liu
+date: "March 29th, 2021"
 ---
 
 Approximate time: 15 minutes
