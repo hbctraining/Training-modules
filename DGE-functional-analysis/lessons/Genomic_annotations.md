@@ -1,7 +1,7 @@
 ---
 title: "Genomic annotations"
-author: "Mary Piper"
-date: "Monday, March 4th, 2019"
+author: "Mary Piper, Meeta Mistry, Radhika Khetani, Jihe Liu"
+date: "March 29th, 2021"
 ---
 
 Approximate time: 30 minutes
@@ -15,17 +15,11 @@ Learning Objectives:
 
 # Genomic annotations
 
-The analysis of next-generation sequencing results requires associating genes, transcripts, proteins, etc. with functional or regulatory information. To perform functional analysis on gene lists, we often need to obtain gene identifiers that are compatible with the tools we wish to use and this is not always trivial. Here, we discuss ways in which you can obtain gene annotation information and some of advantages and disadvantages of each method.
-
-## Genome builds
-
-When a new genome build is acquired, the names and/or coordinate location of genomic features (gene, transcript, exon, etc.) may change. Therefore, the annotations regarding genome features (gene, transcript, exon, etc.) is genome-build specific  and we need to make sure that our annotations are obtained from the appropriate resource. You should know which **build of the genome** was used to generate your gene list and make sure you use the **same build for the annotations** during functional analysis. 
-
-For example, if we used the GRCh38 build of the human genome to quantify gene expression used for differential expression analysis, then we should use the **same GRCh38 build** of the genome to convert between gene IDs and to identify annotations for each of the genes. 
+The analysis of next-generation sequencing results requires associating genes, transcripts, proteins, etc. with functional or regulatory information. To perform functional analysis on gene lists, we often need to obtain gene identifiers that are compatible with the tools we wish to use and this is not always trivial. Here, we discuss **ways in which you can obtain gene annotation information and some of the advantages and disadvantages of each method**.
 
 ## Databases
 
-To access the processes, pathways, etc. for which a gene is involved, requires extracting the information from the necessary database where the information is stored. The database you query will depend on the information desired for annotations. Examples of databases that are often queried, include:
+We retrieve information on the processes, pathways, etc. (for which a gene is involved in) from the necessary database where the information is stored. The database you choose will be dependent on what type of information you are trying to obtain. Examples of databases that are often queried, include:
 
 **General databases** 
 
@@ -48,35 +42,37 @@ Provide annotations related to a specific topic:
 - **CORUM:** database of protein complexes for human, mouse, rat
 - **...**
 
-This is by no means an exhaustive list, there are many other databases that are also queried depending on the information desired. 
+This is by no means an exhaustive list, there are many other databases available that are not listed here.
+
+## Genome builds
+
+Before you begin your search through any of these databases, you should know which **build of the genome** was used to generate your gene list and make sure you use the **same build for the annotations** during functional analysis. When a new genome build is acquired, the names and/or coordinate location of genomic features (gene, transcript, exon, etc.) may change. Therefore, the annotations regarding genome features (gene, transcript, exon, etc.) is genome-build specific  and we need to make sure that our annotations are obtained from the appropriate resource. 
+
+For example, if we used the GRCh38 build of the human genome to quantify gene expression used for differential expression analysis, then we should use the **same GRCh38 build** of the genome to convert between gene IDs and to identify annotations for each of the genes. 
 
 
-## Tools
+## Tools for accessing databases
 
-When performing functional analysis, the tools will take the list of genes you provide and retrieve information for each gene using one or more of these databases. Within R, there are many popular packages used for gene/transcript-level annotation:
+Within R, there are many popular packages used for gene/transcript-level annotation. These packages provide tools that take the list of genes you provide and retrieve information for each gene using one or more of the databases listed above.
 
-**Interface tools:** for accessing/querying annotations from multiple different annotation databases
+### Annotation tools: for accessing/querying annotations from a specific databases
+
+
+| Tool | Description | Pros | Cons |
+|:---:|:---|:---|:---:|
+|**[org.Xx.eg.db](https://bioconductor.org/packages/release/bioc/vignettes/AnnotationDbi/inst/doc/IntroToAnnotationPackages.pdf)** | Query gene feature information for the organism of interest | gene ID conversion, biotype and coordinate information | only latest genome build available |
+|**[EnsDb.Xx.vxx](http://bioconductor.org/packages/devel/bioc/vignettes/ensembldb/inst/doc/ensembldb.html)**| Transcript and gene-level information directly fetched from Ensembl API (similar to TxDb, but with filtering ability and versioned by Ensembl release) | easy functions to extract features, direct filtering | Not the most up-to-date annotations, more difficult to use than some packages |
+|**[TxDb.Xx.UCSC.hgxx.knownGene](https://bioconductor.org/packages/release/bioc/vignettes/GenomicFeatures/inst/doc/GenomicFeatures.pdf)** | UCSC database for transcript and gene-level information or can create own *TxDb* from an SQLite database file using the *GenomicFeatures* package | feature information, easy functions to extract features | only available current and recent genome builds - can create your own, less up-to-date with annotations than Ensembl |
+|**[annotables](https://github.com/stephenturner/annotables)** | Gene-level feature information immediately available for the human and model organisms | super quick and easy gene ID conversion, biotype and coordinate information | not updated regularly | 
+|**[biomaRt](https://bioconductor.org/packages/release/bioc/vignettes/biomaRt/inst/doc/biomaRt.html)** | An R package version of the Ensembl [BioMart online tool](http://www.ensembl.org/biomart/martview/70dbbbe3f1c5389418b5ea1e02d89af3)  | all Ensembl database information available, all organisms on Ensembl, wealth of information | being deprecated (?) |
+
+
+### Interface tools: for accessing/querying annotations from multiple different annotation sources
 
 - **AnnotationDbi:** queries the *OrgDb*, *TxDb*, *Go.db*, *EnsDb*, and *BioMart* annotations.  
 - **AnnotationHub:** queries large collection of whole genome resources, including ENSEMBL, UCSC, ENCODE, Broad Institute, KEGG, NIH Pathway Interaction Database, etc.
 
-**Annotation tools:** for accessing/querying annotations from a specific database
-
-- **org.*Gs*.eg.db:** these *OrgDb* annotation tools query gene feature information for the organism of interest, including gene IDs and associated GO and KEGG IDs - but unable to get previous gene build information easily
-- **EnsDb.*Gspecies*.v86:** Ensembl database for transcript and gene-level information directly fetched from Ensembl API (similar to TxDb, but with filtering ability and versioned by Ensembl release) or can create using the *ensembldb* package
-- **TxDb.*Gspecies*.UCSC.hg19.knownGene:** UCSC database for transcript and gene-level information or can create own *TxDb* from an SQLite database file using the *GenomicFeatures* package.
-- **annotables:** easy-to-use package making gene-level feature information immediately available for the current and most recent genome builds for human/mouse
-- **biomaRt:** wealth of information available by querying Ensembl's database using their [BioMart online tool](http://www.ensembl.org/biomart/martview/70dbbbe3f1c5389418b5ea1e02d89af3) - all previous genome builds and gene feature, structure, homology, variant, and sequence information available and connects to external databases; **however, currently being deprecated**
-
-
-| Tool | Pros | Cons | Materials |
-|:---:|:---|:---|:---:|
-|**[org.Xx.eg.db](https://bioconductor.org/packages/release/bioc/vignettes/AnnotationDbi/inst/doc/IntroToAnnotationPackages.pdf)** | gene ID conversion, biotype and coordinate information | only latest genome build available | see below |
-|**[EnsDb.Xx.vxx](http://bioconductor.org/packages/devel/bioc/vignettes/ensembldb/inst/doc/ensembldb.html)**| most up-to-date annotations, easy functions to extract features, direct filtering | more difficult to use than some packages | see below |
-|**[TxDb.Xx.UCSC.hgxx.knownGene](https://bioconductor.org/packages/release/bioc/vignettes/GenomicFeatures/inst/doc/GenomicFeatures.pdf)** | feature information, easy functions to extract features | only available current and recent genome builds - can create your own, less up-to-date with annotations than Ensembl |
-|**[annotables](https://github.com/stephenturner/annotables)** | super quick and easy gene ID conversion, biotype and coordinate information | only human & mouse, not updated regularly | no material available |
-|**[biomaRt](https://bioconductor.org/packages/release/bioc/vignettes/biomaRt/inst/doc/biomaRt.html)** | all Ensembl database information available, all organisms on Ensembl, website & R interface | being deprecated | [link to material](https://github.com/hbctraining/Training-modules/blob/master/Ensembl-Biomart_R-based/lessons/biological_databases_Ensembl.md#ensembl-biomart) |
-
+> **NOTE:** These are both packages that can be used to create the `tx2gene` files we had you download at the beginning of this workshop.
 ## AnnotationDbi
 
 AnnotationDbi is an R package that provides an interface for connecting and querying various annotation databases using SQLite data storage. The AnnotationDbi packages can query the *OrgDb*, *TxDb*, *EnsDb*, *Go.db*, and *BioMart* annotations. There is helpful [documentation](https://bioconductor.org/packages/release/bioc/vignettes/AnnotationDbi/inst/doc/IntroToAnnotationPackages.pdf) available to reference when extracting data from any of these databases.
