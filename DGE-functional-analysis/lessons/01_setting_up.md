@@ -38,7 +38,9 @@ The goal of the study was to investigate the interactions between various genes 
 
 **The hypothesis tested by [the paper](http://www.ncbi.nlm.nih.gov/pubmed/25464849) is that FMRP and MOV10 associate and regulate the translation of a subset of RNAs.**
 
+<p align="center">
 <img src="../img/mov10-model.png" width="400">
+</p>
 
 <cite>Illustration adapted from [Kenny PJ et al, Cell Rep 2014](http://www.ncbi.nlm.nih.gov/pubmed/25464849)</cite>
 
