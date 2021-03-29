@@ -63,23 +63,27 @@ Within R, there are many popular packages used for gene/transcript-level annotat
 |**[org.Xx.eg.db](https://bioconductor.org/packages/release/bioc/vignettes/AnnotationDbi/inst/doc/IntroToAnnotationPackages.pdf)** | Query gene feature information for the organism of interest | gene ID conversion, biotype and coordinate information | only latest genome build available |
 |**[EnsDb.Xx.vxx](http://bioconductor.org/packages/devel/bioc/vignettes/ensembldb/inst/doc/ensembldb.html)**| Transcript and gene-level information directly fetched from Ensembl API (similar to TxDb, but with filtering ability and versioned by Ensembl release) | easy functions to extract features, direct filtering | Not the most up-to-date annotations, more difficult to use than some packages |
 |**[TxDb.Xx.UCSC.hgxx.knownGene](https://bioconductor.org/packages/release/bioc/vignettes/GenomicFeatures/inst/doc/GenomicFeatures.pdf)** | UCSC database for transcript and gene-level information or can create own *TxDb* from an SQLite database file using the *GenomicFeatures* package | feature information, easy functions to extract features | only available current and recent genome builds - can create your own, less up-to-date with annotations than Ensembl |
-|**[annotables](https://github.com/stephenturner/annotables)** | Gene-level feature information immediately available for the human and model organisms | super quick and easy gene ID conversion, biotype and coordinate information | not updated regularly | 
-|**[biomaRt](https://bioconductor.org/packages/release/bioc/vignettes/biomaRt/inst/doc/biomaRt.html)** | An R package version of the Ensembl [BioMart online tool](http://www.ensembl.org/biomart/martview/70dbbbe3f1c5389418b5ea1e02d89af3)  | all Ensembl database information available, all organisms on Ensembl, wealth of information | being deprecated (?) |
+|**[annotables](https://github.com/stephenturner/annotables)** | Gene-level feature information immediately available for the human and model organisms | super quick and easy gene ID conversion, biotype and coordinate information | static resource, not updated regularly | 
+|**[biomaRt](https://bioconductor.org/packages/release/bioc/vignettes/biomaRt/inst/doc/biomaRt.html)** | An R package version of the Ensembl [BioMart online tool](http://www.ensembl.org/biomart/martview/70dbbbe3f1c5389418b5ea1e02d89af3)  | all Ensembl database information available, all organisms on Ensembl, wealth of information |  |
 
 
 ### Interface tools: for accessing/querying annotations from multiple different annotation sources
 
-- **AnnotationDbi:** queries the *OrgDb*, *TxDb*, *Go.db*, *EnsDb*, and *BioMart* annotations.  
 - **AnnotationHub:** queries large collection of whole genome resources, including ENSEMBL, UCSC, ENCODE, Broad Institute, KEGG, NIH Pathway Interaction Database, etc.
+- **AnnotationDbi:** queries the *OrgDb*, *TxDb*, *Go.db*, *EnsDb*, and *BioMart* annotations.  
 
-> **NOTE:** These are both packages that can be used to create the `tx2gene` files we had you download at the beginning of this workshop.
+
+## AnnotationHub
+
+The AnnotationHub package provides a client interface to resources stored at the AnnotationHub web service. It allows you to query most of the large databases we noted above, directly within your RStudio window. While we won't be talking about it in this lesson, we have [materials linked here](https://github.com/hbctraining/Training-modules/blob/master/DGE-functional-analysis/lessons/AnnotationHub.md) if you are interested in exploring it on your own.
+
 ## AnnotationDbi
 
-AnnotationDbi is an R package that provides an interface for connecting and querying various annotation databases using SQLite data storage. The AnnotationDbi packages can query the *OrgDb*, *TxDb*, *EnsDb*, *Go.db*, and *BioMart* annotations. There is helpful [documentation](https://bioconductor.org/packages/release/bioc/vignettes/AnnotationDbi/inst/doc/IntroToAnnotationPackages.pdf) available to reference when extracting data from any of these databases.
+AnnotationDbi is an R package that provides an interface for connecting and querying various annotation databases using SQLite data storage. The AnnotationDbi package provides an interface to query the annotation resources that are available as Bioconductor packages (i.e. *OrgDb*, *TxDb*, *EnsDb*, *Go.db*, and *BioMart*) In this lesson, we will be going through examples of two different databases. For extracting data from any of the other databases not covered here we encourage you to peruse this [helpful documentation](https://bioconductor.org/packages/release/bioc/vignettes/AnnotationDbi/inst/doc/IntroToAnnotationPackages.pdf).
 
 ### org.Hs.eg.db
 
-There are a plethora of organism-specific *orgDb* packages, such as `org.Hs.eg.db` for human and `org.Mm.eg.db` for mouse, and a list of organism databases can be found [here](https://www.bioconductor.org/packages/release/BiocViews.html#___OrgDb). These databases are best for converting gene IDs or obtaining GO information for current genome builds, but not for older genome builds. These packages provide the current builds corresponding to the release date of the package, and update every 6 months. If a package is not available for your organism of interest, you can create your own using *AnnotationHub*.
+There are a plethora of organism-specific *orgDb* packages, such as `org.Hs.eg.db` for human and `org.Mm.eg.db` for mouse, and a list of organism databases can be found [here](https://www.bioconductor.org/packages/release/BiocViews.html#___OrgDb). These databases are best for converting gene IDs or obtaining GO information for **current genome builds**, but not for older genome builds. These packages provide the current builds corresponding to the release date of the package, and update every 6 months. If a package is not available for your organism of interest, you can create your own using *AnnotationHub*.
 
 ```r
 # Load libraries
@@ -100,15 +104,15 @@ OrgDb object:
 | DBSCHEMA: HUMAN_DB
 | ORGANISM: Homo sapiens
 | SPECIES: Human
-| EGSOURCEDATE: 2018-Oct11
+| EGSOURCEDATE: 2019-Jul10
 | EGSOURCENAME: Entrez Gene
 | EGSOURCEURL: ftp://ftp.ncbi.nlm.nih.gov/gene/DATA
 | CENTRALID: EG
 | TAXID: 9606
 | GOSOURCENAME: Gene Ontology
-| GOSOURCEURL: ftp://ftp.geneontology.org/pub/go/godatabase/archive/latest-lite/
-| GOSOURCEDATE: 2018-Oct10
-| GOEGSOURCEDATE: 2018-Oct11
+| GOSOURCEURL: http://current.geneontology.org/ontology/go-basic.obo
+| GOSOURCEDATE: 2020-05-02
+| GOEGSOURCEDATE: 2019-Jul10
 | GOEGSOURCENAME: Entrez Gene
 | GOEGSOURCEURL: ftp://ftp.ncbi.nlm.nih.gov/gene/DATA
 | KEGGSOURCENAME: KEGG GENOME
@@ -116,13 +120,14 @@ OrgDb object:
 | KEGGSOURCEDATE: 2011-Mar15
 | GPSOURCENAME: UCSC Genome Bioinformatics (Homo sapiens)
 | GPSOURCEURL: 
-| GPSOURCEDATE: 2018-Oct2
-| ENSOURCEDATE: 2018-Oct05
+| GPSOURCEDATE: 2020-Jan28
+| ENSOURCEDATE: 2019-Dec11
 | ENSOURCENAME: Ensembl
 | ENSOURCEURL: ftp://ftp.ensembl.org/pub/current_fasta
 | UPSOURCENAME: Uniprot
 | UPSOURCEURL: http://www.UniProt.org/
-| UPSOURCEDATE: Thu Oct 18 05:22:10 2018
+| UPSOURCEDATE: Wed May  6 17:35:54 2020
+
 ```
 
 We can easily extract information from this database using *AnnotationDbi* with the methods: `columns`, `keys`, `keytypes`, and `select`. For example, we will use our `org.Hs.eg.db` database to acquire information, but know that the same methods work for the *TxDb*, *Go.db*, *EnsDb*, and *BioMart* annotations.
@@ -135,7 +140,16 @@ annotations_orgDb <- AnnotationDbi::select(org.Hs.eg.db, # database
                                      keytype = "SYMBOL") # type of data given in 'keys' argument
 ```
 
-This easily returned to us the information that we desired, but note the *warning* returned: *'select()' returned 1:many mapping between keys and columns*. This is always going to happen with converting between different gene IDs. Unless we would like to keep multiple mappings for a single gene, then we probably want to de-duplicate our data before using it.
+This easily returned to us the information that we desired, but note the *warning* returned: *'select()' returned 1:many mapping between keys and columns*. We can check our data to see how many duplicate gene entries were returned to us.
+
+```r
+length(which(duplicated(annotations_orgDb$SYMBOL)))
+```
+**Why so many duplicates?** What does that mean? 
+
+Well, let's take a look at an example. If you search for the gene symbol AATF in `annotations_orgDb`, you will see an example of a duplicated gene. You can see that all fields of information are identical for both, except for the Ensembl ID. One gene maps to [ENSG00000275700](http://useast.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000275700;r=17:36948925-37056871) and ther maps to [ENSG00000276072](https://useast.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000276072;r=CHR_HSCHR17_7_CTG4:36950708-37058704). The difference is that the first one is a mapping to the primary assembly, whereas the second is a mapping that is a result of a novel patch sequence providing alternate alleles. There are also fix patches and pseduogenes that can contribute to the duplicates. 
+
+We don't have time to go through each one individually, and so for these duplicates we will just keep the first mapping. 
 
 ```r
 # Determine the indices for the non-duplicated genes
@@ -145,7 +159,7 @@ non_duplicates_idx <- which(duplicated(annotations_orgDb$SYMBOL) == FALSE)
 annotations_orgDb <- annotations_orgDb[non_duplicates_idx, ]
 ```
 
-Note that some genes were not annotated. Our dataset was created based on the GRCh37/hg19 build of the human genome, and we are annotating with the most recent build. It is possible that some of the genes have changed names, so are not present in this version of the database. We can check the number of NAs returned:
+Note that there also some genes that have NA values in each of the columns. These are genes that were not annotated. 
 
 ```r
 # Check number of NAs returned
@@ -154,7 +168,9 @@ is.na(annotations_orgDb$ENSEMBL) %>%
   length()
 ```
 
-Although there will always be some attrition, using a different genome build will increase the number of genes not found. We could download the version of `org.Hs.eg.db` that corresponds to the last genome build, but that is a pain, especially when there are other annotation packages that make this process much easier.
+Wait, why would there be genes that have a gene symbol but no ID associated with it?
+
+It's because we are not using a genome build that matches the build used as our reference during the analysis! Our dataset was created based on the GRCh37/hg19 build of the human genome, and orgDb only uses the most current build GRCh38. It is possible that some of the genes have changed names, so are not present in this version of the database. **It is so important to be consistent with your genome build throughout the entire analysis.** To obtain the correct set of annotations we will use the EnsDb database.
 
 ### EnsDb.Hsapiens.v75
 
@@ -198,7 +214,7 @@ is.na(annotations_edb$GENEID) %>%
   length()
 ```
 
-While we were using *AnnotationDbi* to query the Ensembl database, `AnnotationHub` and/or `ensembldb` package can also be quite helpful for extracting or filtering content from the database. Nice documentation for using [`AnnotationHub`](https://github.com/hbctraining/Training-modules/blob/master/DGE-functional-analysis/lessons/AnnotationHub.md) and [`ensembldb`](https://bioconductor.org/packages/release/bioc/vignettes/ensembldb/inst/doc/ensembldb.html) is available for more complex queries.
+
 
 > **NOTE:** If using the previous genome build for human (GRCh37/hg19), the *annotables* package is a super easy annotation package to use. It is not updated frequently, so it's not great for getting the most up-to-date information for the current builds and does not have information for other organisms than human and mouse. However, it's super easy to use:
 >
