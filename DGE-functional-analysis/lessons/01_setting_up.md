@@ -8,43 +8,18 @@ Approximate time: 15 minutes
 
 ## Set up
 
-Prior to performing the functional analysis of our gene lists, we need to first open RStudio, create a project called `Functional_analysis`, and organize our project directory.
+For this module, we will be working within an RStudio project. In order to follow along you will need to **download the R project**, if you haven't done so already. The project can be accessed using [this link](https://github.com/hbctraining/Training-modules/blob/master/data/Functional_analysis.zip?raw=true).
 
-### Creating a new project directory in RStudio
+Once downloaded, you should see a file called `Functional_analysis.zip` on your computer (likely, in your Downloads folder). Unzipping this file will result in a folder of the same name. Move the folder to the location on your computer where you would like to perform the analysis.
 
-Let's create a new project directory for our "Functional Analysis" lesson: 
+Open up the folder. The contents will look like the screenshot below:
 
-1. Open RStudio
-2. Go to the `File` menu and select `New Project`.
-3. In the `New Project` window, choose `New Directory`. Then, choose `Empty Project`. Name your new directory `Functional_analysis` and then "Create the project as subdirectory of:" the Desktop (or location of your choice).
-4. Click on `Create Project`.
-5. After your project is completed, if the project does not automatically open in RStudio, then go to the `File` menu, select `Open Project`, and choose `Functional_analysis.Rproj`.
-6. When RStudio opens, you will see three panels in the window.
-7. Go to the `File` menu and select `New File`, and select `R Script`. The RStudio interface should now look like the screenshot below (except in the file directory, `workshop_name.Rproj` will be `Functional_analysis.Rproj`). You may or may not have a `.gitignore` file, which is fine.
+<img src="../img/directory_structure.png" width="300">
 
-<img src="../img/generic_rstudio_interface.png" width="600">
+Locate the `.Rproj file`. Double-clicking it will open up RStudio with the project loaded. An example of the RStudio interface is shown below. You will want to make sure that you have the directory structure (sub-directories and files) as shown in the screenshot below. Once you have reached this stage, you are ready to get started with the lessons!
 
-### Structuring your working directory
-To organize your working directory for a particular analysis, you should separate the original data (raw data) from intermediate datasets. For instance, you may want to create a `data/` directory within your working directory that stores the raw data, and have a `results/` directory for intermediate datasets and a `figures/` directory for the plots you will generate.
+<img src="../img/rstudio_interface.png" width="500">
 
-Let's create these three directories within your working directory by clicking on `New Folder` within the `Files` tab. 
-
-<img src="../img/generic_wd_setup.png" width="600">
-
-
-When finished, your working directory should look like:
-
-<img src="../img/generic_complete_wd_setup.png" width="300">
-
-### Adding files to your working directory
-
-We can use gene lists output from various different types of experiments to perform functional analysis. 
-
-Download the DGE result file to the `data` folder by **right-clicking** the link below:
- 
- - **Differential expression results:** right-click [here](https://github.com/hbctraining/Training-modules/raw/master/Visualization_in_R/data/Mov10oe_DE_results.csv)
- 
-Choose to `Save Link As` or `Download Linked File As` and navigate to your `Functional_analysis/data` folder. You should now see the files appear in the `data` folder in the RStudio file directory.
 
 ### Dataset
 
