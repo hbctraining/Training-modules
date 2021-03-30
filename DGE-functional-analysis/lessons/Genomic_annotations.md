@@ -143,9 +143,10 @@ annotations_orgDb <- AnnotationDbi::select(org.Hs.eg.db, # database
 This easily returned to us the information that we desired, but note the *warning* returned: *'select()' returned 1:many mapping between keys and columns*. We can check our data to see how many duplicate gene entries were returned to us.
 
 ```r
-length(which(duplicated(annotations_orgDb$SYMBOL)))
+which(duplicated(annotations_orgDb$SYMBOL))  %>%
+  length()
 ```
-**Why so many duplicates?** What does that mean? 
+**Why are there so many duplicates?** 
 
 Well, let's take a look at an example. If you search for the gene symbol AATF in `annotations_orgDb`, you will see an example of a duplicated gene. You can see that all fields of information are identical for both, except for the Ensembl ID. One gene maps to [ENSG00000275700](http://useast.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000275700;r=17:36948925-37056871) and ther maps to [ENSG00000276072](https://useast.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000276072;r=CHR_HSCHR17_7_CTG4:36950708-37058704). The difference is that the first one is a mapping to the primary assembly, whereas the second is a mapping that is a result of a novel patch sequence providing alternate alleles. There are also fix patches and pseduogenes that can contribute to the duplicates. 
 
@@ -168,15 +169,15 @@ is.na(annotations_orgDb$ENSEMBL) %>%
   length()
 ```
 
-Wait, why would there be genes that have a gene symbol but no ID associated with it?
+**Wait, why would there be genes that have a gene symbol but no ID associated with it?**
 
 It's because we are not using a genome build that matches the build used as our reference during the analysis! Our dataset was created based on the GRCh37/hg19 build of the human genome, and orgDb only uses the most current build GRCh38. It is possible that some of the genes have changed names, so are not present in this version of the database. **It is so important to be consistent with your genome build throughout the entire analysis.** To obtain the correct set of annotations we will use the EnsDb database.
 
 ### EnsDb.Hsapiens.v75
 
-To generate the Ensembl annotations, the *EnsDb* database can also be easily queried using AnnotationDbi. You will need to decide the release of Ensembl you would like to query. All Ensembl releases are listed [here](http://useast.ensembl.org/info/website/archives/index.html). We know that our data is for GRCh37, which corresponds to release 75, so we can install this release of the *EnsDb* database.
+To generate the Ensembl annotations for a specifc build, the *EnsDb* database can also be easily queried using AnnotationDbi. You will need to decide the release of Ensembl you would like to query and have that package installed. All Ensembl releases are listed [here](http://useast.ensembl.org/info/website/archives/index.html). We know that our data is for GRCh37, which corresponds to release 75, so we can install this release of the *EnsDb* database.
 
-Since we are using *AnnotationDbi* to query the database, we can use the same functions that we used previously:
+After loading the library we can take a look at the database as we had done previously:
 
 ```r
 # Load the library
@@ -189,7 +190,7 @@ EnsDb.Hsapiens.v75
 keytypes(EnsDb.Hsapiens.v75)
 ```
 
-Now we can return all gene IDs for our gene list:
+Using *AnnotationDbi* to query the database, we can use the same `select` function to return all gene IDs for our gene list. Note that the column names differ slightly to match what is stored in the database.
 
 ```r
 # Return the Ensembl IDs for a set of genes
@@ -199,7 +200,16 @@ annotations_edb <- AnnotationDbi::select(EnsDb.Hsapiens.v75,
                                            keytype = "SYMBOL")
 ```
 
-Then we can again deduplicate and check for NA values:
+Now, if we check for duplicates, we see that there are still many instances of one-to-many mappings.
+
+```r
+
+# Check number of duplicates returned
+which(duplicated(annotations_edb$SYMBOL))  %>%
+  length()
+```
+
+We can remove these entries, keeping only one of the duplicates:
 
 ```r
 # Determine the indices for the non-duplicated genes
@@ -207,26 +217,20 @@ non_duplicates_idx <- which(duplicated(annotations_edb$SYMBOL) == FALSE)
 
 # Return only the non-duplicated genes using indices
 annotations_edb <- annotations_edb[non_duplicates_idx, ]
+```
 
+There are fewer genes in this dataframe than the one returned using OrgDb. Do we still have gene symbols with no annotations?
+
+```r
 # Check number of NAs returned
 is.na(annotations_edb$GENEID) %>%
   which() %>%
   length()
 ```
 
+You should notice that we no longer have those NA entries. By using the correct build for annotation we ensure that genes get properly mapped to the identifiers.
 
-
-> **NOTE:** If using the previous genome build for human (GRCh37/hg19), the *annotables* package is a super easy annotation package to use. It is not updated frequently, so it's not great for getting the most up-to-date information for the current builds and does not have information for other organisms than human and mouse. However, it's super easy to use:
->
->```r
-># Load library
->library(annotables)
->
-># Access previous build of annotations
->grch37
->```
-
-Many of the annotation packages have much more information than what we need for functional analysis, and we will be the information extracted mainly just for gene ID conversion for the different tools that we use. However, it's good to know the capabilities of the tools we use, and we encourage greater exploration of these packages as you become more familiar with them.
+Many of the annotation packages have much more information than what we need for functional analysis, and we will be using the information extracted mainly just for gene ID conversion for the different tools that we use. However, it's good to know the capabilities of the tools we use, and we encourage greater exploration of these packages as you become more familiar with them.
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
