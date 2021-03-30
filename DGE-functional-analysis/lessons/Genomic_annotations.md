@@ -75,7 +75,7 @@ Within R, there are many popular packages used for gene/transcript-level annotat
 
 ## AnnotationHub
 
-The AnnotationHub package provides a client interface to resources stored at the AnnotationHub web service. It allows you to query most of the large databases we noted above, directly within your RStudio window. While we won't be talking about it in this lesson, we have [materials linked here](https://github.com/hbctraining/Training-modules/blob/master/DGE-functional-analysis/lessons/AnnotationHub.md) if you are interested in exploring it on your own.
+The AnnotationHub package provides a client interface to resources stored at the AnnotationHub web service. It allows you to query most of the large databases we noted above, directly within your RStudio window. While we won't be talking about it in this lesson, we have [materials linked here](AnnotationHub.md) if you are interested in exploring it on your own.
 
 ## AnnotationDbi
 
