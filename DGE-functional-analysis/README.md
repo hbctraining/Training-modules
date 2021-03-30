@@ -24,9 +24,9 @@ In this workshop, we will use over-representation analysis (ORA) and functional 
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Setting up](https://hbctraining.github.io/Training-modules/DGE-functional-analysis/lessons/01_setting_up.html) | 15 min |
-|[Gene annotations](https://hbctraining.github.io/Training-modules/DGE-functional-analysis/lessons/Genomic_annotations.html) | 30 min |
-|[Functional analysis methods](https://hbctraining.github.io/DGE_workshop_salmon/lessons/functional_analysis_2019.html) | 120 min |
+|[Setting up](lessons/01_setting_up.md) | 15 min |
+|[Gene annotations](lessons/Genomic_annotations.md) | 30 min |
+|[Functional analysis methods](lessons/functional_analysis_2019.md) | 120 min |
 
 ### Dataset
 
