@@ -130,7 +130,7 @@ sigOE <- dplyr::filter(res_ids, padj < 0.05)
 sigOE_genes <- as.character(sigOE$gene_id)
 ```
 
-##### Using ClusterProfiler
+#### Using ClusterProfiler
 
 Now we can perform the GO enrichment analysis and save the results:
 
