@@ -90,11 +90,7 @@ Some genes with less information may only be associated with general 'parent' te
 
 We will be using [clusterProfiler](http://bioconductor.org/packages/release/bioc/html/clusterProfiler.html) to perform over-representation analysis on GO terms associated with our list of significant genes. The tool takes as input a significant gene list and a background gene list and performs statistical enrichment analysis using hypergeometric testing. The basic arguments allow the user to select the appropriate organism and GO ontology (BP, CC, MF) to test. 
 
-### Running clusterProfiler
-
-To run clusterProfiler GO over-representation analysis, we will change our gene names into Ensembl IDs, since the tool works a bit easier with the Ensembl IDs. 
-
-Then load the following libraries:
+Load the following libraries:
 
 ```r
 # Load libraries
@@ -103,31 +99,38 @@ library(pathview)
 library(clusterProfiler)
 ```
 
-For the different steps in the functional analysis, we require Ensembl and Entrez IDs. We will use the gene annotations that we generated previously to merge with our differential expression results.
+#### Download the annotation file 
+
+Download the annotations to your `data` folder by right-clicking [here](https://github.com/hbctraining/DGE_workshop_salmon_online/raw/master/data/annotations_ahb.csv) and selecting "Save link as..."_
+
+Run the following code to read the annotation file in:
+```r
+annotations_ahb <- read.csv("annotations_ahb.csv")
+```
+
+To run clusterProfiler GO over-representation analysis, we will change our gene names into Ensembl IDs, since the tool works a bit easier with the Ensembl IDs. 
+Also, for the different steps in the functional analysis, we require Ensembl and Entrez IDs. We will use new gene annotations to merge with our differential expression results.
 
 ```r
 ## Merge the AnnotationHub dataframe with the results 
-res_ids <- inner_join(res_tableOE_tb, annotations_ahb, by=c("gene"="gene_id"))    
+res_ids <- inner_join(res_tableOE_tb, annotations_ahb, by=c("gene"="gene_name"))    
 ```
 
-> _**NOTE:** If you were unable to generate the `annotations_ahb` object, you can download the annotations to your `data` folder by right-clicking [here](https://github.com/hbctraining/DGE_workshop_salmon_online/raw/master/data/annotations_ahb.csv) and selecting "Save link as..."_
->
-> _To read in the object, you can run the following code:_
-> `annotations_ahb <- read.csv("annotations_ahb.csv")`
->
-
+#### Create Gene lists
 
 To perform the over-representation analysis, we need a list of background genes and a list of significant genes. For our background dataset we will use all genes tested for differential expression (all genes in our results table). For our significant gene list we will use genes with p-adjusted values less than 0.05 (we could include a fold change threshold too if we have many DE genes).
 
 ```r
 ## Create background dataset for hypergeometric testing using all genes tested for significance in the results                 
-allOE_genes <- as.character(res_ids$gene)
+allOE_genes <- as.character(res_ids$gene_id)
 
 ## Extract significant results
 sigOE <- dplyr::filter(res_ids, padj < 0.05)
 
-sigOE_genes <- as.character(sigOE$gene)
+sigOE_genes <- as.character(sigOE$gene_id)
 ```
+
+##### Using ClusterProfiler
 
 Now we can perform the GO enrichment analysis and save the results:
 
