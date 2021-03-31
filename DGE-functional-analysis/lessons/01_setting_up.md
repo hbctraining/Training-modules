@@ -48,7 +48,7 @@ For today's workshop, we will be using the output of differential gene expressio
 
 ### Reading in the data files
 
-Let's read in the differential expression results file we have downloaded and call the new object `res_tableOE` (OE is for overexpression):
+Let's open the empty R script file `Functional_analysis.R` in the project folder. Next, let's read in the differential expression results file we have downloaded and call the new object `res_tableOE` (OE is for overexpression):
 
 ```r
 ## Load libraries
@@ -65,28 +65,27 @@ res_tableOE_tb <- res_tableOE %>%
 
 ```
 
-### R package installation
+### Load the R libraries
 
-We now need to install the R packages we will using for this workshop (if not already installed): 
- 
+> If not already installed, we now need to install the R packages we will using for this workshop : 
+>  
+> ```r
+> # Install CRAN packages
+> install.packages(c("BiocManager", "devtools", "tidyverse"))
+> 
+> # Install Bioconductor packages
+> BiocManager::install(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview", "AnnotationDbi", "EnsDb.Hsapiens.v75"))
+> 
+> # Optional for the lesson:
+> BiocManager::install(c("gProfileR", "treemap", "SPIA", "stephenturner/annotables"))
+> ```
+> 
+> _**Note that these package names are case sensitive!**_
+
+Load the libraries (without any error messages) using `library()`:
+
 ```r
-# Install CRAN packages
-install.packages(c("BiocManager", "devtools", "tidyverse"))
-
-# Install Bioconductor packages
-BiocManager::install(c("clusterProfiler", "DOSE", "org.Hs.eg.db", "pathview", "AnnotationDbi", "EnsDb.Hsapiens.v75"))
-
-# Optional for the lesson:
-BiocManager::install(c("gProfileR", "treemap", "SPIA", "stephenturner/annotables"))
-```
-
-_**Note that these package names are case sensitive!**_
-
-
-To check that a package installed successfully, load the library (without any error messages) using `library()`:
-
-```r
-## Load libraries
+## Load libraries one at a time
 library(clusterProfiler)
 library(DOSE)
 library(org.Hs.eg.db)
@@ -101,5 +100,3 @@ library(treemap)
 library(SPIA)
 library(annotables)
 ```
-
-
