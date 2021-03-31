@@ -105,7 +105,7 @@ Download the annotations to your `data` folder by right-clicking [here](https://
 
 Run the following code to read the annotation file in:
 ```r
-annotations_ahb <- read.csv("annotations_ahb.csv")
+annotations_ahb <- read.csv("data/annotations_ahb.csv")
 ```
 
 To run clusterProfiler GO over-representation analysis, we will change our gene names into Ensembl IDs, since the tool works a bit easier with the Ensembl IDs. 
