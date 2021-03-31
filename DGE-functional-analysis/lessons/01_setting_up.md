@@ -67,7 +67,7 @@ res_tableOE_tb <- res_tableOE %>%
 
 ### Load the R libraries
 
-> If not already installed, we now need to install the R packages we will using for this workshop : 
+> If not already installed, you'll need to install the R packages we will using for this workshop : 
 >  
 > ```r
 > # Install CRAN packages
