@@ -208,6 +208,8 @@ cnetplot(ego,
          vertex.label.font=6)
 ```
 
+> **NOTE:** You might get an error saying `Error in loadNamespace(name) : there is no package called 'ggnewscale'`, in that case install it using `install.packages("ggnewscale") and try plotting the Cnetplot again.
+
 **Again, to save the figure,** click on the `Export` button in the RStudio `Plots` tab and `Save as PDF...`. Change the `PDF size` to `12 x 14` to give a figure of appropriate size for the text labels.
 
 <img src="../img/cnetplot1_salmon.png" width="800">
