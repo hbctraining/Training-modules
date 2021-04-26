@@ -19,9 +19,12 @@ Reproducible research is as important for computational analysis as it is at the
 
 ### Contents
 
-| Lessons            | Estimated Duration |
-|:------------------------|:----------|
-|[Introduction to RMarkdown and report generation with the knitr package](lesson.md)| 120 min |
+| Lessons            |  Estimated Duration  | 
+|:------------------------:|:------------------------------------------------:|
+| [RMarkdown Basics](https://hbctraining.github.io/reproducibility-tools/lessons/01-Rmarkdown_basics.html) | 45 min |
+| [RMarkdown Intermediate](https://hbctraining.github.io/reproducibility-tools/lessons/02-Rmarkdown_intermediate.html) | 45 min | 
+| [Practice with RMarkdown](https://hbctraining.github.io/reproducibility-tools/activities/Rmd_exercise4.html) | 30 min | 
+
 
 ### Setup and Installation Requirements
 
