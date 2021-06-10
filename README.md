@@ -20,7 +20,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 | Lessons        | Prerequisites |
 |:---------------|:-------------:|
-| [Introduction to R Practical]() | None |
+| [Introduction to R Practical](IntroR_practical_online_resource) | None |
 | [Publication Perfect: Part I]() | Beginner R or [Completion of the IntroR online resource]() |
 | [Publication Perfect: Part II]() | Beginner R or [Completion of the IntroR online resource]() |
 
