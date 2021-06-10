@@ -2,7 +2,7 @@
 
 | Audience | Computational skills required | Duration |
 :----------|:----------|:----------|
-| Biologists | [Beginner/Intermediate R](https://hbctraining.github.io/Intro-to-R/) | 3-hour workshop (~3 hours of trainer-led time) |
+| Biologists | [Completion of IntroR online resource](https://projects.iq.harvard.edu/hcatrresource/) | 3-hour workshop (~3 hours of trainer-led time) |
 
 
 ## Description
