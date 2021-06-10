@@ -1,5 +1,10 @@
 # Introduction to R - Practical workshop
 
+| Audience | Computational skills required | Duration |
+:----------|:----------|:----------|
+| Biologists | [Beginner/Intermediate R](https://hbctraining.github.io/Intro-to-R/) | 3-hour workshop (~3 hours of trainer-led time) |
+
+
 ## Description
 
 R is a simple programming environment that enables the effective handling of data, while providing excellent graphical support. RStudio is a tool that provides a user-friendly environment for working with R. This workshop requires prior completion of our [Introduction to R online resource](https://projects.iq.harvard.edu/hcatrresource/video-library), developed in collaboration with Harvard Catalyst. This Introduction to R practical workshop will address questions regarding the content of the resource and provide practical exercises to practice your newly developed R skills. 
