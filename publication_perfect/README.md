@@ -4,14 +4,6 @@
 :----------|:-------------|:----------|
 | General - researchers | Intermediate R | 1-session in-person or online workshop (~ 6 hours of trainer-led time)|
 
-## Learning Objectives
-
-* Determine the plot types best for visualizing a given dataset
-* Define the syntax for creating a plot using ggplot2
-* Generate plots for various data types using ggplot2
-* Explain how to create multiple plots using the same themes, styles, and colors
-* Discuss how to quickly alter figures to meet a different set of requirements (different journal or conference)
-
 ## Description
 
 One of the biggest challenges in disseminating your research is visualizing the results in a way that is meaningful, easy to interpret and aesthetically pleasing. Oftentimes, the extensive time dedicated to generating experimental results can rival the creation and optimization of their figures. With a point and click environment, you can spend hours or even days tweaking the settings to get the perfect figure - only to realize that you now have to repeat this process for the remaining data. This process can be especially challenging when needing to perform customizations or when pivoting your figures to adhere to guidelines from conferences, journals or other publishing platforms.
@@ -19,6 +11,14 @@ One of the biggest challenges in disseminating your research is visualizing the 
 In this tutorial, we introduce an efficient and reproducible workflow in R for creating publication-ready figures. We will introduce ggplot2 syntax to create custom plots, and we will explore how to determine the type of plots most appropriate for your data. We will explore how to ensure consistency between figures using custom theme and color selections, with an emphasis on colorblind-friendly palettes from the RColorBrewer and viridis packages. We will also examine methods for enhancing our plots with functions from the ggpubr and cowplot packages, especially regarding layout and labeling of figures. Finally, we will conclude with an activity to use what we have learned to reproduce a published figure.
 
 This is a hands-on tutorial in which the data and code will be distributed to participants who wish to follow along. All tutorial lessons and materials will be hosted on GitHub pages. Participants will be required to have R and RStudio downloaded and installed on their personal computers, in addition to any required R packages. This tutorial assumes an intermediate level of R knowledge.
+
+## Learning Objectives
+
+* Determine the plot types best for visualizing a given dataset
+* Define the syntax for creating a plot using ggplot2
+* Generate plots for various data types using ggplot2
+* Explain how to create multiple plots using the same themes, styles, and colors
+* Discuss how to quickly alter figures to meet a different set of requirements (different journal or conference)
 
 ## Schedule
 
