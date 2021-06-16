@@ -26,7 +26,7 @@ Download the most recent versions of R and RStudio:
 
 ## Pre-requisites:
 
-**Complete all video lessons (requires Harvard Key log in) and work through all the code in the Introduction to R online resource: https://projects.iq.harvard.edu/hcatrresource/**
+**Complete all video lessons (requires Harvard Key log in) and work through all the code in the Introduction to R online resource: [https://projects.iq.harvard.edu/hcatrresource/](https://projects.iq.harvard.edu/hcatrresource/)**
 
 
 #### Questions?
