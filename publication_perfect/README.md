@@ -46,7 +46,7 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 
 ### Dataset
 
-Download the R project and data for this workshop [here](https://github.com/hbctraining/Training-modules/blob/master/data/tidyverse.zip?raw=true). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
+Download the R project and data for this workshop here. Decompress and move the folder to the location on your computer where you would like to perform the analysis.
 
 ### Installation Requirements
 
