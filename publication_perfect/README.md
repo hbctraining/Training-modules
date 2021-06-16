@@ -12,14 +12,6 @@ In this tutorial, we introduce an efficient and reproducible workflow in R for c
 
 This is a hands-on tutorial in which the data and code will be distributed to participants who wish to follow along. All tutorial lessons and materials will be hosted on GitHub pages. Participants will be required to have R and RStudio downloaded and installed on their personal computers, in addition to any required R packages. This tutorial assumes an intermediate level of R knowledge.
 
-## Expected Goals
-
-* Learn how to determine the type of plots that are best for your data
-* Appreciate the power and flexibility of ggplot2 to create custom plots
-* Know how to use custom functions and palettes to create figures with consistent themes, styles and colors
-* Understand how to use the R packages cowplot and ggpubr to easily add layouts and labels often required in published figures 
-* Know how to save plots in a variety of formats
-
 ## Learning Objectives
 
 * Determine the plot types best for visualizing a given dataset
