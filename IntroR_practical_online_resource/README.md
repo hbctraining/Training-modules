@@ -38,8 +38,8 @@ Download the most recent versions of R and RStudio:
 | Time            |  Topic  | Instructor |
 |:------------------------:|:------------------------------------------------:|:--------:|
 | 13:00 - 13:10 | Introduction to workshop | Mary |
-| 13:10 - 14:00 | Zoom polls, Q&A, Discussion | All |
-| 14:00 - 15:45 | R practicals | All |
+| 13:10 - 14:00 | Zoom polls, Q&A, Discussion | Mary, Meeta |
+| 14:00 - 15:45 | R practicals | Mary, Meeta |
 | 15:45 - 16:00 | Wrap-up and exit poll | Mary |
 
 
