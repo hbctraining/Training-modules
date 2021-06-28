@@ -60,7 +60,7 @@ Write out the R code you would use to perform the following operations (question
    
 ## Creating figures with ggplot2
 
-![plot_image](../../../Intro-to-R-flipped/homework/plotcounts.png)
+![plot_image](https://hbctraining.github.io/Intro-to-R-flipped/homework/plotcounts.png)
 
 4. Create the same plot as above using ggplot2 using the provided metadata and counts datasets. The [metadata table](https://github.com/hbc/Intro-to-R-2-day/raw/master/data/Mov10_full_meta.txt) describes an experiment that you have setup for RNA-seq analysis, while the [associated count matrix](https://github.com/hbc/Intro-to-R-2-day/raw/master/data/normalized_counts.txt) gives the normalized counts for each sample for every gene. Download the count matrix and metadata using the links provided.
 
