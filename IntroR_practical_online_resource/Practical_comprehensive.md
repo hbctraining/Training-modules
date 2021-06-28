@@ -115,7 +115,7 @@ Write out the R code you would use to perform the following operations (question
 
 The **Tidyverse suite of integrated packages** are R packages designed to work together to make common data science operations more user friendly. The packages have functions for data wrangling, tidying, reading/writing, parsing, and visualizing, among others. 
 
-7. Explore some of the functionality for reading in and wrangling data with the `readr` and `dplyr` packages, which were installed when you installed the tidyverse suite in the previous section, by going through [this tutorial](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html).
+7. Using [this tutorial](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html), explore some of the functionality for reading in and wrangling data with the `readr` and `dplyr` packages, which were installed when you installed the tidyverse suite in the previous section.
 
 8. Turn the `meta` data frame from question #1 into a tibble called `meta_tb`. Be sure to turn the rownames into a column before changing it into a tibble.
 
