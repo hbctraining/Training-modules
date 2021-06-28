@@ -42,7 +42,7 @@ Download the most recent versions of R and RStudio:
 | 14:00 - 14:15 | [R practical: Functions](https://hbctraining.github.io/Intro-to-R-flipped/activities/Day2_activities.html) | Meeta |
 | 14:15 - 14:45 | [R practical: Wrangling](https://hbctraining.github.io/Intro-to-R-flipped/activities/Day3_activities.html) | Mary |
 | 14:45 - 15:15 | [R practical: Tidyverse](https://hbctraining.github.io/Intro-to-R-flipped/activities/Day4_activities.html) | Meeta |
-| 15:15 - 15:50 | [R practical: Comprehensive](https://hbctraining.github.io/Intro-to-R/homework/Intro_to_R_hw.html) | Mary |
+| 15:15 - 15:50 | [R practical: Comprehensive](https://hbctraining.github.io/Training_modules/Practical_comprehensive.html) | Mary |
 | 15:50 - 16:00 | Wrap-up and exit poll | Mary |
 
 *These materials have been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
