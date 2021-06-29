@@ -156,7 +156,7 @@ Write out the R code you would use to perform the following operations (question
 
      - Read in the metadata file ("Mov10_full_meta.txt") to a variable called `meta` using the `read.delim()` function. Be sure to specify the row names are in column 1 and the delimiter/column separator is a tab ("/t").
      
-       `meta <- read.delim("data/Mov10_full_meta.txt", sep="\t", row.names=1)`
+       `counts_meta <- read.delim("data/Mov10_full_meta.txt", sep="\t", row.names=1)`
 
      - Read in the count matrix file ("normalized_counts.txt") to a variable called `data` using the `read.delim()` function and specifying there are row names in column 1 and the tab delimiter.
        
@@ -181,12 +181,12 @@ Write out the R code you would use to perform the following operations (question
      
      ```
      
-     - Bind that vector to your metadata data frame (`meta`) and call the new data frame `df`. 
+     - Bind that vector to your metadata data frame (`counts_meta`) and call the new data frame `df`. 
       
      ```r
-     df <- cbind(meta, expression) #or
+     df <- cbind(counts_meta, expression) #or
      
-     df <- data.frame(meta, expression)
+     df <- data.frame(counts_meta, expression)
      ```
      
      - Create a ggplot by constructing the plot line by line:
@@ -282,4 +282,59 @@ Write out the R code you would use to perform the following operations (question
   library(biomaRt)
   ```
   
-  
+## Building on the basics
+
+The **Tidyverse suite of integrated packages** are R packages designed to work together to make common data science operations more user friendly. The packages have functions for data wrangling, tidying, reading/writing, parsing, and visualizing, among others. 
+
+8. Using [this tutorial](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html), explore some of the functionality for reading in and wrangling data with the `readr` and `dplyr` packages, which were installed when you installed the tidyverse suite in the previous section.
+
+9. Turn the `meta` data frame from question #1 of the "Creating vectors/factors and data frames" section above into a tibble called `meta_tb`. (_**Hint:** Be sure to turn the rownames into a column before changing it into a tibble._)
+
+  ```r
+  meta_tb <- meta %>%
+  rownames_to_column(var = "sample") %>%
+  as_tibble()
+  ```
+
+10. Using `meta_tb`, write out the R code you would use to rename the columns back to `sex`, `stage`, `treatment`, and `myc` using `rename()`. Save back (overwrite) to the `meta_tb` variable.
+
+  ```r
+  meta_tb <- meta_tb %>%
+  rename(sex = A,
+         stage = B,
+         treatment = C,
+         myc = D)
+  ```
+
+11. Using `meta_tb`, write out the R code you would use to perform the following operations (questions **DO NOT** build upon each other):
+
+     - use `filter()` to return all data for those samples receiving treatment `P`.
+     
+     ```r
+     meta_tb %>%
+     filter(treatment == "P")
+     ```
+     
+     - use `filter()`/`select()` to return only the `stage` and `treatment` columns for those samples with `myc` > 5000.
+     
+     ```r
+     meta_tb %>%
+     filter(myc > 5000) %>%
+     dplyr::select(stage, treatment)
+     ```
+     
+     - use `arrange()` to arrange the rows by `myc` in *descending* order.
+     
+     ```r
+     meta_tb %>%
+     arrange(desc(myc))
+     ```
+    
+     
+12. Write `meta_tb` to file using the `write_delim()` function.  
+
+     ```r
+     write_delim(meta_tb, 
+            file = "results/metadata_myc_by_stage_sex.csv", 
+            delim = ",")
+     ```
