@@ -17,6 +17,23 @@ R is a simple programming environment that enables the effective handling of dat
 * **Exporting data:** Generating new data tables for use outside of the R environment.
 * **Visualizing data:** Demonstrate the use of the ggplot2 package to create plots for easy data visualization.
 
+## Schedule
+
+| Time            |  Topic  | Instructor |
+|:------------------------:|:------------------------------------------------:|:--------:|
+| 13:00 - 13:10 | Introduction to workshop | Mary |
+| 13:10 - 14:00 | Zoom polls, Q&A, Discussion | Mary, Meeta |
+| 14:00 - 14:15 | [R practical: Functions](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/functions_practical.html) | Meeta |
+| 14:15 - 14:45 | [R practical: Wrangling](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/wrangling_practical.html) | Mary |
+| 14:45 - 15:15 | [R practical: Plotting](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/Practical_plotting.html) | Meeta |
+| 15:15 - 15:50 | [R practical: Comprehensive](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/Practical_comprehensive.html) | Mary |
+| 15:50 - 16:00 | Wrap-up and exit poll | Mary |
+
+
+### Dataset
+
+Download the R project and data for this workshop [here](). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
+
 ## Installations
 
 Download the most recent versions of R and RStudio:
@@ -33,16 +50,5 @@ Download the most recent versions of R and RStudio:
 * ***If you get stuck due to an error*** while runnning code in the lesson, [email us](mailto:hbctraining@hsph.harvard.edu) 
 * Post any **conceptual questions** that you would like to have **reviewed in class** [here](https://docs.google.com/forms/d/e/1FAIpQLSdjxRW0oEwK5eqLKczZ5UIlhYLyyb85UUZJDnLjJRnvFmaLDA/viewform?usp=pp_url).
 
-## Schedule
-
-| Time            |  Topic  | Instructor |
-|:------------------------:|:------------------------------------------------:|:--------:|
-| 13:00 - 13:10 | Introduction to workshop | Mary |
-| 13:10 - 14:00 | Zoom polls, Q&A, Discussion | Mary, Meeta |
-| 14:00 - 14:15 | [R practical: Functions](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/functions_practical.html) | Meeta |
-| 14:15 - 14:45 | [R practical: Wrangling](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/wrangling_practical.html) | Mary |
-| 14:45 - 15:15 | [R practical: Plotting](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/Practical_plotting.html) | Meeta |
-| 15:15 - 15:50 | [R practical: Comprehensive](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/Practical_comprehensive.html) | Mary |
-| 15:50 - 16:00 | Wrap-up and exit poll | Mary |
 
 *These materials have been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
