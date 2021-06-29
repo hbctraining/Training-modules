@@ -66,9 +66,9 @@ Write out the R code you would use to perform the following operations (question
 
      Follow the instructions below to build your plot. Write the code you used and provide the final image.
 
-     - Read in the metadata file using: `meta <- read.delim("Mov10_full_meta.txt", sep="\t", row.names=1)`
+     - Read in the metadata file ("Mov10_full_meta.txt") to a variable called `meta` using the `read.delim()` function. Be sure to specify the row names are in column 1 and the delimiter/column separator is a tab ("/t").
 
-     - Read in the count matrix file using: `data <- read.delim("normalized_counts.txt", sep="\t", row.names=1)`
+     - Read in the count matrix file ("normalized_counts.txt") to a variable called `data` using the `read.delim()` function and specifying there are row names in column 1 and the tab delimiter.
 
      - Create a vector called `expression` that contains the normalized count values from the row in normalized_counts that corresponds to the MOV10 gene.  
 
