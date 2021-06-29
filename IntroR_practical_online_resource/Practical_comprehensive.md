@@ -34,29 +34,39 @@
      - remove the `treatment` column from the dataset using `[]`:
      - remove samples 7, 8 and 9 from the dataset using `[]`:
      - keep only samples 1-6 using `[]`:
-     - add a column called `pre_treatment` to the beginning of the dataframe with the values T, F, F, F, T, T, F, T, F, F, T, T (Hint: use `data.frame` or `cbind()`): 
+     - output a data frame with a column called `pre_treatment` as the first column with the values T, F, F, F, T, T, F, T, F, F, T, T (Hint: use `data.frame` or `cbind()`): 
      - change the names of the columns to: "A", "B", "C", "D":
  
 ## Extracting components from lists
-3. Create a new list, `list_hw` with three components, the `glengths` vector, the dataframe `df`, and `number` value. Use this list to answer the questions below . `list_hw` has the following structure (NOTE: the components of this list are not currently named):
+3. Create a new list, `list_three` with three components, the `pre_treatment` vector, the dataframe `meta`, and vector `stage`. Use this list to answer the questions below . `list_three` has the following structure (NOTE: the components of this list are not currently named):
 
           [[1]]
-          [1]   4.6  3000.0 50000.0 
+           [1]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE
+          [12]  TRUE
 
           [[2]]
-                 species  glengths 
-            1    ecoli    4.6
-            2    human    3000.0
-            3    corn     50000.0
+                   A  B C    D
+          sample1  M  I A 2343
+          sample2  F II A  457
+          sample3  M II A 4593
+          sample4  F  I A 9035
+          sample5  M II B 3450
+          sample6  F II B 3524
+          sample7  M  I B  958
+          sample8  F II B 1053
+          sample9  M II P 8674
+          sample10 F  I P 3424
+          sample11 M II P  463
+          sample12 F II P 5105
 
           [[3]]
-          [1] 8
+           [1] "I"  "II" "II" "I"  "II" "II" "I"  "II" "II" "I"  "II" "II"
 
 Write out the R code you would use to perform the following operations (questions **DO NOT** build upon each other):
  - return the second component of the list:
- - return `50000.0` from the first component of the list:
- - return the value `human` from the second component: 
- - give the components of the list the following names: "genome_lengths", "genomes", "record":
+ - return `2343` from the second component of the list:
+ - return all "I" values from the third component: 
+ - give the components of the list the following names: "pre_treatment", "meta", "stage":
    
 ## Creating figures with ggplot2
 
@@ -66,15 +76,15 @@ Write out the R code you would use to perform the following operations (question
 
      Follow the instructions below to build your plot. Write the code you used and provide the final image.
 
-     - Read in the metadata file ("Mov10_full_meta.txt") to a variable called `meta` using the `read.delim()` function. Be sure to specify the row names are in column 1 and the delimiter/column separator is a tab ("/t").
+     - Read in the metadata file ("Mov10_full_meta.txt") to a variable called `counts_meta` using the `read.delim()` function. Be sure to specify the row names are in column 1 and the delimiter/column separator is a tab ("/t").
 
      - Read in the count matrix file ("normalized_counts.txt") to a variable called `data` using the `read.delim()` function and specifying there are row names in column 1 and the tab delimiter.
 
-     - Create a vector called `expression` that contains the normalized count values from the row in normalized_counts that corresponds to the MOV10 gene.  
+     - Create a variable called `expression` that contains the normalized count values from the row in normalized_counts that corresponds to the MOV10 gene.  
 
-     - Check the class of this expression vector. Then, convert it to a numeric vector using `as.numeric(expression)`
+     - Check the class of `expression`. Convert it to a numeric vector using `as.numeric(expression)`
 
-     - Bind that vector to your metadata data frame (`meta`) and call the new data frame `df`. 
+     - Bind that vector to your metadata data frame (`counts_meta`) and call the new data frame `df`. 
 
      - Create a ggplot by constructing the plot line by line:
      
@@ -120,11 +130,12 @@ The **Tidyverse suite of integrated packages** are R packages designed to work t
 
 9. Turn the `meta` data frame from question #1 of the "Creating vectors/factors and data frames" section above into a tibble called `meta_tb`. (_**Hint:** Be sure to turn the rownames into a column before changing it into a tibble._)
 
-10. Using `meta_tb`, write out the R code you would use to perform the following operations (questions **DO NOT** build upon each other):
+10. Using `meta_tb`, write out the R code you would use to rename the columns back to `sex`, `stage`, `treatment`, and `myc` using `rename()`. Save back (overwrite) to the `meta_tb` variable.
 
-     - use `rename()` to rename the columns back to `sex`, `stage`, `treatment`, and `myc`.
+11. Using `meta_tb`, write out the R code you would use to perform the following operations (questions **DO NOT** build upon each other):
+
      - use `filter()` to return all data for those samples receiving treatment `P`.
      - use `filter()`/`select()` to return only the `stage` and `treatment` columns for those samples with `myc` > 5000.
      - use `arrange()` to arrange the rows by `myc` in *descending* order.
      
-11. Write `meta_tb` to file using the `write_delim()` function.
+11. Write `meta_tb` to a comma separated value file using the `write_delim()` function.
