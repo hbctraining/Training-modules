@@ -162,15 +162,15 @@ Write out the R code you would use to perform the following operations (question
        
        `data <- read.delim("data/normalized_counts.txt", sep="\t", row.names=1)`
 
-     - Create a vector called `expression` that contains the normalized count values from the row in `data` that corresponds to the `MOV10` gene.  
+     - Create a variable called `expression` that contains the normalized count values from the row in `data` that corresponds to the `MOV10` gene.  
     
      ```r
      expression <- data["MOV10", ]
      ```     
 
-     - Check the class of this expression vector. `data.frame`
+     - Check the class of `expression`. `data.frame`
      
-     Then, will need to convert this to a numeric vector using `as.numeric(expression)`
+     Convert this to a numeric vector using `as.numeric(expression)`
       
      ```r
      class(expression)
@@ -263,3 +263,22 @@ Write out the R code you would use to perform the following operations (question
      ```r
      filter(meta, myc > 5000) %>% select(stage, treatment)
      ```
+
+## Packages and installations
+
+6. Install the `tidyverse` R package from the CRAN repository and load the library. 
+
+  ```r
+  install.packages("tidyverse")
+  library(tidyverse)
+  ```
+
+7. Install the `biomaRt` R package from the Bioconductor repository and load the library.
+
+  ```r
+  #install.packages("biocManager")
+  install("biomaRt")
+  library(biomaRt)
+  ```
+  
+  
