@@ -16,8 +16,10 @@
 3. We decide that our plot would look better with the animal names ordered from slowest to fastest. Using the `animals` data frame, reorder the animals on the x-axis to start with the slowest animal on the left-hand side of the plot to the fastest animal on the right-hand side of the plot by completing the following steps:
 
 	**a.** We want to turn the `animal_names` column of `animals` into a factor and specify the levels as from slowest to fastest. Note: this step is crucial, because ggplot2 uses `factor` as plotting order, instead of the order we observe in data frame. To do this, use the `reorder()` function to order the rows by speed from slowest to fastest.
-> In the `reorder()` function, the first argument is the categorical variable to be reordered (in our case, `animal_names`), and the second argument is the variable in which the ordering is based on (in our case, `speed`). The `reorder()` function is used together with `with` function here (check the example of `reorder()` function).
-> An alternative solution is to manually specify the levels, based on the speed. However, when the dataset is big, this method is not feasible.
+	
+	> Note1: In the `reorder()` function, the first argument is the categorical variable to be reordered (in our case, `animal_names`), and the second argument is the variable in which the ordering is based on (in our case, `speed`). The `reorder()` function is used together with `with` function here (check the example of `reorder()` function).
+
+	> Note2: An alternative solution is to manually specify the levels, based on the speed. However, when the dataset is big, this method is not feasible.
 	
 	**b.** Re-plot the scatterplot with the animal names in order from slowest to fastest.
 	
