@@ -4,7 +4,7 @@
 1. Add an additional column, called `animal_names`, in the `animals` data frame. This column stores the row names of the `animals` data frame. (NOTE: the original row names could stay as it is.)
 
 	<p align="center">
-  	<img src="https://hbctraining.github.io/Intro-to-R-flipped/img/animals_tb_unordered.png" width="400"/>
+  	<img src="https://hbctraining.github.io/Intro-to-R-flipped/img/animals_unordered.png" width="400"/>
 	</p>
 
 2. Use ggplot2 to plot the animal names (x-axis) versus the speed of the animal (y-axis) in `animals` using a scatterplot. Customize the plot to display as shown below.
