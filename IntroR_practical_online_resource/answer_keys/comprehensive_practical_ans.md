@@ -1,6 +1,6 @@
-# Homework answer key - Introduction to R practice
+# Comprehensive practical - answer key
 
-## Creating vectors/factors and dataframes
+## Creating vectors/factors and data frames
 
 1. We are performing RNA-Seq on cancer samples being treated with three different types of treatment (A, B, and P). You have 12 samples total, with 4 replicates per treatment. Write the R code you would use to construct your metadata table as described below.  
      - Create the vectors/factors for each column (Hint: you can type out each vector/factor, or if you want the process go faster try exploring the `rep()` function).
