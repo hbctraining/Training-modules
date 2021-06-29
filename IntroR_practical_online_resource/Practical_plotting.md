@@ -31,12 +31,4 @@
 	
 4. Save the plot as a PDF called `animals_by_speed_scatterplot.pdf ` to the `results` folder.
 
-5. Use the functions from the `dplyr` package to perform the following tasks:
 
-	**a.** Extract the rows of `animals_tb` tibble with color of gray or tan, order the rows based from slowest to fastest speed, and save to a variable called `animals_gray_tan`.
-	
-	<p align="center">
-  	<img src="https://hbctraining.github.io/Intro-to-R-flipped/img/animals_tb_ordered.png" width="300"/>
-	</p>	
-	
-	**b.** Save `animals_gray_tan` as a comma-separated value file called `animals_tb_ordered.csv` to the `results` folder.	
