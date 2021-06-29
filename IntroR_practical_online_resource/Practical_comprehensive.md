@@ -108,23 +108,23 @@ Write out the R code you would use to perform the following operations (question
 
 ## Packages and installations
 
-5. Install the `tidyverse` R package from the CRAN repository and load the library. 
+6. Install the `tidyverse` R package from the CRAN repository and load the library. 
 
-6. Install the `biomaRt` R package from the Bioconductor repository and load the library.
+7. Install the `biomaRt` R package from the Bioconductor repository and load the library.
 
 ## Building on the basics
 
 The **Tidyverse suite of integrated packages** are R packages designed to work together to make common data science operations more user friendly. The packages have functions for data wrangling, tidying, reading/writing, parsing, and visualizing, among others. 
 
-7. Using [this tutorial](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html), explore some of the functionality for reading in and wrangling data with the `readr` and `dplyr` packages, which were installed when you installed the tidyverse suite in the previous section.
+8. Using [this tutorial](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html), explore some of the functionality for reading in and wrangling data with the `readr` and `dplyr` packages, which were installed when you installed the tidyverse suite in the previous section.
 
-8. Turn the `meta` data frame from question #1 of the "Creating vectors/factors and data frames" section above into a tibble called `meta_tb`. (_**Hint:** Be sure to turn the rownames into a column before changing it into a tibble._)
+9. Turn the `meta` data frame from question #1 of the "Creating vectors/factors and data frames" section above into a tibble called `meta_tb`. (_**Hint:** Be sure to turn the rownames into a column before changing it into a tibble._)
 
-9. Using `meta_tb`, write out the R code you would use to perform the following operations (questions **DO NOT** build upon each other):
+10. Using `meta_tb`, write out the R code you would use to perform the following operations (questions **DO NOT** build upon each other):
 
      - use `rename()` to rename the columns back to `sex`, `stage`, `treatment`, and `myc`.
      - use `filter()` to return all data for those samples receiving treatment `P`.
      - use `filter()`/`select()` to return only the `stage` and `treatment` columns for those samples with `myc` > 5000.
      - use `arrange()` to arrange the rows by `myc` in *descending* order.
      
-10. Write `meta_tb` to file using the `write_delim()` function.
+11. Write `meta_tb` to file using the `write_delim()` function.
