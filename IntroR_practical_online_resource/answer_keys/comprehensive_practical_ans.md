@@ -276,7 +276,8 @@ Write out the R code you would use to perform the following operations (question
 7. Install the `biomaRt` R package from the Bioconductor repository and load the library.
 
   ```r
-  #install.packages("biocManager")
+  #install.packages("BiocManager")
+  library(BiocManager)
   install("biomaRt")
   library(biomaRt)
   ```
