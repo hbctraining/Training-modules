@@ -1,25 +1,25 @@
 # Plotting Practical
 
 
-1. Change the `animals` data frame to a tibble called `animals_tb`. Save the row names to a column called `animal_names` before turning it into a tibble.
+1. Add an additional column, called `animal_names`, in the `animals` data frame. This column stores the row names of the `animals` data frame. (NOTE: the original row names could stay as it is.)
 
 	<p align="center">
   	<img src="https://hbctraining.github.io/Intro-to-R-flipped/img/animals_tb_unordered.png" width="400"/>
 	</p>
 
-2. Use ggplot2 to plot the animal names (x-axis) versus the speed of the animal (y-axis) in `animals_tb` using a scatterplot. Customize the plot to display as shown below.
+2. Use ggplot2 to plot the animal names (x-axis) versus the speed of the animal (y-axis) in `animals` using a scatterplot. Customize the plot to display as shown below.
 
 	<p align="center">
   	<img src="https://hbctraining.github.io/Intro-to-R-flipped/img/animals_unordered_ggplot2.png" width="425"/>
 	</p>
 
-3. We decide that our plot would look better with the animal names ordered from slowest to fastest. Using the `animals_tb` data frame, reorder the animals on the x-axis to start with the slowest animal on the left-hand side of the plot to the fastest animal on the right-hand side of the plot by completing the following steps:
+3. We decide that our plot would look better with the animal names ordered from slowest to fastest. Using the `animals` data frame, reorder the animals on the x-axis to start with the slowest animal on the left-hand side of the plot to the fastest animal on the right-hand side of the plot by completing the following steps:
 
-	**a.** Use the `arrange()` function to order the rows by speed from slowest to fastest. Then use the `pull()` function to extract the `animal_names` column as a vector of character values. Save the new variable as `names_ordered_by_speed`.
-
-	**b.** Turn the `animal_names` column of `animals_tb` into a factor and specify the levels as `names_ordered_by_speed` from slowest to fastest (output in part a). Note: this step is crucial, because ggplot2 uses `factor` as plotting order, instead of the order we observe in data frame.
+	**a.** We want to turn the `animal_names` column of `animals` into a factor and specify the levels as from slowest to fastest. Note: this step is crucial, because ggplot2 uses `factor` as plotting order, instead of the order we observe in data frame. To do this, use the `reorder()` function to order the rows by speed from slowest to fastest.
+> In the `reorder()` function, the first argument is the categorical variable to be reordered (in our case, `animal_names`), and the second argument is the variable in which the ordering is based on (in our case, `speed`). The `reorder()` function is used together with `with` function here (check the example of `reorder()` function).
+> An alternative solution is to manually specify the levels, based on the speed. However, when the dataset is big, this method is not feasible.
 	
-	**c.** Re-plot the scatterplot with the animal names in order from slowest to fastest.
+	**b.** Re-plot the scatterplot with the animal names in order from slowest to fastest.
 	
 	<p align="center">
   	<img src="https://hbctraining.github.io/Intro-to-R-flipped/img/animals_ordered_ggplot2.png" width="425"/>
