@@ -96,7 +96,7 @@
      
  
 ## Extracting components from lists
-3. Create a new list, `list_hw` with three components, the `glengths` vector, the dataframe `df`, and `number` value. Use this list to answer the questions below . `list_hw` has the following structure (NOTE: the components of this list are not currently named):
+3. Create a new list, `list_three` with three components, the `pre_treatment` vector, the dataframe `meta`, and vector `stage`. Use this list to answer the questions below . `list_three` has the following structure (NOTE: the components of this list are not currently named):
 
           [[1]]
           [1]   4.6  3000.0 50000.0 
@@ -110,31 +110,39 @@
           [[3]]
           [1] 8
 
+  ```r
+  list_three <- list(pre_treatment, meta, stage)
+  ```
+  
 Write out the R code you would use to perform the following operations (questions **DO NOT** build upon each other):
  - return the second component of the list:
  
  ```r
- list_hw[[2]]
+ list_three[[2]]
  ```
  
- - return `50000.0` from the first component of the list:
+ - return `2343` from the second component of the list:
   
  ```r
- list_hw[[1]][3]
+ list_three[[2]][1,4]
+  #or
+ comp2 <- list_three[[2]]
+ comp2[1,4]
  ```
  
- - return the value `human` from the second component: 
+ - return all "I" values from the third component: 
   
  ```r
- list_hw[[2]][2, 1]
+ list_three[[3]][c(1,4,7,10)]
+  #or 
+ comp3 <- list_three[[3]]
+ comp3[c(1,4,7,10)]
  ```
  
- - give the components of the list the following names: "genome_lengths", "genomes", "record":
+ - give the components of the list the following names: "pre_treatment", "meta", "stage":
   
  ```r
- names(list_hw) <- c("genome_lengths","genomes","record")
- 
- list_hw$record
+ names(list_three) <- c("pre_treatment", "meta", "stage")
  ```
  
    
