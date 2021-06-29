@@ -40,7 +40,7 @@ Download the most recent versions of R and RStudio:
 | 13:00 - 13:10 | Introduction to workshop | Mary |
 | 13:10 - 14:00 | Zoom polls, Q&A, Discussion | Mary, Meeta |
 | 14:00 - 14:15 | [R practical: Functions](https://hbctraining.github.io/Intro-to-R-flipped/activities/Day2_activities.html) | Meeta |
-| 14:15 - 14:45 | [R practical: Wrangling](https://hbctraining.github.io/Intro-to-R-flipped/activities/Day3_activities.html) | Mary |
+| 14:15 - 14:45 | [R practical: Wrangling](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/wrangling_practical.html) | Mary |
 | 14:45 - 15:15 | [R practical: Plotting](https://hbctraining.github.io/Intro-to-R-flipped/activities/Day4_activities.html) | Meeta |
 | 15:15 - 15:50 | [R practical: Comprehensive](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/Practical_comprehensive.html) | Mary |
 | 15:50 - 16:00 | Wrap-up and exit poll | Mary |
