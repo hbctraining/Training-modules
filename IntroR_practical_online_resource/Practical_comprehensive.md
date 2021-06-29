@@ -1,6 +1,6 @@
 # Introduction to R practice
 
-## Creating vectors/factors and dataframes
+## Creating vectors/factors and data frames
 
 1. We are performing RNA-Seq on cancer samples being treated with three different types of treatment (A, B, and P). You have 12 samples total, with 4 replicates per treatment. Write the R code you would use to construct your metadata table as described below.  
      - Create the vectors/factors for each column (Hint: you can type out each vector/factor, or if you want the process go faster try exploring the `rep()` function).
@@ -104,6 +104,7 @@ Write out the R code you would use to perform the following operations (question
                
                - Rotate the x-axis text to 45 degrees using `axis.text.x=element_text(angle=45, hjust=1)`
 
+5. Save the plot as a PDF to the figures directory.
 
 ## Packages and installations
 
@@ -117,11 +118,13 @@ The **Tidyverse suite of integrated packages** are R packages designed to work t
 
 7. Using [this tutorial](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html), explore some of the functionality for reading in and wrangling data with the `readr` and `dplyr` packages, which were installed when you installed the tidyverse suite in the previous section.
 
-8. Turn the `meta` data frame from question #1 into a tibble called `meta_tb`. Be sure to turn the rownames into a column before changing it into a tibble.
+8. Turn the `meta` data frame from question #1 of the "Creating vectors/factors and data frames" section above into a tibble called `meta_tb`. (_**Hint:** Be sure to turn the rownames into a column before changing it into a tibble._)
 
 9. Using `meta_tb`, write out the R code you would use to perform the following operations (questions **DO NOT** build upon each other):
 
+     - use `rename()` to rename the columns back to `sex`, `stage`, `treatment`, and `myc`.
      - use `filter()` to return all data for those samples receiving treatment `P`.
      - use `filter()`/`select()` to return only the `stage` and `treatment` columns for those samples with `myc` > 5000.
      - use `arrange()` to arrange the rows by `myc` in *descending* order.
-     - use `rename()` to rename the `stage` column to be `cancer_stage`.
+     
+10. Write `meta_tb` to file using the `write_delim()` function.
