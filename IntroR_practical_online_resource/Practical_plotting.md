@@ -27,7 +27,7 @@
   	<img src="https://hbctraining.github.io/Intro-to-R-flipped/img/animals_ordered_ggplot2.png" width="425"/>
 	</p>
 	
-> Note: If you are interested in exploring other ways to reorder a variable in ggplot2, refer to this [post](https://www.r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html).
+	> Note: If you are interested in exploring other ways to reorder a variable in ggplot2, refer to this [post](https://www.r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html).
 	
 4. Save the plot as a PDF called `animals_by_speed_scatterplot.pdf ` to the `results` folder.
 
