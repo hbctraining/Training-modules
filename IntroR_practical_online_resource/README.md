@@ -30,7 +30,7 @@ R is a simple programming environment that enables the effective handling of dat
 | 15:50 - 16:00 | Wrap-up and exit poll | Mary |
 
 
-### Dataset
+## Dataset
 
 Download the R project and data for this workshop [here](https://github.com/hbctraining/Training-modules/raw/master/IntroR_practical_online_resource/data/IntroR_practical.zip). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
 
