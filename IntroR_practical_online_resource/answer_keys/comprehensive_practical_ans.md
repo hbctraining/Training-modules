@@ -6,7 +6,12 @@
      - Create the vectors/factors for each column (Hint: you can type out each vector/factor, or if you want the process go faster try exploring the `rep()` function).
      
       ```r
-      sex <- c("M", "F",...) # saved vectors/factors as variables and used c() or rep() function to create
+      sex <- c("M", "F",...) # saved vectors/factors as variables and used c() or 
+      sex <- rep(c("M", "F"), times = 6)
+      stage <- rep(c("I", "II", "II"), times = 4)
+      treatment <- rep(c("A", "B", "P"), each = 4)
+      myc <- c(2343,457,4593,9035,3450,3524,958,1053,8674,3424,463,5105)
+
       ```
       
      - Put them together into a dataframe called `meta`.
@@ -19,7 +24,7 @@
      ```r
      rownames(meta) <- c("sample1", "sample2",... , "sample12") # or use:
      
-     rownames(meta) <- paste("sample12", 1:12, sep="")
+     rownames(meta) <- paste("sample", 1:12, sep="")
      ```
      
      Your finished metadata table should have information for the variables `sex`, `stage`, `treatment`, and `myc` levels: 
@@ -56,18 +61,7 @@
      meta[c(5,7,9,10), 3]
      ```
      
-     - use `filter()` to return all data for those samples receiving treatment `P`:
-          
-     ```r
-     filter(meta, treatment == "P")
-     ```
-     
-     - use `filter()`/`select()` to return only the `stage` and `treatment` data for those samples with `myc` > 5000:
-          
-     ```r
-     filter(meta, myc > 5000) %>% select(stage, treatment)
-     ```
-     
+         
      - remove the `treatment` column from the dataset using `[]`:
           
      ```r
@@ -83,10 +77,10 @@
      - keep only samples 1-6 using `[]`:
           
      ```r
-     meta [1:6, ]
+     meta[1:6, ]
      ```
      
-     - add a column called `pre_treatment` to the beginning of the dataframe with the values T, F, F, F, T, T, F, T, F, F, T, T (Hint: use `cbind()`): 
+     - output a data frame with a column called `pre_treatment` as the first column with the values T, F, F, F, T, T, F, T, F, F, T, T (Hint: use `data.frame` or `cbind()`): 
           
      ```r
      pre_treatment <- c(T, F, F, F, T, T, F, T, F, F, T, T)
@@ -152,9 +146,13 @@ Write out the R code you would use to perform the following operations (question
 
      Follow the instructions below to build your plot. Write the code you used and provide the final image.
 
-     - Read in the metadata file using: `meta <- read.delim("Mov10_full_meta.txt", sep="\t", row.names=1)`
+     - Read in the metadata file ("Mov10_full_meta.txt") to a variable called `meta` using the `read.delim()` function. Be sure to specify the row names are in column 1 and the delimiter/column separator is a tab ("/t").
+     
+       `meta <- read.delim("Mov10_full_meta.txt", sep="\t", row.names=1)`
 
-     - Read in the count matrix file using: `data <- read.delim("normalized_counts.txt", sep="\t", row.names=1)`
+     - Read in the count matrix file ("normalized_counts.txt") to a variable called `data` using the `read.delim()` function and specifying there are row names in column 1 and the tab delimiter.
+       
+       `data <- read.delim("normalized_counts.txt", sep="\t", row.names=1)`
 
      - Create a vector called `expression` that contains the normalized count values from the row in `data` that corresponds to the `MOV10` gene.  
     
@@ -227,3 +225,33 @@ Write out the R code you would use to perform the following operations (question
 
      ![plot_image](https://hbctraining.github.io/Intro-to-R-flipped/homework/MOV10_homework_ggplot.png) 
   
+  5. Save the plot as a PDF to the figures directory. 
+
+     ```r
+     pdf("figures/name_of_plot.pdf")
+     
+     ggplot(df) +
+       geom_jitter(aes(x= sampletype, y= expression, color = sampletype)) +
+       theme_bw() +
+       ggtitle("Expression of MOV10") +
+       xlab(NULL) +
+       ylab("Normalized counts") +
+       theme(legend.position = "none",
+             plot.title=element_text(hjust=0.5, size=rel(1.5)),
+             axis.text=element_text(size=rel(1.25)),
+             axis.title=element_text(size=rel(1.5)),
+             axis.text.x=element_text(angle=45, hjust=1))
+     
+     dev.off()
+
+ - use `filter()` to return all data for those samples receiving treatment `P`:
+          
+     ```r
+     filter(meta, treatment == "P")
+     ```
+     
+     - use `filter()`/`select()` to return only the `stage` and `treatment` data for those samples with `myc` > 5000:
+          
+     ```r
+     filter(meta, myc > 5000) %>% select(stage, treatment)
+     ```
