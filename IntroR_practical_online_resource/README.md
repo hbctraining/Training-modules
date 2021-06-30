@@ -21,7 +21,7 @@ R is a simple programming environment that enables the effective handling of dat
 
 | Time            |  Topic  | Instructor |
 |:------------------------:|:------------------------------------------------:|:--------:|
-| 13:00 - 13:10 | Introduction to workshop | Mary |
+| 13:00 - 13:10 | [Introduction to workshop](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2021.pdf) | Mary |
 | 13:10 - 14:00 | Zoom polls, Q&A, Discussion | Mary, Meeta |
 | 14:00 - 14:15 | [R practical: Functions](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/functions_practical.html) | Meeta |
 | 14:15 - 14:45 | [R practical: Wrangling](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/wrangling_practical.html) | Mary |
