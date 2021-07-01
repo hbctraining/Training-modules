@@ -17,9 +17,9 @@ R is a simple programming environment that enables the effective handling of dat
 * **Exporting data:** Generating new data tables for use outside of the R environment.
 * **Visualizing data:** Demonstrate the use of the ggplot2 package to create plots for easy data visualization.
 
-## Dataset
+## Pre-requisites:
 
-Download the R project and data for this workshop [here](https://github.com/hbctraining/Training-modules/raw/master/IntroR_practical_online_resource/data/IntroR_practical.zip). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
+**Complete all video lessons (requires Harvard Key log in) and work through all the code in the Introduction to R online resource: [https://projects.iq.harvard.edu/hcatrresource/](https://projects.iq.harvard.edu/hcatrresource/)**
 
 ## Installations
 
@@ -28,10 +28,9 @@ Download the most recent versions of R and RStudio:
  - [R](https://cran.r-project.org/) 
  - [RStudio](https://www.rstudio.com/products/rstudio/download/#download)
 
-## Pre-requisites:
+## Dataset
 
-**Complete all video lessons (requires Harvard Key log in) and work through all the code in the Introduction to R online resource: [https://projects.iq.harvard.edu/hcatrresource/](https://projects.iq.harvard.edu/hcatrresource/)**
-
+Download the R project and data for this workshop [here](https://github.com/hbctraining/Training-modules/raw/master/IntroR_practical_online_resource/data/IntroR_practical.zip). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
 
 ## Schedule
 
