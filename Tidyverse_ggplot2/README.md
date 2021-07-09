@@ -21,7 +21,7 @@ This repository has teaching materials for a **3 hour**, hands-on workshop led a
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Set up](lessons/set_up.md)
+|[Set up](lessons/01_set_up.md)
 |[Data wrangling with Tidyverse](https://hbctraining.github.io/Intro-to-R-flipped/lessons/15_tidyverse.html) | 75 min |
 |[Data visualization with ggplot2](lessons/03_ggplot2.md) | 90 min |
 
