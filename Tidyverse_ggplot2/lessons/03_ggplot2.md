@@ -454,7 +454,7 @@ Based on the number of genes associated with each GO term ("term.size" column) w
 	
 	sizes[which(x > 3000)] <- "large"
 	sizes[which(x <= 3000 & x > 500 )] <- "medium"
-	sizes[which(x < 500)] <- "small"
+	sizes[which(x <= 500)] <- "small"
 	bp_oe$term_cat <- factor(sizes, levels = c("small","medium","large"))
 	```
 
