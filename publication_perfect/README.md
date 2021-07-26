@@ -29,7 +29,7 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 | 13:00 - 13:10	| Workshop Introduction | Mary |
 | 13:10 - 13:30	| Introduction to dataset and considerations for choosing appropriate plotting methods | Radhika |
 | 13:30 - 14:15 | Visualization package ggplot2 basic syntax and plot types | Radhika |
-| 14:15 - 14:30	| Break
+| 14:15 - 14:30	| Break | |
 | 14:30 - 16:00	| Creating consistent plots using scales and color palettes | Mary |
 
 
