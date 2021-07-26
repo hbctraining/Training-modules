@@ -39,9 +39,8 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 :-----------------------|:-------------|:----------|
 | 13:00 - 13:30	| Workshop overview
 | 13:30 - 14:15	| Aligning and labeling plots with cowplot
-Adding statistical comparisons and ordering of plots with ggpubr
 | 14:15 - 14:25	| Break
-| 14:25 - 15:10	| Re-creating published figures
+| 14:25 - 15:10	| Adding statistical comparisons and ordering of plots with ggpubr
 | 15:10 - 15:50	| Adapting code to adhere to transition to figure requirements for journal
 | 15:50 - 16:00	| Wrap-up and exit survey 
 
