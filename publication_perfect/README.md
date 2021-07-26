@@ -26,19 +26,20 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 
 | Time | Topic | Instructor |
 :-----------------------|:-------------|:----------|
-| 13:00 - 13:10	| Workshop Introduction | 
-| 13:10 - 13:30	| Introduction to dataset and considerations for choosing appropriate plotting methods 
-| 13:30 - 14:15 | Visualization package ggplot2 basic syntax and plot types
+| 13:00 - 13:10	| Workshop Introduction | Mary |
+| 13:10 - 13:30	| Introduction to dataset and considerations for choosing appropriate plotting methods | Radhika |
+| 13:30 - 14:15 | Visualization package ggplot2 basic syntax and plot types | Radhika |
 | 14:15 - 14:30	| Break
-| 14:30 - 15:30	| Creating consistent plots using themes and color palettes
-| 15:30 - 16:00	| Aligning and labeling plots with cowplot
+| 14:30 - 16:00	| Creating consistent plots using scales and color palettes | Mary |
+
 
 ### Part II
 
 | Time | Topic | Instructor |
 :-----------------------|:-------------|:----------|
 | 13:00 - 13:30	| Workshop overview
-| 13:30 - 14:15	| Adding statistical comparisons and ordering of plots with ggpubr
+| 13:30 - 14:15	| Aligning and labeling plots with cowplot
+Adding statistical comparisons and ordering of plots with ggpubr
 | 14:15 - 14:25	| Break
 | 14:25 - 15:10	| Re-creating published figures
 | 15:10 - 15:50	| Adapting code to adhere to transition to figure requirements for journal
