@@ -27,12 +27,12 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 | Time | Topic | Instructor |
 :-----------------------|:-------------|:----------|
 | 13:00 - 13:10	| Workshop Introduction | Mary |
-| 13:10 - 13:30	| Introduction to dataset and considerations for choosing appropriate plotting methods | Radhika |
-| 13:30 - 14:15 | Visualization package ggplot2 basic syntax and plot types | Radhika |
+| 13:10 - 13:30	| [Introduction to dataset and considerations for choosing appropriate plotting methods](https://github.com/hbctraining/publication_perfect/blob/main/lessons/01_intro_to_dataset.md) | Radhika |
+| 13:30 - 14:15 | [Visualization package ggplot2 basic syntax and plot types](https://github.com/hbctraining/publication_perfect/blob/main/lessons/02_ggplot2_syntax.md) | Radhika |
 | 14:15 - 14:20	| Break | |
-| 14:20 - 14:45	| Consistent plots with custom themes | Mary |
-| 14:45 - 15:15	| Application of plotting basics | Radhika |
-| 15:15 - 16:00	| Customization of scales and color palettes | Mary |
+| 14:20 - 14:45	| [Consistent plots with custom themes](https://github.com/hbctraining/publication_perfect/blob/main/lessons/03_custom_themes.md) | Mary |
+| 14:45 - 15:15	| [Application of plotting basics](https://github.com/hbctraining/publication_perfect/blob/main/lessons/04_boxplot_application_of_basic_plotting.md) | Radhika |
+| 15:15 - 16:00	| [Customization of scales and color palettes](https://github.com/hbctraining/publication_perfect/blob/main/lessons/05_custom_plot_scales_colors.md) | Mary |
 
 ### Part II
 
