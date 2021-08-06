@@ -40,6 +40,6 @@ Next, let's set up our working directory and bring in data:
 
 ***
 
-[Click here to go to next lesson](intro_tidyverse.md)
+[Click here to go to next lesson](https://hbctraining.github.io/Intro-to-R-flipped/lessons/15_tidyverse.html)
 
 ***
