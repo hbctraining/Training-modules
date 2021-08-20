@@ -38,9 +38,10 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 
 | Time | Topic | Instructor |
 :-----------------------|:-------------|:----------|
-| 13:00 - 13:30	| Workshop overview
-| 13:30 - 14:15	| Aligning and labeling plots with cowplot
-| 14:15 - 14:25	| Break
+| 13:00 - 13:10	| Workshop overview
+| 13:10 - 13:35	| [Customization of scales and color palettes](https://hbctraining.github.io/publication_perfect/lessons/05_custom_plot_scales_colors.html) 
+| 13:35 - 14:20	| Aligning and labeling plots with cowplot
+| 14:20 - 14:25	| Break
 | 14:25 - 15:10	| Adding statistical comparisons and ordering of plots with ggpubr
 | 15:10 - 15:50	| Adapting code to adhere to transition to figure requirements for journal
 | 15:50 - 16:00	| Wrap-up and exit survey 
