@@ -32,7 +32,6 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 | 14:15 - 14:20	| Break | |
 | 14:20 - 14:45	| [Consistent plots with custom themes](https://hbctraining.github.io/publication_perfect/lessons/03_custom_themes.html) | Mary |
 | 14:45 - 15:15	| [Application of plotting basics](https://hbctraining.github.io/publication_perfect/lessons/04_boxplot_application_of_basic_plotting.html) | Radhika |
-| 15:15 - 16:00	| [Customization of scales and color palettes](https://hbctraining.github.io/publication_perfect/lessons/05_custom_plot_scales_colors.html) | Mary |
 
 ### Part II
 
