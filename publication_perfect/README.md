@@ -47,7 +47,7 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 
 ### Dataset
 
-Download the R project and data for this workshop [here](https://www.dropbox.com/s/hu5i8ueziuhmwg6/publication_perfect.zip?dl=1). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
+Download the R project and data for this workshop [here](https://github.com/hbctraining/Training-modules/raw/master/data/publication_perfect.zip). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
 
 ### Installation Requirements
 
