@@ -53,7 +53,7 @@ Download the R project and data for this workshop [here](https://www.dropbox.com
 
 Download the most recent versions of R and RStudio for your laptop:
 
- - [R](http://lib.stat.cmu.edu/R/CRAN/) (Version 3.4 or higher)
+ - [R](http://lib.stat.cmu.edu/R/CRAN/) (Version 4.0 or higher)
  - [RStudio](https://www.rstudio.com/products/rstudio/download/#download)
  
 Install the required R packages by running the following code in RStudio:
@@ -71,6 +71,7 @@ install.packages("pheatmap")
 install.packages("png")
 install.packages("ggrepel")
 install.packages("ggplotify")
+install.packages("magick")
 ```
 
 Load the libraries to make sure the packages installed properly:
@@ -88,7 +89,7 @@ library(pheatmap)
 library(png)
 library(ggrepel)
 library(ggplotify)
-
+library(magick)
 ```
 
 *These materials have been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
