@@ -38,14 +38,14 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 | Time | Topic | Instructor |
 :-----------------------|:-------------|:----------|
 | 13:00 - 13:10	| Workshop overview | Mary |
-| 13:10 - 13:35	| [Customization of scales and color palettes](https://hbctraining.github.io/publication_perfect/lessons/05_custom_plot_scales_colors.html) | Mary |
-| 13:35 - 14:20	| Aligning and labeling plots with cowplot | Radhika |
-| 14:20 - 14:25	| Break
-| 14:25 - 15:10	| Adding statistical comparisons and ordering of plots with ggpubr | Jihe |
-|  - 	| Incorporate external packages to extend plotting functionality | Meeta |
-| 15:10 - 15:50	| Final figure | Mary |
-| 15:10 - 15:50	| Adapting code to adhere to transition to figure requirements for journal | Mary |
-| 15:50 - 16:00	| Wrap-up and exit survey | Mary |
+| 13:10 - 14:00	| [Customization of scales and color palettes](https://hbctraining.github.io/publication_perfect/lessons/05_custom_plot_scales_colors.html) | Mary |
+| 14:00 - 14:30	| Aligning and labeling plots with cowplot | Radhika |
+| 14:30 - 14:35	| Break
+| 14:35 - 15:15	| Adding annotations and including statistical comparisons with ggpubr | Jihe |
+| 15:15 - 15:45	| Incorporate external packages to extend plotting functionality | Meeta |
+| 15:45 - 15:50	| Final figure | Mary |
+| 15:50 - 15:55	| Adapting code to adhere to transition to figure requirements for journal | Mary |
+| 15:55 - 16:00	| Wrap-up and exit survey | Mary |
 
 ### Dataset
 
