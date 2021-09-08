@@ -49,7 +49,10 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 
 ### Dataset
 
-Download the R project and data for this workshop [here](https://github.com/hbctraining/Training-modules/raw/master/data/publication_perfect.zip). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
+Download the R project and data for this workshop:
+
+- In preparation for Part I: [Part I R data and project](https://github.com/hbctraining/Training-modules/raw/master/data/publication_perfect.zip). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
+- In preparation for Part II: [Part II R data and project]()
 
 ### Installation Requirements
 
