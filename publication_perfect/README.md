@@ -43,6 +43,7 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 | 14:20 - 14:25	| Break
 | 14:25 - 15:10	| Adding statistical comparisons and ordering of plots with ggpubr | Jihe |
 |  - 	| Incorporate external packages to extend plotting functionality | Meeta |
+| 15:10 - 15:50	| Final figure | Mary |
 | 15:10 - 15:50	| Adapting code to adhere to transition to figure requirements for journal | Mary |
 | 15:50 - 16:00	| Wrap-up and exit survey | Mary |
 
