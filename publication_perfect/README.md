@@ -37,7 +37,7 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 
 | Time | Topic | Instructor |
 :-----------------------|:-------------|:----------|
-| 13:00 - 13:10	| Workshop overview | Mary |
+| 13:00 - 13:10	| [Workshop Introduction](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2021.pdf) | Mary |
 | 13:10 - 14:00	| [Customization of scales and color palettes](https://hbctraining.github.io/publication_perfect/lessons/05_custom_plot_scales_colors.html) | Mary |
 | 14:00 - 14:30	| [Aligning and labeling plots with cowplot](https://hbctraining.github.io/publication_perfect/lessons/06_aligning_plots_using_cowplot.html) | Radhika |
 | 14:30 - 14:35	| Break
