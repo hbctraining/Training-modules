@@ -78,10 +78,9 @@ res_tableOE <- read.csv(file = "data/Mov10oe_DE_results.csv", row.names = 1)
 To perform plotting, we need to install the R packages we will using from the CRAN repository (if not already installed): 
 
 ```r
-install.packages(c("ggplot2", "RColorBrewer", "pheatmap", "ggrepel", "reshape"))
+install.packages(c("ggplot2", "RColorBrewer", "pheatmap", "ggrepel", "reshape", "BiocManager"))
 
-source("https://bioconductor.org/biocLite.R")
-biocLite("DESeq2")
+BiocManager::install("DESeq2")
 ```
 
 _**Note that these package names are case sensitive!**_
