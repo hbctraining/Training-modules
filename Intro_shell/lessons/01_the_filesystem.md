@@ -34,35 +34,40 @@ Once you have opened the shell, you should see the command prompt ending with `$
 
 ### Downloading data
 
-We will be exploring the capabilities of the shell by working with some RNA-Seq data. We need to **download the data to our current folder** using the link below. To know what folder we are currently inside, we can use the 'print working directory' command:
+We will be exploring the capabilities of the shell by working with some RNA-Seq data. We need to **download the data to our current folder** using the link below. To do so, follow the step-by-step instructions below.
+
+**1. Find out what folder we are currently inside**. To do this, we can use the 'print working directory' command:
 
 ```bash
 $ pwd
 ```
 
-On a **Mac** your current folder should be something starting with `/Users/`, like `/Users/marypiper/`.
+> On a **Mac** your current folder should be something starting with `/Users/`, like `/Users/marypiper/`.
+> 
+> On a **Windows** machine your current folder should be something starting with `C:/Users/marypiper`. To find this in your File explorer try clicking on PC and navigating to that path.
 
-On a **Windows** machine your current folder should be something starting with `C:/Users/marypiper`. To find this in your File explorer try clicking on PC and navigating to that path.
+_Once you have identified which folder you are in, this is where we will be downloading your data._
 
-Once you have identified which folder you are in, this is where we will be downloading your data. Right click on the link below, and be sure to **Save link as**. You will be prompted to choose a folder within a Finder/File Explorer window. Navigate to the directory that was listed when running `pwd`.
+**2. Right click on the link below, and be sure to "Save link as..."**. You will be prompted to choose a folder within a Finder/File Explorer window. Navigate to the directory that was listed when running `pwd`.
 
-**Download RNA-Seq data to your working directory:** right-click [here](https://github.com/hbctraining/Training-modules/blob/master/Intro_shell/data/unix_lesson.zip?raw=true) and choose **Save link as**.
+* Download data by [right-clicking here](https://github.com/hbctraining/Training-modules/blob/master/Intro_shell/data/unix_lesson.zip?raw=true) and choose **Save link as**.
 
-If you have downloaded the file to the correct location, type the 'list' command:
+**3.** Once you have downloaded the file to the correct location, go back to your **terminal window and type the 'list' command**:
 
 ```bash
 $ ls
 ```
+_You should see `unix_lesson.zip` as part of the output to the screen._
 
-You should see `unix_lesson.zip` as part of the output to the screen.
-
-Finally, to decompress the folder, we can use the `unzip` command:
+**4.** Finally, to **decompress the folder**, we can use the `unzip` command:
 
 ```bash
 $ unzip unix_lesson.zip 
 ```
 
-You should see output stating the contents of the folder are being decompressed or inflated; this is good. Now when you run the `ls` command again you should see a folder called `unix_lesson`.
+_You should see output stating the contents of the folder are being decompressed or inflated; this is good._ 
+
+**5.** Now when you **run the `ls` command** again you should see a folder called `unix_lesson`.
 
 ```bash
 $ ls
