@@ -16,36 +16,40 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 > Workshop introduction slides are available [here](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2021.pdf).
 
-### Current Workshops ([click here for the schedule](http://bioinformatics.sph.harvard.edu/training#hbcs-monthly-short-workshops))
+### R-based workshops:
 
-| Lessons        | Prerequisites |
-|:---------------|:-------------:|
-| [Introduction to R Practical](IntroR_practical_online_resource) | None |
-| [Publication Perfect: Part I](publication_perfect) | Beginner R or [Completion of the IntroR online resource](https://projects.iq.harvard.edu/hcatrresource/) |
-| [Publication Perfect: Part II](publication_perfect) | [Publication Perfect: Part I](publication_perfect) |
-
-
-### All topics
-
-| Lessons        | Prerequisites |
+| Topic and Link(s) to lessons | Prerequisites |
 |:---------------|:-------------:|
 | [Introduction to R](IntroR) | None |
-| [Introduction to the tidyverse data science packages and visualizations with ggplot2](Tidyverse_ggplot2) | Beginner R or [IntroR workshop](IntroR) |
-| [Gene annotations and functional analysis of gene lists](DGE-functional-analysis) | Beginner R or [IntroR workshop](IntroR) |
-| [Generating research analysis reports with RMarkdown](Rmarkdown/) | Beginner R or [IntroR workshop](IntroR) |
-| [Interactive Data Visualization with Shiny in R (with Ista Zahn from the Harvard Business School)](https://github.com/izahn/shiny_workshop) | Beginner R or [IntroR workshop](IntroR) |
+| [Visualization in R](Visualization_in_R) | Beginner R or [Intro to R workshop](IntroR) |
+| [Introduction to R Practical](IntroR_practical_online_resource) | Beginner R or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) |
+| [Gene annotations and functional analysis of gene lists](DGE-functional-analysis) | Beginner R or [Intro to R workshop](IntroR) |
+| [Generating research analysis reports with RMarkdown](Rmarkdown) | Beginner R or [Intro to R workshop](IntroR) |
+| [Interactive Data Visualization with Shiny in R (with Ista Zahn from the Harvard Business School)](https://github.com/izahn/shiny_workshop) | Beginner R or [Intro to R workshop](IntroR) |
+| [Publication Perfect: Part I](publication_perfect#part-i) | Beginner R or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) |
+| [Publication Perfect: Part II](publication_perfect#part-ii) | [Publication Perfect: Part I](publication_perfect#part-i) |
+| [Functional analysis of gene lists](DGE-functional-analysis/) | Beginner R or [Intro to R workshop](IntroR) |
+
+### Shell-based workshops:
+
+| Topic and Link(s) to lessons | Prerequisites |
+|:---------------|:-------------:|
+| [Introduction to the command-line interface]Intro_shell) | None |
+| [Intermediate bash](Intermediate_shell) | Beginner shell or [Intro to the command-line interface](Intro_shell) |
+| [Version control using Git and Github](Git-Github) | Beginner shell or [Intro to the command-line interface](Intro_shell)  |
+| [Accessing genomic reference and experimental sequencing data](https://hbctraining.github.io/Accessing_public_genomic_data) | Beginner shell or [Intro to the command-line interface](Intro_shell)  |
+| [Exploring genomic variants using GEMINI](Exploring_variants_with_GEMINI) | Beginner shell or [Intro to the command-line interface](Intro_shell) |
+
+### Additional workshops:
+
+| Topic and Link(s) to lessons | Prerequisites |
+|:---------------|:-------------:|
 | [Introduction to Python](Python) | None |
-| [Visualization in R](Visualization_in_R/) | Beginner R or [IntroR workshop](IntroR) |
-| [Functional analysis of gene lists](DGE-functional-analysis/) | Beginner R or [IntroR workshop](IntroR) |
-| [Introduction to the command-line interface](Intro_shell) | None |
-| [Intermediate bash](Intermediate_shell) | Beginner bash or [Intro to the command-line interface](Intro_shell) |
-| [Version control using Git and Github](Git-Github) | Beginner bash or [Intro to the command-line interface](Intro_shell)  |
-| [Accessing genomic reference and experimental sequencing data](https://hbctraining.github.io/Accessing_public_genomic_data) | Beginner bash or [Intro to the command-line interface](Intro_shell)  |
-| [Exploring genomic variants using GEMINI](Exploring_variants_with_GEMINI) | Beginner bash or [Intro to the command-line interface](Intro_shell) |
 | [Planning a bulk RNA-seq analysis: Part I](planning_successful_rnaseq#part-i) | None |
 | [Planning a bulk RNA-seq analysis: Part II](planning_successful_rnaseq#part-ii) | None |
 | [Make your (RNA-seq) data analysis reproducible](reproducible_analyses)- *Taught by [Julie Goldman](https://scholar.harvard.edu/julie_goldman) from Countway Library* | None |
 | [Improving your (RNA-seq) data analysis using version control (Git)](https://hbctraining.github.io/versioning_data_scripts/) | None |
+
 
 ***
 
