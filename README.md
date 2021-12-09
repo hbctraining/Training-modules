@@ -16,6 +16,8 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 > Workshop introduction slides are available [here](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2021.pdf).
 
+## Links to workshop materials
+
 ### R-based workshops:
 
 | Topic and Link(s) to lessons | Prerequisites |
