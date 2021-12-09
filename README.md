@@ -23,7 +23,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | Topic and Link(s) to lessons | Prerequisites |
 |:---------------|:-------------:|
 | [Introduction to R](IntroR) | None |
-| [Visualization in R](Visualization_in_R) | Beginner R or [Intro to R workshop](IntroR) |
+| [Tidyverse](Tidyverse_ggplot2) | Beginner R or [Intro to R workshop](IntroR) |
 | [Introduction to R Practical](IntroR_practical_online_resource) | Beginner R or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) |
 | [Gene annotations and functional analysis of gene lists](DGE-functional-analysis) | Beginner R or [Intro to R workshop](IntroR) |
 | [Generating research analysis reports with RMarkdown](Rmarkdown) | Beginner R or [Intro to R workshop](IntroR) |
