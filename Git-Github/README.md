@@ -25,13 +25,17 @@ While initially designed for saving and developing code collaboratively, there a
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Introduction to Git](lessons/01_git_intro.md) | 20 min |
-|[Git basics](lessons/02_git_basics.md) | 75 min |
-|[Introduction to Github](lessons/03_git_github.md) | 50 min |
+|[What is Version Control](https://hbctraining.github.io/reproducibility-tools/lessons/03_Intro_to_versioning.html) | 15m |
+|[Using Git(Kraken) for version control locally](https://hbctraining.github.io/reproducibility-tools/lessons/04_GitKraken.html) | 45m |
+|[Using GitHub for version control "remotely"](https://hbctraining.github.io/reproducibility-tools/lessons/05_Github_remote1.html) | 45m  |
+|[More about working on Github and practice with GitHub](https://hbctraining.github.io/reproducibility-tools/lessons/06_Github_remote2.html) | 30m |
+|[Managing conflicts with GitKraken](https://hbctraining.github.io/reproducibility-tools/lessons/07_Managing_conflicts.html) | 30m |
+|[Working with Commits](https://hbctraining.github.io/reproducibility-tools/lessons/Working_with_commits.html) | 20m |
+
 
 ### Dataset
 
-We will be creating the data in the lessons.
+Download the [workshop sample files zipped folder](https://github.com/hbctraining/versioning_data_scripts/raw/master/data/example_files.zip) and unzip it.
 
 ### Installation Requirements
 
