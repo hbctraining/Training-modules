@@ -35,10 +35,6 @@ https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/ses
 
 https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/more_bash.md#symlink
 
-
-***
-***
-
 ## Math
 
 There are two common ways of carrying out math on the command-line interface. One way uses a language called `bc` and the other utilizes `awk`. `bc` is a little more simple to use but it has some limitations, while you can use `awk` for any case you'd encounter. So let's look at these two methods
@@ -162,6 +158,10 @@ echo "$variable_3 / $variable_4" | bc -l
 ```
 
 ### awk
+
+
+***
+***
 
 ## `if` statements
 
