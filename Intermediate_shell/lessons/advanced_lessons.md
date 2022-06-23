@@ -154,4 +154,8 @@ echo "$variable_3 / $variable_4" | bc -l
 
 ## O2 Job Dependencies
 
+## O2 Brew
+
+## O2 Conda
+
 ## vim macros
