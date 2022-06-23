@@ -2,17 +2,42 @@
 
 ## sed
 
+https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/extra_bash_tools.md#sed
+
 ## Regular Expressions
+https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/extra_bash_tools.md#regular-expressions-regex-in-bash-
 
 ## grep with Regular Expressions
 
+https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/extra_bash_tools.md#reintroducing-grep-gnu-regex-parser-
+
 ## awk
 
-### Printing columns
+https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/extra_bash_tools.md#awk
 
-### Column math like sum and average
+* Printing columns
 
-### for loops
+* Column math like sum and average
+
+* for loops
+
+## Creating shortcuts or alias
+
+https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/more_bash.md#alias
+
+## .bashrc profile
+
+## Copying files using scp and rsync
+
+https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/more_bash.md#copying-files-to-and-from-the-cluster-
+
+## Symbolic Links or "sym links"
+
+https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/more_bash.md#symlink
+
+
+***
+***
 
 ## Math
 
@@ -147,8 +172,6 @@ echo "$variable_3 / $variable_4" | bc -l
 ## Arrays in bash
 
 ## Positional Parameters
-
-## .bashrc profile
 
 ## Searching history
 
