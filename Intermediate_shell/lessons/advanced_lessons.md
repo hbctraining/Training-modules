@@ -182,3 +182,7 @@ echo "$variable_3 / $variable_4" | bc -l
 ## O2 Conda
 
 ## vim macros
+
+## watch
+
+## time
