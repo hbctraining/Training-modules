@@ -27,11 +27,69 @@ https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/ses
 
 ## .bashrc profile
 
-## Copying files using scp and rsync
+## Copying files using to and from a cluster
+
+Oftentimes, you'll find yourself wanted to copy a file between computing cluster and your local computer and this is where `scp` and `rsync` can be used.
+
+### scp
+
+The general syntax of `scp` is similar to that of `cp`:
+
+```
+scp <origin> <destination>
+```
+
+However, since either `<origin>` and/or `<destination>` is on a computing cluser, you will need to provide host information followed by a `:` then the full path to the file/directory. If we wanted to copy a file from O2 to our local machine, we could use:
+
+```
+scp username@transfer.rc.hms.harvard.edu:/path/to/file_on_O2 /path/to/directory/local_machine
+```
+
+Alternatively, if you wanted to copy a file from your local machine to O2 you would rearrange the command:
+
+```
+scp /path/to/directory/local_machine username@transfer.rc.hms.harvard.edu:/path/to/file_on_O2
+```
+
+You can also recursively copy an entire directory with the `-r` option.
+
+```
+scp -r /path/to/directory username@transfer.rc.hms.harvard.edu:/path/to/new_directory_on_O2
+```
+
+### rsync
+
+`rsync` is a popular alternative to `scp`. One major reason it is popular is if the data transfer is interrupted, `scp` will need to begin again, while `rsync` can resume from where it left off.
 
 https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/more_bash.md#copying-files-to-and-from-the-cluster-
 
-## Symbolic Links or "sym links"
+## Symbolic Links
+
+Symbolic links, or "sym links", are an important shortcut on the command line that can save you lots of space. A symbolic link points to a location and can be very useful when software wants to have a file in a particular location. Of course, you can simply copy a file and have it stored in two locations, but it could be a large file and now it is taking up space in two locations. To avoid doing this, you can set-up a symbolic link using the following syntax:
+
+```
+ln -s <file_to_be_linked_to> <link_name>
+```
+
+Let's assume we have a file named `reads.fasta` inside the directory `raw_reads`, but we want a symbolic link named `link_to_reads.fasta` to link to the reads in the directory that we are currently in, which is in the parent directory of `raw_reads`. This command would look like:
+
+```
+ln -s raw_reads/reads.fasta link_to_reads.fasta
+```
+
+When you now view this directory with `ls -l`, it will display the link like:
+
+```
+link_to_reads.fasta -> raw_reads/reads.fasta
+```
+
+If you want to keep the current name you can use `.` for `<link name>`.
+
+***Importantly, if the original file is deleted or moved, the symbolic link will become broken.*** It is common on many distributions for symbolic links to blink if they becomes broken.
+
+The `-s` option is necessacary for creating a symbolic link. Without the `-s` option, a ***hard link*** is created and modifications to the linked file will be carried over to the original. Generally, speaking hard links are typically not very common.
+
+
 
 https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/more_bash.md#symlink
 
@@ -214,3 +272,13 @@ sys	0m0.007s
 ```
 
 **real** is most likely the time you are interested in since it displays the time it takes to run a given command. **user** and **sys** represent CPU time used for various aspects of the computing and can be impacted by multithreading. 
+
+## bg
+
+## md5sum
+
+Sometimes you are copying files between two locations and you want to ensure the copying went smoothly or are interested to see if two files are the same. Checksums can be thought of as an alphanumeric fingerprint for a file and they are used to ensure that two files are the same. `md5sum` is one common checksum. ***Importantly, it is theorectically possible that two different files have the same md5sum, but it is practically nearly impossible.*** The syntax for checking the md5sum of a file is:
+
+```
+md5sum <file>
+```
