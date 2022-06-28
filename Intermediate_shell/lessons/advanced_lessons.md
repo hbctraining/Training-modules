@@ -37,7 +37,7 @@ https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/ses
 
 ## Math
 
-There are two common ways of carrying out math on the command-line interface. One way uses a language called `bc` and the other utilizes `awk`. `bc` is a little more simple to use but it has some limitations, while you can use `awk` for any case you'd encounter. So let's look at these two methods
+There are two common ways of carrying out math on the command-line interface. One way uses a language called `bc` and the other utilizes `awk`. So let's look at these two methods
 
 ### bc
 
@@ -147,16 +147,6 @@ echo "1 - 2" | bc -l
 echo "2 ^ -3 | bc -l"
 ```
 
-### Float-point division
-
-The biggest flaw with `bc` comes when dividing floating point decimals. 
-
-```
-variable_3=`echo "1 / 13" | bc -l`
-variable_4=`echo "1 / 7" | bc -l`
-echo "$variable_3 / $variable_4" | bc -l
-```
-
 ### awk
 
 
@@ -185,4 +175,42 @@ echo "$variable_3 / $variable_4" | bc -l
 
 ## watch
 
+Sometimes one may want to see the ouptut of a command that continuously changes. The `watch` command is particularly useful for this. Add `watch` before your command and your command line will take you to an output page that will continually up your command. Common uses for `watch` could be:
+
+1) Viewing as files get created
+
+```
+watch ls -lh <directory>
+```
+
+2) Monitoring jobs on the cluster
+
+```
+watch squeue -u <username>
+```
+
+The default interval for update is two seconds, but that can be altered with the `-n` option. Importantly, the options used with `watch` command need to be placed ***before*** the command that you are watching or else the interpreter will evaluate the option as part of the watched command's options. An example of this is below:
+
+Update every 4 seconds
+```
+watch -n 4 squeue -u <username>
+```
+
+
 ## time
+
+Sometimes you are interested to know how long a task takes to complete. Similarly, to the `watch` command you can place `time` infront of a command and it will tell you how long the command takes to run. This can be particularly useful if you have downsampled a dataset and you are trying to estimate long long the full set will take to run. An example can be found below:
+
+```
+time ls -lh
+```
+
+The output will have three lines:
+
+```
+real	0m0.013s
+user	0m0.002s
+sys	0m0.007s
+```
+
+**real** is most likely the time you are interested in since it displays the time it takes to run a given command. **user** and **sys** represent CPU time used for various aspects of the computing and can be impacted by multithreading. 
