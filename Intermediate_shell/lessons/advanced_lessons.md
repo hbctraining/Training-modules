@@ -426,13 +426,115 @@ https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/ses
 
 ## awk
 
+`awk` is a very powerful programming language in its own right and it can do a lot more than is outlined here. `awk` shares a common history with `sed` and even `grep` dating back to `ed`. As a result, some of the syntax and functionality can be a bit familiar at times. However, it is particularly useful when working with datatables in plain text format (tab-delimited files and comma-separated files). Before we dive too deeply into `awk` we need to define two terms that `awk` will use a lot:
+
+- ***Field*** - This is a column of data
+- ***Record*** - This is a row of data 
+
+### Printing columns
+
+Let's first look at one of it's most basic and useful functions, printing columns. For this example we are going to use the tab-delimited file animals.txt that we used in the `sed` examples. 
+
+Let's first try to just print the first column:
+
+```
+awk '{print $1}' animals.txt
+```
+
+Here the `print` function in `awk` is telling `awk` that it it should output the first column of each line. We can also choose to print out multiple columns in any order.
+
+```
+awk '{print $3,$1,$5}' animals.txt
+```
+
+The default output is to have the column separated by a space. However, this built-in variable can be modified using the `-v` option. Once you have called the `-v` option you need to tell it which built-in variable you are interested in modfying. In this case it is the ***O***utput ***F***ield ***S***eparator, or `OFS`, and you need to set it to what you would like it to be equal to; a `'\t'` for tab, a `,` for a comma or even an `f` for a a lowercase 'f'.
+
+```
+awk -v OFS='\t' '{print $3,$1,$5}' animals.txt
+```
+
+#### `-F`
+
+The default behavior of `awk` is to split the data into column based on whitespace (tabs or spaces). However, if you have a comma-separated file, then your fields are separateed by commas and not whitespace. If we run a `sed` command to swap all of the tabs to commas and then pipe this output into awk it will think there is only one field:
+
+```
+sed 's/\t/,/g' animals.txt | awk '{print $1}'
+```
+
+However, once we denote that the field separator is a comma, it will extract only the first column:
+
+```
+sed 's/\t/,/g' animals.txt | awk -F ',' '{print $1}'
+```
+
+### Skipping Records
+
+Similarly, to `sed` you can also exclude records from your analysis in `awk`. `NR` is a variable equal to the ***N***umber of ***R***ecords (Rows) in your file. As an aside `NF` also exists and is a variable equal to the ***N***umber of ***F***ields (Columns) in your file. You can define the range that you want your print command to work over by specifiying the `NR` prior to your `{}`:
+
+```
+awk 'NR>1 {print $3,$1,$5}' animals.txt
+```
+
+This line for example is useful for removing the header. You can also set a range for records you'd like `awk` to print out by separating your range requirements with a `&&`, meaning 'and':
+
+```
+awk 'NR>1 && NR<=3 {print $3,$1,$5}' animals.txt
+```
+
+This command will print the third, first and fifth fields of animal.txt for records greater than 1 and less than or equal to three.
+
+### Column math like sum and average
+
+`awk` is also very good about handling calculations with respect to columns. ***Remember if your file has a header you will need to remove it because you obviously can't divide one word by another.*** 
+
+If you wanted to divde the fifth field of animals.txt by the fourth field, you do it like this:
+
+```
+awk 'NR>1 {print $5/$4}' animals.txt
+```
+
+You can, of course, add columns around the this calculation as well, such as:
+
+```
+awk 'NR>1 {print $1,$5/$4,$2}' animals.txt
+```
+
+Lastly, you can also set the output of a calculation equal to a new variable and print that variable:
+
+```
+awk 'NR>1 {$6=$5/$4; print $1,$6,$2}' animals.txt
+```
+
+`$6=$5/$4` is making a sixth field with the fifth field divided by the fourth field. We then need to separate this from the `print` command with a `;`, but now we can call this new variable we've created. 
+
+#### `$0`
+
+There is a special variable `$0` that corresponds to the whole record. This is very useful when appending a new field to the front or end of a record, such as.
+
+```
+awk 'NR>1 {print $0,$5/$4}' animals.txt
+```
+
+***NOTE:*** If you create a new variable such as `$6=$5/$4`, `$6` is now part of `$0` and will overwrite the values (if any) previously in `$6`. For example:
+
+```
+awk 'NR>1 {$6=$5/$4; print $0,$6}' animals.txt
+```
+
+You will get two `$6` fields at the end of the output because `$6` is now a part of `$0` and then you've also indicated that you want to then print `$6` again.
+
+Furthmore,
+
+```
+awk 'NR>1 {$5=$5/$4; print $0}' animals.txt
+```
+
+`$5=$5/$4` will overrwrite the values previously held in `$5` after the calculation is made. Thus, the output no long shows the original `$5`.
+
+
+### for loops
+
 https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/extra_bash_tools.md#awk
-
-* Printing columns
-
-* Column math like sum and average
-
-* for loops
 
 ## Creating shortcuts or alias
 
@@ -743,4 +845,57 @@ Sometimes you are copying files between two locations and you want to ensure the
 md5sum <file>
 ```
 
-## curl/wget
+## Downloading external data
+
+### `curl`
+
+Oftentimes, you will find yourself wanting to download data from a website. There are two comparable commands that you can use to accomplish this task. The first one is `curl` and the most common syntax for using it is:
+
+```
+curl -L -O [http://www.example.com/data]
+```
+
+The `-O` option will use the filename given on the website as its filename to write to. Alternatively, if you wanted to name it something different, you can use the `-o` option and then follow it with the preferred name like:
+
+```
+curl -L -o preferred_name  [http://www.example.com/data]
+```
+
+The `-L` option tells curl to follow any redirections the HTML address gives to the data. ***I think this is right, but I am really don't understand thins. I just know that I am supposed to do it.***
+
+Lastly, if you connection gets lost midway through a transfer, you can use the `-C` option followed by `-` to resume the download where it left off. For example:
+
+```
+curl -C - -L -O [http://www.example.com/data]
+```
+
+### `wget`
+
+
+A common alternative to `curl` is `wget` and many purposes they are extremely similiar and which you decide to use is a matter of personal preference. The general syntax is a bit more friendly on `wget`:
+
+```
+wget [http://www.example.com/data]
+```
+
+If you lose your connection during the download process and would like to resume it midway through, the `-c` will ***c***ontinue the download where it left off:
+
+```
+wget -c [http://www.example.com/data]
+```
+
+### `curl` versus `wget`
+
+For many purposes `curl` and `wget` are similar, but there are some small differences:
+
+1) In `curl` you can use the `-O` option multiple times to carry out multiple downloads simulatenously. 
+
+```
+curl -L -O [http://www.example.com/data_file_1] -O [http://www.example.com/data_file_2]
+```
+
+2) In `wget` you can recursively download a directory (meaning that you also download all subdirectories) with the `-r`. Typically this isn't super useful because the source will typically pack this up all into a compressed package, but nonetheless it is something that `wget` can do that `curl` cannot do.
+
+In general, `curl` has a bit more options and flexibility than `wget` but the vast majority, if not all, of those options are ***far*** beyond the scope of this course and for this course comes down to a personal preference. 
+
+## Rscript
