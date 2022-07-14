@@ -688,6 +688,53 @@ sys	0m0.007s
 
 ## bg
 
+Sometimes you may start a command that will take a few minutes and you want to have your command prompt back to do other tasks while you wait for the initial command to finish. To do this, you will need to do two things:
+
+1) Pause the command with `Ctrl` + `Z`. 
+2) Send the command to the ***b***ack***g***round with the command `bg`. When you do this the command will continue from where it was paused.
+3) If you want to bring the task back to the ***f***ore***g***round, you can use the command `fg`.
+
+In order to test this, we will briefly re-introduce the `sleep` command. `sleep` just has the command line do nothing for a period of time denoted in seconds by the integer following the `sleep` command. This is sometimes useful if you want a brief pause within a loop, such as between submitting a bunch of jobs to the cluster (as we did in [insert lesson here]). The syntax is:
+
+```
+sleep [integer for time in seconds]
+```
+
+So if you wanted there to be a five second pause, you could use:
+
+```
+sleep 5
+```
+
+Now that we have re-introduced the `sleep` command let's go ahead and pause the command like for 180 seconds to simulate a task that is running that might take a few minutes to run.
+
+```
+sleep 180
+```
+
+Now type `Ctrl` + `Z` and this will pause that command. Followed by the command to move that task to running in the background with:
+
+```
+bg
+```
+
+The `sleep` command is now running in the background and you have re-claimed your command-line prompt to use while the `sleep` command runs. If you want to bring the `sleep` command back to the foreground, type:
+
+```
+fg
+```
+
+And if it is still running it will be brought to the foreground.
+
+The place that this can be really useful is whenever you are running commands/scripts that take a few minutes to run that don't have large procesing requirements. Examples could be:
+
+- Indexing a fasta/bam file
+- Executing a long command with many pipes
+- You are running something in the command line and need to check something
+
+Oftentimes, it is best just to submit these types of jobs to the cluster, but sometimes you don't mind running the task on your requested compute node, but is taking a bit longer than you anticipated or something came up. 
+
+
 ## md5sum
 
 Sometimes you are copying files between two locations and you want to ensure the copying went smoothly or are interested to see if two files are the same. Checksums can be thought of as an alphanumeric fingerprint for a file and they are used to ensure that two files are the same. It is common for people/insitutions to provide an list of md5sums for files that are availible to download. `md5sum` is one common checksum. ***Importantly, it is theorectically possible that two different files have the same md5sum, but it is practically nearly impossible.*** The syntax for checking the md5sum of a file is:
@@ -696,4 +743,4 @@ Sometimes you are copying files between two locations and you want to ensure the
 md5sum <file>
 ```
 
-## curl
+## curl/wget
