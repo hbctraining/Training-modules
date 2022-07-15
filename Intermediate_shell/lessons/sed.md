@@ -16,7 +16,7 @@ The ***s***tream ***ed***itor, `sed`, is a common tool used for text manipulatio
 
 [Translation](sed.md#translation)
 
-[Multiple Expressions](sed.md#mutliple-expressions)
+[Multiple Expressions](sed.md#multiple-expressions)
 
 [Additonal Resources](sed.md#additional-resources)
 
