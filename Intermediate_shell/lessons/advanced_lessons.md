@@ -646,7 +646,7 @@ Like many other programming languages, `awk` can also do loops. One type of loop
 The basic syntax for a `for` loop in `awk` is:
 
 ```
-awk '{for (initialize counter variable; end condition; increment) command' file.txt
+awk '{for (initialize counter variable; end condition; increment) command}' file.txt
 ```
 
 If you want to duplicate every entry in your file you do do so like:
@@ -660,13 +660,17 @@ awk '{ for (i = 1; i <= 2; i=i+1) print $0}' animals.txt
 - `i <= 2;` runs as long as the value of i is less than or equal to 2
 - `i=i+1` after each iteration increase the counter variable by one. `++i` and `i++` are equivalent syntaxes to `i=i+1`.
 
-Then we print the whole line with `print $0`
+Then we print the whole line with `print $0`.
+
+While not discussed here, `awk` does support `while` and `do-while` loops.
 
 ### `if` statements
 
 Since `awk` is it's own fully-fledged programming language, it also has conditional statements. A common time you might want to use an `if` statement in `awk` is when you have a file with tens or even hundreds of fields and you want to figure out which field has the column header of interest or a case where you are trying to write a script for broad use when the order of the input columns may not always be the same, but you want to figure out which column has a certain column header. To do that:  
 
+```
 awk 'NR=1 {for (i=1; i<=NF; i=i+1) {if ($i == "height(cm)")  print i}}' animals.txt
+```
 
 `NR=1` only looks at the header line
 
@@ -676,11 +680,11 @@ awk 'NR=1 {for (i=1; i<=NF; i=i+1) {if ($i == "height(cm)")  print i}}' animals.
 
 https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/extra_bash_tools.md#awk
 
-## Creating shortcuts or alias
+## Creating shortcuts or alias and .bashrc profile
+
+This reource covers it all pretty well.
 
 https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/more_bash.md#alias
-
-## .bashrc profile
 
 ## Copying files using to and from a cluster
 
@@ -862,6 +866,11 @@ echo "2 ^ -3 | bc -l"
 
 ### awk
 
+You can also go basic arithmetic in `awk`. In order to do arithmetic in `awk` in the command line, you will need to use the `BEGIN` command which allows you to run an `awk` command without a file, then simply have it print your calculation:
+
+```
+awk 'BEGIN {print (2/3)^2}'
+```
 
 ***
 ***
