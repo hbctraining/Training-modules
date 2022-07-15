@@ -453,6 +453,20 @@ The default output is to have the column separated by a space. However, this bui
 awk -v OFS='\t' '{print $3,$1,$5}' animals.txt
 ```
 
+#### `RS` and `ORS`
+
+As an aside, similarly to `OFS`, records are assumed to be read in and written out with a newline character as default. However, this behavior can be altereed with `RS` and `ORS` variables. 
+
+`RS` can be used to alter the input ***r***ecord ***s***eparator
+`ORS` can be used to alter the ***o***utput ***r***ecord ***s***eparator
+
+If we wanted to change the `ORS` to be a ';' we could do so with like:
+
+```
+awk -v OFS='\t' -v ORS=';' '{print $3,$1,$5}' animals.txt
+```
+
+
 #### `-F`
 
 The default behavior of `awk` is to split the data into column based on whitespace (tabs or spaces). However, if you have a comma-separated file, then your fields are separateed by commas and not whitespace. If we run a `sed` command to swap all of the tabs to commas and then pipe this output into awk it will think there is only one field:
@@ -465,6 +479,12 @@ However, once we denote that the field separator is a comma, it will extract onl
 
 ```
 sed 's/\t/,/g' animals.txt | awk -F ',' '{print $1}'
+```
+
+Alternatively to using `-F`, `FS` is a variable for ***f***ield ***s***eparator and can be altered with the `-v` argument as well like:
+
+```
+sed 's/\t/,/g' animals.txt | awk -v FS=',' '{print $1}'
 ```
 
 ### Skipping Records
@@ -528,6 +548,13 @@ awk 'BEGIN {print "old_height","new_height"} NR>1 {new_height=$5+5; print $5,new
 `new_height=$5+5;` creates a new variable called "new_height" and sets it equal to the height in the fifth field plus five. Note that separate commands within the same `{}` need to be separated by a `;`.
 
 `print $5,new_height` prints the old height with the new height.
+
+Lastly, you can also bring `bash` variables into `awk` using the `-v` option:
+
+```
+var=bash_variable
+awk -v variable=$var '{print variable,$0}' animals.txt
+```
 
 
 ### Caclualtions using columns
@@ -612,9 +639,40 @@ awk 'NR>1 {$5=$5/$4; print $0}' animals.txt
 `$5=$5/$4` will overrwrite the values previously held in `$5` after the calculation is made. Thus, the output no long shows the original `$5`.
 
 
+### `for` loops
 
+Like many other programming languages, `awk` can also do loops. One type of loop if the basic `for` loop. 
 
-### for loops
+The basic syntax for a `for` loop in `awk` is:
+
+```
+awk '{for (initialize counter variable; end condition; increment) command' file.txt
+```
+
+If you want to duplicate every entry in your file you do do so like:
+
+```
+awk '{ for (i = 1; i <= 2; i=i+1) print $0}' animals.txt
+```
+
+`for (i = 1; i <= 2; i=i+1)` is starting a `for` loop that:
+- `i = 1;` starts at 1 
+- `i <= 2;` runs as long as the value of i is less than or equal to 2
+- `i=i+1` after each iteration increase the counter variable by one. `++i` and `i++` are equivalent syntaxes to `i=i+1`.
+
+Then we print the whole line with `print $0`
+
+### `if` statements
+
+Since `awk` is it's own fully-fledged programming language, it also has conditional statements. A common time you might want to use an `if` statement in `awk` is when you have a file with tens or even hundreds of fields and you want to figure out which field has the column header of interest or a case where you are trying to write a script for broad use when the order of the input columns may not always be the same, but you want to figure out which column has a certain column header. To do that:  
+
+awk 'NR=1 {for (i=1; i<=NF; i=i+1) {if ($i == "height(cm)")  print i}}' animals.txt
+
+`NR=1` only looks at the header line
+
+`for (i=1; i<=NF; i=i+1)` this begins a `for` loop starting at 1 and going until the number of fields by one
+`if ($i == "height(cm)")` is checking is `$i`, which is in our case is $1, $2, ... $6, to see if they are equal to `height(cm)`. If this condition is met then:
+`print i` print out `i`
 
 https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/extra_bash_tools.md#awk
 
