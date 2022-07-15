@@ -4,21 +4,21 @@ The ***s***tream ***ed***itor, `sed`, is a common tool used for text manipulatio
 
 **Topics discussed here are:**
 
-[Substitution](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#substitution)
+[Substitution](sed.md#substitution)
 
-[Addresses](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#addresses)
+[Addresses](sed.md#addresses)
 
-[Deletion](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#deletion)
+[Deletion](sed.md#deletion)
 
-[Appending](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#appending)
+[Appending](sed.md#appending)
 
-[Replacing Lines](https://github.com/hbctraining/Training-modules/edit/master/Intermediate_shell/lessons/sed.md#replacing-lines)
+[Replacing Lines](sed.md#replacing-lines)
 
-[Translation](https://github.com/hbctraining/Training-modules/edit/master/Intermediate_shell/lessons/sed.md#translation)
+[Translation](sed.md#translation)
 
-[Multiple Expressions](https://github.com/hbctraining/Training-modules/edit/master/Intermediate_shell/lessons/sed.md#mutliple-expressions)
+[Multiple Expressions](sed.md#mutliple-expressions)
 
-[Additonal Resources](https://github.com/hbctraining/Training-modules/edit/master/Intermediate_shell/lessons/sed.md#additional-resources)
+[Additonal Resources](sed.md#additional-resources)
 
 
 ## substitution
