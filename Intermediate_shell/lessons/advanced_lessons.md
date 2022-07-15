@@ -483,9 +483,89 @@ awk 'NR>1 && NR<=3 {print $3,$1,$5}' animals.txt
 
 This command will print the third, first and fifth fields of animal.txt for records greater than 1 and less than or equal to three.
 
-### Column math like sum and average
+### `BEGIN`
+
+The `BEGIN` command will execute an `awk` expression once at the beginning of a command. This can be particularly useful it you want to give an output a header that doesn't previously have one.
+
+```
+awk 'BEGIN {print "new_header"} NR>1 {print $1}' animals.txt
+```
+
+In this case we have told `awk` that we want to have "new_header" printed before anything, then `NR>1` is telling `awk` to skip the old header and finally we are printing the first column of `animals.txt` with `{print $1}`.
+
+### `END`
+
+Related to `BEGIN` is the `END` command that that tells `awk` to do a command once at the end of the file. It is ***very*** useful when summing up columns (below), but we will first demonstrate how it works by adding a new record:
+
+```
+awk '{print $1} END {print "new_record"}' animals.txt
+```
+
+As you can see, this has simply added a new record to the end of a file. Furthermore, you can chain multiple `END` command together to continously add to columns if you wished like:
+
+```
+awk '{print $1} END {print "new_record"} END {print "newer_record"}' animals.txt
+```
+
+This is equivalent to separating your `print` commands with a `;`:
+
+```
+awk '{print $1} END {print "new_record"; print "newer_record"}' animals.txt
+```
+
+### Variables
+
+You can also use variables in awk. Let's play like we wanted to add 5cm to every organisms height:
+
+```
+awk 'BEGIN {print "old_height","new_height"} NR>1 {new_height=$5+5; print $5,new_height}' animals.txt
+```
+
+`BEGIN {print "old_height","new_height"}` is giving us a new header
+
+`NR>1` is skipping the old header
+
+`new_height=$5+5;` creates a new variable called "new_height" and sets it equal to the height in the fifth field plus five. Note that separate commands within the same `{}` need to be separated by a `;`.
+
+`print $5,new_height` prints the old height with the new height.
+
+
+### Caclualtions using columns
 
 `awk` is also very good about handling calculations with respect to columns. ***Remember if your file has a header you will need to remove it because you obviously can't divide one word by another.*** 
+
+#### Column sum
+
+Now we understand how variables and `END` work, we can take the sum of a column, in this case the fourth column of our `animals.txt`:
+
+```
+awk 'NR>1 {sum=$4+sum} END {print sum}' animals.txt
+```
+
+`NR>1` skips out header line. While not necessary because our header is not a number, it is considered best practice to excluded a header if you had one. If your file didn't have a header then you would omit this.
+
+`{sum=$4+sum}` is creating a variable named `sum` and updating it as it goes through each record by adding the fourth field to it.
+***NOTE:*** This `{sum=$4+sum}` syntax can be, and often is, abbreviated to `{sum+=$4}`. They are equivlant syntaxes but for the context of learning I think `{sum=$4+sum}` is a bit more clear.
+
+`END {print sum}` Once we get to the end of the file we can call `END` to print out our variable `sum`.
+
+#### Column Average
+
+Now that we understand how to take a column sum and retrieve the number of records, we could quite easily calculate the average for a column like:
+
+```
+awk 'NR>1 {sum=$4+sum} END {records=NR-1; print sum/records}' animals.txt
+```
+
+`records=NR-1` is needed because `NR` includes our header line, so we need to make a new variable called `records` to hold the number of records in the file without the header line.
+
+If you didn't have a header line you could get the average of a column with a command like:
+
+```
+awk '{sum=$4+sum} END {print sum/NR}' file.txt
+```
+
+#### Calculations between columns
 
 If you wanted to divde the fifth field of animals.txt by the fourth field, you do it like this:
 
@@ -530,6 +610,8 @@ awk 'NR>1 {$5=$5/$4; print $0}' animals.txt
 ```
 
 `$5=$5/$4` will overrwrite the values previously held in `$5` after the calculation is made. Thus, the output no long shows the original `$5`.
+
+
 
 
 ### for loops
