@@ -2,6 +2,25 @@
 
 The ***s***tream ***ed***itor, `sed`, is a common tool used for text manipulation. `sed` takes input from either a file or piped from a previous command and applies a transformation to it before outputting it to standard out.
 
+**Topics discussed here are:**
+
+[Substitution](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#substitution)
+
+[Addresses](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#addresses)
+
+[Deletion](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#deletion)
+
+[Appending](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#appending)
+
+[Replacing Lines](https://github.com/hbctraining/Training-modules/edit/master/Intermediate_shell/lessons/sed.md#replacing-lines)
+
+[Translation](https://github.com/hbctraining/Training-modules/edit/master/Intermediate_shell/lessons/sed.md#translation)
+
+[Multiple Expressions](https://github.com/hbctraining/Training-modules/edit/master/Intermediate_shell/lessons/sed.md#mutliple-expressions)
+
+[Additonal Resources](https://github.com/hbctraining/Training-modules/edit/master/Intermediate_shell/lessons/sed.md#additional-resources)
+
+
 ## substitution
 
 One common usage for `sed` is to replace one word with another. The syntax for doing this is:
@@ -45,9 +64,23 @@ This will now replace all instances of Jungle/jungle/JuNgLe/jUngle/etc. with 'ra
 
 ***Haven't discussed 2g syntax that will replace the the 2nd occurance and all subsequent occurances***
 
-### Addresses
+### -n option
 
-#### Single lines
+In `sed` the `-n` option will create no standard output. However, you can pair with with the occurance flag `p` and this will print out only lines that were were edited.
+
+```
+sed -n 's/an/replacement/p' animals.txt
+```
+
+The `-n` option has another useful purpose, you can use it to find the line number of a matched pattern by using `=` after the pattern you are searching for:
+
+```
+sed -n '/jungle/ =' animals.txt
+```
+
+## Addresses
+
+### Single lines
 
 One can also direct which line, the ***address***, `sed` should make an edit on by adding the line number in front of `s`. This is most common when one wants to make a substituion for a pattern in a header line and is worried that the pattern might be elsewhere in the file. It is best practice to wrap your substitution argument in curly brackets (`{}`) when using address. To demonstrate this we can compare to commands:
 
@@ -66,7 +99,7 @@ sed '1s/an/replacement/g' animals.txt
 
 Produces the same output as above. 
 
-#### Intervals
+### Intervals
 
 If you only want to have this substitution carried out on the first three lines (`1,3`, this is giving an address interval, from line 1 to line 3) we would need to do include the curly brackets:
 
@@ -104,19 +137,7 @@ Lastly, you can use `N~n` in the address to indicator that you want to apply the
 
 sed '1~2{s/an/replacement/g}' animals.txt
 
-### -n option
 
-In `sed` the `-n` option will create no standard output. However, you can pair with with the occurance flag `p` and this will print out only lines that were were edited.
-
-```
-sed -n 's/an/replacement/p' animals.txt
-```
-
-The `-n` option has another useful purpose, you can use it to find the line number of a matched pattern by using `=` after the pattern you are searching for:
-
-```
-sed -n '/jungle/ =' animals.txt
-```
 
 ## Deletion
 
@@ -292,7 +313,7 @@ If this file was named 'sed_expressions.txt', our command could look like:
 sed -f sed_expressions.txt animals.txt
 ```
 
-
+## Additional Resources
 
 https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/extra_bash_tools.md#sed
 
