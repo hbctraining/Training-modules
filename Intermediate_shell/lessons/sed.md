@@ -78,6 +78,8 @@ The `-n` option has another useful purpose, you can use it to find the line numb
 sed -n '/jungle/ =' animals.txt
 ```
 
+[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
+
 ## Addresses
 
 ### Single lines
@@ -137,7 +139,7 @@ Lastly, you can use `N~n` in the address to indicator that you want to apply the
 
 sed '1~2{s/an/replacement/g}' animals.txt
 
-
+[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
 
 ## Deletion
 
@@ -170,6 +172,8 @@ The `N~n` syntax also works in deletion. If we want to delete every thrid line s
 ```
 sed '2~3d' animals.txt
 ```
+
+[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
 
 ## Appending
 
@@ -245,6 +249,8 @@ But this is the same result as simply concatenating two files together like:
 cat file_A.txt file_B.txt
 ```
 
+[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
+
 ## Replacing Lines
 
 You can also replace entire lines in `sed` using the `c` command. We could replace the first line with the word 'header' by:
@@ -271,6 +277,8 @@ Lastly, you can also replace lines match a pattern:
 sed '/animal/ c header' animals.txt
 ```
 
+[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
+
 ## Translation
 
 `sed` has a feature that allows you to translate characters similiarly to the `tr` function in `bash`. If you wanted to translate all of the lowercase a, b and c characters to their uppercase equivalents you could do that with the `y` command:
@@ -280,6 +288,8 @@ sed 'y/abc/ABC/' animals.txt
 ```
 
 In this case the first letter 'a' is replaced with 'A', 'b' with 'B' and 'c' with 'C'.
+
+[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
 
 ## Multiple expressions
 
@@ -313,8 +323,12 @@ If this file was named 'sed_expressions.txt', our command could look like:
 sed -f sed_expressions.txt animals.txt
 ```
 
+[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
+
 ## Additional Resources
 
 https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/extra_bash_tools.md#sed
 
 https://www.grymoire.com/Unix/Sed.html#uh-8
+
+[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
