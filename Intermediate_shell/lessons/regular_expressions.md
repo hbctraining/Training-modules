@@ -6,6 +6,22 @@ Regular expressions (sometimes referred to as regex) are a string of characters 
 
 [Special Characters](regular_expressions.md#special-chrarcters)
 
+[Quantifers](regular_expressions.md#quantifers)
+
+[Anchors](regular_expressions.md#anchors)
+
+[Literal Matches](regular_expressions.md#literal-matches)
+
+[Whitespace and new lines](regular_expressions.md#whitespace-and-new-lines)
+
+[Examples of Combining Special Characters](regular_expressions.md#examples-of-combining-special-characters)
+
+[Additional Resources](regular_expressions.md#additional-resources)
+
+---
+
+[Return to Table of Contents](toc.md)
+
 ## Ranges
 
 A range of acceptable characters can be given with `[]`. Square brackets can be used to notate a range of acceptable characters in a position.
@@ -34,7 +50,17 @@ The `^` ***within*** `[]` functions as a 'not' function. For example:
 
 ***IMPORTANT NOTE: `^` has a different function when used outside of the `[]` that is discussed below in anchoring.***
 
+[Back to the top](regular_expressions.md#regular_expressions)
+
 ## Special Characters
+
+### `.`
+
+The `.` matches any character except new line. Notably, it ***does not*** match no character. This is similar to the behavior of the wildcard `?` in Unix.
+
+[Back to the top](regular_expressions.md#regular_expressions)
+
+## Quantifiers
 
 ### `*`
 
@@ -47,10 +73,6 @@ The `*` matches the preceeding character any number of times ***including*** zer
 The `?` denotes that the previous character is optional, in the following example:
 
 `C?ATCH` would match 'CATCH', but also 'BATCH', '2ATCH' '^ATCH' and even 'ATCH'
-
-### `.`
-
-The `.` matches any character except new line. Notably, it ***does not*** match no character. This is similar to the behavior of the wildcard `?` in Unix.
 
 `.ATCH` would match 'CATCH', BATCH', '2ATCH' '^ATCH', but ***not*** 'ATCH'
 
@@ -65,6 +87,8 @@ The `{INTEGER}` match the preceeding character the number of times equal to INTE
 The `+` matches one or more occurrances of the preceeding character.
 
 `CA+TCH` would match 'CATCH', 'CAATCH' ... 'CAAAAAAAATCH' ...
+
+[Back to the top](regular_expressions.md#regular_expressions)
 
 ## Anchors
 
@@ -82,17 +106,23 @@ The `$` character anchors the search criteria to the end of the line. For exampl
 
 `CAT$` would match lines ending in 'CAT' or 'BOBCAT', but not 'CATCH'
 
-## `\` for literal matches
+[Back to the top](regular_expressions.md#regular_expressions)
+
+## Literal matches
 
 One problem you will likely run into with these above special characters is that you may want to match one. For example, you may want to match '.' or '?' and this is what the escape, `\`, is for. 
 
 `C\?TCH` would match 'C?TCH', but not 'CATCH' or 'CCTCH' like `C?TCH` would do.
+
+[Back to the top](regular_expressions.md#regular_expressions)
 
 ## Whitespace and new lines
 
 You can search from tabs with '\t', space with '\s' and newline with '\n'. 
 
 `CA\tTCH` would match 'CA TCH'
+
+[Back to the top](regular_expressions.md#regular_expressions)
 
 ## Examples of Combining Special Characters
 
@@ -110,4 +140,10 @@ Another thing you may be interersted in is finding lines that start with 'C' and
 
 `^C.*CH$`
 
+[Back to the top](regular_expressions.md#regular_expressions)
+
+## Additonal Resources
+
 https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/extra_bash_tools.md#regular-expressions-regex-in-bash-
+
+[Back to the top](regular_expressions.md#regular_expressions)
