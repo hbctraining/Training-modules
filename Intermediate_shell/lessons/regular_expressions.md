@@ -4,7 +4,7 @@ Regular expressions (sometimes referred to as regex) are a string of characters 
 
 [Ranges](regular_expressions.md#ranges)
 
-[Special Characters](regular_expressions.md#special-chrarcters)
+[Special Characters](regular_expressions.md#special-characters)
 
 [Quantifers](regular_expressions.md#quantifers)
 
