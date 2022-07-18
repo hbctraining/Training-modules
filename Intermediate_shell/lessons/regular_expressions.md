@@ -6,7 +6,7 @@ Regular expressions (sometimes referred to as regex) are a string of characters 
 
 [Special Characters](regular_expressions.md#special-characters)
 
-[Quantifers](regular_expressions.md#quantifers)
+[Quantifers](regular_expressions.md#quantifiers)
 
 [Anchors](regular_expressions.md#anchors)
 
