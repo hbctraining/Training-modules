@@ -2,11 +2,13 @@
 
 Regular expressions (sometimes referred to as regex) are a string of characters that can be used as a pattern to match against. This can be very helpful when searching through a file, particularly in conjunction with `sed`, `grep` or `awk`. The topics covered will be:
 
-[[]](regular_expressions.md#[])
+[Ranges](regular_expressions.md#ranges)
 
-## `[]`
+[Special Characters](regular_expressions.md#special-chrarcters)
 
-Square brackets can be used to notate a range of acceptable characters in a position.
+## Ranges
+
+A range of acceptable characters can be given with `[]`. Square brackets can be used to notate a range of acceptable characters in a position.
 
 `[BPL]ATCH` could match 'BATCH', 'PATCH' or 'LATCH'
 
@@ -32,19 +34,21 @@ The `^` ***within*** `[]` functions as a 'not' function. For example:
 
 ***IMPORTANT NOTE: `^` has a different function when used outside of the `[]` that is discussed below in anchoring.***
 
-## `*`
+## Special Characters
+
+### `*`
 
 The `*` matches the preceeding character any number of times ***including*** zero.
 
 `CA*TCH` would match `CTCH`, `CATCH`, `CAATCH` ... `CAAAAAAATCH` ...
 
-## `?`
+### `?`
 
 The `?` denotes that the previous character is optional, in the following example:
 
 `C?ATCH` would match 'CATCH', but also 'BATCH', '2ATCH' '^ATCH' and even 'ATCH'
 
-## `.`
+### `.`
 
 The `.` matches any character except new line. Notably, it ***does not*** match no character. This is similar to the behavior of the wildcard `?` in Unix.
 
