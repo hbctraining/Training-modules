@@ -1,11 +1,11 @@
-# Advnaced Unix
+# Advanced Unix
 
 Below is the table of contents for the Advanced Unix lessons
 
 | Topic  | Status |
 |:-----------:|:----------:|
 | [sed](sed.md) | Drafted |
-| [Regular Expressions]() | Drafted |
+| [Regular Expressions](regular_expression.md) | Drafted |
 | [grep]() | Undrafted |
 | [awk]() | Drafted |
 | [Aliases, Shortcuts and .bashrc]() | Drafted |
