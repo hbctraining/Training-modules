@@ -140,7 +140,9 @@ sed '/monkey/,/alligator/!{s/an/replacement/g}' animals.txt
 
 Lastly, you can use `N~n` in the address to indicator that you want to apply the substitution every *n*th line starting on line *N*. In the below example, starting on the first line and every 2nd line, the substitution will occur
 
+```
 sed '1~2{s/an/replacement/g}' animals.txt
+```
 
 [Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
 
