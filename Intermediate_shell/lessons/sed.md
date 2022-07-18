@@ -20,7 +20,7 @@ The ***s***tream ***ed***itor, `sed`, is a common tool used for text manipulatio
 
 [Additonal Resources](sed.md#additional-resources)
 
-
+---
 
 [Return to Table of Contents](toc.md)
 
