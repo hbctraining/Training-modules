@@ -50,7 +50,7 @@ The `^` ***within*** `[]` functions as a 'not' function. For example:
 
 ***IMPORTANT NOTE: `^` has a different function when used outside of the `[]` that is discussed below in anchoring.***
 
-[Back to the top](regular_expressions.md#regular_expressions)
+[Back to the top](regular_expressions.md#regular-expressions)
 
 ## Special Characters
 
