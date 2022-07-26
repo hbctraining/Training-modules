@@ -16,6 +16,19 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 > Workshop introduction slides are available [here](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2021.pdf).
 
+***
+
+## Summer-Fall 2022 Schedule (1pm - 4pm)
+| Topic and Link(s) to lessons | Prerequisites | Date | Registration |
+|:---------------|:-------------:|:-------------:|:-------------:|
+| [Python]() | None | 8/3/2022	| Coming soon |
+| [R exercises with Catalyst videos]() | [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 9/7/2022	| Coming soon |
+| [Generating reports with Rmarkdown]() | R | 10/5/2022	| Coming soon |
+| [Introduction to Shell]()	| None | 11/2/2022	| Coming soon |
+| [Version control with Git/Github]() | Introduction to Shell | 12/7/2022	| Coming soon | 
+
+***
+
 ## Links to workshop materials
 
 ### R-based workshops:
