@@ -23,9 +23,9 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 |:---------------|:-------------:|:-------------:|:-------------:|
 | [Python]() | None | 8/3/2022	| Coming soon |
 | [R exercises with Catalyst videos]() | [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 9/7/2022	| Coming soon |
-| [Generating reports with Rmarkdown]() | R | 10/5/2022	| Coming soon |
+| [Generating reports with Rmarkdown]() | [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 10/5/2022	| Coming soon |
 | [Introduction to Shell]()	| None | 11/2/2022	| Coming soon |
-| [Version control with Git/Github]() | Introduction to Shell | 12/7/2022	| Coming soon | 
+| [Version control with Git/Github]() | [Introduction to Shell]() | 12/7/2022	| Coming soon | 
 
 ***
 
