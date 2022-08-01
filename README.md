@@ -18,7 +18,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 ***
 
-## Summer-Fall 2022 Schedule (1pm - 4pm)
+### Summer-Fall 2022 Schedule (1pm - 4pm)
 | Topic and Link(s) to lessons | Prerequisites | Date | Registration |
 |:---------------|:-------------:|:-------------:|:-------------:|
 | [Basics of Python]() | None | 8/10/2022	| Coming soon |
