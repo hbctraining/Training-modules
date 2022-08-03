@@ -22,11 +22,11 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 | Topic and Link(s) to lessons | Prerequisites | Date | Registration |
 |:---------------|:-------------:|:-------------:|:-------------:|
-| [Basics of Python]() | None | 8/10/2022	| Coming soon |
-| [R practice exercises]() | Beginner R or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 9/7/2022	| Coming soon |
-| [Generating reports with Rmarkdown]() | Beginner R or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 10/5/2022	| Coming soon |
-| [Introduction to Shell](https://hbctraining.github.io/Training-modules/Intro_shell/)	| None | 11/2/2022	| Coming soon |
-| [Version control using Git/Github]() | [Introduction to Shell]() | 12/7/2022	| Coming soon | 
+| [Basics of Python]() | None | 8/10/2022	| [Sign up!](https://harvard.zoom.us/meeting/register/tJMvd-2gqjMtHNN70z8--PgwRfXmip3FwGza) |
+| [R practice exercises]() | Beginner R or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 9/7/2022	| [Sign up!](https://harvard.zoom.us/meeting/register/tJ0vce6tpjoqGNBRUO-ha0mWW2RYv6xV5exd) |
+| [Generating reports with Rmarkdown]() | Beginner R or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 10/5/2022	| [Sign up!](https://harvard.zoom.us/meeting/register/tJEpde-prT4iH9wwbzxxqlBiuW_4Ovajt7HC) |
+| [Introduction to Shell](https://hbctraining.github.io/Training-modules/Intro_shell/)	| None | 11/2/2022	| [Sign up!](https://harvard.zoom.us/meeting/register/tJEuf--hpz0pGd3_Wu0vBE1mcxSMaSb88KUB) |
+| [Version control using Git/Github]() | [Introduction to Shell]() | 12/7/2022	| [Sign up!](https://harvard.zoom.us/meeting/register/tJ0kdeCtqz8sGtJx6DCaXw9lqNGkFJ5SbP3G) | 
 
 ***
 
