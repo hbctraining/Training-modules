@@ -1,16 +1,17 @@
 # Introduction to Python
 
 ## Description
-Python is a powerful open source programming language for many applications in bioinformatics. In this 3 hour, hands-on workshop, we will teach basic concepts in Python programming. These materials are developed for a trainer-led workshop aimed at beginners, but are also amenable to self-guided learning.
+Python is a powerful open source programming language for many applications in bioinformatics. In this 3 hour, hands-on workshop, we will teach basic concepts and applications in Python programming. These materials are developed for a trainer-led workshop aimed at beginners, but are also amenable to self-guided learning.
 
 ## Objectives
 This workshop covers the fundamentals of Python, with the following learning objectives:
 - Implement basic syntax
 - Create and manipulate lists
-- Use built-in functions, and create user-defined functions
-- Apply conditional statements
+- Apply built-in functions
+- Load packages
+- Perform data manipulation and visualization
 
-By the end of this workshop, students should be able to create Python scripts and perform some simple programming tasks. 
+By the end of this workshop, students should be able to understand the structure of a simple Python script, and can perform basic data analysis. 
 
 ## Requirements
 To complete this workshop, you will need **a computer** and **a Google account** (to access Colab). **There is no need to install Python or any other tool.**
@@ -26,6 +27,6 @@ You will find this workshop helpful, if you:
 > Note: we might be developing advanced topics of Python based on general interest, so stay tuned!
 
 ## Lessons
-Material for use **during** workshop - [**In-class version**](https://colab.research.google.com/drive/18raJW2yNykpfKVxEAlNuvkzMFtB2VBD1?usp=sharing)
+Material for use **during** workshop - [**In-class version**](https://colab.research.google.com/drive/1IEo3yqYvs30P9I3LZIihIyNNTWhBeagc?usp=sharing)
 
-Material for use **post** workshop - [**Post-class version**](https://colab.research.google.com/drive/1Szly4gUhuaChB1vX8AAud4YLA-EM3iOk?usp=sharing)
+Material for use **post** workshop - [**Post-class version**](https://colab.research.google.com/drive/1cXGKJUn3pvYHg2CfHH5SpbHWWbBV8BbL?usp=sharing)
