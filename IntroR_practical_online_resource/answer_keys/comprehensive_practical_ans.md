@@ -252,17 +252,6 @@ Write out the R code you would use to perform the following operations (question
      
      dev.off()
 
- - use `filter()` to return all data for those samples receiving treatment `P`:
-          
-     ```r
-     filter(meta, treatment == "P")
-     ```
-     
-     - use `filter()`/`select()` to return only the `stage` and `treatment` data for those samples with `myc` > 5000:
-          
-     ```r
-     filter(meta, myc > 5000) %>% select(stage, treatment)
-     ```
 
 ## Packages and installations
 
