@@ -589,7 +589,7 @@ less <file>   # open a buffer with the contents of a file
 head <file>   # display the first 10 lines of a file
 tail <file>   # display the last 10 lines of a file
 cp <..> <..>  # copy files or directories
-mdkir         # make a new directory/folder
+mkdir         # make a new directory/folder
 mv <..> <..>  # move or rename files or directories
 rm <file>     # remove a file or a folder (-r)
 
