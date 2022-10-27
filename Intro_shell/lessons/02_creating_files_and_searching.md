@@ -1,3 +1,8 @@
+***
+
+[Previous Lesson](01_the_filesystem.md)
+
+***
 
 ## Learning Objectives
 
