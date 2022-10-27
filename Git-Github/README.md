@@ -2,9 +2,9 @@
 
 | Audience | Computational skills required | Duration |
 :----------|:----------|:----------|
-| Biologists | [Beginner bash](https://hbctraining.github.io/Intro-to-Shell/) | 3-hour workshop (~3 hours of trainer-led time)|
+| Biologists | [Intro to shell](https://hbctraining.github.io/Intro-to-Shell/) for the CLI version of the workshop | 3-hour workshop (~3 hours of trainer-led time)|
 
-### Description
+## Description
 
 This repository has teaching materials for a 3-hour Introduction to Git and Github workshop. 
 
@@ -14,14 +14,24 @@ While initially designed for saving and developing code collaboratively, there a
 
 > These materials were developed for a trainer-led workshop, but are also amenable to self-guided learning.
 
-### Learning Objectives
+## Learning Objectives
 
 * Describe the benefits of an automated version control system
 * Configure and use Git locally
 * Link local Git repositories to remote Github account
 * Collaborate using Git and Github
 
-### Contents
+## Contents
+
+### Using the Command-line interface
+
+| Lessons            | Estimated Duration |
+|:------------------------|:----------|
+|[Introduction to Git](lessons/01_git_intro.md) | 30 min |
+|[Git basics](lessons/02_git_basics.md) | 90 min |
+|[Introduction to Github](lessons/03_git_github.md) | 70 min |
+
+### Using a GUI tool (GitKraken)
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
@@ -31,7 +41,6 @@ While initially designed for saving and developing code collaboratively, there a
 |[More about working on Github and practice with GitHub](https://hbctraining.github.io/reproducibility-tools/lessons/06_Github_remote2.html) | 30m |
 |[Managing conflicts with GitKraken](https://hbctraining.github.io/reproducibility-tools/lessons/07_Managing_conflicts.html) | 30m |
 |[Working with Commits](https://hbctraining.github.io/reproducibility-tools/lessons/Working_with_commits.html) | 20m |
-
 
 ### Dataset
 
