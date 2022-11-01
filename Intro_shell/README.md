@@ -32,7 +32,7 @@ Many data analysis tools and computational resources require users to have a bas
 |[Searching and redirection](lessons/02_creating_files_and_searching.md) | 45 min |
 
 ### Dataset
-[Introduction to Shell: Dataset](https://www.dropbox.com/s/3lua2h1oo18gbug/unix_lesson.tar.gz?dl=1)
+[Introduction to Shell: Dataset](https://www.dropbox.com/s/t3lkyz1pz021222/unix_lesson.tar.gz?dl=1)
 
 ### Installation Requirements
 
