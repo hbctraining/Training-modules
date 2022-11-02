@@ -109,6 +109,43 @@ $ grep -c spider spider.txt
 
 These are just a few examples of using `grep`, if you are interested in learning more we encourage you to look through [our materials on Searching and Redirection](https://hbctraining.github.io/Intro-to-Shell/lessons/02_searching_files.html). This lesson goes through examples that utilize the data you have already downloaded.
 
+## Redirection
+
+### Writing to a file
+
+Now that you've created output, you might want the ability to save this output to a file. You can redirect output into a file using `>`. If we wanted to redirect one of our previous `grep` commands into a text file, then we could do this:
+
+```
+$ grep spider spider.txt > spider_grep.txt
+```
+
+We can inspect this new file using `cat`:
+
+```
+cat spider_grep.txt
+```
+
+We can see that it is the same output as `grep spider spider.txt`, but now it is saved to a file.
+
+> **IMPORTANT:** When redirecting using `>`, this will overwrite the contents of any file previously called by the same filename in that directory!
+
+### Appending to a file
+
+Perhaps though we just want to append something to the end of the file. In order to do with we need to use the `>>` operator like:
+
+```
+$ grep -c spider spider.txt >> spider_grep.txt
+```
+
+Now we can see that we have appended the `spider_grep.txt` file with our `grep -c` output to the end of the file.
+
+### Pipes
+
+The last type of redirection we will discuss is the pipe, or `|`. Piping takes the output from one command and uses it as the input for the next command. For example, if we wanted to see how many lines contain `spider`, then we can do `grep` for `spider` and pipe that output into `wc -l` like:
+
+```
+$ grep spider spider.txt | wc -l
+```
 
 ***
 
