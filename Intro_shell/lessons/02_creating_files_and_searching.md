@@ -107,8 +107,6 @@ Alternatively, if we wanted a count of the number of lines that match we could a
 $ grep -c spider spider.txt
 ```
 
-These are just a few examples of using `grep`, if you are interested in learning more we encourage you to look through [our materials on Searching and Redirection](https://hbctraining.github.io/Intro-to-Shell/lessons/02_searching_files.html). This lesson goes through examples that utilize the data you have already downloaded.
-
 ## Redirection
 
 ### Writing to a file
@@ -146,6 +144,8 @@ The last type of redirection we will discuss is the pipe, or `|`. Piping takes t
 ```
 $ grep spider spider.txt | wc -l
 ```
+
+These are just a few examples of using `grep` and redirection, if you are interested in learning more we encourage you to look through [our materials on Searching and Redirection](https://hbctraining.github.io/Intro-to-Shell/lessons/02_searching_files.html). This lesson goes through examples that utilize the data you have already downloaded.
 
 ***
 
