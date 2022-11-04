@@ -21,7 +21,7 @@ It is easy to identify a variable in any bash script as they will always have th
 
 “A **positional parameter** is an argument specified on the command line, used to launch the current process in a shell. Positional parameter values are stored in a special set of variables maintained by the shell.” ([Source](https://www.computerhope.com/jargon/p/positional-parameter.htm))
 
-So rather than something that is identified inside the bash script a positional parameter is given when you run your script. This makes it more flexible as it can be changed without modifying the script itself.  
+So rather than something that is identified inside the bash script, a positional parameter is given when you run your script. This makes it more flexible as it can be changed without modifying the script itself.  
 
 <p align="center">
 <img src="../img/positional-parameter.jpg" width="400">
