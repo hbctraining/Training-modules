@@ -11,7 +11,7 @@ author: "Emma Berdan"
 
 ## What is a variable?
 
-“A variable is a character string to which we assign a value. The value assigned could be a number, text, filename, device, or any other type of data.
+“A **variable** is a character string to which we assign a value. The value assigned could be a number, text, filename, device, or any other type of data.
 
 A variable is nothing more than a pointer to the actual data. The shell enables you to create, assign, and delete variables.” ([Source](https://www.tutorialspoint.com/unix/unix-using-variables.htm))
 
@@ -19,7 +19,7 @@ It is easy to identify a variable in any bash script as they will always have th
 
 ## Positional parameters are a special kind of variable
 
-“A positional parameter is an argument specified on the command line, used to launch the current process in a shell. Positional parameter values are stored in a special set of variables maintained by the shell.” ([Source](https://www.computerhope.com/jargon/p/positional-parameter.htm))
+“A **positional parameter** is an argument specified on the command line, used to launch the current process in a shell. Positional parameter values are stored in a special set of variables maintained by the shell.” ([Source](https://www.computerhope.com/jargon/p/positional-parameter.htm))
 
 So rather than something that is identified inside the bash script a positional parameter is given when you run your script. This makes it more flexible as it can be changed without modifying the script itself.  
 
@@ -27,4 +27,72 @@ So rather than something that is identified inside the bash script a positional 
 <img src="../img/positional-parameter.jpg" width="400">
 </p>
 
+Here we can se that our command is the first positional parameter ($0) and that each of the strings afterwards are additional positional parameters (here $1 and $2). Generally when we refer to positional parameters we ignore $0 and start with $1.
+
+It is crucial to note that different positional parameters are separated by whitespace and can be strings of any length. This means that:
+
+```bash
+$ ./myscript.sh OneTwoThree
+```
+has only given one positional parameter $1 = OneTwoThree
+
+and
+
+```bash
+$ ./myscript.sh O N E
+```
+has given three positional parameters $1 = O $2 = N $3 = E
+
+You can code your script to take as many positional parameters as you like but for any parameters greater than 9 you need to use curly brackets. So positional parameter 9 is $9 but positional parameter 10 is ${10}. We will come back to curly brackets later.
+
+Finally, the variable $@ contains the value of all positional parameters except $0.
+
+## A simple example
+
+Let's make a script ourselves to see positional parameters in action.
+
+from your command line type `vim compliment.sh` then type `i` to go to insert mode. If you have never used vim before you can find the basics [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/047946559cbffc9cc24ccb10a4d630aa18fab558/lessons/03_working_with_files.md).
+
+now copy and paste the follwing into your file
+
+```bash
+#!/bin/bash
+
+echo  $1 'is amazing at' $2
+```
+then type <kbd>esc</kbd> to exit insert mode. Type and enter `:wq` to write and quit.
+
+Now that you are back on the command line type `chmod u+x` to make the file executable for yourself. More on file permissions [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/07_permissions_and_environment_variables.md).
+
+You may have already guessed that our script takes two different positional parameters. The first one is your first name and the second is something you are good at. Here is an example:
+
+```bash
+./compliment.sh OliviaC acting
+```
+
+This will print 
+
+```bash
+OliviaC is amazing at acting
+```
+You may have already guessed that I am talking about award winning actress [Olivia Coleman](https://en.wikipedia.org/wiki/Olivia_Colman) here. But if I typed
+
+```bash
+./compliment.sh Olivia Coleman acting
+```
+I would get
+
+```bash
+Olivia is amazing at Coleman
+```
+Technically we have given three positional parameters $1 = Olivia $2 = Colman $3=acting
+However, since our script does not contain $3 this is ignored. 
+
+In order to give Olivia her full due I would need to type
+
+```bash
+./compliment.sh "Olivia Coleman" acting
+```
+
+The quotes tell bash that "Olivia Coleman" is a single string, $1. Olivia has enough accolades though, so go ahead and run the script with your name (just first or both first and last) and something you are good at!
 
