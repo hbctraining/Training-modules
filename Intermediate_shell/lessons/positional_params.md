@@ -41,7 +41,7 @@ and
 ```bash
 $ ./myscript.sh O N E
 ```
-has given three positional parameters `$1=O $2=N $3=E`
+has given three positional parameters `$1=O` `$2=N` `$3=E`
 
 You can code your script to take as many positional parameters as you like but for any parameters greater than 9 you need to use curly brackets. So positional parameter 9 is `$9` but positional parameter 10 is `${10}`. We will come back to curly brackets later.
 
@@ -85,7 +85,7 @@ I would get
 ```bash
 Olivia is amazing at Coleman
 ```
-Technically I have just given three positional parameters `$1=Olivia $2=Colman $3=acting`
+Technically I have just given three positional parameters `$1=Olivia` `$2=Colman` `$3=acting`
 However, since our script does not contain `$3` this is ignored. 
 
 In order to give Olivia her full due I would need to type
@@ -94,7 +94,7 @@ In order to give Olivia her full due I would need to type
 ./compliment.sh "Olivia Coleman" acting
 ```
 
-The quotes tell bash that "Olivia Coleman" is a single string, `$1`. Olivia has enough accolades though, so go ahead and run the script with your name (just first or both first and last) and something you are good at!
+The quotes tell bash that "Olivia Coleman" is a single string, `$1`. Both double quotes (") and single quotes (') will work. Olivia has enough accolades though, so go ahead and run the script with your name (just first or both first and last) and something you are good at!
 
 
 ## Naming variables
@@ -130,16 +130,16 @@ Now that we understand the basics of variables and positional parameters how can
 As an example lets say that I want to add read groups to a series of bam files. Each bam file is one sample that I have sequenced and I need to add read groups to them all. Here is an example of my command for sample M1.
 
 ```bash
-java    -jar    picard.jar AddOrReplaceReadGroups  I=M1.dedupped.bam       O=M1.final.bam RGID=M1  RGLB=M1 RGPL=illumina   RGPU=unit1      RGSM=M1
+java -jar picard.jar AddOrReplaceReadGroups  I=M1.dedupped.bam O=M1.final.bam RGID=M1  RGLB=M1 RGPL=illumina   RGPU=unit1  RGSM=M1
 ```
 
-However, M1 is not my only sample and I don't want to manually edit this line of code every time I run the command. Using positional parameters I can make a wrapper for this command.
+The string 'M1' occurs 5 times in this command. However, M1 is not my only sample, to make this code run for a different sample I would need to replace M1 5 times. I don't want to manually edit this line of code every time I run the command. Instead, using positional parameters I can make a wrapper for this command.
 
 
 ```bash
 #!/bin/bash
 
-java    -jar    picard.jar AddOrReplaceReadGroups  I=$1.dedupped.bam       O=$1.final.bam RGID=$1  RGLB=$1 RGPL=illumina   RGPU=unit1      RGSM=$1
+java -jar picard.jar AddOrReplaceReadGroups I=$1.dedupped.bam O=$1.final.bam RGID=$1 RGLB=$1 RGPL=illumina RGPU=unit1 RGSM=$1
 ```
 
 Here `$1` is my only positional parameter and is my sample name. **However**, this script is not written with best practices. It should actually look like this.
@@ -147,7 +147,7 @@ Here `$1` is my only positional parameter and is my sample name. **However**, th
 ```bash
 #!/bin/bash
 
-java    -jar    picard.jar AddOrReplaceReadGroups  I=${1}.dedupped.bam       O=${1}.final.bam RGID=${1}  RGLB=${1} RGPL=illumina   RGPU=unit1      RGSM=${1}
+java  -jar  picard.jar AddOrReplaceReadGroups  I=${1}.dedupped.bam O=${1}.final.bam RGID=${1}  RGLB=${1} RGPL=illumina RGPU=unit1 RGSM=${1}
 ```
 
 `$1`, which we have been using is actually a short form of `${1}`
@@ -166,7 +166,7 @@ now copy and paste the follwing into your file
 ```bash
 #!/bin/bash
 
-echo java    -jar    picard.jar AddOrReplaceReadGroups  I=${1}.dedupped.bam       O=${1}.final.bam RGID=${1}  RGLB=${1} RGPL=illumina   RGPU=unit1     RGSM=${1}
+echo java -jar picard.jar AddOrReplaceReadGroups I=${1}.dedupped.bam  O=${1}.final.bam RGID=${1}  RGLB=${1} RGPL=illumina RGPU=unit1 RGSM=${1}
 ```
 then type <kbd>esc</kbd> to exit insert mode. Type and enter `:wq` to write and quit.
 
