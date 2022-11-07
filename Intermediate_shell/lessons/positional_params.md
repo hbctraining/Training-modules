@@ -34,14 +34,14 @@ It is crucial to note that different positional parameters are separated by whit
 ```bash
 $ ./myscript.sh OneTwoThree
 ```
-has only given one positional parameter $1 = OneTwoThree
+has only given one positional parameter $1=OneTwoThree
 
 and
 
 ```bash
 $ ./myscript.sh O N E
 ```
-has given three positional parameters $1 = O $2 = N $3 = E
+has given three positional parameters $1=O $2=N $3=E
 
 You can code your script to take as many positional parameters as you like but for any parameters greater than 9 you need to use curly brackets. So positional parameter 9 is $9 but positional parameter 10 is ${10}. We will come back to curly brackets later.
 
@@ -62,7 +62,7 @@ echo  $1 'is amazing at' $2
 ```
 then type <kbd>esc</kbd> to exit insert mode. Type and enter `:wq` to write and quit.
 
-Now that you are back on the command line type `chmod u+x` to make the file executable for yourself. More on file permissions [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/07_permissions_and_environment_variables.md).
+Now that you are back on the command line type `chmod u+x compliment.sh` to make the file executable for yourself. More on file permissions [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/07_permissions_and_environment_variables.md).
 
 You may have already guessed that our script takes two different positional parameters. The first one is your first name and the second is something you are good at. Here is an example:
 
@@ -85,7 +85,7 @@ I would get
 ```bash
 Olivia is amazing at Coleman
 ```
-Technically we have given three positional parameters $1 = Olivia $2 = Colman $3=acting
+Technically I have just given three positional parameters $1=Olivia $2=Colman $3=acting
 However, since our script does not contain $3 this is ignored. 
 
 In order to give Olivia her full due I would need to type
@@ -96,3 +96,79 @@ In order to give Olivia her full due I would need to type
 
 The quotes tell bash that "Olivia Coleman" is a single string, $1. Olivia has enough accolades though, so go ahead and run the script with your name (just first or both first and last) and something you are good at!
 
+
+## Naming variables
+
+My previous script was so short that it was easy to remember that $1 should be a name and $2 should be a skill. However, most scripts are much longer may contain more positional parameters. To make it easier on yourself it is often a good idea to name your positional parameters. Here is the same script we just used but with named parameters.
+
+```bash
+#!/bin/bash
+
+name=$1
+skill=$2
+
+echo  $name 'is amazing at' $skill
+```
+
+It is critical that there is no space in our naming statements, `name = $1` would not work. We can also assign new variables in this manner whether or not they are coming from positional parameters. Here is the same script with the variables defined within it.
+
+
+```bash
+#!/bin/bash
+
+name="Olivia Coleman"
+skill="acting"
+
+echo  $name 'is amazing at' $skill
+```
+We will come back to naming variables later, but note that defining variables within the script makes the script **less** flexible. If I want to change my sentence I need to edit my script directly rather than launching the same script but with different positional parameters.
+
+
+## A useful example
+
+Now that we understand the basics of variables and positional parameters how can we make them work for us? One of the best ways to do this is when writing a wrapper script. A wrapper script is a "shell script that embeds a system command or utility, that saves a set of parameters passed to to that command."
+
+As an example lets say that I want to add read groups to a series of bam files. Each bam file is one sample that I have sequenced and I need to add read groups to them all. Here is an example of my command for sample M1.
+
+```bash
+java    -jar    picard.jar AddOrReplaceReadGroups  I=M1.dedupped.bam       O=M1.final.bam RGID=M1  RGLB=M1 RGPL=illumina   RGPU=unit1      RGSM=M1
+```
+
+However, M1 is not my only sample and I don't want to manually edit this line of code every time I run the command. Using positional parameters I can make a wrapper for this command.
+
+
+```bash
+#!/bin/bash
+
+java    -jar    picard.jar AddOrReplaceReadGroups  I=$1.dedupped.bam       O=$1.final.bam RGID=$1  RGLB=$1 RGPL=illumina   RGPU=unit1      RGSM=$1
+```
+
+Here $1 is my only positional parameter and is my sample name. **However**, this script is not written with best practices. It should actually look like this.
+
+```bash
+#!/bin/bash
+
+java    -jar    picard.jar AddOrReplaceReadGroups  I=${1}.dedupped.bam       O=${1}.final.bam RGID=${1}  RGLB=${1} RGPL=illumina   RGPU=unit1      RGSM=${1}
+```
+
+$1, which we have been using is actually a short form of ${1}
+
+We can only use $1 when it is not followed by a letter, digit or an underscore but we can always use ${1}
+
+if wrote a script that said `Echo $1_is_awesome` I wouldn't actually get any output when I ran this with a positional parameter, even our beloved [Olivia Coleman](https://en.wikipedia.org/wiki/Olivia_Colman)! Instead this script would need to be written as `Echo ${1}_is_awesome`
+
+As you write your own code it is good to remember that it is always safe to use **${VAR}** and that errors may result from using $VAR instead, even if it is convienent. As you navigate scripts written by other people you will see both forms.
+
+
+Let's test out this picard script this ourselves without actually running picard by using `echo`. From your command line type `vim picard.sh` then type `i` to go to insert mode. 
+
+now copy and paste the follwing into your file
+
+```bash
+#!/bin/bash
+
+echo java    -jar    picard.jar AddOrReplaceReadGroups  I=${1}.dedupped.bam       O=${1}.final.bam RGID=${1}  RGLB=${1} RGPL=illumina   RGPU=unit1      RGSM=${1}
+```
+then type <kbd>esc</kbd> to exit insert mode. Type and enter `:wq` to write and quit.
+
+Now that you are back on the command line type `chmod u+x picarsh.sh` to make the file executable for yourself. 
