@@ -159,7 +159,7 @@ if wrote a script that said `Echo $1_is_awesome` I wouldn't actually get any out
 As you write your own code it is good to remember that it is always safe to use **${VAR}** and that errors may result from using `$VAR` instead, even if it is convienent. As you navigate scripts written by other people you will see both forms.
 
 
-Let's test out this picard script this ourselves without actually running picard by using `echo`. From your command line type `vim picard.sh` then type `i` to go to insert mode. 
+Let's test out this script this ourselves without actually running picard by using `echo`. From your command line type `vim picard.sh` then type `i` to go to insert mode. 
 
 now copy and paste the follwing into your file
 
@@ -171,3 +171,105 @@ echo java -jar picard.jar AddOrReplaceReadGroups I=${1}.dedupped.bam  O=${1}.fin
 then type <kbd>esc</kbd> to exit insert mode. Type and enter `:wq` to write and quit.
 
 Now that you are back on the command line type `chmod u+x picard.sh` to make the file executable for yourself. 
+
+You can try out the code yourself by using any sample name you want. Here I am running it for sample T23
+
+
+```bash
+./picard.sh T23
+```
+
+We have now significantly decrased our own workload. By using this wrapper we can easily run this command for any sample we have. However, sometimes we have so many samples that even running this command manually for all of these will be time consuming. In this case we can turn to one of the most powerful ways to use positional parameters and other variables, by combining them with **for loops**. More on for loops [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/06_loops_and_automation.md).
+
+## Variables in for loops
+
+We are going to continue with our picard example. Let's say that I need to run my picard command for 10 different samples. I have all of my sample names in a text file. First let's put my sample name list on the cluster so we can access it with our script.
+
+From your command line type `vim samples.txt` then type `i` to go to insert mode. Copy and paste the following
+
+```bash
+M1
+M2
+M3
+O1
+O2
+O3
+O4
+S1
+S2
+S3
+```
+
+then type <kbd>esc</kbd> to exit insert mode. Type and enter `:wq` to write and quit. Each line is a single sample name.
+
+Now let's write our new script. Again we will use `echo` to avoid actually calling picard. We will write this with vim then go through it line by line. 
+
+From your command line type `vim picard_loop.sh` then type `i` to go to insert mode. Copy and paste the following
+
+```bash
+#!/bin/bash
+
+for ((i=1; i<=10; i+=1))
+        do 
+
+sample=$(awk -v  awkvar="${i}" 'NR==awkvar' samples.txt)
+
+echo java  -jar $PICARD_HOME/picard.jar AddOrReplaceReadGroups  I=${sample}.dedupped.bam  O=${sam}.final.bam RGID=${sample}  RGLB=${sample} RGPL=illumina   RGPU=unit1  RGSM=${sample}
+
+done
+```
+
+then type <kbd>esc</kbd> to exit insert mode. Type and enter `:wq` to write and quit. Now that you are back on the command line type `chmod u+x picard_loop.sh` to make the file executable for yourself. 
+
+Before we run this let's go through it line by line.
+
+
+`for ((i=1; i<=10; i+=1))`
+
+This tells bash how our loop is working. We want to start at 1 (`i=1) and end at 10 (`i<=10`) and each time we complete our loop the value `i` should increase by 1 (`i+=1').  Simple math tells us that means the loop will run 10 times. But we could make it run 100 times by changing `i<=10` to `i<=100`. We are going to use the value of `i` in our code so we want to keep `i` as a whole number. Otherwise we could also write `for ((i=1; i<=10; i+=0.1))` which would also give us 100 loops.
+
+
+`do` 
+
+This means that whatever follows is what we want bash to do for each value of `i` (here 1,2,3,4,5,6,7,8,9,and 10).
+
+`sample=$(awk -v  awkvar="${i}" 'NR==awkvar' samples.txt)`
+
+This line creates a variable called `$sample` and assigns its value to line `i` of samples.txt. We would go into the details of how this awk command is working but you can learn more about using awk [HERE](https://github.com/hbctraining/Training-modules/blob/f168114cce7ab9d35eddbf888b94f5a2fda0318a/Intermediate_shell/lessons/advanced_lessons.md). You may also notice that we have assigned the value of `$sample` differently here using parentheses () instead of single ' or double " quotes. The syntax for assigning variables changes depending on what you are assigning. See **Syntax for assigning variables** below.
+
+If we look at samples.txt we can see that when `i` is 1 then `$sample` will be M1. What will `$sample` be when `i` is 5?
+
+
+The next line should look familiar
+
+```bash
+echo java  -jar $PICARD_HOME/picard.jar AddOrReplaceReadGroups  I=${sample}.dedupped.bam  O=${sam}.final.bam RGID=${sample}  RGLB=${sample} RGPL=illumina   RGPU=unit1  RGSM=${sample}
+```
+
+This is exactly the same as we what we used above except `$1` is now `$sample`. We are assigning the value of `$sample` within our script instead of giving it externally as a positional parameter.
+
+finally we end our script with 
+
+```bash
+done
+```
+
+Here we are simply telling bash that this is the end of the commands that we need it to do for each value of `i`.
+
+Now let's run our script
+
+
+```bash
+./picard_loop.sh
+```
+
+Is the output what you expected?
+
+## Syntax for assigning variables
+
+=$(command) for output of a command
+=‘a string’ or ”a string” for a string with spaces
+=12 for a number or a string without spaces
+=$1 for positional parameter 1
+
+
