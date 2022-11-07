@@ -11,8 +11,7 @@ author: "Emma Berdan"
 
 ## What is a variable?
 
-“A **variable** is a character string to which we assign a value. The value assigned could be a number, text, filename, device, or any other type of data.
-
+"A **variable** is a character string to which we assign a value. The value assigned could be a number, text, filename, device, or any other type of data.
 A variable is nothing more than a pointer to the actual data. The shell enables you to create, assign, and delete variables.” ([Source](https://www.tutorialspoint.com/unix/unix-using-variables.htm))
 
 It is easy to identify a variable in any bash script as they will always have the $ in front of them. Here is my very cleverly named variable: `$Variable`
@@ -27,7 +26,7 @@ So rather than something that is identified inside the bash script, a positional
 <img src="../img/positional-parameter.jpg" width="400">
 </p>
 
-Here we can se that our command is the first positional parameter (`$0`) and that each of the strings afterwards are additional positional parameters (here `$1` and `$2`). Generally when we refer to positional parameters we ignore `$0` and start with `$1`.
+Here we can see that our command is the first positional parameter (`$0`) and that each of the strings afterwards are additional positional parameters (here `$1` and `$2`). Generally when we refer to positional parameters we ignore `$0` and start with `$1`.
 
 It is crucial to note that different positional parameters are separated by whitespace and can be strings of any length. This means that:
 
@@ -99,7 +98,7 @@ The quotes tell bash that "Olivia Coleman" is a single string, `$1`. Both double
 
 ## Naming variables
 
-My previous script was so short that it was easy to remember that `$1` represents a name and `$2` represents a skill. However, most scripts are much longer may contain more positional parameters. To make it easier on yourself it is often a good idea to name your positional parameters. Here is the same script we just used but with named parameters.
+My previous script was so short that it was easy to remember that `$1` represents a name and `$2` represents a skill. However, most scripts are much longer and may contain more positional parameters. To make it easier on yourself it is often a good idea to name your positional parameters. Here is the same script we just used but with named variables.
 
 ```bash
 #!/bin/bash
@@ -120,7 +119,7 @@ skill="acting"
 
 echo  $name 'is amazing at' $skill
 ```
-We will come back to naming variables later, but note that defining variables within the script makes the script **less** flexible. If I want to change my sentence I need to edit my script directly rather than launching the same script but with different positional parameters.
+We will talk more about naming variables later, but note that defining variables within the script makes the script **less** flexible. If I want to change my sentence, I now need to edit my script directly rather than launching the same script but with different positional parameters.
 
 
 ## A useful example
@@ -156,7 +155,7 @@ We can only use `$1` when it is **not** followed by a letter, digit or an unders
 
 if wrote a script that said `Echo $1_is_awesome` I wouldn't actually get any output when I ran this with a positional parameter, even our beloved [Olivia Coleman](https://en.wikipedia.org/wiki/Olivia_Colman)! Instead this script would need to be written as `Echo ${1}_is_awesome`
 
-As you write your own code it is good to remember that it is always safe to use **${VAR}** and that errors may result from using `$VAR` instead, even if it is convienent. As you navigate scripts written by other people you will see both forms.
+As you write your own code it is good to remember that it is always safe to use `${VAR}` and that errors may result from using `$VAR` instead, even if it is convienent. As you navigate scripts written by other people you will see both forms.
 
 
 Let's test out this script this ourselves without actually running picard by using `echo`. From your command line type `vim picard.sh` then type `i` to go to insert mode. 
@@ -214,19 +213,19 @@ for ((i=1; i<=10; i+=1))
 
 sample=$(awk -v  awkvar="${i}" 'NR==awkvar' samples.txt)
 
-echo java  -jar $PICARD_HOME/picard.jar AddOrReplaceReadGroups  I=${sample}.dedupped.bam  O=${sam}.final.bam RGID=${sample}  RGLB=${sample} RGPL=illumina   RGPU=unit1  RGSM=${sample}
+echo java  -jar $PICARD_HOME/picard.jar AddOrReplaceReadGroups  I=${sample}.dedupped.bam  O=${sample}.final.bam RGID=${sample}  RGLB=${sample} RGPL=illumina   RGPU=unit1  RGSM=${sample}
 
 done
 ```
 
 then type <kbd>esc</kbd> to exit insert mode. Type and enter `:wq` to write and quit. Now that you are back on the command line type `chmod u+x picard_loop.sh` to make the file executable for yourself. 
 
-Before we run this let's go through it line by line.
+Before we run this, let's go through it line by line.
 
 
 `for ((i=1; i<=10; i+=1))`
 
-This tells bash how our loop is working. We want to start at 1 (`i=1`) and end at 10 (`i<=10`) and each time we complete our loop the value `i` should increase by 1 (`i+=1`).  Simple math tells us that means the loop will run 10 times. But we could make it run 100 times by changing `i<=10` to `i<=100`. We are going to use the value of `i` in our code so we want to keep `i` as a whole number. Otherwise we could also write `for ((i=1; i<=10; i+=0.1))` which would also give us 100 loops.
+This tells bash how our loop is working. We want to start at 1 (`i=1`) and end at 10 (`i<=10`) and each time we complete our loop the value `i` should increase by 1 (`i+=1`).  Simple math tells us that means the loop will run 10 times. But we could make it run 100 times by changing `i<=10` to `i<=100`. We are going to use the value of `i` in our code so we want to keep `i` as an integer. Otherwise we could also write `for ((i=1; i<=10; i+=0.1))` which would also give us 100 loops.
 
 `do` 
 
@@ -234,18 +233,18 @@ This means that whatever follows is what we want bash to do for each value of `i
 
 `sample=$(awk -v  awkvar="${i}" 'NR==awkvar' samples.txt)`
 
-This line creates a variable called `$sample` and assigns its value to line `i` of samples.txt. We would go into the details of how this awk command is working but you can learn more about using awk [HERE](https://github.com/hbctraining/Training-modules/blob/f168114cce7ab9d35eddbf888b94f5a2fda0318a/Intermediate_shell/lessons/advanced_lessons.md). You may also notice that we have assigned the value of `$sample` differently here using parentheses () instead of single ' or double " quotes. The syntax for assigning variables changes depending on what you are assigning. See **Syntax for assigning variables** below.
+This line creates a variable called `$sample` and assigns its value to line `i` of samples.txt. We won't go into the details of how this awk command is working but you can learn more about using awk [HERE](https://github.com/hbctraining/Training-modules/blob/f168114cce7ab9d35eddbf888b94f5a2fda0318a/Intermediate_shell/lessons/advanced_lessons.md). You may also notice that we have assigned the value of `$sample` differently here using parentheses () instead of single ' or double " quotes. The syntax for assigning variables changes depending on what you are assigning. See **Syntax for assigning variables** below.
 
-If we look at samples.txt we can see that when `i` is 1 then `$sample` will be M1. What will `$sample` be when `i` is 5?
+If we look at samples.txt we can see that when `i=1` then `$sample` will be M1. What will `$sample` be when `i=5`?
 
 
 The next line should look familiar
 
 ```bash
-echo java  -jar $PICARD_HOME/picard.jar AddOrReplaceReadGroups  I=${sample}.dedupped.bam  O=${sam}.final.bam RGID=${sample}  RGLB=${sample} RGPL=illumina   RGPU=unit1  RGSM=${sample}
+echo java  -jar $PICARD_HOME/picard.jar AddOrReplaceReadGroups  I=${sample}.dedupped.bam  O=${sample}.final.bam RGID=${sample}  RGLB=${sample} RGPL=illumina   RGPU=unit1  RGSM=${sample}
 ```
 
-This is exactly the same as we what we used above except `$1` is now `$sample`. We are assigning the value of `$sample` within our script instead of giving it externally as a positional parameter.
+This is exactly the same as what we used above except `$1` is now `$sample`. We are assigning the value of `$sample` within our script instead of giving it externally as a positional parameter.
 
 finally we end our script with 
 
@@ -266,9 +265,21 @@ Is the output what you expected?
 
 ## Syntax for assigning variables
 
-=$(command) for output of a command
-=‘a string’ or ”a string” for a string with spaces
-=12 for a number or a string without spaces
-=$1 for positional parameter 1
+Depending on what you are assigning as a variable, the syntax for doing so differs.
 
+`$variable=$(command)` for output of a command. 
+
+        example: `$variable=$(wc -l file.txt)` will assign the number of lines in the file file.text to `$variable`
+
+`$variable=‘a string’` or `”a string”` for a string with spaces.
+
+        example `$variable="Olivia Coleman"` as seen above.
+
+`$variable=number` for a number or a string without spaces.
+
+        example: `$variable=12` will assign the number 12 to `$variable`
+
+`$variable=$1` for positional parameter 1.
+
+        example: `$variable=$9` will assign positional parameter 9 to `$variable` and `$variable=${10}` will assign positional parameter 10 to `$variable` 
 
