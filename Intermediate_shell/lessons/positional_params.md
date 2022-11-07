@@ -15,7 +15,7 @@ author: "Emma Berdan"
 
 A variable is nothing more than a pointer to the actual data. The shell enables you to create, assign, and delete variables.” ([Source](https://www.tutorialspoint.com/unix/unix-using-variables.htm))
 
-It is easy to identify a variable in any bash script as they will always have the $ in front of them. Here is my very cleverly named variable: $Variable
+It is easy to identify a variable in any bash script as they will always have the $ in front of them. Here is my very cleverly named variable: `$Variable`
 
 ## Positional parameters are a special kind of variable
 
@@ -27,25 +27,25 @@ So rather than something that is identified inside the bash script, a positional
 <img src="../img/positional-parameter.jpg" width="400">
 </p>
 
-Here we can se that our command is the first positional parameter ($0) and that each of the strings afterwards are additional positional parameters (here $1 and $2). Generally when we refer to positional parameters we ignore $0 and start with $1.
+Here we can se that our command is the first positional parameter (`$0`) and that each of the strings afterwards are additional positional parameters (here `$1` and `$2`). Generally when we refer to positional parameters we ignore `$0` and start with `$1`.
 
 It is crucial to note that different positional parameters are separated by whitespace and can be strings of any length. This means that:
 
 ```bash
 $ ./myscript.sh OneTwoThree
 ```
-has only given one positional parameter $1=OneTwoThree
+has only given one positional parameter `$1=OneTwoThree`
 
 and
 
 ```bash
 $ ./myscript.sh O N E
 ```
-has given three positional parameters $1=O $2=N $3=E
+has given three positional parameters `$1=O $2=N $3=E`
 
-You can code your script to take as many positional parameters as you like but for any parameters greater than 9 you need to use curly brackets. So positional parameter 9 is $9 but positional parameter 10 is ${10}. We will come back to curly brackets later.
+You can code your script to take as many positional parameters as you like but for any parameters greater than 9 you need to use curly brackets. So positional parameter 9 is `$9` but positional parameter 10 is `${10}`. We will come back to curly brackets later.
 
-Finally, the variable $@ contains the value of all positional parameters except $0.
+Finally, the variable `$@` contains the value of all positional parameters except `$0`.
 
 ## A simple example
 
@@ -85,8 +85,8 @@ I would get
 ```bash
 Olivia is amazing at Coleman
 ```
-Technically I have just given three positional parameters $1=Olivia $2=Colman $3=acting
-However, since our script does not contain $3 this is ignored. 
+Technically I have just given three positional parameters `$1=Olivia $2=Colman $3=acting`
+However, since our script does not contain `$3` this is ignored. 
 
 In order to give Olivia her full due I would need to type
 
@@ -94,12 +94,12 @@ In order to give Olivia her full due I would need to type
 ./compliment.sh "Olivia Coleman" acting
 ```
 
-The quotes tell bash that "Olivia Coleman" is a single string, $1. Olivia has enough accolades though, so go ahead and run the script with your name (just first or both first and last) and something you are good at!
+The quotes tell bash that "Olivia Coleman" is a single string, `$1`. Olivia has enough accolades though, so go ahead and run the script with your name (just first or both first and last) and something you are good at!
 
 
 ## Naming variables
 
-My previous script was so short that it was easy to remember that $1 should be a name and $2 should be a skill. However, most scripts are much longer may contain more positional parameters. To make it easier on yourself it is often a good idea to name your positional parameters. Here is the same script we just used but with named parameters.
+My previous script was so short that it was easy to remember that `$1` represents a name and `$2` represents a skill. However, most scripts are much longer may contain more positional parameters. To make it easier on yourself it is often a good idea to name your positional parameters. Here is the same script we just used but with named parameters.
 
 ```bash
 #!/bin/bash
@@ -111,7 +111,6 @@ echo  $name 'is amazing at' $skill
 ```
 
 It is critical that there is no space in our naming statements, `name = $1` would not work. We can also assign new variables in this manner whether or not they are coming from positional parameters. Here is the same script with the variables defined within it.
-
 
 ```bash
 #!/bin/bash
@@ -143,7 +142,7 @@ However, M1 is not my only sample and I don't want to manually edit this line of
 java    -jar    picard.jar AddOrReplaceReadGroups  I=$1.dedupped.bam       O=$1.final.bam RGID=$1  RGLB=$1 RGPL=illumina   RGPU=unit1      RGSM=$1
 ```
 
-Here $1 is my only positional parameter and is my sample name. **However**, this script is not written with best practices. It should actually look like this.
+Here `$1` is my only positional parameter and is my sample name. **However**, this script is not written with best practices. It should actually look like this.
 
 ```bash
 #!/bin/bash
@@ -151,13 +150,13 @@ Here $1 is my only positional parameter and is my sample name. **However**, this
 java    -jar    picard.jar AddOrReplaceReadGroups  I=${1}.dedupped.bam       O=${1}.final.bam RGID=${1}  RGLB=${1} RGPL=illumina   RGPU=unit1      RGSM=${1}
 ```
 
-$1, which we have been using is actually a short form of ${1}
+`$1`, which we have been using is actually a short form of `${1}`
 
-We can only use $1 when it is not followed by a letter, digit or an underscore but we can always use ${1}
+We can only use `$1` when it is **not** followed by a letter, digit or an underscore but we can always use `${1}`
 
 if wrote a script that said `Echo $1_is_awesome` I wouldn't actually get any output when I ran this with a positional parameter, even our beloved [Olivia Coleman](https://en.wikipedia.org/wiki/Olivia_Colman)! Instead this script would need to be written as `Echo ${1}_is_awesome`
 
-As you write your own code it is good to remember that it is always safe to use **${VAR}** and that errors may result from using $VAR instead, even if it is convienent. As you navigate scripts written by other people you will see both forms.
+As you write your own code it is good to remember that it is always safe to use **${VAR}** and that errors may result from using `$VAR` instead, even if it is convienent. As you navigate scripts written by other people you will see both forms.
 
 
 Let's test out this picard script this ourselves without actually running picard by using `echo`. From your command line type `vim picard.sh` then type `i` to go to insert mode. 
@@ -167,8 +166,8 @@ now copy and paste the follwing into your file
 ```bash
 #!/bin/bash
 
-echo java    -jar    picard.jar AddOrReplaceReadGroups  I=${1}.dedupped.bam       O=${1}.final.bam RGID=${1}  RGLB=${1} RGPL=illumina   RGPU=unit1      RGSM=${1}
+echo java    -jar    picard.jar AddOrReplaceReadGroups  I=${1}.dedupped.bam       O=${1}.final.bam RGID=${1}  RGLB=${1} RGPL=illumina   RGPU=unit1     RGSM=${1}
 ```
 then type <kbd>esc</kbd> to exit insert mode. Type and enter `:wq` to write and quit.
 
-Now that you are back on the command line type `chmod u+x picarsh.sh` to make the file executable for yourself. 
+Now that you are back on the command line type `chmod u+x picard.sh` to make the file executable for yourself. 
