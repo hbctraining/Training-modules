@@ -4,6 +4,7 @@ Below is the table of contents for the Advanced Unix lessons
 
 | Topic  | Status |
 |:-----------:|:----------:|
+| [String manipulation]() | Undrafted |
 | [sed](sed.md) | Drafted |
 | [Regular Expressions](regular_expression.md) | Drafted |
 | [grep]() | Undrafted |
