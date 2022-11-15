@@ -5,9 +5,10 @@ author: "Emma Berdan"
 
 ## Learning Objectives:
 
-* Understand what variables and positional parameters are in Bash scripting
-* Understand basic syntax rules for implementation
-* Begin to explore ways in which these can be used in bioinformatics
+* Distinguish between variables and positional parameters
+* Recognize variables and positional parameters in code written by someone else
+* Implement positional parameters and variables in a bash script
+* Integrate for loops and variables
 
 ## What is a variable?
 
@@ -20,7 +21,7 @@ It is easy to identify a variable in any bash script as they will always have th
 
 “A **positional parameter** is an argument specified on the command line, used to launch the current process in a shell. Positional parameter values are stored in a special set of variables maintained by the shell.” ([Source](https://www.computerhope.com/jargon/p/positional-parameter.htm))
 
-So rather than something that is identified inside the bash script, a positional parameter is given when you run your script. This makes it more flexible as it can be changed without modifying the script itself.  
+So rather than a variable that is identified inside the bash script, a positional parameter is given when you run your script. This makes it more flexible as it can be changed without modifying the script itself.  
 
 <p align="center">
 <img src="../img/positional-parameter.jpg" width="400">
@@ -61,7 +62,31 @@ echo  $1 'is amazing at' $2
 ```
 then type <kbd>esc</kbd> to exit insert mode. Type and enter `:wq` to write and quit.
 
-Now that you are back on the command line type `chmod u+x compliment.sh` to make the file executable for yourself. More on file permissions [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/07_permissions_and_environment_variables.md).
+```
+We want to take a step back here and think about what we might do from here to actually use our script. 
+We know our script is a bash script because we wrote our "shebang" line '#!/bin/bash' but the computer 
+doesn't know this. One option is to run this script via the bash interpreter: sh. Doing this actually 
+makes our "shebang" line obsolete! The same script without the "shebang" line will still run!! Try it!
+
+sh compliment.sh
+
+Here we are telling the computer to use bash to execute the commands in our script which is why we don't 
+need the "shebang" line. It is NOT best practice to write scripts without "shebang" lines as removing this
+will leave the next person scratching there head figuring out which language the script is in. 
+ALWAYS ALWAYS ALWAYS use a "shebang" line. With that line in place we can run this script without 
+calling bash from the command line. But first we have to make the script executable. This tells the 
+computer that this is a script and not just a text file. We do that by adding file permission.
+Typing chmod u+x will make the file executable for the user (you!) once this is done the script 
+can be run this way
+
+./compliment.sh
+
+When a file is executable the computer will use the "shebang" line to figure out which interpreter to use. 
+Different programs (perl, python, etc) will have different "shebang" lines.
+
+```
+
+For this lesson we will make all of our scripts exectuable. Now that you are back on the command line type `chmod u+x compliment.sh` to make the file executable for yourself. More on file permissions [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/07_permissions_and_environment_variables.md).
 
 You may have already guessed that our script takes two different positional parameters. The first one is your first name and the second is something you are good at. Here is an example:
 
@@ -119,12 +144,12 @@ skill="acting"
 
 echo  $name 'is amazing at' $skill
 ```
-We will talk more about naming variables later, but note that defining variables within the script makes the script **less** flexible. If I want to change my sentence, I now need to edit my script directly rather than launching the same script but with different positional parameters.
+We will talk more about naming variables later, but note that defining variables within the script can make the script **less** flexible. If I want to change my sentence, I now need to edit my script directly rather than launching the same script but with different positional parameters.
 
 
 ## A useful example
 
-Now that we understand the basics of variables and positional parameters how can we make them work for us? One of the best ways to do this is when writing a wrapper script. A wrapper script is a "shell script that embeds a system command or utility, that saves a set of parameters passed to to that command."
+Now that we understand the basics of variables and positional parameters how can we make them work for us? One of the best ways to do this is when writing a shell script. A shell script is a "shell script that embeds a system command or utility, that saves a set of parameters passed to to that command."
 
 As an example lets say that I want to add read groups to a series of bam files. Each bam file is one sample that I have sequenced and I need to add read groups to them all. Here is an example of my command for sample M1.
 
@@ -132,7 +157,7 @@ As an example lets say that I want to add read groups to a series of bam files. 
 java -jar picard.jar AddOrReplaceReadGroups  I=M1.dedupped.bam O=M1.final.bam RGID=M1  RGLB=M1 RGPL=illumina   RGPU=unit1  RGSM=M1
 ```
 
-The string 'M1' occurs 5 times in this command. However, M1 is not my only sample, to make this code run for a different sample I would need to replace M1 5 times. I don't want to manually edit this line of code every time I run the command. Instead, using positional parameters I can make a wrapper for this command.
+The string 'M1' occurs 5 times in this command. However, M1 is not my only sample, to make this code run for a different sample I would need to replace M1 5 times. I don't want to manually edit this line of code every time I run the command. Instead, using positional parameters I can make a shell script for this command.
 
 
 ```bash
@@ -153,7 +178,7 @@ java  -jar  picard.jar AddOrReplaceReadGroups  I=${1}.dedupped.bam O=${1}.final.
 
 We can only use `$1` when it is **not** followed by a letter, digit or an underscore but we can always use `${1}`
 
-if wrote a script that said `Echo $1_is_awesome` I wouldn't actually get any output when I ran this with a positional parameter, even our beloved [Olivia Coleman](https://en.wikipedia.org/wiki/Olivia_Colman)! Instead this script would need to be written as `Echo ${1}_is_awesome`
+if wrote a script that said `echo $1_is_awesome` I wouldn't actually get any output when I ran this with a positional parameter, even our beloved [Olivia Coleman](https://en.wikipedia.org/wiki/Olivia_Colman)! Instead this script would need to be written as `echo ${1}_is_awesome`
 
 As you write your own code it is good to remember that it is always safe to use `${VAR}` and that errors may result from using `$VAR` instead, even if it is convienent. As you navigate scripts written by other people you will see both forms.
 
@@ -178,7 +203,7 @@ You can try out the code yourself by using any sample name you want. Here I am r
 ./picard.sh T23
 ```
 
-We have now significantly decrased our own workload. By using this wrapper we can easily run this command for any sample we have. However, sometimes we have so many samples that even running this command manually for all of these will be time consuming. In this case we can turn to one of the most powerful ways to use positional parameters and other variables, by combining them with **for loops**. More on for loops [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/06_loops_and_automation.md).
+We have now significantly decrased our own workload. By using this script we can easily run this command for any sample we have. However, sometimes we have so many samples that even running this command manually for all of these will be time consuming. In this case we can turn to one of the most powerful ways to use positional parameters and other variables, by combining them with **for loops**. More on for loops [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/06_loops_and_automation.md).
 
 ## Variables in for loops
 
@@ -267,19 +292,19 @@ Is the output what you expected?
 
 Depending on what you are assigning as a variable, the syntax for doing so differs.
 
-`$variable=$(command)` for output of a command. 
+`variable=$(command)` for output of a command. 
 
-        example: `$variable=$(wc -l file.txt)` will assign the number of lines in the file file.text to `$variable`
+        example: `variable=$(wc -l file.txt)` will assign the number of lines in the file file.text to `$variable`
 
-`$variable=‘a string’` or `”a string”` for a string with spaces.
+`variable=‘a string’` or `”a string”` for a string with spaces.
 
-        example `$variable="Olivia Coleman"` as seen above.
+        example `variable="Olivia Coleman"` as seen above.
 
-`$variable=number` for a number or a string without spaces.
+`variable=number` for a number or a string without spaces.
 
-        example: `$variable=12` will assign the number 12 to `$variable`
+        example: `variable=12` will assign the number 12 to `$variable`
 
-`$variable=$1` for positional parameter 1.
+`variable=$1` for positional parameter 1.
 
-        example: `$variable=$9` will assign positional parameter 9 to `$variable` and `$variable=${10}` will assign positional parameter 10 to `$variable` 
+        example: `variable=$9` will assign positional parameter 9 to `$variable` and `variable=${10}` will assign positional parameter 10 to `$variable` 
 
