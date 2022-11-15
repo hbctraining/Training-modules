@@ -134,7 +134,7 @@ skill=$2
 echo  $name 'is amazing at' $skill
 ```
 
-It is critical that there is no space in our naming statements, `name = $1` would not work. We can also assign new variables in this manner whether or not they are coming from positional parameters. Here is the same script with the variables defined within it.
+It is critical that there is no space in our assignment statements, `name = $1` would not work. We can also assign new variables in this manner whether or not they are coming from positional parameters. Here is the same script with the variables defined within it.
 
 ```bash
 #!/bin/bash
