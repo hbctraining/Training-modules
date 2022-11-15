@@ -53,7 +53,7 @@ Let's make a script ourselves to see positional parameters in action.
 
 from your command line type `vim compliment.sh` then type `i` to go to insert mode. If you have never used vim before you can find the basics [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/047946559cbffc9cc24ccb10a4d630aa18fab558/lessons/03_working_with_files.md).
 
-now copy and paste the follwing into your file
+now copy and paste the following into your file
 
 ```bash
 #!/bin/bash
@@ -185,7 +185,7 @@ As you write your own code it is good to remember that it is always safe to use 
 
 Let's test out this script this ourselves without actually running picard by using `echo`. From your command line type `vim picard.sh` then type `i` to go to insert mode. 
 
-now copy and paste the follwing into your file
+now copy and paste the following into your file
 
 ```bash
 #!/bin/bash
@@ -248,9 +248,9 @@ then type <kbd>esc</kbd> to exit insert mode. Type and enter `:wq` to write and 
 Before we run this, let's go through it line by line.
 
 
-`for ((i=1; i<=10; i+=1))`
+`for ((i=1; i<=10; i=i+1))`
 
-This tells bash how our loop is working. We want to start at 1 (`i=1`) and end at 10 (`i<=10`) and each time we complete our loop the value `i` should increase by 1 (`i+=1`).  Simple math tells us that means the loop will run 10 times. But we could make it run 100 times by changing `i<=10` to `i<=100`. We are going to use the value of `i` in our code so we want to keep `i` as an integer. Otherwise we could also write `for ((i=1; i<=10; i+=0.1))` which would also give us 100 loops.
+This tells bash how our loop is working. We want to start at 1 (`i=1`) and end at 10 (`i<=10`) and each time we complete our loop the value `i` should increase by 1 (`i=i+1`).  Simple math tells us that means the loop will run 10 times. But we could make it run 100 times by changing `i<=10` to `i<=100`. `i` is our counter variable to track how many loops we have run. You will often see this called `i` or `j` but you can actually call it whatever you want. For example, here we are using it to track which line of samples.txt we are reading so it may be more intuitive to write it like this `for ((line=1; line<=10; line=line+1))`. `i` and `j` are used because they are shorter to write.
 
 `do` 
 
