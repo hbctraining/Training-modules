@@ -3,6 +3,7 @@ title: "Introduction to Positional Parameters and Variables"
 author: "Emma Berdan"
 ---
 
+
 ## Learning Objectives:
 
 * Distinguish between variables and positional parameters
@@ -62,29 +63,29 @@ echo  $1 'is amazing at' $2
 ```
 then type <kbd>esc</kbd> to exit insert mode. Type and enter `:wq` to write and quit.
 
-```
-We want to take a step back here and think about what we might do from here to actually use our script. 
-We know our script is a bash script because we wrote our "shebang" line '#!/bin/bash' but the computer 
-doesn't know this. One option is to run this script via the bash interpreter: sh. Doing this actually 
-makes our "shebang" line obsolete! The same script without the "shebang" line will still run!! Try it!
 
-sh compliment.sh
+>**Note**
+>We want to take a step back here and think about what we might do from here to actually use our script. 
+>We know our script is a bash script because we wrote our "shebang" line '#!/bin/bash' but the computer 
+>doesn't know this. One option is to run this script via the bash interpreter: sh. Doing this actually 
+>makes our "shebang" line obsolete! The same script without the "shebang" line will still run!! Try it!
+>
+>sh compliment.sh
+>
+>Here we are telling the computer to use bash to execute the commands in our script which is why we don't 
+>need the "shebang" line. It is NOT best practice to write scripts without "shebang" lines as removing this
+>will leave the next person scratching there head figuring out which language the script is in. 
+>ALWAYS ALWAYS ALWAYS use a "shebang" line. With that line in place we can run this script without 
+>calling bash from the command line. But first we have to make the script executable. This tells the 
+>computer that this is a script and not just a text file. We do that by adding file permission.
+>Typing chmod u+x will make the file executable for the user (you!) once this is done the script 
+>can be run this way
+>
+>./compliment.sh
+>
+>When a file is executable the computer will use the "shebang" line to figure out which interpreter to use. 
+>Different programs (perl, python, etc) will have different "shebang" lines.
 
-Here we are telling the computer to use bash to execute the commands in our script which is why we don't 
-need the "shebang" line. It is NOT best practice to write scripts without "shebang" lines as removing this
-will leave the next person scratching there head figuring out which language the script is in. 
-ALWAYS ALWAYS ALWAYS use a "shebang" line. With that line in place we can run this script without 
-calling bash from the command line. But first we have to make the script executable. This tells the 
-computer that this is a script and not just a text file. We do that by adding file permission.
-Typing chmod u+x will make the file executable for the user (you!) once this is done the script 
-can be run this way
-
-./compliment.sh
-
-When a file is executable the computer will use the "shebang" line to figure out which interpreter to use. 
-Different programs (perl, python, etc) will have different "shebang" lines.
-
-```
 
 For this lesson we will make all of our scripts exectuable. Now that you are back on the command line type `chmod u+x compliment.sh` to make the file executable for yourself. More on file permissions [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/07_permissions_and_environment_variables.md).
 
