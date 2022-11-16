@@ -154,7 +154,8 @@ Now that we understand the basics of variables and positional parameters how can
 As an example lets say that I want to add read groups to a series of bam files. Each bam file is one sample that I have sequenced and I need to add read groups to them all. Here is an example of my command for sample M1.
 
 ```bash
-java -jar picard.jar AddOrReplaceReadGroups  I=M1.dedupped.bam O=M1.final.bam RGID=M1  RGLB=M1 RGPL=illumina   RGPU=unit1  RGSM=M1
+java -jar picard.jar AddOrReplaceReadGroups  I=M1.dedupped.bam \
+O=M1.final.bam RGID=M1  RGLB=M1 RGPL=illumina   RGPU=unit1  RGSM=M1
 ```
 
 The string 'M1' occurs 5 times in this command. However, M1 is not my only sample, to make this code run for a different sample I would need to replace M1 5 times. I don't want to manually edit this line of code every time I run the command. Instead, using positional parameters I can make a shell script for this command.
@@ -163,7 +164,8 @@ The string 'M1' occurs 5 times in this command. However, M1 is not my only sampl
 ```bash
 #!/bin/bash
 
-java -jar picard.jar AddOrReplaceReadGroups I=$1.dedupped.bam O=$1.final.bam RGID=$1 RGLB=$1 RGPL=illumina RGPU=unit1 RGSM=$1
+java -jar picard.jar AddOrReplaceReadGroups I=$1.dedupped.bam \
+O=$1.final.bam RGID=$1 RGLB=$1 RGPL=illumina RGPU=unit1 RGSM=$1
 ```
 
 Here `$1` is my only positional parameter and is my sample name. **However**, this script is not written with best practices. It should actually look like this.
@@ -171,7 +173,8 @@ Here `$1` is my only positional parameter and is my sample name. **However**, th
 ```bash
 #!/bin/bash
 
-java  -jar  picard.jar AddOrReplaceReadGroups  I=${1}.dedupped.bam O=${1}.final.bam RGID=${1}  RGLB=${1} RGPL=illumina RGPU=unit1 RGSM=${1}
+java  -jar  picard.jar AddOrReplaceReadGroups  I=${1}.dedupped.bam \
+O=${1}.final.bam RGID=${1} RGLB=${1} RGPL=illumina RGPU=unit1 RGSM=${1}
 ```
 
 `$1`, which we have been using is actually a short form of `${1}`
@@ -190,7 +193,8 @@ now copy and paste the following into your file
 ```bash
 #!/bin/bash
 
-echo java -jar picard.jar AddOrReplaceReadGroups I=${1}.dedupped.bam  O=${1}.final.bam RGID=${1}  RGLB=${1} RGPL=illumina RGPU=unit1 RGSM=${1}
+echo java -jar picard.jar AddOrReplaceReadGroups I=${1}.dedupped.bam \
+O=${1}.final.bam RGID=${1}  RGLB=${1} RGPL=illumina RGPU=unit1 RGSM=${1}
 ```
 then type <kbd>esc</kbd> to exit insert mode. Type and enter `:wq` to write and quit.
 
@@ -238,7 +242,9 @@ for ((i=1; i<=10; i+=1))
 
 sample=$(awk -v  awkvar="${i}" 'NR==awkvar' samples.txt)
 
-echo java  -jar $PICARD_HOME/picard.jar AddOrReplaceReadGroups  I=${sample}.dedupped.bam  O=${sample}.final.bam RGID=${sample}  RGLB=${sample} RGPL=illumina   RGPU=unit1  RGSM=${sample}
+echo java  -jar picard.jar AddOrReplaceReadGroups  \
+I=${sample}.dedupped.bam  O=${sample}.final.bam RGID=${sample}  \
+RGLB=${sample} RGPL=illumina   RGPU=unit1  RGSM=${sample}
 
 done
 ```
@@ -266,7 +272,9 @@ If we look at samples.txt we can see that when `i=1` then `$sample` will be M1. 
 The next line should look familiar
 
 ```bash
-echo java  -jar $PICARD_HOME/picard.jar AddOrReplaceReadGroups  I=${sample}.dedupped.bam  O=${sample}.final.bam RGID=${sample}  RGLB=${sample} RGPL=illumina   RGPU=unit1  RGSM=${sample}
+echo java  -jar picard.jar AddOrReplaceReadGroups  \
+I=${sample}.dedupped.bam  O=${sample}.final.bam RGID=${sample} \
+RGLB=${sample} RGPL=illumina   RGPU=unit1  RGSM=${sample}
 ```
 
 This is exactly the same as what we used above except `$1` is now `$sample`. We are assigning the value of `$sample` within our script instead of giving it externally as a positional parameter.
