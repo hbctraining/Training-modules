@@ -25,7 +25,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | [Basics of Python](Python) | None | 8/10/2022	| Closed |
 | [R practice exercises](IntroR_practical_online_resource) | Beginner R or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 9/7/2022	| Closed |
 | [Generating reports with Rmarkdown](Rmarkdown) | Beginner R or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 10/5/2022	| Closed |
-| [Introduction to Shell](https://hbctraining.github.io/Training-modules/Intro_shell/)	| None | 11/2/2022	| Closed |(https://harvard.zoom.us/meeting/register/tJEuf--hpz0pGd3_Wu0vBE1mcxSMaSb88KUB) |
+| [Introduction to Shell](https://hbctraining.github.io/Training-modules/Intro_shell/)	| None | 11/2/2022	| Closed |
 | [Version control using Git/Github]() | [Introduction to Shell]() | Postponed:TBD	| [Sign up!](https://harvard.zoom.us/meeting/register/tJ0kdeCtqz8sGtJx6DCaXw9lqNGkFJ5SbP3G) | 
 
 ***
