@@ -26,7 +26,7 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 
 | Time | Topic | Instructor |
 :-----------------------|:-------------|:----------|
-| 13:00 - 13:10	| [Workshop Introduction](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2021.pdf) | Mary |
+| 13:00 - 13:10	| [Workshop Introduction](https://github.com/hbctraining/Training-modules/blob/master/Intro_current_topics_online_2022.pdf) | Mary |
 | 13:10 - 13:30	| [Introduction to dataset and considerations for choosing appropriate plotting methods](https://hbctraining.github.io/publication_perfect/lessons/01_intro_to_dataset.html) | Radhika |
 | 13:30 - 14:15 | [Visualization package ggplot2 basic syntax and plot types](https://hbctraining.github.io/publication_perfect/lessons/02_ggplot2_syntax.html) | Radhika |
 | 14:15 - 14:20	| Break | |
