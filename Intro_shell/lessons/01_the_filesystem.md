@@ -614,7 +614,7 @@ a shell command are doing.
 * [http://explainshell.com](http://explainshell.com)
 * [http://www.commandlinefu.com](http://www.commandlinefu.com)
 
-Software Carpentry tutorial: [The Unix shell](http://software-carpentry.org/v4/shell/index.html)
+Software Carpentry tutorial: [The Unix shell](https://swcarpentry.github.io/shell-novice/)
 
 General help:
 - http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
