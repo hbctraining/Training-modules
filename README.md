@@ -18,6 +18,20 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 ***
 
+### Current Topics in Bioinformatics workshops 2023 Schedule (1pm - 4pm):
+
+| Topic and Link(s) to lessons | Prerequisites | Date | Registration |
+|:---------------|:-------------:|:-------------:|:-------------:|
+| [Introduction to Shell](https://hbctraining.github.io/Training-modules/Intro_shell/)	| None | 1/18/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJMlcOmtpzwuEtG_5faeKQo_pKlfdj3oZECR) |
+| [Intermediate Shell](https://hbctraining.github.io/Training-modules/Intro_shell/)	| None | 2/15/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJEqf-GurDMjE9MosgsBVPUn4Sj79iXAxzPQ) |
+| [Advanced Shell](https://hbctraining.github.io/Training-modules/Intro_shell/)	| None | 3/13/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJUtceyqpz4pH9XOgSbacY1nPxkvFXNbP4am) |
+| [Git/Github]() | [Introduction to Shell](https://hbctraining.github.io/Training-modules/Intro_shell/) | 4/19/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJ0kdeCtqz8sGtJx6DCaXw9lqNGkFJ5SbP3G) | 
+| [Basics of Python](Python) | None | 6/21/2023	| Coming soon |
+| [R Basics] | None | 7/19/2023	| Coming soon |
+| [R Intermediate](IntroR_practical_online_resource) | Beginner R or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 8/16/2023	| Coming soon |
+| [Rmarkdown](Rmarkdown) | Beginner R or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 11/15/2023	| Coming soon |
+
+
 ### Summer-Fall 2022 Schedule (1pm - 4pm):
 
 | Topic and Link(s) to lessons | Prerequisites | Date | Registration |
@@ -26,7 +40,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | [R practice exercises](IntroR_practical_online_resource) | Beginner R or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 9/7/2022	| Closed |
 | [Generating reports with Rmarkdown](Rmarkdown) | Beginner R or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 10/5/2022	| Closed |
 | [Introduction to Shell](https://hbctraining.github.io/Training-modules/Intro_shell/)	| None | 11/2/2022	| Closed |
-| [Version control using Git/Github]() | [Introduction to Shell]() | Postponed:TBD	| [Sign up!](https://harvard.zoom.us/meeting/register/tJ0kdeCtqz8sGtJx6DCaXw9lqNGkFJ5SbP3G) | 
+| [Version control using Git/Github]() | [Introduction to Shell]() | Postponed:April 2023	| Closed | 
 
 ***
 
