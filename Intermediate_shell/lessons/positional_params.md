@@ -150,7 +150,7 @@ We will talk more about naming variables later, but note that defining variables
 
 ## A useful example
 
-Now that we understand the basics of variables and positional parameters how can we make them work for us? One of the best ways to do this is when writing a shell script. A shell script is a "shell script that embeds a system command or utility, that saves a set of parameters passed to to that command."
+Now that we understand the basics of variables and positional parameters how can we make them work for us? One of the best ways to do this is when writing a shell script. A shell script is a "script that embeds a system command or utility, that saves a set of parameters passed to to that command."
 
 As an example lets say that I want to add read groups to a series of bam files. Each bam file is one sample that I have sequenced and I need to add read groups to them all. Here is an example of my command for sample M1.
 
@@ -238,7 +238,7 @@ From your command line type `vim picard_loop.sh` then type `i` to go to insert m
 ```bash
 #!/bin/bash
 
-for ((i=1; i<=10; i+=1))
+for ((i=1; i<=10; i=i+1))
         do 
 
 sample=$(awk -v  awkvar="${i}" 'NR==awkvar' samples.txt)
