@@ -18,7 +18,7 @@ Once again, you are likely familiar with what a command prompt is, but to ensure
 
 We will be exploring slightly more advanced capabilities of the shell by working with data from an RNA sequencing experiment. 
 
-> *NOTE: If you attended the [Intro to shell](https://hbctraining.github.io/Training-modules/Intro_shell/) workshop with us last month, you should have already downlaoded this data.*
+> *NOTE: If you attended the [Intro to shell](https://hbctraining.github.io/Training-modules/Intro_shell/) workshop with us last month, you should have already downloaded this data.*
 
 Before we download the data, let's check the folder we are currently in:
 
