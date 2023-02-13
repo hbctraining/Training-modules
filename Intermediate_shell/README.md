@@ -1,8 +1,8 @@
 ## Intermediate bash
 
 | Audience | Computational skills required | Duration |
-:----------|:----------|:----------|:----------|
-| Biologists | [Beginner bash](https://hbctraining.github.io/Training-modules/Intro_shell/) | 2 hour workshop (~2 hours of trainer-led time)|
+:----------|:----------|:----------|
+| Biologists | [Beginner bash](https://hbctraining.github.io/Training-modules/Intro_shell/) | 2-3 hour workshop (~2-3 hours of trainer-led time) |
 
 
 ### Description
