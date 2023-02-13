@@ -32,7 +32,7 @@ $ pwd
 
 Once you know to which folder you are downloading your data, right click on the link below:
 
-**Download RNA-Seq data to your working directory:** [right-click here](https://github.com/hbctraining/Training-modules/blob/master/Intro_shell/data/unix_lesson.zip?raw=true) and choose **Save link as** or **Download link as** or the equivalent.
+**Download RNA-Seq data to your working directory:** [click here to download](https://github.com/hbctraining/Training-modules/blob/master/Intro_shell/data/unix_lesson.zip?raw=true).
 
 Type the 'list' command to check that you have downloaded the file to the correct location (your present working directory):
 
