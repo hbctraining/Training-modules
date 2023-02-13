@@ -30,7 +30,7 @@ This repository has teaching materials for a **2 hour**, hands-on **Intermediate
 
 ### Dataset
 
-[Introduction to Shell: Dataset](https://www.dropbox.com/s/3lua2h1oo18gbug/unix_lesson.tar.gz?dl=1)
+[Introduction to Shell: Dataset](https://github.com/hbctraining/Training-modules/blob/master/Intro_shell/data/unix_lesson.zip?raw=true)
 
 ### Installation Requirements
 
