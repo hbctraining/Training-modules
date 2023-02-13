@@ -25,7 +25,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | [Introduction to Shell](https://hbctraining.github.io/Training-modules/Intro_shell/)	| None | 1/18/2023	| Closed |
 | [Intermediate Shell](https://hbctraining.github.io/Training-modules/Intermediate_shell/)	| [Introduction to Shell](https://hbctraining.github.io/Training-modules/Intro_shell/) | 2/15/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJEqf-GurDMjE9MosgsBVPUn4Sj79iXAxzPQ) |
 | Advanced Shell | [Intermediate Shell](https://hbctraining.github.io/Training-modules/Intermediate_shell/) | 3/13/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJUtceyqpz4pH9XOgSbacY1nPxkvFXNbP4am) |
-| [Git/Github]() | [Introduction to Shell](https://hbctraining.github.io/Training-modules/Intro_shell/) | 4/19/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJ0kdeCtqz8sGtJx6DCaXw9lqNGkFJ5SbP3G) | 
+| [Git/Github](https://hbctraining.github.io/Training-modules/Git-Github/) | [Introduction to Shell](https://hbctraining.github.io/Training-modules/Intro_shell/) | 4/19/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJ0kdeCtqz8sGtJx6DCaXw9lqNGkFJ5SbP3G) | 
 | [Basics of Python](Python) | None | 6/21/2023	| Coming soon |
 | [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) | None | 7/19/2023	| Coming soon |
 | [R Intermediate](IntroR_practical_online_resource) | Beginner R or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 8/16/2023	| Coming soon |
