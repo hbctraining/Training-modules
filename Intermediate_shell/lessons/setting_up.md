@@ -30,7 +30,7 @@ $ pwd
 > 
 > On a **Windows** machine your current folder should be something starting with `/c/Users/marypiper`. To find this in your File explorer try clicking on PC and navigating to that path.
 
-Once you know to which folder you are downloading your data, right click on the link below:
+Once you know to which folder you are downloading your data click on the link below:
 
 **Download RNA-Seq data to your working directory:** [click here to download](https://github.com/hbctraining/Training-modules/blob/master/Intro_shell/data/unix_lesson.zip?raw=true).
 
