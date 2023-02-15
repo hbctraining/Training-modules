@@ -81,7 +81,6 @@ The commands  `head` and `tail` allow you to look at the beginning or end of the
 $ head raw_fastq/Mov10_oe_1.subset.fq
 
 $ tail -n 8 raw_fastq/Mov10_oe_1.subset.fq
-
 ```
 > The `-n` option to either of these commands can be used to specify the number `n` lines of a file. 
 
