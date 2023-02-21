@@ -27,6 +27,7 @@
 
 [For Loops](awk.md#for-loops)
 
+[If Statments](awk.md#if-statements)
 
 
 ---
@@ -264,3 +265,19 @@ awk '{ for (i = 1; i <= 2; i=i+1) print $0}' animals.txt
 Then we print the whole line with `print $0`.
 
 While not discussed here, `awk` does support `while` and `do-while` loops.
+
+
+### `if` statements
+
+Since `awk` is it's own fully-fledged programming language, it also has conditional statements. A common time you might want to use an `if` statement in `awk` is when you have a file with tens or even hundreds of fields and you want to figure out which field has the column header of interest or a case where you are trying to write a script for broad use when the order of the input columns may not always be the same, but you want to figure out which column has a certain column header. To do that:  
+
+```
+awk 'NR=1 {for (i=1; i<=NF; i=i+1) {if ($i == "height(cm)")  print i}}' animals.txt
+```
+
+`NR=1` only looks at the header line
+
+`for (i=1; i<=NF; i=i+1)` this begins a `for` loop starting at 1 and going until the number of fields by one
+`if ($i == "height(cm)")` is checking is `$i`, which is in our case is $1, $2, ... $6, to see if they are equal to `height(cm)`. If this condition is met then:
+`print i` print out `i`
+
