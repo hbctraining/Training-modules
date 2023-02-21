@@ -23,7 +23,7 @@
 
 [Calculations Using Columns](awk.md#calculations-using-columns)
 
-[The $0 variable](awk.md#$0)
+[The $0 variable](awk.md#0)
 
 [For Loops](awk.md#for-loops)
 
