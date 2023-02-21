@@ -6,7 +6,7 @@ Below is the table of contents for the Advanced Unix lessons
 |:-----------:|:----------:|
 | [String manipulation]() | Undrafted |
 | [sed](sed.md) | Drafted |
-| [Regular Expressions](regular_expression.md) | Drafted |
+| [Regular Expressions][(regular_expression.md)](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/regular_expressions.md) | Drafted |
 | [grep]() | Undrafted |
 | [awk]() | Drafted |
 | [Aliases, Shortcuts and .bashrc]() | Drafted |
