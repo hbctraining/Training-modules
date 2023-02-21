@@ -6,18 +6,18 @@ Below is the table of contents for the Advanced Unix lessons
 |:-----------:|:----------:|
 | [String manipulation]() | Undrafted |
 | [sed](sed.md) | Drafted |
-| [Regular Expressions][(regular_expression.md)](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/regular_expressions.md) | Drafted |
+| [Regular Expressions](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/regular_expressions.md) | Drafted |
 | [grep]() | Undrafted |
-| [awk]() | Drafted |
-| [Aliases, Shortcuts and .bashrc]() | Drafted |
-| [Copying files using to and from a cluster]()| Drafted |
-| [Symbolic Links]() | Drafted |
-| [Arithmetic]() | Drafted |
+| [awk](awk.md) | Drafted |
+| [Aliases, Shortcuts and .bashrc](https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/more_bash.md#alias) | Drafted |
+| [Copying files using to and from a cluster](https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/more_bash.md#copying-files-to-and-from-the-cluster-)| Drafted |
+| [Symbolic Links](https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/more_bash.md#symlink) | Drafted |
+| [Arithmetic](math_on_the_cluster.md) | Drafted |
 | [if statements]() | Undrafted |
 | [while read loops]() | Undrafted |
 | [Associative Arrays in bash]() | Undrafted |
 | [Arrays in bash]() | Undrafted |
-| [Positional Parameters]() | Undrafted |
+| [Positional Parameters](positional_params.md) | Drafted |
 | [Searching history]() | Undrafted |
 | [O2 Job Dependencies]() | Undrafted |
 | [O2 Brew]() | Undrafted |
