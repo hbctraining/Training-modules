@@ -13,7 +13,7 @@ Below is the table of contents for the Advanced Unix lessons
 | [Copying files using to and from a cluster](moving_files.md)| Drafted |
 | [Symbolic Links](https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/more_bash.md#symlink) | Drafted |
 | [Arithmetic](math_on_the_cluster.md) | Drafted |
-| [if statements]() | Undrafted |
+| [if statements](if_statements.md) | Drafted |
 | [while read loops]() | Undrafted |
 | [Associative Arrays in bash]() | Undrafted |
 | [Arrays in bash]() | Undrafted |
