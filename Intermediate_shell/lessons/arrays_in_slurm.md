@@ -15,7 +15,13 @@ A pipeline or process may seem easy or fast when you have 1-3 samples but totall
 
 One easy way to scale up is to use the array feature in slurm.
 
-## What is the array feature?
+## What is a job array?
 
-Atlassian says this about job arrays on O2 "Job arrays can be leveraged to quickly submit a number of similar jobs. For example, you can use job arrays to start multiple instances of the same program on different input files, or with different input parameters. A job array is technically one job, but with multiple tasks."
+Atlassian says this about job arrays on O2: "Job arrays can be leveraged to quickly submit a number of similar jobs. For example, you can use job arrays to start multiple instances of the same program on different input files, or with different input parameters. A job array is technically one job, but with multiple tasks." [link](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/1586793632/Using+Slurm+Basic#Job-Arrays).
+
+Of course we don't want to run the same job on the same input files over and over, that would be pointless. This where ${SLURM_ARRAY_TASK_ID} comes in!
+
+
+## What is ${SLURM_ARRAY_TASK_ID}?
+
 
