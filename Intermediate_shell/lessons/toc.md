@@ -24,6 +24,7 @@ Below is the table of contents for the Advanced Unix lessons
 | [O2 Conda]() | Undrafted |
 | [vim macros]() | Undrafted |
 | [Keeping track of time](keeping_track_of_time.md) | Drafted |
+| [Arrays in Slurm](arrays_in_slurm.md) | Drafted |
 | [Rscript]() | Undrafted |
 
 
