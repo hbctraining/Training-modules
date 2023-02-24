@@ -37,7 +37,7 @@ We can specify any job IDs we want.
 ```bash
 sbatch --array=1,7,12 my_script.sh
 ```
-This will run .y_script.sh 3 times with the job IDs 1,7,12
+This will run my_script.sh 3 times with the job IDs 1,7,12
 
 Of course we don't want to run the same job on the same input files over and over, that would be pointless. We can use the job IDs within our script to specify different input or output files. In bash the job id is given a special variable `${SLURM_ARRAY_TASK_ID}`
 
