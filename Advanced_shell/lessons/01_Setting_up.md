@@ -1,5 +1,9 @@
 # Setting up
 
+## Disclaimer
+
+Before we start this Current Topics module, it is important to highlight that there will likely be doing more advanced commands and options for those commands. As such, some commands might not work for you. We have tried our best to pick commands and options for those commands that are widely used, but since we are on our own computers, each of us has a different implementation of certain commands and there may be options that your specific implementation doesn't have. We have run this code on the [O2 cluster](https://it.hms.harvard.edu/our-services/research-computing/services/high-performance-computing) and each of these options work there.
+
 ## Getting the dataset
 
 Before starting the course we asked that Windows users had successfully, installed [GitBash](https://git-scm.com/download/win). Amc users can just use the built-in Terminal application. Go ahead and launch either GitBash or Terminal.
