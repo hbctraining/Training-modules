@@ -55,6 +55,7 @@ ls -l
   <pre>
   wget  http://wdfgnsjkdgnwkg</pre>
   This code should be pretty self-explanatory. You are calling the <code>wget</code> command and providing it with the link that you would like to download.
+  <hr />
 </details>
 
 <details>
@@ -68,4 +69,11 @@ ls -l
   wget -r http://www.example.com/data_directory/</pre>
   The <code>-r</code>, or <code>--recursive</code> is telling <code>wget</code> to recursivley download the directory. At first glance, this would appear to be <b><i>REALLY</i></b> useful, however most of the time one downloads a directory from a link, it is almost always compressed into a <code>.zip</code> file or other compression file. In that case you don't need to recrusively download because it is a file and not a directory.<br><br>
   In summary, either of these commands will do what you need them to do in the overwhelming majority of cases, so it is mostly personal preference as to which one you use.
+  <hr />
 </details>
+
+Now that we have downloaded our toy datasets, we are ready to dive into learning more advanced bash!
+
+[Next Lesson >>>]()
+
+[Back to Schedule](../README.md)
