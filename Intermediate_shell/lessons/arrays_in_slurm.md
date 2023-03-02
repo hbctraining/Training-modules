@@ -54,7 +54,7 @@ This will start two jobs, one where `${SLURM_ARRAY_TASK_ID}` is 1 and one where 
 
 There are several ways we can use this. If we plan ahead and name our files with these numbers (e.g., sample_1.fastq, sample_2.fastq) we can directly refer to these files in our script: `sample_${SLURM_ARRAY_TASK_ID}.fastq` However, using the ID for input files is often not a great idea as it means you need to strip away most of the information that you might put in these names.
 
-Instead we can keep our sample names in a separate folder and use [awk](awk.md) to pull the file names. 
+Instead we can keep our sample names in a separate file and use [awk](awk.md) to pull the file names. 
 
 here is our complete list of long sample names which is found in our file `samples.txt`:
 
