@@ -2,7 +2,7 @@
 
 ## Disclaimer
 
-Before we start this Current Topics module, it is important to highlight that there will likely be doing more advanced commands and options for those commands. As such, some commands might not work for you. We have tried our best to pick commands and options for those commands that are widely used, but since we are on our own computers, each of us has a different implementation of certain commands and there may be options that your specific implementation doesn't have. We have run this code on the [O2 cluster](https://it.hms.harvard.edu/our-services/research-computing/services/high-performance-computing) and each of these options work there.
+Before we start this Current Topics module, it is important to highlight that becasue we be doing more advanced commands and options for those commands, some commands or their options might not work for you. We have tried our best to pick commands and options for those commands that are widely used, but since we are all on our own computers, each of us has a different implementation of certain commands and there may be options that your specific implementation doesn't have. We have run this code on the [O2 cluster](https://it.hms.harvard.edu/our-services/research-computing/services/high-performance-computing) and each of these commands works there.
 
 ## Getting the dataset
 
