@@ -196,12 +196,169 @@ If you have a script where you use a path multiple times, this can be really hel
 
 You may want to remove the 
 
-Let's imagine a case we we wanted to move some part of a string and let's start by defining a string named `sandwich`:
+Let's imagine a case we we wanted to move some part of a string and let's start by defining a string named `slingshot`:
 
 ```
-sandwich=A_sandwich_that_I_love_is_a_BLT_sandwich_because_I_live_bacon
+slingshot=slinging_slyly
 ```
 
-Let's imagine not that we wanted to remove everything before
+### Remove the shortest match from the end
 
+The first thing we might want to do is remove a substring from the end of a string. The syntax for removing the shortest substring from the end of a string is:
 
+```
+echo ${variable_name%substring_to_remove}
+```
+
+In the case below, we want to remove `ly` from the end of our `$slingshot` string:
+
+```
+echo ${slingshot%ly}
+```
+
+This will return:
+
+```
+slinging_sly
+```
+
+This example is a bit simple because our example ended with `ly`, so instead let's remove `ing` and anything after it from the end of our `$slingshot` string:
+
+```
+echo ${slingshot%ing*}
+```
+
+Notice the addition of the wildcard `*` character. This allows us to remove `ing` **and** anything after the shortest match of `ing` from the end of the string.
+
+#### Bioinformatics Application
+
+Removing the end of string is very common in bioinformatics when you want to remove the extension from a file name. Consider the case where you have a variable named, `file`, that is set equal to `/path/to/myfile.txt` and you want to remove the `.txt` extension:
+
+```
+file=/path/to/myfile.txt
+echo ${file%.txt}
+```
+
+This will return:
+
+```
+/path/to/myfile
+```
+
+This can very really nice when compared to the `basename` function, which can also strip file extensions. However, `basename` also strips path information. You may have a case where you have a full path and filename, but you don't want to strip the path information, but rather just the extension. 
+
+### Remove the longest match from the end
+
+We have discussed removing the shortest match from the end of a string, but we can also remove the longest match from the end of a string and the syntax for this is:
+
+```
+echo ${variable_name%%substring_to_remove}
+```
+
+In order to differentiate the longest match from the end and the shortest match from the end, we will need to utilize the `*` wildcard. Let's remind ourselves of what the shortest match from the end would look like when using a `*`:
+
+```
+echo ${slingshot%ly*}
+```
+
+This returns:
+
+```
+slinging_sly
+```
+
+Now, let's change the `%` to `%%`
+
+```
+echo ${slingshot%%ly*}
+```
+
+However, this returns:
+
+```
+slinging_s
+```
+
+> NOTE: It is important to note that without the use of a `*` wildcard, `echo ${slingshot%ly}` and `echo ${slingshot%%ly}` will both return `slinging_sly`
+
+### Remove the shortest match from the beginning
+
+Instead of removing matches from the end of the string we can also remove matches from the beginning of the string by using `#` instead of `%`. Excitingly, like the shebang line, this is one of the few times that `#` doesn't function as a comment in `bash`. The syntax for remove the shortest match from the beginning of a string is:
+
+```
+${variable_name#substring_to_remove}
+```
+
+If we want to remove `sl` from the beginning of our `$slingshot` variable string, then we could use:
+
+```
+echo ${slingshot#sl}
+```
+
+This would return:
+
+```
+inging_slyly
+```
+
+Like removing matches from the end, this example isn't as interesting without the use of wildcards. Perhaps instead, we want to remove anything to and including the first match of `ing` from the beginning. We could do that like:
+
+```
+echo ${slingshot#*ing}
+```
+
+This would return:
+
+```
+ing_slyly
+```
+
+### Remove the longest match from the beginning
+
+For completion, we can also remove the longest match from the beginning using the following syntax:
+
+```
+${variable_name##substring_to_remove}
+```
+
+Let's remove the longest match that contains `ing` from the beginning:
+
+```
+echo ${slingshot##*ing}
+```
+
+This would return:
+
+```
+_slyly
+```
+
+> **NOTE:** Similiarly to removing strings from the end, there isn't any difference between using `#` and `##` when removing strings from the beginning if you don't use the `*` wildcard.
+
+#### Bioinformatics Application-*ish*
+
+You could use this to strip path information. For example:
+
+```
+path=/my/path/to/file.txt
+echo ${path##*/}
+```
+
+However, the `basename` function provides this exact function, so either way is synonymous. However, using `basename` might be a bit more readable.
+
+### Substring Removal Overview
+
+| Shortcut | Effect |
+|------|------|
+| % | Remove shortest match from the end of the string |
+| %% | Remove longest match from the end of the string|
+| # | Remove the shortest match from the beginning of the string|
+| ## | Remove the longest match from the beginning of the string|
+
+[Next Lesson >>>]()
+
+[Back to Schedule](../README.md)
+
+***
+
+*This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
