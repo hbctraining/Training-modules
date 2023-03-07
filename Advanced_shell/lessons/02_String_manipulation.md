@@ -348,12 +348,18 @@ However, the `basename` function provides this exact function, so either way is 
 
 ### Substring Removal Overview
 
+<p align="center">
+<img src="../img/Substring_removal.png" width="800">
+</p>
+
 | Shortcut | Effect |
 |------|------|
 | % | Remove shortest match from the end of the string |
 | %% | Remove longest match from the end of the string|
 | # | Remove the shortest match from the beginning of the string|
 | ## | Remove the longest match from the beginning of the string|
+
+
 
 [Next Lesson >>>]()
 
