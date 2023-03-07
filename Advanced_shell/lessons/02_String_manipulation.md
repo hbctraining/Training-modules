@@ -115,6 +115,10 @@ You may have a situation where you want to remove the last chaacaters from a str
 ${variable:start:-length_from_the_end}
 ```
 
+<p align="center">
+<img src="../img/Substring_length_negative_length.png" width="500">
+</p>
+
 If you wanted to trim the last two letters off of the `$name` variable:
 
 ```
@@ -131,7 +135,7 @@ echo ${name:1:-1}
 
 Here, you are telling bash to start in the first position and also take everything except the last position.
 
-## Substring Addition
+## String Addition
 
 You can also add character to strings. The syntax for this is pretty straightforward:
 
@@ -140,6 +144,10 @@ string_to_add_to_beginning${variable_name}string_to_add_to_end
 ```
 
 `${variable_name}` is the string assigned to `${variable_name}` and `string_to_add_to_beginning` and `string_to_add_to_end` are strings you want to add to the beginning and/or end, respecitively.
+
+<p align="center">
+<img src="../img/String_addition.png" width="800">
+</p>
 
 For example, we can add onto the end of the `$name` variable we designated to make it into a legal name:
 
