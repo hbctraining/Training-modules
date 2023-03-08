@@ -281,3 +281,6 @@ awk 'NR=1 {for (i=1; i<=NF; i=i+1) {if ($i == "height(cm)")  print i}}' animals.
 `if ($i == "height(cm)")` is checking is `$i`, which is in our case is $1, $2, ... $6, to see if they are equal to `height(cm)`. If this condition is met then:
 `print i` print out `i`
 
+***
+
+[Back to Schedule](../README.md)
