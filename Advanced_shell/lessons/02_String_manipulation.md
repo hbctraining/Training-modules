@@ -210,6 +210,10 @@ The first thing we might want to do is remove a substring from the end of a stri
 echo ${variable_name%substring_to_remove}
 ```
 
+<p align="center">
+<img src="../img/Substring_shortest_from_end.png" width="500">
+</p>
+
 In the case below, we want to remove `ly` from the end of our `$slingshot` string:
 
 ```
@@ -255,6 +259,10 @@ We have discussed removing the shortest match from the end of a string, but we c
 echo ${variable_name%%substring_to_remove}
 ```
 
+<p align="center">
+<img src="../img/Substring_longest_from_end.png" width="500">
+</p>
+
 In order to differentiate the longest match from the end and the shortest match from the end, we will need to utilize the `*` wildcard. Let's remind ourselves of what the shortest match from the end would look like when using a `*`:
 
 ```
@@ -289,6 +297,10 @@ Instead of removing matches from the end of the string we can also remove matche
 ${variable_name#substring_to_remove}
 ```
 
+<p align="center">
+<img src="../img/Substring_shortest_from_start.png" width="500">
+</p>
+
 If we want to remove `sl` from the beginning of our `$slingshot` variable string, then we could use:
 
 ```
@@ -315,11 +327,15 @@ ing_slyly
 
 ### Remove the longest match from the beginning
 
-For completion, we can also remove the longest match from the beginning using the following syntax:
+We can also remove the longest match from the beginning using the following syntax:
 
 ```
 ${variable_name##substring_to_remove}
 ```
+
+<p align="center">
+<img src="../img/Substring_longest_from_start.png" width="500">
+</p>
 
 Let's remove the longest match that contains `ing` from the beginning:
 
@@ -348,9 +364,7 @@ However, the `basename` function provides this exact function, so either way is 
 
 ### Substring Removal Overview
 
-<p align="center">
-<img src="../img/Substring_removal.png" width="800">
-</p>
+The table below is a summary of the substring removal
 
 | Shortcut | Effect |
 |------|------|
