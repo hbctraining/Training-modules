@@ -147,3 +147,9 @@ Another thing you may be interersted in is finding lines that start with 'C' and
 https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/extra_bash_tools.md#regular-expressions-regex-in-bash-
 
 [Back to the top](regular_expressions.md#regular_expressions)
+
+***
+
+[Next Lesson >>>](04_sed.md)
+
+[Back to Schedule](../README.md)
