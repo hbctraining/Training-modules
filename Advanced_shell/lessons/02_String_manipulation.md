@@ -413,7 +413,7 @@ If your version of bash is too old to change cases, the error message will look 
 -bash: ${variable_name^^}: bad substitution
 ```
 
-For example, if we wanted `$slingshot` to be all uppercae letters, we can do:
+For example, if we wanted `$slingshot` to be all uppercase letters, we can do:
 
 ```
 echo ${slingshot^^}
