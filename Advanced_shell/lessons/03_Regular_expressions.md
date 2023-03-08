@@ -1,6 +1,16 @@
 # Regular Expressions
 
-Regular expressions (sometimes referred to as regex) are a string of characters that can be used as a pattern to match against. This can be very helpful when searching through a file, particularly in conjunction with `sed`, `grep` or `awk`. Since we have an understanding of `grep` from previous workshops we are going to use `grep` and the `catch.txt` file that we downloaded to demonstrate the principles of regular expressions. As we said though, many of these principles are also useful in `sed` and `awk`. Before we get started, let's take a briefly look at the `catch.txt` file in a `less` buffer in order to get an idea of what the file looks like:
+Regular expressions (sometimes referred to as regex) are a string of characters that can be used as a pattern to match against. This can be very helpful when searching through a file, particularly in conjunction with `sed`, `grep` or `awk`. Since we have an understanding of `grep` from previous workshops we are going to use `grep` and the `catch.txt` file that we downloaded to demonstrate the principles of regular expressions. As we said though, many of these principles are also useful in `sed` and `awk`. 
+
+## Learning Objectives
+
+The learning objectives for this lessons:
+- Differentiate between single and double quotes in `bash`
+- Implement regular expressions to within `grep`
+
+## Getting Started
+
+Before we get started, let's take a briefly look at the `catch.txt` file in a `less` buffer in order to get an idea of what the file looks like:
 
 ```
 less catch.txt
@@ -219,85 +229,236 @@ This will match anything ending in 'ATCH' ***except*** a string containing 'CATC
 
 ### `.`
 
-The `.` matches any character except new line. Notably, it ***does not*** match no character. This is similar to the behavior of the wildcard `?` in Unix.
+The `.` matches any character except new line. Notably, it also ***does not*** match no character. This is similar to the behavior of the wildcard `?` in Unix. For example:
 
-[Back to the top](regular_expressions.md#regular_expressions)
+```
+grep -E ".ATCH" catch.txt
+```
+
+Will return:
+
+```
+PATCH
+BATCH
+CATCH
+pATCH
+bATCH
+cATCH
+2ATCH
+:ATCH
+^ATCH
+CAATCH
+CAAATCH
+CAAAATCH
+```
+
+But this result **will not** include 'ATCH'.
 
 ## Quantifiers
 
 ### `*`
 
-The `*` matches the preceeding character any number of times ***including*** zero.
+The `*` matches the preceeding character any number of times ***including*** zero. For example:
 
-`CA*TCH` would match `CTCH`, `CATCH`, `CAATCH` ... `CAAAAAAATCH` ...
+```
+grep -E "CA*TCH" catch.txt
+```
+
+Will return:
+
+```
+CATCH
+CTCH
+CAATCH
+CAAATCH
+CAAAATCH
+```
 
 ### `?`
 
 The `?` denotes that the previous character is optional, in the following example:
 
-`C?ATCH` would match 'CATCH', but also 'BATCH', '2ATCH' '^ATCH' and even 'ATCH'
+```
+grep -E "CA?TCH" catch.txt
+```
 
-`.ATCH` would match 'CATCH', BATCH', '2ATCH' '^ATCH', but ***not*** 'ATCH'
+Will return:
+
+```
+CATCH
+CTCH
+```
+
+Since the "A" is optional, it will only match "CATCH" or "CTCH", but not anything else, including "COTCH" which was in our file.
 
 ## `{}`
 
-The `{INTEGER}` match the preceeding character the number of times equal to INTEGER.
+The `{INTEGER}` match the preceeding character the number of times equal to INTEGER. For exmaple:
 
-`CA{3}TCH` would match 'CAAATCH', but ***not*** 'CATCH', 'CAATCH' or 'CAAAATCH'.
+```
+grep -E "CA{3}TCH" catch.txt
+```
+
+Will return only:
+
+```
+CAAATCH
+```
+
+> NOTE: This is one of the cases that needs the `-E` option, otherwise it won't return anything. Alternatively, you can also escape the curly brackets and then you don't need the `-E` option.
+> ```
+> grep "CA\{3\}TCH" catch.txt
+> ```
 
 ## `+`
 
-The `+` matches one or more occurrances of the preceeding character.
+The `+` matches one or more occurrances of the preceeding character. For exmaple:
 
-`CA+TCH` would match 'CATCH', 'CAATCH' ... 'CAAAAAAAATCH' ...
+```
+grep -E "CA+TCH" catch.txt
+```
 
-[Back to the top](regular_expressions.md#regular_expressions)
+Will return:
+
+```
+CATCH
+CAATCH
+CAAATCH
+CAAAATCH
+```
 
 ## Anchors
 
+Anchors are really useful tools in regulat expressions because they specify if a pattern has to be found at the beginning or end of a line.
+
 ### `^`
 
-The `^` character anchors the search criteria to the begining of the line. For example:
+The `^` character anchors the search criteria to the beginning of the line. For example:
 
-`^CAT` would match lines that started with 'CAT', 'CATCH', but ***not** 'BOBCAT'
+```
+grep -E "^CAT" catch.txt
+```
 
-***NOTE: `^` within `[]` behaves differently. Remember it functions as 'not'!***
+Will return:
+
+```
+CATCH
+CAT
+```
+
+Importantly, it won't return 'BOBCAT', which is also in the file, becaus that line doesn't start with 'CAT'.
+
+***REMINDER: `^` within `[]` behaves differently. Remember `^` within `[]` functions as 'not'!***
 
 ### `$`
 
 The `$` character anchors the search criteria to the end of the line. For example:
 
-`CAT$` would match lines ending in 'CAT' or 'BOBCAT', but not 'CATCH'
+```
+grep -E "CAT$" catch.txt
+```
+
+Will return:
+
+```
+CAT
+BOBCAT
+```
+
+This won't match 'CATCH' because the line doesn't end with 'CAT'.
 
 
 ## Literal matches
 
-One problem you will likely run into with these above special characters is that you may want to match one. For example, you may want to match '.' or '?' and this is what the escape, `\`, is for. 
+One problem you will likely run into with these above special characters is that you may want to match one. For example, you may want to match '.' or '?' and this is what the escape, `\`, is for. For example:
 
-`C\?TCH` would match 'C?TCH', but not 'CATCH' or 'CCTCH' like `C?TCH` would do.
+```
+grep -E "C\?TCH" catch.txt
+```
+
+Will return:
+
+```
+C?TCH
+```
+
+It will not return 'CATCH' or 'COTCH' or others like `C?TCH` would do.
 
 
 ## Whitespace and new lines
 
-You can search from tabs with '\t', space with '\s' and newline with '\n'. 
+You can search from tabs with '\t', space with '\s' and newline with '\n'. For example:
 
-`CA\tTCH` would match 'CA TCH'
+```
+grep -E "CA\tTCH" catch.txt
+```
+
+Will return:
+
+```
+CA  TCH
+```
 
 ## Examples of Combining Special Characters
 
-Lots of the power from regular expression comes from how you can combine them to match the pattern you want.
+Much of the power from regular expression comes from how you can combine them to match the pattern you want. Below are a few examples of such:
 
-If you want to find any line that starts with uppercase letters 'A-G', then you could do:
+**1)** If you want to find any line that starts with uppercase letters 'A-G', then you could do:
 
-`^[A-G]`
+```
+grep -E "^[A-G]" catch.txt
+```
 
-Perhaps you want to see find all lines ending with 'CA' followed by any character except 'T', then you could do:
+Which will return:
 
-`CA[^T]$`
+```
+BATCH
+CATCH
+CTCH
+CAATCH
+CAAATCH
+CAAAATCH
+ATCH
+CAT
+BOBCAT
+C?TCH
+CA	TCH
+C${at}CH
+COTCH
+```
 
-Another thing you may be interersted in is finding lines that start with 'C' and end with 'CH' with anything, including nothing, in between.
+**2)** Perhaps you want to see find all lines ending with 'CA' followed by any character except 'T', then you could do:
 
-`^C.*CH$`
+```
+grep -E "CA[^T]$" catch.txt
+```
+
+This will return:
+
+```
+TAXICAB
+TINCAN
+```
+
+**3)** We could be interersted in finding lines that start with 'C' and end with 'CH' with anything, including nothing, in between.
+
+```
+grep -E "^C.*CH$" catch.txt
+```
+
+This will return:
+
+```
+CATCH
+CTCH
+CAATCH
+CAAATCH
+CAAAATCH
+C?TCH
+CA	TCH
+C${at}CH
+COTCH
+```
 
 ## Additional Resources
 
