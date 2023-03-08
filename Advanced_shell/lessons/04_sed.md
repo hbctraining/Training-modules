@@ -2,31 +2,9 @@
 
 The ***s***tream ***ed***itor, `sed`, is a common tool used for text manipulation. `sed` takes input from either a file or piped from a previous command and applies a transformation to it before outputting it to standard out.
 
-**Topics discussed here are:**
-
-[Substitution](sed.md#substitution)
-
-[Addresses](sed.md#addresses)
-
-[Deletion](sed.md#deletion)
-
-[Appending](sed.md#appending)
-
-[Replacing Lines](sed.md#replacing-lines)
-
-[Translation](sed.md#translation)
-
-[Multiple Expressions](sed.md#multiple-expressions)
-
-[Additonal Resources](sed.md#additional-resources)
-
----
-
-[Return to Table of Contents](toc.md)
-
 ## substitution
 
-One common usage for `sed` is to replace one word with another. The syntax for doing this is:
+One common usage for `sed` is to replace `pattern` with `replacement`. The syntax for doing this is:
 
 ```
 sed 's/pattern/replacement/flag' file.txt 
@@ -40,48 +18,48 @@ A few things to note here:
 Let's test this out on our sample file and see that output. First, we are interested in replacing 'jungle' with 'rainforest' throughout the file:
 
 ```
-sed 's/jungle/rainforest/g' animals.txt
+sed 's/jungle/rainforest/g' ecosystems.txt
 ```
 
 Notice how all instances of 'jungle' have been replaced with 'rainforest'. However, if we don't include the global option:
 
 ```
-sed 's/jungle/rainforest/' animals.txt
+sed 's/jungle/rainforest/' ecosystems.txt
 ```
 
 We will only recover the first instance of 'jungle' was replaced with 'rainforest'. If we want to replace only the second occurance of 'jungle' with 'rainforest' on a line, modify the occurance to be `2`:
 
 ```
-sed 's/jungle/rainforest/2' animals.txt
+sed 's/jungle/rainforest/2' ecosystems.txt
 ```
 
-It is important to note that the pattern-matching in `sed` is case-sensitive. To make your pattern searches case-insensitive, you will need to add at the `I` flag:
+**It is important to note that the pattern-matching in `sed` is case-sensitive.** To make your pattern searches case-insensitive, you will need to add at the `I` flag:
 
 ```
-sed 's/Jungle/rainforest/Ig' animals.txt
+sed 's/jungle/rainforest/Ig' ecosystems.txt
 ```
 
 This will now replace all instances of Jungle/jungle/JuNgLe/jUngle/etc. with 'rainforest'.
 
-***I don't know if you can do multiple occurances, like 2nd and 4th***
+You can also replace all instances of a match starting at *n*-th match and continuing for the rest of the line. For instance if we want the second match and all subsequent matches  of jungle to be replaced with rainforest, then we could use:
 
-***Haven't discussed 2g syntax that will replace the the 2nd occurance and all subsequent occurances***
+```
+sed 's/jungle/rainforest/2g' ecosystems.txt
+```
 
 ### -n option
 
-In `sed` the `-n` option will create no standard output. However, you can pair with with the occurance flag `p` and this will print out only lines that were were edited.
+In `sed` the `-n` option will create no standard output. However, you can pair it with the occurance flag `p` and this will print out only lines that were were edited. For example:
 
 ```
-sed -n 's/an/replacement/p' animals.txt
+sed -n 's/desert/Sahara/pg' ecosystems.txt
 ```
 
 The `-n` option has another useful purpose, you can use it to find the line number of a matched pattern by using `=` after the pattern you are searching for:
 
 ```
-sed -n '/jungle/ =' animals.txt
+sed -n '/jungle/ =' ecosystems.txt
 ```
-
-[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
 
 ## Addresses
 
@@ -90,61 +68,67 @@ sed -n '/jungle/ =' animals.txt
 One can also direct which line, the ***address***, `sed` should make an edit on by adding the line number in front of `s`. This is most common when one wants to make a substituion for a pattern in a header line and is worried that the pattern might be elsewhere in the file. It is best practice to wrap your substitution argument in curly brackets (`{}`) when using address. To demonstrate this we can compare to commands:
 
 ```
-sed 's/an/replacement/g' animals.txt
-sed '1{s/an/replacement/g}' animals.txt
+sed 's/an/replacement/g' ecosystems.txt
+sed '1{s/an/replacement/g}' ecosystems.txt
 ```
 
-In the first command, `sed 's/an/replacement/g' animals.txt` we have replaced all instances of 'an' with 'replacement'. However, in the second command, `sed '1s/an/replacement/g' animals.txt`, we have only replaced instances on line 1.
+In the first command, `sed 's/an/replacement/g' animals.txt` we have replaced all instances of 'an' with 'replacement'. 'animal' changed to 'replacementimal', but 'toucan' changed to 'toucreplacement' and 'anaconda' changed to 'replacementaconda'.
 
-While wrapping the substitution in curly brackets isn't required when using a single line, it is necessacary when defining an interval. As you can see:
+However, in the second command, `sed '1{s/an/replacement/g}' ecosystems.txt`, we have only replaced instances on line 1.
+
+While wrapping the substitution in curly brackets isn't required when using a single line, it is necessary when defining an interval. As you can see:
 
 ```
-sed '1s/an/replacement/g' animals.txt
+sed '1s/an/replacement/g' ecosystems.txt
 ```
 
 Produces the same output as above. 
 
-### Intervals
-
-If you only want to have this substitution carried out on the first three lines (`1,3`, this is giving an address interval, from line 1 to line 3) we would need to do include the curly brackets:
+If you only want to replace the final occurance in a file you can use `$` like:
 
 ```
-sed '1,3{s/an/replacement/g}' animals.txt
+sed '${s/an/replacement/g}' ecosystems.txt
+```
+
+### Intervals
+
+If you only want to have this substitution carried out on the first three lines (`1,5`, this is giving an address interval, from line 1 to line 5) we would need to do include the curly brackets:
+
+```
+sed '1,5{s/an/replacement/g}' ecosystems.txt
 ```
 
 You can also replace the second address with a `$` to indicate until end of the file like:
 
 ```
-sed '5,${s/an/replacement/g}' animals.txt
+sed '5,${s/an/replacement/g}' ecosystems.txt
 ```
 
 This will carry out the substitution from the fifth line until the end of the file.
 
-You can also use regular expressions in the address field. For example, if you only wanted the substitution happening between your first occurence of 'monkey' and your first occurrance of 'alligator', you could do:
+You can also use regular expressions in the address field. For example, if you only wanted the substitution happening between your first occurence of 'camel' and your first occurrance of 'cichlid', you could do:
 
 ```
-sed '/monkey/,/alligator/{s/an/replacement/g}' animals.txt
+sed '/camel/,/cichlid/{s/an/replacement/g}' ecosystems.txt
 ```
 
-Alternatively, if you want a replacement to happen every except a given line, such as all of you data fields but not on the header line, then one could use `!` which tells sed 'not'.
+Additionally, if you want a replacement every occurance except a given line, such as all of you data fields but not on the header line, then one could use `!` which tells sed 'not', like:
 
 ```
-sed '1!{s/an/replacement/g}' animals.txt
+sed '1!{s/an/replacement/g}' ecosystems.txt
 ```
 
 You can even couple `!` with the regular expression intervals to do the substitution everywhere outside the interval:
 
 ```
-sed '/monkey/,/alligator/!{s/an/replacement/g}' animals.txt
+sed '/camel/,/cichlid/!{s/an/replacement/g}' ecosystems.txt
 ```
 
-Lastly, you can use `N~n` in the address to indicator that you want to apply the substitution every *n*th line starting on line *N*. In the below example, starting on the first line and every 2nd line, the substitution will occur
+Lastly, you can use `N~n` in the address to indicate that you want to apply the substitution every *n*th line starting on line *N*. In the below example, starting on the first line and every 2nd line, the substitution will occur
 
 ```
-sed '1~2{s/an/replacement/g}' animals.txt
+sed '1~2{s/an/replacement/g}' ecosystems.txt
 ```
-
-[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
 
 ## Deletion
 
@@ -177,8 +161,6 @@ The `N~n` syntax also works in deletion. If we want to delete every thrid line s
 ```
 sed '2~3d' animals.txt
 ```
-
-[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
 
 ## Appending
 
@@ -254,8 +236,6 @@ But this is the same result as simply concatenating two files together like:
 cat file_A.txt file_B.txt
 ```
 
-[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
-
 ## Replacing Lines
 
 You can also replace entire lines in `sed` using the `c` command. We could replace the first line with the word 'header' by:
@@ -282,8 +262,6 @@ Lastly, you can also replace lines match a pattern:
 sed '/animal/ c header' animals.txt
 ```
 
-[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
-
 ## Translation
 
 `sed` has a feature that allows you to translate characters similiarly to the `tr` function in `bash`. If you wanted to translate all of the lowercase a, b and c characters to their uppercase equivalents you could do that with the `y` command:
@@ -293,8 +271,6 @@ sed 'y/abc/ABC/' animals.txt
 ```
 
 In this case the first letter 'a' is replaced with 'A', 'b' with 'B' and 'c' with 'C'.
-
-[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
 
 ## Multiple expressions
 
@@ -328,15 +304,11 @@ If this file was named 'sed_expressions.txt', our command could look like:
 sed -f sed_expressions.txt animals.txt
 ```
 
-[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
-
 ## Additional Resources
 
 https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/extra_bash_tools.md#sed
 
 https://www.grymoire.com/Unix/Sed.html#uh-8
-
-[Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
 
 ***
 
