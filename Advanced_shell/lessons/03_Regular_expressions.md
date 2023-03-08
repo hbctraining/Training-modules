@@ -254,9 +254,9 @@ CAAAATCH
 
 But this result **will not** include 'ATCH'.
 
-## Quantifiers
+### Quantifiers
 
-### `*`
+#### `*`
 
 The `*` matches the preceeding character any number of times ***including*** zero. For example:
 
@@ -274,7 +274,7 @@ CAAATCH
 CAAAATCH
 ```
 
-### `?`
+#### `?`
 
 The `?` denotes that the previous character is optional, in the following example:
 
@@ -291,7 +291,7 @@ CTCH
 
 Since the "A" is optional, it will only match "CATCH" or "CTCH", but not anything else, including "COTCH" which was in our file.
 
-## `{}`
+#### `{}`
 
 The `{INTEGER}` match the preceeding character the number of times equal to INTEGER. For exmaple:
 
@@ -310,7 +310,7 @@ CAAATCH
 > grep "CA\{3\}TCH" catch.txt
 > ```
 
-## `+`
+#### `+`
 
 The `+` matches one or more occurrances of the preceeding character. For exmaple:
 
@@ -327,11 +327,11 @@ CAAATCH
 CAAAATCH
 ```
 
-## Anchors
+### Anchors
 
 Anchors are really useful tools in regulat expressions because they specify if a pattern has to be found at the beginning or end of a line.
 
-### `^`
+#### `^`
 
 The `^` character anchors the search criteria to the beginning of the line. For example:
 
@@ -350,7 +350,7 @@ Importantly, it won't return 'BOBCAT', which is also in the file, becaus that li
 
 ***REMINDER: `^` within `[]` behaves differently. Remember `^` within `[]` functions as 'not'!***
 
-### `$`
+#### `$`
 
 The `$` character anchors the search criteria to the end of the line. For example:
 
