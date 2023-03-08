@@ -337,3 +337,9 @@ https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/ses
 https://www.grymoire.com/Unix/Sed.html#uh-8
 
 [Back to the top](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/sed.md#sed)
+
+***
+
+[Next Lesson >>>](05_awk.md)
+
+[Back to Schedule](../README.md)
