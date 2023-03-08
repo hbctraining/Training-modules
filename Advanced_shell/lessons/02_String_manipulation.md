@@ -373,6 +373,123 @@ The table below is a summary of the substring removal
 | # | Remove the shortest match from the beginning of the string|
 | ## | Remove the longest match from the beginning of the string|
 
+### Miscellanous
+
+#### Length of string
+
+The length of a string can be determined by using the following syntax:
+
+```
+${#variable_name}
+```
+
+In this case, we could see the length of slingshot by:
+
+```
+echo ${#slingshot}
+```
+
+Which will return a length of:
+
+```
+14
+```
+
+#### Case changing
+
+**NOTE: The ability to change cases is only availible on versions of `bash` that are version 4.0+!**
+
+##### All Uppercase
+
+If you want all uppercase letters you can do:
+
+```
+${variable_name^^}
+```
+
+If your version of bash is too old to change cases, the error message will look like:
+
+```
+-bash: ${variable_name^^}: bad substitution
+```
+
+For example, if we wanted `$slingshot` to be all uppercae letters, we can do:
+
+```
+echo ${slingshot^^}
+```
+
+And it would return:
+
+```
+SLINGING_SLYLY
+```
+
+##### Leading Uppercase
+
+If you want the leading character to be uppercase, then we can use this syntax:
+
+```
+echo ${variable_name^}
+```
+
+If we do this to `$slingshot`, it would look like:
+
+```
+echo ${slingshot^}
+```
+
+And it would return:
+
+```
+Slinging_slyly
+```
+
+##### All lowercase
+
+We can also make a string entirely lowercase. Let's consider the following string:
+
+```
+dog=FIDO
+```
+
+We could force all of the letters to be lowercase using the following syntax:
+
+```
+${variable_name,,}
+```
+
+We can apply this syntax to our `$dog` variable:
+
+```
+echo ${dog,,}
+```
+
+The output would look like:
+
+```
+fido
+```
+
+##### Leading lowercase
+
+We can also just make the leading character lowercase with the following syntax:
+
+```
+${variable_name,}
+```
+
+We can apply this syntax to our `$dog` variable:
+
+```
+echo ${dog,}
+```
+
+The output would look like:
+
+```
+fIDO
+```
 
 
 [Next Lesson >>>]()
