@@ -29,10 +29,6 @@ This repository has teaching materials for a **2 hour**, hands-on **Intermediate
 |[Introduction to sed](lessons/04_sed.md) | 20 min |
 |[Introduction to awk](lessons/05_awk.md) | 30 min |
 
-### Dataset
-
-[Advanced Shell Dataset](data/advanced_shell.zip)
-
 ### Installation Requirements
 
 ***Mac users:***
