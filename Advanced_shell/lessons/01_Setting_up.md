@@ -75,7 +75,7 @@ ls
   One advantage that <code>curl</code> has is that you can provide it with multiple files to download by providing multiple <code>-O</code> options like:
   <pre>
   curl -L -O [http://www.example.com/data_file_1.txt] -O [http://www.example.com/data_file_2.txt]</pre>
-  But you can also just accomplish this task by running <code>curl<>/code on each linked file. <code>wget</code> sort of has the ability to do this as well, but it requires that you make a text file with the linked files and use the <code>-i</code> option. Overall, this benefit feels pretty minor.<br><br>
+  But you can also just accomplish this task by running <code>curl</code> on each linked file. <code>wget</code> sort of has the ability to do this as well, but it requires that you make a text file with the linked files and use the <code>-i</code> option. Overall, this benefit feels pretty minor.<br><br>
   <code>wget</code> has the nice perk of being able to recursively download a directory. What that means is that if a directory that you're downloading has subdirectories, it will downloading those subdirectories contents as well. For this you would use:
   <pre>
   wget -r http://www.example.com/data_directory/</pre>
