@@ -1,8 +1,10 @@
 # Setting up
 
-## Disclaimer
+## Disclaimers
 
-Before we start this Current Topics module, it is important to highlight that becasue we be doing more advanced commands and options for those commands, some commands or their options might not work for you. We have tried our best to pick commands and options for those commands that are widely used, but since we are all on our own computers, each of us has a different implementation of certain commands and there may be options that your specific implementation doesn't have. We have run this code on the [O2 cluster](https://it.hms.harvard.edu/our-services/research-computing/services/high-performance-computing) and each of these commands works there.
+**Disclaimer 1:** Before we start this Current Topics module, it is important to highlight that becasue we be doing more advanced commands and options for those commands, some commands or their options might not work for you. We have tried our best to pick commands and options for those commands that are widely used, but since we are all on our own computers, each of us has a different implementation of certain commands and there may be options that your specific implementation doesn't have. We have run this code on the [O2 cluster](https://it.hms.harvard.edu/our-services/research-computing/services/high-performance-computing) and each of these commands works there.
+
+**Disclaimer 2:** The contents of this module contain many examples. Some of these examples will have use-cases that you may frequently use and others you may rarely, if ever, use. We will try to highlight commands and use-cases that we frequently use where applicable, but it is important to note that few people, if any, have memorized all of the contents of this module. Some of the examples are here are to just to provide familiarity that a concept simply exists. Try not to get hung up on memorizing the syntax except for perhaps the most frequently used commands. This is a resource that we anticipate you will look back to when you come across a problem that you know can be solved with these materials, but you don't remember the specific syntax. 
 
 ## Getting the dataset
 
