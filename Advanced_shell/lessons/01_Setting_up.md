@@ -87,6 +87,6 @@ ls
 
 Now that we have downloaded our toy datasets, we are ready to dive into learning more advanced bash!
 
-[Next Lesson >>>](02_String_manipulation.md)
+[Next Lesson >>](02_String_manipulation.md)
 
 [Back to Schedule](../README.md)
