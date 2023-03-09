@@ -6,6 +6,12 @@
 
 **Disclaimer 2:** The contents of this module contain many examples. Some of these examples will have use-cases that you may frequently use and others you may rarely, if ever, use. We will try to highlight commands and use-cases that we frequently use where applicable, but it is important to note that few people, if any, have memorized all of the contents of this module. Some of the examples are here to just to provide familiarity that a concept simply exists. Try not to get hung up on memorizing the syntax except for perhaps the most frequently used commands. This is a resource that we anticipate you will look back to when you come across a problem that you know can be solved with these materials, but you don't remember the specific syntax. 
 
+## Learning Objective
+
+In this lesson, you will:
+- Download data via the command-line interface using `curl`
+- Uncompress a `.zip` file via the command-line interface
+
 ## Getting the dataset
 
 Before starting the course we asked that Windows users have successfully, installed [GitBash](https://git-scm.com/download/win). Mac users can just use the built-in Terminal application. Go ahead and launch either GitBash or Terminal.
