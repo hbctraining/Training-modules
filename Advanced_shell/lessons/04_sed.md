@@ -2,6 +2,10 @@
 
 The ***s***tream ***ed***itor, `sed`, is a common tool used for text manipulation. `sed` takes input from either a file or piped from a previous command and applies a transformation to it before outputting it to standard out.
 
+## Quick note on quotations
+
+Many of the same arguments that were made for using single vs. double quotation marks in `grep` also apply to `sed`. However, the `$` has some non-variable functionality in `sed` that we will discuss, particularly with reference to addresses. For this reason, it's more common to see `sed` commands wrapped in single-quotes rather than double-quotes. Of course, if you want to use a `bash` variable in `sed` you are going to need to wrap it in double-quotes, but when you do be cautious of any non-variable usage of `$` and be sure to escape it (`\`).
+
 ## substitution
 
 One common usage for `sed` is to replace `pattern` with `replacement`. The syntax for doing this is:
