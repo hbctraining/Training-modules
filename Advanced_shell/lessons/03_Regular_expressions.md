@@ -467,7 +467,7 @@ COTCH
 
 ## Additional Resources
 
-- https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/sessionVI/lessons/extra_bash_tools.html#regular-expressions-regex-in-bash- 
+- <a href="https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/sessionVI/lessons/extra_bash_tools.html#regular-expressions-regex-in-bash-">https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/sessionVI/lessons/extra_bash_tools.html#regular-expressions-regex-in-bash-</a>
 
 ***
 
