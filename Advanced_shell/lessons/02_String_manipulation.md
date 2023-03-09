@@ -2,6 +2,13 @@
 
 While the syntax differs, one feature that is common is most programming languages is the process of string manipulation. Before we can introduce string manipulation, we first need to introduce strings!
 
+## Learning Objectives
+
+In this lesson, you will:
+- Describe a string
+- Differentiate between 0-based and 1-based indexing
+- Manipulate strings in `bash`
+
 ## Strings
 
 A string is a term for any sequence of characters. Some examples of strings are:
@@ -12,7 +19,7 @@ this_module_is_a_blast.txt
 /path/to/my/favorite/photo.jeg
 ```
 
-Strings has whitespace (spaces or tabs) separating them from anything else. 
+Strings have whitespace (spaces or tabs) separating them from anything else. 
 
 > **NOTE:** While generally discouraged, strings can also have spaces in them along with other special characters. Special characters are characters that have special meaning in a language. For example, `>` is a character used for redirection or `$` is a character used with variables. You can use them if you must by "escaping" them. Escaping a special character requires putting a `\` infront of the special character, which tell bash to interpret this next character literally, not as a special character. Naturally, `\` is also a special character. Because different software tools interpret special characters differently, it is generally advised just to stay away from them in strings unless it is necessary (which sometimes it is). Many of these special characters are symbols, so general, just be leary of using non-alphanumerical characters in your strings.
 
@@ -29,11 +36,11 @@ Before we can explore string manipulation, we need to have some background on in
 <img src="../img/Indexing_strings.png" width="500">
 </p>
 
-One advantage of 0-based indexing is that you can figuring out distances a bit easier. If you want to know the distance from R to N, you just need to do to 5 - 2 and you get the length of that string is 3. In 1-based indexing, you need to add 1 after you do the substraction. So in the case of R to N, it would be 5 - 3 + 1 = 3. All of the built-in bash commands use 0-based indexing, but other programs not in this module may run on 1-based indexing, so you should be aware of how strings are indexed when analyzing them.
+One advantage of 0-based indexing is that you can figuring out distances a bit easier. If you want to know the distance from `R` to `N` in the example above, you just need to do to 5 - 2 and you get the length of that string is 3. In 1-based indexing, you need to add 1 after you do the substraction. So in the case of `R` to `N`, it would be 5 - 3 + 1 = 3. Many of the built-in `bash` commands use 0-based indexing, but other programs not in this module may run on 1-based indexing, so you should be aware of how strings are indexed when analyzing them.
 
 ### Subsetting strings
 
-The first lesson in manipulating strings is simply subsetting a string. Here, we are trying to take our sting and only extract a portion of that string. First let's set a string, like our name, equal to a variable, in this case `name`:
+The first lesson in manipulating strings is simply subsetting a string. Here, we are trying to take our string and only extract a portion of that string. First let's set a string, like our name, equal to a variable, in this case `name`:
 
 ```
 name=Will
@@ -47,21 +54,20 @@ echo $name
 echo ${name}
 ```
 
-> **NOTE:** Generally speaking, it's not a bad idea to always start putting your bash variables in `{}`. It's not necessary in some cases, like if the bash variable is followed by a space or other specific characters like `.` or `/`. However, it can save you a headache when debugging and using if you use them when they aren't necessary, bash will still interpretted just fine. 
+> **NOTE:** Generally speaking, it's not a bad idea to always start putting your bash variables in `{}`. It's not necessary in some cases, like if the bash variable is followed by a space or other specific characters like `.` or `/`. However, it can save you a headache when debugging and using if you use them when they aren't necessary, `bash` will still interpret the variable just fine. 
 
 Now, if we want to subset the string saved to a variable. We need to need to use the following syntax:
 
 ```
+# DON'T RUN
 ${variable_name:start:length}
 ```
-
-In this case, our variable name is `name`, we are you start at the `start` position (0-based) and continue a given `length`. 
 
 <p align="center">
 <img src="../img/Substring_length.png" width="500">
 </p>
 
-If we want the second and third letter of the variable `$name` it would look like:
+In this case, our variable name is `name`, where we start at is the `start` position (0-based) and we continue for a given `length`. If we want the second and third letter of the variable `$name` it would look like:
 
 ```
 echo ${name:1:2}
@@ -72,18 +78,21 @@ echo ${name:1:2}
 The O2 cluster at Harvard has a special space reserved for each person's "scratch" work that is deleted after 30 days of not being used. The path to this space is:
 
 ```
+# DON'T RUN
 /n/scratch3/users/[users_first_letter]/[username]/
 ```
 
-You should also be aware that O2 like many clusters has a special built in variable called `$USER` that holds a username (which we will assume is `will`). So I could change directories to this scratch space using:
+You should also be aware that O2 like many clusters has a special built-in variable called `$USER` that holds a username (which we will assume is `will`). I could change directories to this scratch space by using:
 
 ```
+# DON'T RUN
 cd /n/scratch3/users/w/will/
 ```
 
 However, if I was developing code or materials for other people in my group or lab to use, then they would have to manually change each instance of it. However, you can use substrings and variables to help you here. Instead of writing out your user information you could instead write:
 
 ```
+# DON'T RUN
 cd /n/scratch3/users/${USER:0:1}/${USER}/
 ```
 
@@ -94,6 +103,7 @@ Now this would universally apply to anyone using your code on O2!
 There is a special case of the above example where you might want to trim a certain amount characters from the beginning of a string. The syntax for this would be:
 
 ```
+# DON'T RUN
 ${variable_name:start}
 ```
 
@@ -109,9 +119,10 @@ echo ${name:2}
 
 ## Substring counting from the end of a string
 
-You may have a situation where you want to remove the last chaacaters from a string, the syntax for this would look similiar:
+You may have a situation where you want to remove the last characaters from a string, the syntax for this would look similiar:
 
 ```
+# DON'T RUN
 ${variable:start:-length_from_the_end}
 ```
 
@@ -122,7 +133,7 @@ ${variable:start:-length_from_the_end}
 If you wanted to trim the last two letters off of the `$name` variable:
 
 ```
-${name:0:-2}
+echo ${name:0:-2}
 ```
 
 This would still start at zero and keep everything but the last two positions.
@@ -133,13 +144,14 @@ You could trim the first and last letter like:
 echo ${name:1:-1}
 ```
 
-Here, you are telling bash to start in the first position and also take everything except the last position.
+Here, you are telling `bash` to start in the first position and also take everything except the last position.
 
 ## String Addition
 
 You can also add character to strings. The syntax for this is pretty straightforward:
 
 ```
+# DON'T RUN
 string_to_add_to_beginning${variable_name}string_to_add_to_end
 ```
 
@@ -158,7 +170,7 @@ echo ${real_name}
 
 ### Bioinformatics Application
 
-You could see this is if you had a path saved to a variable and you wanted to use that to create paths to files within that directory. For example,
+You can see this could be very useful if you had a path saved to a variable and you wanted to use that path variable to create paths to files within that directory. For example:
 
 ```
 alignment_directory=/my/alignment/files/are/here/
@@ -194,9 +206,7 @@ If you have a script where you use a path multiple times, this can be really hel
 
 ## Substring Removal
 
-You may want to remove the 
-
-Let's imagine a case we we wanted to move some part of a string and let's start by defining a string named `slingshot`:
+Let's imagine a case where we wanted to remove some part of a string and let's start by defining a string named `slingshot`:
 
 ```
 slingshot=slinging_slyly
@@ -207,6 +217,7 @@ slingshot=slinging_slyly
 The first thing we might want to do is remove a substring from the end of a string. The syntax for removing the shortest substring from the end of a string is:
 
 ```
+# DON'T RUN
 echo ${variable_name%substring_to_remove}
 ```
 
@@ -249,13 +260,14 @@ This will return:
 /path/to/myfile
 ```
 
-This can very really nice when compared to the `basename` function, which can also strip file extensions. However, `basename` also strips path information. You may have a case where you have a full path and filename, but you don't want to strip the path information, but rather just the extension. 
+This can very really nice when compared to the `basename` function, which can also a strip file extension. However, `basename` also strips path information. You may have a case where you have a full path and filename, but you don't want to strip the path information, but rather just the extension. 
 
 ### Remove the longest match from the end
 
 We have discussed removing the shortest match from the end of a string, but we can also remove the longest match from the end of a string and the syntax for this is:
 
 ```
+# DON'T RUN
 echo ${variable_name%%substring_to_remove}
 ```
 
@@ -275,7 +287,7 @@ This returns:
 slinging_sly
 ```
 
-Now, let's change the `%` to `%%`
+Now, let's change the `%` to `%%`:
 
 ```
 echo ${slingshot%%ly*}
@@ -294,6 +306,7 @@ slinging_s
 Instead of removing matches from the end of the string we can also remove matches from the beginning of the string by using `#` instead of `%`. Excitingly, like the shebang line, this is one of the few times that `#` doesn't function as a comment in `bash`. The syntax for remove the shortest match from the beginning of a string is:
 
 ```
+# DON'T RUN
 ${variable_name#substring_to_remove}
 ```
 
@@ -330,6 +343,7 @@ ing_slyly
 We can also remove the longest match from the beginning using the following syntax:
 
 ```
+# DON'T RUN
 ${variable_name##substring_to_remove}
 ```
 
@@ -364,7 +378,7 @@ However, the `basename` function provides this exact function, so either way is 
 
 ### Substring Removal Overview
 
-The table below is a summary of the substring removal
+The table below is a summary of substring removal:
 
 | Shortcut | Effect |
 |------|------|
@@ -380,10 +394,11 @@ The table below is a summary of the substring removal
 The length of a string can be determined by using the following syntax:
 
 ```
+# DON'T RUN
 ${#variable_name}
 ```
 
-In this case, we could see the length of slingshot by:
+Once again, this is another interesting case where `#` is not used as a comment and actually has a function in `bash`. In this case, we could see the length of the `$slingshot` variable by using:
 
 ```
 echo ${#slingshot}
@@ -404,10 +419,11 @@ Which will return a length of:
 If you want all uppercase letters you can do:
 
 ```
+# DON'T RUN
 ${variable_name^^}
 ```
 
-If your version of bash is too old to change cases, the error message will look like:
+If your version of `bash` is too old to change cases, the error message will look like:
 
 ```
 -bash: ${variable_name^^}: bad substitution
@@ -430,6 +446,7 @@ SLINGING_SLYLY
 If you want the leading character to be uppercase, then we can use this syntax:
 
 ```
+# DON'T RUN
 echo ${variable_name^}
 ```
 
@@ -456,6 +473,7 @@ dog=FIDO
 We could force all of the letters to be lowercase using the following syntax:
 
 ```
+# DON'T RUN
 ${variable_name,,}
 ```
 
@@ -476,6 +494,7 @@ fido
 We can also just make the leading character lowercase with the following syntax:
 
 ```
+# DON'T RUN
 ${variable_name,}
 ```
 
@@ -491,6 +510,7 @@ The output would look like:
 fIDO
 ```
 
+***
 
 [Next Lesson >>>](03_Regular_expressions.md)
 
