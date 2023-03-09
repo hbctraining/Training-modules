@@ -20,7 +20,7 @@ Now the dataset that we are going to use today can be found [here](). If you wan
 
 ## curl
 
-There are several similar tools for doing the task of downloading linked files. Two common tools for this are `curl` and `wget`. For this application and most applications they will provide the same functionality. There are minor differences between `curl` and `wget` that are beyond the scope of this course and, in reality, most uses. We will be using `curl` here, but we will give an example of `wget` in a dropdown menu at the end of this section along with an additonal dropdown providing a brief overview the differences between `curl` and `wget` for those that wish to dig a bit deeper. Okay, so let's start by downloading the file. We can right-click the hyperlink above or [here]() and select "Copy Link". Next: we will go to our command line and type:
+There are several similar tools for doing the task of downloading linked files. Two common tools for this are `curl` and `wget`. For this application and most applications they will provide the same functionality. There are minor differences between `curl` and `wget` that are beyond the scope of this course and, in reality, most uses. We will be using `curl` here, but we will give an example of `wget` in a dropdown menu at the end of this section along with an additonal dropdown providing a brief overview the differences between `curl` and `wget` for those that wish to dig a bit deeper. Okay, so let's start by downloading the file. We can right-click the hyperlink above or [here](https://github.com/hbctraining/Training-modules/raw/master/Advanced_shell/data/advanced_shell.zip) and select "Copy Link". Next: we will go to our command line and type:
 
 ```
 curl -O -L [paste your link here]
@@ -31,7 +31,7 @@ curl -O -L [paste your link here]
 It should look like:
 
 ```
-curl -O -L http://wdfgnsjkdgnwkg
+curl -O -L https://github.com/hbctraining/Training-modules/raw/master/Advanced_shell/data/advanced_shell.zip
 ```
 
 Let's briefly talk about the options of this command:
