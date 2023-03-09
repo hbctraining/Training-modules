@@ -135,105 +135,105 @@ sed '1~2{s/an/replacement/g}' ecosystems.txt
 You can delete entire lines in `sed`. To delete lines proved the address followed by `d`. To delete the first line from a file:
 
 ```
-sed '1d' animals.txt
+sed '1d' ecosystems.txt
 ```
 
 Like substitutions, you can provide an interval and this will delete line 1 to line 3:
 
 ```
-sed '1,3d' animals.txt
+sed '1,3d' ecosystems.txt
 ```
 
 Also like substitution, you can use `!` to specify lines not to delete like:
 
 ```
-sed '1,3!d' animals.txt
+sed '1,3!d' ecosystems.txt
 ```
 
-Additionally, you can also use regular expressions to provide the addresses to define an interval to delete from. In this case we are interested in deleting from the first instance of 'alligator' until the end of the file:
+Additionally, you can also use regular expressions to provide the addresses to define an interval to delete from. In this case we are interested in deleting from the first instance of 'cichlid' until the end of the file:
 
 ```
-sed '/alligator/,$d' animals.txt
+sed '/cichlid/,$d' ecosystems.txt
 ```
 
 The `N~n` syntax also works in deletion. If we want to delete every thrid line starting on line 2, we can do:
 
 ```
-sed '2~3d' animals.txt
+sed '2~3d' ecosystems.txt
 ```
 
 ## Appending
 
 ### Appending text
 
-You can append a new line with the word 'ape' after the 2nd line using the `a` command in `sed`:
+You can append a new line with the word 'starfish' after the 2nd line using the `a` command in `sed`:
 
 ```
-sed '2 a ape' animals.txt
+sed '2 a starfish' ecosystems.txt
 ```
 
 If you want the appended text to come before the address, you need to use the `i` command:
 
 ```
-sed '2 i ape' animals.txt
+sed '2 i starfish' ecosystems.txt
 ```
 
 You can also do this over an interval, like from the 2nd to 4th line:
 
 ```
-sed '2,4 a ape' animals.txt
+sed '2,4 a starfish' ecosystems.txt
 ```
 
 Additionally, you can append the text every 3rd line begining with the second line:
 
 ```
-sed '2~3 a ape' animals.txt
+sed '2~3 a starfish' ecosystems.txt
 ```
 
 Lastly, you can also append after a matched pattern:
 
 ```
-sed '/monkey/ a ape' animals.txt
+sed '/monkey/ a starfish' ecosystems.txt
 ```
 
 ### Appending a file
 
-You could in interested in inserting the contents of **file B** inside at a certain point of **file A**. For example, if you wanted to insert the contents `file_B.txt` after line `4` in `file_A.txt`, you could do:
+You could in interested in inserting the contents of **file B** inside at a certain point of **file A**. For example, if you wanted to insert the contents `more_ecosystems.txt` after line `4` in `ecosystems.txt`, you could do:
 
 ```
-sed '4 r file_B.txt' file_A.txt
-```
-
-Instead of line `4`, you can append the file between every line in the interval from line 2 to line 4 with:
-
-```
-sed '2,4 r file_B.txt' file_A.txt
-```
-
-You could also append the line after each line by using `1~1` syntak:
-
-```
-sed '1~1 r file_B.txt' file_A.txt
+sed '4 r more_ecosystems.txt' ecosystems.txt
 ```
 
 The `r` argument is telling `sed` to ***r***ead in `file_B.txt`.
 
+Instead of line `4`, you can append the file between every line in the interval from line 2 to line 4 with:
+
+```
+sed '2,4 r more_ecosystems.txt' ecosystems.txt
+```
+
+You could also append the line after each line by using `1~1` syntax:
+
+```
+sed '1~1 r more_ecosystems.txt' ecosystems.txt
+```
+
 Instead of inserting on a line specific line, you can also insert on a pattern:
 
 ```
-sed '/pattern/ r file_B.txt' file_A.txt
+sed '/camel/ r more_ecosystems.txt' ecosystems.txt
 ```
 
 Lastly, you could also insert a file to the end using `$`:
 
 ```
-sed '$ r file_B.txt' file_A.txt
+sed '$ r more_ecosystems.txt' ecosystems.txt
 ```
 
 But this is the same result as simply concatenating two files together like:
 
 ```
-cat file_A.txt file_B.txt
+cat ecosystems.txt more_ecosystems.txt
 ```
 
 ## Replacing Lines
@@ -241,33 +241,33 @@ cat file_A.txt file_B.txt
 You can also replace entire lines in `sed` using the `c` command. We could replace the first line with the word 'header' by:
 
 ```
-sed '1 c header' animals.txt
+sed '1 c header' ecosystems.txt
 ```
 
 This can also be utilized in conjustion with the `A,B` interval syntax, but we aware that it will replace ALL lines in that interval with a SINGLE line.
 
 ```
-sed '1,3 c header' animals.txt
+sed '1,3 c header' ecosystems.txt
 ```
 
 You can also replace every *n*th line starting at *N*th line using the `N~n` address syntax:
 
 ```
-sed '1~3 c header' animals.text
+sed '1~3 c header' ecosystems.txt
 ```
 
 Lastly, you can also replace lines match a pattern:
 
 ```
-sed '/animal/ c header' animals.txt
+sed '/jaguar/ c header' ecosystems.txt
 ```
 
-## Translation
+## Transform
 
-`sed` has a feature that allows you to translate characters similiarly to the `tr` function in `bash`. If you wanted to translate all of the lowercase a, b and c characters to their uppercase equivalents you could do that with the `y` command:
+`sed` has a feature that allows you to transform characters similiarly to the `tr` function in `bash`. If you wanted to transform all of the lowercase a, b and c characters to their uppercase equivalents you could do that with the `y` command:
 
 ```
-sed 'y/abc/ABC/' animals.txt
+sed 'y/abc/ABC/' ecosystems.txt
 ```
 
 In this case the first letter 'a' is replaced with 'A', 'b' with 'B' and 'c' with 'C'.
@@ -276,32 +276,40 @@ In this case the first letter 'a' is replaced with 'A', 'b' with 'B' and 'c' wit
 
 ### `-e` option
 
-If you would like to carry out multiple `sed` expressions in the same command you can use the `-e` option and after each `-e` option you can provide the expression you would like `sed` to evaluate. For example, one could change 'jungle' to 'rainforest' and 'grasslands' to 'Serengeti':
+If you would like to carry out multiple `sed` expressions in the same command you can use the `-e` option and after each `-e` option you can provide the expression you would like `sed` to evaluate. For example, one could change 'jungle' to 'rainforest' and 'lake' to 'freshwater':
 
 ```
-sed -e 's/jungle/rainforest/g' -e 's/grasslands/Serengeti/g' animals.txt
+sed -e 's/jungle/rainforest/g' -e 's/lake/freshwater/g' ecosystems.txt
 ```
 
 One can also combine different type of expressions. For instance, one could change 'jungle' to 'rainforest' using a substitution expression and then use a deletion expression to remove the header line:
 
 ```
-sed -e 's/jungle/rainforest/g' -e '1d' animals.txt
+sed -e 's/jungle/rainforest/g' -e '1d' ecosystems.txt
 ```
+
+If you want to use different flags to mark the occurance of a substitution, you will need to use the `-e` option:
+
+```
+sed -e 's/jungle/rainforest/3' -e 's/jungle/rainforest/1' ecosystems.txt
+```
+
+> **NOTE:** The flag occurences need to go in decreasing order from the end of the line to the beginning of the line. Notice how `-e 's/jungle/rainforest/3'` comes before `-e 's/jungle/rainforest/1'`.
 
 ### `-f` option
 
-If you have a large number of `sed` expressions you can also place them in a text file with each expression on a separate line:
+If you have a large number of `sed` expressions you can also place them in a text file, like the `sed_expressions.txt` file we have with each expression on a separate line:
 
 ```
 s/jungle/rainforest/g
-s/grasslands/Serengeti/g
+s/lake/freshwater/g
 1d
 ```
 
-If this file was named 'sed_expressions.txt', our command could look like:
+Then we can use the `-f` option to provide this file of sed expressions like:
 
 ```
-sed -f sed_expressions.txt animals.txt
+sed -f sed_expressions.txt ecosystems.txt
 ```
 
 ## Additional Resources
