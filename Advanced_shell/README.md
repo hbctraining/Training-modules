@@ -25,9 +25,9 @@ This repository has teaching materials for a **2 hour**, hands-on **Intermediate
 |:------------------------|:----------|
 |[Setting up](lessons/01_Setting_up.md) | 15 min |
 |[String Manipulation in bash](lessons/02_String_manipulation.md) | 25 min |
-|[Regular expression within grep]() | 30 min |
-|[Introduction to sed]() | 20 min |
-|[Introduction to awk]() | 30 min |
+|[Regular expression within grep](lessons/03_Regular_expressions.md) | 30 min |
+|[Introduction to sed](lessons/04_sed.md) | 20 min |
+|[Introduction to awk](lessons/05_awk.md) | 30 min |
 
 ### Dataset
 
