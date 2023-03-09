@@ -4,7 +4,7 @@ Regular expressions (sometimes referred to as regex) are a string of characters 
 
 ## Learning Objectives
 
-The learning objectives for this lessons:
+In this lesson, we will:
 - Differentiate between single and double quotes in `bash`
 - Implement regular expressions to within `grep`
 
@@ -24,11 +24,11 @@ There are two principles that we should discuss more, the `-E` option and the us
 
 ### The `-E` option
 
-There is a `-E` option when using `grep` that allows the user to use what is considered "extended regular expressons". We won't use too many of these types of regular expressions and we will point them out when we need them. If you want to make it a habit to always use the `-E` option when using regular expressions in `grep` it is probably a bit more safe.
+There is a `-E` option when using `grep` that allows the user to use what is considered "extended regular expressons". We won't use too many of these types of regular expressions and we will point them out when we need them. If you want to make it a habit to always use the `-E` option when using regular expressions in `grep` it is a bit more safe.
 
 ### Quotations
 
-When using grep it is usually not required to put your search term in quotes. However, if you would like to use `grep` to do certain types of searches, then you are most likely more safe to wrap your search term in quotations, and likely double quotations. Let's briefly discuss the difference:
+When using grep it is usually not required to put your search term in quotes. However, if you would like to use `grep` to do certain types of searches, then you are most likely more safe to wrap your search term in quotations, and likely double quotations. Let's briefly discuss the differences:
 
 #### No quotation
 
@@ -36,7 +36,7 @@ If you are using `grep` to search and have whitespace (space or tabs) in your se
 
 #### Single quotations
 
-So `grep` doesn't ever "see" quotation marks, but rather quotation marks are interpretted by `bash` first and then the result is passed to `grep`. The big advantage of using quotation marks, single or double, when using `grep` is that it allows you to use search expressions with whitespace in them. However, within bash, single-quotation marks (`'`) are intepretted *literally*, meaning that the expression within the quotation marks will be interpretted by `bash` *EXACTLY* the way it is written. Notably, `bash` variables within single-quotations are NOT expanded. What we mean by this is that if you were to have a variable named `at` that holds `AT`:
+So `grep` doesn't ever "see" quotation marks, but rather quotation marks are interpretted by `bash` first and then the result is passed to `grep`. The big advantage of using quotation marks, single or double, when using `grep` is that it allows you to use search expressions with whitespace in them. However, within bash, single-quotation marks (`'`) are intepretted *literally*, meaning that the expression within the quotation marks will be interpretted by `bash` *EXACTLY* the way it is written. Notably, `bash` variables within single-quotations are **NOT** expanded. What we mean by this is that if you were to have a variable named `at` that holds `AT`:
 
 ```
 at=AT
@@ -58,7 +58,7 @@ This is because it searches for the term without expanding (replacing the `bash`
 
 #### Double Quotations
 
-Double quotations are typically the most useful because they allow the user to search for whitespace AND allows for bash to expand `bash` variables, so that now:
+Double quotations are typically the most useful because they allow the user to search for whitespace **AND** allows for `bash` to expand variables, so that now:
 
 ```
 grep "C${at}CH" catch.txt
@@ -70,7 +70,7 @@ Returns:
 CATCH
 ```
 
-Additionally, if you would like to be able to literally search something that looked like a `bash` variable, you can do this just by adding a `\` before the `${variable}` to "escape" it from bash expansion. For example:
+Additionally, if you would like to be able to literally search something that looked like a `bash` variable, you can do this just by adding a `\` before the `${variable}` to "escape" it from `bash` expansion. For example:
 
 ```
 grep "C\${at}CH" catch.txt
@@ -167,7 +167,7 @@ CAAATCH
 CAAAATCH
 ```
 
-However, it is important to also note that the ASCII alphabet has a few characters between numbers and uppercase letters such as ':' and '>', so you would also match ':ATCH' and '>ATCH' (if it was in the file), repectively. There are also a few symbols between upper and lowercase letters such as '^' and ']', which match '^ATCH' and ']ATCH' (if it was in the file). 
+However, it is important to also note that the ASCII alphabet has a few characters between numbers and uppercase letters such as `:` and `>`, so you would also match `:ATCH` and `>ATCH` (if it was in the file), repectively. There are also a few symbols between upper and lowercase letters such as `^` and `]`, which match `^ATCH` and `]ATCH` (if it was in the file), respectively. 
 
 Thus, if you would only want to search for numbers, uppercase letters and lowercase letters, but NOT these characters in between, you would need to modify the range:
 
@@ -190,14 +190,14 @@ CAAATCH
 CAAAATCH
 ```
 
-You can also note that since these characters follow the ASCII character encoding order, `[Z-A]` will give you an error telling you that it is an invalid range because 'Z' comes after 'A', thus you can't search from 'Z' forward to 'A'.
+You can also note that since these characters follow the ASCII character encoding order, `[Z-A]` will give you an error telling you that it is an invalid range because `Z` comes after `A`, thus you can't search from `Z` forward to `A`.
 
 ```
 # THIS WILL PRODUCE AN ERROR
 grep -E "[Z-A]ATCH" catch.txt
 ```
 
-Another trick with ranges is the use of `^` ***within*** `[]` functions as a 'not' function. For example:
+Another trick with ranges is the use of `^` ***within*** `[]` functions as a "not" function. For example:
 
 
 ```
@@ -220,16 +220,16 @@ CAAATCH
 CAAAATCH
 ```
 
-This will match anything ending in 'ATCH' ***except*** a string containing 'CATCH'.
+This will match anything ending in `ATCH` ***except*** a string containing `CATCH`.
 
 ***IMPORTANT NOTE: `^` has a different function when used outside of the `[]` that is discussed below in anchoring.***
 
 
 ## Special Characters
 
-### `.`
+### .
 
-The `.` matches any character except new line. Notably, it also ***does not*** match no character. This is similar to the behavior of the wildcard `?` in Unix. For example:
+The `.` matches any character except new line. Notably, it also ***does not*** match no character. This is similar to the behavior of the wildcard `?` in `bash`. For example:
 
 ```
 grep -E ".ATCH" catch.txt
@@ -252,13 +252,13 @@ CAAATCH
 CAAAATCH
 ```
 
-But this result **will not** include 'ATCH'.
+But this result **will not** include `ATCH`.
 
 ### Quantifiers
 
-#### `*`
+#### *
 
-The `*` matches the preceeding character any number of times ***including*** zero. For example:
+The `*` matches the preceeding character any number of times ***including*** zero times. For example:
 
 ```
 grep -E "CA*TCH" catch.txt
@@ -274,7 +274,7 @@ CAAATCH
 CAAAATCH
 ```
 
-#### `?`
+#### ?
 
 The `?` denotes that the previous character is optional, in the following example:
 
@@ -289,11 +289,11 @@ CATCH
 CTCH
 ```
 
-Since the "A" is optional, it will only match "CATCH" or "CTCH", but not anything else, including "COTCH" which was in our file.
+Since the "A" is optional, it will only match `CATCH` or `CTCH`, but not anything else, including `COTCH` which was also in our file.
 
-#### `{}`
+#### {}
 
-The `{INTEGER}` match the preceeding character the number of times equal to INTEGER. For exmaple:
+The `{INTEGER}` matches the preceeding character the number of times equal to INTEGER. For example:
 
 ```
 grep -E "CA{3}TCH" catch.txt
@@ -310,9 +310,9 @@ CAAATCH
 > grep "CA\{3\}TCH" catch.txt
 > ```
 
-#### `+`
+#### +
 
-The `+` matches one or more occurrances of the preceeding character. For exmaple:
+The `+` matches one or more occurrances of the preceeding character. For example:
 
 ```
 grep -E "CA+TCH" catch.txt
@@ -329,9 +329,9 @@ CAAAATCH
 
 ### Anchors
 
-Anchors are really useful tools in regulat expressions because they specify if a pattern has to be found at the beginning or end of a line.
+Anchors are really useful tools in regular expressions because they specify if a pattern has to be found at the beginning or end of a line.
 
-#### `^`
+#### ^
 
 The `^` character anchors the search criteria to the beginning of the line. For example:
 
@@ -346,11 +346,11 @@ CATCH
 CAT
 ```
 
-Importantly, it won't return 'BOBCAT', which is also in the file, becaus that line doesn't start with 'CAT'.
+Importantly, it won't return `BOBCAT`, which is also in the file, because that line doesn't start with `CAT`.
 
-***REMINDER: `^` within `[]` behaves differently. Remember `^` within `[]` functions as 'not'!***
+***REMINDER: `^` within `[]` functions acts as "not"!***
 
-#### `$`
+#### $
 
 The `$` character anchors the search criteria to the end of the line. For example:
 
@@ -365,12 +365,12 @@ CAT
 BOBCAT
 ```
 
-This won't match 'CATCH' because the line doesn't end with 'CAT'.
+This won't match `CATCH` because the line doesn't end with `CAT`.
 
 
 ## Literal matches
 
-One problem you will likely run into with these above special characters is that you may want to match one. For example, you may want to match '.' or '?' and this is what the escape, `\`, is for. For example:
+One problem you will likely run into with these above special characters is that you may want to match one. For example, you may want to match `.` or `?` and this is what the escape, `\`, is for. For example:
 
 ```
 grep -E "C\?TCH" catch.txt
@@ -382,12 +382,12 @@ Will return:
 C?TCH
 ```
 
-It will not return 'CATCH' or 'COTCH' or others like `C?TCH` would do.
+It will not return `CATCH` or `COTCH` or others like `C?TCH` would do.
 
 
 ## Whitespace and new lines
 
-You can search from tabs with '\t', space with '\s' and newline with '\n'. For example:
+You can search for a tab with `\t`, a space with `\s` and a newline with `\n`. For example:
 
 ```
 grep -E "CA\tTCH" catch.txt
@@ -403,7 +403,7 @@ CA  TCH
 
 Much of the power from regular expression comes from how you can combine them to match the pattern you want. Below are a few examples of such:
 
-**1)** If you want to find any line that starts with uppercase letters 'A-G', then you could do:
+**1)** If you want to find any line that starts with uppercase letters `A-G`, then you could do:
 
 ```
 grep -E "^[A-G]" catch.txt
@@ -427,7 +427,7 @@ C${at}CH
 COTCH
 ```
 
-**2)** Perhaps you want to see find all lines ending with 'CA' followed by any character except 'T', then you could do:
+**2)** Perhaps you want to see find all lines ending with `CA` followed by any character except `T`, then you could do:
 
 ```
 grep -E "CA[^T]$" catch.txt
@@ -440,7 +440,7 @@ TAXICAB
 TINCAN
 ```
 
-**3)** We could be interersted in finding lines that start with 'C' and end with 'CH' with anything, including nothing, in between.
+**3)** We could be interersted in finding lines that start with `C` and end with `CH` with anything, including nothing, in between.
 
 ```
 grep -E "^C.*CH$" catch.txt
@@ -460,12 +460,17 @@ C${at}CH
 COTCH
 ```
 
+***
+
+## Exercises
+
+
 ## Additional Resources
 
-https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/extra_bash_tools.md#regular-expressions-regex-in-bash-
+https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/sessionVI/lessons/extra_bash_tools.html#regular-expressions-regex-in-bash- 
 
 ***
 
-[Next Lesson >>>](04_sed.md)
+[Next Lesson >>](04_sed.md)
 
 [Back to Schedule](../README.md)
