@@ -332,12 +332,6 @@ Then we can use the `-f` option to provide this file of `sed` expressions by usi
 sed -f sed_expressions.txt ecosystems.txt
 ```
 
-## Additional Resources
-
-- https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/sessionVI/lessons/extra_bash_tools.html##sed
-
-- https://www.grymoire.com/Unix/Sed.html#uh-8 
-
 ## Exercise
 
 Within your directory, there is a FASTQ file called, `Mov10_oe_1.subset.fq`. We would like to create a file of `sed` commands to convert this FASTQ file into a FASTA file. In order to do this, we need to briefly outline the difference between a FASTQ and FASTA file.
@@ -367,6 +361,12 @@ Let's do this task in a few parts:
 3) Next, let's add a pair of lines that delete the third and fourth lines of each entry
 
 4) Lastly, let's run this file of `sed` commands on our FASTQ file and redirect the output to a new file called `Mov10_oe_1.subset.fa`
+
+## Additional Resources
+
+- <a href="https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/sessionVI/lessons/extra_bash_tools.html##sed">https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/sessionVI/lessons/extra_bash_tools.html##sed</a>
+
+- <a href="https://www.grymoire.com/Unix/Sed.html#uh-8">https://www.grymoire.com/Unix/Sed.html#uh-8</a>
 
 ***
 
