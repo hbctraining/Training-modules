@@ -510,9 +510,23 @@ The output would look like:
 fIDO
 ```
 
+## Exercises
+
+For these exercises, use the following file path:
+
+```
+filepath=/path/to/my/file.sam
+```
+
+**1)** Strip the file extension from this variable.
+
+**2)** Strip the file extension from this variable and assign a new extension of `.bam`
+
+**3)** Strip the file extension from this variable, assign a new extension of `.sam` and assign it to a new variable called `bam_filename`. Then print this new `bash` variable 
+
 ***
 
-[Next Lesson >>>](03_Regular_expressions.md)
+[Next Lesson >>](03_Regular_expressions.md)
 
 [Back to Schedule](../README.md)
 
