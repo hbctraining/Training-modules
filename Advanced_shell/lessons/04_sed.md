@@ -338,6 +338,36 @@ sed -f sed_expressions.txt ecosystems.txt
 
 - https://www.grymoire.com/Unix/Sed.html#uh-8 
 
+## Exercise
+
+Within your directory, there is a FASTQ file called, `Mov10_oe_1.subset.fq`. We would like to create a file of `sed` commands to convert this FASTQ file into a FASTA file. In order to do this, we need to briefly outline the difference between a FASTQ and FASTA file.
+
+**FASTQ files**
+
+There are four lines in a FASTQ file per entry that correspond to:
+
+- Line 1: The header line that starts with `@`
+- Line 2: The sequence line
+- Line 3: Usually just holds a `+`
+- Line 4: Base scores corresponding to the bases in Line 2
+
+**FASTA files**
+
+There are only two lines in a FASTA file per entry that correspond to:
+
+- Line 1: The header line that starts with `>`
+- Line 2: The sequence line
+
+Let's do this task in a few parts:
+
+1) Let's create a new file in `vim` called `fastq_to_fasta.txt` to put our `sed` commands within 
+
+2) Let's make our first `sed` command within this file be the one that implments a `>` at the *start* of the first line of each entry. *Hint: A regex tool could be helpful for this task*
+
+3) Next, let's add a pair of lines that delete the third and fourth lines of each entry
+
+4) Lastly, let's run this file of `sed` commands on our FASTQ file and redirect the output to a new file called `Mov10_oe_1.subset.fa`
+
 ***
 
 [Next Lesson >>](05_awk.md)
