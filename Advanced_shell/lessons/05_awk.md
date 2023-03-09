@@ -7,7 +7,7 @@
 
 ### Printing columns
 
-Let's first look at one of it's most basic and useful functions, printing columns. For this example we are going to use the tab-delimited file animals.txt that we used in the `sed` examples. 
+Let's first look at one of it's most basic and useful functions, printing columns. For this example we are going to use the tab-delimited file `ecosystems.txt` that we used in the `sed` examples. 
 
 Let's first try to just print the first column:
 
@@ -21,28 +21,36 @@ Here the `print` function in `awk` is telling `awk` that it it should output the
 awk '{print $3,$1,$5}' ecosystems.txt
 ```
 
-The default output is to have the column separated by a space. However, built-in variables can be modified using the `-v` option. Once you have called the `-v` option you need to tell it which built-in variable you are interested in modfying. In this case it is the ***O***utput ***F***ield ***S***eparator, or `OFS`, and you need to set it to what you would like it to be equal to; a `'\t'` for tab, a `,` for a comma or even an `f` for a a lowercase 'f'.
+The default output is to have the column separated by a space. However, built-in variables can be modified using the `-v` option. Once you have called the `-v` option you need to tell `awk` which built-in variable you are interested in modfying. In this case, it is the ***O***utput ***F***ield ***S***eparator, or `OFS`, and you need to set it to what you would like it to be equal to; a `'\t'` for tab, a `,` for a comma or even an `f` for a lowercase `f`.
 
 ```
 awk -v OFS='\t' '{print $3,$1,$5}' ecosystems.txt
 ```
 
-#### `RS` and `ORS`
+#### $0
+
+There is a special variable `$0` that corresponds to the whole record. This is very useful when appending a new field to the front or end of a record, such as.
+
+```
+awk '{print $1,$0}' ecosystems.txt
+```
+
+#### RS and ORS
 
 As an aside, similarly to `OFS`, records are assumed to be read in and written out with a newline character as default. However, this behavior can be altered with `RS` and `ORS` variables. 
 
 `RS` can be used to alter the input ***r***ecord ***s***eparator
 `ORS` can be used to alter the ***o***utput ***r***ecord ***s***eparator
 
-If we wanted to change the `ORS` to be a ';' we could do so with like:
+If we wanted to change the `ORS` to be a `;` we could do so with:
 
 ```
 awk -v OFS='\t' -v ORS=';' '{print $3,$1,$5}' ecosystems.txt
 ```
 
-#### `-F`
+#### -F
 
-The default behavior of `awk` is to split the data into columns based on whitespace (tabs or spaces). However, if you have a comma-separated file, then your fields are separateed by commas and not whitespace. If we run a comma-separated file and call for the first column with the default field separator, then it will print the entire line:
+The default behavior of `awk` is to split the data into columns based on whitespace (tabs or spaces). However, if you have a comma-separated file, then your fields are separated by commas and not whitespace. If we run a comma-separated file and call for the first column with the default field separator, then it will print the entire line:
 
 ```
 awk '{print $1}' ecosystems.csv
@@ -62,21 +70,21 @@ awk -v FS=',' '{print $1}' ecosystems.csv
 
 ### Skipping Records
 
-Similarly, to `sed` you can also exclude records from your analysis in `awk`. `NR` is a variable equal to the ***N***umber of ***R***ecords (Rows) in your file. As an aside `NF` also exists and is a variable equal to the ***N***umber of ***F***ields (Columns) in your file. You can define the range that you want your print command to work over by specifiying the `NR` prior to your `{}`. For example, if we wanted to remove the header, then we could do something like:
+Similarly, to `sed` you can also exclude records from your analysis in `awk`. `NR` is a variable equal to the ***N***umber of ***R***ecords (Rows) in your file. `NF` also exists and is a variable equal to the ***N***umber of ***F***ields (Columns) in your file. You can define the range that you want your print command to work over by specifiying the `NR` prior to your `{}`. For example, if we wanted to remove the header, then we could do something like:
 
 ```
 awk 'NR>1 {print $3,$1,$5}' ecosystems.txt
 ```
 
-You can also set a range for records you'd like `awk` to print out by separating your range requirements with a `&&`, meaning 'and':
+You can also set a range for records you'd like `awk` to print out by separating your range requirements with a `&&`, meaning "and":
 
 ```
 awk 'NR>1 && NR<=3 {print $3,$1,$5}' ecosystems.txt
 ```
 
-This command will print the third, first and fifth fields of `ecosystems.txt` for records greater than 1 and less than or equal to three.
+This command will print the third, first and fifth fields of `ecosystems.txt` for records greater than record one and less than or equal to record three.
 
-### `BEGIN`
+### BEGIN
 
 The `BEGIN` command will execute an `awk` expression once at the beginning of a command. This can be particularly useful it you want to give an output a header that doesn't previously have one.
 
@@ -84,17 +92,17 @@ The `BEGIN` command will execute an `awk` expression once at the beginning of a 
 awk 'BEGIN {print "new_header"} NR>1 {print $1}' ecosystems.txt
 ```
 
-In this case we have told `awk` that we want to have "new_header" printed before anything, then `NR>1` is telling `awk` to skip the old header and finally we are printing the first column of `animals.txt` with `{print $1}`.
+In this case we have told `awk` that we want to have "new_header" printed before anything, then `NR>1` is telling `awk` to skip the old header and finally we are printing the first column of `ecosystems.txt` with `{print $1}`.
 
-### `END`
+### END
 
-Related to `BEGIN` is the `END` command that that tells `awk` to do a command once at the end of the file. It is ***very*** useful when summing up columns (below), but we will first demonstrate how it works by adding a new record:
+Related to the `BEGIN` command, the `END` command that tells `awk` to do a command once at the end of the file. It is ***very*** useful when summing up columns (below), but we will first demonstrate how it works by adding a new record:
 
 ```
 awk '{print $1} END {print "new_record"}' ecosystems.txt
 ```
 
-As you can see, this has simply added a new record to the end of a file. Furthermore, you can chain multiple `END` command together to continously add to columns if you wished like:
+As you can see, this has simply added a new record to the end of a file. Furthermore, you can chain multiple `END` commands together to continously add to columns if you wished like:
 
 ```
 awk '{print $1} END {print "new_record"} END {print "newer_record"}' ecosystems.txt
@@ -143,11 +151,11 @@ Now we understand how variables and `END` work, we can take the sum of a column,
 awk 'NR>1 {sum=$5+sum} END {print sum}' ecosystems.txt
 ```
 
-- `NR>1` skips out header line. While not necessary because our header is not a number, it is considered best practice to excluded a header if you had one. If your file didn't have a header then you would omit this.
+- `NR>1` skips our header line. While not necessary because our header is not a number, it is considered best practice to excluded a header if you have one. If your file didn't have a header then you would omit this.
 
 - `{sum=$5+sum}` is creating a variable named `sum` and updating it as it goes through each record by adding the fifth field to it.
 
-> **NOTE:** This `{sum=$5+sum}` syntax can be, and often is, abbreviated to `{sum+=$5}`. They are equivlant syntaxes but for the context of learning we think `{sum=$5+sum}` is a bit more clear.
+> **NOTE:** This `{sum=$5+sum}` syntax can be, and often is, abbreviated to `{sum+=$5}`. They are equvilant syntaxes but for the context of learning we think `{sum=$5+sum}` is a bit more clear.
 
 - `END {print sum}` Once we get to the end of the file we can call `END` to print out our variable `sum`.
 
@@ -191,14 +199,6 @@ awk 'NR>1 {$7=$6/$5; print $1,$7,$2}' ecosystems.txt
 
 `$7=$6/$5` is making a seventh field with the sixth field divided by the fifth field. We then need to separate this from the `print` command with a `;`, but now we can call this new variable we've created. 
 
-#### `$0`
-
-There is a special variable `$0` that corresponds to the whole record. This is very useful when appending a new field to the front or end of a record, such as.
-
-```
-awk 'NR>1 {print $0,$6/$5}' ecosystems.txt
-```
-
 ***NOTE:*** If you create a new variable such as `$7=$6/$5`, `$7` is now part of `$0` and will overwrite the values (if any) previously in `$7`. For example:
 
 ```
@@ -207,7 +207,7 @@ awk 'NR>1 {$7=$6/$5; print $0,$7}' ecosystems.txt
 
 You will get two `$7` fields at the end of the output because `$7` is now a part of `$0` and then you've also indicated that you want to then print `$7` again.
 
-Furthermore,
+However, if you have:
 
 ```
 awk 'NR>1 {$6=$6/$5; print $0}' ecosystems.txt
@@ -231,8 +231,8 @@ awk '{ for (i = 1; i <= 2; i=i+1) print $0}' ecosystems.txt
 ```
 
 `for (i = 1; i <= 2; i=i+1)` is starting a `for` loop that:
-- `i = 1;` starts a counter variable at 1 
-- `i <= 2;` runs as long as the value of i is less than or equal to 2
+- `i = 1` starts a counter variable at 1 
+- `i <= 2` runs as long as the value of `i` is less than or equal to 2
 - `i=i+1` after each iteration, increase the counter variable by one. `++i` and `i++` are equivalent syntaxes to `i=i+1`.
 
 Then we print the whole line with `print $0`.
@@ -251,11 +251,15 @@ We can break this code down a bit:
 
 - `NR=1` only looks at the header line
 
-- `for (i=1; i<=NF; i=i+1)` this begins a `for` loop starting at 1 and continuing as longer as the `i` is less than or equal to number of fields and the increment is one
+- `for (i=1; i<=NF; i=i+1)` this begins a `for` loop starting at field one and continuing as longer as the `i` is less than or equal to number of fields and the increment is one for each interation of the `for` loop
 
 - `if ($i == "height(cm)")` is checking is `$i`, which is in our case is $1, $2, ... $6, to see if they are equal to `height(cm)`. If this condition is met then:
 
 - `print i` print out `i`
+
+## Exercises
+
+
 
 ***
 
