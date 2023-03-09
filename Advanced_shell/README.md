@@ -31,7 +31,7 @@ This repository has teaching materials for a **2 hour**, hands-on **Intermediate
 
 ### Dataset
 
-[Advanced Shell Dataset]()
+[Advanced Shell Dataset](data/advanced_shell.zip)
 
 ### Installation Requirements
 
