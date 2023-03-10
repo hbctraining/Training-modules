@@ -354,13 +354,13 @@ There are only two lines in a FASTA file per entry that correspond to:
 
 Let's do this task in a few parts:
 
-**1)** Let's create a new file in `vim` called `fastq_to_fasta.txt` to put our `sed` commands within 
+**1)** Create a new file in `vim` called `fastq_to_fasta.txt` to put our `sed` commands within 
 
-**2)** Let's make our first `sed` command within this file be the one that implments a `>` at the *start* of the first line of each entry. *Hint: A regex tool could be helpful for this task*
+**2)** Make our first `sed` command within this file be the one that implments a `>` at the *start* of the first line of each entry. *Hint: A regex tool could be helpful for this task*
 
-**3)** Next, let's add a pair of lines that delete the third and fourth lines of each entry
+**3)** Add a pair of lines that delete the third and fourth lines of each entry
 
-**4)** Lastly, let's run this file of `sed` commands on our FASTQ file and redirect the output to a new file called `Mov10_oe_1.subset.fa`
+**4)** Run this file of `sed` commands on our FASTQ file and redirect the output to a new file called `Mov10_oe_1.subset.fa`
 
 ## Additional Resources
 
