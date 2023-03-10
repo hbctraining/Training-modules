@@ -263,27 +263,15 @@ Within our directory there should be a file called `raw_counts_mouseKO.csv`. Thi
 
 **1)** How could we exclude the 5th through 9th columns of `raw_counts_mouseKO.csv` and pipe the output into a `less` buffer?
 
-```
-awk -F ',' '{print $1,$2,$3,$4}' raw_counts_mouseKO.csv | less
-```
 
-**2)** How could measure the average counts from the sample in the 7th column?
+**2)** How could we have `awk` return the column number for the field named "WT2"?
 
-```
-awk -F ',' 'NR>1 {sum=$7+sum} END {records=NR-1; print sum/records}' raw_counts_mouseKO.csv
-```
 
-**3)** How could we calculate the average counts for the first twenty genes from samples WT1, WT2, WT3 and WT4, then print the gene name, then the count for each sample for that gene and then the average across the four samples?
+**3)** How could measure the average counts from the sample in the 7th column?
 
-```
-awk -F ',' 'NR>1 && NR <= 21 {sum=$6+$7+$8+$9; print $1,$6,$7,$8,$9,sum/4}' raw_counts_mouseKO.csv
-```
 
-**4)** How could we have `awk` return the column number for the field named "WT2"?
+**4)** How could we calculate the average counts for the first twenty genes from samples WT1, WT2, WT3 and WT4, then print the gene name, then the count for each sample for that gene and then the average across the four samples?
 
-```
-awk -F ',' 'NR=1 {for (i=1; i<=NF; i=i+1) {if ($i == "WT2")  print i}}' raw_counts_mouseKO.csv
-```
 
 ***
 
