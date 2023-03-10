@@ -70,7 +70,7 @@
 <details>
   <summary><b>Click here to see the answer</b></summary>
   <pre>
-  1~4 s/^/>/</pre>
+  1~4 s/^/&gt;/</pre>
 </details>
 
 **3)** Make the next two `sed` commands within this file delete the third and fourth lines of each entry
@@ -113,7 +113,7 @@
 <details>
   <summary><b>Click here to see the answer</b></summary>
   <pre>
-  awk -F &#39;,&#39; &#39;NR>1 {sum=$7+sum} END {records=NR-1; print sum/records}&#39; raw_counts_mouseKO.csv</pre>
+  awk -F &#39;,&#39; &#39;NR&gt;1 {sum=$7+sum} END {records=NR-1; print sum/records}&#39; raw_counts_mouseKO.csv</pre>
 </details>
 
 **4)** How could we calculate the average counts for the first twenty genes from samples WT1, WT2, WT3 and WT4, then print the gene name, then the count for each sample for that gene and then the average across the four samples?
@@ -121,6 +121,6 @@
 <details>
   <summary><b>Click here to see the answer</b></summary>
   <pre>
-  awk -F &#39;,&#39; &#39;NR>1 &amp;&amp; NR <= 21 {sum=$6+$7+$8+$9; print $1,$6,$7,$8,$9,sum/4}&#39; raw_counts_mouseKO.csv</pre>
+  awk -F &#39;,&#39; &#39;NR&gt;1 &amp;&amp; NR &lt;= 21 {sum=$6+$7+$8+$9; print $1,$6,$7,$8,$9,sum/4}&#39; raw_counts_mouseKO.csv</pre>
 </details>
 
