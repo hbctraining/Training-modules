@@ -124,3 +124,6 @@
   awk -F &#39;,&#39; &#39;NR&gt;1 &amp;&amp; NR &lt;= 21 {sum=$6+$7+$8+$9; print $1,$6,$7,$8,$9,sum/4}&#39; raw_counts_mouseKO.csv</pre>
 </details>
 
+***
+  
+[Back to Schedule](../README.md)
