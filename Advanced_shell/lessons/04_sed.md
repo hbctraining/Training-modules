@@ -356,9 +356,9 @@ Let's do this task in a few parts:
 
 **1)** Create a new file in `vim` called `fastq_to_fasta.txt` to put our `sed` commands within 
 
-**2)** Make our first `sed` command within this file be the one that implments a `>` at the *start* of the first line of each entry. *Hint: A regex tool could be helpful for this task*
+**2)** Make the first `sed` command within this file be the one that implements a `>` at the *start* of the first line of each entry. *Hint: A regex tool could be helpful for this task*
 
-**3)** Add a pair of lines that delete the third and fourth lines of each entry
+**3)** Make the next two `sed` commands within this file delete the third and fourth lines of each entry
 
 **4)** Run this file of `sed` commands on our FASTQ file and redirect the output to a new file called `Mov10_oe_1.subset.fa`
 
