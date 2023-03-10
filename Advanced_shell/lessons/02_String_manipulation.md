@@ -520,9 +520,12 @@ filepath=/path/to/my/file.sam
 
 **1)** Strip the file extension from this variable.
 
+
 **2)** Strip the file extension from this variable and assign a new extension of `.bam`
 
-**3)** Strip the file extension from this variable, assign a new extension of `.sam` and assign it to a new variable called `bam_filename`. Then print this new `bash` variable 
+
+**3)** Strip the file extension from this variable, assign a new extension of `.bam` and assign it to a new variable called `bam_filename`. Then print this new `bash` variable 
+
 
 ***
 
