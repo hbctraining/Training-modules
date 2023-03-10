@@ -11,10 +11,10 @@ This repository has teaching materials for a **2 hour**, hands-on **Intermediate
 
 ### Learning Objectives
 
-* Manipulate strings from existing bash variables
-* Implement regular expressions within a grep search
-* Apply basic stream-editing principles to a file 
-* Use awk to extract columns and do basic arithmetic from table data 
+* Manipulate strings from existing `bash` variables
+* Implement regular expressions within a `grep` search
+* Apply basic stream-editing principles to a file using `sed`
+* Use `awk` to extract columns and do basic arithmetic from table data 
 
 > These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
 
