@@ -94,9 +94,11 @@ sed 's/an/replacement/g' ecosystems.txt
 sed '1 s/an/replacement/g' ecosystems.txt
 ```
 
-In the first command, `sed 's/an/replacement/g' animals.txt` we have replaced all instances of `an` with `replacement`. `animal` changed to `replacementimal`, but `toucan` also changed to `toucreplacement` and `anaconda` changed to `replacementaconda`.
-
-However, in the second command, `sed '1 s/an/replacement/g' ecosystems.txt`, we have only replaced instances on line 1.
+* In the **first command**, `sed 's/an/replacement/g' animals.txt` we have replaced all instances of `an` with `replacement`. 
+    * `animal` changed to `replacementimal`
+    * `toucan` also changed to `toucreplacement`
+    * `anaconda` changed to `replacementaconda`
+* In the **second command**, `sed '1 s/an/replacement/g' ecosystems.txt`, we have only replaced instances on line 1.
 
 If you only want to replace an occurence in the final line of a file you can use `$` like:
 
