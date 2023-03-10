@@ -36,7 +36,7 @@ If you are using `grep` to search and have whitespace (space or tabs) in your se
 
 #### Single quotations
 
-So `grep` doesn't ever "see" quotation marks, but rather quotation marks are interpretted by `bash` first and then the result is passed to `grep`. The big advantage of using quotation marks, single or double, when using `grep` is that it allows you to use search expressions with whitespace in them. However, within bash, single-quotation marks (`'`) are intepretted *literally*, meaning that the expression within the quotation marks will be interpretted by `bash` *EXACTLY* the way it is written. Notably, `bash` variables within single-quotations are **NOT** expanded. What we mean by this is that if you were to have a variable named `at` that holds `AT`:
+So `grep` doesn't ever "see" quotation marks, but rather quotation marks are interpreted by `bash` first and then the result is passed to `grep`. The big advantage of using quotation marks, single or double, when using `grep` is that it allows you to use search expressions with whitespace in them. However, within bash, single-quotation marks (`'`) are intepreted *literally*, meaning that the expression within the quotation marks will be interpreted by `bash` *EXACTLY* the way it is written. Notably, `bash` variables within single-quotations are **NOT** expanded. What we mean by this is that if you were to have a variable named `at` that holds `AT`:
 
 ```
 at=AT
