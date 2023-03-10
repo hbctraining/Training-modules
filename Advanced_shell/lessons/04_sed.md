@@ -366,7 +366,7 @@ Let's do this task in a few parts:
 
 - <a href="https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/sessionVI/lessons/extra_bash_tools.html##sed">https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/sessionVI/lessons/extra_bash_tools.html##sed</a>
 
-- <a href="https://www.grymoire.com/Unix/Sed.html#uh-8">https://www.grymoire.com/Unix/Sed.html#uh-8</a>
+- <a href="https://www.grymoire.com/Unix/Sed.html">https://www.grymoire.com/Unix/Sed.html</a>
 
 ***
 
