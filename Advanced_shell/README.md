@@ -29,6 +29,10 @@ This repository has teaching materials for a **2 hour**, hands-on **Intermediate
 |[Introduction to sed](lessons/04_sed.md) | 20 min |
 |[Introduction to awk](lessons/05_awk.md) | 30 min |
 
+### Exercise Answer Key
+
+[Answer Key](key/answer_key.md)
+
 ### Installation Requirements
 
 ***Mac users:***
