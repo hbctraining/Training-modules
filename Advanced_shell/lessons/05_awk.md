@@ -259,7 +259,7 @@ We can break this code down a bit:
 
 ## Exercises
 
-Within our directory there should be a file called `raw_counts_mouseKO.csv`. This is a raw counts matrix from a bulk RNA-seq experiment. Let's use `awk` to accomplish a few tasks with this.
+Within our directory there should be a comma-separated file called `raw_counts_mouseKO.csv`. This is a raw counts matrix from a bulk RNA-seq experiment. Let's use `awk` to accomplish a few tasks with this.
 
 **1)** How could we exclude the 5th through 9th columns of `raw_counts_mouseKO.csv` and pipe the output into a `less` buffer?
 
