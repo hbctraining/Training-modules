@@ -414,6 +414,13 @@ Which will return a length of:
 
 **NOTE: The ability to change cases is only availible on versions of `bash` that are version 4.0+!**
 
+> If your version of **`bash` is too old** to change cases, the **error message** will look like:
+> 
+> ```
+> -bash: ${variable_name^^}: bad substitution
+> ```
+
+
 ##### All Uppercase
 
 If you want all uppercase letters you can do:
@@ -421,12 +428,6 @@ If you want all uppercase letters you can do:
 ```
 # DON'T RUN
 ${variable_name^^}
-```
-
-If your version of `bash` is too old to change cases, the error message will look like:
-
-```
--bash: ${variable_name^^}: bad substitution
 ```
 
 For example, if we wanted `$slingshot` to be all uppercase letters, we can do:
