@@ -464,6 +464,23 @@ COTCH
 
 ## Exercises
 
+1) Use `grep` to find all matches in `catch.txt` that start with "B" and have a "T" anywhere in the string after the "B".
+
+```
+grep -E "^B.*T.*" catch.txt 
+```
+
+2) Use `grep` to find all matches in `catch.txt` that don't start with "C" and don't end with "H"
+
+```
+grep -E "^[^C].*[^H]$" catch.txt 
+```
+
+3) Use `grep` to find all matches in `catch.txt` that have atleast two "A"s in them
+
+```
+grep -E "A.*A.*" catch.txt 
+```
 
 ## Additional Resources
 
