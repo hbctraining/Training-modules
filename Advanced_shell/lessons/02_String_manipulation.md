@@ -36,7 +36,7 @@ Before we can explore string manipulation, we need to have some background on in
 <img src="../img/Indexing_strings.png" width="500">
 </p>
 
-One advantage of 0-based indexing is that you can figuring out distances a bit easier. If you want to know the distance from `R` to `N` in the example above, you just need to do to 5 - 2 and you get the length of that string is 3. In 1-based indexing, you need to add 1 after you do the substraction. So in the case of `R` to `N`, it would be 5 - 3 + 1 = 3. Many of the built-in `bash` commands use 0-based indexing, but other programs not in this module may run on 1-based indexing, so you should be aware of how strings are indexed when analyzing them.
+One advantage of 0-based indexing is that figuring out distances a bit easier. If you want to know the distance from `R` to `N` in the example above, you just need to do to 5 - 2 and you get the length of that string is 3. In 1-based indexing, you need to add 1 after you do the substraction. So in the case of `R` to `N`, it would be 5 - 3 + 1 = 3. **Many of the built-in `bash` commands use 0-based indexing**, but other programs not in this module may run on 1-based indexing, so you should be aware of how strings are indexed when analyzing them.
 
 ### Subsetting strings
 
