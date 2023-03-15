@@ -28,7 +28,7 @@ There is a `-E` option when using `grep` that allows the user to use what is con
 
 ### Quotations
 
-When using grep it is usually not required to put your search term in quotes. However, if you would like to use `grep` to do certain types of searches, then you are most likely more safe to wrap your search term in quotations, and likely double quotations. Let's briefly discuss the differences:
+When using grep it is usually not required to put your search term in quotes. However, if you would like to use `grep` to do certain types of searches, it is better or *safer* to wrap your search term in quotations, and likely double quotations. Let's briefly discuss the differences:
 
 #### No quotation
 
@@ -122,7 +122,7 @@ CAAATCH
 CAAAATCH
 ```
 
-You can also merge different ranges together by putting them right after each other or separating them by a `|` (in this case `|` stands for "or" and is not a pipe):
+You can also merge different ranges together by putting them right after each other or separating them by a `|` (in this case `|` stands for "or" and is **not a pipe**):
 
 ```
 grep -E "[A-Za-z]ATCH" catch.txt
