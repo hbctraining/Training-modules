@@ -46,6 +46,7 @@ GitHub displays a page with a URL and some information on how to configure your 
 This effectively does the following on GitHub's servers:
 
 ~~~ {.bash}
+## DO NOT RUN
 $ mkdir planets
 $ cd planets
 $ git init
