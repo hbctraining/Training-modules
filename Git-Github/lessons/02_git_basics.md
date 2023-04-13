@@ -4,7 +4,7 @@ date: 2017-07-07
 duration: 90
 ---
 
-## Learning Objectives
+## Learning objectives
 
 *  Configure `git` the first time is used on a computer.
 *  Create a local Git repository
@@ -120,10 +120,10 @@ by asking Git to tell us the status of our project:
 $ git status
 ~~~
 ~~~ {.output}
-# On branch master
-#
-# Initial commit
-#
+On branch master
+
+No commits yet
+
 nothing to commit (create/copy files and use "git add" to track)
 ~~~
 
@@ -151,12 +151,11 @@ Dracula starts a new project, `moons`, related to his `planets` project. Despite
 
 Dracula creates a file called `mars.txt` that contains some notes
 about the Red Planet's suitability as a base.
-(We'll use [`vim`](https://hbctraining.github.io/Intro-to-Shell/lessons/03_vim.html) to create and edit the file;
-you can use whatever editor you like.
+(We'll use `nano` to create and edit the file; you can use whatever editor you like.
 In particular, this does not have to be the `core.editor` you set globally earlier.)
 
 ~~~ {.bash}
-$ vim mars.txt
+$ nano mars.txt
 ~~~
 
 Type the text below into the `mars.txt` file:
@@ -187,14 +186,14 @@ Git tells us that it's noticed the new file:
 $ git status
 ~~~
 ~~~ {.output}
-# On branch master
-#
-# Initial commit
-#
-# Untracked files:
-#   (use "git add <file>..." to include in what will be committed)
-#
-#	mars.txt
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	mars.txt
+
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
 
@@ -212,15 +211,15 @@ and then check that the right thing happened:
 $ git status
 ~~~
 ~~~ {.output}
-# On branch master
-#
-# Initial commit
-#
-# Changes to be committed:
-#   (use "git rm --cached <file>..." to unstage)
-#
-#	new file:   mars.txt
-#
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   mars.txt
+
+
 ~~~
 
 Git now knows that it's supposed to keep track of `mars.txt`,
@@ -261,8 +260,8 @@ If we run `git status` now:
 $ git status
 ~~~
 ~~~ {.output}
-# On branch master
-nothing to commit, working directory clean
+On branch master
+nothing to commit, working tree clean
 ~~~
 
 it tells us everything is up to date.
@@ -273,9 +272,9 @@ we can ask Git to show us the project's history using `git log`:
 $ git log
 ~~~
 ~~~ {.output}
-commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
+commit bb8481cb90e70befd5970dbffa78a40cd409943c (HEAD -> master)
 Author: Vlad Dracula <vlad@tran.sylvan.ia>
-Date:   Thu Aug 22 09:51:46 2013 -0400
+Date:   Thu Apr 13 10:27:55 2023 -0400
 
     Start notes on Mars as a base
 ~~~
@@ -300,7 +299,7 @@ and the log message Git was given when the commit was created.
 Now suppose Dracula adds more information to the file.
 
 ```{.bash}
-$ vim mars.txt
+$ nano mars.txt
 ```
 Add the following line to the file, then save and quit:
 
@@ -320,13 +319,12 @@ it tells us that a file it already knows about has been modified:
 $ git status
 ~~~
 ~~~ {.output}
-# On branch master
-# Changes not staged for commit:
-#   (use "git add <file>..." to update what will be committed)
-#   (use "git checkout -- <file>..." to discard changes in working directory)
-#
-#	modified:   mars.txt
-#
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   mars.txt
+
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
 
@@ -347,15 +345,16 @@ $ git diff
 ~~~
 ~~~ {.output}
 diff --git a/mars.txt b/mars.txt
-index df0654a..315bf3a 100644
+index d927c56..315bf3a 100644
 --- a/mars.txt
 +++ b/mars.txt
-@@ -1 +1,2 @@
+@@ -1,2 +1,2 @@
  Cold and dry, but everything is my favorite color
+-
 +The two moons may be a problem for Wolfman
 ~~~
 
-The output is cryptic, so let's break it down into pieces:
+The output is cryptic, so let's break it down:
 
 1.  The first line tells us that Git is producing output similar to the Unix `diff` command
     comparing the old and new versions of the file.
@@ -368,20 +367,18 @@ The output is cryptic, so let's break it down into pieces:
     In particular,
     the `+` markers in the first column show where we have added lines.
 
-After reviewing our change, it's time to commit it:
+After reviewing/approving our change, it's time to commit it:
 
 ~~~ {.bash}
 $ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
-$ git status
 ~~~
 ~~~ {.output}
-# On branch master
-# Changes not staged for commit:
-#   (use "git add <file>..." to update what will be committed)
-#   (use "git checkout -- <file>..." to discard changes in working directory)
-#
-#	modified:   mars.txt
-#
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   mars.txt
+
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
 
@@ -394,7 +391,7 @@ $ git add mars.txt
 $ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
 ~~~
 ~~~ {.output}
-[master 34961b1] Add concerns about effects of Mars' moons on Wolfman
+[master f42ded2] Add concerns about effects of Mars' moons on Wolfman
  1 file changed, 1 insertion(+)
 ~~~
 
@@ -443,7 +440,7 @@ First,
 we'll add another line to the file:
 
 ```{.bash}
-$ vim mars.txt
+$ nano mars.txt
 ```
 
 ~~~ {.output}
@@ -511,7 +508,7 @@ Let's save our changes:
 $ git commit -m "Discuss concerns about Mars' climate for Mummy"
 ~~~
 ~~~ {.output}
-[master 005937f] Discuss concerns about Mars' climate for Mummy
+[master 2723f86] Discuss concerns about Mars' climate for Mummy
  1 file changed, 1 insertion(+)
 ~~~
 
@@ -521,8 +518,8 @@ check our status:
 $ git status
 ~~~
 ~~~ {.output}
-# On branch master
-nothing to commit, working directory clean
+On branch master
+nothing to commit, working tree clean
 ~~~
 
 and look at the history of what we've done so far:
@@ -531,21 +528,21 @@ and look at the history of what we've done so far:
 $ git log
 ~~~
 ~~~ {.output}
-commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
+commit 2723f86b5f812c0b7f8d9a4d21922a05c3f72b2e (HEAD -> master)
 Author: Vlad Dracula <vlad@tran.sylvan.ia>
-Date:   Thu Aug 22 10:14:07 2013 -0400
+Date:   Thu Apr 13 10:37:05 2023 -0400
 
     Discuss concerns about Mars' climate for Mummy
 
-commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
+commit f42ded2fcdb6a6c78c8e643eb6444b631ce0dc33
 Author: Vlad Dracula <vlad@tran.sylvan.ia>
-Date:   Thu Aug 22 10:07:21 2013 -0400
+Date:   Thu Apr 13 10:34:59 2023 -0400
 
     Add concerns about effects of Mars' moons on Wolfman
 
-commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
+commit bb8481cb90e70befd5970dbffa78a40cd409943c
 Author: Vlad Dracula <vlad@tran.sylvan.ia>
-Date:   Thu Aug 22 09:51:46 2013 -0400
+Date:   Thu Apr 13 10:27:55 2023 -0400
 
     Start notes on Mars as a base
 ~~~
@@ -608,26 +605,25 @@ and see what Git says:
 $ git status
 ~~~
 ~~~ {.output}
-# On branch master
-# Untracked files:
-#   (use "git add <file>..." to include in what will be committed)
-#
-#	a.dat
-#	b.dat
-#	c.dat
-#	results/
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	a.dat
+	b.dat
+	c.dat
+	results/
+
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
 
 Putting these files under version control would be a waste of disk space.
-What's worse,
-having them all listed could distract us from changes that actually matter,
+What's worse is that having them all listed could distract us from changes that actually matter,
 so let's tell Git to ignore them.
 
 We do this by creating a file in the root directory of our project called `.gitignore`:
 
 ```{.bash}
-$ vim .gitignore
+$ nano .gitignore
 ```
 
 ~~~ {.output}
@@ -651,11 +647,11 @@ the output of `git status` is much cleaner:
 $ git status
 ~~~
 ~~~ {.output}
-# On branch master
-# Untracked files:
-#   (use "git add <file>..." to include in what will be committed)
-#
-#	.gitignore
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.gitignore
+
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
 
@@ -668,11 +664,18 @@ Let's add and commit `.gitignore`:
 ~~~ {.bash}
 $ git add .gitignore
 $ git commit -m "Add the ignore file"
+~~~
+~~~ {.output}
+[master c22074d] Add the ignore file
+ 1 file changed, 2 insertions(+)
+ create mode 100644 .gitignore
+~~~
+~~~ {.bash}
 $ git status
 ~~~
 ~~~ {.output}
-# On branch master
-nothing to commit, working directory clean
+On branch master
+nothing to commit, working tree clean
 ~~~
 
 As a bonus, using `.gitignore` helps us avoid accidentally adding to the repository files that we don't want to track:
@@ -683,8 +686,9 @@ $ git add a.dat
 ~~~ {.output}
 The following paths are ignored by one of your .gitignore files:
 a.dat
-Use -f if you really want to add them.
-fatal: no files added
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
 ~~~
 
 If we really want to override our ignore settings,
@@ -695,16 +699,15 @@ We can also always see the status of ignored files if we want:
 $ git status --ignored
 ~~~
 ~~~ {.output}
-# On branch master
-# Ignored files:
-#  (use "git add -f <file>..." to include in what will be committed)
-#
-#        a.dat
-#        b.dat
-#        c.dat
-#        results/
+On branch master
+Ignored files:
+  (use "git add -f <file>..." to include in what will be committed)
+	a.dat
+	b.dat
+	c.dat
+	results/
 
-nothing to commit, working directory clean
+nothing to commit, working tree clean
 ~~~
 
 ***
@@ -718,7 +721,7 @@ nothing to commit, working directory clean
 
 	How would you ignore only `results/plots` and not `results/data`?
 
-2. How would you ignore all `.data` files in your root directory except for `final.data`? Hint: Find out what `!` (the exclamation point operator) does
+2. How would you ignore all `.data` files in your root directory except for `final.data`? *Hint: Check Google for what `!` (the exclamation point operator) does*
 
 ## Comparing differences between files
 
@@ -727,7 +730,7 @@ again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to old
 commits:
 
 ~~~ {.bash}
-$ git diff HEAD~1 mars.txt
+$ git diff HEAD~2 mars.txt
 ~~~
 ~~~ {.output}
 diff --git a/mars.txt b/mars.txt
@@ -740,15 +743,16 @@ index 315bf3a..b36abfd 100644
 +But the Mummy will appreciate the lack of humidity
 ~~~
 ~~~ {.bash}
-$ git diff HEAD~2 mars.txt
+$ git diff HEAD~3 mars.txt
 ~~~
 ~~~ {.output}
 diff --git a/mars.txt b/mars.txt
-index df0654a..b36abfd 100644
+index d927c56..b36abfd 100644
 --- a/mars.txt
 +++ b/mars.txt
-@@ -1 +1,3 @@
+@@ -1,2 +1,3 @@
  Cold and dry, but everything is my favorite color
+-
 +The two moons may be a problem for Wolfman
 +But the Mummy will appreciate the lack of humidity
 ~~~
@@ -761,63 +765,52 @@ so `HEAD~1` (pronounced "head minus one")
 means "the previous commit",
 while `HEAD~123` goes back 123 commits from where we are now.
 
-We can also refer to commits using
-those long strings of digits and letters
-that `git log` displays.
-These are unique IDs for the changes,
-and "unique" really does mean unique:
-every change to any set of files on any computer
-has a unique 40-character identifier.
-Our first commit was given the ID
-f22b25e3233b4645dabd0d81e651fe074bd8e73b,
-so let's try this:
+We can also refer to commits using those long strings of digits and letters that `git log` displays. These are unique IDs for the changes, and "unique" really does mean unique: every change to any set of files on any computer has a unique 40-character identifier. My first commit was given the ID bb8481cb90e70befd5970dbffa78a40cd409943c. 
+
+What was the ID of your first commit? Once you have that let's try this:
 
 ~~~ {.bash}
-$ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b mars.txt
+$ git diff <ID-of-first-commit> mars.txt
 ~~~
 ~~~ {.output}
 diff --git a/mars.txt b/mars.txt
-index df0654a..b36abfd 100644
+index d927c56..b36abfd 100644
 --- a/mars.txt
 +++ b/mars.txt
-@@ -1 +1,3 @@
+@@ -1,2 +1,3 @@
  Cold and dry, but everything is my favorite color
+-
 +The two moons may be a problem for Wolfman
 +But the Mummy will appreciate the lack of humidity
 ~~~
 
-That's the right answer,
-but typing out random 40-character strings is annoying,
-so Git lets us use just the first few characters:
+That's the right answer, but typing out random 40-character strings is annoying, so Git lets us use just the first few characters (5 or more should work!):
 
 ~~~ {.bash}
-$ git diff f22b25e mars.txt
+$ git diff <first-6-characters-of-ID> mars.txt
 ~~~
 ~~~ {.output}
 diff --git a/mars.txt b/mars.txt
-index df0654a..b36abfd 100644
+index d927c56..b36abfd 100644
 --- a/mars.txt
 +++ b/mars.txt
-@@ -1 +1,3 @@
+@@ -1,2 +1,3 @@
  Cold and dry, but everything is my favorite color
+-
 +The two moons may be a problem for Wolfman
 +But the Mummy will appreciate the lack of humidity
 ~~~
 
-## Recovering Older Versions of a File
+## Recovering older versions of a file
 
 All right! So
 we can save changes to files and see what we've changed&mdash;now how
 can we restore older versions of things?
-Let's suppose we accidentally overwrite our file:
+Let's suppose we accidentally overwrite our file trying to extract a specific line:
 
 ```{.bash}
-$ vim mars.txt
+$ grep appreciate mars.txt > mars.txt 
 ```
-
-~~~ {.output}
-We will need to manufacture our own oxygen
-~~~
 
 ~~~ {.bash}
 $ cat mars.txt
@@ -830,18 +823,16 @@ but those changes haven't been staged:
 $ git status
 ~~~
 ~~~ {.output}
-# On branch master
-# Changes not staged for commit:
-#   (use "git add <file>..." to update what will be committed)
-#   (use "git checkout -- <file>..." to discard changes in working directory)
-#
-#	modified:   mars.txt
-#
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   mars.txt
+
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
 
-We can put things back the way they were
-by using `git checkout`:
+We can put things back the way they were by using `git checkout`:
 
 ~~~ {.bash}
 $ git checkout HEAD mars.txt
@@ -858,68 +849,59 @@ As you might guess from its name,
 In this case,
 we're telling Git that we want to recover the version of the file recorded in `HEAD`,
 which is the last saved commit.
-If we want to go back even further,
-we can use a commit identifier instead:
+
+If we want to go back even further, we can use a commit identifier instead:
 
 ~~~ {.bash}
-$ git checkout f22b25e mars.txt
+$ git checkout <first-6-characters-of-ID> mars.txt
 ~~~
 
 > ### Don't lose your HEAD
-> Above we used
+> Above we used to revert mars.txt to its state after the first commit.
 >
+> If you forget `mars.txt` in that command, your "HEAD gets detached":
 > ~~~ {.bash}
-> $ git checkout f22b25e mars.txt
+> $ git checkout <first-6-characters-of-ID>
+> ~~~
+> ~~~ {.output}
+> Note: switching to 'bb8481'.
+> 
+> You are in 'detached HEAD' state. You can look around, make experimental
+> changes and commit them, and you can discard any commits you make in this
+> state without impacting any branches by switching back to a branch.
+> 
+> If you want to create a new branch to retain commits you create, you may
+> do so (now or later) by using -c with the switch command. Example:
+> 
+>   git switch -c <new-branch-name>
+> 
+> Or undo this operation with:
+> 
+>   git switch -
+> 
+> Turn off this advice by setting config variable advice.detachedHead to false
+> 
+> HEAD is now at bb8481c Start notes on Mars as a base
 > ~~~
 >
-> to revert mars.txt to its state after the commit f22b25e.
-> If you forget `mars.txt` in that command, git will tell you that "You are in
-> 'detached HEAD' state." In this state, you shouldn't make any changes.
-> You can fix this by reattaching your head using ``git checkout master``
+> You can fix this by **reattaching your head** using:
+> ~~~ {.bash}
+> git checkout master
+> ~~~
+	
+	
+It's important to remember that we must use the commit number that identifies the state of the repository *before* the change we're trying to undo. A common mistake is to use the number of the commit in which we made the change we're trying to get rid of. 
 
-
-It's important to remember that
-we must use the commit number that identifies the state of the repository
-*before* the change we're trying to undo.
-A common mistake is to use the number of
-the commit in which we made the change we're trying to get rid of.
-In the example below, we want to retrieve the state from before the most
-recent commit (`HEAD~1`), which is commit `f22b25e`:
-
-![Git Checkout](https://cdn.rawgit.com/hbc/NGS_Data_Analysis_Course/master/sessionVI/img/git-checkout.svg)
+### "Recovering" newer versions of a file
+	
+If you accidentally went too far back when you tried to recover an older version of a file, don't worry! The newer version of the file still has a commit ID associated with it and you can return to it. `git log` will give you a list of all the commits, prior to and ahead of the version you are currently on (if they exist). You can redo the `git checkout` to come back to the newer version if you choose to.
 
 So, to put it all together:
 
 > ### How Git works, in cartoon form
 > ![http://figshare.com/articles/How_Git_works_a_cartoon/1328266](https://cdn.rawgit.com/hbc/NGS_Data_Analysis_Course/master/sessionVI/img/git_staging.svg)
 
----
-
-> ### Simplifying the Common Case
->
-> If you read the output of `git status` carefully,
-> you'll see that it includes this hint:
->
-> ~~~ {.bash}
-> (use "git checkout -- <file>..." to discard changes in working directory)
-> ~~~
->
-> As it says,
-> `git checkout` without a version identifier restores files to the state saved in `HEAD`.
-> The double dash `--` is needed to separate the names of the files being recovered
-> from the command itself:
-> without it,
-> Git would try to use the name of the file as the commit identifier.
-
-The fact that files can be reverted one by one
-tends to change the way people organize their work.
-If everything is in one large document,
-it's hard (but not impossible) to undo changes to the introduction
-without also undoing changes made later to the conclusion.
-If the introduction and conclusion are stored in separate files,
-on the other hand,
-moving backward and forward in time becomes much easier.
-
+The fact that files can be reverted one by one tends to change the way people organize their work. If everything is in one large document, it's hard (but not impossible) to undo changes to the introduction without also undoing changes made later to the conclusion. If the introduction and conclusion are stored in separate files, on the other hand, moving backward and forward in time becomes much easier.
 
 ***
 **Exercises**
@@ -964,7 +946,7 @@ d. Error because you have changed venus.txt without committing the change
 
 ***
 
-[Next Lesson](https://hbctraining.github.io/Training-modules/Git-Github/lessons/03_git_github.html)
+[Next Lesson](03_git_github.md)
 
 ***
 
