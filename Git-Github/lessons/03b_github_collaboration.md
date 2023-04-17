@@ -73,11 +73,21 @@ Now we have 2 repos that you are collaborating with your partner on, one as an O
 ## Resolving conflicts
 
 Collaborations are great but they make it very likely that someone's going to step on someone
-else's toes, figuratively speaking. Essentially, this means that if 2 people are working on the same section of a document at the same time. This can even happen with a single person: if we are working on a document on both our laptop and the lab computer. 
+else's toes, figuratively speaking. Essentially, this means that if 2 people are working on the same section of a document at the same time. This can even happen with a single person: if we are working on a document both locally and remotely. 
 
 Version control helps us manage these [conflicts](../reference.html#conflicts) by giving us tools to [resolve](../reference.html#resolve) overlapping changes.
 
-To see how we can resolve conflicts, we must first create one. In your 2-person group that has a collaboration, pick an Owner and a Collaborator for this exercise (you can't be both for this activity). Now, the collaborator needs to change directories to the Owner's repo and modify the `mars.txt` file:
+To see how we can resolve conflicts, we must first create one. In this case we will create a conflict by creating an "unsynced" document that we make changes to locally and on github.
+
+### Make a change locally to mars.txt
+
+Locally (in your Terminal) do the following to get synced up.
+
+~~~ {.bash}
+$ git pull
+~~~
+
+Now, let's make a change to the `mars.txt` document.
 
 ~~~ {.bash}
 $ vim mars.txt
@@ -86,56 +96,33 @@ $ vim mars.txt
 Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
-This line added to Wolfman's copy
+This line added to local copy
 ~~~
 
-And then push the change to GitHub:
+Let's add and commit this change.
 
 ~~~ {.bash}
 $ git add mars.txt
-$ git commit -m "Adding a line in our home copy"
-~~~
-~~~ {.output}
-[master 5ae9631] Adding a line in our home copy
- 1 file changed, 1 insertion(+)
-~~~
-~~~ {.bash}
-$ git push origin master
-~~~
-~~~ {.output}
-Counting objects: 5, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 352 bytes, done.
-Total 3 (delta 1), reused 0 (delta 0)
-To https://github.com/vlad/planets
-   29aba7c..dabb4c8  master -> master
+$ git commit -m "creating a conflict, step 1"
 ~~~
 
-Now let's have the Owner make a different change to their copy *without* updating from GitHub:
 
-~~~ {.bash}
-$ vim mars.txt
-~~~
+### Make a change on github to mars.txt
+
+Now, without pushing the change to github, let's make a different change to `mars.txt` on GitHub:
+
 ~~~ {.output}
 Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
-We added a different line in the other copy
+We added a different line in the github copy
 ~~~
 
-Commit the change locally:
+Save the change on github!
 
-~~~ {.bash}
-$ git add mars.txt
-$ git commit -m "Adding a line in my copy"
-~~~
-~~~ {.output}
-[master 07ebc69] Adding a line in my copy
- 1 file changed, 1 insertion(+)
-~~~
+### Push the local changes to github
 
-When you try to push this change, Git won't let us push it to GitHub:
+Let's create the conflict (i.e. let's get git to complain)
 
 ~~~ {.bash}
 $ git push origin master
@@ -152,11 +139,8 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 ![The conflicting changes](https://cdn.rawgit.com/hbc/NGS_Data_Analysis_Course/master/sessionVI/img/conflict.svg)
 
-Git detects that the changes made in one copy overlap with those made in the other
-and stops us from trampling on our previous work.
-What Owners have to do is pull the changes from GitHub, and [merge](../reference.html#merge) them into the copy they're currently working in, then push the modified file to Github.
-
-*Only owners will be doing this!*
+Git detects that the changes made in one copy overlap with those made in the other and stops us from trampling on our previous work.
+What you have to do is pull the changes from GitHub, and [merge](../reference.html#merge) them into the copy they're currently working in, then push the modified file to Github.
 
 ~~~ {.bash}
 $ git pull origin master
@@ -247,8 +231,7 @@ To https://github.com/vlad/planets.git
    dabb4c8..2abf2b1  master -> master
 ~~~
 
-Git keeps track of what we've merged with what,
-so we don't have to fix things by hand again. When the Collaborator who made the first change pulls again, they will get the merged file.
+Git keeps track of what we've merged with what, so we don't have to fix things by hand again. When the Collaborator who made the first change pulls again, they will get the merged file.
 
 ~~~ {.bash}
 $ git pull origin master
