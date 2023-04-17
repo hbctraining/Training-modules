@@ -231,32 +231,10 @@ To https://github.com/vlad/planets.git
    dabb4c8..2abf2b1  master -> master
 ~~~
 
-Git keeps track of what we've merged with what, so we don't have to fix things by hand again. When the Collaborator who made the first change pulls again, they will get the merged file.
+Git keeps track of what we've merged with what, so we don't have to fix things by hand again. 
 
-~~~ {.bash}
-$ git pull origin master
-~~~
-~~~ {.output}
-remote: Counting objects: 10, done.        
-remote: Compressing objects: 100% (4/4), done.        
-remote: Total 6 (delta 2), reused 6 (delta 2)        
-Unpacking objects: 100% (6/6), done.
-From https://github.com/vlad/planets
- * branch            master     -> FETCH_HEAD
-Updating dabb4c8..2abf2b1
-Fast-forward
- mars.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-~~~
-~~~ {.bash}
-$ cat mars.txt 
-~~~
-~~~ {.output}
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-We removed the conflict on this line
-~~~
+
+If this was a scenario with a collaborator, you would chat with them and decide which one of you is going to resolve the conflict, and once it is resolved and the changes have been pushed the other person can pull in the merged file.
 
 Version control's ability to merge conflicting changes is another reason users tend to divide their programs and papers into multiple files instead of storing everything in one large file. There's another benefit too: whenever there are repeated conflicts in a particular file, the version control system is essentially trying to tell its users that they ought to clarify who's responsible for which section in the document, or find a way to divide the work up differently.
 
