@@ -1,7 +1,7 @@
 ---
 title: Version Control with Git
-subtitle: Remotes in GitHub
-duration: 60
+subtitle: Collaborations in GitHub
+duration: 30
 ---
 
 ## Learning Objectives
