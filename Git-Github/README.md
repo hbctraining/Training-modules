@@ -27,9 +27,10 @@ While initially designed for saving and developing code collaboratively, there a
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Introduction to Git](lessons/01_git_intro.md) | 30 min |
-|[Git basics](lessons/02_git_basics.md) | 90 min |
-|[Introduction to Github](lessons/03_git_github.md) | 70 min |
+|[Introduction to Git](lessons/01_git_intro.md) | 20 min |
+|[Git basics](lessons/02_git_basics.md) | 45 min |
+|[Introduction to Github](lessons/03a_git_github.md) | 45 min |
+|[Collaborations in Github](lessons/03b_github_collaboration.md) | 30 min |
 
 ### Using a GUI tool (GitKraken)
 
