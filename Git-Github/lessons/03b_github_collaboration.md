@@ -1,7 +1,15 @@
+---
+title: Version Control with Git
+subtitle: Remotes in GitHub
+duration: 60
+---
+
+## Learning Objectives
+* Collaborate pushing to a common repository
 
 ## Collaborating with Git and Github
 
-For the next step, get into pairs, and give each other access to your `planets` repo. In all cases, you will be "Owner" for your own repo, and a "Collaborator" on your partner's repo.
+For this next step, let's get into pairs, and give each other access to our `planets` repos. In all cases, you will be "Owner" for your own repo, and a "Collaborator" on your partner's repo.
 
 The Owner needs to give the Collaborator access. On GitHub, click the settings button on the right, then select Collaborators, and enter your partner's Github username.
 
