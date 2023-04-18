@@ -29,7 +29,7 @@ The Collaborator can now make a change in his or her copy of the Owner's reposit
 
 ~~~ {.bash}
 $ cd planets
-$ vim pluto.txt
+$ nano pluto.txt
 ~~~
 ~~~ {.output}
 It is so a planet!
@@ -90,7 +90,7 @@ $ git pull
 Now, let's make a change to the `mars.txt` document.
 
 ~~~ {.bash}
-$ vim mars.txt
+$ nano mars.txt
 ~~~
 ~~~ {.output}
 Cold and dry, but everything is my favorite color
@@ -183,7 +183,7 @@ It is now up to us to edit this file to remove these markers and reconcile the c
 We can do anything we want: keep the change made in the local repository, keep the change made in the remote repository, write something new to replace both, or get rid of the change entirely. Let's replace both so that the file looks like this:
 
 ~~~ {.bash}
-$ vim mars.txt
+$ nano mars.txt
 ~~~
 ~~~ {.output}
 Cold and dry, but everything is my favorite color
