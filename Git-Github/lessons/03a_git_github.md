@@ -195,7 +195,7 @@ drwxr-xr-x 1 Vlad Dracula 197121   0 Jul 16 14:48 ../
 Now we have a SSH key pair and we can run this command to check if GitHub can read our authentication.  
 
 ~~~ {.bash}
-ssh -T git@github.com
+$ ssh -T git@github.com
 ~~~
 
 ~~~ {.output}
@@ -220,10 +220,14 @@ $ cat ~/.ssh/id_ed25519.pub
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmRA3d51X0uu9wXek559gfn6UFNF69yZjChyBIU2qKI vlad@tran.sylvan.ia
 ~~~
 
-Now, going to GitHub.com, click on your profile icon in the top right corner to get the drop-down menu.  Click "Settings," then on the 
-settings page, click "SSH and GPG keys," on the left side "Account settings" menu.  Click the "New SSH key" button on the right side. Now, 
-you can add the title (Dracula uses the title "Vlad's Lab Laptop" so he can remember where the original key pair
-files are located), paste your SSH key into the field, and click the "Add SSH key" to complete the setup.
+Now, go to GitHub.com and do the following:
+
+1. click on your profile icon in the top right corner to get the drop-down menu 
+2. click "Settings" 
+3. then on the settings page, click "SSH and GPG keys," on the left side "Account settings" menu.  
+4. click the "New SSH key" button on the right side. 
+5. now you can add the title (Dracula uses the title "Vlad's Lab Laptop" so he can remember where the original key pair files are located), paste your SSH key into the field
+6. click the "Add SSH key" to complete the setup.
 
 Now that we’ve set that up, let’s check our authentication again from the command line. 
 ~~~ {.bash}
