@@ -230,7 +230,10 @@ Now, go to GitHub.com and do the following:
 6. click the "Add SSH key" to complete the setup.
 
 Now that we’ve set that up, let’s check our authentication again from the command line. 
+
 ~~~ {.bash}
+$ ssh-add ~/.ssh/id_ed25519
+
 $ ssh -T git@github.com
 ~~~
 
