@@ -950,6 +950,6 @@ d. Error because you have changed venus.txt without committing the change
 
 ***
 
-*These materials were adapted from [Software Carpentry](https://software-carpentry.org/lessons/), the Licensing information can be [found here](LICENSE_SWC_git_materials.md).*
+*These materials were adapted from [Software Carpentry](https://swcarpentry.github.io/git-novice/), the Licensing information can be [found here](LICENSE_SWC_git_materials.md).*
 
 ***
