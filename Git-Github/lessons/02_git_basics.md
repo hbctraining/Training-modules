@@ -946,7 +946,7 @@ d. Error because you have changed venus.txt without committing the change
 
 ***
 
-[Next Lesson](03_git_github.md)
+[Next Lesson](03a_git_github.md)
 
 ***
 
