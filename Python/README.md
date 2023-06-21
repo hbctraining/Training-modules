@@ -29,4 +29,4 @@ You will find this workshop helpful, if you:
 ## Lessons
 Material for use **during** workshop - [**In-class version**](https://colab.research.google.com/drive/1sq0UGXP2kuhCmLrZ_-AexR19rbVYz1Sa?usp=sharing)
 
-Material for use **post** workshop - [**Post-class version**]()
+Material for use **post** workshop - [**Post-class version**](https://colab.research.google.com/drive/1oGIybNPgqUH8_tavy-yloW55YoSZZsVx?usp=sharing)
