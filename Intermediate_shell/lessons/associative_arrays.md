@@ -91,5 +91,64 @@ meow
 Rarely, will you ever manually enter the the keys and values in for an associative array like we have done above. Oftentimes, your key-value lists will be quite long and to enter each of those manually would be tedious and error-prone. Below we will discuss how to read in a file to populate an associative array. This is a pretty common implementation of associative arrays. The other popular implementation is that you have a program running and you are feeding output from one part of it into an associative array to be queried later. 
 
 
+It is fairly common when one receives data to have an accompanying files that included the `md5sum` values for the files. We have included this file for the contents of the `data/` directory and called it `md5sum.txt`. We can take a brief look at this file:
 
+```
+cat md5sum.txt
+```
 
+We can see that it is two columns with the filenames on the right and their associated md5sum of the left. It should look like:
+
+```
+acff4581ddc671047f04eb1ed2f56b64  catch.txt
+8c706987a93564cfde876540e76d52f1  ecosystems.csv
+81c0b67ea957b70535f52c4b26871266  ecosystems.txt
+b195297072d59ef8f08d53b3b857ca89  more_ecosystems.txt
+fd27045abe101d2a5b39dc166a93c7d7  next_file.txt
+3ef799ee455daf0eb1e3b6e593ce7423  sed_expressions.txt
+```
+
+Now let's write a sample script to read this in and allow us to look-up the md5sum of any file using a positional parameter. First let's open up a new file:
+
+```
+vim md5sum_lookup.sh
+```
+
+Within this file, we can insert this commented code:
+
+```bash
+#!/bin/bash
+# Written by [Insert name] on [Insert date]
+
+# Declare an associative array to hold the md5sums
+declare -A md5sum_associative_array
+
+# Open a while loop to read each line and assign the first column to the variable "provided_md5sum" and the second column to the variable "filename"
+while read -r provided_md5sum filename; do
+    # Populate the associative array with each filename (key) and it's associated md5sum (value)
+    md5sum_associative_array[$filename]=$provided_md5sum
+# End loop and the input file is provided
+done < /home/${USER}/advanced_shell/md5sum.txt
+
+# Query the associative array using a positional parameter
+echo ${md5sum_associative_array[$1]}
+```
+
+Now, we can run this code to query the provided md5sum of any file in the provided list by using:
+
+```
+# Example syntax
+sh md5sum_lookup.sh file.txt
+```
+
+So if we wanted to see that the provided md5sum for `ecosystems.txt` was, then we could:
+
+```
+sh md5sum_lookup.sh ecosystems.txt
+```
+
+This script on it's own might not be the most useful, but we will build on it using conditional statements in further lessons to allow us to check the provided md5sum value with those we produce ourselves.
+
+***
+
+*This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
