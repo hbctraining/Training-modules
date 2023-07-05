@@ -15,7 +15,7 @@ Below is the table of contents for the Advanced Unix lessons
 | [Arithmetic](math_on_the_cluster.md) | Drafted |
 | [if statements](if_statements.md) | Drafted |
 | [while read loops]() | Undrafted |
-| [Associative Arrays in bash]() | Undrafted |
+| [Associative Arrays in bash](associative_arrays.md) | Undrafted |
 | [Arrays in bash]() | Undrafted |
 | [Positional Parameters](positional_params.md) | Drafted |
 | [Searching history]() | Undrafted |
