@@ -101,7 +101,7 @@ Job IDs can also be helpful for output files or folders. We saw above how we use
 
 file=$(awk -v  awkvar="${SLURM_ARRAY_TASK_ID}" 'NR==awkvar' samples.txt)
 
-PREFIX="Folder_$SLURM_ARRAY_TASK_ID"
+PREFIX="Folder_${SLURM_ARRAY_TASK_ID}"
      mkdir $PREFIX
         cd $PREFIX2
 
