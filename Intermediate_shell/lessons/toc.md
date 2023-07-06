@@ -4,10 +4,10 @@ Below is the table of contents for the Advanced Unix lessons
 
 | Topic  | Status |
 |:-----------:|:----------:|
-| [String manipulation]() | Undrafted |
+| [String manipulation]() | Sort of Undrafted |
 | [sed](sed.md) | Drafted |
 | [Regular Expressions](https://github.com/hbctraining/Training-modules/blob/master/Intermediate_shell/lessons/regular_expressions.md) | Drafted |
-| [grep]() | Undrafted |
+| [grep]() | Sort of Undrafted |
 | [awk](awk.md) | Drafted |
 | [Aliases, Shortcuts and .bashrc](https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionVI/lessons/more_bash.md#alias) | Drafted |
 | [Copying files using to and from a cluster](moving_files.md)| Drafted |
