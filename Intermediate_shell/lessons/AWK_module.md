@@ -4,7 +4,7 @@
 
 If you have ever looked up how to do a particular string manipulation in [stackoverflow](https://stackoverflow.com/) or [biostars](https://www.biostars.org/) then you have probably seen someone give an `AWK` command as a potential solution. 
 
-`AWK` is an interpreted programming language designed for text processing and typically used as a data extraction and reporting tool. It was created at Bell Labs in the 1970s and `AWK` comes from from the surnames of its authors: Alfred **A**ho, Peter **W**einberger, and **B**rian Kernighan. `awk` shares a common history with `sed` and even `grep` dating back to `ed`. As a result, some of the syntax and functionality can be a bit familiar at times. 
+`AWK` is an interpreted programming language designed for text processing and typically used as a data extraction and reporting tool and was especially designed to support one-liner programs. You will often see the phrase "AWK one-liner". `AWK` was created at Bell Labs in the 1970s and `AWK` comes from from the surnames of its authors: Alfred **A**ho, Peter **W**einberger, and **B**rian Kernighan. `awk` shares a common history with `sed` and even `grep` dating back to `ed`. As a result, some of the syntax and functionality can be a bit familiar at times. 
 
 ## I already know grep and sed, why should I learn AWK?
 
@@ -70,10 +70,28 @@ sed 's/couger/cougar/g'  animal_observations.txt > animal_observations_edited.tx
 ```
 we are telling `sed` to replace all versions of couger with cougar and output the results to a new file called animal_observations_edited.txt. If we rerun our `grep` command we can see that we now have 9 line (dates) instead of 4. 
 
-Let's now say that we want to know how many times a coyote was observed at yosemite park (ignoring all other parks) without editing our file. While this is *possible* with `grep` it is actually easier to do with `AWK`!
+Let's now say that we want to know how many times a coyote was observed at Yosemite Park (ignoring all other parks) without editing our file. While this is *possible* with `grep` it is actually easier to do with `AWK`!
 
 
 ## Ok you convinced me (I mean I signed up for this module...) how do I start with AWK?
 
+Before we dive too deeply into `awk` we need to define two terms that `awk` will use a lot:
 
+- ***Field*** - This is a column of data
+- ***Record*** - This is a row of data 
+
+You have probably also noticed that sometimes I write `AWK` and othertimes `awk`. The actual command we will use is `awk` but it is sometimes written as `AWK` in manuals as it comes from people's last names.
+
+For our first `AWK` command let's mimic what we just did with `grep`. To pull all instances of cougar from animal_observations_edited.txt using `AWK` we would do:
+
+```bash
+awk '/cougar/' animal_observations_edited.txt
+```
+here '/cougar/' is the pattern we want to match and since we have not told `AWK` anything else it performs it's default behavior which is to print the matched lines.
+
+but we only care about coyotes from Yosemite Park! How do we do that?
+
+```bash
+awk '$3 ~ /coyote/ {print $1,$3}' animal_observations_edited.txt
+```
 
