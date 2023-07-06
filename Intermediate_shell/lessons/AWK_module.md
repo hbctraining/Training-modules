@@ -18,7 +18,7 @@ You should never use a script if you can do it with awk;
 Never use awk if you can do it with sed;
 Never use sed if you can do it with grep.
 ```
-[source](http://awk.info/?whygawk)
+[Text source](http://awk.info/?whygawk)
 
 This is best understood if we start with `grep` and work our way up. We will use these tools on a complex file we have been given, `animal_observations.txt`. This file came to be when a park ranger named Parker asked rangers at other parks to make monthly observations of the animals they saw that day. All of the other rangers sent comma separated lists and Parker collated them into the following file:
 
