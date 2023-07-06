@@ -19,7 +19,7 @@ Below is the table of contents for the Advanced Unix lessons
 | [Arrays in bash]() | Undrafted |
 | [Positional Parameters](positional_params.md) | Drafted |
 | [Searching history]() | Undrafted |
-| [O2 Job Dependencies]() | Undrafted |
+| [O2 Job Dependencies](job_dependencies.md) | Drafted |
 | [O2 Brew]() | Undrafted |
 | [O2 Conda]() | Undrafted |
 | [vim macros]() | Undrafted |
