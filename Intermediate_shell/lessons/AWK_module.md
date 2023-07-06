@@ -118,7 +118,6 @@ A few things to note before you try it yourself!
 > If an action is not provided, then all lines matching the pattern are printed (we already knew this one!)  
 > Since both patterns and actions are optional, actions must be enclosed in curley brackets to distinguish them from patterns.  
 
-
 ****
 
 **Exercise**
@@ -128,6 +127,26 @@ Can you print all of the times a seal was observed in Acadia Park? Did you print
 Were seals ever observed in any of the other parks (hint: There are multiple ways to answer this question!)?
 
 ****
+
+Before we move on, it is sometimes helpful to know that regular text can be added to `AWK` print commands. For example we can modify our earlier command to be:
+
+```bash
+awk '$3 ~ /coyote/ {print "On this date coyotes were observed in Yosemite Park", $1}' animal_observations_edited.txt
+```
+
+Did you notice what was modified besides the addition of the string "On this date coyotes were observed in Yosemite Park"?
+
+## AWK predefined variables
+
+Before we continue our `AWK` journey we want to introduce you to some of the `AWK` predefined variables. Although there are more than just these, these are the most helpful to start. More can be found [here](https://www.gnu.org/software/gawk/manual/html_node/Built_002din-Variables.html)
+
+* NR - The number of records processed (i.e., rows)
+* FNR - The number of record processed in the current file. This is only needed if you give `awk` multiple files.  For the first file FNR==NR, but for the second FNR will restart from 1 while NR will continue to increment.
+* NF - Number of fields in current record (i.e. columns in the row)
+* FILENAME - name of current input file
+* FS - Field separator which is space or TAB by default
+
+
 
 
 
