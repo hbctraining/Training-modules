@@ -8,7 +8,7 @@ In this lesson we will:
 
 ## What is a job dependency and why would I use it?
 
-Most, if not all, high performance computer clusters (HPCCs) utilize a job scheduler. As we have previously discussed, O2 uses one of the most popular ones, SLURM. These job schedulers aim to allow for fair use of limited computational resources in a shared network. In order to most limit one's use of limited resources, it is oftentimes best practice to place programs that require different coputational resources in different job submissions. For example, perhaps program A needs 12 CPUs, 36GB of memory and 6 hours, but the output of program A is used in program B and it requires 1 CPU, 4GB of memory and 8 hours. In this case one *could* request 12 CPUs, 36 GB and 14 hours of compute time, but when prgram B is running you would be wasting 11 CPUs and 32GB of memory. As a result this type of behavior is *strongly discouraged*.
+Most, if not all, high performance computer clusters (HPCCs) utilize a job scheduler. As we have previously discussed, O2 uses one of the most popular ones, SLURM. These job schedulers aim to allow for fair use of limited computational resources in a shared network. In order to most limit one's use of limited resources, it is oftentimes best practice to place programs that require different computational resources in different job submissions. For example, perhaps program A needs 12 CPUs, 36GB of memory and 6 hours, but the output of program A is used in program B and it requires 1 CPU, 4GB of memory and 8 hours. In this case one *could* request 12 CPUs, 36 GB and 14 hours of compute time, but when program B is running you would be wasting 11 CPUs and 32GB of memory. As a result this type of behavior is *strongly discouraged*.
 
 Now you might be wondering, "Okay, so I need to make two separate jobs, but what if Job 1 running program A finishing at 2am, do I need to log onto the cluster to submit Job 2 running program B?". The good news is that you don't need to and this is the exact goal of job dependencies! Job dependencies allow you to queue jobs to be dependent on other jobs.
 
@@ -24,24 +24,24 @@ The syntax for using job dependencies in SLURM can be done in two ways:
 1) It can be part of a SBATCH directive in your job submission script
 2) It can be an option in your `sbatch` command
 
-Either way will use the `--dependency` option. This option has several arguments that it can accepts, but the most useful one for the overwhleming number of circumstances is `afterok`, which means after the following job ends without an error, then it will remove the hold on the dependent job. After the `afterok` part you can separate one or more jobs with colons to signify which jobs are dependent.
+We will be doing the latter, but either way will use the `--dependency` option. This option has several arguments that it can accept, but the most useful one for the overwhleming number of circumstances is `afterok`. Using `afterok` means that after the following job ends without an error, then it will remove the hold on the dependent job. After the `afterok` part you can separate one or more jobs with colons to signify which jobs are dependent.
 
-The syntax for the first two job submission would look like:
+The syntax for a dependent job submission could look like:
 
 ```bash
+# Not a real job submission
 sbatch Job_1.sh
 Submitted batch job 351
-# Not a real job submission
 sbatch --dependency=afterok:351 Job_2.sbatch
 ```
 
-We can visualize a workflow below:
+We can visualize a sample workflow below:
 
 <p align="center">
 <img src="../img/Job_dependencies.png" width="400">
 </p>
 
-If we have multiple jobs that we would like to be dependent on, we just separate them each with colons like:
+Multiple jobs can be dependent on a single job. COnversely, we can have a single job dependent on multiple jobs. If this is the case, then we just separate each job ID with colons like:
 
 ```bash
 sbatch --dependency=afterok:353:354 Job_5.sbatch
@@ -108,7 +108,7 @@ It should return some text that says:
 Submitted batch job [Job_ID]
 ```
 
-Now we can submit the second job, while making it dependent on the above Job ID. In the below script replace Job_ID with the Job ID from above.
+Now we can submit the second job, while making it dependent on the above Job ID. In the below script replace `Job_ID` with the Job ID from above.
 
 ```bash
 sbatch --dependency=afterok:Job_ID sleep_step_2.sbatch 
@@ -131,7 +131,7 @@ I am going to take a another nap.
 I have woken up again.
 ```
 
-While this is just an example, but it allows us to highlight how you can create workflows and also allows you to optimize your job submissions to accomate being away from the cluster.
+While this is just an example, it allows us to highlight how you can create workflows and also allows you to optimize your job submissions to accomate being away from the cluster.
 
 ***
 
