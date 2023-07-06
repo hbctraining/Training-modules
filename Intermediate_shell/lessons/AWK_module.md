@@ -146,6 +146,16 @@ Before we continue our `AWK` journey we want to introduce you to some of the `AW
 * FILENAME - name of current input file
 * FS - Field separator which is space or TAB by default
 
+NR is particularly useful for skipping records (i.e., rows) if we only care about coyotes observed in 2002 and not 2001 we can skip the records 1-13 of `animal_observations_edited.txt`
+
+```bash
+awk 'NR>=14 && $3 ~ /coyote/ {print $1,$3}' animal_observations_edited.txt
+```
+because we have given two patterns to match (record greater or equal to 14 and column 3 containing the string coyote) we need to put '&&' in between them to note that we need both fulfilled.
+
+
+Additionally we have `BEGIN` and `END`. The `BEGIN` command will execute an `awk` expression once at the beginning of a command. This can be particularly useful it you want to give an output a header that doesn't previously have one. Related to `BEGIN` is the `END` command that that tells `awk` to do a command once at the end of the file. It is ***very*** useful when summing up columns (below).
+
 
 
 
