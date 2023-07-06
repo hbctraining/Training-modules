@@ -146,13 +146,39 @@ Before we continue our `AWK` journey we want to introduce you to some of the `AW
 * FILENAME - name of current input file
 * FS - Field separator which is space or TAB by default
 
-NR is particularly useful for skipping records (i.e., rows) if we only care about coyotes observed in 2002 and not 2001 we can skip the records 1-13 of `animal_observations_edited.txt`
+NR is particularly useful for skipping records (i.e., rows). For example, if we only care about coyotes observed in 2002 and not 2001 we can skip the records 1-13 of `animal_observations_edited.txt`.
 
 ```bash
 awk 'NR>=14 && $3 ~ /coyote/ {print $1,$3}' animal_observations_edited.txt
 ```
-because we have given two patterns to match (record greater or equal to 14 and column 3 containing the string coyote) we need to put '&&' in between them to note that we need both fulfilled.
+Because we have given two patterns to match (record greater or equal to 14 and column 3 containing the string coyote) we need to put '&&' in between them to note that we need both fulfilled.
 
+You have probably already noticed that Parker's file contains both comma separated fields and tab separated fields. This is no problem for `AWK` if we denote the FS variable. Let's use both FS and NF to print the total number of kinds animals observed in all the parks. Note that we will not delete duplicates (i.e., if coyotes are observed in both Yosemite and Acadia we will consider it to be 2 instead of 1).
+
+```bash
+awk -F '[[:blank:],]' '{print NF}' animal_observations_edited.txt
+```
+
+This is more complex than anything else we have done so let's break it down. First, you might be curious why we are using -F instead of -FS. FS represents the field separator and to CHANGE it we use -F. We can think of it as -F 'FS'. Here we have to do a bit of regex magic where we accept any white space or commas. Although understanding this regex is beyond this module, we include it here as many NGS formats include multiple kinds of field separators (e.g., VCF files). 
+
+We then skip denoting any pattern and ask `awk` to simply print the number of fields. After you run this command you might notice that there two issues. First because we give the date NF is always 1 count higher than the number of animals. `awk` does math too and we can modify this command!
+
+```bash
+awk -F '[[:blank:],]' '{print NF-1}' animal_observations_edited.txt
+```
+
+Easy peasy!
+
+****
+
+**Exercise**
+
+The second issue is that we don't want to include the first record (row) as this is our header and not representative of any animals. How would you modify the command to skip the first record?
+
+****
+
+
+## BEGIN and END
 
 Additionally we have `BEGIN` and `END`. The `BEGIN` command will execute an `awk` expression once at the beginning of a command. This can be particularly useful it you want to give an output a header that doesn't previously have one. Related to `BEGIN` is the `END` command that that tells `awk` to do a command once at the end of the file. It is ***very*** useful when summing up columns (below).
 
