@@ -95,7 +95,7 @@ but we only care about coyotes from Yosemite Park! How do we do that?
 awk '$3 ~ /coyote/' animal_observations_edited.txt
 ```
 
-Now let's break it down a bit. First all `awk` commands are always encased in `` so whatever you are telling `awk` to do needs to be inbetween those.  Then I have noted that I want to look at column 3 (the Yosemite observations) in particular. The columns are separated (defined) by white space (one or more consecutive blanks) or tabulator and denoted by the $ sign. So `$1` is the value of the first column, `$2` - second etc. $0 contains the original line including the separators. So the Yosemite column is `$3` and we are asking for lines where the string "coyote" is present. We recognize the '/string/' part from our previous command. 
+First all `awk` commands are always encased in `` so whatever you are telling `awk` to do needs to be inbetween those.  Then I have noted that I want to look at column 3 (the Yosemite observations) in particular. The columns are separated (defined) by white space (one or more consecutive blanks) or tabulator and denoted by the $ sign. So `$1` is the value of the first column, `$2` - second etc. $0 contains the original line including the separators. So the Yosemite column is `$3` and we are asking for lines where the string "coyote" is present. We recognize the '/string/' part from our previous command. 
 
 As we run this command we see that the output is super messy because Parker's original file is a bit of a mess. This is because the default behavior of `awk` is to print all matching lines. It is hard to even check if the command did the right thing. However, we can ask `AWK` to only print the Yosemite column and the date (columns 1 and 3):
 
@@ -104,6 +104,20 @@ As we run this command we see that the output is super messy because Parker's or
 awk '$3 ~ /coyote/ {print $1,$3}' animal_observations_edited.txt
 ```
 This shows a great feature of `AWK`, chaining commands. The print command within the {} will ONLY be executed when the first criteria is met. 
+
+We now know basic `awk` syntax:
+
+```
+awk ' /pattern/ {action} ' file1 file2 ... fileN
+```
+
+A few things to note before you try it yourself!
+
+> The action is performed on every line that matches the pattern.  
+> If a pattern is not provided, the action is performed on every line of the file.  
+> If an action is not provided, then all lines matching the pattern are printed (we already knew this one!)  
+> Since both patterns and actions are optional, actions must be enclosed in curley brackets to distinguish them from patterns.  
+
 
 ****
 
@@ -114,4 +128,7 @@ Can you print all of the times a seal was observed in Acadia Park? Did you print
 Were seals ever observed in any of the other parks (hint: There are multiple ways to answer this question!)?
 
 ****
+
+
+
 
