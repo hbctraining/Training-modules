@@ -27,12 +27,12 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | [Advanced Shell](https://hbctraining.github.io/Training-modules/Advanced_shell/) | [Intermediate Shell](https://hbctraining.github.io/Training-modules/Intermediate_shell/) | 3/13/2023	| Closed |
 | [Git/Github](https://hbctraining.github.io/Training-modules/Git-Github/) | [Introduction to Shell](https://hbctraining.github.io/Training-modules/Intro_shell/) | 4/19/2023	| Closed | 
 | [ML4Bio](https://hbctraining.github.io/Training-modules/ML4bio_installation_instructions) | None | 5/17/2023	| Closed |
-| [Basics of Python](Python) | None | 6/21/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJclf-GuqjkuGdBKYh9jOEGyoV9SqZeH4u2U) |
+| [Basics of Python](Python) | None | 6/21/2023	| Closed |
 | [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) | None | 7/19/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJcqdO-vrj8vEtUk7uVUT7U-iQtKgfLMGBxi ) |
-| [R Intermediate](IntroR_practical_online_resource) | Beginner R or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 8/16/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJcsduutqz8qHNSGZBzmuUP9AefQQGKWknMF#/registration) |
-| [Publication Perfect: Part I](publication_perfect#part-i) | Beginner R or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 9/20/2023	| Coming soon |
-| [Publication Perfect: Part II](publication_perfect#part-ii) | [Publication Perfect: Part I](publication_perfect#part-i) | 10/18/2023	| Coming soon |
-| [Rmarkdown](Rmarkdown) | Beginner R or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 11/15/2023	| Coming soon |
+| [R Basics Practice](IntroR_practical_online_resource) | R Basics or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 8/16/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJcsduutqz8qHNSGZBzmuUP9AefQQGKWknMF#/registration) |
+| [Publication Perfect: Part I](publication_perfect#part-i) | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 9/20/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJwpdOqhqD4vGtz4uqKY_1rrC-tB7HUIrQt_) |
+| [Publication Perfect: Part II](publication_perfect#part-ii) | [Publication Perfect: Part I](publication_perfect#part-i) | 10/18/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJUkc-GhqT8vHtZzmJ5x_AKJU_lzxStDrsbl) |
+| [Rmarkdown](Rmarkdown) | R Basics or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 11/15/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJYkcuyrrzwqEtNmyYCs8d5_SmAXxtN5ktgt) |
 
 
 ***
