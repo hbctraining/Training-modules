@@ -139,7 +139,7 @@ var=first_field
 awk -v variable=$var '{print variable,$0}' ecosystems.txt
 ```
 
-### Caclulations using columns
+### Calculations using columns
 
 `awk` is also very good about handling calculations with respect to columns. 
 
