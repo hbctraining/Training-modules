@@ -20,37 +20,38 @@ Never use sed if you can do it with grep.
 ```
 [Text source](http://awk.info/?whygawk)
 
-This is best understood if we start with `grep` and work our way up. We will use these tools on a complex file we have been given, `animal_observations.txt`. This file came to be when a park ranger named Parker asked rangers at other parks to make monthly observations of the animals they saw that day. All of the other rangers sent comma separated lists and Parker collated them into the following file:
+This is best understood if we start with `grep` and work our way up. We will use these tools on a gff file. You can download the file HERE (add link):
 
 ```
-Date	Yellowstone	Yosemite	Acadia	Glacier
-1/15/01	bison,elk,coyote	mountainlion,coyote	seal,beaver,bobcat	couger,grizzlybear,elk
-2/15/01	pronghorn	blackbear,deer	moose,hare	otter,deer,mountainlion
-3/15/01	cougar,grizzlybear	fox,coyote,deer	deer,skunk	beaver,elk,lynx
-4/15/01	moose,bison	bobcat,coyote	blackbear,deer	mink,wolf
-5/15/01	coyote,deer	blackbear,marmot	otter,fox	deer,blackbear
-6/15/01	pronghorn	coyote,deer	mink,deer	bighornsheep,deer,otter
-7/15/01	cougar,grizzlybear	fox,coyote,deer	seal,porpoise,deer	beaver,otter
-8/15/01	moose,bison	bobcat,coyote	hare,fox	lynx,coyote
-9/15/01	blackbear,lynx,coyote	coyote,deer	seal,porpoise,deer	elk,deer
-10/15/01	beaver,bison,wolf	marmot,coyote	coyote,seal,skunk	mink,wolf
-11/15/01	bison,elk,coyote	marmot,fox	deer,skunk	moose,blackbear
-12/15/01	crane,beaver,blackbear	mountainlion,coyote	mink,deer	bighornsheep,beaver
-1/15/02	moose,bison	coyote,deer	coyote,seal,skunk	couger,grizzlybear,elk
-2/15/02	cougar,grizzlybear	marmot,fox	otter,fox	mountaingoat,deer,elk
-3/15/02	beaver,bison,wolf	blackbear,deer	moose,hare	mountainlion,bighornsheep
-4/15/02	pronghorn	fox,coyote,deer	deer,skunk	couger,grizzlybear,elk
-5/15/02	coyote,deer	blackbear,marmot	hare,fox	mink,wolf
-6/15/02	crane,beaver,blackbear	bobcat,coyote	seal,porpoise,deer	elk,deer
-7/15/02	bison,elk,coyote	marmot,fox	coyote,seal,skunk	couger,grizzlybear,elk
-8/15/02	cougar,grizzlybear	blackbear,marmot	blackbear,deer	mountaingoat,deer,elk
-9/15/02	moose,bison	coyote,deer	hare,fox	elk,deer
-10/15/02	beaver,bison,wolf	mountainlion,coyote	deer,skunk	bighornsheep,beaver
-11/15/02	moose,bison	blackbear,marmot	mink,deer	couger,grizzlybear,elk
-12/15/02	coyote,deer	fox,coyote,deer	moose,hare	moose,blackbear
+chr1	ENSEMBL	transcript	120725	133723	.	-	.	ID=ENST00000610542.1;Parent=ENSG00000238009.6;gene_id=ENSG00000238009.6;transcript_id=ENST00000610542.1;gene_type=lncRNA;gene_name=ENSG00000238009;transcript_type=lncRNA;transcript_name=ENST00000610542;level=3;transcript_support_level=5;tag=basic;havana_gene=OTTHUMG00000001096.2
+chr1	ENSEMBL	exon	133374	133723	.	-	.	ID=exon:ENST00000610542.1:1;Parent=ENST00000610542.1;gene_id=ENSG00000238009.6;transcript_id=ENST00000610542.1;gene_type=lncRNA;gene_name=ENSG00000238009;transcript_type=lncRNA;transcript_name=ENST00000610542;exon_number=1;exon_id=ENSE00003748456.1;level=3;transcript_support_level=5;tag=basic;havana_gene=OTTHUMG00000001096.2
+chr1	ENSEMBL	exon	129055	129223	.	-	.	ID=exon:ENST00000610542.1:2;Parent=ENST00000610542.1;gene_id=ENSG00000238009.6;transcript_id=ENST00000610542.1;gene_type=lncRNA;gene_name=ENSG00000238009;transcript_type=lncRNA;transcript_name=ENST00000610542;exon_number=2;exon_id=ENSE00003734824.1;level=3;transcript_support_level=5;tag=basic;havana_gene=OTTHUMG00000001096.2
+chr1	ENSEMBL	exon	120874	120932	.	-	.	ID=exon:ENST00000610542.1:3;Parent=ENST00000610542.1;gene_id=ENSG00000238009.6;transcript_id=ENST00000610542.1;gene_type=lncRNA;gene_name=ENSG00000238009;transcript_type=lncRNA;transcript_name=ENST00000610542;exon_number=3;exon_id=ENSE00003740919.1;level=3;transcript_support_level=5;tag=basic;havana_gene=OTTHUMG00000001096.2
+chr1	ENSEMBL	exon	120725	120869	.	-	.	ID=exon:ENST00000610542.1:4;Parent=ENST00000610542.1;gene_id=ENSG00000238009.6;transcript_id=ENST00000610542.1;gene_type=lncRNA;gene_name=ENSG00000238009;transcript_type=lncRNA;transcript_name=ENST00000610542;exon_number=4;exon_id=ENSE00003749543.1;level=3;transcript_support_level=5;tag=basic;havana_gene=OTTHUMG00000001096.2
+chr1	ENSEMBL	transcript	14929800	15068155	.	+	.	ID=ENST00000400798.6;Parent=ENSG00000189337.17;gene_id=ENSG00000189337.17;transcript_id=ENST00000400798.6;gene_type=protein_coding;gene_name=KAZN;transcript_type=protein_coding;transcript_name=KAZN-205;level=3;protein_id=ENSP00000383602.2;transcript_support_level=1;hgnc_id=HGNC:29173;tag=basic,CCDS;ccdsid=CCDS41268.1;havana_gene=OTTHUMG00000002042.8
+chr1	ENSEMBL	exon	14929800	14930044	.	+	.	ID=exon:ENST00000400798.6:1;Parent=ENST00000400798.6;gene_id=ENSG00000189337.17;transcript_id=ENST00000400798.6;gene_type=protein_coding;gene_name=KAZN;transcript_type=protein_coding;transcript_name=KAZN-205;exon_number=1;exon_id=ENSE00001544753.1;level=3;protein_id=ENSP00000383602.2;transcript_support_level=1;hgnc_id=HGNC:29173;tag=basic,CCDS;ccdsid=CCDS41268.1;havana_gene=OTTHUMG00000002042.8
+chr1	ENSEMBL	exon	14960684	14960875	.	+	.	ID=exon:ENST00000400798.6:2;Parent=ENST00000400798.6;gene_id=ENSG00000189337.17;transcript_id=ENST00000400798.6;gene_type=protein_coding;gene_name=KAZN;transcript_type=protein_coding;transcript_name=KAZN-205;exon_number=2;exon_id=ENSE00003566337.1;level=3;protein_id=ENSP00000383602.2;transcript_support_level=1;hgnc_id=HGNC:29173;tag=basic,CCDS;ccdsid=CCDS41268.1;havana_gene=OTTHUMG00000002042.8
+chr1	ENSEMBL	CDS	14960740	14960875	.	+	0	ID=CDS:ENST00000400798.6;Parent=ENST00000400798.6;gene_id=ENSG00000189337.17;transcript_id=ENST00000400798.6;gene_type=protein_coding;gene_name=KAZN;transcript_type=protein_coding;transcript_name=KAZN-205;exon_number=2;exon_id=ENSE00003566337.1;level=3;protein_id=ENSP00000383602.2;transcript_support_level=1;hgnc_id=HGNC:29173;tag=basic,CCDS;ccdsid=CCDS41268.1;havana_gene=OTTHUMG00000002042.8
+chr1	ENSEMBL	start_codon	14960740	14960742	.	+	0	ID=start_codon:ENST00000400798.6;Parent=ENST00000400798.6;gene_id=ENSG00000189337.17;transcript_id=ENST00000400798.6;gene_type=protein_coding;gene_name=KAZN;transcript_type=protein_coding;transcript_name=KAZN-205;exon_number=2;exon_id=ENSE00003566337.1;level=3;protein_id=ENSP00000383602.2;transcript_support_level=1;hgnc_id=HGNC:29173;tag=basic,CCDS;ccdsid=CCDS41268.1;havana_gene=OTTHUMG00000002042.8
+chr1	ENSEMBL	exon	15034749	15034885	.	+	.	ID=exon:ENST00000400798.6:3;Parent=ENST00000400798.6;gene_id=ENSG00000189337.17;transcript_id=ENST00000400798.6;gene_type=protein_coding;gene_name=KAZN;transcript_type=protein_coding;transcript_name=KAZN-205;exon_number=3;exon_id=ENSE00003536210.1;level=3;protein_id=ENSP00000383602.2;transcript_support_level=1;hgnc_id=HGNC:29173;tag=basic,CCDS;ccdsid=CCDS41268.1;havana_gene=OTTHUMG00000002042.8
+chr1	ENSEMBL	CDS	15034749	15034885	.	+	2	ID=CDS:ENST00000400798.6;Parent=ENST00000400798.6;gene_id=ENSG00000189337.17;transcript_id=ENST00000400798.6;gene_type=protein_coding;gene_name=KAZN;transcript_type=protein_coding;transcript_name=KAZN-205;exon_number=3;exon_id=ENSE00003536210.1;level=3;protein_id=ENSP00000383602.2;transcript_support_level=1;hgnc_id=HGNC:29173;tag=basic,CCDS;ccdsid=CCDS41268.1;havana_gene=OTTHUMG00000002042.8
+chr1	ENSEMBL	exon	15043989	15044159	.	+	.	ID=exon:ENST00000400798.6:4;Parent=ENST00000400798.6;gene_id=ENSG00000189337.17;transcript_id=ENST00000400798.6;gene_type=protein_coding;gene_name=KAZN;transcript_type=protein_coding;transcript_name=KAZN-205;exon_number=4;exon_id=ENSE00003693501.1;level=3;protein_id=ENSP00000383602.2;transcript_support_level=1;hgnc_id=HGNC:29173;tag=basic,CCDS;ccdsid=CCDS41268.1;havana_gene=OTTHUMG00000002042.8
+chr1	ENSEMBL	stop_codon	15065795	15065797	.	+	0	ID=stop_codon:ENST00000400798.6;Parent=ENST00000400798.6;gene_id=ENSG00000189337.17;transcript_id=ENST00000400798.6;gene_type=protein_coding;gene_name=KAZN;transcript_type=protein_coding;transcript_name=KAZN-205;exon_number=8;exon_id=ENSE00001469167.3;level=3;protein_id=ENSP00000383602.2;transcript_support_level=1;hgnc_id=HGNC:29173;tag=basic,CCDS;ccdsid=CCDS41268.1;havana_gene=OTTHUMG00000002042.8
+chr1	ENSEMBL	five_prime_UTR	14929800	14930044	.	+	.	ID=UTR5:ENST00000400798.6;Parent=ENST00000400798.6;gene_id=ENSG00000189337.17;transcript_id=ENST00000400798.6;gene_type=protein_coding;gene_name=KAZN;transcript_type=protein_coding;transcript_name=KAZN-205;exon_number=1;exon_id=ENSE00001544753.1;level=3;protein_id=ENSP00000383602.2;transcript_support_level=1;hgnc_id=HGNC:29173;tag=basic,CCDS;ccdsid=CCDS41268.1;havana_gene=OTTHUMG00000002042.8
 ```
 
-We see the date of observation and then the animals observed at each of the 5 parks. Each column is separated by a tab. Everyone can copy and paste the above into a command line document called animal_observations.txt.
+A gff file is a genome annotation file that consists of tab separated fields. The fields are: 
+
+* seqid - name of the chromosome or scaffold
+* source - name of the program that generated this feature, or the data source (database or project name)
+* type - type of feature. Must be a term or accession from the SOFA sequence ontology
+* start - Start position of the feature, with sequence numbering starting at 1.
+* end - End position of the feature, with sequence numbering starting at 1.
+* score - A floating point value (not given here instead a "." is used as a placeholder)
+* strand - defined as + (forward) or - (reverse).
+* phase - One of '0', '1' or '2'. '0' indicates that the first base of the feature is the first base of a codon, '1' that the second base is the first base of a codon
+attributes - A semicolon-separated list of tag-value pairs, providing additional information about each feature. Some of these tags are predefined, e.g. ID, Name, Alias.
+
 
 So let's say that we want to know how many dates a couger was observed at any of the parks. We can easily use grep for that:
 
