@@ -42,27 +42,29 @@ chr1	ENSEMBL	five_prime_UTR	14929800	14930044	.	+	.	ID=UTR5:ENST00000400798.6;Pa
 
 A gff file is a genome annotation file that consists of tab separated fields. The fields are: 
 
-* seqid - name of the chromosome or scaffold
-* source - name of the program that generated this feature, or the data source (database or project name)
-* type - type of feature. Must be a term or accession from the SOFA sequence ontology
-* start - Start position of the feature, with sequence numbering starting at 1.
-* end - End position of the feature, with sequence numbering starting at 1.
-* score - A floating point value (not given here instead a "." is used as a placeholder)
-* strand - defined as + (forward) or - (reverse).
-* phase - One of '0', '1' or '2'. '0' indicates that the first base of the feature is the first base of a codon, '1' that the second base is the first base of a codon
+* **seqid** - name of the chromosome or scaffold
+* **source** - name of the program that generated this feature, or the data source (database or project name)
+* **type** - type of feature. Must be a term or accession from the SOFA sequence ontology
+* **start** - Start position of the feature, with sequence numbering starting at 1.
+* **end** - End position of the feature, with sequence numbering starting at 1.
+* **score** - A floating point value (not given here instead a "." is used as a placeholder)
+* **strand** - defined as + (forward) or - (reverse).
+* **phase** - One of '0', '1' or '2'. '0' indicates that the first base of the feature is the first base of a codon, '1' that the second base is the first base of a codon
 attributes - A semicolon-separated list of tag-value pairs, providing additional information about each feature. Some of these tags are predefined, e.g. ID, Name, Alias.
 
 
-So let's say that we want to know how many dates a couger was observed at any of the parks. We can easily use grep for that:
+So let's say that we want to know how many entries we have for chromosome 16 (chr16). We can easily use grep for that:
 
 ```bash
-grep "cougar" animal_observations.txt
+grep "chr16" hg38_subset.gff
 ```
-When we do that 4 lines pop up, so 4 dates. We could also pipe to wc to get a number:
+When we do that a ton of lines pop up. We could count them ourselves but it is easier to pipe to wc to get a number:
 
 ```bash
-grep "cougar" animal_observations.txt | wc -l
+grep "chr16" hg38_subset.gff | wc -l
 ```
+
+######### NEED NEW SED IDEA ################
 
 There seemed to be more instances of cougar though, 4 seems low compared to what I saw when glancing at the document. If we look at the document again, we can see that the park ranger from Glacier National Park cannot spell and put "couger" instead of "cougar". Replacing those will be a bit hard with `grep` but we can use `sed` instead!
 
