@@ -207,6 +207,20 @@ Returning to our original task, pulling lines where coyote is the **SECOND** ani
 awk '{ print $3 }' animal_observations_edited.txt | awk -F "," '$2 ~ "coyote"' 
 ```
 
+We use the first part
+
+```bash
+awk '{ print $3 }' animal_observations_edited.txt 
+```
+
+To simply extract the Yosemite data (column 3). We use the second part
+
+```bash
+awk -F "," '$2 ~ "coyote"'
+```
+
+to separate the comma separated fields of column 3 and ask which lines have the string coyote in field 2. We want to print the entire comma separated list (i.e., column 3) to test our code which is the default behavior of `awk` in this case.
+
 You might have noticed that here we used "coyote" instead of /coyote/ This is because we want the entire field to be solely coyote ("coyote") rather than containing the string coyote (/coyote/).
 
 ****
@@ -216,6 +230,30 @@ You might have noticed that here we used "coyote" instead of /coyote/ This is be
 What command would you give to print all of the observation dates that took place in May?
 
 ****
+
+## Counting
+
+One of the best features of AWK is that it can count up how many times a string occurs in a column. Let's use this to see how many times set of animal observations occurs in Yellowstone park.
+
+```bash
+awk ' { counter[$2] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt
+```
+
+This command is complex and contains new syntax so lets go through it bit by bit. 
+
+First we set up a variable that we called counter `{ counter[$2] += 1 }`. This variable is special because it is followed by brackets [ ], which makes it an associative array, a fancypants name for a variable that stores key-value pairs. Here our keys will be our animal groups (i.e., the different values of column 2) and the values will be the counter for each of these. When we set up the counter the values are initialized to 0. For every line in the input, we add a 1 to the value in the array whose key is equal to $2. 
+
+Note that we use the addition operator +=, as a shortcut for counter[$1] = counter[$1] + 1.
+
+We want this counter to run through every line of text before we look at the output. To do this we use the special variable `END` which can be used for a command you want `awk` to do at the end of a file (we won't cover it here but its counterpoint is `BEGIN`). 
+
+After we tell  `awk` to wait until the end of the file we tell it what we want it to do when it gets there. { for (animalgroup in counter){ print animalgroup, counter[animalgroup] }}
+
+Here we have given a for loop. For each key in counter (animalgroup in counter) we want `awk` to print that key (print animalgroup`) and its corresponding value (counter[animalgroup]).  I have named this animalgroup because that is what we are counting but this can be named whatever you want.
+
+Now that we understand our command, let's run it!
+
+It works! We can see that "moose,bison" is the most commonly observed group of animals at Yosemite!
 
 
 
