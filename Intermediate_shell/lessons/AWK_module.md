@@ -293,7 +293,7 @@ samtools view -S -b ${sam}.sam > ${sam}.bam
 done
 ```
 
-This actually combines a number of bash topics such as [positional parameters](positional_params.md), [for loops](loops_and_scripts.md), and awk!
+This actually combines a number of basic and intermediate shell topics such as [positional parameters](positional_params.md), [for loops](loops_and_scripts.md), and awk!
 
 * We start with a for loop that counts from 1 to 10
 
