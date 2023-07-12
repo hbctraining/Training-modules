@@ -107,6 +107,7 @@ As we run this command we see that the output is super messy because Parker's or
 ```bash
 awk '$3 ~ /coyote/ {print $1,$3}' animal_observations_edited.txt
 ```
+
 This shows a great feature of `AWK`, chaining commands. The print command within the {} will ONLY be executed when the first criteria is met. 
 
 We now know basic `awk` syntax:
@@ -239,27 +240,31 @@ One of the best features of AWK is that it can count up how many times a string 
 awk ' { counter[$2] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt
 ```
 
-This command is complex and contains new syntax so lets go through it bit by bit. 
+This command is complex and contains new syntax so lets go through it bit by bit: 
 
-First we set up a variable that we called counter `{ counter[$2] += 1 }`. This variable is special because it is followed by brackets [ ], which makes it an associative array, a fancypants name for a variable that stores key-value pairs. Here our keys will be our animal groups (i.e., the different values of column 2) and the values will be the counter for each of these. When we set up the counter the values are initialized to 0. For every line in the input, we add a 1 to the value in the array whose key is equal to $2. 
+* First we set up a variable that we called counter `{ counter[$2] += 1 }`. This variable is special because it is followed by brackets [ ], which makes it an associative array, a fancypants name for a variable that stores key-value pairs. 
 
-Note that we use the addition operator +=, as a shortcut for counter[$1] = counter[$1] + 1.
+* Here our keys will be our animal groups (i.e., the different values of column 2) and the values will be the counter for each of these. When we set up the counter the values are initialized to 0. For every line in the input, we add a 1 to the value in the array whose key is equal to $2. 
 
-We want this counter to run through every line of text before we look at the output. To do this we use the special variable `END` which can be used for a command you want `awk` to do at the end of a file (we won't cover it here but its counterpoint is `BEGIN`). 
+* Note that we use the addition operator `+=`, as a shortcut for `counter[$2] = counter[$2] + 1`.
 
-After we tell  `awk` to wait until the end of the file we tell it what we want it to do when it gets there. { for (animalgroup in counter){ print animalgroup, counter[animalgroup] }}
+* We want this counter to run through every line of text before we look at the output. To do this we use the special variable `END` which can be used for a command you want `awk` to do at the end of a file (we won't cover it here but its counterpoint is `BEGIN`). 
 
-Here we have given a for loop. For each key in counter (animalgroup in counter) we want `awk` to print that key (print animalgroup`) and its corresponding value (counter[animalgroup]).  I have named this animalgroup because that is what we are counting but this can be named whatever you want.
+* After we tell  `awk` to wait until the end of the file we tell it what we want it to do when it gets there. { for (animalgroup in counter){ print animalgroup, counter[animalgroup] }}
+  * Here we have given a for loop. For each key in counter (animalgroup in counter) we want `awk` to print that key (print animalgroup`) and its corresponding value (counter[animalgroup]).  I have named this animalgroup because that is what we are counting but this can be named whatever you want.
 
 Now that we understand our command, let's run it!
 
 It works! We can see that "moose,bison" is the most commonly observed group of animals at Yosemite!
 
+**Exercise**
+
+1. What was the most commonly observed group of animals at Glacier National Park?
+
+2. Our code also counts the number of times our header text (Yosemite or Glacier) is repeated. How can you modify the code so that this is ignored?
+****
 
 
-
-
-Additionally we have `BEGIN` and `END`. The `BEGIN` command will execute an `awk` expression once at the beginning of a command. This can be particularly useful it you want to give an output a header that doesn't previously have one. Related to `BEGIN` is the `END` command that that tells `awk` to do a command once at the end of the file. It is ***very*** useful when summing up columns (below).
 
 
 
