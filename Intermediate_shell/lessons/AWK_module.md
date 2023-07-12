@@ -20,7 +20,9 @@ Never use sed if you can do it with grep.
 ```
 [Text source](http://awk.info/?whygawk)
 
-This is best understood if we start with `grep` and work our way up. We will use these tools on a complex file we have been given, `animal_observations.txt`. This file came to be when a park ranger named Parker asked rangers at other parks to make monthly observations of the animals they saw that day. All of the other rangers sent comma separated lists and Parker collated them into the following file:
+This is best understood if we start with `grep` and work our way up. We will use these tools on a complex file we have been given, `animal_observations.txt`. 
+
+This file came to be when a park ranger named Parker asked rangers at other parks to make monthly observations of the animals they saw that day. All of the other rangers sent comma separated lists and Parker collated them into the following file:
 
 ```
 Date	Yellowstone	Yosemite	Acadia	Glacier
@@ -50,7 +52,7 @@ Date	Yellowstone	Yosemite	Acadia	Glacier
 12/15/02	coyote,deer	fox,coyote,deer	moose,hare	moose,blackbear
 ```
 
-We see the date of observation and then the animals observed at each of the 5 parks. Each column is separated by a tab. Everyone can copy and paste the above into a command line document called animal_observations.txt.
+We see the date of observation and then the animals observed at each of the 5 parks. Each column is separated by a tab. Please copy and paste the above into a command line document called animal_observations.txt.
 
 So let's say that we want to know how many dates a couger was observed at any of the parks. We can easily use grep for that:
 
@@ -63,7 +65,9 @@ When we do that 4 lines pop up, so 4 dates. We could also pipe to wc to get a nu
 grep "cougar" animal_observations.txt | wc -l
 ```
 
-There seemed to be more instances of cougar though, 4 seems low compared to what I saw when glancing at the document. If we look at the document again, we can see that the park ranger from Glacier National Park cannot spell and put "couger" instead of "cougar". Replacing those will be a bit hard with `grep` but we can use `sed` instead!
+There seemed to be more instances of cougar though, 4 seems low compared to what I saw when glancing at the document. If we look at the document again, we can see that the park ranger from Glacier National Park cannot spell and put "couger" instead of "cougar". 
+
+Replacing those will be a bit hard with `grep` but we can use `sed` instead!
 
 ```bash
 sed 's/couger/cougar/g'  animal_observations.txt > animal_observations_edited.txt
@@ -178,7 +182,24 @@ The second issue is that we don't want to include the first record (row) as this
 ****
 
 
-## BEGIN and END
+## Piping different separators
+
+We can do more advanced commands with our separators by piping AWK. For example, we can pull lines where coyote is the **SECOND** animal listed for Yosemite park. 
+
+Before we do that let's take a step back. You may be wondering why on earth we need to do this kind of command. While something like this may not be particularly useful for Parker this kind of command is key for looking at some complex NGS files!
+
+For example take a look at this gff
+
+```
+chr3	ENSEMBL	five_prime_UTR	50252100	50252137	.	+	.	ID=UTR5:ENST00000266027.9;Parent=ENST00000266027.9;gene_id=ENSG00000114353.17;transcript_id=ENST00000266027.9;gene_type=protein_coding;gene_name=GNAI2;transcript_type=protein_coding;transcript_name=GNAI2-201;exon_number=2;exon_id=ENSE00003567505.1;level=3;protein_id=ENSP00000266027.6;transcript_support_level=2;hgnc_id=HGNC:4385;tag=basic,CCDS;ccdsid=CCDS63644.1;havana_gene=OTTHUMG00000156940.2
+chr3	ENSEMBL	three_prime_UTR	50257691	50257714	.	+	.	ID=UTR3:ENST00000266027.9;Parent=ENST00000266027.9;gene_id=ENSG00000114353.17;transcript_id=ENST00000266027.9;gene_type=protein_coding;gene_name=GNAI2;transcript_type=protein_coding;transcript_name=GNAI2-201;exon_number=8;exon_id=ENSE00003524043.1;level=3;protein_id=ENSP00000266027.6;transcript_support_level=2;hgnc_id=HGNC:4385;tag=basic,CCDS;ccdsid=CCDS63644.1;havana_gene=OTTHUMG00000156940.2
+chr3	ENSEMBL	three_prime_UTR	50258368	50259339	.	+	.	ID=UTR3:ENST00000266027.9;Parent=ENST00000266027.9;gene_id=ENSG00000114353.17;transcript_id=ENST00000266027.9;gene_type=protein_coding;gene_name=GNAI2;transcript_type=protein_coding;transcript_name=GNAI2-201;exon_number=9;exon_id=ENSE00001349779.3;level=3;protein_id=ENSP00000266027.6;transcript_support_level=2;hgnc_id=HGNC:4385;tag=basic,CCDS;ccdsid=CCDS63644.1;havana_gene=OTTHUMG00000156940.2
+chr3	ENSEMBL	gene	50227436	50227490	.	+	.	ID=ENSG00000275334.1;gene_id=ENSG00000275334.1;gene_type=miRNA;gene_name=MIR5787;level=3;hgnc_id=HGNC:49930
+chr3	ENSEMBL	gene	52560570	52560707	.	+	.	ID=ENSG00000221518.1;gene_id=ENSG00000221518.1;gene_type=snRNA;gene_name=RNU6ATAC16P;level=3;hgnc_id=HGNC:46915
+chr3	ENSEMBL	transcript	52560570	52560707	.	+	.	ID=ENST00000408591.1;Parent=ENSG00000221518.1;gene_id=ENSG00000221518.1;transcript_id=ENST00000408591.1;gene_type=snRNA;gene_name=RNU6ATAC16P;transcript_type=snRNA;transcript_name=RNU6ATAC16P-201;level=3;transcript_support_level=NA;hgnc_id=HGNC:46915;tag=basic,Ensembl_canonical
+c
+```
+
 
 Additionally we have `BEGIN` and `END`. The `BEGIN` command will execute an `awk` expression once at the beginning of a command. This can be particularly useful it you want to give an output a header that doesn't previously have one. Related to `BEGIN` is the `END` command that that tells `awk` to do a command once at the end of the file. It is ***very*** useful when summing up columns (below).
 
