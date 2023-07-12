@@ -197,8 +197,28 @@ chr3	ENSEMBL	three_prime_UTR	50258368	50259339	.	+	.	ID=UTR3:ENST00000266027.9;P
 chr3	ENSEMBL	gene	50227436	50227490	.	+	.	ID=ENSG00000275334.1;gene_id=ENSG00000275334.1;gene_type=miRNA;gene_name=MIR5787;level=3;hgnc_id=HGNC:49930
 chr3	ENSEMBL	gene	52560570	52560707	.	+	.	ID=ENSG00000221518.1;gene_id=ENSG00000221518.1;gene_type=snRNA;gene_name=RNU6ATAC16P;level=3;hgnc_id=HGNC:46915
 chr3	ENSEMBL	transcript	52560570	52560707	.	+	.	ID=ENST00000408591.1;Parent=ENSG00000221518.1;gene_id=ENSG00000221518.1;transcript_id=ENST00000408591.1;gene_type=snRNA;gene_name=RNU6ATAC16P;transcript_type=snRNA;transcript_name=RNU6ATAC16P-201;level=3;transcript_support_level=NA;hgnc_id=HGNC:46915;tag=basic,Ensembl_canonical
-c
 ```
+
+We can see that all colums are tab separated but column 9 has a bunch of ; separated items. This type of command would be useful to pull out all lines where gene_type is snRNA. In fact all of the commands we are teaching today are useful on one or another NGS-related document (VCF, gff, gtf, bed, etc). We are using Parker's data instead because we can use **ALL** of these types of commands on his dataset.
+
+Returning to our original task, pulling lines where coyote is the **SECOND** animal listed for Yosemite park. We can do it like this:
+
+```bash
+awk '{ print $3 }' animal_observations_edited.txt | awk -F "," '$2 ~ "coyote"' 
+```
+
+You might have noticed that here we used "coyote" instead of /coyote/ This is because we want the entire field to be solely coyote ("coyote") rather than containing the string coyote (/coyote/).
+
+****
+
+**Exercise**
+
+What command would you give to print all of the observation dates that took place in May?
+
+****
+
+
+
 
 
 Additionally we have `BEGIN` and `END`. The `BEGIN` command will execute an `awk` expression once at the beginning of a command. This can be particularly useful it you want to give an output a header that doesn't previously have one. Related to `BEGIN` is the `END` command that that tells `awk` to do a command once at the end of the file. It is ***very*** useful when summing up columns (below).
