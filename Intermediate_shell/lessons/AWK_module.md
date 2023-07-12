@@ -22,7 +22,7 @@ Never use sed if you can do it with grep.
 
 This is best understood if we start with `grep` and work our way up. We will use these tools on a complex file we have been given, `animal_observations.txt`. 
 
-This file came to be when a park ranger named Parker asked rangers at other parks to make monthly observations of the animals they saw that day. All of the other rangers sent comma separated lists and Parker collated them into the following file:
+This file came to be when a park ranger named Parker asked rangers at other parks to make monthly observations of the animals they saw that day. All of the other rangers sent Parker comma separated lists and he collated them into the following file:
 
 ```
 Date	Yellowstone	Yosemite	Acadia	Glacier
@@ -52,9 +52,11 @@ Date	Yellowstone	Yosemite	Acadia	Glacier
 12/15/02	coyote,deer	fox,coyote,deer	moose,hare	moose,blackbear
 ```
 
-We see the date of observation and then the animals observed at each of the 5 parks. Each column is separated by a tab. Please copy and paste the above into a command line document called animal_observations.txt.
+We see the date of observation and then the animals observed at each of the 5 parks. Each column is separated by a tab. 
 
-So let's say that we want to know how many dates a couger was observed at any of the parks. We can easily use grep for that:
+* Please copy and paste the above into a command line document called animal_observations.txt.
+
+So let's say that we want to know how many dates a couger was observed at any of the parks. We can easily use `grep` for that:
 
 ```bash
 grep "cougar" animal_observations.txt
@@ -65,16 +67,19 @@ When we do that 4 lines pop up, so 4 dates. We could also pipe to wc to get a nu
 grep "cougar" animal_observations.txt | wc -l
 ```
 
-There seemed to be more instances of cougar though, 4 seems low compared to what I saw when glancing at the document. If we look at the document again, we can see that the park ranger from Glacier National Park cannot spell and put "couger" instead of "cougar". 
+There seemed to be more instances of cougar though. 4 seems low compared to what I saw when glancing at the document. If we look at the document again, we can see that the park ranger from Glacier National Park cannot spell and put "couger" instead of "cougar". Come on man! 
 
 Replacing those will be a bit hard with `grep` but we can use `sed` instead!
 
 ```bash
 sed 's/couger/cougar/g'  animal_observations.txt > animal_observations_edited.txt
 ```
-we are telling `sed` to replace all versions of couger with cougar and output the results to a new file called animal_observations_edited.txt. If we rerun our `grep` command we can see that we now have 9 line (dates) instead of 4. 
 
-Let's now say that we want to know how many times a coyote was observed at Yosemite Park (ignoring all other parks) without editing our file. While this is *possible* with `grep` it is actually easier to do with `AWK`!
+We are telling `sed` to replace all versions of couger with cougar and output the results to a new file called animal_observations_edited.txt. If we rerun our `grep` command we can see that we now have 9 line (dates) instead of 4. 
+
+So far so good. But let's now say that we want to know how many times a coyote was observed at Yosemite Park (ignoring all other parks) without editing our file...
+
+While this is *possible* with `grep` it is actually easier to do with `AWK`!
 
 
 ## Ok you convinced me (I mean I signed up for this module...) how do I start with AWK?
@@ -86,12 +91,13 @@ Before we dive too deeply into `awk` we need to define two terms that `awk` will
 
 You have probably also noticed that sometimes I write `AWK` and othertimes `awk`. The actual command we will use is `awk` but it is sometimes written as `AWK` in manuals as it comes from people's last names.
 
-For our first `AWK` command let's mimic what we just did with `grep`. To pull all instances of cougar from animal_observations_edited.txt using `AWK` we would do:
+For our first `AWK` command let's mimic what we just did with `grep`. To pull all instances of cougar from animal_observations_edited.txt using `AWK`:
 
 ```bash
 awk '/cougar/' animal_observations_edited.txt
 ```
-here '/cougar/' is the pattern we want to match and since we have not told `AWK` anything else it performs it's default behavior which is to print the matched lines.
+
+here '/cougar/' is the pattern we want to match and **since we have not told `AWK` anything else it performs it's default behavior which is to print the matched lines**.
 
 but we only care about coyotes from Yosemite Park! How do we do that?
 
@@ -99,7 +105,13 @@ but we only care about coyotes from Yosemite Park! How do we do that?
 awk '$3 ~ /coyote/' animal_observations_edited.txt
 ```
 
-First all `awk` commands are always encased in `` so whatever you are telling `awk` to do needs to be inbetween those.  Then I have noted that I want to look at column 3 (the Yosemite observations) in particular. The columns are separated (defined) by white space (one or more consecutive blanks) or tabulator and denoted by the $ sign. So `$1` is the value of the first column, `$2` - second etc. $0 contains the original line including the separators. So the Yosemite column is `$3` and we are asking for lines where the string "coyote" is present. We recognize the '/string/' part from our previous command. 
+Let's break this down!
+
+* First all `awk` commands are always encased in `` so whatever you are telling `awk` to do needs to be inbetween those.
+
+* Then I have noted that I want to look at column 3 (the Yosemite observations) in particular. The columns are separated (defined) by white space (one or more consecutive blanks) or tabulator and denoted by the $ sign. So `$1` is the value of the first column, `$2` - second etc. $0 contains the original line including the separators.
+
+* So the Yosemite column is `$3` and we are asking for lines where the string "coyote" is present. We recognize the '/string/' part from our previous command. 
 
 As we run this command we see that the output is super messy because Parker's original file is a bit of a mess. This is because the default behavior of `awk` is to print all matching lines. It is hard to even check if the command did the right thing. However, we can ask `AWK` to only print the Yosemite column and the date (columns 1 and 3):
 
@@ -139,11 +151,11 @@ Before we move on, it is sometimes helpful to know that regular text can be adde
 awk '$3 ~ /coyote/ {print "On this date coyotes were observed in Yosemite Park", $1}' animal_observations_edited.txt
 ```
 
-Did you notice what was modified besides the addition of the string "On this date coyotes were observed in Yosemite Park"?
+Did you notice what was modified from the previous command besides the addition of the string "On this date coyotes were observed in Yosemite Park"?
 
 ## AWK predefined variables
 
-Before we continue our `AWK` journey we want to introduce you to some of the `AWK` predefined variables. Although there are more than just these, these are the most helpful to start. More can be found [here](https://www.gnu.org/software/gawk/manual/html_node/Built_002din-Variables.html)
+Before we continue our `AWK` journey we want to introduce you to some of the `AWK` predefined variables. Although there are more than just the ones we cover, these are the most helpful to start. More can be found [here](https://www.gnu.org/software/gawk/manual/html_node/Built_002din-Variables.html)
 
 * NR - The number of records processed (i.e., rows)
 * FNR - The number of record processed in the current file. This is only needed if you give `awk` multiple files.  For the first file FNR==NR, but for the second FNR will restart from 1 while NR will continue to increment.
@@ -154,9 +166,9 @@ Before we continue our `AWK` journey we want to introduce you to some of the `AW
 NR is particularly useful for skipping records (i.e., rows). For example, if we only care about coyotes observed in 2002 and not 2001 we can skip the records 1-13 of `animal_observations_edited.txt`.
 
 ```bash
-awk 'NR>=14 && $3 ~ /coyote/ {print $1,$3}' animal_observations_edited.txt
+awk 'NR>13 && $3 ~ /coyote/ {print $1,$3}' animal_observations_edited.txt
 ```
-Because we have given two patterns to match (record greater or equal to 14 and column 3 containing the string coyote) we need to put '&&' in between them to note that we need both fulfilled.
+Because we have given two patterns to match (record greater than 13 and column 3 containing the string coyote) we need to put '&&' in between them to note that we need both fulfilled.
 
 You have probably already noticed that Parker's file contains both comma separated fields and tab separated fields. This is no problem for `AWK` if we denote the FS variable. Let's use both FS and NF to print the total number of kinds animals observed in all the parks. Note that we will not delete duplicates (i.e., if coyotes are observed in both Yosemite and Acadia we will consider it to be 2 instead of 1).
 
@@ -164,9 +176,11 @@ You have probably already noticed that Parker's file contains both comma separat
 awk -F '[[:blank:],]' '{print NF}' animal_observations_edited.txt
 ```
 
-This is more complex than anything else we have done so let's break it down. First, you might be curious why we are using -F instead of -FS. FS represents the field separator and to CHANGE it we use -F. We can think of it as -F 'FS'. Here we have to do a bit of regex magic where we accept any white space or commas. Although understanding this regex is beyond this module, we include it here as many NGS formats include multiple kinds of field separators (e.g., VCF files). 
+This is more complex than anything else we have done so let's break it down:
 
-We then skip denoting any pattern and ask `awk` to simply print the number of fields. After you run this command you might notice that there two issues. First because we give the date NF is always 1 count higher than the number of animals. `awk` does math too and we can modify this command!
+* First, you might be curious why we are using -F instead of -FS. FS represents the field separator and to CHANGE it we use -F. We can think of it as -F 'FS'. Here we have to do a bit of regex magic where we accept any white space or commas. Although understanding this regex is beyond this module, we include it here as many NGS formats include multiple kinds of field separators (e.g., VCF files). 
+
+* We then skip denoting any pattern and ask `awk` to simply print the number of fields. After you run this command you might notice that there two issues. First because we give the date NF is always 1 count higher than the number of animals. `awk` does math too and we can modify this command!
 
 ```bash
 awk -F '[[:blank:],]' '{print NF-1}' animal_observations_edited.txt
@@ -185,11 +199,11 @@ The second issue is that we don't want to include the first record (row) as this
 
 ## Piping different separators
 
-We can do more advanced commands with our separators by piping AWK. For example, we can pull lines where coyote is the **SECOND** animal listed for Yosemite park. 
+We can do more advanced commands with our separators by piping `AWK`. For example, we can pull lines where coyote is the **SECOND** animal listed for Yosemite park. 
 
-Before we do that let's take a step back. You may be wondering why on earth we need to do this kind of command. While something like this may not be particularly useful for Parker this kind of command is key for looking at some complex NGS files!
+Before we do that let's take a step back. You may be wondering why on earth we need this kind of command. While something like this may not be particularly useful for Parker's data this kind of command is key for looking at some complex NGS files!
 
-For example take a look at this gff
+For example take a look at this gff file
 
 ```
 chr3	ENSEMBL	five_prime_UTR	50252100	50252137	.	+	.	ID=UTR5:ENST00000266027.9;Parent=ENST00000266027.9;gene_id=ENSG00000114353.17;transcript_id=ENST00000266027.9;gene_type=protein_coding;gene_name=GNAI2;transcript_type=protein_coding;transcript_name=GNAI2-201;exon_number=2;exon_id=ENSE00003567505.1;level=3;protein_id=ENSP00000266027.6;transcript_support_level=2;hgnc_id=HGNC:4385;tag=basic,CCDS;ccdsid=CCDS63644.1;havana_gene=OTTHUMG00000156940.2
@@ -200,7 +214,7 @@ chr3	ENSEMBL	gene	52560570	52560707	.	+	.	ID=ENSG00000221518.1;gene_id=ENSG00000
 chr3	ENSEMBL	transcript	52560570	52560707	.	+	.	ID=ENST00000408591.1;Parent=ENSG00000221518.1;gene_id=ENSG00000221518.1;transcript_id=ENST00000408591.1;gene_type=snRNA;gene_name=RNU6ATAC16P;transcript_type=snRNA;transcript_name=RNU6ATAC16P-201;level=3;transcript_support_level=NA;hgnc_id=HGNC:46915;tag=basic,Ensembl_canonical
 ```
 
-We can see that all colums are tab separated but column 9 has a bunch of ; separated items. This type of command would be useful to pull out all lines where gene_type is snRNA. In fact all of the commands we are teaching today are useful on one or another NGS-related document (VCF, gff, gtf, bed, etc). We are using Parker's data instead because we can use **ALL** of these types of commands on his dataset.
+We can see that all colums are tab separated but column 9 has a bunch of ; separated items. This type of command would be useful for something like pulling out all lines where gene_type is snRNA. In fact all of the commands we are teaching today are useful on one or another NGS-related document (VCF, gff, gtf, bed, etc). We are using Parker's data instead because we can use **ALL** of these types of commands on his dataset.
 
 Returning to our original task, pulling lines where coyote is the **SECOND** animal listed for Yosemite park. We can do it like this:
 
@@ -208,13 +222,13 @@ Returning to our original task, pulling lines where coyote is the **SECOND** ani
 awk '{ print $3 }' animal_observations_edited.txt | awk -F "," '$2 ~ "coyote"' 
 ```
 
-We use the first part
+We use the first part:
 
 ```bash
 awk '{ print $3 }' animal_observations_edited.txt 
 ```
 
-To simply extract the Yosemite data (column 3). We use the second part
+To simply extract the Yosemite data (column 3). We use the second part:
 
 ```bash
 awk -F "," '$2 ~ "coyote"'
@@ -222,7 +236,7 @@ awk -F "," '$2 ~ "coyote"'
 
 to separate the comma separated fields of column 3 and ask which lines have the string coyote in field 2. We want to print the entire comma separated list (i.e., column 3) to test our code which is the default behavior of `awk` in this case.
 
-You might have noticed that here we used "coyote" instead of /coyote/ This is because we want the entire field to be solely coyote ("coyote") rather than containing the string coyote (/coyote/).
+* You might have noticed that here we used "coyote" instead of /coyote/ This is because we want the entire field to be solely coyote ("coyote") rather than containing the string coyote (/coyote/).
 
 ****
 
@@ -251,11 +265,12 @@ This command is complex and contains new syntax so lets go through it bit by bit
 * We want this counter to run through every line of text before we look at the output. To do this we use the special variable `END` which can be used for a command you want `awk` to do at the end of a file (we won't cover it here but its counterpoint is `BEGIN`). 
 
 * After we tell  `awk` to wait until the end of the file we tell it what we want it to do when it gets there. { for (animalgroup in counter){ print animalgroup, counter[animalgroup] }}
-  * Here we have given a for loop. For each key in counter (animalgroup in counter) we want `awk` to print that key (print animalgroup`) and its corresponding value (counter[animalgroup]).  I have named this animalgroup because that is what we are counting but this can be named whatever you want.
+  
+* Here we have given a for loop. For each key in counter (animalgroup in counter) we want `awk` to print that key (print animalgroup`) and its corresponding value (counter[animalgroup]).  I have named this animalgroup because that is what we are counting but this can be named whatever you want.
 
 Now that we understand our command, let's run it!
 
-It works! We can see that "moose,bison" is the most commonly observed group of animals at Yosemite!
+It works! We can see that "moose,bison" is the most commonly observed group of animals at Yosemite! How Thrilling!
 
 **Exercise**
 
@@ -265,8 +280,54 @@ It works! We can see that "moose,bison" is the most commonly observed group of a
 ****
 
 
+## MFC
+
+Let's end by taking a look at MFC (my favorite code). This is an `awk` one liner I use all the time.
+
+```bash
+for ((i=1; i<=10; i+=1))
+    do
+sam=$(awk -v awkvar="${i}" 'NR==awkvar' samples.txt)
+samtools view -S -b ${sam}.sam > ${sam}.bam
+
+done
+```
+
+This actually combines a number of bash topics such as [positional parameters](positional_params.md), [for loops](loops_and_scripts.md), and awk!
+
+* We start with a for loop that counts from 1 to 10
+
+* Then for each value of `i` the awk command `awk -v awkvar="${i}" 'NR==awkvar' samples.txt` is run and the output is assigned to the positional parameter `${sam}`.
+
+* Then using the positional parameter `${sam}` a samtools command is run to convert a file from .sam to .bam
+
+With our new `awk` expertise let's take a look at that `awk` command alone!
 
 
+```bash
+awk -v awkvar="${i}" 'NR==awkvar' samples.txt
+```
+
+We have not encountered -v yet. The correct syntax is `-v var=val` which assign  the  value  val to the variable var, before execution of the program begins. So what we are doing is creating our own variable within our `awk` program, calling it `awkvar` and assigning it the value of `${i}` which will be a number between 1 and 10 (see for loop above). `${i}` and thus `awkvar` will be different for each loop.
+
+Then we are simply saying that the predetermined variable `NR` will be equal to `awkvar` which will be equal to ${i}.
+
+Here is what samples.txt looks like
+
+```
+my_sample1_rep1
+my_sample1_rep2
+my_sample2_rep1
+my_sample2_rep2
+...
+my_sample5_rep2
+```
+
+When `${i}` is equal to 3 what will our awk command spit out? Why?
+Why do you think that this is MFC?
+
+
+### With our new expertise we can not only write our own `awk` commands but we can understand commands that others have written. Go forth and `awk`!
 
 
 
