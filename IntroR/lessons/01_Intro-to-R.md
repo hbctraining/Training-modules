@@ -171,14 +171,16 @@ Best practice is to enter the commands in the **script editor**, and save the sc
 **The Rstudio script editor allows you to 'send' the current line or the currently highlighted text to the R console by clicking on the `Run` button in the upper-right hand corner of the script editor**. Alternatively, you can run by simply pressing the `Ctrl` and `Enter` keys at the same time as a shortcut.
 
 Now let's try entering commands to the **script editor** and using the comments character `#` to add descriptions and highlighting the text to run:
-	
-	# Intro to R Lesson
- 	# Feb 16th, 2016
 
-	# Interacting with R
-	
-	## I am adding 3 and 5. R is fun!
-	3 + 5
+```
+# Intro to R Lesson
+# Feb 16th, 2016
+
+# Interacting with R
+
+## I am adding 3 and 5. R is fun!
+3 + 5
+```
 
 <p align="center">
 <img src="../img/Run_script_1.gif" width="700">
