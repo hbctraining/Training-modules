@@ -28,6 +28,7 @@ _NOTE: indentation and consistency in spacing is used to improve clarity and leg
 ### Example script
 
 ```r
+## DO NOT RUN
 
 # Load libraries
 library(Biobase)
