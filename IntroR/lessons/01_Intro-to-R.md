@@ -173,6 +173,7 @@ Best practice is to enter the commands in the **script editor**, and save the sc
 Now let's try entering commands to the **script editor** and using the comments character `#` to add descriptions and highlighting the text to run:
 	
 	# Intro to R Lesson
+ 	# Feb 16th, 2016
 
 	# Interacting with R
 	
