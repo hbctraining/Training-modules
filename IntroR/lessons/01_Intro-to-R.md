@@ -59,9 +59,21 @@ Let's create a new project directory for our "Introduction to R" lesson today.
 2. Go to the `File` menu and select `New Project`.
 3. In the `New Project` window, choose `New Directory`. Then, choose `New Project`. Name your new directory `Intro-to-R` and then "Create the project as subdirectory of:" the Desktop (or location of your choice).
 4. Click on `Create Project`.
+
+<p align="center">
+<img src="../img/Opening_Project.gif" width="900">
+</p>
+
 5. After your project is completed, if the project does not automatically open in RStudio, then go to the `File` menu, select `Open Project`, and choose `Intro-to-R.Rproj`.
 6. When RStudio opens, you will see three panels in the window.
-7. Go to the `File` menu and select `New File`, and select `R Script`. The RStudio interface should now look like the screenshot below.
+7. Go to the `File` menu and select `New File`, and select `R Script`. 
+8. Go to the `File` menu and select `Save As...`, type `Intro-to-R.R` and select `Save`
+
+<p align="center">
+<img src="../img/Opening_RScript.gif" width="900">
+</p>
+
+The RStudio interface should now look like the screenshot below.
 
 ![RStudio interface](../img/Rstudio_interface.png)
 
@@ -88,24 +100,31 @@ Your working directory should be the `Intro-to-R` folder constructed when you cr
 
 You can visualize your working directory by selecting the `Files` tab from the **Files/Plots/Packages/Help** window. 
 
-![Viewing your working directory](../img/getwd.png)
+<p align="center">
+<img src="../img/Get_wd.png" width="400">
+</p>
 
 If you wanted to choose a different directory to be your working directory, you could navigate to a different folder in the `Files` tab, then, click on the `More` dropdown menu and select `Set As Working Directory`.
  
-![Setting your working directory](../img/setwd.png)
+<p align="center">
+<img src="../img/Set_wd.png" width="400">
+</p>
 
 
 ### Structuring your working directory
 To organize your working directory for a particular analysis, you should separate the original data (raw data) from intermediate datasets. For instance, you may want to create a `data/` directory within your working directory that stores the raw data, and have a `results/` directory for intermediate datasets and a `figures/` directory for the plots you will generate.
 
+<p align="center">
+<img src="../img/Add_Rstudio_folder.gif" width="900">
+</p>
+
 Let's create these three directories within your working directory by clicking on `New Folder` within the `Files` tab. 
-
-![Structuring your working directory](../img/wd_setup.png)
-
 
 When finished, your working directory should look like:
 
-![Your organized working directory](../img/complete_wd_setup.png)
+<p align="center">
+<img src="../img/Complete_wd_setup.png" width="400">
+</p>
 
 ### Adding files to your working directory
 
@@ -115,6 +134,18 @@ There are a few files that we will be working with in the next few lessons and y
 * Download **metadata file** using [this link](https://raw.githubusercontent.com/hbctraining/Training-modules/master/IntroR/data/mouse_exp_design.csv)
 
 > *NOTE:* If the files download automatically to some other location on your laptop, you can move them to the your working directory using your file explorer or finder (outside RStudio), or navigating to the files in the `Files` tab of the bottom right panel of RStudio
+
+### Setting up 
+
+This is more of a housekeeping task. We will be writing long lines of code in our script editor and want to make sure that the lines "wrap" and you don't have to scroll back and forth to look at your long line of code.
+
+Click on "Edit" at the top of your RStudio screen and click on "Preferences..." in the pull down menu.
+
+On the left, select "Code" and put a check against "Soft-wrap R source files". Make sure you click the "Apply" button at the bottom of the Window before saying "OK".
+
+<p align="center">
+<img src="../img/Soft_wrap_RStudio.gif" width="900">
+</p>
 
 ## Interacting with R
 
@@ -129,7 +160,9 @@ Let's test it out:
 3 + 5
 ```
 
-![Running in the console](../img/console.png)
+<p align="center">
+<img src="../img/Console.png" width="400">
+</p>
 
 ### Script editor
 
@@ -146,11 +179,21 @@ Now let's try entering commands to the **script editor** and using the comments 
 	## I am adding 3 and 5. R is fun!
 	3 + 5
 
-![Running in the script editor](../img/script_editor.png)
+<p align="center">
+<img src="../img/Run_script_1.gif" width="700">
+</p>
+
+Alternatively, you can run by simply pressing the `Ctrl` and `Return/Enter` keys at the same time as a shortcut.
+
+<p align="center">
+<img src="../img/Run_script_2.gif" width="700">
+</p>
 
 You should see the command run in the console and output the result.
 
-![Script editor output](../img/script_editor_output.png)
+<p align="center">
+<img src="../img/Script_editor_output.png" width="400">
+</p>
 	
 What happens if we do that same command without the comment symbol `#`? Re-run the command after removing the # sign in the front:
 
