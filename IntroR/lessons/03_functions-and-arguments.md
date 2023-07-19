@@ -180,6 +180,8 @@ Finally, R packages can also be installed from source. This is useful when you d
 To install from source, we use the same `install.packages` function but we have additional arguments that provide *specifications* to *change from defaults*:
 
 ```r
+# DO NOT RUN THIS!
+
 install.packages('ggplot2_1.0.1.tar.gz', type="source", repos=NULL)
 ```
 ### Loading libraries
