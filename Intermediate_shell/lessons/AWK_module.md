@@ -1,14 +1,14 @@
 **NOTE: This module assumes that you are familiar with grep and sed**
 
-## What is AWK?
+## What is awk?
 
-If you have ever looked up how to do a particular string manipulation using bash in [stackoverflow](https://stackoverflow.com/) or [biostars](https://www.biostars.org/) then you have probably seen someone give an `AWK` command as a potential solution. 
+If you have ever looked up how to do a particular string manipulation using bash in [stackoverflow](https://stackoverflow.com/) or [biostars](https://www.biostars.org/) then you have probably seen someone give an `awk` command as a potential solution. 
 
-`AWK` is an interpreted programming language designed for text processing and typically used as a data extraction and reporting tool and was especially designed to support one-liner programs. You will often see the phrase "AWK one-liner". `AWK` was created at Bell Labs in the 1970s and `AWK` comes from from the surnames of its authors: Alfred **A**ho, Peter **W**einberger, and **B**rian Kernighan. `awk` shares a common history with `sed` and even `grep` dating back to `ed`. As a result, some of the syntax and functionality can be a bit familiar at times. 
+`awk` is an interpreted programming language designed for text processing and typically used as a data extraction and reporting tool and was especially designed to support one-liner programs. You will often see the phrase "awk one-liner". `awk` was created at Bell Labs in the 1970s and `awk` comes from from the surnames of its authors: Alfred **A**ho, Peter **W**einberger, and Brian **K**ernighan. Because the name comes from initials you will often see it written as `AWK`. `awk` shares a common history with `sed` and even `grep` dating back to `ed`. As a result, some of the syntax and functionality can be a bit familiar at times. 
 
-## I already know grep and sed, why should I learn AWK?
+## I already know grep and sed, why should I learn awk?
 
-`AWK` can be seen as an intermediate between `grep` and `sed` and more sophisticated approaches. 
+`awk` can be seen as an intermediate between `grep` and `sed` and more sophisticated approaches. 
 
 ```
 The Enlightened Ones say that...
@@ -79,25 +79,23 @@ We are telling `sed` to replace all versions of couger with cougar and output th
 
 So far so good. But let's now say that we want to know how many times a coyote was observed at Yosemite Park (ignoring all other parks) without editing our file...
 
-While this is *possible* with `grep` it is actually easier to do with `AWK`!
+While this is *possible* with `grep` it is actually easier to do with `awk`!
 
 
-## Ok you convinced me (I mean I signed up for this module...) how do I start with AWK?
+## Ok you convinced me (I mean I signed up for this module...) how do I start with awk?
 
 Before we dive too deeply into `awk` we need to define two terms that `awk` will use a lot:
 
 - ***Field*** - This is a column of data
 - ***Record*** - This is a row of data 
 
-You have probably also noticed that sometimes I write `AWK` and othertimes `awk`. The actual command we will use is `awk` but it is sometimes written as `AWK` in manuals as it comes from people's last names.
-
-For our first `AWK` command let's mimic what we just did with `grep`. To pull all instances of cougar from animal_observations_edited.txt using `AWK`:
+For our first `awk` command let's mimic what we just did with `grep`. To pull all instances of cougar from animal_observations_edited.txt using `awk`:
 
 ```bash
 awk '/cougar/' animal_observations_edited.txt
 ```
 
-here '/cougar/' is the pattern we want to match and **since we have not told `AWK` anything else it performs it's default behavior which is to print the matched lines**.
+here '/cougar/' is the pattern we want to match and **since we have not told `awk` anything else it performs it's default behavior which is to print the matched lines**.
 
 but we only care about coyotes from Yosemite Park! How do we do that?
 
@@ -113,14 +111,14 @@ Let's break this down!
 
 * So the Yosemite column is `$3` and we are asking for lines where the string "coyote" is present. We recognize the '/string/' part from our previous command. 
 
-As we run this command we see that the output is super messy because Parker's original file is a bit of a mess. This is because the default behavior of `awk` is to print all matching lines. It is hard to even check if the command did the right thing. However, we can ask `AWK` to only print the Yosemite column and the date (columns 1 and 3):
+As we run this command we see that the output is super messy because Parker's original file is a bit of a mess. This is because the default behavior of `awk` is to print all matching lines. It is hard to even check if the command did the right thing. However, we can ask `awk` to only print the Yosemite column and the date (columns 1 and 3):
 
 
 ```bash
 awk '$3 ~ /coyote/ {print $1,$3}' animal_observations_edited.txt
 ```
 
-This shows a great feature of `AWK`, chaining commands. The print command within the {} will ONLY be executed when the first criteria is met. 
+This shows a great feature of `awk`, chaining commands. The print command within the {} will ONLY be executed when the first criteria is met. 
 
 We now know basic `awk` syntax:
 
@@ -145,7 +143,7 @@ Were seals ever observed in any of the other parks (hint: There are multiple way
 
 ****
 
-Before we move on, it is sometimes helpful to know that regular text can be added to `AWK` print commands. For example we can modify our earlier command to be:
+Before we move on, it is sometimes helpful to know that regular text can be added to `awk` print commands. For example we can modify our earlier command to be:
 
 ```bash
 awk '$3 ~ /coyote/ {print "On this date coyotes were observed in Yosemite Park", $1}' animal_observations_edited.txt
@@ -153,9 +151,9 @@ awk '$3 ~ /coyote/ {print "On this date coyotes were observed in Yosemite Park",
 
 Did you notice what was modified from the previous command besides the addition of the string "On this date coyotes were observed in Yosemite Park"?
 
-## AWK predefined variables
+## awk predefined variables
 
-Before we continue our `AWK` journey we want to introduce you to some of the `AWK` predefined variables. Although there are more than just the ones we cover, these are the most helpful to start. More can be found [here](https://www.gnu.org/software/gawk/manual/html_node/Built_002din-Variables.html)
+Before we continue our `awk` journey we want to introduce you to some of the `awk` predefined variables. Although there are more than just the ones we cover, these are the most helpful to start. More can be found [here](https://www.gnu.org/software/gawk/manual/html_node/Built_002din-Variables.html)
 
 * NR - The number of records processed (i.e., rows)
 * FNR - The number of record processed in the current file. This is only needed if you give `awk` multiple files.  For the first file FNR==NR, but for the second FNR will restart from 1 while NR will continue to increment.
@@ -170,7 +168,7 @@ awk 'NR>13 && $3 ~ /coyote/ {print $1,$3}' animal_observations_edited.txt
 ```
 Because we have given two patterns to match (record greater than 13 and column 3 containing the string coyote) we need to put '&&' in between them to note that we need both fulfilled.
 
-You have probably already noticed that Parker's file contains both comma separated fields and tab separated fields. This is no problem for `AWK` if we denote the FS variable. Let's use both FS and NF to print the total number of kinds animals observed in all the parks. Note that we will not delete duplicates (i.e., if coyotes are observed in both Yosemite and Acadia we will consider it to be 2 instead of 1).
+You have probably already noticed that Parker's file contains both comma separated fields and tab separated fields. This is no problem for `awk` if we denote the FS variable. Let's use both FS and NF to print the total number of kinds animals observed in all the parks. Note that we will not delete duplicates (i.e., if coyotes are observed in both Yosemite and Acadia we will consider it to be 2 instead of 1).
 
 ```bash
 awk -F '[[:blank:],]' '{print NF}' animal_observations_edited.txt
@@ -199,9 +197,9 @@ The second issue is that we don't want to include the first record (row) as this
 
 ## Piping different separators
 
-We can do more advanced commands with our separators by piping `AWK`. For example, we can pull lines where coyote is the **SECOND** animal listed for Yosemite park. 
+We can do more advanced commands with our separators by piping `awk`. For example, we can pull lines where coyote is the **SECOND** animal listed for Yosemite park. 
 
-Before we do that let's take a step back. You may be wondering why on earth we need this kind of command. While something like this may not be particularly useful for Parker's data this kind of command is key for looking at some complex NGS files!
+Before we do that let's take a step back. You may be wondering why on earth we need this kind of command. While something like this may not be particularly useful for Parker's data, this kind of command is key for looking at some complex NGS files!
 
 For example take a look at this gff file
 
@@ -248,7 +246,7 @@ What command would you give to print all of the observation dates that took plac
 
 ## Counting
 
-One of the best features of AWK is that it can count up how many times a string occurs in a column. Let's use this to see how many times set of animal observations occurs in Yellowstone park.
+One of the best features of `awk` is that it can count up how many times a string occurs in a column. Let's use this to see how many times set of animal observations occurs in Yellowstone park.
 
 ```bash
 awk ' { counter[$2] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt
@@ -262,7 +260,7 @@ This command is complex and contains new syntax so lets go through it bit by bit
 
 * Note that we use the addition operator `+=`, as a shortcut for `counter[$2] = counter[$2] + 1`.
 
-* We want this counter to run through every line of text before we look at the output. To do this we use the special variable `END` which can be used for a command you want `awk` to do at the end of a file (we won't cover it here but its counterpoint is `BEGIN`). 
+* We want this counter to run through every line of text before we look at the output. To do this we use the special variable `END` which can be used for a command you want `awk` to do at the end of a file (we won't cover it here, but its counterpoint is `BEGIN`). 
 
 * After we tell  `awk` to wait until the end of the file we tell it what we want it to do when it gets there. { for (animalgroup in counter){ print animalgroup, counter[animalgroup] }}
   
@@ -282,7 +280,7 @@ It works! We can see that "moose,bison" is the most commonly observed group of a
 
 ## MFC
 
-Let's end by taking a look at MFC (my favorite code). This is an `awk` one liner I use all the time.
+We will end by taking a look at MFC (my favorite code). This is an `awk` one liner I use all the time.
 
 ```bash
 for ((i=1; i<=10; i+=1))
@@ -293,7 +291,7 @@ samtools view -S -b ${sam}.sam > ${sam}.bam
 done
 ```
 
-This actually combines a number of basic and intermediate shell topics such as [positional parameters](positional_params.md), [for loops](loops_and_scripts.md), and awk!
+This actually combines a number of basic and intermediate shell topics such as [positional parameters](positional_params.md), [for loops](loops_and_scripts.md), and `awk`!
 
 * We start with a for loop that counts from 1 to 10
 
@@ -323,11 +321,11 @@ my_sample2_rep2
 my_sample5_rep2
 ```
 
-When `${i}` is equal to 3 what will our awk command spit out? Why?
+When `${i}` is equal to 3 what will our `awk` command spit out? Why?
 Why do you think that this is MFC?
 
 
-### With our new expertise we can not only write our own `awk` commands but we can understand commands that others have written. Go forth and `awk`!
+### With our new expertise, we can not only write our own `awk` commands but we can understand commands that others have written. Go forth and `awk`!
 
 
 
