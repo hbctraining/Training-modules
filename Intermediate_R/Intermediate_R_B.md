@@ -130,4 +130,31 @@ y
 
 We may also need to have options depending on multiple variables. In this case let's set both `x` and `y` then determine the value of a new variable `z`. 
 
+Let's say that if `x` < 0 then `z` is automatically 5 but if `x` > 0 then the value of `z` depends on `y`
+
+
+```{r}
+y = -1
+x = 5
+if (x < 0){
+  z = 5
+} else if (x > 0){
+if (y>0) {
+z = 10
+} else if (y<0) {
+z = 1
+}
+}
+z
+```
+
+Play around with a few values of x and y
+
+
+****
+
+**Exercise**
+
+Above I chose to nest my `if` statements but it was not necessary. Can you rewrite this without nesting (HINT: you need 3 conditional statements)
+**** 
 
