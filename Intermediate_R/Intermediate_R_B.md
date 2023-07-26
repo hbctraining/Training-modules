@@ -165,3 +165,5 @@ Above I chose to nest my `if` statements but it was not necessary. Can you rewri
 One of the best uses of conditional statements is in a `for loop`. A `for loop` is used to apply the same set of operations on each item in a collection of objects, such as a vector, a list, a matrix, or a dataframe.
 
 
+
+
