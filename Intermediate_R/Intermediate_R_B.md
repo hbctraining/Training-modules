@@ -1,4 +1,6 @@
 
+# Intermediate R - part B
+
 ## if/else statements
 
 As you write, edit, and reuse scripts you will often find that the more flexible a script is, the more useful. A snipped of code that only works one one file is not the most useful but a snippet of code that works on many files is great!
@@ -157,4 +159,9 @@ Play around with a few values of x and y
 
 Above I chose to nest my `if` statements but it was not necessary. Can you rewrite this without nesting (HINT: you need 3 conditional statements)
 **** 
+
+## For loops
+
+One of the best uses of conditional statements is in a `for loop`. A `for loop` is used to apply the same set of operations on each item in a collection of objects, such as a vector, a list, a matrix, or a dataframe.
+
 
