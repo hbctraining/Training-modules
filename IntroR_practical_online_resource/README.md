@@ -41,7 +41,7 @@ Download the R project and data for this workshop [here](https://github.com/hbct
 | 14:00 - 14:15 | [R practical: Functions](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/functions_practical.html) | Emma |
 | 14:15 - 14:45 | [R practical: Wrangling](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/wrangling_practical.html) | Radhika |
 | 14:45 - 15:15 | [R practical: Plotting](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/Practical_plotting.html) | Emma |
-| 15:15 - 15:50 | [R practical: Comprehensive](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/Practical_comprehensive.html) + [Answer key](https://github.com/hbctraining/Training-modules/blob/master/IntroR_practical_online_resource/answer_keys/comprehensive_practical_ans.md)| Meeta |
+| 15:15 - 15:50 | [R practical: Comprehensive](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/Practical_comprehensive.html) + [Answer key](https://github.com/hbctraining/Training-modules/blob/master/IntroR_practical_online_resource/answer_keys/comprehensive_practical_ans.md)| Radhika |
 | 15:50 - 16:00 | Wrap-up and exit poll | Radhika |
 
 #### Questions?
