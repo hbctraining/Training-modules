@@ -38,16 +38,16 @@ Download the R project and data for this workshop [here](https://github.com/hbct
 |:------------------------:|:------------------------------------------------:|:--------:|
 | 13:00 - 13:10 | [Introduction to workshop](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2022.pdf) | Radhika |
 | 13:10 - 14:00 | Zoom polls, Q&A, Discussion | All |
-| 14:00 - 14:15 | [R practical: Functions](https://github.com/hbctraining/Training-modules/blob/master/IntroR_practical_online_resource/functions_practical.md) | Emma |
-| 14:15 - 14:45 | [R practical: Wrangling](https://github.com/hbctraining/Training-modules/blob/master/IntroR_practical_online_resource/wrangling_practical.md) | Radhika |
-| 14:45 - 15:15 | [R practical: Plotting](https://github.com/hbctraining/Training-modules/blob/master/IntroR_practical_online_resource/Practical_plotting.md) | Emma |
-| 15:15 - 15:50 | [R practical: Comprehensive](https://github.com/hbctraining/Training-modules/blob/master/IntroR_practical_online_resource/Practical_comprehensive.md) + [Answer key](https://github.com/hbctraining/Training-modules/blob/master/IntroR_practical_online_resource/answer_keys/comprehensive_practical_ans.md)| Radhika |
+| 14:00 - 14:15 | [R practical: Functions](functions_practical.md) | Emma |
+| 14:15 - 14:45 | [R practical: Wrangling](wrangling_practical.md) | Radhika |
+| 14:45 - 15:15 | [R practical: Plotting](Practical_plotting.md) | Emma |
+| 15:15 - 15:50 | [R practical: Comprehensive](Practical_comprehensive.md) + [Answer key](answer_keys/comprehensive_practical_ans.md)| Radhika |
 | 15:50 - 16:00 | Wrap-up and exit poll | Radhika |
 
 ### Answer Keys:
-* [Functions](https://github.com/hbctraining/Training-modules/blob/master/IntroR_practical_online_resource/answer_keys/functions_practical_ans.md)
-* [Wrangling](https://github.com/hbctraining/Training-modules/blob/master/IntroR_practical_online_resource/answer_keys/wrangling_practical_ans.R)
-* [Plotting](https://github.com/hbctraining/Training-modules/blob/master/IntroR_practical_online_resource/answer_keys/plotting_ans_key.R)
+* [Functions](answer_keys/functions_practical_ans.md)
+* [Wrangling](answer_keys/wrangling_practical_ans.R)
+* [Plotting](answer_keys/plotting_ans_key.R)
 
 #### Questions?
 * ***If you get stuck due to an error*** while runnning code in the lesson, [email us](mailto:hbctraining@hsph.harvard.edu) 
