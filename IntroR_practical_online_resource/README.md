@@ -36,7 +36,7 @@ Download the R project and data for this workshop [here](https://github.com/hbct
 
 | Time            |  Topic  | Instructor |
 |:------------------------:|:------------------------------------------------:|:--------:|
-| 13:00 - 13:10 | [Introduction to workshop](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2022.pdf) | Radhika |
+| 13:00 - 13:10 | [Introduction to workshop](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2023.pdf) | Radhika |
 | 13:10 - 14:00 | Zoom polls, Q&A, Discussion | All |
 | 14:00 - 14:15 | [R practical: Functions](functions_practical.md) | Emma |
 | 14:15 - 14:45 | [R practical: Wrangling](wrangling_practical.md) | Radhika |
