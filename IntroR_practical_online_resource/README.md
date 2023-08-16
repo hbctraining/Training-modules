@@ -36,13 +36,13 @@ Download the R project and data for this workshop [here](https://github.com/hbct
 
 | Time            |  Topic  | Instructor |
 |:------------------------:|:------------------------------------------------:|:--------:|
-| 13:00 - 13:10 | [Introduction to workshop](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2022.pdf) | Meeta |
-| 13:10 - 14:00 | Zoom polls, Q&A, Discussion | Will, Meeta |
-| 14:00 - 14:15 | [R practical: Functions](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/functions_practical.html) | Will |
-| 14:15 - 14:45 | [R practical: Wrangling](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/wrangling_practical.html) | Meeta |
-| 14:45 - 15:15 | [R practical: Plotting](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/Practical_plotting.html) | Will |
+| 13:00 - 13:10 | [Introduction to workshop](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2022.pdf) | Radhika |
+| 13:10 - 14:00 | Zoom polls, Q&A, Discussion | All |
+| 14:00 - 14:15 | [R practical: Functions](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/functions_practical.html) | Emma |
+| 14:15 - 14:45 | [R practical: Wrangling](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/wrangling_practical.html) | Radhika |
+| 14:45 - 15:15 | [R practical: Plotting](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/Practical_plotting.html) | Emma |
 | 15:15 - 15:50 | [R practical: Comprehensive](https://hbctraining.github.io/Training-modules/IntroR_practical_online_resource/Practical_comprehensive.html) + [Answer key](https://github.com/hbctraining/Training-modules/blob/master/IntroR_practical_online_resource/answer_keys/comprehensive_practical_ans.md)| Meeta |
-| 15:50 - 16:00 | Wrap-up and exit poll | Meeta |
+| 15:50 - 16:00 | Wrap-up and exit poll | Radhika |
 
 #### Questions?
 * ***If you get stuck due to an error*** while runnning code in the lesson, [email us](mailto:hbctraining@hsph.harvard.edu) 
