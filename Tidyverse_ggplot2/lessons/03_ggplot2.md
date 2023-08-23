@@ -206,6 +206,9 @@ The plot is looking better, but it is hard to distinguish differences in signifi
 To make additional color palettes available for plotting, we can load the RColorBrewer library, which contains color palettes designed specifically for the different types of data being compared.
 
 ```r
+# Install the RColorBrewer library (if you don't have it installed already)
+install.packages("RColorBrewer")
+
 # Load the RColorBrewer library
 library(RColorBrewer)
 
