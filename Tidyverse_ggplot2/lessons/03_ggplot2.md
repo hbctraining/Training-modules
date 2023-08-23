@@ -1,7 +1,7 @@
 ---
 title: Plotting and data visualization in R
 author: Mary Piper, Meeta Mistry, Radhika Khetani
-date: "Wednesday, February 24th, 2021"
+date: "Wednesday, August 23rd, 2023"
 ---
 
 Approximate time: 90 minutes
