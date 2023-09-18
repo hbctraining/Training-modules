@@ -26,12 +26,12 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 
 | Time | Topic | Instructor |
 :-----------------------|:-------------|:----------|
-| 13:00 - 13:10	| [Workshop Introduction](https://github.com/hbctraining/Training-modules/blob/master/Intro_current_topics_online_2022.pdf) | Mary |
-| 13:10 - 13:30	| [Introduction to dataset and considerations for choosing appropriate plotting methods](https://hbctraining.github.io/publication_perfect/lessons/01_intro_to_dataset.html) | Radhika |
-| 13:30 - 14:15 | [Visualization package ggplot2 basic syntax and plot types](https://hbctraining.github.io/publication_perfect/lessons/02_ggplot2_syntax.html) | Radhika |
+| 13:00 - 13:10	| [Workshop Introduction](https://github.com/hbctraining/Training-modules/blob/master/Intro_current_topics_online_2022.pdf) | Will |
+| 13:10 - 13:30	| [Introduction to dataset and considerations for choosing appropriate plotting methods](https://hbctraining.github.io/publication_perfect/lessons/01_intro_to_dataset.html) | Meeta |
+| 13:30 - 14:15 | [Visualization package ggplot2 basic syntax and plot types](https://hbctraining.github.io/publication_perfect/lessons/02_ggplot2_syntax.html) | Will |
 | 14:15 - 14:20	| Break | |
-| 14:20 - 14:45	| [Consistent plots with custom themes](https://hbctraining.github.io/publication_perfect/lessons/03_custom_themes.html) | Mary |
-| 14:45 - 15:15	| [Application of plotting basics](https://hbctraining.github.io/publication_perfect/lessons/04_boxplot_application_of_basic_plotting.html) | Radhika |
+| 14:20 - 14:45	| [Consistent plots with custom themes](https://hbctraining.github.io/publication_perfect/lessons/03_custom_themes.html) | Will |
+| 14:45 - 15:15	| [Application of plotting basics](https://hbctraining.github.io/publication_perfect/lessons/04_boxplot_application_of_basic_plotting.html) | Meeta |
 
 ### Part II
 
