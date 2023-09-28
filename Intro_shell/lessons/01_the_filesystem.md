@@ -626,7 +626,6 @@ out.
 
 ***
 
-[Next Lesson](02_creating_files_and_searching.md)
 
 ---
 
