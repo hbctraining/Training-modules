@@ -345,7 +345,7 @@ lists only the files that begin with 'Mov10' and end with 'fq'
 
 So how does this actually work? The shell (bash) considers an asterisk "*" to be a wildcard character that can be used to substitute for: no characters, any other single character or a string of characters. An asterisk/star is only one of the many wildcards in UNIX, but this is the most powerful one and we will be using this one the most for our exercises.
 
-> **NOTE: The wildcard (*) used in shell is different than how it is used in regular expressions.** For example in regular expressions, you have to use .* to mean "zero or more characters". 
+> _**NOTE: The wildcard asterik used in shell is different than how it is used in regular expressions.**_ For example in regular expressions, you have to use the period character followed by the asterik .* to mean "zero or more characters". 
 
 ****
 
