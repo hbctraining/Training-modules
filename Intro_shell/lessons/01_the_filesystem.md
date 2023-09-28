@@ -323,13 +323,13 @@ Tab completion can also fill in the names of commands. For example, enter `e<tab
 
 Navigate to the `raw_fastq` directory, which is inside the `unix_lesson` directory. This directory contains FASTQ files from a next-generation sequencing dataset. 
 
-The '*' character is a shortcut for "everything". Thus, if you enter `ls *`, you will see all of the contents of a given directory. Now try this command:
+The '*' character is a shortcut for "zero or more characters". Thus, if you enter `ls *`, you will see all of the contents of a given directory. Now try this command:
 
 ```bash
 $ ls *fq
 ```
 
-This lists every file that ends with a `fq`. This command:
+This lists every file that begins with zero or any number of characters followed by a `fq`. This command:
 
 ```bash
 $ ls /bin/*sh
@@ -343,9 +343,9 @@ $ ls Mov10*fq
 
 lists only the files that begin with 'Mov10' and end with 'fq'
 
-So how does this actually work? The shell (bash) considers an asterisk "*" to be a wildcard character that can be used to substitute for any other single character or a string of characters. 
+So how does this actually work? The shell (bash) considers an asterisk "*" to be a wildcard character that can be used to substitute for: no characters, any other single character or a string of characters. An asterisk/star is only one of the many wildcards in UNIX, but this is the most powerful one and we will be using this one the most for our exercises.
 
-> An asterisk/star is only one of the many wildcards in UNIX, but this is the most powerful one and we will be using this one the most for our exercises.
+> **NOTE: The wildcard (*) used in shell is different than how it is used in regular expressions.** For example in regular expressions, you have to use .* to mean "zero or more characters". 
 
 ****
 
