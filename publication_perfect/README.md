@@ -37,15 +37,15 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 
 | Time | Topic | Instructor |
 :-----------------------|:-------------|:----------|
-| 13:00 - 13:10	| [Workshop Introduction](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2021.pdf) | Mary |
-| 13:10 - 14:00	| [Customization of scales and color palettes](https://hbctraining.github.io/publication_perfect/lessons/05_custom_plot_scales_colors.html) | Mary |
-| 14:00 - 14:30	| [Aligning and labeling plots with cowplot](https://hbctraining.github.io/publication_perfect/lessons/06_aligning_plots_using_cowplot.html) | Radhika |
+| 13:00 - 13:10	| [Workshop Introduction](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2021.pdf) | Meeta |
+| 13:10 - 14:00	| [Customization of scales and color palettes](https://hbctraining.github.io/publication_perfect/lessons/05_custom_plot_scales_colors.html) | Meeta |
+| 14:00 - 14:30	| [Aligning and labeling plots with cowplot](https://hbctraining.github.io/publication_perfect/lessons/06_aligning_plots_using_cowplot.html) | Heather |
 | 14:30 - 14:35	| Break
-| 14:35 - 15:15	| [Adding annotations and including statistical comparisons with ggpubr](https://hbctraining.github.io/publication_perfect/lessons/07_adding_text_annotations.html) | Jihe |
+| 14:35 - 15:15	| [Adding annotations and including statistical comparisons with ggpubr](https://hbctraining.github.io/publication_perfect/lessons/07_adding_text_annotations.html) | Heather |
 | 15:15 - 15:45	| [Incorporating external packages to extend plotting functionality](https://hbctraining.github.io/publication_perfect/lessons/08_figure_specific_packages.html) | Meeta |
-| 15:45 - 15:50	| [Creating final figure](https://hbctraining.github.io/publication_perfect/lessons/09_final_figure.html) | Mary |
-| 15:50 - 15:55	| [Pivoting publications](https://hbctraining.github.io/publication_perfect/lessons/10_pivoting_publications.html) | Mary |
-| 15:55 - 16:00	| [Wrap-up and exit survey](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2021.pdf) | Mary |
+| 15:45 - 15:50	| [Creating final figure](https://hbctraining.github.io/publication_perfect/lessons/09_final_figure.html) | Heather |
+| 15:50 - 15:55	| [Pivoting publications](https://hbctraining.github.io/publication_perfect/lessons/10_pivoting_publications.html) | Meeta |
+| 15:55 - 16:00	| [Wrap-up and exit survey](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2021.pdf) | Meeta |
 
 ### Dataset
 
