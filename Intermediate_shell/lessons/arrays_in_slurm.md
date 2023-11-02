@@ -28,7 +28,7 @@ sbatch --array=1-10 my_script.sh
 
 This will run my_script.sh 10 times with the job IDs 1,2,3,4,5,6,7,8,9,10
 
-We can also put this directly into the bash script itself (although we will continue with the command line version here.
+We can also put this directly into the bash script itself (although we will continue with the command line version here).
 ```bash
 $SBATCH --array=1-10
 ```
@@ -103,7 +103,7 @@ file=$(awk -v  awkvar="${SLURM_ARRAY_TASK_ID}" 'NR==awkvar' samples.txt)
 
 PREFIX="Folder_${SLURM_ARRAY_TASK_ID}"
      mkdir $PREFIX
-        cd $PREFIX2
+        cd $PREFIX
 
 samtools view -S -b ${file}.sam > ${file}.bam
 
