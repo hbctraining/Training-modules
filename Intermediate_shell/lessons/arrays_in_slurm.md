@@ -105,7 +105,7 @@ PREFIX="Folder_${SLURM_ARRAY_TASK_ID}"
      mkdir $PREFIX
         cd $PREFIX
 
-samtools view -S -b ${file}.sam > ${file}.bam
+samtools view -S -b ../${file}.sam > ${file}.bam
 
 ```    
 
