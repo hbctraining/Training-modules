@@ -31,7 +31,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) | None | 7/19/2023	| Closed |
 | [R Basics Practice](IntroR_practical_online_resource) | R Basics or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 8/16/2023 | Closed |
 | [Publication Perfect: Part I](publication_perfect#part-i) | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 9/20/2023	| Closed |
-| [Publication Perfect: Part II](publication_perfect#part-ii) | [Publication Perfect: Part I](publication_perfect#part-i) | 10/18/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJUkc-GhqT8vHtZzmJ5x_AKJU_lzxStDrsbl) |
+| [Publication Perfect: Part II](publication_perfect#part-ii) | [Publication Perfect: Part I](publication_perfect#part-i) | 10/18/2023	| Closed |
 | [Rmarkdown](Rmarkdown) | R Basics or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 11/15/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJYkcuyrrzwqEtNmyYCs8d5_SmAXxtN5ktgt) |
 
 
