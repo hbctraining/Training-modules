@@ -154,8 +154,6 @@ $ ls --help
 
 
 ## The Unix directory file structure (a.k.a. where am I?)
- 
-As you've already just seen, you can move around in different directories or folders at the command line. Why would you want to do this, rather than just navigating around the normal way using a GUI (GUI = Graphical User Interface, pronounced like "gooey").
 
 #### Moving around the file system
 
@@ -205,8 +203,6 @@ Type:
 ```bash
 $ cd ..
 ```
-
-Now do `ls` and `pwd`. 
 
 > `..` denotes parent directory, and you can use it anywhere in the system to go back to the parent directory. Can you think of an example when this won't work?
 
@@ -263,7 +259,7 @@ $ pwd
 
 which is the full path for your home directory. This tells you that you are in a directory called `marypiper`, which sits inside a directory called `Users` which sits inside the very top directory in the hierarchy, the *root directory*. So, to summarize: `marypiper` is a directory in `Users` which is a directory in `/`.
 
-Now enter the following command:
+Now enter the following command **but replacing `/Users/marypiper/` with your own full path information**:
 
 ```bash
 $ cd /Users/marypiper/unix_lesson/raw_fastq/
@@ -312,8 +308,6 @@ $ ls Mov10_oe_<tab><tab>
 
 When you hit the first tab, nothing happens. The reason is that there are multiple directories in the home directory which start with `Mov10_oe_`. Thus, the shell does not know which one to fill in. When you hit tab again, the shell will list the possible choices.
 
-Tab completion can also fill in the names of commands. For example, enter `e<tab><tab>`. You will see the name of every command that starts with an `e`. One of those is `echo`. If you enter `ec<tab>` you will see that tab completion works. 
-
 > **Tab completion is your friend!** It helps prevent spelling mistakes, and speeds up the process of typing in the full command.
 
 #### Wild cards
@@ -359,47 +353,6 @@ BONUS: List all of the files in `/bin` that contain the letter 'a' or 'c'.
 
 ****
 
-#### Shortcuts
-
-There are some shortcuts which you should know about. Dealing with the
-home directory is very common. So, in the shell the tilde character,
-"~", is a shortcut for your home directory. Navigate to the `raw_fastq`
-directory:
-
-```bash
-$ cd
-```
-
-```bash
-$ cd unix_lesson/raw_fastq
-```
-
-Then enter the command:
-
-```bash
-$ ls ~
-```
-
-This prints the contents of your home directory, without you having to type the full path because the tilde "~" is equivalent to `/Users/marypiper/`.
-
-Another shortcut is the "..":
-
-```bash
-$ ls ..
-```
-
-The shortcut `..` always refers to the directory above your current directory. So, it prints the contents of the `unix_lesson`. You can chain these together, so:
-
-```bash
-$ ls ../..
-```
-
-prints the contents of `/Users/marypiper/` which is your home directory. 
-
-Finally, the special directory `.` always refers to your current directory. So, `ls`, `ls .`, and `ls ././././.` all do the same thing, they print the contents of the current directory. This may seem like a useless shortcut right now, but we used it earlier when we copied over the data to our home directory.
-
-
-To summarize, while you are in your home directory, the commands `ls ~`, `ls ~/.`, and `ls /Users/marypiper/` all do exactly the same thing. These shortcuts are not necessary, but they are really convenient!
 
 #### Command History
 
@@ -419,84 +372,10 @@ to see a numbered list of recent commands, including this just issues
 
 > Only a certain number of commands are stored and displayed with `history`, there is a way to modify this to store a different number.
 
-**Other handy command-related shortcuts**
-
-- <button>Ctrl + C</button> will cancel the command you are writing, and give you a fresh prompt.
-- <button>Ctrl + A</button> will bring you to the start of the command you are writing.
-- <button>Ctrl + E</button> will bring you to the end of the command.
-
-## Examining Files
-
-We now know how to move around the file system and look at the
-contents of directories, but how do we look at the contents of files?
-
-The easiest way to examine a file is to just print out all of the
-contents using the command `cat`. Print the contents of `unix_lesson/other/sequences.fa` by entering the following command:
-
-```bash
-$ cat ~/unix_lesson/other/sequences.fa
-```
-
-This prints out the all the contents of `sequences.fa` to the screen.
-
-> `cat` stands for catenate; it has many uses and printing the contents of a files onto the terminal is one of them.
-
-What does this file contain?
-
-`cat` is a terrific command, but when the file is really big, it can be annoying to use. The command, `less`, is useful for this case. Let's take a look at the raw_fastq files. These files are quite large, so we probably do not want to use the `cat` command to look at them. Instead, we can use the `less` command. 
-
-Move back to our `raw_fastq` directory and enter the following command:
-
-```bash
-less Mov10_oe_1.subset.fq
-```
-
-We will explore FASTQ files in more detail later, but notice that FASTQ files have four lines of data associated with every sequence read. Not only is there a header line and the nucleotide sequence, similar to a FASTA file, but FASTQ files also contain quality information for each nucleotide in the sequence. 
-
-The `less` command opens the file, and lets you navigate through it. The keys used to move around the file are identical to the `man` command.
-
-<span class="caption">Shortcuts for `less`</span>
-
-| key              | action                 |
-| ---------------- | ---------------------- |
-| <kbd>SPACE</kbd> | to go forward          |
-| <kbd>b</kbd>     | to go backwards        |
-| <kbd>g</kbd>     | to go to the beginning |
-| <kbd>G</kbd>     | to go to the end       |
-| <kbd>q</kbd>     | to quit                |
-
-`less` also gives you a way of searching through files. Just hit the <kbd>/</kbd> key to begin a search. Enter the name of the string of characters you would like to search for and hit enter. It will jump to the next location where that string is found. If you hit <kbd>/</kbd> then <kbd>ENTER</kbd>, `less` will just repeat the previous search. `less` searches from the current location and works its way forward. If you are at the end of the file and search for the word "cat", `less` will not find it. You need to go to the beginning of the file and search.
-
-For instance, let's search for the sequence `GAGACCC` in our file. You can see that we go right to that sequence and can see what it looks like. To exit hit <kbd>q</kbd>.
-
-The `man` command (program) actually uses `less` internally and therefore uses the same keys and methods, so you can search manuals using `/` as well!
-
-There's another way that we can look at files, and in this case, just
-look at part of them. This can be particularly useful if we just want
-to see the beginning or end of the file, or see how it's formatted.
-
-The commands are `head` and `tail` and they just let you look at
-the beginning and end of a file respectively.
-
-```bash
-$ head Mov10_oe_1.subset.fq
-```
-
-```bash
-$ tail Mov10_oe_1.subset.fq
-```
-
-The `-n` option to either of these commands can be used to print the first or last `n` lines of a file. To print the first/last line of the file use:
-
-```bash
-$ head -n 1 Mov10_oe_1.subset.fq
-
-$ tail -n 1 Mov10_oe_1.subset.fq
-```
 
 ## Creating, moving, copying, and removing
 
-Now we can move around in the file structure, look at files, search files, redirect. But what if we want to do normal things like copy files or move them around or get rid of them. Sure we could do most of these things without the command line, but what fun would that be?! Besides it's often faster to do it at the command line, or you'll be on a remote server like Amazon where you won't have another option.
+Now we can move around in the file structure. But what if we want to do normal things like copy files or move them around or get rid of them. Sure we could do most of these things without the command line, but what fun would that be?! Besides it's often faster to do it at the command line, or you'll be on a remote server like Amazon where you won't have another option.
 
 Our raw data in this case is fastq files. We don't want to change the original files, so let's make a copy to work with.
 
@@ -551,7 +430,7 @@ Finally, we decided this was silly and want to start over.
 ```bash
 $ cd ..
 
-$ rm backup/Mov*
+$ rm backup/Mov10_oe_1.subset-backup.fq
 ```
 
 > The `rm` file permanently removes the file. Be careful with this command. The shell doesn't
@@ -594,10 +473,7 @@ rm <file>     # remove a file or a folder (-r)
 ~             # home directory
 .             # current directory
 ..            # parent directory
-*             # wildcard
 ctrl + c      # cancel current command
-ctrl + a      # start of line
-ctrl + e      # end of line
 ```
 
 #### Information on the shell
