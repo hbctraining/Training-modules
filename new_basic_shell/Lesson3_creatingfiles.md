@@ -1,7 +1,7 @@
 
 ## Learning Objectives
 
-* Learn basic operations using the Vim text editor
+* Learn basic operations using the nano text editor
 
 ## Creating text files
 
@@ -19,87 +19,74 @@ But what if we need **a text editor that functions from the command line interfa
 
 Some popular command-line editors include [nano](http://www.nano-editor.org/), [Emacs](http://www.gnu.org/software/emacs/) or [Vim](http://www.vim.org/). These editors are available by default on any shell environment, including on high-performance compute environments (local or cloud).
 
-### Introduction to Vim 
+### Introduction to Nano 
 
-Today, we are going to introduce the text editor 'vim'. It is a powerful text editor with extensive text editing options; however, in this introduction we are going to focus on exploring some of the more basic functions. We hope that after this introduction you will become more comfortable using it and will explore the advanced functionality as needed. 
+Today, we are going to introduce the text editor 'nano'. `nano` often gets a bad rep from hardcore coders but it is simple to use and the most intuitive of the editors.
 
-To help you remember some of the keyboard shortcuts that are introduced below and to allow you to explore additional functionality on your own, we have compiled [a cheatsheet](https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/resources/VI_CommandReference.pdf).
+#### Nano Interface
 
-#### Vim Interface
-
-You can create a document by calling a text editor and providing the name of the document you wish to create. Change directories to the `unix_lesson/other` folder and create a document using `vim` entitled `draft.txt`:
+You can create a document by calling a text editor and providing the name of the document you wish to create. Change directories to the `unix_lesson/other` folder and create a document using `nano` entitled `draft.txt`:
 
 ```bash
 $ cd ~/unix_lesson/other
 	
-$ vim draft.txt
+$ nano draft.txt
 ```
 
-Notice the `"draft.txt" [New File]` typed at the bottom left-hand section of the screen. This tells you that you just created a new file in vim. 
+Now press enter.
 
+#### Nano interface
 
-#### Vim Modes
+You should see this:
 
-Vim has **_two basic modes_** that will allow you to create documents and edit your text:   
+![image](img/nano.png)
 
-- **_command mode (default mode):_** will allow you to save and quit the program (and execute other more advanced commands).  
+This should look quite similar to using a GUI plain text editor. We can see that our file is called draft.txt and our cursor is ready to add text! Let's add some text, copy and paste the following:
 
-- **_insert (or edit) mode:_** will allow you to write and edit text
-
-
-Upon creation of a file, `vim` is automatically in command mode. Let's _change to insert mode_ by typing <kbd>i</kbd>. Notice the `--INSERT--` at the bottom left hand of the screen. 
-
-Now let's type in a few lines of text:
 ```
-While vim offers great functionality, it takes time to get used to get familiar and learn the shortcuts.
+This is my first document.
+This is a draft.
+When I save this file it will be in my "other" folder.
 ```
 
-After you have finished typing, press <kbd>esc</kbd> to enter command mode. Notice the `--INSERT--` disappeared from the bottom of the screen.
+The bottom of the screen tells you common commands that you may need. To **write to file (save)**, type <kbd>ctrl</kbd> <kbd>x</kbd>. The program will ask if you are sure and you can type <kbd>y</kbd> then press <kbd>enter</kbd>.
 
-### Vim Saving and Quitting
-To **write to file (save)**, type <kbd>:w</kbd>. You can see the commands you type in the bottom left-hand corner of the screen. 
+Open up the file again using the same command you used to create the file: `nano draft.txt` **Do not modify the file** close it again with <kbd>ctrl</kbd> <kbd>x</kbd>. How is this different from the first time?
 
-After you have saved the file, the total number of lines and characters in the file will print out at the bottom left-hand section of the screen.
+> If you don't change a file nano will not ask if you are sure to save it.
 
-Alternatively, we can **write to file (save) and quit** all at once. Let's do that by typing <kbd>:wq</kbd>. Now, you should have exited `vim` and returned back to the command prompt.
 
-To edit your `draft.txt` document, open up the file again using the same command you used to create the file: `vim draft.txt`. 
+### Nano Editing
+Create the document `spider.txt` in nano. Copy and paste the text as follows: 
 
-Change into the insert mode and type a few more lines (you can move around the lines of text using the arrows on the keyboard). This time we decide to **quit without saving** by typing <kbd>:q!</kbd>
+```
+The itsy bitsy spider
+Went up the water spout
+Down came the rain
+And washed the spider out.
+```
 
-### Vim Editing
-Create the document `spider.txt` in vim. Enter the text as follows: 
+To make it easier to refer to distinct lines, we can add line numbers by typing reopening the document with 
 
-![image](../img/vim_spider.png)
+```
+nano -c spider.txt
+```
 
-To make it easier to refer to distinct lines, we can add line numbers by typing <kbd>:set number</kbd>. Note that you have to do this in the *command mode*.
+While we cannot point and click to navigate the document, we can use the arrow keys to move around. Navigating with arrow keys can be very slow, so `nano` has shortcuts. You can find some [here](https://www.nano-editor.org/dist/latest/cheatsheet.html) Several of the more common ones are already at the bottom of your document
 
-![image](../img/vim_spider_number.png)
 
-**Save the document.** If you choose to remove the line numbers later you can type <kbd>:set nonumber</kbd>. 
-
-While we cannot point and click to navigate the document, we can use the arrow keys to move around. Navigating with arrow keys can be very slow, so `vim` has shortcuts (which are completely unituitive, but very useful as you get used to them over time). Check to see what mode you are currently in. While in command mode, try moving around the screen and familarizing yourself with some of these shortcuts:    
 
 | key              | action                 |
 | ---------------- | ---------------------- |
-| <button>gg</button>     | to move to top of file |
-| <button>G</button>     | to move to bottom of file     |
-| <button>$</button>     | to move to end of line |
-| <button>0</button>     | to move to beginning of line     |
-
-In addition to shortcuts for navigation, vim also offers editing shortcuts such as:
-
-| key              | action                 |
-| ---------------- | ---------------------- |
-| <button>dd</button>     | to delete line     |
-| <button>u</button>     | to undo |
-| <button>Ctrl + r</button>     | to redo     |
-
+| <button>Ctrl+K</button>     | to cut the current line    |
+| <button>Ctrl+U</button>     | to paste|
+| <button>Alt+U</button>     | to undo the last action    |
+| <button>Alt+E</button>     | to redo the last action|
 *** 
 
 **Exercise**
 
-We have covered some basic commands in `vim`, but practice is key for getting comfortable with the program. Let's
+We have covered some basic commands in `nano`, but practice is key for getting comfortable with the program. Let's
 practice what we just learned in a brief challenge.
 
 1. Open `spider.txt`, and delete line #2.
@@ -107,35 +94,12 @@ practice what we just learned in a brief challenge.
 3. Open `spider.txt` again, go to the last line and delete it. 
 4. Undo your previous deletion.
 5. Redo your previous deletion.
-6. Save the file and see whether your results match your neighbors.
-
-***
-
-### Overview of vim commands
-
-**Vim modes:**
-
-| key              | action                 |
-| ---------------- | ---------------------- |
-| <button>i</button>     | insert mode - to write and edit text |
-| <button>esc</button>     | command mode - to issue commands / shortcuts  |
+6. Save the file and see whether your results below.
 
 
-**Saving and quitting:**
 
-| key              | action                 |
-| ---------------- | ---------------------- |
-| <button>:w</button>     | to write to file (save) |
-| <button>:wq</button>     | to write to file and quit     |
-| <button>:q!</button>     | to quit without saving |
-| <button>:set number</button>     | to display line numbers |
-| <button>:set nonumber</button>     | to not display line numbers |
 
-***
 
-[Next Lesson](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/loops_and_scripts.html)
-
-***
 
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
 
