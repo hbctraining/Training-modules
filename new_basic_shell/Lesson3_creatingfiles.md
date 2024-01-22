@@ -1,3 +1,7 @@
+---
+title: "Nano"
+author: "Emma Berdan, Meeta Mistry"
+---
 
 ## Learning Objectives
 
