@@ -1,6 +1,6 @@
 ---
 title: "Accessing The Shell"
-author: "Sheldon McKay, Mary Piper, Radhika Khetani, Emma Berdan"
+author: "Sheldon McKay, Mary Piper, Radhika Khetani"
 ---
 
 ## Learning Objectives
