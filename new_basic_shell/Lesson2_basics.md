@@ -1,6 +1,6 @@
 ---
 title: "The Shell Basics"
-author: "Sheldon  McKay, Mary Piper, Radhika Khetani, Emma Berdan"
+author: "Sheldon  McKay, Mary Piper, Radhika Khetani"
 ---
 
 ## Learning Objectives
@@ -98,7 +98,7 @@ First we did something like go to the folder of our username. Then we opened `un
 
 Like on any computer you have used before the file structure within unix is hierarchical, like an upside down tree with root (`/`) as the starting point of the tree-like structure:
 
-![Unix](../img/Slide1.jpg)
+![Unix](img/Slide1.jpg)
 
 That root (`/`) is often also called the 'top' level.
 
@@ -406,6 +406,7 @@ rm <file>     # remove a file or a folder (-r)
 ~             # home directory
 .             # current directory
 ..            # parent directory
+*             # wildcard
 ctrl + c      # cancel current command
 ```
 
