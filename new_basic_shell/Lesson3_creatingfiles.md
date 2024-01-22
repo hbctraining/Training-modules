@@ -2,6 +2,7 @@
 ## Learning Objectives
 
 * Learn basic operations using the nano text editor
+* Learn different methods for viewing files without using an editor.
 
 ## Creating text files
 
@@ -66,64 +67,63 @@ Down came the rain
 And washed the spider out.
 ```
 
-To make it easier to refer to distinct lines, we can add line numbers by typing reopening the document with 
+To make it easier to refer to distinct lines, we can add line numbers by typing reopening the document with:
 
 ```
 nano -c spider.txt
 ```
 
-While we cannot point and click to navigate the document, we can use the arrow keys to move around. Navigating with arrow keys can be very slow, so `nano` has shortcuts. You can find some [here](https://www.nano-editor.org/dist/latest/cheatsheet.html) Several of the more common ones are already at the bottom of your document
+While we cannot point and click to navigate the document, we can use the arrow keys to move around. Navigating with arrow keys can be very slow, so `nano` has shortcuts. You can find some [here]([https://www.nano-editor.org/dist/latest/cheatsheet.html](https://www.unomaha.edu/college-of-information-science-and-technology/computer-science-learning-center/_files/resources/CSLC-Helpdocs-Nano.pdf)) Several of the more common ones are already at the bottom of your document.
 
+**NOTE: If you are using a Mac you must change your terminal preferences in order to use the option button as an alt button. Go to: Terminal preferences -> profiles -> (click keyboard button) -> select "Use Option as Meta key"**
 
 
 | key              | action                 |
 | ---------------- | ---------------------- |
-| <button>Ctrl+K</button>     | to cut the current line    |
-| <button>Ctrl+U</button>     | to paste|
-| <button>Alt+U</button>     | to undo the last action    |
-| <button>Alt+E</button>     | to redo the last action|
+| <button>Ctrl+k</button>     | to cut the current line    |
+| <button>Ctrl+u</button>     | to paste|
+
 *** 
 
 **Exercise**
 
-We have covered some basic commands in `nano`, but practice is key for getting comfortable with the program. Let's
-practice what we just learned in a brief challenge.
+We have covered some basic commands in `nano`, but practice is key for getting comfortable with the program. Let's practice what we just learned in a brief challenge.
 
 1. Open `spider.txt`, and delete line #2.
 2. Quit without saving.
 3. Open `spider.txt` again, go to the last line and delete it. 
-4. Undo your previous deletion.
-5. Redo your previous deletion.
-6. Save the file and see whether your results below.
+4. Save the file and see whether your results below.
 
-
-
-
-
-
-*This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
-
-
+<details>
+  <summary>Answer</summary>
+  <p><pre>
+The itsy bitsy spider
+Went up the water spout
+Down came the rain
+  </pre></p>
+</details>
 
 ## Examining Files
 
 We now know how to move around the file system and look at the
-contents of directories, but how do we look at the contents of files?
+contents of directories, and create but how do we look at the contents of files? Obviously we could open files up with `nano` but there <i>MUST</i> be a better way!
 
-The easiest way to examine a file is to just print out all of the
-contents using the command `cat`. Print the contents of `unix_lesson/other/sequences.fa` by entering the following command:
+You are learning to use the cluster because you will be working with large files. The way you look at a file depends on if it is a short or long file!
+
+The easiest way to examine **a SHORT file** is to just print out all of the
+contents using the command `cat`. Print the contents of `spider.txt` by entering the following command:
 
 ```bash
-$ cat ~/unix_lesson/other/sequences.fa
+$ cat spider.txt
 ```
 
-This prints out the all the contents of `sequences.fa` to the screen.
+This prints out the all the contents of `spider.txt` to the screen.
 
 > `cat` stands for catenate; it has many uses and printing the contents of a files onto the terminal is one of them.
 
-What does this file contain?
+`spider.txt` is all of 3 lines. When you have a 100000 line file you hardly want to print the entire thing to screen (and it can take a while!)
 
-`cat` is a terrific command, but when the file is really big, it can be annoying to use. The command, `less`, is useful for this case. Let's take a look at the raw_fastq files. These files are quite large, so we probably do not want to use the `cat` command to look at them. Instead, we can use the `less` command. 
+For large files he command, `less`, can be useful. Let's take a look at the raw_fastq files. These files are quite large, so we probably do not want to use the `cat` command to look at them. Instead, we can use the `less` command. 
 
 Move back to our `raw_fastq` directory and enter the following command:
 
@@ -133,8 +133,7 @@ less Mov10_oe_1.subset.fq
 
 We will explore FASTQ files in more detail later, but notice that FASTQ files have four lines of data associated with every sequence read. Not only is there a header line and the nucleotide sequence, similar to a FASTA file, but FASTQ files also contain quality information for each nucleotide in the sequence. 
 
-The `less` command opens the file, and lets you navigate through it. The keys used to move around the file are identical to the `man` command.
-
+The `less` command opens the file, and lets you navigate through it. 
 <span class="caption">Shortcuts for `less`</span>
 
 | key              | action                 |
@@ -149,8 +148,6 @@ The `less` command opens the file, and lets you navigate through it. The keys us
 
 For instance, let's search for the sequence `GAGACCC` in our file. You can see that we go right to that sequence and can see what it looks like. To exit hit <kbd>q</kbd>.
 
-The `man` command (program) actually uses `less` internally and therefore uses the same keys and methods, so you can search manuals using `/` as well!
-
 There's another way that we can look at files, and in this case, just
 look at part of them. This can be particularly useful if we just want
 to see the beginning or end of the file, or see how it's formatted.
@@ -161,3 +158,14 @@ the beginning and end of a file respectively.
 ```bash
 $ head Mov10_oe_1.subset.fq
 ```
+
+
+```bash
+$ tail Mov10_oe_1.subset.fq
+```
+
+
+
+
+
+*This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
