@@ -1,5 +1,5 @@
 ---
-title: "The Shell"
+title: "Accessing The Shell"
 author: "Sheldon McKay, Mary Piper, Radhika Khetani, Emma Berdan"
 ---
 
