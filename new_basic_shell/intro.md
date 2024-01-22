@@ -31,7 +31,7 @@ Many data analysis tools and computational resources require users to have a bas
 |[Why Bash?]() | 15 min |
 |[Acessing the Shell](Lesson1_Acesssingtheshell.md) | 15 min |
 |[Moving around and basics](Lesson2_basics.md) | 45 min |
-|[Creating Files and Searching]() | 45 min |
+|[Creating Files and Searching](Lesson3_creatingfiles.md) | 45 min |
 |[Shell Scripts]() | 15 min |
 |[Preview of other modules]() | 15 min |
 
