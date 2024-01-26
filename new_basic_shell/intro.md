@@ -13,13 +13,13 @@ Many data analysis tools and computational resources require users to have a bas
 
 ### Learning Objectives
 
-*  **Accessing the bash shell:** Understanding how to start up the command-line interface
-*  **Navigating the file directory:** Recognizing the organization of the file directory and exploring the folders/files
-*  **Performing file operations:** Understanding ways to manipulate files, such as moving, copying, and renaming files
-*  **Exploring file contents:** Learning how to look at the contents of files
-*  **Finding help:** Utilizing resources to determine how to specify desired commands
-*  **Searching files:** Practicing searching for patterns within files
-*  **Redirecting output:** Using redirection operators to create new files, append contents to an already existing file, and combining commands together
+*  **Recognize the importance of bash in the analysis of high throughput sequencing (HTS) data**
+*  **Install and locate the programs necessary for accessing the command line** 
+*  **Describe the organization of the file directory and how to move through it**
+*  **Demonstrate different ways to manipulate files, such as moving, copying, and renaming**
+*  **Write and edit new or existing files with nano**
+*  **Select the proper command for examining small or large files**
+*  **Contrast shell scripts with direct commands and explain the different parts of a shell script** 
 
 > These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
 
