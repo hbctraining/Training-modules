@@ -2,24 +2,27 @@
 
 | Audience | Computational skills required | Duration |
 :----------|:----------|:----------|
-| Biologists | None | 3-hour workshop (~3 hours of trainer-led time)|
+| Biologists | None | 2-3 hour workshop (~3 hours of trainer-led time)|
 
 
 ### Description
 
-This repository has teaching materials for a **3 hour**, hands-on **Introduction to the command-line interface** workshop led at a relaxed pace. 
+This repository has teaching materials for a **2-3 hour**, hands-on **Introduction to the command-line interface** workshop led at a relaxed pace. 
 
-Many data analysis tools and computational resources require users to have a basic working knowledge of the command line interface (also referred to as *UNIX, Linux, bash, shell*). In this workshop participants will learn basic commands for navigating the file system, exploring file contents, and performing basic operations, such as moving, copying, and renaming files/folders. 
 
 ### Learning Objectives
 
-*  **Recognize the importance of bash in the analysis of high throughput sequencing (HTS) data**
-*  **Install and locate the programs necessary for accessing the command line** 
-*  **Describe the organization of the file directory and how to move through it**
-*  **Demonstrate different ways to manipulate files, such as moving, copying, and renaming**
-*  **Write and edit new or existing files with nano**
+* Recognize the importance of bash in the analysis of high throughput sequencing (HTS) data
+* Install and locate the software/tools necessary for accessing the command line
+*  Describe the organization of the file directory and how to move through it
+*  Demonstrate different ways to manipulate files, such as moving, copying, and renaming
+*  Create existing files with nano, and make edits to existing files
+*  Contrast shell scripts with direct commands
+*  Describe the different parts of a shell script?
+
+*  
 *  **Select the proper command for examining small or large files**
-*  **Contrast shell scripts with direct commands and explain the different parts of a shell script** 
+* 
 
 > These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
 
