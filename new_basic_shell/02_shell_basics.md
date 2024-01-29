@@ -1,13 +1,13 @@
 ---
 title: "The Shell Basics"
-author: "Sheldon  McKay, Mary Piper, Radhika Khetani"
+author: "Sheldon  McKay, Mary Piper, Radhika Khetani, Emma Berdan"
 ---
 
 ## Learning Objectives
 - How do you use the shell?
   - Getting around the Unix file system
-  - looking at files
-  - manipulating files
+  - Looking at files
+  - Manipulating files
 
 ### Exploring the data directory
 
@@ -31,7 +31,7 @@ You will see:
 genomics_data  other  raw_fastq  README.txt  reference_data
 ```
 
-There are five items listed. What types of files are they? We can use a "modifier" with `ls` to get more information; this modifier is called an argument (more below).
+There are five items listed. **What types of files are they?** We can use a "modifier" with `ls` to get more information; this modifier is called an argument (more below).
 
 ```bash
 $ ls -F
@@ -49,7 +49,8 @@ You can also use the command:
 $ ls -l
 ```
 
-to see whether items in a directory are files or directories. `ls -l` gives a lot more information too.
+To see whether items in a directory are files or directories. `ls -l` gives a lot more information too. The `-l` stands for long listing.
+
 ```
 total 124
 drwxrwsr-x 2 mp298 mp298  78 Sep 30 10:47 genomics_data
@@ -83,7 +84,7 @@ Most commonly used shell commands a help page accessible by typing the command a
 $ ls --help
 ```
 
-> If you are still having problems use your web searching powers to get it! In addition to the arguments, you can also find good examples online; Google is your friend.
+> If you are still having problems, use your web searching powers to get it! In addition to the arguments, you can also find good examples online; Google is your friend.
 
 
 ## The Unix directory file structure (a.k.a. where am I?)
@@ -167,7 +168,7 @@ $ pwd
 
 You should now be in `raw_fastq` and you got there without having to go through the intermediate directory. 
 
-> If you are aware of the directory structure, you can string together as long a list as you like.
+> If you are aware of the directory structure, you can string together as long a list as you like. However, once you get past a certain number of `..` it's almost easier if you just have a full path written.
 
 
 ****
@@ -389,14 +390,9 @@ $ rm -ri backup_ref_data/ backup_fastq/
 
 cd            # change directory to "~" or to specified directory
 ls            # list contents of current or specified directory
-man <command> # display manual for specified command
 pwd           # specify present working directory
 echo "..."    # display content in quotes on the standard output
 history       # display previous "historical" commands
-cat <file>    # display all contents of a file on the standard output
-less <file>   # open a buffer with the contents of a file
-head <file>   # display the first 10 lines of a file
-tail <file>   # display the last 10 lines of a file
 cp <..> <..>  # copy files or directories
 mkdir         # make a new directory/folder
 mv <..> <..>  # move or rename files or directories
@@ -410,26 +406,7 @@ rm <file>     # remove a file or a folder (-r)
 ctrl + c      # cancel current command
 ```
 
-#### Information on the shell
 
-shell cheat sheets:<br>
-* [http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/](http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/)
-* [https://github.com/swcarpentry/boot-camps/blob/master/shell/shell_cheatsheet.md](https://github.com/swcarpentry/boot-camps/blob/master/shell/shell_cheatsheet.md)
-
-Explain shell - a web site where you can see what the different components of
-a shell command are doing.  
-* [http://explainshell.com](http://explainshell.com)
-* [http://www.commandlinefu.com](http://www.commandlinefu.com)
-
-Software Carpentry tutorial: [The Unix shell](https://swcarpentry.github.io/shell-novice/)
-
-General help:
-- http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
-- man bash
-- Google - if you don't know how to do something, try Googling it. Other people
-have probably had the same question.
-- Learn by doing. There's no real other way to learn this than by trying it
-out.  
 
 ***
 
