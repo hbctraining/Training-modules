@@ -13,7 +13,7 @@ Approximate time: 20 minutes
 
 ## Shell scripts
 
-By this point in the module you have been introduced to a number of commands to explore your data. To demonstrate the function of each command we have run them one at a time at the command prompt. The command prompt is useful for testing out commands and also performing simple tasks like exploring and organizing the file system. When we are running analyses which require a series of tasks to be run, there is a more efficent way to do this using shell scripts. 
+By this point in the module you have been introduced to a number of commands to explore your data. To demonstrate the function of each command we have run them one at a time at the command prompt. The command prompt is useful for testing out commands and also performing simple tasks like exploring and organizing the file system. When we are **running analyses which require a series of tasks to be run**, there is a more efficent way to do this using **shell scripts**. 
 
 Shell scripts are **text files that contain commands we want to run**. Here we will introduce you to shell scripts by providing a simple example. 
 
@@ -22,7 +22,8 @@ Shell scripts are **text files that contain commands we want to run**. Here we w
 
 We are finally ready to see what makes the shell such a powerful programming environment. To create our first script, we are going to take some of the commands we have run previously and save them into a file so that we can **re-run all those operations** again later, by typing just **one single command**. For historical reasons, a bunch of commands saved in a file is referred to as shell script, but make no mistake, this is actually a small program! 
 
-Interestingly, when working with Shell or on the command line you can give files any (or no) extension (.txt, .tsv, .csv, etc.). Similarly, for a shell script you don't need a specific extension. However, it is best practice to give shell scripts the extension `.sh`. This is helpful to your future self and your collaborators to identify that a given file is a shell script.
+#### File extension for shell scripts
+Interestingly, when working with Shell or on the command line you can give files any (or no) extension (.txt, .tsv, .csv, etc.). Similarly, for a shell script you *don't need a specific extension*. However, it is **best practice to give shell scripts the extension `.sh`**. This is helpful to your future self and your collaborators to identify that a given file is a shell script.
 
 Move over to the `other` directory and create a new file using `vim`. We will call our script `listing.sh`:
 
@@ -31,31 +32,64 @@ $ cd ~/unix_lesson/other
 $ nano listing.sh
 ```
 
+#### Adding commands to our script
+
 This shell script will do two things:
 
 1. Tell us our current working directory
 2. List the contents of the directory 
 
-We start with a shebang! line which tells the computer to use the bash interpreter to run this script.
-
-
-```bash
-#!/bin/bash
-```
-
-
-We already know the commands for doing both of these things so let's add the 2 commands into our script below the shebang line:
+We already know the commands for doing both of these things so let's add the 2 commands into our script, with a comment for each:
 
 ```bash
-#!/bin/bash
-
+# Print working directory
 pwd
+
+# List contents of the directory
 ls -l 
 ```
 
-Now, we could save and quit and this shell script would run perfectly fine. But, we will add some verbosity to our script by using the `echo` command (verbosity is a good thing here!). The `echo` command is used to display a line of text that is passed in as an argument. This is a bash command that is mostly used in shell scripts to output status to the screen or to a file. 
+Now, let's save and quit this shell script. This should bring you back to the command prompt. Check and see that the new script file you created is in this directory:
 
-Place the following `echo` statements on the lines before each of the commands:
+```bash
+$ ls -l
+```
+
+#### Running our script
+
+To run the shell script you can use the `bash` or `sh` command, followed by the name of your script:
+
+```bash
+$ sh listing.sh
+```
+
+_Did it work as you expected? Do you see the output printed to your console?_
+
+### Best practices for shell scripts
+
+This is a very simple shell script, just to introduce you to the concept. Before we jump into more scripts which better demonstrate their utility, we will take a moment to cover a few adjustments we would make to our script which we consider best practice when writing shell scripts.
+
+#### Shebang!
+
+Open up the script with `nano`. At the beginning of our script we are going to add what is called a **shebang line**.
+
+```bash
+ #!/bin/bash
+```
+
+This line is the **absolute path to the Bash interpreter**. The shebang line ensures that the bash shell interprets the script even if it is executed using a different shell.
+
+**Why do I need a shebang line? My scripts ran perfectly well before without it.**
+
+Having a shebang line is best practice. Your script runs fine without it, because in our current environment bash is the default shell. We mentioned previously that there are various flavors of the shell, and if your system defaults to something other than bash the script will not work. To avoid any issues, we explicitly state that this script needs to executed using the bash shell.
+
+#### Adding verbosity
+
+Our example script is quite short, and therefore is quick to run. In practice your scripts will be longer, and probably more computationall intensive. In these situations it would be great to have some report of what your script is doing as it works through the commands. This is also super useful when troubleshooting.
+
+An easy way to add verbosity is to **use the `echo` command**. The `echo` command is used to display a line of text that is passed in as an argument. This is a bash command that is mostly used in shell scripts to output status to the screen or to a file. 
+
+We can include an `echo` statement for each command that we are running in our script:
 
 ```bash
 #!/bin/bash
@@ -65,13 +99,12 @@ pwd
 
 echo "These are the contents of this directory:"
 ls -l 
+
 ```
 
-Now we are all set! Check and see that the new script file you created is in this directory:
+Save your script and quit `nano`. Try running this script and see how our edits impact the output!
 
-```bash
-$ ls -l
-```
+
 
 >We want to take a step back here and think about what we might do from here to actually use our script. 
 >We know our script is a bash script because we wrote our "shebang" line '#!/bin/bash' but the computer 
