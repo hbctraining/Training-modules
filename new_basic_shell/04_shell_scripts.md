@@ -57,7 +57,7 @@ $ ls -l
 
 #### Running our script
 
-To run the shell script you can use the `bash` or `sh` command, followed by the name of your script:
+The `bash` command is typically used to start a new Bash shell session. However, if you provide it an argument, it treats that argument as the name of a script file to be run. To run the shell script you can use the `bash` command, or a short form of it, the `sh` command, followed by the name of your script:
 
 ```bash
 $ sh listing.sh
@@ -104,34 +104,46 @@ ls -l
 
 Save your script and quit `nano`. Try running this script and see how our edits impact the output!
 
+> _Were the `echo` commands helpful in letting you know what came next?_
+
+***
+
+**Exercise**
+
+1. Open up the script `listing.sh` using vim. Add the command which prints to screen the contents of the file `Mov10_rnaseq_metadata.txt`.
+2. Add an echo statement for the command, which tells the user "This is information about the files in our dataset:"
+3. Run the new script. Report the contents of the new script and the output you got after running it.
+
+	<details>
+		<summary><b><i>Answers</i></b></summary>
+		<p><i>Question 1</i><br>
+		Add this command to <code>listing.sh</code> using vim:<br>
+		<code>cat Mov10_rnaseq_metadata.txt</code></p>
+		<p><i>Question 2</i><br>
+		Add this command to <code>listing.sh</code> using vim:<br>
+		<code>echo "This is information about the files in our dataset:"</code></p>
+		<p><i>Question 3</i><br>
+		<code>sh listing.sh</code></p>
+		<p><pre> Your current working directory is:
+	/home/mm573/unix_lesson/other
+	These are the contents of this directory:
+	total 240
+	-rw-rw-r-- 1 mm573 mm573  346 Sep 30 12:47 directory_info.sh
+	-rw-rw-r-- 1 mm573 mm573  193 Oct  5 14:53 listing.sh
+	-rw-rw-r-- 1 mm573 mm573   93 Sep 30 10:40 Mov10_rnaseq_metadata.txt
+	-rw-r--r-- 1 mm573 mm573 1057 Sep 30 10:40 sequences.fa
+	-rw-rw-r-- 1 mm573 mm573   48 Oct  5 14:49 spider.txt
+	This is information about the files in our dataset:
+	sample	celltype
+	OE.1	Mov10_oe
+	OE.2	Mov10_oe
+	OE.3	Mov10_oe
+	IR.1	normal
+	IR.2	normal
+	IR.3	normal</pre>
+	</details>
 
 
->We want to take a step back here and think about what we might do from here to actually use our script. 
->We know our script is a bash script because we wrote our "shebang" line '#!/bin/bash' but the computer 
->doesn't automatically know this. One option is to run this script via the bash interpreter: sh. Doing this 
->actually makes our "shebang" line obsolete! The same script without the "shebang" line will still run!! Try it!
->
->`sh listing.sh`
->
->Here we are telling the computer to use bash to execute the commands in our script which is why we don't 
->need the "shebang" line. It is **NOT** best practice to write scripts without "shebang" lines as removing this
->will leave the next person scratching their head figuring out which language the script is in. 
->**ALWAYS ALWAYS ALWAYS use a "shebang" line**. With that line in place, we can run this script without 
->calling bash from the command line. But first we have to make the script executable. This tells the 
->computer that this is a script and not just a text file. We do that by adding file permission.
->Typing chmod u+x will make the file executable for the user (you!), once this is done the script 
->can be run this way
->
->`./listing.sh`
->
->When a file is executable the computer will use the "shebang" line to figure out which interpreter to use. 
->Different programs (perl, python, etc) will have different "shebang" lines.
-To run the shell script you can use the `bash` or `sh` command, followed by the name of your script:
-
-
-> **Were the `echo` commands helpful in letting you know what came next?**
-
-This is a very simple shell script, just to introduce you to the concept. As you move forward you will write much more complex scripts.
 
 ***
 
