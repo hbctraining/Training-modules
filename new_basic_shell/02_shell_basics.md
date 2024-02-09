@@ -4,10 +4,8 @@ author: "Sheldon  McKay, Mary Piper, Radhika Khetani, Emma Berdan"
 ---
 
 ## Learning Objectives
-- How do you use the shell?
-  - Getting around the Unix file system
-  - Looking at files
-  - Manipulating files
+- Describe the organization of the file directory and how to move through it
+- Demonstrate different ways to manipulate files, such as moving, copying, and renaming
 
 ### Exploring the data directory
 
@@ -39,7 +37,7 @@ $ ls -F
 genomics_data/  other/  raw_fastq/  README.txt  reference_data/
 ```
 
-Anything with a forward slash `/` after it is a directory. Things with an asterik `*` after them are programs.  If there are no decorations after the name, it's a file.
+The -F argument is the 'classify' argument. Anything with a forward slash `/` after it is a directory. Things with an asterik `*` after them are programs.  If there are no decorations after the name, it's a file.
 
 > All commands are essentially programs that are able to perform specific, commonly-used tasks.
 
