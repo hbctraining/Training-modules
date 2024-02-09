@@ -17,7 +17,7 @@ This repository has teaching materials for a **2-3 hour**, hands-on **Introducti
 *  Describe the organization of the file directory and how to move through it
 *  Demonstrate different ways to manipulate files, such as moving, copying, and renaming
 *  Compare different commands for examining small or large files
-*  Create existing files with nano, and make edits to existing files
+*  Create new files and make edits to existing files with nano
 *  Contrast shell scripts with direct commands
 
 
