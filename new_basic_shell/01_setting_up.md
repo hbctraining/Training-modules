@@ -4,7 +4,6 @@ author: "Sheldon McKay, Mary Piper, Radhika Khetani, Emma Berdan"
 ---
 
 ## Learning Objectives
-- Understand what the shell is
 - Install and locate the software/tools necessary for accessing the command line
 
 
