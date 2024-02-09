@@ -113,7 +113,7 @@ Type:
 $ cd
 ```
 
-> This puts you in your home directory. No matter where you are in the directory system, `cd` will always bring you back to your home directory.
+> This puts you in your home directory. No matter where you are in the directory system, `cd` by itself will always bring you back to your home directory.
 
 
 Now using `cd` and `ls`, go in to the `unix_lesson` directory and list its contents. Now go into the `raw_fastq` directory, and list its contents.
