@@ -76,12 +76,22 @@ All six items in this directory have no trailing slashes, so they are all files,
 
 Most commands take additional arguments that control their exact behavior. For example, `-F` and `-l` are arguments to `ls`.  The `ls` command, like many commands, take a lot of arguments. Another useful one is `-a`, which shows everything, including hidden files.  How do we know what the available arguments that go with a particular command are?
 
-Most commonly used shell commands a help page accessible by typing the command and then `--help` (sometimes also `-h`). Try entering:
+Most commonly used shell commands have a manual available in the shell. You can access the manual using the man command. Try entering:
 
 ```bash
-$ ls --help
+$ man ls
 ```
 
+This will open the manual page for ls. Use the 'space' key to go forward and 'b' to go backwards. When you are done reading, just hit q to quit.
+
+> **Other ways to get help**
+>
+> In addition to the man page, many commands also include a help page accessible by typing the command and then `--help` (sometimes also `-h`). Try entering:
+>
+>```bash
+>$ ls --help
+>```
+>
 > If you are still having problems, use your web searching powers to get it! In addition to the arguments, you can also find good examples online; Google is your friend.
 
 
@@ -204,7 +214,7 @@ earlier that the command:
 $ cd unix_lesson/raw_fastq/
 ```
 
-had the same effect - it took us to the `raw_fastq` directory. But, instead of specifying the full path (`/Users/marypiper/unix_lesson/raw_fastq`), we specified a *relative path*. In other words, we specified the path **relative to our current working directory**. 
+had the same effect - it took us to the `raw_fastq` directory. But, instead of specifying the full path (`/Users/marypiper/unix_lesson/raw_fastq`), we specified a *relative path*. In other words, we specified the path **relative to our current working directory**. This relative path would not work if we were in a different folder (one which did not contain unix_lesson/raw_fastq within it). The full path will always work no matter where you are in your directory.
 
 **A full path always starts with a `/`, a relative path does not.**
 
@@ -311,7 +321,7 @@ Now we can move around in the file structure. But what if we want to do normal t
 
 Our raw data in this case is fastq files. We don't want to change the original files, so let's make a copy to work with.
 
-Lets copy the file using the copy `cp` command. Navigate to the `raw_fastq` directory and enter:
+Lets copy the file using the copy `cp` command. The usage for this command is `cp source_file destination`. Navigate to the `raw_fastq` directory and enter:
 
 ```bash
 $ cp Mov10_oe_1.subset.fq Mov10_oe_1.subset-copy.fq
@@ -332,7 +342,7 @@ $ mkdir backup
 
 > File/directory/program names with spaces in them do not work in unix, use characters like hyphens or underscores instead.
 
-We can now move our backed up file in to this directory. We can move files around using the command `mv`. Enter this command:
+We can now move our backed up file in to this directory. We can move files around using the command `mv`. The usage for this command is `mv source_file destination` (look familiar? It's the same format as the cp command!). Enter this command:
 
 ```bash
 $ mv *copy.fq backup
