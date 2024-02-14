@@ -29,7 +29,9 @@ You will see:
 genomics_data  other  raw_fastq  README.txt  reference_data
 ```
 
-There are five items listed. **What types of files are they?** We can use a "modifier" with `ls` to get more information; this modifier is called an argument (more below).
+There are five items listed. **What types of files are they?** 
+
+We can use a "modifier" with `ls` to get more information; this modifier is called an argument (more below).
 
 ```bash
 $ ls -F
@@ -37,7 +39,7 @@ $ ls -F
 genomics_data/  other/  raw_fastq/  README.txt  reference_data/
 ```
 
-The -F argument is the 'classify' argument. Anything with a forward slash `/` after it is a directory. Things with an asterik `*` after them are programs.  If there are no decorations after the name, it's a file.
+The `-F` argument is the 'classify' argument. Anything with a forward slash `/` after it is a directory. Things with an asterik `*` after them are programs.  If there are no decorations after the name, it's a file.
 
 > All commands are essentially programs that are able to perform specific, commonly-used tasks.
 
@@ -76,13 +78,13 @@ All six items in this directory have no trailing slashes, so they are all files,
 
 Most commands take additional arguments that control their exact behavior. For example, `-F` and `-l` are arguments to `ls`.  The `ls` command, like many commands, take a lot of arguments. Another useful one is `-a`, which shows everything, including hidden files.  How do we know what the available arguments that go with a particular command are?
 
-Most commonly used shell commands have a manual available in the shell. You can access the manual using the man command. Try entering:
+Most commonly used shell commands have a manual available in the shell. You can access the manual using the `man` command. Try entering:
 
 ```bash
 $ man ls
 ```
 
-This will open the manual page for ls. Use the 'space' key to go forward and 'b' to go backwards. When you are done reading, just hit q to quit.
+This will open the manual page for ls. Use the <kbd>SPACE</kbd> key to go forward and <kbd>b</kbd> to go backwards. When you are done reading, just hit <kbd>q</kbd> to quit.
 
 > **Other ways to get help**
 >
