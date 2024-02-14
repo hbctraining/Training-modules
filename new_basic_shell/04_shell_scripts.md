@@ -105,21 +105,6 @@ Save your script and quit `nano`. Try running this script and see how our edits 
 
 _Were the `echo` commands helpful in letting you know what came next?_
 
-> ### Running the shell script as an executable
-> With the shebang line in place, we can run our script without calling bash from the command line. But first we have to make the script executable. By making a script executable, it tells the computer that this is a script and not just a text file.
->
-> **How  do we make a file executable?** We do this by modifying file permissions (a topic that will be covered in depth later in the module series). Typing `chmod u+x` will make the file executable for the user (you!)
->
-> ```bash
-> chmod u+x listing.sh
-> ```
->
-> Now we can run the script in this way:
->
-> ```bash
-> ./listing.sh
-> ```
-
 
 ***
 
