@@ -12,13 +12,13 @@ This repository has teaching materials for a **2-3 hour**, hands-on **Introducti
 
 ### Learning Objectives
 
-* Recognize the importance of bash in the analysis of high throughput sequencing (HTS) data
+* Recognize the importance of shell in the analysis of high throughput sequencing (HTS) data
 * Install and locate the software/tools necessary for accessing the command line
-*  Describe the organization of the file directory and how to move through it
-*  Demonstrate different ways to manipulate files, such as moving, copying, and renaming
-*  Compare different commands for examining small or large files
-*  Create new files and make edits to existing files with nano
-*  Contrast shell scripts with direct commands
+* Describe the organization of the file directory and how to move through it
+* Demonstrate different ways to manipulate files, such as moving, copying, and renaming
+* Compare different commands for examining small or large files
+* Create new files and make edits to existing files with nano
+* Contrast shell scripts with direct commands
 
 
 > These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
@@ -28,7 +28,7 @@ This repository has teaching materials for a **2-3 hour**, hands-on **Introducti
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Why Bash?]() | 15 min |
+|[Why Shell?]() | 15 min |
 |[Acessing the Shell](Lesson1_Acesssingtheshell.md) | 15 min |
 |[Moving around and basics](Lesson2_basics.md) | 45 min |
 |[Creating Files and Searching](Lesson3_creatingfiles.md) | 45 min |
