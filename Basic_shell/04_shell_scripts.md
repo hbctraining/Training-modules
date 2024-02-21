@@ -47,6 +47,7 @@ pwd
 # List contents of the directory
 ls -l 
 ```
+**Note:** Comments are always preceded by `#` which tells the computer not to execute that line. Comments are really helpful for keeping track of what different commands are doing. Best practice is to always comment your scripts!
 
 Now, let's save and quit this shell script. This should bring you back to the command prompt. Check and see that the new script file you created is in this directory:
 
