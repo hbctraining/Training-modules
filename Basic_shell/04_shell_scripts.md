@@ -80,7 +80,7 @@ This line is the **absolute path to the Bash interpreter**. The shebang line ens
 
 **Why do I need a shebang line? My scripts ran perfectly well before without it.**
 
-Having a shebang line is best practice. Your script runs fine without it, because in our current environment bash is the default shell. We mentioned previously that there are various flavors of the shell, and if your system defaults to something other than bash the script will not work. To avoid any issues, we explicitly state that this script needs to executed using the bash shell.
+Having a shebang line is best practice. Your script runs fine without it, because we call our script with the command `sh listing.sh`, the sh part tells the computer to use bash to interpret the script. However, we will not always use sh to call our scripts and different programs (perl, python, etc) will have different shebang lines. To avoid any issues, it is best practice to add a shebang line to tell the bash shell which interpreter to use.
 
 #### Adding verbosity
 
