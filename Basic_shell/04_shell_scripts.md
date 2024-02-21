@@ -24,7 +24,7 @@ We are finally ready to see what makes the shell such a powerful programming env
 #### File extension for shell scripts
 Interestingly, when working with Shell or on the command line you can give files any (or no) extension (.txt, .tsv, .csv, etc.). Similarly, for a shell script you *don't need a specific extension*. However, it is **best practice to give shell scripts the extension `.sh`**. This is helpful to your future self and your collaborators to identify that a given file is a shell script.
 
-Move over to the `other` directory and create a new file using `vim`. We will call our script `listing.sh`:
+Move over to the `other` directory and create a new file using `nano`. We will call our script `listing.sh`:
 
 ```bash
 $ cd ~/unix_lesson/other
@@ -56,7 +56,7 @@ $ ls -l
 
 #### Running our script
 
-The `bash` command is typically used to start a new Bash shell session. However, if you provide it an argument, it treats that argument as the name of a script file to be run. To run the shell script you can use the `bash` command, or a short form of it, the `sh` command, followed by the name of your script:
+The `bash` command invokes the default shell. However, if you provide it an argument, it treats that argument as the name of a script file to be run. To run the shell script you can use the `bash` command, or a short form of it, the `sh` command, followed by the name of your script:
 
 ```bash
 $ sh listing.sh
@@ -80,7 +80,7 @@ This line is the **absolute path to the Bash interpreter**. The shebang line ens
 
 **Why do I need a shebang line? My scripts ran perfectly well before without it.**
 
-Having a shebang line is best practice. Your script runs fine without it, because we call our script with the command `sh listing.sh`, the sh part tells the computer to use bash to interpret the script. However, we will not always use sh to call our scripts and different programs (perl, python, etc) will have different shebang lines. To avoid any issues, it is best practice to add a shebang line to tell the bash shell which interpreter to use.
+Having a shebang line is best practice. Your script runs fine without it, because we call our script with the command `sh listing.sh`, the sh part tells the computer to use the default shell (bash) to interpret the script. However, we will not always use sh to call our scripts and different programs (perl, python, etc) will have different shebang lines. To avoid any issues, it is best practice to add a shebang line to tell the bash shell which interpreter to use.
 
 #### Adding verbosity
 
