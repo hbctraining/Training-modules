@@ -137,7 +137,7 @@ These files are quite large, so we probably do not want to use the `cat` command
 less Mov10_oe_1.subset.fq
 ```
 
-We will explore FASTQ files in more detail later, but notice that FASTQ files have four lines of data associated with every sequence read. Not only is there a header line and the nucleotide sequence, similar to a FASTA file, but FASTQ files also contain quality information for each nucleotide in the sequence. 
+FASTQ files have four lines of data associated with every sequence read. Not only is there a header line and the nucleotide sequence, similar to a FASTA file, but FASTQ files also contain quality information for each nucleotide in the sequence. 
 
 The `less` command opens the file, and lets you navigate through it. 
 <span class="caption">Shortcuts for `less`</span>
