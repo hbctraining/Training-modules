@@ -110,17 +110,17 @@ _Were the `echo` commands helpful in letting you know what came next?_
 
 **Exercise**
 
-1. Open up the script `listing.sh` using vim. Add the command which prints to screen the contents of the file `Mov10_rnaseq_metadata.txt`.
+1. Open up the script `listing.sh` using nano. Add the command which prints to screen the contents of the file `Mov10_rnaseq_metadata.txt`.
 2. Add an echo statement for the command, which tells the user "This is information about the files in our dataset:"
 3. Run the new script. Report the contents of the new script and the output you got after running it.
 
 	<details>
 		<summary><b><i>Answers</i></b></summary>
 		<p><i>Question 1</i><br>
-		Add this command to <code>listing.sh</code> using vim:<br>
+		Add this command to <code>listing.sh</code> using nano:<br>
 		<code>cat Mov10_rnaseq_metadata.txt</code></p>
 		<p><i>Question 2</i><br>
-		Add this command to <code>listing.sh</code> using vim:<br>
+		Add this command to <code>listing.sh</code> using nano:<br>
 		<code>echo "This is information about the files in our dataset:"</code></p>
 		<p><i>Question 3</i><br>
 		<code>sh listing.sh</code></p>
