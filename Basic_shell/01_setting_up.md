@@ -58,7 +58,7 @@ _Once you have identified which folder you are in, this is where we will be down
 
 **2. Right click on the link below, and be sure to "Save link as..."**. You will be prompted to choose a folder within a Finder/File Explorer window. Navigate to the directory that was listed when running `pwd`.
 
-* Download data by [right-clicking here](https://github.com/hbctraining/Training-modules/blob/master/Intro_shell/data/unix_lesson.zip?raw=true) and choose **Save link as**.
+* Download data by [clicking here](https://www.dropbox.com/s/t3lkyz1pz021222/unix_lesson.tar.gz?dl=1).
 
 **3.** Once you have downloaded the file to the correct location, go back to your **terminal window and type the 'list' command**:
 
