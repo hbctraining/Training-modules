@@ -1,4 +1,4 @@
-## Introduction to the Command Line Interface
+## Basic Shell
 
 | Audience | Computational skills required | Duration |
 :----------|:----------|:----------|
@@ -7,13 +7,13 @@
 
 ### Description
 
-This repository has teaching materials for a **2-3 hour**, hands-on **Introduction to the command-line interface** workshop led at a relaxed pace. 
+This repository has teaching materials for a **2-3 hour**, hands-on **Basic Shell** workshop led at a relaxed pace. 
 
 
 ### Learning Objectives
 
 * Recognize the importance of shell in the analysis of high throughput sequencing (HTS) data
-* Install and locate the software/tools necessary for accessing the command line
+* Install and locate the software/tools necessary for accessing the shell
 * Describe the organization of the file directory and how to move through it
 * Demonstrate different ways to manipulate files, such as moving, copying, and renaming
 * Compare different commands for examining small or large files
