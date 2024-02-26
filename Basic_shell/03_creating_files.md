@@ -70,12 +70,6 @@ Down came the rain
 And washed the spider out.
 ```
 
-To make it easier to refer to distinct lines, we can **add line numbers** by typing reopening the document with:
-
-```
-nano -c spider.txt
-```
-
 While we cannot point and click to navigate the document, we can use the arrow keys to move around. Navigating with arrow keys can be very slow, so `nano` has shortcuts. You can find some [here](https://www.unomaha.edu/college-of-information-science-and-technology/computer-science-learning-center/_files/resources/CSLC-Helpdocs-Nano.pdf). Several of the more common ones are already at the bottom of your nano window.
 
 **NOTE:** If you are using a **Mac** you must **change your terminal preferences in order to use the option button as an alt button**. Go to: Terminal preferences -> Profiles -> (click keyboard button) -> select "Use Option as Meta key"
