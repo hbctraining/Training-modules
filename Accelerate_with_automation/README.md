@@ -26,7 +26,7 @@ This repository has teaching materials for a **3 hour**, hands-on **Intermediate
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Setting up](Accelerate_with_automation/lessons/setting_up.md) | 15 min |
+|[Setting up](Training-modules/Accelerate_with_automation/lessons/setting_up.md) | 15 min |
 |[Shell Scripts and `for` loops](../lessons/loops_and_scripts.md) | 75 min |
 |[Positional Parameters](../lessons/positional_params.md) | 45 min |
 |[Running R scripts and Python scripts undrafted]() |30 min |
