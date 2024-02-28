@@ -6,20 +6,6 @@ author: "Sheldon McKay, Mary Piper, Radhika Khetani, Emma Berdan"
 ## Learning Objectives
 - Install and locate the software/tools necessary for accessing the command line
 
-
-## What even is shell?
-
-You have likely heard the words **bash**, **shell**, **unix**, and **linux** before but may not know what they mean or how they relate. Before we even access the shell let's try to understand these terms.
-
-* **Unix** is simply an operating system much like Windows or macOS. **Unix** and its "flavors" are the operating systems you find on high perfomance computing clusters (HPCs). 
-* **Linux** can be thought of as a clone or "flavor" of **unix**. The main difference between **unix** and **linux** is that **unix** is proprietary (i.e. requires a license) while **linux** is open source.
-* **Shell** is a general term for a command line interpreter, a program that lets users control their operating system with text commands. **Shell** has been described as user-facing “**shell** around the computer’s whirring innards” ([Louis Pouzin](https://en.wikipedia.org/wiki/Louis_Pouzin))
-* Since **shell** is a general term, there are many different **shells**. The most prevalent is **bash** which is short for "Bourne-Again SHell" which replaced the original Bourne shell that was NOT developed by [Jason Bourne](https://en.wikipedia.org/wiki/Jason_Bourne) but by [Stephen Bourne](https://en.wikipedia.org/wiki/Stephen_R._Bourne) a programmer at Bell labs.
-
-  ![Foxtrot by Bill Amend](img/open_sores.png)
-
-  *Foxtrot by Bill Amend*
-
 ## Starting with the shell
 Depending on your operating system, there are different ways to access the shell:
 
