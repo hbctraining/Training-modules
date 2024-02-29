@@ -11,58 +11,6 @@ Approximate time: 60 minutes
 * Understanding variables and storing information in variables
 * Learn how to use variables to operate on multiple files
 
-## Shell scripts
-
-Within the command-line interface we have at our fingertips, access to various commands which allow you to interrogate your data (i.e `cat`, `less`, `wc`).
-
-> **NOTE:** If you are unsure about any of these commands and what they do, you may want to review the [Exploring Basics lesson](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/exploring_basics.html).
-
-When you are working with data, it can often be useful to run a set of commands one after another. Further, you may want to re-run this set of commands on every single set of data that you have. Wouldn't it be great if you could do all of this by simply typing out one single command? 
-
-Welcome to the beauty and purpose of shell scripts.
-
-Shell scripts are **text files that contain commands we want to run**. As with any file, you can give a shell script any name and usually have the extension `.sh`. For historical reasons, a bunch of commands saved in a file is usually called a shell script, but make no mistake, this is actually a small program. 
-
-Since we now know how to create text files in the command-line interface, we are going to use that knowledge to create a shell script and see what makes the shell such a powerful programming environment. We will use commands that you should be familiar with and save them into a file so that we can **re-run all those operations** again later by typing **one single command**. Let's write a shell script that will do two things:
-
-1. Tell us our current working directory
-2. List the contents of the directory 
-
-First open a new file using `vim`:
-
-```bash
-$ vim listing.sh
-```
-
-Then type in the following lines in the `listing.sh` file:
-
-```
-echo "Your current working directory is:"
-pwd
-echo "These are the contents of this directory:"
-ls -l 
-```
-
-Exit `vim` and save the file. Now let's run the new script we have created. To run a shell script you usually use the `bash` or `sh` command.
-
-```bash
-$ sh listing.sh
-```
-
-Now, let's run this script when we are in a different folder.
-
-```bash
-$ cd ../raw_fastq/
-
-$ sh ../other/listing.sh
-```
-
-> Did it work like you expected?
-> 
-> Were the `echo` commands helpful in letting you know what came next?
-
-This is a very simple shell script. In this lesson, we will be learning how to write more complex ones and show you how to use the power of scripts to make our lives much easier.
-
 ## Bash variables
 
 A *variable* is a common concept shared by many programming languages. Variables are essentially a symbolic/temporary name for, or a reference to, some information. Variables are analogous to "buckets", where information can be stored, maintained and modified without too much hassle. 
@@ -239,12 +187,12 @@ Now that you've learned how to use loops and variables, let's put this processin
 
 You might not realize it, but this is something that you now know how to do. Let's get started...
 
-Rather than doing all of this in the terminal we are going to create a script file with all relevant commands. Move back into `unix_lesson` and use `vim` to create our new script file:
+Rather than doing all of this in the terminal we are going to create a script file with all relevant commands. Move back into `unix_lesson` and use `nano` to create our new script file:
 
 ```bash
 $ cd ~/unix_lesson
 
-$ vim generate_bad_reads_summary.sh
+$ nano generate_bad_reads_summary.sh
 ```
 
 We always want to start our scripts with a shebang line: 
@@ -299,7 +247,7 @@ done
 
 > **NOTE:** If you've noticed, we used a new `grep` flag `-H` above; this flag will report the filename the search was performed on along with the matching string. 
 
-Save and exit `vim`, and voila! You now have a script you can use to assess the quality of all your new datasets. Your finished script, complete with comments, should look like the following:
+Save and exit `nano`, and voila! You now have a script you can use to assess the quality of all your new datasets. Your finished script, complete with comments, should look like the following:
 
 ```bash
 #!/bin/bash 
