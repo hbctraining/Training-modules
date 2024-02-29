@@ -187,7 +187,7 @@ Now that you've learned how to use loops and variables, let's put this processin
 
 You might not realize it, but this is something that you now know how to do. Let's get started...
 
-Rather than doing all of this in the terminal we are going to create a script file with all relevant commands. Move back into `unix_lesson` and use `nano` to create our new script file:
+Rather than doing all of this in the terminal we are going to create a script file with all relevant commands. Move back into `unix_lesson` and use `nano` to create our new script file. If you have never used nano before you can find the basics [HERE](https://github.com/hbctraining/Training-modules/blob/heather_edits/Basic_shell/03_creating_files.md):
 
 ```bash
 $ cd ~/unix_lesson
