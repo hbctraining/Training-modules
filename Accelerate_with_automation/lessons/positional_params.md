@@ -118,9 +118,9 @@ We will talk more about naming variables later, but note that defining variables
 
 Now that we understand the basics of variables and positional parameters how can we make them work for us? We can use them in a shell script!
 
-Lets say that we want to adapt the script we wrote in the last lesson to look for our bad read sequence in any file, and not just a whole directory.
+Lets say that we want to adapt the script we wrote in the last lesson to look for our bad read sequence in any file, and not just all the files in a whole directory. How might we do that?
 
-For example, here is that same script, but we have changed it to reflect that we want to include the sequence name in the ouptut file names. We've also added an additional line of verbosity to print out whih sequence we're looking for:
+Here is that same script, but we have changed it by removing the `for` loop and adding a line to read in a positional parameter. We've also added a couple of comments to note the script **usage**, including what the script takes in, and what the script puts out, as well as an **example** of how to run the script. It is best practice to include these types of comments. They make your life easier down the road if you ever come back to your scripts after a long time away.
 
 ```bash
 #!/bin/bash 
@@ -148,37 +148,6 @@ grep -B1 -A2 NNNNNNNNNN $filename > ${base}-NNNNNNNNNN.fastq
 grep -cH NNNNNNNNNN $filename > ${base}-NNNNNNNNNN.count.summary
 done
 ```
-
-Here `$1` is our only positional parameter and is our sequence. **However**, this script is not written with best practices. It should actually look like this.
-
-```bash
-#!/bin/bash 
-
-# enter directory with raw FASTQs
-cd ~/unix_lesson/raw_fastq
-
-# count bad reads for each FASTQ file in our directory
-for filename in *.fq 
-do 
-
-  # create a prefix for all output files
-  base=`basename $filename .subset.fq`
-
-  # tell us what file we're working on	
-  echo $filename
-
-  # tell us what sequence we're searching for
-  echo $1
-
-  # grab all the bad read records
-  grep -B1 -A2 $1 $filename > ${base}-${1}.fastq
-
-  # grab the number of bad reads and write it to a summary file
-  grep -cH $1 $filename > ${base}-${1}.count.summary
-done
-```
-
-
 
 After you have made the edits to your script, save it as a new script called `generate_sequence_summary.sh`. If you have been editing the script for the previous lesson, you can do this by typing `Ctrl+O` and then providing the new file name. Alternatively, you can open a new nano session and copy and paste the code from above.
 
