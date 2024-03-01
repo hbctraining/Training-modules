@@ -157,7 +157,7 @@ Let's test it out with a file!
 sh generate_bad_reads_summary_param.sh Irrel_kd_1.subset.fq
 ```
 
-We have now significantly decrased our own workload. By using this script we can easily run this command for any sequence we have. we mentioned above that we have 10 sequences, and it's not too hard for me to run the command 10 times. But sometimes we might have so many sequences that even running this command manually for all of these will be time consuming. In this case we can turn to one of the most powerful ways to use positional parameters and other variables, by combining them with **for loops**. More on for loops [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/06_loops_and_automation.md).
+We have now significantly decerased our own workload. By using this script we can easily run this command for any sequence we have. we mentioned above that we have 10 sequences, and it's not too hard for me to run the command 10 times. But sometimes we might have so many sequences that even running this command manually for all of these will be time consuming. In this case we can turn to one of the most powerful ways to use positional parameters and other variables, by combining them with **for loops**. More on for loops [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/06_loops_and_automation.md).
 
 ## Variables in for loops
 
