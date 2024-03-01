@@ -16,7 +16,7 @@ author: "Emma Berdan"
 As a reminder from the previous lesson, "a **variable** is a character string to which we assign a value. The value assigned could be a number, text, filename, device, or any other type of data.
 A variable is nothing more than a pointer to the actual data. The shell enables you to create, assign, and delete variables.” ([Source](https://www.tutorialspoint.com/unix/unix-using-variables.htm))
 
-It is easy to identify a variable in any bash script as they will always have the $ in front of them. Here is my very cleverly named variable: `$Variable`
+It is easy to identify a variable in any bash script as they will always have the $ in front of them. Here is our very cleverly named variable: `$Variable`
 
 ## Positional parameters are a special kind of variable
 
@@ -102,7 +102,7 @@ The quotes tell bash that "Olivia Coleman" is a single string, `$1`. Both double
 
 ## Naming variables
 
-My previous script was so short that it was easy to remember that `$1` represents a name and `$2` represents a skill. However, most scripts are much longer and may contain more positional parameters. To make it easier on yourself it is often a good idea to name your positional parameters. Here is the same script we just used but with named variables.
+Our previous script was so short that it was easy to remember that `$1` represents a name and `$2` represents a skill. However, most scripts are much longer and may contain more positional parameters. To make it easier on yourself it is often a good idea to name your positional parameters. Here is the same script we just used but with named variables.
 
 ```bash
 #!/bin/bash
@@ -115,7 +115,7 @@ echo  $name 'is amazing at' $skill
 
 Just like when we assigned values to variables in the last lesson, it is critical that there is no space in our assignment statements, `name = $1` would not work.
 
-We will talk more about naming variables later, but note that defining variables within the script can make the script **less** flexible. If we want to change my sentence, we now need to edit my script directly rather than launching the same script but with different positional parameters.
+We will talk more about naming variables later, but note that defining variables within the script can make the script **less** flexible. If we want to change our sentence, we now need to edit our script directly rather than launching the same script but with different positional parameters.
 
 
 ## A useful example
@@ -184,7 +184,7 @@ do
 done
 ```
 
-Here `$1` is my only positional parameter and is my sequence. **However**, this script is not written with best practices. It should actually look like this.
+Here `$1` is our only positional parameter and is our sequence. **However**, this script is not written with best practices. It should actually look like this.
 
 ```bash
 #!/bin/bash 
