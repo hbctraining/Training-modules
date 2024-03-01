@@ -95,7 +95,6 @@ sh compliment.sh "Olivia Coleman" acting
 
 The quotes tell bash that "Olivia Coleman" is a single string, `$1`. Both double quotes (") and single quotes (') will work. Olivia has enough accolades though, so go ahead and run the script with your name (just first or both first and last) and something you are good at!
 
-
 ## Naming variables
 
 Our previous script was so short that it was easy to remember that `$1` represents a name and `$2` represents a skill. However, most scripts are much longer and may contain more positional parameters. To make it easier on yourself it is often a good idea to name your positional parameters. Here is the same script we just used but with named variables.
@@ -139,10 +138,10 @@ base=`basename $filename .subset.fq`
 echo $filename
 
 # grab all the bad read records
-grep -B1 -A2 NNNNNNNNNN $filename > ${base}-NNNNNNNNNN.param.fastq
+grep -B1 -A2 NNNNNNNNNN $filename > ${base}.param.fastq
 
 # grab the number of bad reads and write it to a summary file
-grep -cH NNNNNNNNNN $filename > ${base}-NNNNNNNNNN.param.count.summary
+grep -cH NNNNNNNNNN $filename > ${base}.param.count.summary
 ```
 
 After you have made the edits to your script, save it as a new script called `generate_bad_reads_summary_param.sh`. If you have been editing the script from the previous lesson, you can do this by typing `Ctrl+O` and then providing the new file name. Alternatively, you can open a new nano session and copy and paste the code from above.
@@ -155,6 +154,77 @@ sh generate_bad_reads_summary_param.sh Irrel_kd_1.subset.fq
 
 To see the output, you can use `ls`. You should see the two output files with .param. in the names.
 
+***
+
+**Exercise**
+
+Say we are interested in searching for other sequences in our fastq files besides NNNNNNNNNN, and want to create output files that reflect those sequence names. But we don't want to have to edit the script every time we have a new sequence to look for. How might we edit `generate_bad_reads_summary_param.sh` using positional parameters so we can feed it any sequence we want?
+
+1. Add a line to capture `sequence` as a 2nd positional parameter
+
+<details>
+        <summary><i>Click here for answer</i></summary>
+        
+        sequence=$2
+</details>
+
+2. Change what we are searching for in the `grep` statements
+
+<details>
+        <summary><i>Click here for answer</i></summary>
+         
+        grep -B1 -A2 $sequence $filename > ${base}.param.fastq
+        grep -cH $sequence $filename > ${base}.param.count.summary
+</details>
+
+3. Change the ouptput file names to include the sequence being searched
+
+<details>
+        <summary><i>Click here for answer</i></summary>
+         
+        grep -B1 -A2 $sequence $filename > ${base}.${sequence}.fastq
+        grep -cH $sequence $filename > ${base}.${sequence}.count.summary
+</details>
+
+4. Update the `USAGE` and `EXAMPLE` to reflect the changes you made
+ <details>
+        <summary><i>Click here for answer</i></summary>
+         
+        ## USAGE: User provides path to file that needs to checked for user-provided sequence. 
+        
+        ##  Script will output a file in the same directory
+        
+        ## EXAMPLE: generate_bad_reads_summary_param.sh filename sequence
+ </details>
+
+
+<details>
+        <summary><i>Click here for final script</i></summary>
+          
+        #!/bin/bash 
+
+        ## USAGE: User provides path to file that needs to checked for bad reads. 
+        ##  Script will output a file in the same directory
+        ## EXAMPLE: generate_bad_reads_summary_param.sh filename
+
+        # read positional parameter
+        filename=$1
+
+        # create a prefix for all output files
+        base=`basename $filename .subset.fq`
+
+        # tell us what file we're working on
+        echo $filename
+
+        # grab all the bad read records
+        grep -B1 -A2 NNNNNNNNNN $filename > ${base}.param.fastq
+
+        # grab the number of bad reads and write it to a summary file
+        grep -cH NNNNNNNNNN $filename > ${base}.param.count.summary
+
+</details>
+
+***
 
 By using this script we can easily run this command for any sample we have. we mentioned above that we have 10 sequences, and it's not too hard for me to run the command 10 times. But sometimes we might have so many sequences that even running this command manually for all of these will be time consuming. In this case we can turn to one of the most powerful ways to use positional parameters and other variables, by combining them with **for loops**. More on for loops [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/06_loops_and_automation.md).
 
