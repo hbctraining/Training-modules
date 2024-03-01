@@ -120,7 +120,7 @@ Now that we understand the basics of variables and positional parameters how can
 
 Lets say that we want to adapt the script we wrote in the last lesson to look for a series of barcodes or other sequences of interest, and include the sequence in the file output names to differentiate them.
 
-For example, here is that same script, but we have changed it to reflect that we want to include the sequence name in the ouptut file names. I've also added an additional line of verbosity to print out whih sequence I'm looking for:
+For example, here is that same script, but we have changed it to reflect that we want to include the sequence name in the ouptut file names. We've also added an additional line of verbosity to print out whih sequence we're looking for:
 
 ```bash
 #!/bin/bash 
@@ -211,7 +211,7 @@ done
 
 `$1`, which we have been using is actually a short form of `${1}`
 
-We can only use `$1` when it is **not** followed by a letter, digit or an underscore but we can always use `${1}`. This rule doesn't just apply to positional parameters, but to all variables, which is why I've also added curly brackets to '$base' when there are adjacent strings.
+We can only use `$1` when it is **not** followed by a letter, digit or an underscore but we can always use `${1}`. This rule doesn't just apply to positional parameters, but to all variables, which is why we've also added curly brackets to '$base' when there are adjacent strings.
 
 If we wrote a script that said `echo $1_is_awesome` we wouldn't actually get any output when we ran this with a positional parameter, even our beloved [Olivia Coleman](https://en.wikipedia.org/wiki/Olivia_Colman)! Instead this script would need to be written as `echo ${1}_is_awesome`
 
