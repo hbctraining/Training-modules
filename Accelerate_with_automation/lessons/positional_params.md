@@ -118,65 +118,34 @@ We will talk more about naming variables later, but note that defining variables
 
 Now that we understand the basics of variables and positional parameters how can we make them work for us? We can use them in a shell script!
 
-Lets say that we want to adapt the script we wrote in the last lesson to look for a series of barcodes or other sequences of interest, and include the sequence in the file output names to differentiate them.
+Lets say that we want to adapt the script we wrote in the last lesson to look for our bad read sequence in any file, and not just a whole directory.
 
 For example, here is that same script, but we have changed it to reflect that we want to include the sequence name in the ouptut file names. We've also added an additional line of verbosity to print out whih sequence we're looking for:
 
 ```bash
 #!/bin/bash 
 
-# enter directory with raw FASTQs
-cd ~/unix_lesson/raw_fastq
+## USAGE: User provides path to file that needs to checked for bad reads. 
+Script will output a file in the same directory
+## EXAMPLE: generate_badreads_summary.sh filename
 
-# count bad reads for each FASTQ file in our directory
-for filename in *.fq 
-do 
+# read positional parameter
+filename=$1
 
-  # create a prefix for all output files
-  base=`basename $filename .subset.fq`
+# create a prefix for all output files
+base=`basename $filename .subset.fq`
 
-  # tell us what file we're working on	
-  echo $filename
+# tell us what file we're working on
+echo $filename
 
-  # tell us what sequence we're searching for
-  echo "NNNNNNNNNN"
+# tell us what sequence we're searching for
+echo "NNNNNNNNNN"
 
-  # grab all the bad read records
-  grep -B1 -A2 NNNNNNNNNN $filename > $base-NNNNNNNNNN.fastq
+# grab all the bad read records
+grep -B1 -A2 NNNNNNNNNN $filename > ${base}-NNNNNNNNNN.fastq
 
-  # grab the number of bad reads and write it to a summary file
-  grep -cH NNNNNNNNNN $filename > $base-NNNNNNNNNN.count.summary
-done
-```
-
-The string 'NNNNNNNNNN' occurs five times in the script. Not only that, but we have 10 sequences of interest, and we don't really want to have to edit and rerun this script for every sequence. And if we want to reuse this code for other projects, we might have other sequences of interest, too. Instead, we can use positional parameters to make this script versatile without any editing in between uses!
-
-First, let's replace every instance of the sequence `NNNNNNNNNN` with a positional parameter
-
-```bash
-#!/bin/bash 
-
-# enter directory with raw FASTQs
-cd ~/unix_lesson/raw_fastq
-
-# count bad reads for each FASTQ file in our directory
-for filename in *.fq 
-do 
-
-  # create a prefix for all output files
-  base=`basename $filename .subset.fq`
-
-  # tell us what file we're working on	
-  echo $filename
-
-  # tell us what sequence we're searching for
-  echo $1
-
-  # grab all the bad read records
-  grep -B1 -A2 $1 $filename > $base-$1.fastq
-
-  # grab the number of bad reads and write it to a summary file
-  grep -cH $1 $filename > $base-$1.count.summary
+# grab the number of bad reads and write it to a summary file
+grep -cH NNNNNNNNNN $filename > ${base}-NNNNNNNNNN.count.summary
 done
 ```
 
@@ -209,13 +178,7 @@ do
 done
 ```
 
-`$1`, which we have been using is actually a short form of `${1}`
 
-We can only use `$1` when it is **not** followed by a letter, digit or an underscore but we can always use `${1}`. This rule doesn't just apply to positional parameters, but to all variables, which is why we've also added curly brackets to '$base' when there are adjacent strings.
-
-If we wrote a script that said `echo $1_is_awesome` we wouldn't actually get any output when we ran this with a positional parameter, even our beloved [Olivia Coleman](https://en.wikipedia.org/wiki/Olivia_Colman)! Instead this script would need to be written as `echo ${1}_is_awesome`
-
-As you write your own code it is good to remember that it is always safe to use `${VAR}` and that errors may result from using `$VAR` instead, even if it is convienent. As you navigate scripts written by other people you will see both forms.
 
 After you have made the edits to your script, save it as a new script called `generate_sequence_summary.sh`. If you have been editing the script for the previous lesson, you can do this by typing `Ctrl+O` and then providing the new file name. Alternatively, you can open a new nano session and copy and paste the code from above.
 
