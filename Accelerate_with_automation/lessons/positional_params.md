@@ -127,7 +127,7 @@ Here is that same script, but we have changed it by removing the `for` loop and 
 
 ## USAGE: User provides path to file that needs to checked for bad reads. 
 Script will output a file in the same directory
-## EXAMPLE: generate_badreads_summary.sh filename
+## EXAMPLE: generate_bad_reads_summary_param.sh filename
 
 # read positional parameter
 filename=$1
@@ -149,12 +149,12 @@ grep -cH NNNNNNNNNN $filename > ${base}-NNNNNNNNNN.count.summary
 done
 ```
 
-After you have made the edits to your script, save it as a new script called `generate_sequence_summary.sh`. If you have been editing the script for the previous lesson, you can do this by typing `Ctrl+O` and then providing the new file name. Alternatively, you can open a new nano session and copy and paste the code from above.
+After you have made the edits to your script, save it as a new script called `generate_bad_reads_summary_param.sh`. If you have been editing the script from the previous lesson, you can do this by typing `Ctrl+O` and then providing the new file name. Alternatively, you can open a new nano session and copy and paste the code from above.
 
-Let's test it out with a new sequence!
+Let's test it out with a file!
 
 ```bash
-sh generate_sequence_summary.sh GATTACA
+sh generate_bad_reads_summary_param.sh Irrel_kd_1.subset.fq
 ```
 
 We have now significantly decrased our own workload. By using this script we can easily run this command for any sequence we have. we mentioned above that we have 10 sequences, and it's not too hard for me to run the command 10 times. But sometimes we might have so many sequences that even running this command manually for all of these will be time consuming. In this case we can turn to one of the most powerful ways to use positional parameters and other variables, by combining them with **for loops**. More on for loops [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/06_loops_and_automation.md).
