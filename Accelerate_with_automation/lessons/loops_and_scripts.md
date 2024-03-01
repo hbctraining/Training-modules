@@ -237,18 +237,19 @@ and then we execute the following commands for each file:
   # grab all the bad read records into new file
   grep -B1 -A2 NNNNNNNNNN $filename > ${base}-badreads.fastq
 ``` 
+> #### About the grep command and redirection operator (>)
+> `grep`, short for **G**lobal **R**egular **E**xpression **P**rint, is a Unix command used to search files for the occurrence of a string of characters that matches a specified pattern. In this case, we are using grep to search for strings of N in our reads and retrieve the two lines above and one line below those reads using the `B` and `A` flags. Then, we are writing this output to a new file using the redirection operator, `>`. To learn more about `grep` and its usage, you can type `man grep` or `grep --help` into the terminal. We'll also be covering more `grep` in a later module.
+
 > #### Why are we using curly brackets with the variable name?
 > When we append a variable with free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside it is the variable name. This way when we reference it, shell knows to print the variable `$base` and not to look for a variable called `$base_badreads.fq`. As you write your own code it is good to remember that it is always safe to use `${VAR}` and that errors may result from using `$VAR` instead, even if it is convienent. As you navigate scripts written by other people you will see both forms.
 
-We'll also count the number of these reads and put that in a new file, using the count flag of `grep`:
+We'll also add an additional `grep` statement which uses the `c` flag to count the reads it finds, and also uses the `H` flag to include the file name in the output, which will be redirected to a count summary file via `>`:
 
 ```bash
   # grab the number of bad reads and write it to a summary file
   grep -cH NNNNNNNNNN $filename > ${base}-badreads.count.summary
 done
 ```
-
-> **NOTE:** If you've noticed, we used a new `grep` flag `-H` above; this flag will report the filename the search was performed on along with the matching string. 
 
 Save and exit `nano`, and voila! You now have a script you can use to assess the quality of all your new datasets. Your finished script, complete with comments, should look like the following:
 
