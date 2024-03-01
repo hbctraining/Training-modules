@@ -141,7 +141,7 @@ grep -B1 -A2 NNNNNNNNNN $filename > ${base}.param.fastq
 grep -cH NNNNNNNNNN $filename > ${base}.param.count.summary
 ```
 
-After you have made the edits to your script, save it as a new script called `generate_bad_reads_summary_param.sh`. If you have been editing the script from the previous lesson, you can do this by typing `Ctrl+O` and then providing the new file name. Alternatively, you can open a new nano session and copy and paste the code from above.
+After you have made the edits to your script, save it as a new script called `generate_bad_reads_summary_param.sh`. If you have been editing the script from the previous lesson, you can do this by typing `Ctrl+o` and then providing the new file name when prompted. Alternatively, you can open a new nano session and copy and paste the code from above.
 
 Let's test it out with a file!
 
