@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Positional Parameters and Variables"
-author: "Emma Berdan"
+author: "Emma Berdan, Heather Wick"
 ---
 
 
@@ -11,12 +11,9 @@ author: "Emma Berdan"
 * Implement positional parameters and variables in a bash script
 * Integrate for loops and variables
 
-## What is a variable?
+### What is a variable again?
 
-As a reminder from the previous lesson, "a **variable** is a character string to which we assign a value. The value assigned could be a number, text, filename, device, or any other type of data.
-A variable is nothing more than a pointer to the actual data. The shell enables you to create, assign, and delete variables.” ([Source](https://www.tutorialspoint.com/unix/unix-using-variables.htm))
-
-It is easy to identify a variable in any bash script as they will always have the $ in front of them. Here is our very cleverly named variable: `$Variable`
+As a reminder from the previous lesson, a **variable** is a character string to which we assign a value. The value assigned could be a number, text, filename, device, or any other type of data. It is easy to identify a variable in any bash script as they will always have the $ in front of them. Here is our very cleverly named variable: `$Variable`
 
 ## Positional parameters are a special kind of variable
 
