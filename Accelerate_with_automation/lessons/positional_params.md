@@ -63,10 +63,6 @@ echo  $1 'is amazing at' $2
 ```
 then exit nano, saving your script.
 
-
->**Note**
->The `#!/bin/bash` line is called a "shebang" line. This tells the computer that this is a script and not just a text file, and which interpreter to use. Different programs (perl, python, etc) will have different "shebang" lines. Strictly speaking, shebangs are only required when running a file as an executable rather than with the `sh` command, as we are doing; however, it is best practice to always include the shebang line nonetheless.
-
 You may have already guessed that our script takes two different positional parameters. The first one is your first name and the second is something you are good at. Here is an example:
 
 ```bash
