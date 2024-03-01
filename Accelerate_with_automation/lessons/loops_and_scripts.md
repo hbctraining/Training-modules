@@ -234,14 +234,16 @@ and then we execute the following commands for each file:
   echo $filename
   
   # grab all the bad read records into new file
-  grep -B1 -A2 NNNNNNNNNN $filename > $base-badreads.fastq
+  grep -B1 -A2 NNNNNNNNNN $filename > ${base}-badreads.fastq
 ``` 
-  
+> #### Why are we using curly brackets with the variable name?
+> When we append a variable to some other free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside it is the variable name. This way when we reference it, shell knows to print the variable `$base` and not to look for a variable called `$base_badreads.fq`.
+
 We'll also count the number of these reads and put that in a new file, using the count flag of `grep`:
 
 ```bash
   # grab the number of bad reads and write it to a summary file
-  grep -cH NNNNNNNNNN $filename > $base-badreads.count.summary
+  grep -cH NNNNNNNNNN $filename > ${base}-badreads.count.summary
 done
 ```
 
@@ -266,10 +268,10 @@ do
   echo $filename
 
   # grab all the bad read records
-  grep -B1 -A2 NNNNNNNNNN $filename > $base-badreads.fastq
+  grep -B1 -A2 NNNNNNNNNN $filename > ${base}-badreads.fastq
 
   # grab the number of bad reads and write it to a summary file
-  grep -cH NNNNNNNNNN $filename > $base-badreads.count.summary
+  grep -cH NNNNNNNNNN $filename > ${base}-badreads.count.summary
 done
 
 ```
