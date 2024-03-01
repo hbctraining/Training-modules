@@ -120,13 +120,13 @@ Now that we understand the basics of variables and positional parameters how can
 
 Lets say that we want to adapt the script we wrote in the last lesson to look for our bad read sequence in any file, and not just all the files in a whole directory. How might we do that?
 
-Here is that same script, but we have changed it by removing the `for` loop and adding a line to read in a positional parameter. We've also added a couple of comments to note the script **usage**, including what the script takes in, and what the script puts out, as well as an **example** of how to run the script. It is best practice to include these types of comments. They make your life easier down the road if you ever come back to your scripts after a long time away.
+Here is that same script, but we have changed it by removing the `for` loop and adding a line to read in a positional parameter. We've also added '.param' to the output file to make it easier to distinguish output from this script from the previous script. Finally, we've also added a couple of comments to note the script **usage**, including what the script takes in, and what the script puts out, as well as an **example** of how to run the script. It is best practice to include these types of comments. They make your life easier down the road if you ever come back to your scripts after a long time away.
 
 ```bash
 #!/bin/bash 
 
 ## USAGE: User provides path to file that needs to checked for bad reads. 
-Script will output a file in the same directory
+##  Script will output a file in the same directory
 ## EXAMPLE: generate_bad_reads_summary_param.sh filename
 
 # read positional parameter
@@ -138,15 +138,11 @@ base=`basename $filename .subset.fq`
 # tell us what file we're working on
 echo $filename
 
-# tell us what sequence we're searching for
-echo "NNNNNNNNNN"
-
 # grab all the bad read records
-grep -B1 -A2 NNNNNNNNNN $filename > ${base}-NNNNNNNNNN.fastq
+grep -B1 -A2 NNNNNNNNNN $filename > ${base}-NNNNNNNNNN.param.fastq
 
 # grab the number of bad reads and write it to a summary file
-grep -cH NNNNNNNNNN $filename > ${base}-NNNNNNNNNN.count.summary
-done
+grep -cH NNNNNNNNNN $filename > ${base}-NNNNNNNNNN.param.count.summary
 ```
 
 After you have made the edits to your script, save it as a new script called `generate_bad_reads_summary_param.sh`. If you have been editing the script from the previous lesson, you can do this by typing `Ctrl+O` and then providing the new file name. Alternatively, you can open a new nano session and copy and paste the code from above.
@@ -157,7 +153,10 @@ Let's test it out with a file!
 sh generate_bad_reads_summary_param.sh Irrel_kd_1.subset.fq
 ```
 
-We have now significantly decerased our own workload. By using this script we can easily run this command for any sequence we have. we mentioned above that we have 10 sequences, and it's not too hard for me to run the command 10 times. But sometimes we might have so many sequences that even running this command manually for all of these will be time consuming. In this case we can turn to one of the most powerful ways to use positional parameters and other variables, by combining them with **for loops**. More on for loops [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/06_loops_and_automation.md).
+To see the output, you can use `ls`. You should see the two output files with .param. in the names.
+
+
+By using this script we can easily run this command for any sample we have. we mentioned above that we have 10 sequences, and it's not too hard for me to run the command 10 times. But sometimes we might have so many sequences that even running this command manually for all of these will be time consuming. In this case we can turn to one of the most powerful ways to use positional parameters and other variables, by combining them with **for loops**. More on for loops [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/06_loops_and_automation.md).
 
 ## Variables in for loops
 
