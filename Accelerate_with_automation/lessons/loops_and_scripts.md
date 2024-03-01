@@ -22,6 +22,7 @@ Let's start with a simple variable that has a single number stored in it:
 ```bash
 $ num=25
 ```
+It is critical that there is no space in our assignment statements, num = $25 would not work.
 
 *How do we know that we actually created the bash variable?* We can use the `echo` command to print to terminal:
 
