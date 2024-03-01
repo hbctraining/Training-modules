@@ -238,7 +238,7 @@ and then we execute the following commands for each file:
   grep -B1 -A2 NNNNNNNNNN $filename > ${base}-badreads.fastq
 ``` 
 > #### Why are we using curly brackets with the variable name?
-> When we append a variable to some other free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside it is the variable name. This way when we reference it, shell knows to print the variable `$base` and not to look for a variable called `$base_badreads.fq`.
+> When we append a variable with free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside it is the variable name. This way when we reference it, shell knows to print the variable `$base` and not to look for a variable called `$base_badreads.fq`. As you write your own code it is good to remember that it is always safe to use `${VAR}` and that errors may result from using `$VAR` instead, even if it is convienent. As you navigate scripts written by other people you will see both forms.
 
 We'll also count the number of these reads and put that in a new file, using the count flag of `grep`:
 
