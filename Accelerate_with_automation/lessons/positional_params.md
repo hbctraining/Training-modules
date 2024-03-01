@@ -78,20 +78,20 @@ This will print
 ```bash
 OliviaC is amazing at acting
 ```
-You may have already guessed that I am talking about award winning actress [Olivia Coleman](https://en.wikipedia.org/wiki/Olivia_Colman) here. But if I typed
+You may have already guessed that we am talking about award winning actress [Olivia Coleman](https://en.wikipedia.org/wiki/Olivia_Colman) here. But if we typed
 
 ```bash
 sh compliment.sh Olivia Coleman acting
 ```
-I would get
+we would get
 
 ```bash
 Olivia is amazing at Coleman
 ```
-Technically I have just given three positional parameters `$1=Olivia` `$2=Colman` `$3=acting`
+Technically we have just given three positional parameters `$1=Olivia` `$2=Colman` `$3=acting`
 However, since our script does not contain `$3` this is ignored. 
 
-In order to give Olivia her full due I would need to type
+In order to give Olivia her full due we would need to type
 
 ```bash
 sh compliment.sh "Olivia Coleman" acting
@@ -113,26 +113,18 @@ skill=$2
 echo  $name 'is amazing at' $skill
 ```
 
-It is critical that there is no space in our assignment statements, `name = $1` would not work. We can also assign new variables in this manner whether or not they are coming from positional parameters. Here is the same script with the variables defined within it.
+Just like when we assigned values to variables in the last lesson, it is critical that there is no space in our assignment statements, `name = $1` would not work.
 
-```bash
-#!/bin/bash
-
-name="Olivia Coleman"
-skill="acting"
-
-echo  $name 'is amazing at' $skill
-```
-We will talk more about naming variables later, but note that defining variables within the script can make the script **less** flexible. If I want to change my sentence, I now need to edit my script directly rather than launching the same script but with different positional parameters.
+We will talk more about naming variables later, but note that defining variables within the script can make the script **less** flexible. If we want to change my sentence, we now need to edit my script directly rather than launching the same script but with different positional parameters.
 
 
 ## A useful example
 
 Now that we understand the basics of variables and positional parameters how can we make them work for us? We can use them in a shell script!
 
-Lets say that I want to adapt the script we wrote in the last lesson to look for a series of barcodes or other sequences of interest, and include the sequence in the file output names to differentiate them.
+Lets say that we want to adapt the script we wrote in the last lesson to look for a series of barcodes or other sequences of interest, and include the sequence in the file output names to differentiate them.
 
-For example, here is that same script, but I have changed it to reflect that I want to include the sequence name in the ouptut file names. I've also added an additional line of verbosity to print out whih sequence I'm looking for:
+For example, here is that same script, but we have changed it to reflect that we want to include the sequence name in the ouptut file names. I've also added an additional line of verbosity to print out whih sequence I'm looking for:
 
 ```bash
 #!/bin/bash 
@@ -161,7 +153,7 @@ do
 done
 ```
 
-The string 'NNNNNNNNNN' occurs five times in the script. Not only that, but I have 10 sequences of interest, and I don't really want to have to edit and rerun this script for every sequence. And if I want to reuse this code for other projects, I might have other sequences of interest, too. Instead, I can use positional parameters to make this script versatile without any editing in between uses!
+The string 'NNNNNNNNNN' occurs five times in the script. Not only that, but we have 10 sequences of interest, and we don't really want to have to edit and rerun this script for every sequence. And if we want to reuse this code for other projects, we might have other sequences of interest, too. Instead, we can use positional parameters to make this script versatile without any editing in between uses!
 
 First, let's replace every instance of the sequence `NNNNNNNNNN` with a positional parameter
 
@@ -225,7 +217,7 @@ done
 
 We can only use `$1` when it is **not** followed by a letter, digit or an underscore but we can always use `${1}`. This rule doesn't just apply to positional parameters, but to all variables, which is why I've also added curly brackets to '$base' when there are adjacent strings.
 
-If I wrote a script that said `echo $1_is_awesome` I wouldn't actually get any output when I ran this with a positional parameter, even our beloved [Olivia Coleman](https://en.wikipedia.org/wiki/Olivia_Colman)! Instead this script would need to be written as `echo ${1}_is_awesome`
+If we wrote a script that said `echo $1_is_awesome` we wouldn't actually get any output when we ran this with a positional parameter, even our beloved [Olivia Coleman](https://en.wikipedia.org/wiki/Olivia_Colman)! Instead this script would need to be written as `echo ${1}_is_awesome`
 
 As you write your own code it is good to remember that it is always safe to use `${VAR}` and that errors may result from using `$VAR` instead, even if it is convienent. As you navigate scripts written by other people you will see both forms.
 
@@ -237,11 +229,11 @@ Let's test it out with a new sequence!
 sh generate_sequence_summary.sh GATTACA
 ```
 
-We have now significantly decrased our own workload. By using this script we can easily run this command for any sequence we have. I mentioned above that I have 10 sequences, and it's not too hard for me to run the command 10 times. But sometimes we might have so many sequences that even running this command manually for all of these will be time consuming. In this case we can turn to one of the most powerful ways to use positional parameters and other variables, by combining them with **for loops**. More on for loops [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/06_loops_and_automation.md).
+We have now significantly decrased our own workload. By using this script we can easily run this command for any sequence we have. we mentioned above that we have 10 sequences, and it's not too hard for me to run the command 10 times. But sometimes we might have so many sequences that even running this command manually for all of these will be time consuming. In this case we can turn to one of the most powerful ways to use positional parameters and other variables, by combining them with **for loops**. More on for loops [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/06_loops_and_automation.md).
 
 ## Variables in for loops
 
-We are going to continue with example script above. Let's say that I want to run this script for 10 different sequences. First, we'll put all of those sequences in a text file.
+We are going to continue with example script above. Let's say that we want to run this script for 10 different sequences. First, we'll put all of those sequences in a text file.
 
 From your command line type `nano sequences.txt`. Copy and paste the following
 
