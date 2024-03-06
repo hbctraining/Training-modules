@@ -215,6 +215,41 @@ You should now see that only `Mov10_oe_1.subset` is returned.
 
 ***
 
+## Another way to write loops
+
+Above we have used `for filename in *.fq` to tell bash how many times we want the loop to run (how many .fq files there are in that directory). But there are many times that you have a specific number of times you want a loop to run. For instance if you are running the same analysis multiple times or are performing simulations. Here is a simple loop written in this manner:
+
+```bash
+#!/bin/bash 
+
+for ((i=1; i<=10; i=i+1))
+do 
+  echo $i is a number!
+done
+```
+
+Before we run this, let's go through it line by line.
+
+`for ((i=1; i<=10; i=i+1))`
+>This tells bash how our loop is working. We want to start at 1 (`i=1`) and end at 10 (`i<=10`) and each time we complete our loop the value i should increase by 1 (`i=i+1`). That means the loop will run 10 times. But we could make it run 100 times by changing `i<=10` to `i<=100`. `i` is our counter variable to track how many loops we have run. You will often see this called `i` or `j` but you can actually call it whatever you want. `i` and `j` are used because they are shorter to write.
+
+`do`
+>This is the same as our previous loop and means that whatever follows is what we want bash to do for each value of `i` (here 1,2,3,4,5,6,7,8,9,and 10).
+
+`  echo $i is a number!`
+>Here we echo the value of `$i` and the string `' is a number!'`.
+
+`done`
+>This closes the `for` loop. This tells bash that this is the end of the commands that we need it to do for each value of `i`.
+
+Let's use `nano` to write this as `numbers.sh` run our script. Is the output what you thought?
+
+***
+
+**Exercise**
+* How would you change the script so that it prints out the numbers from 27-32?
+***
+
 ## Automating with Scripts
 	
 Now that you've learned how to use loops and variables, let's put this processing power to work. Imagine, if you will, a script that will run a series of commands that would do the following for us each time we get a new data set:
@@ -338,41 +373,6 @@ $ mv raw_fastq/*bad* other/
 $ mkdir scripts
 $ mv *.sh scripts/
 ```
-
-## Another way to write loops
-
-Above we have used `for filename in *.fq` to tell bash how many times we want the loop to run (how many .fq files there are in that directory). But there are many times that you have a specific number of times you want a loop to run. For instance if you are running the same analysis multiple times or are performing simulations. Here is a simple loop written in this manner:
-
-```bash
-#!/bin/bash 
-
-for ((i=1; i<=10; i=i+1))
-do 
-  echo $i is a number!
-done
-```
-
-Before we run this, let's go through it line by line.
-
-`for ((i=1; i<=10; i=i+1))`
->This tells bash how our loop is working. We want to start at 1 (`i=1`) and end at 10 (`i<=10`) and each time we complete our loop the value i should increase by 1 (`i=i+1`). That means the loop will run 10 times. But we could make it run 100 times by changing `i<=10` to `i<=100`. `i` is our counter variable to track how many loops we have run. You will often see this called `i` or `j` but you can actually call it whatever you want. `i` and `j` are used because they are shorter to write.
-
-`do`
->This is the same as our previous loop and means that whatever follows is what we want bash to do for each value of `i` (here 1,2,3,4,5,6,7,8,9,and 10).
-
-`  echo $i is a number!`
->Here we echo the value of `$i` and the string `' is a number!'`.
-
-`done`
->This closes the `for` loop. This tells bash that this is the end of the commands that we need it to do for each value of `i`.
-
-Let's use `nano` to write this as `numbers.sh` run our script. Is the output what you thought?
-
-***
-
-**Exercise**
-* How would you change the script so that it prints out the numbers from 27-32?
-***
 
 ## Ways to assign variables covered
 
