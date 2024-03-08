@@ -185,37 +185,7 @@ In our case that is 6 times since we have 6 files in `~/unix_lesson/raw_fastq` t
 
 It doesn't matter what variable name we use in a loop structure, but it is advisable to make it something intuitive. In the long run, it's best to use a name that will help point out a variable's functionality, so your future self will understand what you are thinking now.
 
-### The `basename` command
-
-Before we get started on creating more complex scripts, we want to introduce you to a command that will be useful for future shell scripting. The `basename` command is used for extracting the base name of a file, which is accomplished using **string splitting to strip the directory and any suffix from filenames**. Let's try an example, by first moving back to your home directory:
-
-```bash
-$ cd
-```
-
-Then we will run the `basename` command on one of the FASTQ files. Be sure to specify the path to the file:
-
-```bash
-$ basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq
-```
-
-What is returned to you? The filename was split into the path `unix_lesson/raw_fastq/` and the filename `Mov10_oe_1.subset.fq`. The command returns only the filename. Now, suppose we wanted to also trim off the file extension (i.e. remove `.fq` leaving only the file *base name*). We can do this by adding a parameter to the command to specify what string of characters we want trimmed.
-
-```bash
-$ basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq .fq
-```
-
-You should now see that only `Mov10_oe_1.subset` is returned. 
-
-***
-
-**Exercise**
-
-* How would you modify the above `basename` command to only return `Mov10_oe_1`?
-
-***
-
-## Another way to write loops
+### Another way to write loops
 
 Above we have used `for filename in *.fq` to tell bash how many times we want the loop to run (how many .fq files there are in that directory). But there are many times that you have a specific number of times you want a loop to run. For instance if you are running the same analysis multiple times or are performing simulations. Here is a simple loop written in this manner:
 
@@ -248,6 +218,36 @@ Let's use `nano` to write this as `numbers.sh` run our script. Is the output wha
 
 **Exercise**
 * How would you change the script so that it prints out the numbers from 27-32?
+***
+
+## The `basename` command
+
+Before we get started on creating more complex scripts, we want to introduce you to a command that will be useful for future shell scripting. The `basename` command is used for extracting the base name of a file, which is accomplished using **string splitting to strip the directory and any suffix from filenames**. Let's try an example, by first moving back to your home directory:
+
+```bash
+$ cd
+```
+
+Then we will run the `basename` command on one of the FASTQ files. Be sure to specify the path to the file:
+
+```bash
+$ basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq
+```
+
+What is returned to you? The filename was split into the path `unix_lesson/raw_fastq/` and the filename `Mov10_oe_1.subset.fq`. The command returns only the filename. Now, suppose we wanted to also trim off the file extension (i.e. remove `.fq` leaving only the file *base name*). We can do this by adding a parameter to the command to specify what string of characters we want trimmed.
+
+```bash
+$ basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq .fq
+```
+
+You should now see that only `Mov10_oe_1.subset` is returned. 
+
+***
+
+**Exercise**
+
+* How would you modify the above `basename` command to only return `Mov10_oe_1`?
+
 ***
 
 ## Automating with Scripts
