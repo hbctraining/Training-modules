@@ -154,9 +154,9 @@ The structure or the syntax of (*for*) loops in bash is as follows:
 ```bash
 for (variable_name) in (list)
 do
-(command1 $variable_name)
-.
-.
+  (command1 $variable_name)
+  .
+  .
 done
 ```
 
@@ -167,10 +167,10 @@ where the ***variable_name*** defines (or initializes) a variable that takes the
 
 ```bash
 for x in *.fq
- do
-   echo $x
-   wc -l $x
- done
+do
+  echo $x
+  wc -l $x
+done
 ```
 
 Most simply, it writes to the terminal (`echo`) the name of the file and the number of lines (`wc -l`) for each files that end in `.fq` in the current directory. The output is almost identical to what we had before.
