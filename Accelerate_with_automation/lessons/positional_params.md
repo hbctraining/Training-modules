@@ -338,10 +338,10 @@ do
   echo $filename
 
   # grab all the bad read records
-  grep -B1 -A2 NNNNNNNNNN $filename > ${base}.${sequence}.loop.fastq
+  grep -B1 -A2 $sequence $filename > ${base}.${sequence}.loop.fastq
 
   # grab the number of bad reads and write it to a summary file
-  grep -cH NNNNNNNNNN $filename > ${base}.${sequence}.loop.count.summary
+  grep -cH $sequence $filename > ${base}.${sequence}.loop.count.summary
 done
 ```
 Open nano and copy/paste the above code and save it as a new script, `generate_bad_reads_summary_param_loop2.sh`
