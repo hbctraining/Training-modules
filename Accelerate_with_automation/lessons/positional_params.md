@@ -255,7 +255,7 @@ do
 done
 ```
 
-In this longform syntax, `$@` means the list of all of the positional parameters that you submit to the script.
+In this longform syntax, `"$@"` means the list of all of the positional parameters that you submit to the script.
 
 Knowing that this loop works with positional parameters, we can modify our bad reads script to take a list of files as positional parameters. Below is our bad reads looping script from the previous lesson, but we have made the following changes:
 1. Remove the change directory (`cd`) command
