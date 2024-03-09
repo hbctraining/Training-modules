@@ -233,7 +233,7 @@ Say we are interested in searching for other sequences in our fastq files beside
 
 ***
 
-##Using positional parameters in a loop
+## Using positional parameters in a loop
 
 The script above works great if we just have one file we want to run it on, but what if we want to run it on a large number of files? That could be tedious to run this script many times over. We could use our original looping script from the previous lesson, but if we reuse that on a new project, we will have to edit parts of the script which tell us what folder to go to before starting our `for` loop. It turns out that we can combine positional parameters and loops to make an even more versatile script which we wouldn't have to edit at all between projects.
 
