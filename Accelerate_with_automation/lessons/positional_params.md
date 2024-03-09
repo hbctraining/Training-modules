@@ -9,7 +9,7 @@ author: "Emma Berdan, Heather Wick"
 * Distinguish between variables and positional parameters
 * Recognize variables and positional parameters in code written by someone else
 * Implement positional parameters and variables in a bash script
-* Integrate for loops and variables
+* Integrate for loops and positional parameters
 
 ## What is a variable again?
 
@@ -92,7 +92,7 @@ sh compliment.sh "Olivia Coleman" acting
 
 The quotes tell bash that "Olivia Coleman" is a single string, `$1`. Both double quotes (") and single quotes (') will work. Olivia has enough accolades though, so go ahead and run the script with your name (just first or both first and last) and something you are good at!
 
-## Naming variables
+## Naming positional parameters
 
 Our previous script was so short that it was easy to remember that `$1` represents a name and `$2` represents a skill. However, most scripts are much longer and may contain more positional parameters. To make it easier on yourself it is often a good idea to name your positional parameters. Here is the same script we just used but with named variables.
 
@@ -116,13 +116,20 @@ Now that we understand the basics of variables and positional parameters how can
 
 Lets say that we want to adapt the script we wrote in the last lesson to look for our bad read sequence in any file, and not just all the files in a whole directory. How might we do that?
 
-Here is that same script, but we have changed it by removing the `for` loop and adding a line to read in a positional parameter. We've also added '.param' to the output file to make it easier to distinguish output from this script from the previous script. Finally, we've also added a couple of comments to note the script **usage**, including what the script takes in, and what the script puts out, as well as an **example** of how to run the script. It is best practice to include these types of comments. They make your life easier down the road if you ever come back to your scripts after a long time away.
+Here is that same script, but we have made a few changes below:
+
+1. Remove the `for` loop structure (remove `for`, `do`, and `done`)
+2. Add a couple of comments to note the script **USAGE**, including what the script takes in, and what the script puts out, as well as an **EXAMPLE** of how to run the script. It is best practice to include these types of comments. They make your life easier down the road if you ever come back to your scripts after a long time away.
+3. Add a line to read in a positional parameter
+4. Add `.param` to the output filename to make it easier to distinguish between output from this script and output from the previous script
+
+Open up a new file using nano called generate_bad_reads_summary_param.sh. In it you can copy/paste the modified script provided here:
 
 ```bash
 #!/bin/bash 
 
 ## USAGE: User provides path to file that needs to checked for bad reads. 
-##  Script will output a file in the same directory
+##  Script will output files in the same directory
 ## EXAMPLE: generate_bad_reads_summary_param.sh filename
 
 # read positional parameter
@@ -141,15 +148,13 @@ grep -B1 -A2 NNNNNNNNNN $filename > ${base}.param.fastq
 grep -cH NNNNNNNNNN $filename > ${base}.param.count.summary
 ```
 
-After you have made the edits to your script, save it as a new script called `generate_bad_reads_summary_param.sh`. If you have been editing the script from the previous lesson, you can do this by typing `Ctrl+o` and then providing the new file name when prompted. Alternatively, you can open a new nano session and copy and paste the code from above.
-
-Let's test it out with a file!
+Save the script and exit nano. Let's test it out with a file!
 
 ```bash
 sh generate_bad_reads_summary_param.sh Irrel_kd_1.subset.fq
 ```
 
-To see the output, you can use `ls`. You should see the two output files with .param. in the names.
+To see the output, you can use `ls`. You should see the two output files with `.param`. in the names.
 
 ***
 
@@ -157,12 +162,13 @@ To see the output, you can use `ls`. You should see the two output files with .p
 
 Say we are interested in searching for other sequences in our fastq files besides NNNNNNNNNN, and want to create output files that reflect those sequence names. But we don't want to have to edit the script every time we have a new sequence to look for. How might we edit `generate_bad_reads_summary_param.sh` using positional parameters so we can feed it any sequence we want?
 
-1. Add a line to capture `sequence` as a 2nd positional parameter
+1. Add a line to capture `sequence` as a 2nd positional parameter, and another line to echo the sequence to the user
 
 <details>
         <summary><i>Click here for answer</i></summary>
         
         sequence=$2
+        echo $sequence
 </details>
 
 2. Change what we are searching for in the `grep` statements
@@ -184,15 +190,15 @@ Say we are interested in searching for other sequences in our fastq files beside
 </details>
 
 4. Update the `USAGE` and `EXAMPLE` to reflect the changes you made
- <details>
+<details>
         <summary><i>Click here for answer</i></summary>
          
-        ## USAGE: User provides path to file that needs to checked for user-provided sequence. 
+        ## USAGE: User provides path to file that needs to checked for user-provided sequence.
         
-        ##  Script will output a file in the same directory
+        ##  Script will output files in the same directory
         
         ## EXAMPLE: generate_bad_reads_summary_param.sh filename sequence
- </details>
+</details>
 
 
 <details>
@@ -200,12 +206,16 @@ Say we are interested in searching for other sequences in our fastq files beside
           
         #!/bin/bash 
 
-        ## USAGE: User provides path to file that needs to checked for bad reads. 
-        ##  Script will output a file in the same directory
-        ## EXAMPLE: generate_bad_reads_summary_param.sh filename
+        ## USAGE: User provides path to file that needs to checked for user-provided sequence
+        ##  Script will output files in the same directory
+        ## EXAMPLE: generate_bad_reads_summary_param.sh filename sequence
 
-        # read positional parameter
+        # read positional parameters
         filename=$1
+        sequence=$2
+
+        # tell us what sequence we're looking for
+        echo $sequence
 
         # create a prefix for all output files
         base=`basename $filename .subset.fq`
@@ -214,130 +224,138 @@ Say we are interested in searching for other sequences in our fastq files beside
         echo $filename
 
         # grab all the bad read records
-        grep -B1 -A2 NNNNNNNNNN $filename > ${base}.param.fastq
+        grep -B1 -A2 $sequence $filename > ${base}.${sequence}.fastq
 
         # grab the number of bad reads and write it to a summary file
-        grep -cH NNNNNNNNNN $filename > ${base}.param.count.summary
+        grep -cH $sequence $filename > ${base}.${sequence}.count.summary
 
 </details>
 
 ***
 
-By using this script we can easily run this command for any sample we have. we mentioned above that we have 10 sequences, and it's not too hard for me to run the command 10 times. But sometimes we might have so many sequences that even running this command manually for all of these will be time consuming. In this case we can turn to one of the most powerful ways to use positional parameters and other variables, by combining them with **for loops**. More on for loops [HERE](https://github.com/hbctraining/Intro-to-shell-flipped/blob/master/lessons/06_loops_and_automation.md).
+##Using positional parameters in a loop
 
-## Variables in for loops
+The script above works great if we just have one file we want to run it on, but what if we want to run it on a large number of files? That could be tedious to run this script many times over. We could use our original looping script from the previous lesson, but if we reuse that on a new project, we will have to edit parts of the script which tell us what folder to go to before starting our `for` loop. It turns out that we can combine positional parameters and loops to make an even more versatile script which we wouldn't have to edit at all between projects.
 
-We are going to continue with example script above. Let's say that we want to run this script for 10 different sequences. First, we'll put all of those sequences in a text file.
-
-From your command line type `nano sequences.txt`. Copy and paste the following
+Here is example syntax of a `for` loop that can be used inside of a shell script to iterate through any number of positional parameters that we send to the script:
 
 ```bash
-GGGGGGGGGGGGG
-GCGCGCGTCGATA
-ATAT
-CATCATCAT
-GGTTATTGG
-CCCCCCCCCCCC
-GCGCGCGC
-GAGAGA
-TATA
-AAAAAAAAAAA
-```
-
-Then exit nano, saving your script. Each of these sequences will be stored in a variable in our script, one at a time. But how will we iterate through them? To do so, we will use a variation on a for loop.
-
-If you recall, previously we learned that a for loop is formatted like this:
-
-```bash
-for (variable_name) in (list)
+for variable_name
 do
-(command1 $variable_name)
-.
-.
+  (command $variable_name)
 done
 ```
 
-Let's open up a new script. From your command line type `generate_sequence_summary_loop.sh`. Copy and paste the following
+This looks really similar to the `for` loop in the previous lesson, but it's missing the list that the `for` loop normally iterates over. Why is that? When bash sees a loop like this in a script, it assumes that it is iterating over a list of user-provided positional parameters. In fact, this notation is actually shorthand for a more longform version of this `for` loop syntax, which we'll talk about more later:
 
 ```bash
-#!/bin/bash
-
-for ((i=1; i<=10; i=i+1))
-        do 
-
-sample=$(awk -v  awkvar="${i}" 'NR==awkvar' samples.txt)
-
-echo java  -jar picard.jar AddOrReplaceReadGroups  \
-I=${sample}.dedupped.bam  O=${sample}.final.bam RGID=${sample}  \
-RGLB=${sample} RGPL=illumina   RGPU=unit1  RGSM=${sample}
-
+for variable_name in "$@"
+do
+  (command $variable_name)
 done
 ```
 
-then exit nano, saving your script. Now that you are back on the command line type `chmod u+x picard_loop.sh` to make the file executable for yourself. 
+In this longform syntax, `$@` means the list of all of the positional parameters that you submit to the script.
 
-Before we run this, let's go through it line by line.
-
-
-`for ((i=1; i<=10; i=i+1))`
-
-This tells bash how our loop is working. We want to start at 1 (`i=1`) and end at 10 (`i<=10`) and each time we complete our loop the value `i` should increase by 1 (`i=i+1`).  Simple math tells us that means the loop will run 10 times. But we could make it run 100 times by changing `i<=10` to `i<=100`. `i` is our counter variable to track how many loops we have run. You will often see this called `i` or `j` but you can actually call it whatever you want. For example, here we are using it to track which line of samples.txt we are reading so it may be more intuitive to write it like this `for ((line=1; line<=10; line=line+1))`. `i` and `j` are used because they are shorter to write.
-
-`do` 
-
-This means that whatever follows is what we want bash to do for each value of `i` (here 1,2,3,4,5,6,7,8,9,and 10).
-
-`sample=$(awk -v  awkvar="${i}" 'NR==awkvar' samples.txt)`
-
-This line creates a variable called `$sample` and assigns its value to line `i` of samples.txt. We won't go into the details of how this awk command is working but you can learn more about using awk [HERE](https://github.com/hbctraining/Training-modules/blob/f168114cce7ab9d35eddbf888b94f5a2fda0318a/Intermediate_shell/lessons/advanced_lessons.md). You may also notice that we have assigned the value of `$sample` differently here using parentheses () instead of single ' or double " quotes. The syntax for assigning variables changes depending on what you are assigning. See **Syntax for assigning variables** below.
-
-If we look at samples.txt we can see that when `i=1` then `$sample` will be M1. What will `$sample` be when `i=5`?
-
-
-The next line should look familiar
+Knowing that this loop works with positional parameters, we can modify our bad reads script to take a list of files as positional parameters. Below is our bad reads looping script from the previous lesson, but we have made the following changes:
+1. Remove the change directory (`cd`) command
+2. Remove `in *.fq` from the `for` loop
+3. Add `.param.loop` to the output filename to make it easier to distinguish between output from this script and output from the other scripts
+4. Add USAGE and EXAMPLE comments
 
 ```bash
-echo java  -jar picard.jar AddOrReplaceReadGroups  \
-I=${sample}.dedupped.bam  O=${sample}.final.bam RGID=${sample} \
-RGLB=${sample} RGPL=illumina   RGPU=unit1  RGSM=${sample}
-```
+#!/bin/bash 
 
-This is exactly the same as what we used above except `$1` is now `$sample`. We are assigning the value of `$sample` within our script instead of giving it externally as a positional parameter.
+## USAGE: User provides list of files that need to checked for bad reads 
+##  Script will output files in the same directory
+## EXAMPLE: generate_bad_reads_summary_param.sh *.fq
 
-finally we end our script with 
+# count bad reads for each FASTQ file in the provided list of files
+for filename
+do 
+  # create a prefix for all output files
+  base=`basename $filename .subset.fq`
 
-```bash
+  # tell us what file we're working on	
+  echo $filename
+
+  # grab all the bad read records
+  grep -B1 -A2 NNNNNNNNNN $filename > ${base}.param.loop.fastq
+
+  # grab the number of bad reads and write it to a summary file
+  grep -cH NNNNNNNNNN $filename > ${base}.param.loop.count.summary
 done
 ```
+Open nano and copy the above code into a new bash script and save it as generate_bad_reads_summary_param_loop.sh
 
-Here we are simply telling bash that this is the end of the commands that we need it to do for each value of `i`.
-
-Now let's run our script
-
+Try running the script while providing some file names:
 
 ```bash
-sh picard_loop.sh
+sh generate_bad_reads_summary_param_loop.sh
 ```
 
-Is the output what you expected?
+Check your outupt. By adding `-t` to our `ls` command, we can list the files in order of when they were created. The newest files will be at the top:
+```bash
+ls -lt
+```
+If it worked, you should now have yet another set of output files with `param.loop` in the file names.
 
-## Syntax for assigning variables
 
-Depending on what you are assigning as a variable, the syntax for doing so differs.
+***
+**Exercise**
+* How would you run generate_bad_reads_summary_param_loop.sh on all files in a directory?
+***
 
-`variable=$(command)` for output of a command. 
+### Advanced use: using positional parameters with and without loops in the same script
 
-        example: `variable=$(wc -l file.txt)` will assign the number of lines in the file file.text to `$variable`
+What if we still wanted to run this on multiple files AND also provide a different sequence besides "NNNNNNNNNN?" We can do that, but would need to modify the above script a little bit. Because we are using a for loop which will iterate over all positional parameters, we can't simply add our sequence to our command like this: `sh generate_bad_reads_summary_param_loop.sh *fq CTGCTAGA`, because bash will treat our new sequence, "CTGCTAGA" exactly as if it were another file in the list. However, using the long form of the `for` loop mentioned above, we can specify where in the list we would like to start iterating through the loop, while capturing the other positional parameters in their own variables.
 
-`variable=‘a string’` or `”a string”` for a string with spaces.
+Below is the `generate_bad_reads_summary_param_loop.sh` script, but we have modified it so that we can capture the first positional parameter outside of the `for` loop to use it as a user-provided sequence. Like the `generate_bad_reads_summary_param.sh` we modified in the positional parameters exercise, it will search for whatever sequence we provide and incorporate the sequence string into the output filenames. Here are the modification we have made, enumerated:
+1. Capture the first positional parameter in a variable named `$sequence` and echo it for the user to see
+3. Change the `for` loop to go through the positional parameters starting with the second positional parameter by using the longform `for filename in "${@:2}"`. Specifically, the `:2` in this statement indicates to start the loop with the second positional parameter instead of the first. Any number could be used here, depending on the needs of your specific script 
+4. Replace `param` with `${sequence}` to add sequence to the output filenames and differentiate it from output files from the previous scripts
+5. Update the USAGE and EXAMPLE to reflect the changes we have made
 
-        example `variable="Olivia Coleman"` as seen above.
+```bash
+#!/bin/bash 
 
-`variable=number` for a number or a string without spaces.
+## USAGE: User provides sequence to be searched for in user-provided list of files
+##  Script will output files in the same directory
+## EXAMPLE: generate_bad_reads_summary_param_loop2.sh sequence *.fq
 
-        example: `variable=12` will assign the number 12 to `$variable`
+sequence=$1
 
-`variable=$1` for positional parameter 1.
+# tell us what sequence we're looking for
+echo $sequence
 
-        example: `variable=$9` will assign positional parameter 9 to `$variable` and `variable=${10}` will assign positional parameter 10 to `$variable` 
+# count bad reads for each FASTQ file in the provided list of files
+for filename in "${@:2}"
+do 
+  # create a prefix for all output files
+  base=`basename $filename .subset.fq`
 
+  # tell us what file we're working on	
+  echo $filename
+
+  # grab all the bad read records
+  grep -B1 -A2 NNNNNNNNNN $filename > ${base}.${sequence}.loop.fastq
+
+  # grab the number of bad reads and write it to a summary file
+  grep -cH NNNNNNNNNN $filename > ${base}.${sequence}.loop.count.summary
+done
+```
+Open nano and copy/paste the above code and save it as a new script, `generate_bad_reads_summary_param_loop2.sh`
+
+Try running the script with the following command:
+
+```bash
+sh generate_bad_reads_summary_param_loop2.sh GATTACA *fq
+```
+
+Check your outupt:
+```bash
+ls -lt
+```
+If it worked, you should now have yet another set of output files with `GATTACA.loop` in the file names.
+
+And that's it! You are now very well equipped to use loops and positional parameters in the same script!
