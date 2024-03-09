@@ -1,6 +1,6 @@
 ---
 title: "The Shell: Loops & Scripts"
-author: "Bob Freeman, Mary Piper, Radhika Khetani"
+author: "Bob Freeman, Mary Piper, Radhika Khetani, Emma Berdan, Heather Wick"
 ---
 
 Approximate time: 60 minutes
