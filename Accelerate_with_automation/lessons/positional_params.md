@@ -123,7 +123,7 @@ Here is that same script, but we have made a few changes below:
 3. Add a line to read in a positional parameter
 4. Add `.param` to the output filename to make it easier to distinguish between output from this script and output from the previous script
 
-Open up a new file using nano called generate_bad_reads_summary_param.sh. In it you can copy/paste the modified script provided here:
+Open up a new file using nano called `generate_bad_reads_summary_param.sh`. In it you can copy/paste the modified script provided here:
 
 ```bash
 #!/bin/bash 
@@ -286,7 +286,7 @@ do
   grep -cH NNNNNNNNNN $filename > ${base}.param.loop.count.summary
 done
 ```
-Open nano and copy the above code into a new bash script and save it as generate_bad_reads_summary_param_loop.sh
+Open nano and copy the above code into a new bash script and save it as `generate_bad_reads_summary_param_loop.sh`
 
 Try running the script while providing some file names:
 
@@ -303,7 +303,7 @@ If it worked, you should now have yet another set of output files with `param.lo
 
 ***
 **Exercise**
-* How would you run generate_bad_reads_summary_param_loop.sh on all files in a directory?
+* How would you run `generate_bad_reads_summary_param_loop.sh` on all files in a directory?
 ***
 
 ### Advanced use: using positional parameters with and without loops in the same script
