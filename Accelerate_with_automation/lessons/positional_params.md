@@ -9,7 +9,7 @@ author: "Emma Berdan, Heather Wick"
 * Distinguish between variables and positional parameters
 * Recognize variables and positional parameters in code written by someone else
 * Implement positional parameters and variables in a bash script
-* Integrate for loops and positional parameters
+* Integrate `for` loops and positional parameters
 
 ## What is a variable again?
 
