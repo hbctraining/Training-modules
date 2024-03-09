@@ -10,6 +10,8 @@ Approximate time: 60 minutes
 * Capture multiple commands into a script to re-run as one single command
 * Understanding variables and storing information in variables
 * Learn how to use variables to operate on multiple files
+* Learn two ways to write `for` loops
+* Apply variables and `for` loops in scripts for better automation
 
 ## Bash variables
 
