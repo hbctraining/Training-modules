@@ -95,25 +95,7 @@ sbatch --array=1-16 my_script.sh
 
 So what is this script doing? `file=$(awk -v  awkvar="${SLURM_ARRAY_TASK_ID}" 'NR==awkvar' samples.txt)` pulls the line of `samples.txt` that matched the job ID. Then we assign that to a variable called `${file}` and use that to run our command.
 
-Job IDs can also be helpful for output files or folders. We saw above how we used the job ID to help name our output bam file. But creating and naming folders is helpful in some instances as well. 
-
-```bash
-
-file=$(awk -v  awkvar="${SLURM_ARRAY_TASK_ID}" 'NR==awkvar' samples.txt)
-
-PREFIX="Folder_${SLURM_ARRAY_TASK_ID}"
-     mkdir $PREFIX
-        cd $PREFIX
-
-samtools view -S -b ../${file}.sam > ${file}.bam
-
-```    
-
-This script differs from our previous one in that it makes a folder with the job ID (Folder_1 for job ID 1) then moves inside of it to execute the command. Instead of getting all 16 of our bam files output in a single folder each of them will be in its own folder labled Folder_1 to Folder_16. 
-
-**NOTE** That we define `${file}` BEFORE we move into our new folder as samples.txt is only present in the main directory. 
-
-
+We will come back to this awk one liner in our Needle in a Haystack module!
 
 
 
