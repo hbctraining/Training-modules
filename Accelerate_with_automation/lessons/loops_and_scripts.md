@@ -108,20 +108,17 @@ $ ls *.fq
 
 Now we want to *assign* the output of `ls` to the variable. To do so, we can do this in one of two ways as we described above:
 
-1. ``variable=`command` ``
-2. `variable=$(command)`
 
-We'll do so with backticks:
+1. `variable=$(command)`
+2. ``variable=`command` ``
+
+**Note that `variable=$(command)` will ALWAYS work but there are some cases where ``variable=`command` `` will break. It is a good idea to always use $(command) even though you will see both of these in other people's code.**
+
 
 ```bash
-$ filenames=`ls *.fq`
+$ filenames=$(ls *.fq)
 ```
 
->We could have also used:
-> 
->```bash
->$ filenames=$(ls *.fq)
->```
 
 Check and see what's stored inside our newly created variable using `echo`:
 	
@@ -300,7 +297,7 @@ For each file that we process we can use `basename` to create a variable that wi
 ```bash
 do
   # create a prefix for all output files
-  base=`basename $filename .subset.fq`
+  base=$(basename $filename .subset.fq)
 ```
 
 and then we execute the following commands for each file:
@@ -318,7 +315,7 @@ and then we execute the following commands for each file:
 > #### Why are we using curly brackets with the variable name?
 When we append a variable with free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside it is the variable name. This way when we reference it, shell knows to print the variable `$base` and not to look for a variable called `$base_badreads.fq`.
 
->Note that $base is actually a short form of ${base}. We can only ditch the curly brackets and rely on the short form when the variable name is **not** followed by a letter, digit, or an underscore. As you write your own code it is good practice to be safe to use `${variable}` and understand that errors may result from not using curly brackets when needed, even if it is convnient. As you navigate scripts written by other people you will see both forms.
+>Note that $base is actually a short form of ${base}. We can only ditch the curly brackets and rely on the short form when the variable name is **not** followed by a letter, digit, or an underscore. As you write your own code it is good practice to be safe to use `${variable}` and understand that errors may result from not using curly brackets when needed, even if it is convinent. As you navigate scripts written by other people you will see both forms.
 
 We'll also add an additional `grep` statement which uses the `c` flag to count the reads it finds, and also uses the `H` flag to include the file name in the output, which will be redirected to a count summary file via `>`:
 
@@ -341,7 +338,7 @@ for filename in *.fq
 do 
 
   # create a prefix for all output files
-  base=`basename $filename .subset.fq`
+  base=$(basename $filename .subset.fq)
 
   # tell us what file we're working on	
   echo $filename
@@ -385,7 +382,7 @@ variable="a string with spaces"	#assign a character string with spaces
 variable=$another_variable	#assign a different variable
 variable=$(command)		#assign a command
    or
-variable=`command`		#assign a command (alternative method)
+variable=`command`		#assign a command (alternative method less preferred)
 ```
 
 [Next Lesson](https://github.com/hbctraining/Training-modules/blob/heather_edits/Accelerate_with_automation/lessons/positional_params.md)
