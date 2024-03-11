@@ -28,11 +28,6 @@ sbatch --array=1-10 my_script.sh
 
 This will run my_script.sh 10 times with the job IDs 1,2,3,4,5,6,7,8,9,10
 
-We can also put this directly into the bash script itself (although we will continue with the command line version here).
-```bash
-$SBATCH --array=1-10
-```
-
 We can specify any job IDs we want.
 
 ```bash
