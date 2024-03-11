@@ -95,7 +95,7 @@ $ ls
 
 ***
 
-[Next Lesson](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/lessons/loops_and_scripts.html)
+[Next Lesson](https://github.com/hbctraining/Training-modules/blob/heather_edits/Accelerate_with_automation/lessons/loops_and_scripts.md)
 
 ***
 
