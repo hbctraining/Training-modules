@@ -136,7 +136,7 @@ Open up a new file using nano called `generate_bad_reads_summary_param.sh`. In i
 filename=$1
 
 # create a prefix for all output files
-base=`basename $filename .subset.fq`
+base=$(basename $filename .subset.fq)
 
 # tell us what file we're working on
 echo $filename
@@ -274,7 +274,7 @@ Knowing that this loop works with positional parameters, we can modify our bad r
 for filename
 do 
   # create a prefix for all output files
-  base=`basename $filename .subset.fq`
+  base=$(basename $filename .subset.fq)
 
   # tell us what file we're working on	
   echo $filename
@@ -332,7 +332,7 @@ echo $sequence
 for filename in "${@:2}"
 do 
   # create a prefix for all output files
-  base=`basename $filename .subset.fq`
+  base=$(basename $filename .subset.fq)
 
   # tell us what file we're working on	
   echo $filename
