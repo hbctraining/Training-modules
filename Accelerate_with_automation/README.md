@@ -37,11 +37,9 @@ This repository has teaching materials for a **3 hour**, hands-on **Intermediate
 ### Installation Requirements
 
 ***Mac users:***
-
 No installation requirements.
 
 ***Windows users:***
-
 [GitBash](https://git-scm.com/download/win)
 
 ### Resources
