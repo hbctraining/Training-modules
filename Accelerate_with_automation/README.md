@@ -17,7 +17,7 @@ This repository has teaching materials for a **3 hour**, hands-on **Intermediate
 * Implement loops, positional parameters and variables in a bash script
 * Learn about slurm arrays for automation on a high performance computing cluster
 
-> These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
+> These materials are developed for a trainer-led workshop, but are also amenable to self-guided learning.
 
 
 ### Contents
