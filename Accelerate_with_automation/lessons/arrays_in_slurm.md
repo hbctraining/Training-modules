@@ -1,7 +1,7 @@
 
 # Arrays in Slurm
 
-When I am working on large data sets my mind often drifts back to an old Simpsons episode. Bart is in France and being taught to pick grapes. They show him a detailed technique and he does it successfully. Then they say:
+When we are working on large data sets our minds often drift back to an old Simpsons episode. Bart is in France and being taught to pick grapes. They show him a detailed technique and he does it successfully. Then they say:
 
 
 <p align = "center">
@@ -91,6 +91,14 @@ sbatch --array=1-16 my_script.sh
 So what is this script doing? `file=$(awk -v  awkvar="${SLURM_ARRAY_TASK_ID}" 'NR==awkvar' samples.txt)` pulls the line of `samples.txt` that matched the job ID. Then we assign that to a variable called `${file}` and use that to run our command.
 
 We will come back to this awk one liner in our Needle in a Haystack module!
+
+<p align = "center">
+<img src="../img/Enjoy_Slurm.png">
+</p>
+     
+<p align = "center">
+Enjoy Slurm!
+</p>
 
 
 
