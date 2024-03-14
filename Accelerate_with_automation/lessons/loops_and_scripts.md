@@ -115,7 +115,7 @@ filenames=$(ls *.fq)
 ```
 Now when we echo `$filenames` it will present the output of that `ls` commmand:
 ```bash
-ech $filenames
+echo $filenames
 ```
 ***
 
