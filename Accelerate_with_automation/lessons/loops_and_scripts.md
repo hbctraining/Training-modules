@@ -26,27 +26,25 @@ Let's start with a creating simple variable that has a single number stored in i
 ```bash
 $ num=25
 ```
-It is critical that there is no space in our assignment statements, num = $25 would not work.
+It is critical that there is no space in our assignment statements, num = 25 would not work.
 
->**Other ways to assign a value to a variable**
->
->The syntax for varable assignment depending on whether you want to assign a number, a string with/without spaces, another variable, or a command. For example:
->
->variable=number for a number or a character string without spaces.
->>example: `variable=12` will assign the number 12 to `$variable`
->
->variable=‘a string’ or ”a string” for a character string with spaces.
->>example: `variable="My variable"`.
->
->variable2=$variable1 to assign the value of another variable (this will be demonstrated in more detail in the next lesson)
->>example: `variable=$1`
->
->variable=$(command) or variable=\`command\` for output of a command.
->>example: `variable=$(wc -l file.txt)` will assign the number of lines in the file file.text to `$variable`
->
->>example: `` variable=`wc -l file.txt` `` will assign the number of lines in the file file.text to `$variable`
->
-> Later in this module we will touch on some of these other ways to create variables. For now, let's stay focused on the `num` variable
+## Other ways to assign a value to a variable
+
+The syntax for varable assignment depending on whether you want to assign a number, a string with/without spaces, another variable, or a command. For example:
+
+`variable=number` for a number or a string without spaces.
+
+        example: `variable=12` will assign the number 12 to `$variable`
+
+`variable=‘a string’` or `”a string”` for a string with spaces.
+
+        example: `variable="My Variable"` as seen above.
+
+ `variable=$(command)` or ``variable=`command` `` for output of a command. 
+
+        example: `variable=$(wc -l file.txt)` will assign the number of lines in the file file.text to `$variable`
+
+Later in this module we will touch on some of these other ways to create variables. For now, let's stay focused on the `num` variable
 
 #### Retrieve value stored in a variable
 
@@ -96,16 +94,6 @@ $ wc -l $file
 
 ***
 
-Ok, so we know variables are like buckets, and so far we have seen that bucket filled with a single value. **Variables can store more than just a single value.** They can store multiple values and in this way can be useful to carry out many things at once.
-
-Let's create a new variable called `filenames` and this time we will store *all of the filenames* in the `raw_fastq` directory as values. 
-
-To list all the filenames in the directory that have a `.fq` extension, we know the command is:
-
-```bash
-$ ls *.fq
-```
-
 Now we want to *assign* the output of `ls` to the variable. To do so, we can do this in one of two ways as we described above:
 
 
@@ -115,32 +103,8 @@ Now we want to *assign* the output of `ls` to the variable. To do so, we can do 
 **Note that `variable=$(command)` will ALWAYS work but there are some cases where ``variable=`command` `` will break. It is a good idea to always use $(command) even though you will see both of these in other people's code.**
 
 
-```bash
-$ filenames=$(ls *.fq)
-```
-
-
-Check and see what's stored inside our newly created variable using `echo`:
-	
-```bash
-$ echo $filenames
-```
-
-Let's try the `wc -l` command again, but this time using our new variable `filenames` as the argument:
-
-```bash
-$ wc -l $filenames
-```
-
-What just happened? Because our variable contains multiple values, the shell runs the command on each value stored in `filenames` and prints the results to screen. 
-
 ***
 
-**Exercise**
-
-* Use some of the other commands you are familiar with (i.e. `head`, `tail`) on the `filenames` variable. 
-
-***
 
 ## Loops
 
@@ -315,7 +279,7 @@ and then we execute the following commands for each file:
 > #### Why are we using curly brackets with the variable name?
 When we append a variable with free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside it is the variable name. This way when we reference it, shell knows to print the variable `$base` and not to look for a variable called `$base_badreads.fq`.
 
->Note that $base is actually a short form of ${base}. We can only ditch the curly brackets and rely on the short form when the variable name is **not** followed by a letter, digit, or an underscore. As you write your own code it is good practice to be safe to use `${variable}` and understand that errors may result from not using curly brackets when needed, even if it is convinent. As you navigate scripts written by other people you will see both forms.
+>Note that $base is actually a short form of ${base}. We can only ditch the curly brackets and rely on the short form when the variable name is **not** followed by a letter, digit, or an underscore. As you write your own code remember that it is always safe to use `${variable}` and understand that errors may result from not using curly brackets when needed, even if it is convinent. As you navigate scripts written by other people you will see both forms.
 
 We'll also add an additional `grep` statement which uses the `c` flag to count the reads it finds, and also uses the `H` flag to include the file name in the output, which will be redirected to a count summary file via `>`:
 
@@ -380,7 +344,7 @@ variable=number			#assign a numeric value ie 0, 12, etc
 variable=string			#assign a character string with no spaces
 variable="a string with spaces"	#assign a character string with spaces
 variable=$another_variable	#assign a different variable
-variable=$(command)		#assign a command
+variable=$(command)		#assign a command (best practice)
    or
 variable=`command`		#assign a command (alternative method less preferred)
 ```
