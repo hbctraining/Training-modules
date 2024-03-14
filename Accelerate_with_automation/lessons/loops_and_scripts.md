@@ -30,7 +30,7 @@ It is critical that there is no space in our assignment statements, num = 25 wou
 
 ### Other ways to assign a value to a variable
 
-The syntax for varable assignment depending on whether you want to assign a number, a string with/without spaces, another variable, or a command. For example:
+The syntax for varable assignment changes depending on whether you want to assign a number, a string with/without spaces, another variable, or a command. For example:
 
 `variable=number` for a number or a string without spaces.
 
