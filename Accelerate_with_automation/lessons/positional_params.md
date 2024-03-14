@@ -13,7 +13,7 @@ author: "Emma Berdan, Heather Wick"
 
 ## What is a variable again?
 
-As a reminder from the previous lesson, a **variable** is a character string to which we assign a value. The value assigned could be a number, text, filename, device, or any other type of data. It is easy to identify a variable in any bash script as they will always have the $ in front of them. Here is our very cleverly named variable: `$Variable`
+As a reminder from the previous lesson, a **variable** is a character string to which we assign a value. The value assigned could be a number, text, filename, device, or any other type of data. It is easy to identify a variable in any bash script as they will always have the `$` in front of them. Here is our very cleverly named variable: `$variable`
 
 ## Positional parameters are a special kind of variable
 
