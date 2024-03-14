@@ -19,7 +19,7 @@ A *variable* is a common concept shared by many programming languages. Variables
 
 Extending the bucket analogy: the bucket has a name associated with it, i.e. the name of the variable, and when referring to the information in the bucket, we use the name of the bucket, and do not directly refer to the actual data stored in it.
 
-#### Assign value to a variable
+### Assign value to a variable
 
 Let's start with a creating simple variable that has a single number stored in it. First we need a name for our variable, and we need to assign some value to it. Assigning value is done using the equals operator:
 
@@ -28,7 +28,7 @@ $ num=25
 ```
 It is critical that there is no space in our assignment statements, num = 25 would not work.
 
-## Other ways to assign a value to a variable
+### Other ways to assign a value to a variable
 
 The syntax for varable assignment depending on whether you want to assign a number, a string with/without spaces, another variable, or a command. For example:
 
@@ -46,7 +46,7 @@ The syntax for varable assignment depending on whether you want to assign a numb
 
 Later in this module we will touch on some of these other ways to create variables. For now, let's stay focused on the `num` variable
 
-#### Retrieve value stored in a variable
+### Retrieve value stored in a variable
 
 *How do we know that we actually created the bash variable?* We can use the `echo` command to print to terminal:
 
