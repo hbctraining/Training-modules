@@ -69,6 +69,19 @@ _You should see `unix_lesson.zip` as part of the output to the screen._
 $ ls
 ```
 
+**6.** Go into the folder for the lesson
+
+on mac type: 
+```bash
+$ cd unix_lesson
+```
+
+on windows type:
+
+```bash
+$ cd unix_lesson/unix_lesson
+```
+
 ***
 
 [Next Lesson](https://github.com/hbctraining/Training-modules/blob/heather_edits/Accelerate_with_automation/lessons/loops_and_scripts.md)
