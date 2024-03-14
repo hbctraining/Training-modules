@@ -94,15 +94,29 @@ $ wc -l $file
 
 ***
 
-Now we want to *assign* the output of `ls` to the variable. To do so, we can do this in one of two ways as we described above:
+### Using variables to store and access command output
 
+Earlier we mentioned that we can assign the output of a command to a variable. To do so, we can do this in one of two ways as we described above:
 
 1. `variable=$(command)`
 2. ``variable=`command` ``
 
 **Note that `variable=$(command)` will ALWAYS work but there are some cases where ``variable=`command` `` will break (for example, when nesting backticks). It is a good idea to always use $(command) to avoid these situations, but you will see both of these in other people's code.**
 
+Assigning commands to variables can be useful in situations, for example, where we might want to store a whole list of filenames in a single variable.
 
+Whereas before we used `ls` to print all fastq files to our terminal:
+```bash
+ls *.fq
+```
+By assigning the command output to a variable name, we could acess these file names again later, such as in a list provided to a loop (we will cover loops in the next section):
+```bash
+filenames=$(ls *.fq)
+```
+Now when we echo `$filenames` it will present the output of that `ls` commmand:
+```bash
+ech $filenames
+```
 ***
 
 
@@ -138,9 +152,9 @@ done
 
 Most simply, it writes to the terminal (`echo`) the name of the file and the number of lines (`wc -l`) for each files that end in `.fq` in the current directory. The output is almost identical to what we had before.
 
-In this case the list of files is specified using the asterisk wildcard: `*.fq`, i.e. all files that end in `.fq`. 
+In this case the list of files is specified using the asterisk wildcard: `*.fq`, i.e. all files that end in `.fq`. We could also have used the `$filenames` variable we created above, but using `*fq` is a bit simpler and more versatile.
 
-Then, we execute 2 commands between the `do` and `done`. With a loop, we execute these commands for each file at a time. Once the commands are executed for one file, the loop then executes the same commands on the next file in the list. 
+Then, we execute two commands between the `do` and `done`. With a loop, we execute these commands for each file at a time. Once the commands are executed for one file, the loop then executes the same commands on the next file in the list. 
 
 Essentially, **the number of items in the list (variable name) == number of times the code will loop through**. 
 
