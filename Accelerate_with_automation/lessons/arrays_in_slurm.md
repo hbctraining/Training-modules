@@ -20,6 +20,17 @@ One easy way to scale up is to use the array feature in slurm.
 
 Atlassian says this about job arrays on O2: "Job arrays can be leveraged to quickly submit a number of similar jobs. For example, you can use job arrays to start multiple instances of the same program on different input files, or with different input parameters. A job array is technically one job, but with multiple tasks." [link](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/1586793632/Using+Slurm+Basic#Job-Arrays).
 
+>Sbatch vs. sh
+
+>So far we have run all of our scripts as sh script.sh which runs the script while we wait on the command line. However, for jobs that are going to take a very long time this is less than ideal because:
+
+   >* You have to wait for the script to finish to get the command line back and run other tasks
+   >* If you get disconnected from the cluster the job will automatically quit.  
+
+>Running jobs with sbatch will immediately give you the command line back and are not dependant on you being connected to the cluster. We will not cover the basics of sbatch here but to learn how to write these scripts come to our module **Shell tips and tricks on O2**!
+
+## Running an array
+
 Array jobs run simultaneously rather than one at a time which means they are very fast! Additionally, running a job array is very simple!  
 
 ```bash
@@ -90,7 +101,7 @@ sbatch --array=1-16 my_script.sh
 
 So what is this script doing? `file=$(awk -v  awkvar="${SLURM_ARRAY_TASK_ID}" 'NR==awkvar' samples.txt)` pulls the line of `samples.txt` that matched the job ID. Then we assign that to a variable called `${file}` and use that to run our command.
 
-We will come back to this awk one liner in our Needle in a Haystack module!
+**We will come back to this awk one liner in our Needle in a Haystack module!**
 
 <p align = "center">
 <img src="../img/Enjoy_Slurm.png">
