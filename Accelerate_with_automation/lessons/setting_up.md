@@ -19,7 +19,7 @@ Depending on your operating system, there are different ways to access the shell
 
 ### Command prompt
 
-Once you have opened the shell, you should see the command prompt ending with `$`. It will have some characters before the `$`, something like `[MacBook-Pro-5:~]`, this is telling you what the name of the computer you are working on is. 
+Once you have opened the shell, you should see the command prompt ending with `$` OR `%`. It will have some characters before the `$` or `%`, something like `[MacBook-Pro-5:~]`, this is telling you what the name of the computer you are working on is. 
 
 ```bash
 [MacBook-Pro-5:~]$ 
@@ -43,7 +43,7 @@ $ pwd
 
 _Once you have identified which folder you are in, this is where we will be downloading your data._
 
-**2. Right click on the link below, and be sure to "Save link as..."**. You will be prompted to choose a folder within a Finder/File Explorer window. Navigate to the directory that was listed when running `pwd`. If you downloaded the data previously as a part of the Basic Shell workshop, you do not need to download it again unless you have deleted it.
+**2. Click on the link below then go to file > download to download the data"**. This will automatically download the folder to your downloads folder. If you downloaded the data previously as a part of the Basic Shell workshop, you do not need to download it again unless you have deleted it.
 
 * Download data by [clicking here](https://www.dropbox.com/s/x66jksdd4jklpdw/unix_lesson.zip?dl=0).
 
@@ -57,35 +57,11 @@ $ ls
 
 _You should see `unix_lesson.zip` as part of the output to the screen._
 
-**4.** Finally, to **decompress the folder**, we can use the `unzip` command:
+**4.** Finally, to **decompress the folder**:
 
-```bash
-$ unzip unix_lesson.zip 
-```
+* Double click on unix_lesson.zip on a mac. This will automatically inflate the folder.
+* If you are on windows, press and hold (or right-click) the folder, select Extract All..., and then follow the instructions.
 
-> When you run the unzip command, you are decompressing the zipped folder, just like you would by double-clicking on it outside the Terminal. As it decompresses, you will usually see "verbose output" listing the files and folders being decompressed or inflated.
-> 
-> ```bash
-> 
-> Archive:  unix_lesson.zip
->    creating: unix_lesson/
->    creating: unix_lesson/.my_hidden_directory/
->   inflating: unix_lesson/.my_hidden_directory/hidden.txt  
->    creating: unix_lesson/genomics_data/
->    creating: unix_lesson/other/
->   inflating: unix_lesson/other/Mov10_rnaseq_metadata.txt  
->   inflating: unix_lesson/other/sequences.fa  
->    creating: unix_lesson/raw_fastq/
->   inflating: unix_lesson/raw_fastq/Irrel_kd_1.subset.fq  
->   inflating: unix_lesson/raw_fastq/Irrel_kd_2.subset.fq  
->   inflating: unix_lesson/raw_fastq/Irrel_kd_3.subset.fq  
->   inflating: unix_lesson/raw_fastq/Mov10_oe_1.subset.fq  
->   inflating: unix_lesson/raw_fastq/Mov10_oe_2.subset.fq  
->   inflating: unix_lesson/raw_fastq/Mov10_oe_3.subset.fq  
->   inflating: unix_lesson/README.txt  
->    creating: unix_lesson/reference_data/
->   inflating: unix_lesson/reference_data/chr1-hg19_genes.gtf  
-> ```
 
 **5.** Now when you **run the `ls` command** again you should see a folder called `unix_lesson`, which means you are all set with the data download!
 
