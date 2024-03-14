@@ -41,7 +41,7 @@ $ sh myscript.sh O N E
 ```
 has given three positional parameters `$1=O` `$2=N` `$3=E`
 
-You can code your script to take as many positional parameters as you like but for any parameters greater than 9 you need to use curly brackets. So positional parameter 9 is `$9` but positional parameter 10 is `${10}`. We will come back to curly brackets later.
+You can code your script to take as many positional parameters as you like but for any parameters greater than 9 you need to use curly brackets. So positional parameter 9 is `$9` but positional parameter 10 is `${10}`. 
 
 Finally, the variable `$@` contains the value of all positional parameters except `$0`.
 
@@ -105,12 +105,21 @@ skill=$2
 echo  $name 'is amazing at' $skill
 ```
 
-Just like when we assigned values to variables in the last lesson, it is critical that there is no space in our assignment statements, `name = $1` would not work.
+Just like when we assigned values to variables in the last lesson, it is critical that there is no space in our assignment statements, `name = $1` would not work. As we saw in the previous lesson we can also assign new variables in this manner whether or not they are coming from positional parameters. Here is the same script with the variables defined within it.
 
-We will talk more about naming variables later, but note that defining variables within the script can make the script **less** flexible. If we want to change our sentence, we now need to edit our script directly rather than launching the same script but with different positional parameters.
+```bash
+#!/bin/bash
+
+name="Olivia Coleman"
+skill="acting"
+
+echo  $name 'is amazing at' $skill
+```
+
+Note that defining variables within the script can make the script **less** flexible. If we want to change our sentence, we now need to edit our script directly rather than launching the same script but with different positional parameters.
 
 
-## A useful example
+## Positional parameters and for loops
 
 Now that we understand the basics of variables and positional parameters how can we make them work for us? We can use them in a shell script!
 
