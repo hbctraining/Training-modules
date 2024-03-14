@@ -34,15 +34,15 @@ The syntax for varable assignment depending on whether you want to assign a numb
 
 `variable=number` for a number or a string without spaces.
 
-        example: `variable=12` will assign the number 12 to `$variable`
+        example: variable=12 will assign the number 12 to $variable
 
 `variable=‘a string’` or `”a string”` for a string with spaces.
 
-        example: `variable="My Variable"` as seen above.
+        example: variable="My Variable" as seen above.
 
  `variable=$(command)` or ``variable=`command` `` for output of a command. 
 
-        example: `variable=$(wc -l file.txt)` will assign the number of lines in the file file.text to `$variable`
+        example: variable=$(wc -l file.txt) will assign the number of lines in the file file.text to $variable
 
 Later in this module we will touch on some of these other ways to create variables. For now, let's stay focused on the `num` variable
 
