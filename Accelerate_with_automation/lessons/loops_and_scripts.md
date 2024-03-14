@@ -276,10 +276,10 @@ and then we execute the following commands for each file:
 > #### About the grep command and redirection operator (>)
 > `grep`, short for **G**lobal **R**egular **E**xpression **P**rint, is a Unix command used to search files for the occurrence of a string of characters that matches a specified pattern. In this case, we are using grep to search for strings of N in our reads and retrieve the two lines above and one line below those reads using the `B` and `A` flags. Then, we are writing this output to a new file using the redirection operator, `>`. To learn more about `grep` and its usage, you can type `man grep` or `grep --help` into the terminal. We'll also be covering more `grep` in a later module.
 
-> #### Why are we using curly brackets with the variable name?
-> When we append a variable with free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside it is the variable name. This way when we reference it, shell knows to print the variable `$base` and not to look for a variable called `$base_badreads.fq`.
+> #### Why are we sometimes using curly brackets with the variable name?
+> When we append a variable with free text (such as a letter, digit, or an underscore), we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside the brackets is the variable name. This way when we reference it, shell knows to print the variable `$base` and not to look for a variable called `$base_badreads.fq`.
 
-> Note that `$base` is actually a short form of `${base}`. We can only ditch the curly brackets and rely on the short form when the variable name is **not** followed by a letter, digit, or an underscore. As you write your own code remember that it is always safe to use `${variable}` and understand that errors may result from not using curly brackets when needed, even if it is convinent. As you navigate scripts written by other people you will see both forms.
+> Note that `$base` is actually a short form of `${base}`. We can only ditch the curly brackets and rely on the short form when the variable name is **not** followed by free text. As you write your own code remember that it is always safe to use `${variable}` and understand that errors may result from not using curly brackets when needed, even if it is convenient. As you navigate scripts written by other people you will see both forms.
 
 We'll also add an additional `grep` statement which uses the `c` flag to count the reads it finds, and also uses the `H` flag to include the file name in the output, which will be redirected to a count summary file via `>`:
 
