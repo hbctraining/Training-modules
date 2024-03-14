@@ -100,7 +100,7 @@ Now we want to *assign* the output of `ls` to the variable. To do so, we can do 
 1. `variable=$(command)`
 2. ``variable=`command` ``
 
-**Note that `variable=$(command)` will ALWAYS work but there are some cases where ``variable=`command` `` will break. It is a good idea to always use $(command) even though you will see both of these in other people's code.**
+**Note that `variable=$(command)` will ALWAYS work but there are some cases where ``variable=`command` `` will break (for example, when nesting backticks). It is a good idea to always use $(command) to avoid these situations, but you will see both of these in other people's code.**
 
 
 ***
