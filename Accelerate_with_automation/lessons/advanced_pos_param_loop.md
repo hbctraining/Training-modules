@@ -1,6 +1,11 @@
+---
+title: "Positional Parameters, continued"
+author: "Heather Wick"
+---
+
 ## Positional Parameters, continued
 
-This lesson is a continuation of **Tying everything together: Using positional parameters in a loop** from the [Positional Parameters Lesson](https://github.com/hbctraining/Training-modules/blob/heather_edits/Accelerate_with_automation/lessons/positional_params.md)
+This lesson is a continuation of **Tying everything together: Using positional parameters in a loop** from the [Positional Parameters Lesson](https://github.com/hbctraining/Training-modules/blob/master/Accelerate_with_automation/lessons/positional_params.md)
 
 ### Advanced use: using positional parameters with and without loops in the same script
 
