@@ -31,7 +31,7 @@ Depending on your operating system, there are different ways to access the shell
 >
 > By default, there is no terminal for the bash shell available in the Windows OS, so you have to use a downloaded program. We recommend "**Git BASH**" a shell (bash) emulator that is a part of the [Git for Windows](https://git-for-windows.github.io/) download.
 
-#### Command prompt
+### Command prompt
 
 Once you have opened the shell, you should see the command prompt ending with `$`. It will have some characters before the `$`, something like `[MacBook-Pro-5:~]`, this is telling you what the name of the computer you are working on is. 
 
@@ -58,7 +58,7 @@ _Once you have identified which folder you are in, this is where we will be down
 
 **2. Right click on the link below, and be sure to "Save link as..."**. You will be prompted to choose a folder within a Finder/File Explorer window. Navigate to the directory that was listed when running `pwd`.
 
-* Download data by [clicking here](https://www.dropbox.com/s/t3lkyz1pz021222/unix_lesson.tar.gz?dl=1).
+* Download data by [clicking here](https://www.dropbox.com/s/x66jksdd4jklpdw/unix_lesson.zip?dl=0).
 
 **3.** Once you have downloaded the file to the correct location, go back to your **terminal window and type the 'list' command**:
 

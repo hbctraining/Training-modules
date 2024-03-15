@@ -1,4 +1,4 @@
-## Needle in a Haystack: Finding and summarizing colossal files
+## Needle in a Haystack: Finding and summarizing data from colossal files
 
 | Audience | Computational skills required | Duration |
 :----------|:----------|:----------|
