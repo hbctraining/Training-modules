@@ -43,8 +43,8 @@ The syntax for varable assignment changes depending on whether you want to assig
  `variable=$(command)` or ``variable=`command` `` for output of a command. 
 
         example: variable=$(wc -l file.txt) will assign the number of lines in the file file.text to $variable
-
-Later in this module we will touch on some of these other ways to create variables. For now, let's stay focused on the `num` variable
+	
+**Note that `variable=$(command)` will ALWAYS work but there are some cases where ``variable=`command` `` will break (for example, when nesting backticks). It is a good idea to always use $(command) to avoid these situations, but you will see both of these in other people's code.**
 
 ### Retrieve value stored in a variable
 
@@ -93,32 +93,6 @@ $ wc -l $file
 * Reuse the `$file` variable to store a different file name, and rerun the commands we ran above (`wc -l`, `echo`)
 
 ***
-
-### Using variables to store and access command output
-
-Earlier we mentioned that we can assign the output of a command to a variable. To do so, we can do this in one of two ways as we described above:
-
-1. `variable=$(command)`
-2. ``variable=`command` ``
-
-**Note that `variable=$(command)` will ALWAYS work but there are some cases where ``variable=`command` `` will break (for example, when nesting backticks). It is a good idea to always use $(command) to avoid these situations, but you will see both of these in other people's code.**
-
-Assigning commands to variables can be useful in situations, for example, where we might want to store a whole list of filenames in a single variable.
-
-Whereas before we used `ls` to print all fastq files to our terminal:
-```bash
-ls *.fq
-```
-By assigning the command output to a variable name, we could acess these file names again later, such as in a list provided to a loop (we will cover loops in the next section):
-```bash
-filenames=$(ls *.fq)
-```
-Now when we echo `$filenames` it will present the output of that `ls` commmand:
-```bash
-echo $filenames
-```
-***
-
 
 ## Loops
 
