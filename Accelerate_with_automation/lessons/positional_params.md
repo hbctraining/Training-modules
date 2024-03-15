@@ -255,7 +255,7 @@ do
 done
 ```
 
-This looks really similar to the `for` loop in the previous lesson, but it's missing the list that the `for` loop normally iterates over. Why is that? When bash sees a loop like this in a script, it assumes that it is iterating over a list of user-provided positional parameters. In fact, this notation is actually shorthand for a more longform version of this `for` loop syntax, which we'll talk about more later:
+This looks really similar to the `for` loop in the previous lesson, but it's missing the list that the `for` loop normally iterates over. Why is that? When bash sees a loop like this in a script, it assumes that it is iterating over a list of user-provided positional parameters. In fact, this notation is actually shorthand for a more longform version of this `for` loop syntax. You may recognize `"$@"` from earlier in the lesson as the variable that stores all positional parameters (except `$0`):
 
 ```bash
 for variable_name in "$@"
