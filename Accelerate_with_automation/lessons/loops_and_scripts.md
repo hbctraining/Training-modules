@@ -1,6 +1,6 @@
 ---
 title: "The Shell: Loops & Scripts"
-author: "Bob Freeman, Mary Piper, Radhika Khetani"
+author: "Bob Freeman, Mary Piper, Radhika Khetani, Emma Berdan, Heather Wick"
 ---
 
 Approximate time: 60 minutes
@@ -10,58 +10,8 @@ Approximate time: 60 minutes
 * Capture multiple commands into a script to re-run as one single command
 * Understanding variables and storing information in variables
 * Learn how to use variables to operate on multiple files
-
-## Shell scripts
-
-Within the command-line interface we have at our fingertips, access to various commands which allow you to interrogate your data (i.e `cat`, `less`, `wc`).
-
-> **NOTE:** If you are unsure about any of these commands and what they do, you may want to review the [Exploring Basics lesson](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/exploring_basics.html).
-
-When you are working with data, it can often be useful to run a set of commands one after another. Further, you may want to re-run this set of commands on every single set of data that you have. Wouldn't it be great if you could do all of this by simply typing out one single command? 
-
-Welcome to the beauty and purpose of shell scripts.
-
-Shell scripts are **text files that contain commands we want to run**. As with any file, you can give a shell script any name and usually have the extension `.sh`. For historical reasons, a bunch of commands saved in a file is usually called a shell script, but make no mistake, this is actually a small program. 
-
-Since we now know how to create text files in the command-line interface, we are going to use that knowledge to create a shell script and see what makes the shell such a powerful programming environment. We will use commands that you should be familiar with and save them into a file so that we can **re-run all those operations** again later by typing **one single command**. Let's write a shell script that will do two things:
-
-1. Tell us our current working directory
-2. List the contents of the directory 
-
-First open a new file using `vim`:
-
-```bash
-$ vim listing.sh
-```
-
-Then type in the following lines in the `listing.sh` file:
-
-```
-echo "Your current working directory is:"
-pwd
-echo "These are the contents of this directory:"
-ls -l 
-```
-
-Exit `vim` and save the file. Now let's run the new script we have created. To run a shell script you usually use the `bash` or `sh` command.
-
-```bash
-$ sh listing.sh
-```
-
-Now, let's run this script when we are in a different folder.
-
-```bash
-$ cd ../raw_fastq/
-
-$ sh ../other/listing.sh
-```
-
-> Did it work like you expected?
-> 
-> Were the `echo` commands helpful in letting you know what came next?
-
-This is a very simple shell script. In this lesson, we will be learning how to write more complex ones and show you how to use the power of scripts to make our lives much easier.
+* Learn two ways to write `for` loops
+* Apply variables and `for` loops in scripts for better automation
 
 ## Bash variables
 
@@ -69,11 +19,34 @@ A *variable* is a common concept shared by many programming languages. Variables
 
 Extending the bucket analogy: the bucket has a name associated with it, i.e. the name of the variable, and when referring to the information in the bucket, we use the name of the bucket, and do not directly refer to the actual data stored in it.
 
-Let's start with a simple variable that has a single number stored in it:
+### Assign value to a variable
+
+Let's start with a creating simple variable that has a single number stored in it. First we need a name for our variable, and we need to assign some value to it. Assigning value is done using the equals operator:
 
 ```bash
 $ num=25
 ```
+It is critical that there is no space in our assignment statements, num = 25 would not work.
+
+### Other ways to assign a value to a variable
+
+The syntax for varable assignment changes depending on whether you want to assign a number, a string with/without spaces, another variable, or a command. For example:
+
+`variable=number` for a number or a string without spaces.
+
+        example: variable=12 will assign the number 12 to $variable
+
+`variable=‘a string’` or `”a string”` for a string with spaces.
+
+        example: variable="My Variable" as seen above.
+
+ `variable=$(command)` or ``variable=`command` `` for output of a command. 
+
+        example: variable=$(wc -l file.txt) will assign the number of lines in the file file.text to $variable
+	
+**Note that `variable=$(command)` will ALWAYS work but there are some cases where ``variable=`command` `` will break (for example, when nesting backticks). It is a good idea to always use $(command) to avoid these situations, but you will see both of these in other people's code.**
+
+### Retrieve value stored in a variable
 
 *How do we know that we actually created the bash variable?* We can use the `echo` command to print to terminal:
 
@@ -87,24 +60,27 @@ What do you see in the terminal? The `echo` utility takes what arguments you pro
 $ echo $num
 ```
 
-Now you should see the number 25 returned to you. Did you notice that when we created the variable we just typed in the variable name? This is standard shell notation (syntax) for defining and using variables. When defining the variable (i.e. setting the value) you can just type it as is, but when **retrieving the value of a variable don't forget the `$`!** 
+Now you should see the number 25 returned to you. Did you notice that when we assigned value we just typed in the variable name? This is standard shell notation (syntax) for defining and using variables. When defining the variable (i.e. setting the value) you can just type it as is, but when **retrieving the value of a variable don't forget the `$`!** 
 
 Variables can also store a string of character values. In the example below, we define a variable or a 'bucket' called `file`. We will put a filename `Mov10_oe_1.subset.fq` as the value inside the bucket.
 
 ```bash
 $ file=Mov10_oe_1.subset.fq
-```
-
-Once you press return, you should be back at the command prompt. Let's check what's stored inside `file`, but first move into the `raw_fastq` directory::
-
-```bash
-$ cd ~/unix_lesson/raw_fastq
 $ echo $file
 ```
 
-Let's try another command using the variable that we have created. We can also count the number of lines in `Mov10_oe_1.subset.fq` by referencing the `file` variable:
+Let's try another command using the variable that we have created. We can count the number of lines in `Mov10_oe_1.subset.fq` by referencing the `file` variable using the word count command, `wc`:
 
 ```bash
+$ wc -l $file
+```
+
+Why didn't that work, when `echo` did work? Commands like `echo` will print out the value of the stored variable, which in our case is a string (which happens to be a file name, but `echo` doesn't care about that). Commands like `wc` execute on files, so shell looked for a file in our current directory whose name matched the string stored in our `$file` variable. It couldn't find it, so it let us know. In order to execute `wc` on the actual file whose name is stored in `$file`, we need to navigate to the folder which actually contains that file.
+
+Let's try `wc` again after we move into the `raw_fastq` directory:
+
+```bash
+$ cd ~/unix_lesson/raw_fastq
 $ wc -l $file
 ```
 
@@ -115,44 +91,6 @@ $ wc -l $file
 **Exercise**
 
 * Reuse the `$file` variable to store a different file name, and rerun the commands we ran above (`wc -l`, `echo`)
-
-***
-
-Ok, so we know variables are like buckets, and so far we have seen that bucket filled with a single value. **Variables can store more than just a single value.** They can store multiple values and in this way can be useful to carry out many things at once. Let's create a new variable called `filenames` and this time we will store *all of the filenames* in the `raw_fastq` directory as values. 
-
-To list all the filenames in the directory that have a `.fq` extension, we know the command is:
-
-```bash
-$ ls *.fq
-```
-
-Now we want to *assign* the output of `ls` to the variable:
-
-```bash
-$ filenames=`ls *.fq`
-```
-
-> Note the syntax for assigning output of commands to variables, i.e. the backticks around the `ls` command.
-
-Check and see what's stored inside our newly created variable using `echo`:
-	
-```bash
-$ echo $filenames
-```
-
-Let's try the `wc -l` command again, but this time using our new variable `filenames` as the argument:
-
-```bash
-$ wc -l $filenames
-```
-
-What just happened? Because our variable contains multiple values, the shell runs the command on each value stored in `filenames` and prints the results to screen. 
-
-***
-
-**Exercise**
-
-* Use some of the other commands you are familiar with (i.e. `head`, `tail`) on the `filenames` variable. 
 
 ***
 
@@ -167,9 +105,9 @@ The structure or the syntax of (*for*) loops in bash is as follows:
 ```bash
 for (variable_name) in (list)
 do
-(command1 $variable_name)
-.
-.
+  (command1 $variable_name)
+  .
+  .
 done
 ```
 
@@ -180,17 +118,17 @@ where the ***variable_name*** defines (or initializes) a variable that takes the
 
 ```bash
 for x in *.fq
- do
-   echo $x
-   wc -l $x
- done
+do
+  echo $x
+  wc -l $x
+done
 ```
 
 Most simply, it writes to the terminal (`echo`) the name of the file and the number of lines (`wc -l`) for each files that end in `.fq` in the current directory. The output is almost identical to what we had before.
 
-In this case the list of files is specified using the asterisk wildcard: `*.fq`, i.e. all files that end in `.fq`. 
+In this case the list of files is specified using the asterisk wildcard: `*.fq`, i.e. all files that end in `.fq`. We could also have used the `$filenames` variable we created above, but using `*fq` is a bit simpler and more versatile.
 
-Then, we execute 2 commands between the `do` and `done`. With a loop, we execute these commands for each file at a time. Once the commands are executed for one file, the loop then executes the same commands on the next file in the list. 
+Then, we execute two commands between the `do` and `done`. With a loop, we execute these commands for each file at a time. Once the commands are executed for one file, the loop then executes the same commands on the next file in the list. 
 
 Essentially, **the number of items in the list (variable name) == number of times the code will loop through**. 
 
@@ -198,7 +136,42 @@ In our case that is 6 times since we have 6 files in `~/unix_lesson/raw_fastq` t
 
 It doesn't matter what variable name we use in a loop structure, but it is advisable to make it something intuitive. In the long run, it's best to use a name that will help point out a variable's functionality, so your future self will understand what you are thinking now.
 
-### The `basename` command
+### Another way to write loops
+
+Above we have used `for filename in *.fq` to tell bash how many times we want the loop to run (how many .fq files there are in that directory). But there are many times that you have a specific number of times you want a loop to run. For instance if you are running the same analysis multiple times or are performing simulations. Here is a simple loop written in this manner:
+
+```bash
+#!/bin/bash 
+
+for ((i=1; i<=10; i=i+1))
+do 
+  echo $i is a number!
+done
+```
+
+Before we run this, let's go through it line by line.
+
+`for ((i=1; i<=10; i=i+1))`
+>This tells bash how our loop is working. We want to start at 1 (`i=1`) and end at 10 (`i<=10`) and each time we complete our loop the value i should increase by 1 (`i=i+1`). That means the loop will run 10 times. But we could make it run 100 times by changing `i<=10` to `i<=100`. `i` is our counter variable to track how many loops we have run. You will often see this called `i` or `j` but you can actually call it whatever you want. `i` and `j` are used because they are shorter to write.
+
+`do`
+>This is the same as our previous loop and means that whatever follows is what we want bash to do for each value of `i` (here 1,2,3,4,5,6,7,8,9,and 10).
+
+`  echo $i is a number!`
+>Here we echo the value of `$i` and the string `' is a number!'`.
+
+`done`
+>This closes the `for` loop. This tells bash that this is the end of the commands that we need it to do for each value of `i`.
+
+Let's use `nano` to write this as `numbers.sh` run our script. Is the output what you thought?
+
+***
+
+**Exercise**
+* How would you change the script so that it prints out the numbers from 27-32?
+***
+
+## The `basename` command
 
 Before we get started on creating more complex scripts, we want to introduce you to a command that will be useful for future shell scripting. The `basename` command is used for extracting the base name of a file, which is accomplished using **string splitting to strip the directory and any suffix from filenames**. Let's try an example, by first moving back to your home directory:
 
@@ -239,12 +212,12 @@ Now that you've learned how to use loops and variables, let's put this processin
 
 You might not realize it, but this is something that you now know how to do. Let's get started...
 
-Rather than doing all of this in the terminal we are going to create a script file with all relevant commands. Move back into `unix_lesson` and use `vim` to create our new script file:
+Rather than doing all of this in the terminal we are going to create a script file with all relevant commands. Move back into `unix_lesson` and use `nano` to create our new script file. If you have never used nano before you can find the basics [HERE](https://github.com/hbctraining/Training-modules/blob/heather_edits/Basic_shell/03_creating_files.md):
 
 ```bash
 $ cd ~/unix_lesson
 
-$ vim generate_bad_reads_summary.sh
+$ nano generate_bad_reads_summary.sh
 ```
 
 We always want to start our scripts with a shebang line: 
@@ -276,7 +249,7 @@ For each file that we process we can use `basename` to create a variable that wi
 ```bash
 do
   # create a prefix for all output files
-  base=`basename $filename .subset.fq`
+  base=$(basename $filename .subset.fq)
 ```
 
 and then we execute the following commands for each file:
@@ -286,20 +259,25 @@ and then we execute the following commands for each file:
   echo $filename
   
   # grab all the bad read records into new file
-  grep -B1 -A2 NNNNNNNNNN $filename > $base-badreads.fastq
+  grep -B1 -A2 NNNNNNNNNN $filename > ${base}-badreads.fastq
 ``` 
-  
-We'll also count the number of these reads and put that in a new file, using the count flag of `grep`:
+> #### About the grep command and redirection operator (>)
+> `grep`, short for **G**lobal **R**egular **E**xpression **P**rint, is a Unix command used to search files for the occurrence of a string of characters that matches a specified pattern. In this case, we are using grep to search for strings of N in our reads and retrieve the two lines above and one line below those reads using the `B` and `A` flags. Then, we are writing this output to a new file using the redirection operator, `>`. To learn more about `grep` and its usage, you can type `man grep` or `grep --help` into the terminal. We'll also be covering more `grep` in a later module.
+
+> #### Why are we sometimes using curly brackets with the variable name?
+> When we append a variable with free text (such as a letter, digit, or an underscore), we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside the brackets is the variable name. This way when we reference it, shell knows to print the variable `$base` and not to look for a variable called `$base_badreads.fq`.
+
+> Note that `$base` is actually a short form of `${base}`. We can only ditch the curly brackets and rely on the short form when the variable name is **not** followed by free text. As you write your own code remember that it is always safe to use `${variable}` and understand that errors may result from not using curly brackets when needed, even if it is convenient. As you navigate scripts written by other people you will see both forms.
+
+We'll also add an additional `grep` statement which uses the `c` flag to count the reads it finds, and also uses the `H` flag to include the file name in the output, which will be redirected to a count summary file via `>`:
 
 ```bash
   # grab the number of bad reads and write it to a summary file
-  grep -cH NNNNNNNNNN $filename > $base-badreads.count.summary
+  grep -cH NNNNNNNNNN $filename > ${base}-badreads.count.summary
 done
 ```
 
-> **NOTE:** If you've noticed, we used a new `grep` flag `-H` above; this flag will report the filename the search was performed on along with the matching string. 
-
-Save and exit `vim`, and voila! You now have a script you can use to assess the quality of all your new datasets. Your finished script, complete with comments, should look like the following:
+Save and exit `nano`, and voila! You now have a script you can use to assess the quality of all your new datasets. Your finished script, complete with comments, should look like the following:
 
 ```bash
 #!/bin/bash 
@@ -312,16 +290,16 @@ for filename in *.fq
 do 
 
   # create a prefix for all output files
-  base=`basename $filename .subset.fq`
+  base=$(basename $filename .subset.fq)
 
   # tell us what file we're working on	
   echo $filename
 
   # grab all the bad read records
-  grep -B1 -A2 NNNNNNNNNN $filename > $base-badreads.fastq
+  grep -B1 -A2 NNNNNNNNNN $filename > ${base}-badreads.fastq
 
   # grab the number of bad reads and write it to a summary file
-  grep -cH NNNNNNNNNN $filename > $base-badreads.count.summary
+  grep -cH NNNNNNNNNN $filename > ${base}-badreads.count.summary
 done
 
 ```
@@ -346,6 +324,20 @@ $ mv raw_fastq/*bad* other/
 $ mkdir scripts
 $ mv *.sh scripts/
 ```
+
+## Ways to assign variables covered
+
+```
+variable=number			#assign a numeric value ie 0, 12, etc
+variable=string			#assign a character string with no spaces
+variable="a string with spaces"	#assign a character string with spaces
+variable=$another_variable	#assign a different variable
+variable=$(command)		#assign a command (best practice)
+   or
+variable=`command`		#assign a command (alternative method less preferred)
+```
+
+[Next Lesson](https://github.com/hbctraining/Training-modules/blob/heather_edits/Accelerate_with_automation/lessons/positional_params.md)
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

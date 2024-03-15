@@ -1,7 +1,7 @@
 
 # Arrays in Slurm
 
-When I am working on large data sets my mind often drifts back to an old Simpsons episode. Bart is in France and being taught to pick grapes. They show him a detailed technique and he does it successfully. Then they say:
+When we are working on large data sets our minds often drift back to an old Simpsons episode. Bart is in France and being taught to pick grapes. They show him a detailed technique and he does it successfully. Then they say:
 
 
 <p align = "center">
@@ -20,6 +20,17 @@ One easy way to scale up is to use the array feature in slurm.
 
 Atlassian says this about job arrays on O2: "Job arrays can be leveraged to quickly submit a number of similar jobs. For example, you can use job arrays to start multiple instances of the same program on different input files, or with different input parameters. A job array is technically one job, but with multiple tasks." [link](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/1586793632/Using+Slurm+Basic#Job-Arrays).
 
+>Sbatch vs. sh
+
+>So far we have run all of our scripts as sh script.sh which runs the script while we wait on the command line. However, for jobs that are going to take a very long time this is less than ideal because:
+
+   >* You have to wait for the script to finish to get the command line back and run other tasks
+   >* If you get disconnected from the cluster the job will automatically quit.  
+
+>Running jobs with sbatch will immediately give you the command line back and are not dependant on you being connected to the cluster. We will not cover the basics of sbatch here but to learn how to write these scripts come to our module **Shell tips and tricks on O2**!
+
+## Running an array
+
 Array jobs run simultaneously rather than one at a time which means they are very fast! Additionally, running a job array is very simple!  
 
 ```bash
@@ -27,11 +38,6 @@ sbatch --array=1-10 my_script.sh
 ```
 
 This will run my_script.sh 10 times with the job IDs 1,2,3,4,5,6,7,8,9,10
-
-We can also put this directly into the bash script itself (although we will continue with the command line version here).
-```bash
-$SBATCH --array=1-10
-```
 
 We can specify any job IDs we want.
 
@@ -95,26 +101,23 @@ sbatch --array=1-16 my_script.sh
 
 So what is this script doing? `file=$(awk -v  awkvar="${SLURM_ARRAY_TASK_ID}" 'NR==awkvar' samples.txt)` pulls the line of `samples.txt` that matched the job ID. Then we assign that to a variable called `${file}` and use that to run our command.
 
-Job IDs can also be helpful for output files or folders. We saw above how we used the job ID to help name our output bam file. But creating and naming folders is helpful in some instances as well. 
+**We will come back to this awk one liner in our Needle in a Haystack module!**
 
-```bash
+<p align = "center">
+<img src="../img/Enjoy_Slurm.png">
+</p>
+     
+<p align = "center">
+Enjoy Slurm!
+</p>
 
-file=$(awk -v  awkvar="${SLURM_ARRAY_TASK_ID}" 'NR==awkvar' samples.txt)
+***
 
-PREFIX="Folder_${SLURM_ARRAY_TASK_ID}"
-     mkdir $PREFIX
-        cd $PREFIX
+*This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
 
-samtools view -S -b ../${file}.sam > ${file}.bam
-
-```    
-
-This script differs from our previous one in that it makes a folder with the job ID (Folder_1 for job ID 1) then moves inside of it to execute the command. Instead of getting all 16 of our bam files output in a single folder each of them will be in its own folder labled Folder_1 to Folder_16. 
-
-**NOTE** That we define `${file}` BEFORE we move into our new folder as samples.txt is only present in the main directory. 
-
-
-
+* *The materials used in this lesson were derived from work that is Copyright © Data Carpentry (http://datacarpentry.org/). 
+All Data Carpentry instructional material is made available under the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0).*
+* *Adapted from the lesson by Tracy Teal. Original contributors: Paul Wilson, Milad Fatenejad, Sasha Wood and Radhika Khetani for Software Carpentry (http://software-carpentry.org/)*
 
 
 

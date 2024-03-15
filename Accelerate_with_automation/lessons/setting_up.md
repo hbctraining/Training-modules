@@ -1,26 +1,37 @@
-## Accessing the shell
+---
+title: "Setting Up and Accessing the Shell"
+author: "Sheldon McKay, Mary Piper, Radhika Khetani, Emma Berdan"
+---
 
-This workshop assumes that you have a working knowledge of *bash* and in turn know how to access it on your own computer. If you are not sure, we have this information below.
+## Learning Objectives
+- Install and locate the software/tools necessary for accessing the command line
 
-> **With Macs** use the "**Terminal**" utility. 
-> 
-> **With Windows** you can use your favorite utility or follow our suggestion of using "**Git BASH**". Git BASH is part of the [Git for Windows](https://git-for-windows.github.io/) download, and is a *bash* emulator.
+## Starting with the shell
+Depending on your operating system, there are different ways to access the shell:
 
-## The command prompt
-
-Once again, you are likely familiar with what a command prompt is, but to ensure that everyone in the class is on the same page, we have a short description below.
-
-> It is a string of characters ending with `$` after which you enter the command to ask shell to do something. 
+> **With Macs**
 >
-> The string of charaters before the `$` usually represent information about the computer you are working on and your current directory; e.g. **`[MacBook-Pro-5:~]$`**.
+> Macs have a utility application called "**Terminal**" for performing tasks on the command line (shell). We can open this utility to access the shell. This is generally found in `/Applications/Utilities/Terminal`
+>
+> **With Windows**
+>
+> By default, there is no terminal for the bash shell available in the Windows OS, so you have to use a downloaded program. We recommend "**Git BASH**" a shell (bash) emulator that is a part of the [Git for Windows](https://git-for-windows.github.io/) download.
 
-## Downloading data
+### Command prompt
 
-We will be exploring slightly more advanced capabilities of the shell by working with data from an RNA sequencing experiment. 
+Once you have opened the shell, you should see the command prompt ending with `$` OR `%`. It will have some characters before the `$` or `%`, something like `[MacBook-Pro-5:~]`, this is telling you what the name of the computer you are working on is. 
 
-> *NOTE: If you attended the [Intro to shell](https://hbctraining.github.io/Training-modules/Intro_shell/) workshop with us last month, you should have already downloaded this data.*
+```bash
+[MacBook-Pro-5:~]$ 
+```
 
-Before we download the data, let's check the folder we are currently in:
+### Downloading data
+
+We will be exploring the capabilities of the shell by working with some RNA-Seq data. We need to **download the data to our current folder** using the link below. To do so, follow the step-by-step instructions below.
+
+> *NOTE: If you attended the [Intro to shell](https://hbctraining.github.io/Training-modules/Basic_shell/) workshop with us last month, you should have already downloaded this data.*
+
+**1. Find out what folder we are currently inside**. To do this, we can use the 'print working directory' command:
 
 ```bash
 $ pwd
@@ -30,60 +41,55 @@ $ pwd
 > 
 > On a **Windows** machine your current folder should be something starting with `/c/Users/marypiper`. To find this in your File explorer try clicking on PC and navigating to that path.
 
-Once you know to which folder you are downloading your data click on the link below:
+_Once you have identified which folder you are in, this is where we will be downloading your data._
 
-**Download RNA-Seq data to your working directory:** [click here to download](https://github.com/hbctraining/Training-modules/blob/master/Intro_shell/data/unix_lesson.zip?raw=true).
+**2. Click on the link below then go to file > download to download the data"**. This will automatically download the folder to your downloads folder. If you downloaded the data previously as a part of the Basic Shell workshop, you do not need to download it again unless you have deleted it.
 
-Type the 'list' command to check that you have downloaded the file to the correct location (your present working directory):
+* Download data by [clicking here](https://www.dropbox.com/s/x66jksdd4jklpdw/unix_lesson.zip?dl=0).
 
-```bash
-$ ls -l
-```
-
-You should see `unix_lesson.zip` as part of the output to the screen.
-
-Now, let's decompress the folder, using the `unzip` command:
+**3.** Once you have downloaded the file to the correct location, go back to your **terminal window and type the 'list' command**:
 
 ```bash
-$ unzip unix_lesson.zip 
+$ ls
 ```
 
-> When you run the unzip command, you are decompressing the zipped folder, just like you would by double-clicking on it outside the Terminal. As it decompresses, you will usually see "verbose output" listing the files and folders being decompressed or inflated.
-> 
-> ```bash
-> 
-> Archive:  unix_lesson.zip
->    creating: unix_lesson/
->    creating: unix_lesson/.my_hidden_directory/
->   inflating: unix_lesson/.my_hidden_directory/hidden.txt  
->    creating: unix_lesson/genomics_data/
->    creating: unix_lesson/other/
->   inflating: unix_lesson/other/Mov10_rnaseq_metadata.txt  
->   inflating: unix_lesson/other/sequences.fa  
->    creating: unix_lesson/raw_fastq/
->   inflating: unix_lesson/raw_fastq/Irrel_kd_1.subset.fq  
->   inflating: unix_lesson/raw_fastq/Irrel_kd_2.subset.fq  
->   inflating: unix_lesson/raw_fastq/Irrel_kd_3.subset.fq  
->   inflating: unix_lesson/raw_fastq/Mov10_oe_1.subset.fq  
->   inflating: unix_lesson/raw_fastq/Mov10_oe_2.subset.fq  
->   inflating: unix_lesson/raw_fastq/Mov10_oe_3.subset.fq  
->   inflating: unix_lesson/README.txt  
->    creating: unix_lesson/reference_data/
->   inflating: unix_lesson/reference_data/chr1-hg19_genes.gtf  
-> ```
+> `ls` stands for 'list' and it lists the contents of a directory.
 
-Now, run the `ls` command again. 
+_You should see `unix_lesson.zip` as part of the output to the screen._
+
+**4.** Finally, to **decompress the folder**:
+
+* Double click on unix_lesson.zip on a mac. This will automatically inflate the folder.
+* If you are on windows, press and hold (or right-click) the folder, select Extract All..., and then follow the instructions.
+
+
+**5.** Now when you **run the `ls` command** again you should see a folder called `unix_lesson`, which means you are all set with the data download!
 
 ```bash
-$ ls -l
+$ ls
 ```
 
-You should see a folder/directory called `unix_lesson`, which means you are all set with the data download! 
+**6.** Go into the folder for the lesson
+
+on mac type: 
+```bash
+$ cd unix_lesson
+```
+
+on windows type:
+
+```bash
+$ cd unix_lesson/unix_lesson
+```
 
 ***
 
-[Next Lesson](https://hbctraining.github.io/Training-modules/Intermediate_shell/lessons/exploring_basics.html)
+[Next Lesson](https://github.com/hbctraining/Training-modules/blob/heather_edits/Accelerate_with_automation/lessons/loops_and_scripts.md)
 
 ***
 
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
+
+* *The materials used in this lesson were derived from work that is Copyright © Data Carpentry (http://datacarpentry.org/). 
+All Data Carpentry instructional material is made available under the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0).*
+* *Adapted from the lesson by Tracy Teal. Original contributors: Paul Wilson, Milad Fatenejad, Sasha Wood and Radhika Khetani for Software Carpentry (http://software-carpentry.org/)*
