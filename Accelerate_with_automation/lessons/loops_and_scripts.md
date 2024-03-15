@@ -337,7 +337,7 @@ variable=$(command)		#assign a command (best practice)
 variable=`command`		#assign a command (alternative method less preferred)
 ```
 
-[Next Lesson](https://github.com/hbctraining/Training-modules/blob/heather_edits/Accelerate_with_automation/lessons/positional_params.md)
+[Next Lesson](https://github.com/hbctraining/Training-modules/blob/master/Accelerate_with_automation/lessons/positional_params.md)
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
