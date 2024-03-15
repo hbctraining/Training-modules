@@ -317,9 +317,9 @@ If it worked, you should now have yet another set of output files with `param.lo
 
 And that's it! You are now very well equipped to use loops and positional parameters in the same script!
 
-> What if we still wanted to run this on multiple files AND also provide a different sequence besides "NNNNNNNNNN?" We have an **advanced use** lesson for positional parameters you can check out, [here](https://github.com/hbctraining/Training-modules/blob/heather_edits/Accelerate_with_automation/lessons/advanced_pos_param_loop)
+> What if we still wanted to run this on multiple files AND also provide a different sequence besides "NNNNNNNNNN?" We have an **advanced use** lesson for positional parameters you can check out, [here](https://github.com/hbctraining/Training-modules/blob/master/Accelerate_with_automation/lessons/advanced_pos_param_loop)
 
-Otherwise, you are all set to go on to the [next lesson](https://github.com/hbctraining/Training-modules/blob/heather_edits/Accelerate_with_automation/lessons/arrays_in_slurm.md)
+Otherwise, you are all set to go on to the [next lesson](https://github.com/hbctraining/Training-modules/blob/master/Accelerate_with_automation/lessons/arrays_in_slurm.md)
 
 ***
 
