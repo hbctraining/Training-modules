@@ -312,7 +312,7 @@ If it worked, you should now have yet another set of output files with `param.lo
 
 ***
 **Exercise**
-* How would you run `generate_bad_reads_summary_param_loop.sh` on all files in a directory?
+* How would you run `generate_bad_reads_summary_param_loop.sh` on all fastq files in a directory?
 ***
 
 And that's it! You are now very well equipped to use loops and positional parameters in the same script!
