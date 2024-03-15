@@ -84,7 +84,7 @@ $ cd unix_lesson/unix_lesson
 
 ***
 
-[Next Lesson](https://github.com/hbctraining/Training-modules/blob/heather_edits/Accelerate_with_automation/lessons/loops_and_scripts.md)
+[Next Lesson](https://github.com/hbctraining/Training-modules/Accelerate_with_automation/lessons/loops_and_scripts.md)
 
 ***
 
