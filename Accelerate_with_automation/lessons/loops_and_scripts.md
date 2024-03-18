@@ -38,7 +38,7 @@ The syntax for varable assignment changes depending on whether you want to assig
 
 `variable=‘a string’` or `”a string”` for a string with spaces.
 
-        example: variable="My Variable" as seen above.
+        example: variable="My Variable" will assign the whole string within quotes, including spaces, to $variable
 
  `variable=$(command)` or ``variable=`command` `` for output of a command. 
 
