@@ -126,7 +126,7 @@ done
 
 Most simply, it writes to the terminal (`echo`) the name of the file and the number of lines (`wc -l`) for each files that end in `.fq` in the current directory. The output is almost identical to what we had before.
 
-In this case the list of files is specified using the asterisk wildcard: `*.fq`, i.e. all files that end in `.fq`. We could also have used the `$filenames` variable we created above, but using `*fq` is a bit simpler and more versatile.
+In this case the list of files is specified using the asterisk wildcard: `*.fq`, i.e. all files that end in `.fq`.
 
 Then, we execute two commands between the `do` and `done`. With a loop, we execute these commands for each file at a time. Once the commands are executed for one file, the loop then executes the same commands on the next file in the list. 
 
