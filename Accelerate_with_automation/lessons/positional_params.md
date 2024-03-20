@@ -176,8 +176,8 @@ Say we are interested in searching for other sequences in our fastq files beside
 <details>
         <summary><i>Click here for answer</i></summary>
         
-        sequence=$2<br>
-        echo $sequence<br><br>
+        sequence=$2
+        echo $sequence
         
 </details>
 
@@ -186,8 +186,8 @@ Say we are interested in searching for other sequences in our fastq files beside
 <details>
         <summary><i>Click here for answer</i></summary>
          
-        grep -B1 -A2 $sequence $filename > ${base}.param.fastq<br>
-        grep -cH $sequence $filename > ${base}.param.count.summary<br><br>
+        grep -B1 -A2 $sequence $filename > ${base}.param.fastq
+        grep -cH $sequence $filename > ${base}.param.count.summary
         
 </details>
 
@@ -196,8 +196,8 @@ Say we are interested in searching for other sequences in our fastq files beside
 <details>
         <summary><i>Click here for answer</i></summary>
 
-        grep -B1 -A2 $sequence $filename > ${base}.${sequence}.fastq<br>
-        grep -cH $sequence $filename > ${base}.${sequence}.count.summary<br><br>
+        grep -B1 -A2 $sequence $filename > ${base}.${sequence}.fastq
+        grep -cH $sequence $filename > ${base}.${sequence}.count.summary
         
 </details>
 
@@ -205,11 +205,11 @@ Say we are interested in searching for other sequences in our fastq files beside
 <details>
         <summary><i>Click here for answer</i></summary>
 
-        ## USAGE: User provides path to file that needs to checked for user-provided sequence.<br>
+        ## USAGE: User provides path to file that needs to checked for user-provided sequence.
         
-        ##  Script will output files in the same directory<br>
+        ##  Script will output files in the same directory
         
-        ## EXAMPLE: generate_bad_reads_summary_param.sh filename sequence<br><br>
+        ## EXAMPLE: generate_bad_reads_summary_param.sh filename sequence
         
 </details>
 
@@ -218,30 +218,30 @@ Say we are interested in searching for other sequences in our fastq files beside
         <summary><i>Click here for final script</i></summary>
 
         
-        #!/bin/bash<br><br>
+        #!/bin/bash
 
-        ## USAGE: User provides path to file that needs to checked for user-provided sequence<br>
-        ##  Script will output files in the same directory<br>
-        ## EXAMPLE: generate_bad_reads_summary_param.sh filename sequence<br><br>
+        ## USAGE: User provides path to file that needs to checked for user-provided sequence
+        ##  Script will output files in the same directory
+        ## EXAMPLE: generate_bad_reads_summary_param.sh filename sequence
 
-        # read positional parameters<br>
-        filename=$1<br>
-        sequence=$2<br><br>
+        # read positional parameters
+        filename=$1
+        sequence=$2
 
-        # tell us what sequence we're looking for<br>
-        echo $sequence<br><br>
+        # tell us what sequence we're looking for
+        echo $sequence
 
-        # create a prefix for all output files<br>
-        base=`basename $filename .subset.fq`<br>
+        # create a prefix for all output files
+        base=`basename $filename .subset.fq`
 
-        # tell us what file we're working on<br>
-        echo $filename<br><br>
+        # tell us what file we're working on
+        echo $filename
 
-        # grab all the bad read records<br>
-        grep -B1 -A2 $sequence $filename > ${base}.${sequence}.fastq<br><br>
+        # grab all the bad read records
+        grep -B1 -A2 $sequence $filename > ${base}.${sequence}.fastq
 
-        # grab the number of bad reads and write it to a summary file<br>
-        grep -cH $sequence $filename > ${base}.${sequence}.count.summary<br><br>
+        # grab the number of bad reads and write it to a summary file
+        grep -cH $sequence $filename > ${base}.${sequence}.count.summary
         
 
 </details>
