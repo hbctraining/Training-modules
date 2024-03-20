@@ -176,8 +176,11 @@ Say we are interested in searching for other sequences in our fastq files beside
 <details>
         <summary><i>Click here for answer</i></summary>
         
+         ```bash
         sequence=$2
         echo $sequence
+        ```
+        
 </details>
 
 2. Change what we are searching for in the `grep` statements
@@ -185,34 +188,44 @@ Say we are interested in searching for other sequences in our fastq files beside
 <details>
         <summary><i>Click here for answer</i></summary>
          
+        ```bash
         grep -B1 -A2 $sequence $filename > ${base}.param.fastq
         grep -cH $sequence $filename > ${base}.param.count.summary
+        ```
+        
 </details>
 
 3. Change the ouptput file names to include the sequence being searched
 
 <details>
         <summary><i>Click here for answer</i></summary>
-         
+
+         ```bash
         grep -B1 -A2 $sequence $filename > ${base}.${sequence}.fastq
         grep -cH $sequence $filename > ${base}.${sequence}.count.summary
+        ```
+        
 </details>
 
 4. Update the `USAGE` and `EXAMPLE` to reflect the changes you made
 <details>
         <summary><i>Click here for answer</i></summary>
-         
+
+         ```bash
         ## USAGE: User provides path to file that needs to checked for user-provided sequence.
         
         ##  Script will output files in the same directory
         
         ## EXAMPLE: generate_bad_reads_summary_param.sh filename sequence
+        ```
+        
 </details>
 
 
 <details>
         <summary><i>Click here for final script</i></summary>
-          
+
+         ```bash
         #!/bin/bash 
 
         ## USAGE: User provides path to file that needs to checked for user-provided sequence
@@ -237,6 +250,7 @@ Say we are interested in searching for other sequences in our fastq files beside
 
         # grab the number of bad reads and write it to a summary file
         grep -cH $sequence $filename > ${base}.${sequence}.count.summary
+        ```
 
 </details>
 
