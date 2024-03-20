@@ -176,10 +176,8 @@ Say we are interested in searching for other sequences in our fastq files beside
 <details>
         <summary><i>Click here for answer</i></summary>
         
-         ```bash
-        sequence=$2
-        echo $sequence
-        ```
+        sequence=$2<br>
+        echo $sequence<br><br>
         
 </details>
 
@@ -188,10 +186,8 @@ Say we are interested in searching for other sequences in our fastq files beside
 <details>
         <summary><i>Click here for answer</i></summary>
          
-        ```bash
-        grep -B1 -A2 $sequence $filename > ${base}.param.fastq
-        grep -cH $sequence $filename > ${base}.param.count.summary
-        ```
+        grep -B1 -A2 $sequence $filename > ${base}.param.fastq<br>
+        grep -cH $sequence $filename > ${base}.param.count.summary<br><br>
         
 </details>
 
@@ -200,10 +196,8 @@ Say we are interested in searching for other sequences in our fastq files beside
 <details>
         <summary><i>Click here for answer</i></summary>
 
-         ```bash
-        grep -B1 -A2 $sequence $filename > ${base}.${sequence}.fastq
-        grep -cH $sequence $filename > ${base}.${sequence}.count.summary
-        ```
+        grep -B1 -A2 $sequence $filename > ${base}.${sequence}.fastq<br>
+        grep -cH $sequence $filename > ${base}.${sequence}.count.summary<br><br>
         
 </details>
 
@@ -211,13 +205,11 @@ Say we are interested in searching for other sequences in our fastq files beside
 <details>
         <summary><i>Click here for answer</i></summary>
 
-         ```bash
-        ## USAGE: User provides path to file that needs to checked for user-provided sequence.
+        ## USAGE: User provides path to file that needs to checked for user-provided sequence.<br>
         
-        ##  Script will output files in the same directory
+        ##  Script will output files in the same directory<br>
         
-        ## EXAMPLE: generate_bad_reads_summary_param.sh filename sequence
-        ```
+        ## EXAMPLE: generate_bad_reads_summary_param.sh filename sequence<br><br>
         
 </details>
 
@@ -225,32 +217,32 @@ Say we are interested in searching for other sequences in our fastq files beside
 <details>
         <summary><i>Click here for final script</i></summary>
 
-         ```bash
-        #!/bin/bash 
+        
+        #!/bin/bash<br><br>
 
-        ## USAGE: User provides path to file that needs to checked for user-provided sequence
-        ##  Script will output files in the same directory
-        ## EXAMPLE: generate_bad_reads_summary_param.sh filename sequence
+        ## USAGE: User provides path to file that needs to checked for user-provided sequence<br>
+        ##  Script will output files in the same directory<br>
+        ## EXAMPLE: generate_bad_reads_summary_param.sh filename sequence<br><br>
 
-        # read positional parameters
-        filename=$1
-        sequence=$2
+        # read positional parameters<br>
+        filename=$1<br>
+        sequence=$2<br><br>
 
-        # tell us what sequence we're looking for
-        echo $sequence
+        # tell us what sequence we're looking for<br>
+        echo $sequence<br><br>
 
-        # create a prefix for all output files
-        base=`basename $filename .subset.fq`
+        # create a prefix for all output files<br>
+        base=`basename $filename .subset.fq`<br>
 
-        # tell us what file we're working on
-        echo $filename
+        # tell us what file we're working on<br>
+        echo $filename<br><br>
 
-        # grab all the bad read records
-        grep -B1 -A2 $sequence $filename > ${base}.${sequence}.fastq
+        # grab all the bad read records<br>
+        grep -B1 -A2 $sequence $filename > ${base}.${sequence}.fastq<br><br>
 
-        # grab the number of bad reads and write it to a summary file
-        grep -cH $sequence $filename > ${base}.${sequence}.count.summary
-        ```
+        # grab the number of bad reads and write it to a summary file<br>
+        grep -cH $sequence $filename > ${base}.${sequence}.count.summary<br><br>
+        
 
 </details>
 
