@@ -176,8 +176,8 @@ Say we are interested in searching for other sequences in our fastq files beside
 <details>
         <summary><i>Click here for answer</i></summary>
         
-        sequence=$2
-        echo $sequence
+        <div>sequence=$2</div>
+        <div>echo $sequence</div>
         
 </details>
 
