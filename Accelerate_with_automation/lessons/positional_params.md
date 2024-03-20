@@ -181,7 +181,7 @@ Say we are interested in searching for other sequences in our fastq files beside
         
 </details>
 
-2. Change what we are searching for in the `grep` statements
+2. Change what sequence we are searching for in the `grep` statements
 
 <details>
         <summary><i>Click here for answer</i></summary>
