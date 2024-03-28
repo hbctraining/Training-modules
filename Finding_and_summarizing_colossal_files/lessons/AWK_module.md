@@ -158,6 +158,8 @@ Were seals ever observed in any of the other parks, note that `||` is or in awk 
 <details>
         <summary><i>Click here for the answer</i></summary>
         Some options:
+
+        
         awk '{print $1,$2,$3,$5}' animal_observations_edited.txt | grep "seal"
         awk '$2 ~ /seal/ || $3 ~ /seal/|| $5 ~ /seal/' animal_observations_edited.txt
         Seals are only ever observerd in Arcadia.
@@ -215,6 +217,15 @@ Easy peasy!
 **Exercise**
 
 The second issue is that we don't want to include the first record (row) as this is our header and not representative of any animals. How would you modify the command to skip the first record?
+
+<details>
+        <summary><i>Click here for the answer</i></summary>
+
+     awk -F '[[:blank:],]' 'NR>1 {print NF-1}' animal_observations_edited.txt
+
+        
+</details>
+
 
 ****
 
