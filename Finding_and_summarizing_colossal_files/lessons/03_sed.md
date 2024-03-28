@@ -1,6 +1,6 @@
 ---
 title: "Sed"
-author: "Will Gammerdinger, Emma Berdan"
+author: "Will Gammerdinger, Meeta Mistry, Emma Berdan"
 ---
 
 # sed
