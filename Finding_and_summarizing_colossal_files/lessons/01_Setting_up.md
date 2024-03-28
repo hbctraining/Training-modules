@@ -37,7 +37,7 @@ $ cd /c/Users/your_name/Downloads
 
 **2. Click on the link below then go to file > download to download the data"**. This will automatically download the folder to your downloads folder. If you downloaded the data previously as a part of the Basic Shell workshop, you do not need to download it again unless you have deleted it.
 
-* Download data by [going to this link]([https://www.dropbox.com/s/x66jksdd4jklpdw/unix_lesson.zip?dl=0](https://www.dropbox.com/scl/fi/tpjha600uz8uacf166utg/advanced_shell.zip?rlkey=cgql6kx09b7825pgppnme9e08&dl=0)).
+* Download data by [going to this link](https://www.dropbox.com/scl/fi/tpjha600uz8uacf166utg/advanced_shell.zip?rlkey=cgql6kx09b7825pgppnme9e08&dl=0).
 
 **3.** Once you have downloaded the file to the correct location, go back to your **terminal window and type the 'list' command**:
 
