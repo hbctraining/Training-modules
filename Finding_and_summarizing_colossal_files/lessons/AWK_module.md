@@ -310,13 +310,32 @@ This command is complex and contains new syntax so lets go through it bit by bit
 
 Now that we understand our command, let's run it!
 
-It works! We can see that "moose,bison" is the most commonly observed group of animals at Yosemite! How Thrilling!
+It works! We can see that "moose,bison" is the most commonly observed group of animals at Yellowstone! How Thrilling!
 
 **Exercise**
 
 1. What was the most commonly observed group of animals at Glacier National Park?
 
+<details>
+        <summary><i>Click here for the answer</i></summary>
+
+        awk ' { counter[$5] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt
+
+
+        couger,grizzlybear,elk is the most commonly observed group!
+        
+</details>
+
 2. Our code also counts the number of times our header text (Yosemite or Glacier) is repeated. How can you modify the code so that this is ignored?
+
+3. <details>
+        <summary><i>Click here for the answer</i></summary>
+
+   awk 'NR>1 { counter[$2] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt
+
+      awk 'NR>1 { counter[$5] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt
+        
+</details>
 ****
 
 
