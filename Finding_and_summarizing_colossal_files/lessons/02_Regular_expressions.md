@@ -1,3 +1,8 @@
+---
+title: "Regular Expressions"
+author: "Will Gammerdinger"
+---
+
 # Regular Expressions
 
 Regular expressions (sometimes referred to as regex) are a string of characters that can be used as a pattern to match against. This can be very helpful when searching through a file, particularly in conjunction with `sed`, `grep` or `awk`. Since we have an understanding of `grep` from previous workshops we are going to use `grep` and the `catch.txt` file that we downloaded to demonstrate the principles of regular expressions. As we said though, many of these principles are also useful in `sed` and `awk`. 
