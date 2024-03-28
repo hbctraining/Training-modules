@@ -161,6 +161,7 @@ cat my_fastq.fq.gz | sed -n '1~4p' > quality_scores.txt
 ```
 The first half of the pipe prints the file and the sed command grabs every forth line. Try it with the `Mov10_oe_1.subset.fq` file in the advanced_shell directory!
 
+
 ## Deletion
 
 You can delete entire lines in `sed`. To delete lines we will need to provide the address followed by `d`. To delete the first line from a file:
@@ -193,6 +194,48 @@ The `N~n` syntax also works in deletion. If we want to delete every third line s
 sed '2~3d' ecosystems.txt
 ```
 
+deletion also works with pattern matching. If we want to delete all lines that contain the word `jungle` we can do:
+
+```
+sed '/jungle/d' ecosystems.txt
+```
+
+## Exercise
+
+The [Variant Call Format (VCF)](https://samtools.github.io/hts-specs/VCFv4.2.pdf) is a standardized, text-file format for describing variants identifed from a sequencing experiment. This allows for downstream processes to be streamlined and also allows for researchers to easily collaborate and manipulate a shared set of variant calls. A VCF file is composed of three main parts:
+- Meta-information Lines
+- Header Line
+- Data Lines
+
+A sample VCF can be found below:
+
+```
+##fileformat=VCFv4.2
+##FILTER=<ID=FAIL,Description="Fail the site if all alleles fail but for different reasons.">
+##FILTER=<ID=PASS,Description="Site contains at least one allele that passes filters">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Approximate read depth (reads with MQ=255 or with bad mates are filtered)">
+##GATKCommandLine=<ID=FilterMutectCalls,CommandLine="FilterMutectCalls --output /n/scratch3/users/w/wig051/variant_calling/vcf_files/mutect2_syn3_normal_syn3_tumor_GRCh38.p7-filt.vcf --variant /n/scratch3/users/w/wig051/variant_calling/vcf_files/mutect2_syn3_normal_syn3_tumor_GRCh38.p7-raw.vcf --reference /n/groups/hbctraining/variant_calling/reference/GRCh38.p7.fa ... Version="4.1.9.0",Date="February 15, 2023 10:32:47 PM EST">
+##INFO=<ID=AS_UNIQ_ALT_READ_COUNT,Number=A,Type=Integer,Description="Number of reads with unique start and mate end positions for each alt at a variant site">
+##source=Mutect2
+##tumor_sample=syn3_tumor
+#CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO    FORMAT  syn3_normal     syn3_tumor
+1       137221  .       T       G       .       normal_artifact;strand_bias;weak_evidence       AS_FilterStatus=weak_evidence,strand_bias;AS_SB_TABLE=44,40|0,6;ClippingRankSum=1.739;DP=91;ECNT=1;FS=15.787;GERMQ=93;MBQ=32,32;MFRL=334,339;MMQ=22,35;MPOS=26;MQ=30.08;MQ0=0;MQRankSum=1.446;NALOD=-4.708e+00;NLOD=2.44;POPAF=6.00;ReadPosRankSum=-0.866;TLOD=4.45     GT:AD:AF:DP:F1R2:F2R1:SB        0/0:40,3:0.089:43:21,2:18,1:22,18,0,3   0/1:44,3:0.081:47:25,1:18,2:22,22,0,3
+1       186370  .       C       T       .       map_qual;normal_artifact;weak_evidence  AS_FilterStatus=weak_evidence,map_qual;AS_SB_TABLE=111,70|10,3;ClippingRankSum=1.928;DP=207;ECNT=1;FS=4.234;GERMQ=93;MBQ=33,31;MFRL=341,342;MMQ=25,25;MPOS=14;MQ=25.66;MQ0=0;MQRankSum=-0.158;NALOD=-7.956e+00;NLOD=10.68;POPAF=6.00;ReadPosRankSum=-1.732;TLOD=5.07    GT:AD:AF:DP:F1R2:F2R1:SB        0/0:96,7:0.075:103:45,4:50,3:56,40,6,1  0/1:85,6:0.067:91:42,1:43,4:55,30,4,2
+1       187019  .       G       A       .       map_qual;normal_artifact;weak_evidence  AS_FilterStatus=weak_evidence,map_qual;AS_SB_TABLE=56,76|6,3;ClippingRankSum=-4.266;DP=149;ECNT=1;FS=7.413;GERMQ=93;MBQ=34,33;MFRL=344,351;MMQ=50,20;MPOS=1;MQ=42.64;MQ0=0;MQRankSum=-4.743;NALOD=-1.314e+00;NLOD=10.65;POPAF=6.00;ReadPosRankSum=-4.367;TLOD=4.26      GT:AD:AF:DP:F1R2:F2R1:SB        0/0:60,3:0.061:63:27,3:30,0:25,35,3,0   0/1:72,6:0.085:78:31,4:39,2:31,41,3,3
+```
+The meat of the file (i.e., the variants) is found after all of the header lines, which **start with** `##`.
+You have the vcf file test.vcf in your `advanced_shell` directory. Use sed to remove all header lines (those starting with a double #) and make a new file called vcf_noheader.vcf. Note you will have to use regex here! How would the command be different if you wanted to delete any line with the pattern `##`?
+
+<details>
+        <summary><i>Click here for the answer</i></summary>
+
+        
+        to remove lines that START WITH ##:  sed '/^##/d' test.vcf > vcf_noheader.vcf
+        to remove any lines that contain ##:  sed '/##/d' test.vcf > vcf_nodoublehash.vcf
+        
+</details>
+
+
 
 ### Changing Lines
 
@@ -220,15 +263,6 @@ Lastly, you can also replace lines match a pattern:
 sed '/jaguar/ c header' ecosystems.txt
 ```
 
-## Transform
-
-`sed` has a feature that allows you to transform characters similiarly to the `tr` function in `bash`. If you wanted to transform all of the lowercase a, b and c characters to their uppercase equivalents you could do that with the `y` command:
-
-```
-sed 'y/abc/ABC/' ecosystems.txt
-```
-
-In this case the first letter 'a' is replaced with 'A', 'b' with 'B' and 'c' with 'C'.
 
 ## Multiple expressions
 
@@ -270,35 +304,6 @@ Then we can use the `-f` option to provide this file of `sed` expressions by usi
 sed -f sed_expressions.txt ecosystems.txt
 ```
 
-## Exercise
-
-Within your directory, there is a FASTQ file called, `Mov10_oe_1.subset.fq`. We would like to create a file of `sed` commands to convert this FASTQ file into a FASTA file. In order to do this, we need to briefly outline the difference between a FASTQ and FASTA file.
-
-**FASTQ files**
-
-There are four lines in a FASTQ file per entry that correspond to:
-
-- Line 1: The header line that starts with `@`
-- Line 2: The sequence line
-- Line 3: Usually just holds a `+`
-- Line 4: Base scores corresponding to the bases in Line 2
-
-**FASTA files**
-
-There are only two lines in a FASTA file per entry that correspond to:
-
-- Line 1: The header line that starts with `>`
-- Line 2: The sequence line
-
-Let's do this task in a few parts:
-
-**1)** Create a new file in `vim` called `fastq_to_fasta.txt` to put our `sed` commands within 
-
-**2)** Make the first `sed` command within this file be the one that implements a `>` at the *start* of the first line of each entry. *Hint: A regex tool could be helpful for this task*
-
-**3)** Make the next two `sed` commands within this file delete the third and fourth lines of each entry
-
-**4)** Run this file of `sed` commands on our FASTQ file and redirect the output to a new file called `Mov10_oe_1.subset.fa`
 
 ## Additional Resources
 
@@ -308,7 +313,7 @@ Let's do this task in a few parts:
 
 ***
 
-[Next Lesson >>](05_awk.md)
+[Next Lesson >>](AWK_module.md)
 
 [Back to Schedule](../README.md)
 
