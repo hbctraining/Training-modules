@@ -1,4 +1,8 @@
-**NOTE: This module assumes that you are familiar with grep and sed**
+---
+title: "awk"
+author: "Emma Berdan"
+---
+
 
 ## What is awk?
 
