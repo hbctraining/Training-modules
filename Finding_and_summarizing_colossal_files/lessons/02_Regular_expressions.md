@@ -477,9 +477,13 @@ COTCH
 
 - <a href="https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/sessionVI/lessons/extra_bash_tools.html#regular-expressions-regex-in-bash-">https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/sessionVI/lessons/extra_bash_tools.html#regular-expressions-regex-in-bash-</a>
 
+## Take Home Message
+
+Regex for bioinformatic applications is generally used in combination with `grep`, `sed`, or `awk` to pull specific information out of large files. You **DO NOT** need to memorize all of the syntax here. Instead merely bookmark it and use it as a resource for writing commands moving forward. As you write more shell commands you will become familiar with more common regex ([], ^, *).
+
 ***
 
-[Next Lesson >>](04_sed.md)
+[Next Lesson >>](03_sed.md)
 
 [Back to Schedule](../README.md)
 
