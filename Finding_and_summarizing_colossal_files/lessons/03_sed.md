@@ -1,3 +1,8 @@
+---
+title: "Sed"
+author: "Will Gammerdinger, Emma Berdan"
+---
+
 # sed
 
 The ***s***tream ***ed***itor, `sed`, is a common tool used for text manipulation. `sed` takes input from either a file or piped from a previous command and applies a transformation to it before outputting it to standard output.
