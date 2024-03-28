@@ -232,7 +232,7 @@ This will match anything ending in `ATCH` ***except*** a string containing `CATC
 
 ## Special Characters
 
-### .
+### Period (.)
 
 The `.` matches any character except new line. Notably, it also ***does not*** match no character. This is similar to the behavior of the wildcard `?` in `bash`. For example:
 
@@ -261,7 +261,7 @@ But this result **will not** include `ATCH`.
 
 ### Quantifiers
 
-#### *
+#### Asterisk (*)
 
 The `*` matches the preceeding character any number of times ***including*** zero times. For example:
 
@@ -279,7 +279,7 @@ CAAATCH
 CAAAATCH
 ```
 
-#### ?
+#### Question Mark (?)
 
 The `?` denotes that the previous character is optional, in the following example:
 
@@ -296,7 +296,7 @@ CTCH
 
 Since the "A" is optional, it will only match `CATCH` or `CTCH`, but not anything else, including `COTCH` which was also in our file.
 
-#### {}
+#### Curly Brackets ({})
 
 The `{INTEGER}` matches the preceeding character the number of times equal to INTEGER. For example:
 
@@ -315,7 +315,7 @@ CAAATCH
 > grep "CA\{3\}TCH" catch.txt
 > ```
 
-#### +
+#### Plus (+)
 
 The `+` matches one or more occurrances of the preceeding character. For example:
 
@@ -336,7 +336,7 @@ CAAAATCH
 
 Anchors are really useful tools in regular expressions because they specify if a pattern has to be found at the beginning or end of a line.
 
-#### ^
+#### Carrot (^)
 
 The `^` character anchors the search criteria to the beginning of the line. For example:
 
@@ -355,7 +355,7 @@ Importantly, it won't return `BOBCAT`, which is also in the file, because that l
 
 ***REMINDER: `^` within `[]` functions acts as "not"!***
 
-#### $
+#### Dollar Sign ($)
 
 The `$` character anchors the search criteria to the end of the line. For example:
 
