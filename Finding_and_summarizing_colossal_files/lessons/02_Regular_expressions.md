@@ -479,7 +479,7 @@ COTCH
 
 ## Take Home Message
 
-Regex for bioinformatic applications is generally used in combination with `grep`, `sed`, or `awk` to pull specific information out of large files. You **DO NOT** need to memorize all of the syntax here. Instead merely bookmark it and use it as a resource for writing commands moving forward. As you write more shell commands you will become familiar with more common regex ([], ^, *).
+Regex for bioinformatic applications is generally used in combination with `grep`, `sed`, or `awk` to pull specific information out of large files. You **DO NOT** need to memorize all of the syntax here. Instead merely bookmark it and use it as a resource for writing commands moving forward. You can also check out our bonus lesson on [string manupulation](extra_material_String_manipulation.md)!! As you write more shell commands you will become familiar with more common regex ([], ^, *).  
 
 ***
 
