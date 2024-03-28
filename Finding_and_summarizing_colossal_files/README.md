@@ -7,20 +7,28 @@
 
 ### Description
 
-**Add more here**
+This repository has teaching materials for a **3 hour**, hands-on **Intermediate bash** workshop led at a relaxed pace. Many tools for the analysis of big data require knowledge of the command line, and this workshop will build on the basic skills taught in the **The Foundation - Basic Shell** workshop to teach users basic command line functions such as `grep`, `sed` and `awk` to find and summarize information from large files. 
 
 ### Learning Objectives
 
+* Recognize basic regex
+* Utilize regex to cast a wider next with `grep`, `sed`, and `awk`
+* Differentiate between best use cases for `grep`, `sed`, and `awk`
+* Implement proper syntax for `grep`, `sed`, and `awk` commands
+* Observe the wide range of options for `sed` to perform various tasks
+* Identify bioinformatic applications for `grep`, `sed`, and `awk`
 
-> These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
+> These materials are developed for a trainer-led workshop, but are also amenable to self-guided learning.
 
 
 ### Contents
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Setting up] | 15 min |
-
+|[Setting up](lessons/01_Setting_up.html) | 15 min |
+|[Regular Expressions](lessons/02_Regular_expressions.html) | 45 min |
+|[Sed](lessons/03_sed.html) | 45 min |
+|[Awk](lessons/AWK_module.html)| 75 min |
 
 ### Dataset
 
