@@ -328,7 +328,7 @@ It works! We can see that "moose,bison" is the most commonly observed group of a
 
 2. Our code also counts the number of times our header text (Yosemite or Glacier) is repeated. How can you modify the code so that this is ignored?
 
-3. <details>
+ <details>
         <summary><i>Click here for the answer</i></summary>
 
    awk 'NR>1 { counter[$2] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt
@@ -336,6 +336,8 @@ It works! We can see that "moose,bison" is the most commonly observed group of a
       awk 'NR>1 { counter[$5] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt
         
 </details>
+
+
 ****
 
 ### Bioinformatic Application
