@@ -277,6 +277,13 @@ to separate the comma separated fields of column 3 and ask which lines have the 
 
 What command would you give to print all of the observation dates that took place in May?
 
+<details>
+        <summary><i>Click here for the answer</i></summary>
+
+awk '{ print $1 }' animal_observations_edited.txt | awk -F "/" '$1 ~ "5"' 
+        
+</details>
+
 ****
 
 ## Counting
