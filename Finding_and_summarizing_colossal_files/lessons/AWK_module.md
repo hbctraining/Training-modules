@@ -22,7 +22,7 @@ You should never use a script if you can do it with awk;
 Never use awk if you can do it with sed;
 Never use sed if you can do it with grep.
 ```
-[Text source](http://awk.info/?whygawk)
+[Text source]([http://awk.info/?whygawk](https://web.archive.org/web/20160324050308/http://awk.info/?whygawk))
 
 This is best understood if we start with `grep` and work our way up. We will use these tools on a complex file we have been given, `animal_observations.txt`. 
 
@@ -58,7 +58,7 @@ Date	Yellowstone	Yosemite	Acadia	Glacier
 
 We see the date of observation and then the animals observed at each of the 5 parks. Each column is separated by a tab. 
 
-* Please copy and paste the above into a command line document called animal_observations.txt.
+* You can find Parker's file in your `advanced_shell` directory, it is called animal_observations.txt.
 
 So let's say that we want to know how many dates a cougar was observed at any of the parks. We can easily use `grep` for that:
 
@@ -93,13 +93,13 @@ Before we dive too deeply into `awk` we need to define two terms that `awk` will
 - ***Field*** - This is a column of data
 - ***Record*** - This is a row of data 
 
-For our first `awk` command let's mimic what we just did with `grep`. To pull all instances of cougar from animal_observations_edited.txt using `awk`:
+For our first `awk` command let's mimic what we just did with `grep`. To pull all instances of coyote from animal_observations_edited.txt using `awk`:
 
 ```bash
-awk '/cougar/' animal_observations_edited.txt
+awk '/coyote/' animal_observations_edited.txt
 ```
 
-here '/cougar/' is the pattern we want to match and **since we have not told `awk` anything else it performs it's default behavior which is to print the matched lines**.
+here '/coyote/' is the pattern we want to match and **since we have not told `awk` anything else it performs it's default behavior which is to print the matched lines**.
 
 but we only care about coyotes from Yosemite Park! How do we do that?
 
@@ -132,6 +132,7 @@ awk ' /pattern/ {action} ' file1 file2 ... fileN
 
 A few things to note before you try it yourself!
 
+> The full awk command is encased in single quotes ''
 > The action is performed on every line that matches the pattern.  
 > If a pattern is not provided, the action is performed on every line of the file.  
 > If an action is not provided, then all lines matching the pattern are printed (we already knew this one!)  
@@ -143,7 +144,26 @@ A few things to note before you try it yourself!
 
 Can you print all of the times a seal was observed in Acadia Park? Did you print it the messy or neat way?
 
-Were seals ever observed in any of the other parks (hint: There are multiple ways to answer this question!)?
+<details>
+        <summary><i>Click here for the answer</i></summary>
+
+        messy way: awk '$4 ~ /seal/' animal_observations_edited.txt
+        neat way: awk '$4 ~ /seal/ {print $1,$4}' animal_observations_edited.txt
+        
+</details>
+
+Were seals ever observed in any of the other parks, note that `||` is or in awk (hint: There are multiple ways to answer this question!)? Get creative!
+
+
+<details>
+        <summary><i>Click here for the answer</i></summary>
+        Some options:
+        awk '{print $1,$2,$3,$5}' animal_observations_edited.txt | grep "seal"
+        awk '$2 ~ /seal/ || $3 ~ /seal/|| $5 ~ /seal/' animal_observations_edited.txt
+        Seals are only ever observerd in Arcadia.
+        
+</details>
+
 
 ****
 
