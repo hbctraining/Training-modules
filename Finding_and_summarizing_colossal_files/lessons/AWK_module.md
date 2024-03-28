@@ -328,5 +328,55 @@ Why do you think that this is MFC?
 ### With our new expertise, we can not only write our own `awk` commands but we can understand commands that others have written. Go forth and `awk`!
 
 
+# Additional cool `awk` commands
+
+### BEGIN
+
+The `BEGIN` command will execute an `awk` expression once at the beginning of a command. This can be particularly useful it you want to give an output a header that doesn't previously have one.
+
+```
+awk 'BEGIN {print "new_header"} NR>1 {print $1}' ecosystems.txt
+```
+
+In this case we have told `awk` that we want to have "new_header" printed before anything, then `NR>1` is telling `awk` to skip the old header and finally we are printing the first column of `ecosystems.txt` with `{print $1}`.
+
+### END
+
+Related to the `BEGIN` command, the `END` command that tells `awk` to do a command once at the end of the file. It is ***very*** useful when summing up columns (below), but we will first demonstrate how it works by adding a new record:
+
+```
+awk '{print $1} END {print "new_record"}' ecosystems.txt
+```
+
+As you can see, this has simply added a new record to the end of a file. Furthermore, you can chain multiple `END` commands together to continously add to columns if you wished like:
+
+```
+awk '{print $1} END {print "new_record"} END {print "newer_record"}' ecosystems.txt
+```
+
+This is equivalent to separating your `print` commands with a `;`:
+
+```
+awk '{print $1} END {print "new_record"; print "newer_record"}' ecosystems.txt
+```
+
+### `if` statements
+
+Since `awk` is it's own fully-fledged programming language, it also has conditional statements. A common time you might want to use an `if` statement in `awk` is when you have a file with tens or even hundreds of fields and you want to figure out which field has the column header of interest or a case where you are trying to write a script for broad use when the order of the input columns may not always be the same, but you want to figure out which column has a certain column header. To do that:  
+
+```
+awk 'NR=1 {for (i=1; i<=NF; i=i+1) {if ($i == "height(cm)")  print i}}' ecosystems.txt
+```
+
+We can break this code down a bit:
+
+- `NR=1` only looks at the header line
+
+- `for (i=1; i<=NF; i=i+1)` this begins a `for` loop starting at field one and continuing as longer as the `i` is less than or equal to number of fields and the increment is one for each interation of the `for` loop
+
+- `if ($i == "height(cm)")` is checking is `$i`, which is in our case is $1, $2, ... $6, to see if they are equal to `height(cm)`. If this condition is met then:
+
+- `print i` print out `i`
+
 
 
