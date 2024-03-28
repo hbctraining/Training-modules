@@ -1,6 +1,6 @@
 ---
 title: "Regular Expressions"
-author: "Will Gammerdinger"
+author: "Will Gammerdinger, Meeta Mistry"
 ---
 
 # Regular Expressions
