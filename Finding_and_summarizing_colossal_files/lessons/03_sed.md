@@ -22,7 +22,7 @@ Before we get started let's take a brief look at the main dataset that will be u
 less ecosystems.txt
 ```
 
-One common usage for `sed` is to replace `pattern` with `replacement`. The syntax for doing this is:
+In bioinformatics the most common usage for `sed` is to replace `pattern` with `replacement`. The syntax for doing this is:
 
 ```
 # DON'T RUN
@@ -69,19 +69,16 @@ sed 's/jungle/rainforest/2g' ecosystems.txt
 
 > NOTE: Depending on your implementation of `sed`, this command may give the error that too many flags have been provided.
 
-### -n option
+### Bioinformatic Example
 
-In `sed` the `-n` option will create no standard output. However, you can pair it with the flag `p` and this will print out only lines that were were edited. For example:
+CHR vs. chr 
 
-```
-sed -n 's/desert/Sahara/pg' ecosystems.txt
-```
-
-The `-n` option has another useful purpose, you can use it to find the line number of a matched pattern by using `=` after the pattern you are searching for:
+In annotation files (e.g., gtf, gff3) chromosomes are generally written as CHR1 OR chr1. Some programs will want one or the other and sed can switch between the two easily.
 
 ```
-sed -n '/jungle/ =' ecosystems.txt
+sed 's/CHR/chr/g' uppercase.gtf > lowercase.gtf
 ```
+
 
 ## Addresses
 
@@ -146,6 +143,24 @@ Lastly, you can use `N~n` in the address to indicate that you want to apply the 
 sed '1~2 s/an/replacement/g' ecosystems.txt
 ```
 
+## Bioinformatics Example
+
+The [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) file format is the defacto file format for sequence reads generated from next-generation sequencing technologies. This file format evolved from FASTA in that it contains sequence data, but also contains quality information. Similar to FASTA, the FASTQ file begins with a header line. The difference is that the FASTQ header is denoted by a `@` character. For a single record (sequence read), there are four lines, each of which are described below:
+
+|Line|Description|
+|----|-----------|
+|1|Always begins with '@', followed by information about the read|
+|2|The actual DNA sequence|
+|3|Always begins with a '+', and sometimes the same info as in line 1|
+|4|Has a string of characters representing the quality scores; must have same number of characters as line 2|
+
+Let's say you want to extract only the quality scores from a fastq file. That is you want every 4th line. You can do that with sed!
+
+```
+cat my_fastq.fq.gz | sed -n '1~4p' > quality_scores.txt
+```
+The first half of the pipe prints the file and the sed command grabs every forth line. Try it with the `Mov10_oe_1.subset.fq` file in the advanced_shell directory!
+
 ## Deletion
 
 You can delete entire lines in `sed`. To delete lines we will need to provide the address followed by `d`. To delete the first line from a file:
@@ -178,85 +193,6 @@ The `N~n` syntax also works in deletion. If we want to delete every third line s
 sed '2~3d' ecosystems.txt
 ```
 
-## Appending
-
-### Appending, Inserting and Changing Text
-
-You can append a new line with the word `starfish` after the 2nd line using the `a` command in `sed`:
-
-```
-sed '2 a starfish' ecosystems.txt
-```
-
-You can also append over an interval, like from the 2nd to 4th line:
-
-```
-sed '2,4 a starfish' ecosystems.txt
-```
-
-Additionally, you can append the text every 3rd line begining with the second line:
-
-```
-sed '2~3 a starfish' ecosystems.txt
-```
-
-You can also append after a matched pattern:
-
-```
-sed '/monkey/ a starfish' ecosystems.txt
-```
-
-If you want the ***i***nsert text to come before the address, you need to use the `i` command:
-
-```
-sed '2 i starfish' ecosystems.txt
-```
-
-### Appending a file
-
-We could be interested in inserting the contents of **file B** inside at a certain point of **file A**. Before we append a file, let's briefly inspect the file we will try to append:
-
-```
-less more_ecosystems.txt
-```
-
-For example, if you wanted to insert the contents `more_ecosystems.txt` after line `4` in `ecosystems.txt`, you could do:
-
-```
-sed '4 r more_ecosystems.txt' ecosystems.txt
-```
-
-The `r` argument is telling `sed` to ***r***ead in `more_ecosystems.txt`.
-
-Instead of line `4`, you can append the file between every line in the interval from line 2 to line 4 with:
-
-```
-sed '2,4 r more_ecosystems.txt' ecosystems.txt
-```
-
-You could also append the line after each line by using `1~1` syntax:
-
-```
-sed '1~1 r more_ecosystems.txt' ecosystems.txt
-```
-
-Instead of inserting on a line specific line, you can also insert on a pattern:
-
-```
-sed '/camel/ r more_ecosystems.txt' ecosystems.txt
-```
-
-Lastly, you could also insert a file to the end using `$`:
-
-```
-sed '$ r more_ecosystems.txt' ecosystems.txt
-```
-
-But this is the same result as simply concatenating two files together like:
-
-```
-cat ecosystems.txt more_ecosystems.txt
-```
 
 ### Changing Lines
 
