@@ -465,6 +465,13 @@ We can break this code down a bit:
 - `print i` print out `i`
 
 
+## Additional Resources
+
+* A [guide](https://reasoniamhere.com/2013/09/16/awk-gtf-how-to-analyze-a-transcriptome-like-a-pro-part-1/) to editing gtf files using awk
+
+* [To awk or not](https://pmitev.github.io/to-awk-or-not/) a course from Pavlin Mitev at Uppsala University.
+
+  
 ***
 
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
