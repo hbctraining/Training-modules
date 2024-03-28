@@ -84,6 +84,18 @@ In annotation files (e.g., gtf, gff3) chromosomes are generally written as CHR1 
 sed 's/CHR/chr/g' uppercase.gtf > lowercase.gtf
 ```
 
+### Exercise
+
+Your colleague has prepared a truly awful fasta file for you. Take a look by typing `cat mygenes.fasta`. They named the genes (lines that start with `>`) with sequences! Rename the genes GAA and GAA_2 replacing GAA with gene1 with a **single command that does not alter any of the sequences**.
+
+<details>
+        <summary><i>Click here for the answer</i></summary>
+
+      sed 's/>GAA/>gene1/g' mygenes.fasta 
+        
+</details>
+
+
 
 ## Addresses
 
