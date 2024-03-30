@@ -35,9 +35,6 @@ This repository has teaching materials for a **3 hour**, hands-on **Intermediate
 
 ### Installation Requirements
 
-***Mac users:***
-[R](https://cran.r-project.org/)
-
 
 ***Windows users:***
 [GitBash](https://git-scm.com/download/win)
