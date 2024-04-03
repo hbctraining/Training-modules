@@ -15,6 +15,8 @@ In this lesson, we will:
 
 ## Getting Started
 
+## Comment-Upen: Even we mentioned that we introuduced grep in the previous workshops. I think participants will find it useful to get a brief introduction of grep before we go in depth. and then introduce our toy file `catch.txt` to use.
+
 Before we get started, let's take a briefly look at the `catch.txt` file in a `less` buffer in order to get an idea of what the file looks like:
 
 ```
@@ -23,6 +25,9 @@ less catch.txt
 
 In here, you can see that we have a variety of case differences and misspellings. These differences are not exhaustive, but they will be helpful in exploring how regular expressions are implemented in `grep`.
 
+
+## Comment-Upen: Before introducing cautions and extended regular expression which we say, we won't be using too many. I think, If I am a participant and in beginner level, I would be more interested to just use grep on our catch.txt file to start with. use double quotation to start with, And explan the difference between no quotation, single quotataion, and double quotation with dummy error we can produce down below. may be we can demonstrate few simple flags we can use with grep like -c for counting, -n for printing line number, using -v to print negative results and others. We can use double quotations in all the examples and ask participants what will happen if we don't use quotation marks or use single quotation. Ask them to do it to practice grep with differnt flags. and introduce the importance of quotations and cases where those will be useful.
+
 ## A bit more depth on grep
 
 There are two principles that we should discuss more, the `-E` option and the use of quotation marks.
@@ -30,6 +35,8 @@ There are two principles that we should discuss more, the `-E` option and the us
 ### The `-E` option
 
 There is a `-E` option when using `grep` that allows the user to use what is considered "extended regular expressons". We won't use too many of these types of regular expressions and we will point them out when we need them. If you want to make it a habit to always use the `-E` option when using regular expressions in `grep` it is a bit more safe.
+
+## Comment-Upen: I would explain what we meant by safe.
 
 ### Quotations
 
@@ -86,7 +93,7 @@ Will return:
 ```
 C${at}CH
 ```
-
+## Comment-Upen: Maybe this take home message can go to the bottom of the page and bullet point 1.
 ### grep Depth Take-Home 
 
 In conclusion, while these are all mostly edge cases, we believe that it is generally a good habit to wrap the expressions that you use for `grep` in double quotations and also use the `-E` option. This practice will not matter for the overwhelming number of cases, but it is sometimes difficult to remember these edge cases and thus it is mofe safe to just build them into a habit. Of course, your preferences may vary.
