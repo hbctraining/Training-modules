@@ -472,6 +472,8 @@ C${at}CH
 COTCH
 ```
 
+## Comment-Upen: Having a multi-fasta file in our demo data and using that to count number of sequences with grep -c "^>" my.fasta, may be finding the starting codon "ATG" or stop codon "TAA" or extracting "cds" between ATG and TAA. using grep with -A 1 and -B 1 to get the header and sequence information of the sequence using a small part of the sequence. may be using using primerpairs to locate the pcr amplicon region, would give participants some basic realworld example of grep application. I mean a few of these examples but not too many. and I think this will align well with bioinformatic examples in other lesson in this workshop, just a thought.
+
 ***
 
 ## Exercises
