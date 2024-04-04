@@ -71,7 +71,7 @@ When we do that 4 lines pop up, so 4 dates. We could also pipe to wc to get a nu
 grep "cougar" animal_observations.txt | wc -l
 ```
 
-There seemed to be more instances of cougar though. 4 seems low compared to what I saw when glancing at the document. If we look at the document again, we can see that the park ranger from Glacier National Park cannot spell and put "couger" instead of "cougar". Come on man! 
+There seemed to be more instances of cougar though. Four seems low compared to what we saw when glancing at the document. If we look at the document again, we can see that the park ranger from Glacier National Park cannot spell and put "couger" instead of "cougar". 
 
 Replacing those will be a bit hard with `grep` but we can use `sed` instead!
 
@@ -86,7 +86,7 @@ So far so good. But let's now say that we want to know how many times a coyote w
 While this is *possible* with `grep` it is actually easier to do with `awk`!
 
 
-## Ok you convinced me (I mean I signed up for this module...) how do I start with awk?
+## Basics of `awk`
 
 Before we dive too deeply into `awk` we need to define two terms that `awk` will use a lot:
 
@@ -111,9 +111,11 @@ Let's break this down!
 
 * First all `awk` commands are always encased in `` so whatever you are telling `awk` to do needs to be inbetween those.
 
-* Then I have noted that I want to look at column 3 (the Yosemite observations) in particular. The columns are separated (defined) by white space (one or more consecutive blanks) or tabulator and denoted by the $ sign. So `$1` is the value of the first column, `$2` - second etc. $0 contains the original line including the separators.
+* We want to look at column 3 (the Yosemite observations) in particular. The columns are separated (defined) by white space (one or more consecutive blanks) or tabulator and denoted by the $ sign. So `$1` is the value of the first column, `$2` - second etc. $0 contains the original line including the separators.
 
-* So the Yosemite column is `$3` and we are asking for lines where the string "coyote" is present. We recognize the '/string/' part from our previous command. 
+* The tilde is..???
+
+* In column 3 (the Yosemite observations) we are asking for lines where the string "coyote" is present. We recognize the '/string/' part from our previous command. 
 
 As we run this command we see that the output is super messy because Parker's original file is a bit of a mess. This is because the default behavior of `awk` is to print all matching lines. It is hard to even check if the command did the right thing. However, we can ask `awk` to only print the Yosemite column and the date (columns 1 and 3):
 
@@ -132,11 +134,11 @@ awk ' /pattern/ {action} ' file1 file2 ... fileN
 
 A few things to note before you try it yourself!
 
-> The full awk command is encased in single quotes ''
-> The action is performed on every line that matches the pattern.  
-> If a pattern is not provided, the action is performed on every line of the file.  
-> If an action is not provided, then all lines matching the pattern are printed (we already knew this one!)  
-> Since both patterns and actions are optional, actions must be enclosed in curley brackets to distinguish them from patterns.  
+> * The full awk command is encased in single quotes ''
+> * The action is performed on every line that matches the pattern.  
+> * If a pattern is not provided, the action is performed on every line of the file.  
+> * If an action is not provided, then all lines matching the pattern are printed (we already knew this one!)  
+> * Since both patterns and actions are optional, actions must be enclosed in curly brackets to distinguish them from patterns.  
 
 ****
 
@@ -177,7 +179,7 @@ awk '$3 ~ /coyote/ {print "On this date coyotes were observed in Yosemite Park",
 
 Did you notice what was modified from the previous command besides the addition of the string "On this date coyotes were observed in Yosemite Park"?
 
-## awk predefined variables
+## `awk` predefined variables
 
 Before we continue our `awk` journey we want to introduce you to some of the `awk` predefined variables. Although there are more than just the ones we cover, these are the most helpful to start. More can be found [here](https://www.gnu.org/software/gawk/manual/html_node/Built_002din-Variables.html)
 
