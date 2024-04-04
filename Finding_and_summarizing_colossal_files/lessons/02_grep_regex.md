@@ -3,37 +3,51 @@ title: "Regular Expressions"
 author: "Will Gammerdinger, Meeta Mistry"
 ---
 
-# Regular Expressions
+# grep 
 
-Regular expressions (sometimes referred to as regex) are a string of characters that can be used as a pattern to match against. This can be very helpful when searching through a file, particularly in conjunction with `sed`, `grep` or `awk`. Since we have an understanding of `grep` from previous workshops we are going to use `grep` and the `catch.txt` file that we downloaded to demonstrate the principles of regular expressions. As we said though, many of these principles are also useful in `sed` and `awk`. 
+`grep`, short for **G**lobal **R**egular **E**xpression **P**rint, is a Unix command used to search files for the occurrence of a string of characters that matches a specified pattern. In our [previous module](), we demonstrated the simple use of `grep` to search for strings of N among a file of DNA sequences. Rather than providing the exact characters we want to search we can also use regular expressions. **Regular expressions** (sometimes referred to as regex) are a string of characters that can be used as a pattern to match against. 
 
 ## Learning Objectives
 
 In this lesson, we will:
-- Differentiate between single and double quotes in `bash`
 - Implement regular expressions to within `grep`
 
 ## Getting Started
 
 Before we get started, let's take a briefly look at the `catch.txt` file in a `less` buffer in order to get an idea of what the file looks like:
 
-```
+```bash 
 less catch.txt
 ```
 
 In here, you can see that we have a variety of case differences and misspellings. These differences are not exhaustive, but they will be helpful in exploring how regular expressions are implemented in `grep`.
 
-## A bit more depth on grep
+In its simplest use, the `grep` command only requires the pattern you are searching for followed by the file name. Let's say our pattern is CAT, then our command would be:
 
-There are two principles that we should discuss more, the `-E` option and the use of quotation marks.
+```
+grep CAT catch.txt
 
-### The `-E` option
+```
 
-There is a `-E` option when using `grep` that allows the user to use what is considered "extended regular expressons". We won't use too many of these types of regular expressions and we will point them out when we need them. If you want to make it a habit to always use the `-E` option when using regular expressions in `grep` it is a bit more safe.
+### Flags for modifying the function of `grep`
+
+There are additional flags for the `grep` command that are very useful and allow you to modify the output that is rerieved. For example, adding `-c` will count teh number of matching lines rather than printing them all out to screen:
+
+
+```
+grep -c CAT catch.txt
+
+```
+
+There is a `-E` option when using `grep` that allows the user to use what is considered "extended regular expressons". We won't use too many of these types of regular expressions and we will point them out when we need them. If you want to make it a habit to always use the `-E` option when using regular expressions in `grep` it is a bit more explicit.
+
+
+> To learn more about grep and its usage, you can type `man grep` or `grep --help` into the terminal. 
+
 
 ### Quotations
 
-When using grep it is usually not required to put your search term in quotes. However, if you would like to use `grep` to do certain types of searches, it is better or *safer* to wrap your search term in quotations, and likely double quotations. Let's briefly discuss the differences:
+When using grep it is usually not required to put your search term in quotes. However, if you would like to use `grep` to do certain types of searches, it is **best to wrap your search term in double quotations to avoid any issues with edge cases**. Let's briefly discuss the differences:
 
 #### No quotation
 
@@ -87,13 +101,11 @@ Will return:
 C${at}CH
 ```
 
-### grep Depth Take-Home 
-
-In conclusion, while these are all mostly edge cases, we believe that it is generally a good habit to wrap the expressions that you use for `grep` in double quotations and also use the `-E` option. This practice will not matter for the overwhelming number of cases, but it is sometimes difficult to remember these edge cases and thus it is mofe safe to just build them into a habit. Of course, your preferences may vary.
+# `grep` with Regular Expressions
 
 ## Ranges
 
-Now that we have gotten some background information out of the way, let's start implementing some regular expressions into our `grep` commands. 
+Now that we have gotten some basics on the `grep` command out of the way, let's start implementing some regular expressions into our `grep` commands. 
 
 A **range** of acceptable characters can be given to `grep` with `[]`. Square brackets can be used to notate a range of acceptable characters in a position. For example:
 
@@ -228,6 +240,11 @@ CAAAATCH
 This will match anything ending in `ATCH` ***except*** a string containing `CATCH`.
 
 ***IMPORTANT NOTE: `^` has a different function when used outside of the `[]` that is discussed below in anchoring.***
+
+
+## Bioinformatics Example
+
+**Add an example using some of teh concepts introduced so far!**
 
 
 ## Special Characters
@@ -477,14 +494,16 @@ COTCH
 
 **3)** Use `grep` to find all matches in `catch.txt` that have atleast two "A"s in them
 
+## Take Home Message
+
+Regex for bioinformatic applications is generally used in combination with `grep`, `sed`, or `awk` to pull specific information out of large files. You **DO NOT need to memorize all of the syntax here.** Instead merely bookmark it and **use it as a resource** for writing commands moving forward. You can also check out our bonus lesson on [string manupulation](extra_material_String_manipulation.md)!! As you write more shell commands you will become familiar with more common regex ([], ^, *).  
+
+
 
 ## Additional Resources
 
 - <a href="https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/sessionVI/lessons/extra_bash_tools.html#regular-expressions-regex-in-bash-">https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/sessionVI/lessons/extra_bash_tools.html#regular-expressions-regex-in-bash-</a>
 
-## Take Home Message
-
-Regex for bioinformatic applications is generally used in combination with `grep`, `sed`, or `awk` to pull specific information out of large files. You **DO NOT** need to memorize all of the syntax here. Instead merely bookmark it and use it as a resource for writing commands moving forward. You can also check out our bonus lesson on [string manupulation](extra_material_String_manipulation.md)!! As you write more shell commands you will become familiar with more common regex ([], ^, *).  
 
 ***
 
@@ -495,4 +514,3 @@ Regex for bioinformatic applications is generally used in combination with `grep
 ***
 
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
-
