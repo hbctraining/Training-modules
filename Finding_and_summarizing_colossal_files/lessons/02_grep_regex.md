@@ -39,7 +39,7 @@ grep -c CAT catch.txt
 
 ```
 
-There is a `-E` option when using `grep` that allows the user to use what is considered "extended regular expressons". We won't use too many of these types of regular expressions and we will point them out when we need them. If you want to make it a habit to always use the `-E` option when using regular expressions in `grep` it is a bit more explicit.
+There is a `-E` option when using `grep` that allows the user to use what is considered "extended regular expressons". We won't use too many of these types of regular expressions and we will point them out when we need them. If you want to **make it a habit to always use the `-E` option when using regular expressions in `grep` it is a bit more explicit**. In this lesson, we will always include the `-E` option.
 
 
 > To learn more about grep and its usage, you can type `man grep` or `grep --help` into the terminal. 
