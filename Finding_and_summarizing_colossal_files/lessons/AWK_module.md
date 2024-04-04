@@ -366,9 +366,9 @@ awk ' { counter[$2] += 1 } END { for (source in counter){ print source, counter[
 awk ' { counter[$3] += 1 } END { for (feature in counter){ print feature, counter[feature] } }' my_gtf.gtf
 ```
 
-## MFC
+## A helpful use case of `awk`
 
-We will end by taking a look at MFC (my favorite code). This is an `awk` one liner I use all the time.
+We will end by taking a look at an `awk` one liner that is super helpful when you are working through your own bioinformatics analyses.
 
 ```bash
 for ((i=1; i<=10; i+=1))
