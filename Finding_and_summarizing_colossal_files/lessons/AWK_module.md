@@ -379,13 +379,13 @@ samtools view -S -b ${sam}.sam > ${sam}.bam
 done
 ```
 
-This actually combines a number of basic and intermediate shell topics such as [positional parameters]([positional_params.md](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/lessons/positional_params.html)), [for loops](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/lessons/loops_and_scripts.html), and `awk`!
+This actually combines a number of basic and intermediate shell topics such as [variables]((https://hbctraining.github.io/Training-modules/Accelerate_with_automation/lessons/loops_and_scripts.html)), [for loops](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/lessons/loops_and_scripts.html), and `awk`!
 
 * We start with a for loop that counts from 1 to 10
 
-* Then for each value of `i` the awk command `awk -v awkvar="${i}" 'NR==awkvar' samples.txt` is run and the output is assigned to the positional parameter `${sam}`.
+* Then for each value of `i` the awk command `awk -v awkvar="${i}" 'NR==awkvar' samples.txt` is run and the output is assigned to the variable `${sam}`.
 
-* Then using the positional parameter `${sam}` a samtools command is run to convert a file from .sam to .bam
+* Then using the variable `${sam}` a samtools command is run to convert a file from .sam to .bam
 
 With our new `awk` expertise let's take a look at that `awk` command alone!
 
