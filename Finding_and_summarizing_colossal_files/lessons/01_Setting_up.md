@@ -51,6 +51,8 @@ _You should see `advanced_shell.zip` as part of the output to the screen._
 
 **4.** Finally, to **decompress the folder**:
 
+## Comment-Upen: As we are already in terminal. it might be easier to type `unzip advanced_shell.zip` rather then going back to GUI.
+
 * Double click on advanced_shell.zip on a mac. This will automatically inflate the folder.
 * If you are on windows, press and hold (or right-click) the folder, select Extract All..., and then follow the instructions.
 

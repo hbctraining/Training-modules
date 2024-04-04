@@ -159,6 +159,7 @@ Lastly, you can use `N~n` in the address to indicate that you want to apply the 
 ```
 sed '1~2 s/an/replacement/g' ecosystems.txt
 ```
+## Comment-Upen: tilde didn't work on my computer in above code. it says not a valid command. I am using mac with Apple M3 chip, its the latest, I suppose many of my participants will have similar configuration?
 
 ## Bioinformatics Example
 
@@ -178,6 +179,7 @@ cat my_fastq.fq.gz | sed -n '1~4p' > quality_scores.txt
 ```
 The first half of the pipe prints the file and the sed command grabs every forth line. Try it with the `Mov10_oe_1.subset.fq` file in the advanced_shell directory!
 
+## Comment-Upen: There is no my_fastq.fq.gz in our training material folder. and also just my_fastq.gz or my_fq.gz would be fine as a file name. again tilde won't work on mine.
 
 ## Deletion
 
@@ -262,24 +264,26 @@ You can also ***c***hange entire lines in `sed` using the `c` command. We could 
 sed '1 c header' ecosystems.txt
 ```
 
+## Comment-Upen: The above command doesn't work on my laptop. instead prints: `sed: 1: "1 c header": command c expects \ followed by text`
 This can also be utilized in conjunction with the `A,B` interval syntax, but we should be aware that it will replace ALL lines in that interval with a SINGLE line.
 
 ```
 sed '1,3 c header' ecosystems.txt
 ```
-
+## Comment-Upen: same as above, doesn't work on my mac.
 You can also replace every *n*-th line starting at *N*-th line using the `N~n` address syntax:
 
 ```
 sed '1~3 c header' ecosystems.txt
 ```
 
+## Comment-Upen: ~ in above command says invalid in my mac.
 Lastly, you can also replace lines match a pattern:
 
 ```
 sed '/jaguar/ c header' ecosystems.txt
 ```
-
+## Comment-Upen: error on above command: sed: 1: "/jaguar/ c header": command c expects \ followed by text
 
 ## Multiple expressions
 

@@ -168,6 +168,7 @@ Were seals ever observed in any of the other parks, note that `||` is or in awk 
         
 </details>
 
+## Comment-Upen: Both options above doesnot print anything on my laptop.
 
 ****
 
@@ -268,6 +269,7 @@ To simply extract the Yosemite data (column 3). We use the second part:
 ```bash
 awk -F "," '$2 ~ "coyote"'
 ```
+## Comment-Upen: may be add the file name animal_observations_edited.txt at the end in above script. if someone enters this, terminal will just hung up.
 
 to separate the comma separated fields of column 3 and ask which lines have the string coyote in field 2. We want to print the entire comma separated list (i.e., column 3) to test our code which is the default behavior of `awk` in this case.
 
@@ -379,6 +381,8 @@ samtools view -S -b ${sam}.sam > ${sam}.bam
 done
 ```
 
+## Comment-Upen: We are not running this workshop in cluster right? running above chunk with samtools might be a problem?
+
 This actually combines a number of basic and intermediate shell topics such as [positional parameters]([positional_params.md](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/lessons/positional_params.html)), [for loops](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/lessons/loops_and_scripts.html), and `awk`!
 
 * We start with a for loop that counts from 1 to 10
@@ -393,6 +397,8 @@ With our new `awk` expertise let's take a look at that `awk` command alone!
 ```bash
 awk -v awkvar="${i}" 'NR==awkvar' samples.txt
 ```
+## Comment-Upen: No samples.txt in workshop material folder??
+
 
 We have not encountered -v yet. The correct syntax is `-v var=val` which assign  the  value  val to the variable var, before execution of the program begins. So what we are doing is creating our own variable within our `awk` program, calling it `awkvar` and assigning it the value of `${i}` which will be a number between 1 and 10 (see for loop above). `${i}` and thus `awkvar` will be different for each loop.
 
