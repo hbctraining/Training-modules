@@ -5,7 +5,7 @@ author: "Will Gammerdinger, Meeta Mistry"
 
 # grep 
 
-`grep`, short for **G**lobal **R**egular **E**xpression **P**rint, is a Unix command used to search files for the occurrence of a string of characters that matches a specified pattern. In our [previous module](), we demonstrated the simple use of `grep` to search for strings of N among a file of DNA sequences. Rather than providing the exact characters we want to search we can also use regular expressions. **Regular expressions** (sometimes referred to as regex) are a string of characters that can be used as a pattern to match against. 
+`grep`, short for **G**lobal **R**egular **E**xpression **P**rint, is a Unix command used to search files for the occurrence of a string of characters that matches a specified pattern. In our [previous module](), we demonstrated the simple use of `grep` to search for strings of N among a file of DNA sequences. Rather than providing the exact characters we want to search we can also use regular expressions. **Regular expressions (sometimes referred to as regex) are a string of characters that can be used as a pattern to match against.**
 
 ## Learning Objectives
 
