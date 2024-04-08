@@ -25,9 +25,9 @@ This repository has teaching materials for a **3 hour**, hands-on **Intermediate
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Setting up](lessons/01_Setting_up.html) | 15 min |
-|[Regular Expressions](lessons/02_Regular_expressions.html) | 45 min |
-|[Sed](lessons/03_sed.html) | 45 min |
+|[Setting up](lessons/01_Setting_up.md) | 15 min |
+|[Regular Expressions](lessons/02_grep_regex.md) | 45 min |
+|[Sed](lessons/03_sed.md) | 45 min |
 |[Awk](lessons/AWK_module.html)| 75 min |
 
 ### Dataset
