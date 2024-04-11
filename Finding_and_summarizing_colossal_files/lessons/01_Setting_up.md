@@ -19,25 +19,23 @@ Depending on your operating system, there are different ways to access the shell
 
 ### Downloading data
 
-We will be exploring the capabilities of the shell by working with some RNA-Seq data. We need to **download the data to our current folder** using the link below. To do so, follow the step-by-step instructions below.
+This workshop will be exploring the capabilities of the shell by working with some RNA-Seq data. We need to **download the data to our current folder** using the link below. To do so, follow the step-by-step instructions below.
 
 **1. Go to our downloads folder**.
 
-on a mac you will do:
+On a Mac:
 
 ```bash
 $ cd Downloads
 ```
 
-on a PC you will do:
+On a PC:
 
 ```bash
 $ cd /c/Users/your_name/Downloads
 ```
 
-**2. Click on the link below then go to file > download to download the data"**. This will automatically download the folder to your downloads folder. If you downloaded the data previously as a part of the Basic Shell workshop, you do not need to download it again unless you have deleted it.
-
-* Download data by [going to this link](https://www.dropbox.com/scl/fi/tpjha600uz8uacf166utg/advanced_shell.zip?rlkey=cgql6kx09b7825pgppnme9e08&dl=1).
+**2. Right-click on [this link](https://www.dropbox.com/scl/fi/tpjha600uz8uacf166utg/advanced_shell.zip?rlkey=cgql6kx09b7825pgppnme9e08&dl=1) below and select "Save Link As..." or "Download Linked File As.."**. This will automatically download the folder to your Downloads folder. If you downloaded the data previously as a part of the Basic Shell workshop, you do not need to download it again unless you have deleted it.
 
 **3.** Once you have downloaded the file to the correct location, go back to your **terminal window and type the 'list' command**:
 
@@ -51,8 +49,8 @@ _You should see `advanced_shell.zip` as part of the output to the screen._
 
 **4.** Finally, to **decompress the folder**:
 
-* Double click on advanced_shell.zip on a mac. This will automatically inflate the folder.
-* If you are on windows, press and hold (or right-click) the folder, select Extract All..., and then follow the instructions.
+* Double click on advanced_shell.zip on a Mac. This will automatically unzip the folder.
+* If you are on Windows, press and hold (or right-click) the folder, select "Extract All...", and then follow the instructions.
 
 
 **5.** Now when you **run the `ls` command** again you should see a folder called `advanced_shell`, which means you are all set with the data download!
@@ -63,12 +61,12 @@ $ ls
 
 **6.** Go into the folder for the lesson
 
-on mac type: 
+On Mac, type: 
 ```bash
 $ cd advanced_shell
 ```
 
-on windows type:
+On Windows, type:
 
 ```bash
 $ cd advanced_shell/advanced_shell
