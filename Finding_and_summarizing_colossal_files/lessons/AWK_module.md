@@ -113,7 +113,7 @@ Let's break this down!
 
 * We want to look at column 3 (the Yosemite observations) in particular. The columns are separated (defined) by white space (one or more consecutive blanks) or tabulator and denoted by the $ sign. So `$1` is the value of the first column, `$2` - second etc. $0 contains the original line including the separators.
 
-* The tilde is..???
+* The tilde is the matching operator. This is telling `awk`, test the items on either side of tilde to see if they match.
 
 * In column 3 (the Yosemite observations) we are asking for lines where the string "coyote" is present. We recognize the '/string/' part from our previous command. 
 
@@ -154,16 +154,16 @@ Can you print all of the times a seal was observed in Acadia Park? Did you print
         
 </details>
 
-Were seals ever observed in any of the other parks, note that `||` is or in awk (hint: There are multiple ways to answer this question!)? Get creative!
-
+Were seals ever observed in any of the other parks? Note that `||` functions as "or" in `awk`.
 
 <details>
         <summary><i>Click here for the answer</i></summary>
         Some options:
 
-        
+        <pre>
         awk '{print $1,$2,$3,$5}' animal_observations_edited.txt | grep "seal"
         awk '$2 ~ /seal/ || $3 ~ /seal/|| $5 ~ /seal/' animal_observations_edited.txt
+        </pre>
         Seals are only ever observerd in Arcadia.
         
 </details>
@@ -211,8 +211,6 @@ This is more complex than anything else we have done so let's break it down:
 ```bash
 awk -F '[[:blank:],]' '{print NF-1}' animal_observations_edited.txt
 ```
-
-Easy peasy!
 
 ****
 
@@ -266,7 +264,7 @@ awk '{ print $3 }' animal_observations_edited.txt
 To simply extract the Yosemite data (column 3). We use the second part:
 
 ```bash
-awk -F "," '$2 ~ "coyote"'
+awk -F "," '$2 ~ "coyote"' animal_observations_edited.txt 
 ```
 
 to separate the comma separated fields of column 3 and ask which lines have the string coyote in field 2. We want to print the entire comma separated list (i.e., column 3) to test our code which is the default behavior of `awk` in this case.
@@ -366,16 +364,15 @@ awk ' { counter[$2] += 1 } END { for (source in counter){ print source, counter[
 awk ' { counter[$3] += 1 } END { for (feature in counter){ print feature, counter[feature] } }' my_gtf.gtf
 ```
 
-## A helpful use case of `awk`
+## Bioinformatics example
 
-We will end by taking a look at an `awk` one liner that is super helpful when you are working through your own bioinformatics analyses.
+A helpful use case of `awk` We will end by taking a look at an `awk` one liner that is super helpful when you are working through your own bioinformatics analyses.
 
 ```bash
 for ((i=1; i<=10; i+=1))
     do
 sam=$(awk -v awkvar="${i}" 'NR==awkvar' samples.txt)
 samtools view -S -b ${sam}.sam > ${sam}.bam
-
 done
 ```
 
