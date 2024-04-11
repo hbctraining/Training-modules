@@ -19,6 +19,10 @@ In this lesson, we will:
 
 Many of the same arguments that were made for using single vs. double quotation marks in `grep` also apply to `sed`. However, the `$` has some non-variable functionality in `sed` that we will discuss, particularly with reference to addresses. For this reason, it's more common to see `sed` commands wrapped in single-quotes rather than double-quotes. Of course, if you want to use a `bash` variable in `sed` you are going to need to wrap it in double-quotes, but if you do then you need be cautious of any non-variable usage of `$` and be sure to escape it (`\`).
 
+## Quick Note on BSD and GNU `sed`
+
+There are several versions of `sed`, but the most two common versions are BSD (default on Macs) and GNU (found most other places). Generally, speaking the two versions of `sed` are mostly similiar but there are some instances where their behavior (particularly, BSD's `sed`) differs. Where they instance come up, we will point it out. 
+
 ## substitution
 
 Before we get started let's take a brief look at the main dataset that will be using for this lesson, the `ecosystems.txt` file:
@@ -74,28 +78,21 @@ sed 's/jungle/rainforest/2g' ecosystems.txt
 
 > NOTE: Depending on your implementation of `sed`, this command may give the error that too many flags have been provided.
 
-### Bioinformatic Example
+### Bioinformatic Examples
 
-CHR vs. chr 
+1. In annotation files (e.g., gtf, gff3) chromosomes are generally written as CHR1 *or* chr1. Some programs will want one or the other and `sed` can switch between the two easily. Use `sed` to handle this task:
 
-In annotation files (e.g., gtf, gff3) chromosomes are generally written as CHR1 OR chr1. Some programs will want one or the other and sed can switch between the two easily.
+<details>
+        <summary>Click here to see the answer</summary>
+        sed 's/CHR/chr/g' uppercase.gtf > lowercase.gtf
+</details>
 
-```
-sed 's/CHR/chr/g' uppercase.gtf > lowercase.gtf
-```
-
-### Exercise
-
-Your colleague has prepared a truly awful fasta file for you. Take a look by typing `cat mygenes.fasta`. They named the genes (lines that start with `>`) with sequences! Rename the genes GAA and GAA_2 replacing GAA with gene1 with a **single command that does not alter any of the sequences**.
+2. Your colleague has prepared a FASTA file for you. Take a look by typing `cat mygenes.fasta`. They named the genes (lines that start with `>`) with sequences! Rename the genes GAA and GAA_2 replacing GAA with gene1 with a **single command that does not alter any of the sequences**.
 
 <details>
         <summary><i>Click here for the answer</i></summary>
-
-      sed 's/>GAA/>gene1/g' mygenes.fasta 
-        
+        sed 's/>GAA/>gene1/g' mygenes.fasta       
 </details>
-
-
 
 ## Addresses
 
@@ -154,15 +151,16 @@ You can even couple `!` with the regular expression intervals to do the substitu
 sed '/camel/,/cichlid/! s/an/replacement/g' ecosystems.txt
 ```
 
-Lastly, you can use `N~n` in the address to indicate that you want to apply the substitution every *n*-th line starting on line *N*. In the below example, starting on the first line and every 2nd line, the substitution will occur
+Lastly, you can use `N~n` in the address to indicate that you want to apply the substitution every *n*-th line starting on line *N*. In the below example, starting on the first line and every 2nd line, the substitution will occur. Unfortunately, this functionality will not work on BSD (Macs) `sed`.
 
 ```
+# Won't work on Macs using BSD sed
 sed '1~2 s/an/replacement/g' ecosystems.txt
 ```
 
 ## Bioinformatics Example
 
-The [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) file format is the defacto file format for sequence reads generated from next-generation sequencing technologies. This file format evolved from FASTA in that it contains sequence data, but also contains quality information. Similar to FASTA, the FASTQ file begins with a header line. The difference is that the FASTQ header is denoted by a `@` character. For a single record (sequence read), there are four lines, each of which are described below:
+Let's extract only the quality scores from the Mov10_oe_1.subset.fq file. If you are on a Mac, you may have trouble testing this, so just write your answer out instead. Below is a reminder of the FASTQ format:
 
 |Line|Description|
 |----|-----------|
@@ -171,12 +169,10 @@ The [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) file format is the defac
 |3|Always begins with a '+', and sometimes the same info as in line 1|
 |4|Has a string of characters representing the quality scores; must have same number of characters as line 2|
 
-Let's say you want to extract only the quality scores from a fastq file. That is you want every 4th line. You can do that with sed!
-
-```
-cat my_fastq.fq.gz | sed -n '1~4p' > quality_scores.txt
-```
-The first half of the pipe prints the file and the sed command grabs every forth line. Try it with the `Mov10_oe_1.subset.fq` file in the advanced_shell directory!
+<details>
+        <summary>Click here to see the answer</summary>
+        <code>sed -n '4~4p' Mov10_oe_1.subset.fq > quality_scores.txt</code>
+</details>
 
 
 ## Deletion
@@ -205,9 +201,10 @@ Additionally, you can also use regular expressions to provide the addresses to d
 sed '/cichlid/,$d' ecosystems.txt
 ```
 
-The `N~n` syntax also works in deletion. If we want to delete every third line starting on line 2, we can do:
+The `N~n` syntax also works in deletion and like the previous usage of the `~`, it will not work on Macs running BSD `sed`. If we want to delete every third line starting on line 2, we can do:
 
 ```
+# Won't work on Macs using BSD sed
 sed '2~3d' ecosystems.txt
 ```
 
@@ -256,30 +253,33 @@ You have the vcf file test.vcf in your `advanced_shell` directory. Use sed to re
 
 ### Changing Lines
 
-You can also ***c***hange entire lines in `sed` using the `c` command. We could replace the first line with the word 'header' by:
+You can also ***c***hange entire lines in `sed` using the `c` command. This change function will not work on Macs running BSD `sed`. We could replace the first line with the word 'header' by:
 
 ```
+# Won't work on Macs using BSD sed
 sed '1 c header' ecosystems.txt
 ```
 
 This can also be utilized in conjunction with the `A,B` interval syntax, but we should be aware that it will replace ALL lines in that interval with a SINGLE line.
 
 ```
+# Won't work on Macs using BSD sed
 sed '1,3 c header' ecosystems.txt
 ```
 
 You can also replace every *n*-th line starting at *N*-th line using the `N~n` address syntax:
 
 ```
+# Won't work on Macs using BSD sed
 sed '1~3 c header' ecosystems.txt
 ```
 
 Lastly, you can also replace lines match a pattern:
 
 ```
+# Won't work on Macs using BSD sed
 sed '/jaguar/ c header' ecosystems.txt
 ```
-
 
 ## Multiple expressions
 
