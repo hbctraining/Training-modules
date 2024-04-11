@@ -76,7 +76,7 @@ $ cd advanced_shell/advanced_shell
 
 Now that we have downloaded our toy datasets, we are ready to dive into that haystack!
 
-[Next Lesson >>](02_Regular_expressions.md)
+[Next Lesson >>](02_grep_regex.md)
 
 [Back to Schedule](../README.md)
 
