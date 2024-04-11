@@ -3,14 +3,16 @@ title: "Regular Expressions"
 author: "Will Gammerdinger, Meeta Mistry"
 ---
 
-# grep 
-
-`grep`, short for **G**lobal **R**egular **E**xpression **P**rint, is a Unix command used to search files for the occurrence of a string of characters that matches a specified pattern. In our [previous module](), we demonstrated the simple use of `grep` to search for strings of N among a file of DNA sequences. Rather than providing the exact characters we want to search we can also use regular expressions. **Regular expressions (sometimes referred to as regex) are a string of characters that can be used as a pattern to match against.**
 
 ## Learning Objectives
 
 In this lesson, we will:
+- Utilize `grep` for searching for through files
 - Implement regular expressions to within `grep`
+
+# grep 
+
+`grep`, short for **G**lobal **R**egular **E**xpression **P**rint, is a Unix command used to search files for characters that match a specified pattern, referred to as a *string*. In our FIX LINK [previous module](), we demonstrated the simple use of `grep` to search for strings of N among a file of DNA sequences. Rather than providing the exact characters we want to search we can also use regular expressions. **Regular expressions (sometimes referred to as regex) are a string of characters that can be used as a pattern to match against.**
 
 ## Getting Started
 
@@ -39,7 +41,7 @@ grep -c CAT catch.txt
 
 ```
 
-There is a `-E` option when using `grep` that allows the user to use what is considered "extended regular expressons". We won't use too many of these types of regular expressions and we will point them out when we need them. If you want to **make it a habit to always use the `-E` option when using regular expressions in `grep` it is a bit more explicit**. In this lesson, we will always include the `-E` option.
+There is a `-E` option when using `grep` that allows the user to use what is considered "extended regular expressons". We won't use too many of these types of regular expressions and we will point them out when we need them. If you want to **make it a habit to always use the `-E` option when using regular expressions in `grep` it is a bit more explicit**. In this lesson, we will always include the `-E` option when using regular expressions.
 
 
 > To learn more about grep and its usage, you can type `man grep` or `grep --help` into the terminal. 
@@ -244,8 +246,9 @@ This will match anything ending in `ATCH` ***except*** a string containing `CATC
 
 ## Bioinformatics Example
 
-**Add an example using some of teh concepts introduced so far!**
+1. Let's search our Mov10_oe_1.subset.fq FASTQ file for sequences that match "TGGGCTAATG". What command would we use to do this and how many matches do we get?
 
+2. Now let's further refine our search to only have results that match A, T, or G preceeding the "TGGGCTAATG" in Mov10_oe_1.subset.fq. How would we do this and how many matches do we get now?
 
 ## Special Characters
 
@@ -331,6 +334,10 @@ CAAATCH
 > ```
 > grep "CA\{3\}TCH" catch.txt
 > ```
+
+## Bioinformatics Example
+
+Within our FASTQ files, places in the sequencing where the sequencer could not assign a base are given the base call of N. If there are too many consectuive Ns, it can likely be an indication of a poor sequencing read. Use `grep` to extract the lines that have 10 or more consecutive Ns.
 
 #### Plus (+)
 
