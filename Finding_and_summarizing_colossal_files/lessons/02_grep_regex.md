@@ -8,11 +8,11 @@ author: "Will Gammerdinger, Meeta Mistry"
 
 In this lesson, we will:
 - Utilize `grep` for searching for through files
-- Implement regular expressions to within `grep`
+- Implement regular expressions within `grep`
 
 # grep 
 
-`grep`, short for **G**lobal **R**egular **E**xpression **P**rint, is a Unix command used to search files for characters that match a specified pattern, referred to as a *string*. In our FIX LINK [previous module](), we demonstrated the simple use of `grep` to search for strings of N among a file of DNA sequences. Rather than providing the exact characters we want to search we can also use regular expressions. **Regular expressions (sometimes referred to as regex) are a string of characters that can be used as a pattern to match against.**
+`grep`, short for **G**lobal **R**egular **E**xpression **P**rint, is a Unix command used to search files for characters that match a specified pattern, referred to as a *string*. In this lesson, we will demonstrate the simple use of `grep` to search for strings of characters within a file. Alternatively to providing the exact characters we want to search, we can also use regular expressions. **Regular expressions (sometimes referred to as regex) are a string of characters that can be used as a pattern to match against.**
 
 ## Getting Started
 
@@ -28,28 +28,26 @@ In its simplest use, the `grep` command only requires the pattern you are search
 
 ```
 grep CAT catch.txt
-
 ```
 
 ### Flags for modifying the function of `grep`
 
-There are additional flags for the `grep` command that are very useful and allow you to modify the output that is rerieved. For example, adding `-c` will count teh number of matching lines rather than printing them all out to screen:
+There are additional flags for the `grep` command that are very useful and allow you to modify the output that is rerieved. For example, adding `-c` will count the number of matching lines rather than printing them all out to screen:
 
 
 ```
 grep -c CAT catch.txt
-
 ```
 
-There is a `-E` option when using `grep` that allows the user to use what is considered "extended regular expressons". We won't use too many of these types of regular expressions and we will point them out when we need them. If you want to **make it a habit to always use the `-E` option when using regular expressions in `grep` it is a bit more explicit**. In this lesson, we will always include the `-E` option when using regular expressions.
+There is a `-E` option when using `grep` that allows the user to use what is considered "extended regular expressons". We won't use too many of these types of regular expressions, but some do need this option. If you want to **make it a habit to always use the `-E` option when using regular expressions in `grep` it is a bit more explicit**. In this lesson, we will always include the `-E` option when using regular expressions.
 
 
-> To learn more about grep and its usage, you can type `man grep` or `grep --help` into the terminal. 
+> To learn more about `grep` and its usage, you can type `man grep` or `grep --help` into the terminal. 
 
 
 ### Quotations
 
-When using grep it is usually not required to put your search term in quotes. However, if you would like to use `grep` to do certain types of searches, it is **best to wrap your search term in double quotations to avoid any issues with edge cases**. Let's briefly discuss the differences:
+When using `grep` it is usually not required to put your search term in quotes. However, if you would like to use `grep` to do certain types of searches, it is **best to wrap your search term in double quotations to avoid any issues with edge cases**. Let's briefly discuss the differences:
 
 #### No quotation
 
@@ -246,7 +244,7 @@ This will match anything ending in `ATCH` ***except*** a string containing `CATC
 
 ## Bioinformatics Example
 
-The [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) file format is the defacto file format for sequence reads generated from next-generation sequencing technologies. This file format evolved from FASTA in that it contains sequence data, but also contains quality information. Similar to FASTA, the FASTQ file begins with a header line. The difference is that the FASTQ header is denoted by a `@` character. For a single record (sequence read), there are four lines, each of which are described below:
+The [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) file format is the *de facto* file format for sequence reads generated from next-generation sequencing technologies. This file format evolved from FASTA in that it contains sequence data, but also contains quality information. Similar to FASTA, the FASTQ file begins with a header line. The difference is that the FASTQ header is denoted by a `@` character. For a single record (sequence read), there are four lines, each of which are described below:
 
 |Line|Description|
 |----|-----------|
@@ -257,7 +255,19 @@ The [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) file format is the defac
 
 1. Let's search our Mov10_oe_1.subset.fq FASTQ file for sequences that match "TGGGCTAATG". What command would we use to do this and how many matches do we get?
 
-2. Now let's further refine our search to only have results that match A, T, or G preceeding the "TGGGCTAATG" in Mov10_oe_1.subset.fq. How would we do this and how many matches do we get now?
+<details>
+  <summary>Click here for the answer</summary>
+  <code>grep "TGGGCTAATG" Mov10_oe_1.subset.fq</code><br>
+  We see that we get 4 matchs.
+</details>
+
+2. Now let's further refine our search to only have results that match A, T or G preceeding the "TGGGCTAATG" in Mov10_oe_1.subset.fq. How would we do this and how many matches do we get now?
+
+<details>
+  <summary>Click here for the answer</summary>
+  <code>grep "[ATG]TGGGCTAATG" Mov10_oe_1.subset.fq</code><br>
+  We only get 1 match now.
+</details>
 
 ## Special Characters
 
