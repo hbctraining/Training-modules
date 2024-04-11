@@ -246,6 +246,15 @@ This will match anything ending in `ATCH` ***except*** a string containing `CATC
 
 ## Bioinformatics Example
 
+The [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) file format is the defacto file format for sequence reads generated from next-generation sequencing technologies. This file format evolved from FASTA in that it contains sequence data, but also contains quality information. Similar to FASTA, the FASTQ file begins with a header line. The difference is that the FASTQ header is denoted by a `@` character. For a single record (sequence read), there are four lines, each of which are described below:
+
+|Line|Description|
+|----|-----------|
+|1|Always begins with '@', followed by information about the read|
+|2|The actual DNA sequence|
+|3|Always begins with a '+', and sometimes the same info as in line 1|
+|4|Has a string of characters representing the quality scores; must have same number of characters as line 2|
+
 1. Let's search our Mov10_oe_1.subset.fq FASTQ file for sequences that match "TGGGCTAATG". What command would we use to do this and how many matches do we get?
 
 2. Now let's further refine our search to only have results that match A, T, or G preceeding the "TGGGCTAATG" in Mov10_oe_1.subset.fq. How would we do this and how many matches do we get now?
