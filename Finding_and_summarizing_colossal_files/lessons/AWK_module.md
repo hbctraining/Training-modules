@@ -71,7 +71,7 @@ When we do that 4 lines pop up, so 4 dates. We could also pipe to wc to get a nu
 grep "cougar" animal_observations.txt | wc -l
 ```
 
-There seemed to be more instances of cougar though. Four seems low compared to what we saw when glancing at the document. If we look at the document again, we can see that the park ranger from Glacier National Park cannot spell and put "couger" instead of "cougar". 
+There seemed to be more instances of cougar though. Four seems low compared to what we saw when glancing at the document. If we look at the document again, we can see that the park ranger from Glacier National Park cannot spell and put "couger" instead of "cougar". Come on man! 
 
 Replacing those will be a bit hard with `grep` but we can use `sed` instead!
 
