@@ -3,10 +3,6 @@ title: "Sed"
 author: "Will Gammerdinger, Meeta Mistry, Emma Berdan"
 ---
 
-# sed
-
-The ***s***tream ***ed***itor, `sed`, is a common tool used for text manipulation. `sed` takes input from either a file or piped from a previous command and applies a transformation to it before outputting it to standard output.
-
 ## Learning Objectives
 
 In this lesson, we will:
@@ -15,13 +11,17 @@ In this lesson, we will:
 - Utilize addresses in our `sed` commands
 - Delete lines from output using `sed`
 
+# sed
+
+The ***s***tream ***ed***itor, `sed`, is a common tool used for text manipulation. `sed` takes input from either a file or piped from a previous command and applies a transformation to it before outputting it to standard output.
+
 ## Quick Note on Quotation Marks
 
 Many of the same arguments that were made for using single vs. double quotation marks in `grep` also apply to `sed`. However, the `$` has some non-variable functionality in `sed` that we will discuss, particularly with reference to addresses. For this reason, it's more common to see `sed` commands wrapped in single-quotes rather than double-quotes. Of course, if you want to use a `bash` variable in `sed` you are going to need to wrap it in double-quotes, but if you do then you need be cautious of any non-variable usage of `$` and be sure to escape it (`\`).
 
 ## Quick Note on BSD and GNU `sed`
 
-There are several versions of `sed`, but the most two common versions are BSD (default on Macs) and GNU (found most other places). Generally, speaking the two versions of `sed` are mostly similiar but there are some instances where their behavior (particularly, BSD's `sed`) differs. Where they instance come up, we will point it out. 
+There are several versions of `sed`, but the most two common versions are BSD (default on Macs) and GNU (found most other places). Generally speaking, the two versions of `sed` are mostly similiar, but there are some instances where their behavior (particularly, BSD's `sed`) differs. Where they instance come up, we will point it out. 
 
 ## substitution
 
@@ -42,7 +42,7 @@ A few things to note here:
 
 1) The `s` in `'s/pattern/replacement/flag'` is directing `sed` to do a ***s***ubstitution.
 
-2) The `flag` in `'s/pattern/replacement/flag'` is directing `sed` that you want this action to be carried out in a specific manner. It is very common to use the flag `g` here which will carry out the action ***g***lobally, or each time it matches the `pattern` in a line. If `g`, is not included it wil just replace the `pattern` the first time it is observed per line. If you would like to replace a particular occurance like the third time it is observed in a line, then you would use `3`.
+2) The `flag` in `'s/pattern/replacement/flag'` is directing `sed` that you want this action to be carried out in a specific manner. It is very common to use the flag `g` here, which will carry out the action ***g***lobally, or each time it matches the `pattern` in a line. If `g`, is not included it will just replace the `pattern` the first time it is observed per line. If you would like to replace a particular occurrence like the third time it is observed in a line, then you would use `3`.
 
 Let's test this out on our `ecosystems.txt` sample file and see that output. First, we are interested in replacing `jungle` with `rainforest` throughout the file:
 
@@ -50,13 +50,13 @@ Let's test this out on our `ecosystems.txt` sample file and see that output. Fir
 sed 's/jungle/rainforest/g' ecosystems.txt
 ```
 
-Notice how all instances of `jungle` have been replaced with `rainforest`. However, if we don't include the global option:
+Notice how all instances of `jungle` have been replaced with `rainforest`. However, if we don't include the global flag:
 
 ```
 sed 's/jungle/rainforest/' ecosystems.txt
 ```
 
-We will only recover the first instance of `jungle` was replaced with `rainforest`. If we want to replace only the second occurance of `jungle` with `rainforest` on a line, modify the occurance flag to be `2`:
+We will only recover the first instance of `jungle` was replaced with `rainforest`. If we want to replace only the second occurance of `jungle` with `rainforest` on a line, modify the occurrence flag to be `2`:
 
 ```
 sed 's/jungle/rainforest/2' ecosystems.txt
@@ -80,18 +80,18 @@ sed 's/jungle/rainforest/2g' ecosystems.txt
 
 ### Bioinformatic Examples
 
-1. In annotation files (e.g., gtf, gff3) chromosomes are generally written as CHR1 *or* chr1. Some programs will want one or the other and `sed` can switch between the two easily. Use `sed` to handle this task:
+1. In annotation files (e.g., gtf, gff3) chromosomes are generally written as CHR1 *or* chr1. Some programs will want one or the other and `sed` can switch between the two easily. Use `sed` to alter the `chr` to `CHR` in the `hg38_subset.gff` file and sace the output as `hg38_subset.uppercase.gff`:
 
 <details>
         <summary>Click here to see the answer</summary>
-        sed 's/CHR/chr/g' uppercase.gtf > lowercase.gtf
+        <code>sed 's/chr/CHR/g' hg38_subset.gff > hg38_subset.uppercase.gff</code>
 </details>
 
 2. Your colleague has prepared a FASTA file for you. Take a look by typing `cat mygenes.fasta`. They named the genes (lines that start with `>`) with sequences! Rename the genes GAA and GAA_2 replacing GAA with gene1 with a **single command that does not alter any of the sequences**.
 
 <details>
         <summary><i>Click here for the answer</i></summary>
-        sed 's/>GAA/>gene1/g' mygenes.fasta       
+        <code>sed 's/>GAA/>gene1/g' mygenes.fasta</code>       
 </details>
 
 ## Addresses
@@ -160,7 +160,7 @@ sed '1~2 s/an/replacement/g' ecosystems.txt
 
 ## Bioinformatics Example
 
-Let's extract only the quality scores from the Mov10_oe_1.subset.fq file. If you are on a Mac, you may have trouble testing this, so just write your answer out instead. Below is a reminder of the FASTQ format:
+Let's extract only the quality scores from the `Mov10_oe_1.subset.fq` file and write them to a file called `quality_scores.txt`. If you are on a Mac, you may have trouble testing this, so just write your answer out instead. Below is a reminder of the FASTQ format:
 
 |Line|Description|
 |----|-----------|
@@ -189,13 +189,13 @@ Like substitutions, you can provide an interval and this will delete line 1 to l
 sed '1,3d' ecosystems.txt
 ```
 
-Also like substitution, you can use `!` to specify lines not to delete like:
+Also, like substitution, you can use `!` to specify lines not to delete like:
 
 ```
 sed '1,3!d' ecosystems.txt
 ```
 
-Additionally, you can also use regular expressions to provide the addresses to define an interval to delete from. In this case we are interested in deleting from the first instance of `cichlid` until the end of the file:
+Additionally, you can also use regular expressions to provide the addresses to define an interval to delete from. In this case, we are interested in deleting from the first instance of `cichlid` until the end of the file:
 
 ```
 sed '/cichlid/,$d' ecosystems.txt
@@ -208,7 +208,7 @@ The `N~n` syntax also works in deletion and like the previous usage of the `~`, 
 sed '2~3d' ecosystems.txt
 ```
 
-deletion also works with pattern matching. If we want to delete all lines that contain the word `jungle` we can do:
+Deletion also works with pattern matching. If we want to delete all lines that contain the word `jungle` we can do:
 
 ```
 sed '/jungle/d' ecosystems.txt
@@ -238,15 +238,12 @@ A sample VCF can be found below:
 1       187019  .       G       A       .       map_qual;normal_artifact;weak_evidence  AS_FilterStatus=weak_evidence,map_qual;AS_SB_TABLE=56,76|6,3;ClippingRankSum=-4.266;DP=149;ECNT=1;FS=7.413;GERMQ=93;MBQ=34,33;MFRL=344,351;MMQ=50,20;MPOS=1;MQ=42.64;MQ0=0;MQRankSum=-4.743;NALOD=-1.314e+00;NLOD=10.65;POPAF=6.00;ReadPosRankSum=-4.367;TLOD=4.26      GT:AD:AF:DP:F1R2:F2R1:SB        0/0:60,3:0.061:63:27,3:30,0:25,35,3,0   0/1:72,6:0.085:78:31,4:39,2:31,41,3,3
 ```
 The meat of the file (i.e., the variants) is found after all of the header lines, which **start with** `##`.
-You have the vcf file test.vcf in your `advanced_shell` directory. Use sed to remove all header lines (those starting with a double #) and make a new file called vcf_noheader.vcf. Note you will have to use regex here! How would the command be different if you wanted to delete any line with the pattern `##`?
+You have the vcf file `test.vcf` in your `advanced_shell` directory. Use `sed` to remove all header lines (those starting with a double #) and make a new file called `vcf_noheader.vcf`. Note you will have to use regex here! How would the command be different if you wanted to delete any line containing the pattern `##`?
 
 <details>
         <summary><i>Click here for the answer</i></summary>
-
-        
-        to remove lines that START WITH ##:  sed '/^##/d' test.vcf > vcf_noheader.vcf
-        to remove any lines that contain ##:  sed '/##/d' test.vcf > vcf_nodoublehash.vcf
-        
+        To remove lines that START with ##: <code>sed '/^##/d' test.vcf > vcf_noheader.vcf</code>
+        to remove any lines that contain ##:  <code>sed '/##/d' test.vcf > vcf_nodoublehash.vcf</code>
 </details>
 
 
