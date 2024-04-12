@@ -381,7 +381,7 @@ You can test your code out with the file `hg38_subset.gff` in the advanced_shell
 
 ## Parsing awk code written by other people
 
-We have gone through some simple examples here, but there will likely come a time where you end up searching the web for a more complex application of `awk`. Let's take a look at some code and see if we can tell what it does
+We have gone through some simple examples here, but there will likely come a time where you end up searching the web for a more complex application of `awk`. Let's take a look at some code and see if we can tell what it does.
 
 ```bash
 ### DO NOT RUN ###
@@ -452,7 +452,7 @@ Drug_KO_day2_rep2
 When `${i}` is equal to 3 what will our `awk` command spit out? Why?
 
 
-## With our new expertise, we can not only write our own `awk` commands but we can understand commands that others have written. Go forth and `awk`!
+### With our new expertise, we can not only write our own `awk` commands but we can understand commands that others have written. Go forth and `awk`!
 
 
 # Additional cool `awk` commands
