@@ -271,7 +271,7 @@ You can also replace every *n*-th line starting at *N*-th line using the `N~n` a
 sed '1~3 c header' ecosystems.txt
 ```
 
-Lastly, you can also replace lines match a pattern:
+Lastly, you can also replace lines matching a pattern:
 
 ```
 # Won't work on Macs using BSD sed
@@ -318,6 +318,7 @@ Then we can use the `-f` option to provide this file of `sed` expressions by usi
 sed -f sed_expressions.txt ecosystems.txt
 ```
 
+This can be one strategy that you can employ to increase reproducibility in your workflows as well.
 
 ## Additional Resources
 
