@@ -366,9 +366,9 @@ awk ' { counter[$3] += 1 } END { for (feature in counter){ print feature, counte
 
 ## Exercise
 
-How might you edit the above commands to count the number of each gene_type? Hint: you can pipe multiple awk commands in shell to get to what you want. e.g., `awk '{print $3}' my_file.txt | awk -F "," print{$2}`  
+How might you edit the above commands to count the number of each gene_type? Hint: We already know you can pipe multiple awk commands in shell to get to what you want (see above).
 
-**Note that when you pipe, the file name needs to go with the first part of the pipe!** 
+**Reminder that when you pipe, the file name needs to go with the first part of the pipe!** 
 
 You can test your code out with the file `hg38_subset.gff` in the advanced_shell folder.
 
