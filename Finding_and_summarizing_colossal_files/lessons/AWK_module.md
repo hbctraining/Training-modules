@@ -388,20 +388,16 @@ We have gone through some simple examples here, but there will likely come a tim
 awk 'NR>=20&&NR<=80' input.txt
 ```
 
-** Take a look at `test.vcf` to see if you can understand this one.**
-```bash
-### DO NOT RUN ###
-awk '$1 == 5 && $7 == "PASS" { print }' data.vcf
-```
-
-```bash
-### DO NOT RUN ###
-awk 'NR>=20&&NR<=80' input.txt
-```
-
 ```bash
 ### DO NOT RUN ###
 awk 'NR > 1 && NF == 4' data.txt
+```
+
+**Take a look at `test.vcf` to see if you can understand this one!**
+
+```bash
+### DO NOT RUN ###
+awk '$1 == 5 && $7 == "PASS" { print }' data.vcf
 ```
 
 
