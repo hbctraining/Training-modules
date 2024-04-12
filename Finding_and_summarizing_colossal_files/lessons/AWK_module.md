@@ -381,7 +381,33 @@ You can test your code out with the file `hg38_subset.gff` in the advanced_shell
 
 ## Parsing awk code written by other people
 
-We have gone through some simple examples here, but there will likely come a time where you end up searching the web for a more complex application of `awk`. In this section we will parse an `awk` one liner that is super helpful when you are working through your own bioinformatics analyses.
+We have gone through some simple examples here, but there will likely come a time where you end up searching the web for a more complex application of `awk`. Let's take a look at some code and see if we can tell what it does
+
+```bash
+### DO NOT RUN ###
+awk 'NR>=20&&NR<=80' input.txt
+```
+
+** Take a look at `test.vcf` to see if you can understand this one.**
+```bash
+### DO NOT RUN ###
+awk '$1 == 5 && $7 == "PASS" { print }' data.vcf
+```
+
+```bash
+### DO NOT RUN ###
+awk 'NR>=20&&NR<=80' input.txt
+```
+
+```bash
+### DO NOT RUN ###
+awk 'NR > 1 && NF == 4' data.txt
+```
+
+
+## A super useful awk one liner you have seen before!
+
+If you came to the [Accelerate with Automation](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/) module you have already seen this code! This is an incredibly useful awk command to keep in your back pocket.
 
 ```bash
 ### DO NOT RUN ###
@@ -430,7 +456,7 @@ Drug_KO_day2_rep2
 When `${i}` is equal to 3 what will our `awk` command spit out? Why?
 
 
-### With our new expertise, we can not only write our own `awk` commands but we can understand commands that others have written. Go forth and `awk`!
+## With our new expertise, we can not only write our own `awk` commands but we can understand commands that others have written. Go forth and `awk`!
 
 
 # Additional cool `awk` commands
