@@ -3,6 +3,12 @@ title: "awk"
 author: "Emma Berdan, Will Gammerdinger"
 ---
 
+## Learning Objectives
+
+In this lesson, we will:
+- Utilize `awk` to query data from a data file
+- Count occurences using `awk`
+- Interpret others `awk` code
 
 ## What is awk?
 
@@ -14,15 +20,15 @@ If you have ever looked up how to do a particular string manipulation using bash
 
 `awk` can be seen as an intermediate between `grep` and `sed` and more sophisticated approaches. 
 
-```
-The Enlightened Ones say that...
-
-You should never use C if you can do it with a script;
-You should never use a script if you can do it with awk;
-Never use awk if you can do it with sed;
+<blockquote>
+The Enlightened Ones say that...<br><br>
+You should never use C if you can do it with a script;<br>
+You should never use a script if you can do it with awk;<br>
+Never use awk if you can do it with sed;<br>
 Never use sed if you can do it with grep.
-```
-[Text source]([http://awk.info/?whygawk](https://web.archive.org/web/20160324050308/http://awk.info/?whygawk))
+</blockquote>
+
+[Text source](https://web.archive.org/web/20160324050308/http://awk.info/?whygawk)
 
 This is best understood if we start with `grep` and work our way up. We will use these tools on a complex file we have been given, `animal_observations.txt`. 
 
@@ -56,16 +62,14 @@ Date	Yellowstone	Yosemite	Acadia	Glacier
 12/15/02	coyote,deer	fox,coyote,deer	moose,hare	moose,blackbear
 ```
 
-We see the date of observation and then the animals observed at each of the 5 parks. Each column is separated by a tab. 
-
-* You can find Parker's file in your `advanced_shell` directory, it is called animal_observations.txt.
+We see the date of observation and then the animals observed at each of the 5 parks. Each column is separated by a tab. You can find Parker's file in your `advanced_shell` directory, it is called `animal_observations.txt`.
 
 So let's say that we want to know how many dates a cougar was observed at any of the parks. We can easily use `grep` for that:
 
 ```bash
 grep "cougar" animal_observations.txt
 ```
-When we do that 4 lines pop up, so 4 dates. We could also pipe to wc to get a number:
+When we do that 4 lines pop up, so 4 dates. We could also pipe this output to `wc -l` to get a count:
 
 ```bash
 grep "cougar" animal_observations.txt | wc -l
@@ -79,9 +83,15 @@ Replacing those will be a bit hard with `grep` but we can use `sed` instead!
 sed 's/couger/cougar/g'  animal_observations.txt > animal_observations_edited.txt
 ```
 
-We are telling `sed` to replace all versions of couger with cougar and output the results to a new file called animal_observations_edited.txt. If we rerun our `grep` command we can see that we now have 9 line (dates) instead of 4. 
+We are telling `sed` to replace all versions of "couger" with "cougar" and output the results to a new file called `animal_observations_edited.txt`. If we re-run our `grep` command:
 
-So far so good. But let's now say that we want to know how many times a coyote was observed at Yosemite Park (ignoring all other parks) without editing our file...
+```
+grep "cougar" animal_observations_edited.txt
+```
+
+We can see that we now have 9 lines (dates) instead of 4. 
+
+So far, so good. But let's now say that we want to know how many times a coyote was observed at Yosemite Park (ignoring all other parks) without editing our file...
 
 While this is *possible* with `grep` it is actually easier to do with `awk`!
 
@@ -93,15 +103,15 @@ Before we dive too deeply into `awk` we need to define two terms that `awk` will
 - ***Field*** - This is a column of data
 - ***Record*** - This is a row of data 
 
-For our first `awk` command let's mimic what we just did with `grep`. To pull all instances of coyote from animal_observations_edited.txt using `awk`:
+For our first `awk` command let's mimic what we just did with `grep`. To pull all instances of coyote from `animal_observations_edited.txt` using `awk`:
 
 ```bash
 awk '/coyote/' animal_observations_edited.txt
 ```
 
-here '/coyote/' is the pattern we want to match and **since we have not told `awk` anything else it performs it's default behavior which is to print the matched lines**.
+Here `'/coyote/'` is the pattern we want to match and **since we have not told `awk` anything else it performs it's default behavior, which is to print the matched lines**.
 
-but we only care about coyotes from Yosemite Park! How do we do that?
+But we only care about coyotes from Yosemite Park! How do we do that?
 
 ```bash
 awk '$3 ~ /coyote/' animal_observations_edited.txt
@@ -109,13 +119,13 @@ awk '$3 ~ /coyote/' animal_observations_edited.txt
 
 Let's break this down!
 
-* First all `awk` commands are always encased in `` so whatever you are telling `awk` to do needs to be inbetween those.
+* First, all `awk` commands are always encased in `''` so whatever you are telling `awk` to do needs to be in-between those.
 
-* We want to look at column 3 (the Yosemite observations) in particular. The columns are separated (defined) by white space (one or more consecutive blanks) or tabulator and denoted by the $ sign. So `$1` is the value of the first column, `$2` - second etc. $0 contains the original line including the separators.
+* We want to look at column 3 (the Yosemite observations) in particular. The columns are separated (defined) by white space (one or more consecutive blanks) and denoted by the `$` sign. So `$1` is the value of the first column, `$2` is the value of the second column, etc. `$0` contains the original line including the separators.
 
-* The tilde is the matching operator. This is telling `awk`, test the items on either side of tilde to see if they match.
+* The tilde (`~`) is the matching operator. This is telling `awk`, test the items on either side of tilde to see if they match.
 
-* In column 3 (the Yosemite observations) we are asking for lines where the string "coyote" is present. We recognize the '/string/' part from our previous command. 
+* In column 3 (the Yosemite observations) we are asking for lines where the string "coyote" is present. We recognize the `/string/` part from our previous command. 
 
 As we run this command we see that the output is super messy because Parker's original file is a bit of a mess. This is because the default behavior of `awk` is to print all matching lines. It is hard to even check if the command did the right thing. However, we can ask `awk` to only print the Yosemite column and the date (columns 1 and 3):
 
@@ -124,7 +134,7 @@ As we run this command we see that the output is super messy because Parker's or
 awk '$3 ~ /coyote/ {print $1,$3}' animal_observations_edited.txt
 ```
 
-This shows a great feature of `awk`, chaining commands. The print command within the {} will **ONLY** be executed when the first criteria is met. 
+This shows a great feature of `awk`, chaining commands. The print command within the `{}` will **ONLY** be executed when the first criteria is met. 
 
 We now know basic `awk` syntax:
 
@@ -134,7 +144,7 @@ awk ' /pattern/ {action} ' file1 file2 ... fileN
 
 A few things to note before you try it yourself!
 
-> * The full awk command is encased in single quotes ''
+> * The full awk command is encased in single quotes `''`
 > * The action is performed on every line that matches the pattern.  
 > * If a pattern is not provided, the action is performed on every line of the file.  
 > * If an action is not provided, then all lines matching the pattern are printed (we already knew this one!)  
@@ -148,25 +158,20 @@ Can you print all of the times a seal was observed in Acadia Park? Did you print
 
 <details>
         <summary><i>Click here for the answer</i></summary>
-
-        messy way: awk '$4 ~ /seal/' animal_observations_edited.txt
-        neat way: awk '$4 ~ /seal/ {print $1,$4}' animal_observations_edited.txt
-        
+        Messy way:<br>
+        <code>awk '$4 ~ /seal/' animal_observations_edited.txt</code><br>
+        Neat way: <br>
+        <code>awk '$4 ~ /seal/ {print $1,$4}' animal_observations_edited.txt</code>code
 </details>
 
 Were seals ever observed in any of the other parks? Note that `||` functions as "or" in `awk`.
 
 <details>
         <summary><i>Click here for the answer</i></summary>
-        Some options:
-
-        <pre>
-        awk '{print $1,$2,$3,$5}' animal_observations_edited.txt | grep "seal"
-        awk '$2 ~ /seal/ || $3 ~ /seal/|| $5 ~ /seal/' animal_observations_edited.txt
-        </pre>
-        
-        **Seals are only ever observed in Arcadia**
-        
+        Some options:<br>
+        <ul><li><code>awk '{print $1,$2,$3,$5}' animal_observations_edited.txt | grep "seal"</code></li>
+        <li><code>awk '$2 ~ /seal/ || $3 ~ /seal/|| $5 ~ /seal/' animal_observations_edited.txt</code><br></li></ul>
+        <b>Either way, seals are only ever observed in Arcadia</b>
 </details>
 
 
@@ -175,26 +180,26 @@ Were seals ever observed in any of the other parks? Note that `||` functions as 
 Before we move on, it is sometimes helpful to know that regular text can be added to `awk` print commands. For example we can modify our earlier command to be:
 
 ```bash
-awk '$3 ~ /coyote/ {print "On this date coyotes were observed in Yosemite Park", $1}' animal_observations_edited.txt
+awk '$3 ~ /coyote/ {print "On this date, ", $1", coyotes were observed in Yosemite Park"}' animal_observations_edited.txt
 ```
 
 
 ## `awk` predefined variables
 
-Before we continue our `awk` journey we want to introduce you to some of the `awk` predefined variables. Although there are more than just the ones we cover, these are the most helpful to start. More can be found [here](https://www.gnu.org/software/gawk/manual/html_node/Built_002din-Variables.html)
+Before we continue our `awk` journey we want to introduce you to some of the `awk` pre-defined variables. Although there are more than just the ones we cover, these are the most helpful to start. More can be found [here](https://www.gnu.org/software/gawk/manual/html_node/User_002dmodified.html).
 
-* NR - The number of records processed (i.e., rows)
-* FNR - The number of record processed in the current file. This is only needed if you give `awk` multiple files.  For the first file FNR==NR, but for the second FNR will restart from 1 while NR will continue to increment.
-* NF - Number of fields in current record (i.e. columns in the row)
-* FILENAME - name of current input file
-* FS - Field separator which is space or TAB by default
+* **NR** - The number of records processed (i.e., rows)
+* **FNR** - The number of records processed in the current file. This is only needed if you give `awk` multiple files.  For the first file FNR is equal to NR, but for the second file FNR will restart from 1 while NR will continue to increment.
+* **NF** - Number of fields in current record (i.e. columns in the row)
+* **FILENAME** - Name of current input file
+* **FS** - Field separator which is space or TAB by default
 
 NR is particularly useful for skipping records (i.e., rows). For example, if we only care about coyotes observed in 2002 and not 2001 we can skip the records 1-13 of `animal_observations_edited.txt`.
 
 ```bash
 awk 'NR>13 && $3 ~ /coyote/ {print $1,$3}' animal_observations_edited.txt
 ```
-Because we have given two patterns to match (record greater than 13 and column 3 containing the string coyote) we need to put '&&' in between them to note that we need both fulfilled. If we wanted either of the two patterns to match (i.e. record is greater than 13 OR the string coyote is present in field 3) we could use `||` as we did above.
+Because we have given two patterns to match (record greater than 13 and column 3 containing the string coyote) we need to put `&&` in between them to note that we need both fulfilled. If we wanted either of the two patterns to match (i.e. record is greater than 13 OR the string coyote is present in field 3) we could use `||` to signify "or", as we did above.
 
 You have probably already noticed that Parker's file contains both comma separated fields and tab separated fields. This is no problem for `awk` if we denote the FS variable. Let's use both FS and NF to print the total number of kinds animals observed in all the parks. Note that we will not delete duplicates (i.e., if coyotes are observed in both Yosemite and Acadia we will consider it to be 2 instead of 1).
 
@@ -204,9 +209,9 @@ awk -F '[[:blank:],]' '{print NF}' animal_observations_edited.txt
 
 This is more complex than anything else we have done so let's break it down:
 
-* First, you might be curious why we are using -F instead of -FS. FS represents the field separator and to CHANGE it we use -F. We can think of it as -F 'FS'. Here we have to do a bit of regex magic where we accept any white space or commas. Although understanding this regex is beyond this module, we include it here as many NGS formats include multiple kinds of field separators (e.g., VCF files). 
+* First, you might be curious why we are using `-F` instead of `-FS`. FS represents the field separator and to CHANGE the field separator we use `-F`. We can think of the field separator as `-F 'FS'`. Here we have to do a bit of regex magic where we accept any white space or commas. Although understanding this regex is beyond this module, we can recognize that this is a range as we previously discussed and we decided to include it here as many NGS formats include multiple kinds of field separators (e.g., VCF files). 
 
-* We then skip denoting any pattern and ask `awk` to simply print the number of fields. After you run this command you might notice that there two issues. First because we give the date NF is always 1 count higher than the number of animals. `awk` does math too and we can modify this command!
+* We then skip denoting any pattern and ask `awk` to simply print the number of fields. After you run this command you might notice that there two issues. First, because we give the date `NF` is always 1 count higher than the number of animals. `awk` does math too and we can modify this command!
 
 ```bash
 awk -F '[[:blank:],]' '{print NF-1}' animal_observations_edited.txt
@@ -220,10 +225,7 @@ The second issue is that we don't want to include the first record (row) as this
 
 <details>
         <summary><i>Click here for the answer</i></summary>
-
-     awk -F '[[:blank:],]' 'NR>1 {print NF-1}' animal_observations_edited.txt
-
-        
+        <code>awk -F '[[:blank:],]' 'NR>1 {print NF-1}' animal_observations_edited.txt</code>     
 </details>
 
 
