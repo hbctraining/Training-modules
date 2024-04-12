@@ -356,7 +356,12 @@ CAAATCH
 
 ## Bioinformatics Example
 
-Within our FASTQ files, places in the sequencing where the sequencer could not assign a base are given the base call of N. If there are too many consectuive Ns, it can likely be an indication of a poor sequencing read. Use `grep` to extract the lines that have 10 or more consecutive Ns.
+Within the Mov10_oe_1.subset.fq FASTQ files, places in the sequencing where the sequencer could not assign a base are given the base call of N. If there are too many consectuive Ns, it can likely be an indication of a poor sequencing read. Use `grep` to extract the lines that have 10 or more consecutive Ns.
+
+<details>
+  <summary>Click here for the answer</summary>
+  <code>grep -E "N{10}" Mov10_oe_1.subset.fq </code>
+</details>
 
 #### Plus (+)
 
@@ -475,7 +480,7 @@ C${at}CH
 COTCH
 ```
 
-**2)** Perhaps you want to see find all lines ending with `CA` followed by any character except `T`, then you could do:
+**2)** Perhaps you want to find all lines ending with `CA` followed by any character except `T`, then you could do:
 
 ```
 grep -E "CA[^T]$" catch.txt
@@ -514,15 +519,28 @@ COTCH
 
 **1)** Use `grep` to find all matches in `catch.txt` that start with "B" and have a "T" anywhere in the string after the "B".
 
+<details>
+  <summary> Click here to see the answer</summary>
+  <code>grep -E "^B.*T" catch.txt </code>
+</details>
 
 **2)** Use `grep` to find all matches in `catch.txt` that don't start with "C" and don't end with "H"
 
+<details>
+  <summary> Click here to see the answer</summary>
+  <code>grep -E "^[^C].*[^H]$" catch.txt</code>
+</details>
 
 **3)** Use `grep` to find all matches in `catch.txt` that have atleast two "A"s in them
 
+<details>
+  <summary> Click here to see the answer</summary>
+  <code>grep -E "A.*A" catch.txt</code>
+</details>
+
 ## Take Home Message
 
-Regex for bioinformatic applications is generally used in combination with `grep`, `sed`, or `awk` to pull specific information out of large files. You **DO NOT need to memorize all of the syntax here.** Instead merely bookmark it and **use it as a resource** for writing commands moving forward. You can also check out our bonus lesson on [string manupulation](extra_material_String_manipulation.md)!! As you write more shell commands you will become familiar with more common regex ([], ^, *).  
+Regex for bioinformatic applications is generally used in combination with `grep`, `sed` or `awk` and even other programming languages to pull specific information out of large files. You **DO NOT need to memorize all of the syntax here.** Instead merely bookmark it and **use it as a resource** for writing commands moving forward. You can also check out our bonus lesson on [string manupulation](extra_material_String_manipulation.md)!! As you write more shell commands you will become familiar with more common regex ([], ^, *).  
 
 
 
