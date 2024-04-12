@@ -124,7 +124,7 @@ As we run this command we see that the output is super messy because Parker's or
 awk '$3 ~ /coyote/ {print $1,$3}' animal_observations_edited.txt
 ```
 
-This shows a great feature of `awk`, chaining commands. The print command within the {} will ONLY be executed when the first criteria is met. 
+This shows a great feature of `awk`, chaining commands. The print command within the {} will **ONLY** be executed when the first criteria is met. 
 
 We now know basic `awk` syntax:
 
@@ -164,7 +164,8 @@ Were seals ever observed in any of the other parks? Note that `||` functions as 
         awk '{print $1,$2,$3,$5}' animal_observations_edited.txt | grep "seal"
         awk '$2 ~ /seal/ || $3 ~ /seal/|| $5 ~ /seal/' animal_observations_edited.txt
         </pre>
-        Seals are only ever observerd in Arcadia.
+        
+        **Seals are only ever observed in Arcadia**
         
 </details>
 
@@ -177,7 +178,6 @@ Before we move on, it is sometimes helpful to know that regular text can be adde
 awk '$3 ~ /coyote/ {print "On this date coyotes were observed in Yosemite Park", $1}' animal_observations_edited.txt
 ```
 
-Did you notice what was modified from the previous command besides the addition of the string "On this date coyotes were observed in Yosemite Park"?
 
 ## `awk` predefined variables
 
@@ -194,7 +194,7 @@ NR is particularly useful for skipping records (i.e., rows). For example, if we 
 ```bash
 awk 'NR>13 && $3 ~ /coyote/ {print $1,$3}' animal_observations_edited.txt
 ```
-Because we have given two patterns to match (record greater than 13 and column 3 containing the string coyote) we need to put '&&' in between them to note that we need both fulfilled.
+Because we have given two patterns to match (record greater than 13 and column 3 containing the string coyote) we need to put '&&' in between them to note that we need both fulfilled. If we wanted either of the two patterns to match (i.e. record is greater than 13 OR the string coyote is present in field 3) we could use `||` as we did above.
 
 You have probably already noticed that Parker's file contains both comma separated fields and tab separated fields. This is no problem for `awk` if we denote the FS variable. Let's use both FS and NF to print the total number of kinds animals observed in all the parks. Note that we will not delete duplicates (i.e., if coyotes are observed in both Yosemite and Acadia we will consider it to be 2 instead of 1).
 
@@ -363,6 +363,19 @@ awk ' { counter[$2] += 1 } END { for (source in counter){ print source, counter[
 ```bash
 awk ' { counter[$3] += 1 } END { for (feature in counter){ print feature, counter[feature] } }' my_gtf.gtf
 ```
+
+## Exercise
+
+How might you edit the above commands to count the number of each transcript type? Hint: you can pipe multiple awk commands in shell to get to what you want. e.g., `awk '{print $3}' my_file.txt | awk -F "," print{$2}`  **Note that when you pipe the file name needs to go with the first part of the pipe!**
+
+ <details>
+        <summary><i>Click here for the answer</i></summary>
+
+   awk 'NR>1 { counter[$2] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt
+
+      awk 'NR>1 { counter[$5] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt
+        
+</details>
 
 ## Bioinformatics example
 
