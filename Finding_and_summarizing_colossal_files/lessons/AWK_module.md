@@ -366,22 +366,22 @@ awk ' { counter[$3] += 1 } END { for (feature in counter){ print feature, counte
 
 ## Exercise
 
-How might you edit the above commands to count the number of each transcript type? Hint: you can pipe multiple awk commands in shell to get to what you want. e.g., `awk '{print $3}' my_file.txt | awk -F "," print{$2}`  **Note that when you pipe the file name needs to go with the first part of the pipe!**
+How might you edit the above commands to count the number of each gene_type? Hint: you can pipe multiple awk commands in shell to get to what you want. e.g., `awk '{print $3}' my_file.txt | awk -F "," print{$2}`  **Note that when you pipe the file name needs to go with the first part of the pipe!** You can test your code out with the file `hg38_subset.gff` in the advanced_shell folder.
 
  <details>
         <summary><i>Click here for the answer</i></summary>
-
-   awk 'NR>1 { counter[$2] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt
-
-      awk 'NR>1 { counter[$5] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt
+         
+ awk '{print $9}' hg38_subset.gff | awk -F ";" '{print $5}' | awk -F "=" ' { counter[$2] += 1 } END { for (type in counter){ print type, counter[type] } }'
         
 </details>
 
-## Bioinformatics example
+## Parsing awk code written by other people
 
-A helpful use case of `awk` We will end by taking a look at an `awk` one liner that is super helpful when you are working through your own bioinformatics analyses.
+We have gone through some simple examples here, but there will likely come a time where you end up searching the web for a more complex application of `awk`. In this section we will parse an `awk` one liner that is super helpful when you are working through your own bioinformatics analyses.
 
 ```bash
+### DO NOT RUN ###
+
 for ((i=1; i<=10; i+=1))
     do
 sam=$(awk -v awkvar="${i}" 'NR==awkvar' samples.txt)
@@ -389,38 +389,41 @@ samtools view -S -b ${sam}.sam > ${sam}.bam
 done
 ```
 
-This actually combines a number of basic and intermediate shell topics such as [variables]((https://hbctraining.github.io/Training-modules/Accelerate_with_automation/lessons/loops_and_scripts.html)), [for loops](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/lessons/loops_and_scripts.html), and `awk`!
+This actually combines a number of basic and intermediate shell topics such as [variables](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/lessons/loops_and_scripts.html), [for loops](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/lessons/loops_and_scripts.html), and `awk`!
 
 * We start with a for loop that counts from 1 to 10
 
 * Then for each value of `i` the awk command `awk -v awkvar="${i}" 'NR==awkvar' samples.txt` is run and the output is assigned to the variable `${sam}`.
 
-* Then using the variable `${sam}` a samtools command is run to convert a file from .sam to .bam
+* Then using the variable `${sam}` a samtools command is run to convert a file from .sam to .bam. This could be any bioinformatic command.
 
 With our new `awk` expertise let's take a look at that `awk` command alone!
 
 
 ```bash
+### DO NOT RUN ###
 awk -v awkvar="${i}" 'NR==awkvar' samples.txt
 ```
 
 We have not encountered -v yet. The correct syntax is `-v var=val` which assign  the  value  val to the variable var, before execution of the program begins. So what we are doing is creating our own variable within our `awk` program, calling it `awkvar` and assigning it the value of `${i}` which will be a number between 1 and 10 (see for loop above). `${i}` and thus `awkvar` will be different for each loop.
 
-Then we are simply saying that the predetermined variable `NR` will be equal to `awkvar` which will be equal to ${i}.
+Then we are simply saying that the predetermined variable `NR` (The number of records, i.e. line number),  will be equal to `awkvar` which will be equal to ${i}.
 
 Here is what samples.txt looks like
 
 ```
-my_sample1_rep1
-my_sample1_rep2
-my_sample2_rep1
-my_sample2_rep2
-...
-my_sample5_rep2
+DMSO_control_day1_rep1
+DMSO_control_day1_rep2
+DMSO_control_day2_rep1
+DMSO_control_day2_rep2
+DMSO_KO_day1_rep1
+DMSO_KO_day1_rep2
+.......
+Drug_KO_day2_rep1
+Drug_KO_day2_rep2
 ```
 
 When `${i}` is equal to 3 what will our `awk` command spit out? Why?
-Why do you think that this is MFC?
 
 
 ### With our new expertise, we can not only write our own `awk` commands but we can understand commands that others have written. Go forth and `awk`!
