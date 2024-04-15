@@ -256,15 +256,16 @@ The [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) file format is the *de f
 1. Let's search our Mov10_oe_1.subset.fq FASTQ file for sequences that match "TGGGCTAATG". What command would we use to do this and how many matches do we get?
 
 <details>
-  <summary>Click here for the answer</summary>
+  <summary><i>Click here for the answer</i></summary>
   <code>grep "TGGGCTAATG" Mov10_oe_1.subset.fq</code><br>
   We see that we get 4 matchs.
 </details>
 
+
 2. Now let's further refine our search to only have results that match A, T or G preceeding the "TGGGCTAATG" in Mov10_oe_1.subset.fq. How would we do this and how many matches do we get now?
 
 <details>
-  <summary>Click here for the answer</summary>
+  <summary><i>Click here for the answer</i></summary>
   <code>grep "[ATG]TGGGCTAATG" Mov10_oe_1.subset.fq</code><br>
   We only get 1 match now.
 </details>
@@ -520,21 +521,21 @@ COTCH
 **1)** Use `grep` to find all matches in `catch.txt` that start with "B" and have a "T" anywhere in the string after the "B".
 
 <details>
-  <summary> Click here to see the answer</summary>
+  <summary><i>Click here for the answer</i></summary>
   <code>grep -E "^B.*T" catch.txt </code>
 </details>
 
 **2)** Use `grep` to find all matches in `catch.txt` that don't start with "C" and don't end with "H"
 
 <details>
-  <summary> Click here to see the answer</summary>
+  <summary><i>Click here for the answer</i></summary>
   <code>grep -E "^[^C].*[^H]$" catch.txt</code>
 </details>
 
 **3)** Use `grep` to find all matches in `catch.txt` that have atleast two "A"s in them
 
 <details>
-  <summary> Click here to see the answer</summary>
+  <summary><i>Click here for the answer</i></summary>
   <code>grep -E "A.*A" catch.txt</code>
 </details>
 
