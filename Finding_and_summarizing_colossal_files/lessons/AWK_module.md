@@ -310,8 +310,8 @@ It works! We can see that "moose,bison" is the most commonly observed group of a
 
 <details>
         <summary><i>Click here for the answer</i></summary>
-        <pre>awk ' { counter[$5] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt</pre><br><br>
-        <code>couger,grizzlybear,elk</code> is the most commonly observed group!
+        <pre>awk ' { counter[$5] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt</pre><br>
+        <code>couger,grizzlybear,elk</code> is the most commonly observed group!<br>
 </details>
 
 
@@ -319,9 +319,9 @@ It works! We can see that "moose,bison" is the most commonly observed group of a
 
  <details>
         <summary><i>Click here for the answer</i></summary>
-        <ul><li><code>awk 'NR>1 { counter[$2] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt</code></li>
+        <ul><li><pre>awk 'NR>1 { counter[$2] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt</pre></li>
         Or:
-        <li><code>awk 'NR>1 { counter[$5] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt</code></li></ul>
+        <li><pre>awk 'NR>1 { counter[$5] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt</pre></li></ul>
 </details>
 
 ****
