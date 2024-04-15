@@ -83,9 +83,10 @@ sed 's/jungle/rainforest/2g' ecosystems.txt
 1. In annotation files (e.g., gtf, gff3) chromosomes are generally written as CHR1 *or* chr1. Some programs will want one or the other and `sed` can switch between the two easily. Use `sed` to alter the `chr` to `CHR` in the `hg38_subset.gff` file and save the output as `hg38_subset.uppercase.gff`:
 
 <details>
-        <summary>Click here to see the answer</summary>
+        <summary><i>Click here for the answer</i></summary>
         <code>sed 's/chr/CHR/g' hg38_subset.gff > hg38_subset.uppercase.gff</code>
 </details>
+
 
 2. Your colleague has prepared a FASTA file for you. Take a look by typing `cat mygenes.fasta`. They named the genes (lines that start with `>`) with sequences! Rename the genes GAA and GAA_2 replacing GAA with gene1 with a **single command that does not alter any of the sequences**.
 
@@ -169,8 +170,9 @@ Let's extract only the quality scores from the `Mov10_oe_1.subset.fq` file and w
 |3|Always begins with a '+', and sometimes the same info as in line 1|
 |4|Has a string of characters representing the quality scores; must have same number of characters as line 2|
 
+
 <details>
-        <summary>Click here to see the answer</summary>
+        <summary><i>Click here for the answer</i></summary>
         <code>sed -n '4~4p' Mov10_oe_1.subset.fq > quality_scores.txt</code>
 </details>
 
@@ -243,7 +245,7 @@ You have the vcf file `test.vcf` in your `advanced_shell` directory. Use `sed` t
 <details>
         <summary><i>Click here for the answer</i></summary>
         To remove lines that START with ##:<br> <code>sed '/^##/d' test.vcf > vcf_noheader.vcf</code><br>
-        to remove any lines that contain ##:<br>  <code>sed '/##/d' test.vcf > vcf_nodoublehash.vcf</code>
+        To remove any lines that contain ##:<br>  <code>sed '/##/d' test.vcf > vcf_nodoublehash.vcf</code>
 </details>
 
 
