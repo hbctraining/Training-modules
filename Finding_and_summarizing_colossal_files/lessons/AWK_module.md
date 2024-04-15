@@ -209,7 +209,7 @@ awk -F '[[:blank:],]' '{print NF}' animal_observations_edited.txt
 
 This is more complex than anything else we have done so let's break it down:
 
-* First, you might be curious why we are using `-F` instead of `-FS`. FS represents the field separator and to CHANGE the field separator we use `-F`. We can think of the field separator as `-F 'FS'`. Here we have to do a bit of regex magic where we accept any white space or commas. Although understanding this regex is beyond this module, we can recognize that this is a range as we previously discussed and we decided to include it here as many NGS formats include multiple kinds of field separators (e.g., VCF files). 
+* First, you might be curious why we are using `-F` instead of `-FS`. FS represents the field separator and to CHANGE the field separator we use `-F`. We can think of this as `-F 'FS'`. Here we have to do a bit of regex magic where we accept any white space or commas. Although understanding this regex is beyond this module, we can recognize that this is a range as we previously discussed and we decided to include it here as many NGS formats include multiple kinds of field separators (e.g., VCF files). 
 
 * We then skip denoting any pattern and ask `awk` to simply print the number of fields. After you run this command you might notice that there two issues. First, because we give the date `NF` is always 1 count higher than the number of animals. `awk` does math too and we can modify this command!
 
