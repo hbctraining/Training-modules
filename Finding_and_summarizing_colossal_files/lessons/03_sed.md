@@ -242,8 +242,8 @@ You have the vcf file `test.vcf` in your `advanced_shell` directory. Use `sed` t
 
 <details>
         <summary><i>Click here for the answer</i></summary>
-        To remove lines that START with ##: <code>sed '/^##/d' test.vcf > vcf_noheader.vcf</code>
-        to remove any lines that contain ##:  <code>sed '/##/d' test.vcf > vcf_nodoublehash.vcf</code>
+        To remove lines that START with ##:<br> <code>sed '/^##/d' test.vcf > vcf_noheader.vcf</code><br>
+        to remove any lines that contain ##:<br>  <code>sed '/##/d' test.vcf > vcf_nodoublehash.vcf</code>
 </details>
 
 
