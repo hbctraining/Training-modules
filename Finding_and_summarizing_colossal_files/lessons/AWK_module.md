@@ -381,7 +381,7 @@ awk 'NR > 1 && NF == 4' data.txt
 
 ```bash
 ### DO NOT RUN ###
-awk '$1 == 5 && $7 == "PASS" { print }' data.vcf
+awk '$1 == "chr5" && $7 == "PASS" { print }' data.vcf
 ```
 
 
