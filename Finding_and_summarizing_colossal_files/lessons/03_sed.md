@@ -80,7 +80,7 @@ sed 's/jungle/rainforest/2g' ecosystems.txt
 
 ### Bioinformatic Examples
 
-1. In annotation files (e.g., gtf, gff3) chromosomes are generally written as CHR1 *or* chr1. Some programs will want one or the other and `sed` can switch between the two easily. Use `sed` to alter the `chr` to `CHR` in the `hg38_subset.gff` file and sace the output as `hg38_subset.uppercase.gff`:
+1. In annotation files (e.g., gtf, gff3) chromosomes are generally written as CHR1 *or* chr1. Some programs will want one or the other and `sed` can switch between the two easily. Use `sed` to alter the `chr` to `CHR` in the `hg38_subset.gff` file and save the output as `hg38_subset.uppercase.gff`:
 
 <details>
         <summary>Click here to see the answer</summary>
