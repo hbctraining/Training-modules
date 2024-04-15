@@ -310,9 +310,10 @@ It works! We can see that "moose,bison" is the most commonly observed group of a
 
 <details>
         <summary><i>Click here for the answer</i></summary>
-        <code>awk ' { counter[$5] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt</code><br><br>
+        <pre>awk ' { counter[$5] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt</pre><br><br>
         <code>couger,grizzlybear,elk</code> is the most commonly observed group!
 </details>
+
 
 2. Our code also counts the number of times our header text (Yosemite or Glacier) is repeated. How can you modify the code so that this is ignored?
 
@@ -320,7 +321,7 @@ It works! We can see that "moose,bison" is the most commonly observed group of a
         <summary><i>Click here for the answer</i></summary>
         <ul><li><code>awk 'NR>1 { counter[$2] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt</code></li>
         Or:
-        <li><code>awk 'NR>1 { counter[$5] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt</code></li>
+        <li><code>awk 'NR>1 { counter[$5] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt</code></li></ul>
 </details>
 
 ****
