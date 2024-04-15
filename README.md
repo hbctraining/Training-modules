@@ -26,7 +26,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 |:---------------|:-------------:|:-------------:|:-------------:|
 | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/)	| None | 2/21/2024	| Closed |
 | [Accelerate with Automation - Making your code work for you](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/)	| [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 3/20/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJUtcOqgqjItGNBihyBpRyBIOhcg20dc2YhW) |
-| Needle in a Haystack - Finding and summarizing data from colossal files | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 4/17/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJUqduCvqDkrEt1VSxbngApi4O6VS4rLbGGR) |
+| [Needle in a Haystack - Finding and summarizing data from colossal files](https://hbctraining.github.io/Training-modules/Finding_and_summarizing_colossal_files/) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 4/17/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJUqduCvqDkrEt1VSxbngApi4O6VS4rLbGGR) |
 | Shell Tips and Tricks on O2 | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 5/15/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJIvf-igrDIvHNTgmccDlkWbmSBavwfR5Iw9) |
 
 <!-- This content will not appear in the rendered Markdown -->
