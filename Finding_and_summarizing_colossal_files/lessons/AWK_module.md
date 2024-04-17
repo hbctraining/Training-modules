@@ -406,7 +406,7 @@ This actually combines a number of basic and intermediate shell topics such as [
 
 * Then for each value of `i` the awk command `awk -v awkvar="${i}" 'NR==awkvar' samples.txt` is run and the output is assigned to the variable `${sam}`.
 
-* Then using the variable `${sam}` a `samtools` command is run to convert a file from `.sam` to `.bam`. This just and example and could be applied to many bioinformatic commands.
+* Then using the variable `${sam}` a `samtools` command is run to convert a file from `.sam` to `.bam`. This just an example and could be applied to many bioinformatic commands.
 
 With our new `awk` expertise let's take a look at that `awk` command alone!
 
