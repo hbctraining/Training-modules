@@ -280,7 +280,7 @@ What command would you give to print all of the observation dates that took plac
 
 ## Counting
 
-One of the best features of `awk` is that it can count up how many times a string occurs in a column. Let's use this to see how many times set of animal observations occurs in Yellowstone park.
+One of the best features of `awk` is that it can count up how many times a string occurs in a column. Let's use this to see how many times each set of animal observations occurs in Yellowstone park.
 
 ```bash
 awk ' { counter[$2] += 1 } END { for (animalgroup in counter){ print animalgroup, counter[animalgroup] } }' animal_observations_edited.txt
