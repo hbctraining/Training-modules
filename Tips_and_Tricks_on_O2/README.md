@@ -22,10 +22,13 @@ _This workshop is being held in collaboration with HMS Research Computing, and i
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-| | 15 min |
-| | 45 min |
-| | 45 min |
-| | 75 min |
+| [Best Practices]() | 25 min |
+| [Moving Files to and from O2]() | 25 min |
+| [Symbolic Links]() | 15 min |
+| [Alias, shortcuts and .bashrc]() | 25 min |
+| [Job Dependencies]() | 15 min |
+| [SLURM Job Arrays]() | 15 min |
+| [Snapshot]() | 15 min|
 
 ### Dataset
 
