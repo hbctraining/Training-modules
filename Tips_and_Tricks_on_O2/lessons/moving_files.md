@@ -131,34 +131,6 @@ curl -L -O [http://www.example.com/data_file_1] -O [http://www.example.com/data_
 
 In general, `curl` has a bit more options and flexibility than `wget` but the vast majority, if not all, of those options are ***far*** beyond the scope of this course and for this course comes down to a personal preference. 
 
-
-
-## Symbolic Links or "sym links" <a name="symlink"></a>
-
-Symbolic links are like shortcuts you may create on your laptop. A sym link makes it appear as if the linked object is actually there. It can be useful to access a file from multiple locations without creating copies and without using much disk space. (Symlinks are only a few bytes in size.)
-
-Let's check out an example of a folder with lots of symlinks.
-
-
-```bash
-ls -l /n/app/bcbio/tools/bin/
-```
-
-Now, let's create a sym link in our home directory for the same `unix_lesson` folder we had originally copied over.
-
-```bash
-$ cd
-
-$ ln -s /n/groups/hbctraining/unix_lesson/ unix_lesson_sym
-
-$ ls -l
-```
-
-We recommend that you create something like this for your raw data so it does not accidentally get corrupted or overwritten. 
-
-> Note: a “hard” link (just `ln` without the `-s` option) is very different. Always use “ln -s” unless you really know what you’re doing!
-
-
 ## md5sum
 
 Sometimes you are copying files between two locations and you want to ensure the copying went smoothly or are interested to see if two files are the same. Checksums can be thought of as an alphanumeric fingerprint for a file and they are used to ensure that two files are the same. It is common for people/insitutions to provide an list of md5sums for files that are availible to download. `md5sum` is one common checksum. ***Importantly, it is theorectically possible that two different files have the same md5sum, but it is practically nearly impossible.*** The syntax for checking the md5sum of a file is:
