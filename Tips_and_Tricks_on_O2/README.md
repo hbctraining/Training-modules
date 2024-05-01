@@ -29,6 +29,7 @@ _This workshop is being held in collaboration with HMS Research Computing, and i
 | [Job Dependencies](lessons/job_dependencies.md) | 15 min |
 | [SLURM Job Arrays](lessons/) | 15 min |
 | [Snapshot](lessons/) | 15 min|
+| [Managing your jobs](lessons/keeping_track_of_time.md)| 15 min |
 
 ### Dataset
 
