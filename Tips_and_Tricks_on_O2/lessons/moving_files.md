@@ -3,6 +3,8 @@
 At some point you will need to [move files to and from a cluster](moving_files.md#copying-files-to-and-from-the-cluster), [get files from a website](moving_files.md#dowloading-external-data), [create a symbolic link](moving_files.md#symbolic-links-or-sym-links-), or [check that your transfers have worked](moving_files.md#md5sum)
 
 
+## GLOBUS
+
 ## Copying files to and from the cluster
 
 You can use a program like filezilla to copy over files, but there are other way to do so using the command line interface. When you obtain your data from the sequencing facility, it will likely be stored on some remote computer and they will give you login credentials which will allow you to access it. There are various commands that can be used to help you copy those files from the remote computer over to 1) your local computer, 2) O2, or 3) whatever cluster environment you plan to work on. We present a few options here.
