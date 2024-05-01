@@ -25,7 +25,7 @@ _This workshop is being held in collaboration with HMS Research Computing, and i
 | [Best Practices](lessons/best_practices.md) | 25 min |
 | [Moving Files to and from O2](lessons/moving_files.md) | 25 min |
 | [Symbolic Links](lessons/symbolic_links.md) | 15 min |
-| [Alias, shortcuts and .bashrc](lessons/) | 25 min |
+| [Aliases and .bashrc](lessons/aliases_bachrc.md) | 25 min |
 | [Job Dependencies](lessons/job_dependencies.md) | 15 min |
 | [SLURM Job Arrays](lessons/arrays_in_slurm.md) | 15 min |
 | [Snapshot](lessons/) | 15 min|
