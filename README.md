@@ -27,7 +27,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/)	| None | 2/21/2024	| Closed |
 | [Accelerate with Automation - Making your code work for you](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/)	| [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 3/20/2024	| Closed |
 | [Needle in a Haystack - Finding and summarizing data from colossal files](https://hbctraining.github.io/Training-modules/Finding_and_summarizing_colossal_files/) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 4/17/2024	| Closed  |
-| [Shell Tips and Tricks on O2] (https://hbctraining.github.io/Training-modules/Tips_and_Tricks_on_O2/) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 5/22/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJIvf-igrDIvHNTgmccDlkWbmSBavwfR5Iw9) |
+| [Shell Tips and Tricks on O2](https://hbctraining.github.io/Training-modules/Tips_and_Tricks_on_O2/) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 5/22/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJIvf-igrDIvHNTgmccDlkWbmSBavwfR5Iw9) |
 
 <!-- This content will not appear in the rendered Markdown -->
 <!--
@@ -70,11 +70,19 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 | Topic and Link(s) to lessons | Prerequisites |
 |:---------------|:-------------:|
-| [Introduction to the command-line interface](Intro_shell) | None |
-| [Intermediate bash](Intermediate_shell) | Beginner shell or [Intro to the command-line interface](Intro_shell) |
+| [Basic Shell/Introduction to the command-line interface](https://hbctraining.github.io/Training-modules/Basic_shell/) | None |
+| [Accelerate with Automation - Making your code work for you](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/)	| [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 
+| [Needle in a Haystack - Finding and summarizing data from colossal files](https://hbctraining.github.io/Training-modules/Finding_and_summarizing_colossal_files/) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) |
+| [Shell Tips and Tricks on O2](https://hbctraining.github.io/Training-modules/Tips_and_Tricks_on_O2/) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) |
 | [Version control using Git and Github](Git-Github) | Beginner shell or [Intro to the command-line interface](Intro_shell)  |
 | [Accessing genomic reference and experimental sequencing data](https://hbctraining.github.io/Accessing_public_genomic_data) | Beginner shell or [Intro to the command-line interface](Intro_shell)  |
 | [Exploring genomic variants using GEMINI](Exploring_variants_with_GEMINI) | Beginner shell or [Intro to the command-line interface](Intro_shell) |
+
+<!-- This content will not appear in the rendered Markdown -->
+<!-- Old material and links:
+| [Introduction to the command-line interface](Intro_shell) | None |
+| [Intermediate bash](Intermediate_shell) | Beginner shell or [Intro to the command-line interface](Intro_shell) |
+-->
 
 ### Additional workshops:
 
