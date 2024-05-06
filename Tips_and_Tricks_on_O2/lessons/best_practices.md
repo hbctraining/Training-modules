@@ -174,7 +174,13 @@ cd ~
 ls -a
 ```
 
-You can see that there are a number of these hidden files that are responsiable for various things. However, you will see one called `.bashrc` and this is the one that we will be adding some preferences too. So let's open up `vim` using:
+You can see that there are a number of these hidden files that are responsiable for various things. However, you will see one called `.bashrc` and this is the one that we will be adding some preferences too. 
+
+**MEETA CHECK THIS NOTE AND REPHRASE IT AS NEEDED. I THINK `.bashrc` IS SOURCED ON LOGIN AS WELL.**
+> ### `.bashrc` versus `.bash_profile`
+> You might notice a file also called `.bash_profile`. `.bash_profile` is executed for login shells, while `.bashrc` is executed for interactive non-login shells. When you login (type username and password) to O2 the `.bash_profile` is executed. So if you want the alias available **only** when you login, you will want to put it in your `.bash_profile`. 
+
+So let's open up our `.bashrc` using `vim`:
 
 ```bash
 vim .bashrc
