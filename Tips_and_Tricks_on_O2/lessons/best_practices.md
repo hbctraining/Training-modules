@@ -96,6 +96,11 @@ You can check your scratch quota using the quota-v2 command.
 > | Terabyte (TB) |1,000<sup>4</sup> = 1,000,000,000,000 | Tebibyte (TiB) | 1,024<sup>4</sup> = 1,099,511,627,776 |
 > | Petabyte (PB) |1,000<sup>5</sup> = 1,000,000,000,000,000 | Pebibyte (TiB) | 1,024<sup>5</sup> = 1,125,899,906,842,620 |
 
+We can anvigate to our newly created scratch space using this command:
+
+```bash
+cd /n/scratch/users/${USER:0:1}/${USER}/
+```
 
 Now that we have created our `scratch` space, you will need to start an interactive session. A login node's primary function is to enable users to log in to a cluster, it is not meant to be used for any actual work/computing. Since we will be doing some work, let's get on to a compute node:
 
@@ -104,6 +109,73 @@ $ srun --pty -p interactive -t 0-3:00 --mem 1G  /bin/bash
 ````
 
 Make sure that your command prompt is now preceded by a character string that contains the word `compute`.
+
+# Aliases and .bashrc profile
+
+Now that we have created a space on scratch, you might be interested in having a shortcut to getting there just like you have a shortcut to get to your home directory by using:
+
+```bash
+cd ~
+```
+
+where the `~` is a shorthand for your home directory.
+
+This is where aliases can be very helpful. Aliases are shortcuts that you might employ to make common, long commands easier to use. Let's go ahead and make an alias to help us change directories to our scratch directory. 
+
+```bash
+ alias cd_scratch='cd /n/scratch/users/${USER:0:1}/${USER}/'
+```
+
+The `alias` command let's us make an alias, then we name our alias `cd_scratch` and then set the alias for what we want it to be shorthand for, `cd /n/scratch/users/${USER:0:1}/${USER}/`. Currently, we should be in our home directory, and we can confirm that with:
+
+```bash
+pwd
+```
+
+The return should look like `/home/your_username`.Now we can use our newly created alias to change directories to our scratch space:
+
+```bash
+cd_scratch
+```
+Now we should be able to see that we are within our scratch space by using:
+
+```bash
+pwd
+```
+And now it should say that we are within `/n/scratch/users/<first_letter_of_username>/<username>/`
+
+This is great, but this alias is not saved anywhere but the currently computing node that you are using. If we exit the computing node with:
+
+```bash
+exit
+```
+
+And now we try our alias again:
+
+```bash
+cd_scratch
+```
+
+It will return:
+
+```bash
+-bash: cd_scratch: command not found
+```
+
+Ideally we would like to find a way to save our aliases and that is one way we can use our `.bashrc` profile!
+
+## .bashrc profile
+
+# Writing to Scratch
+
+Just like any other storage area on O2, we can copy data to `scratch`. For example, let's copy some scripts over that we will be using in some later exercises:
+
+```bash
+cd /n/scratch/users/${USER:0:1}/${USER}/
+cp -r /n/groups/hbctraining/sleep_scripts . 
+```
+
+> Note: `${USER}` is just a environment variable in bash that hold your username and `${USER:0:1}` just some shorthand to get the first letter of your username.
 
 # Checking Quotas
 
@@ -182,16 +254,21 @@ Fortunately, there are a few options within the `du` command that are extremely 
  - `--max-depth=1` This option will look within each file and directory of the given directory and summarize the total space for those files and/or directories (and its subdirectories). You can increase the integer to `--max-depth=2` or `--max-depth=3` if you would like the summary to traverse subdirectories deeper.
  - `-s` This option will summarize the size of the given directory
 
-Let's go ahead and try this a bit and look at the size usage of our home directory:
+Let's go ahead and try this a bit and look at the size usage of our current scratch directory:
 
 ```bash
-du -h --max-depth=1 ~
+du -h --max-depth=1 .
 ```
 
-This should give you a good idea of what directories within your home directory are consuming the most space. Now let's consider if we wanted to see how much space out home directory was using:
+
+This should give you a good idea of what directories within your scratch directory are consuming the most space. Now let's consider if we wanted to see how much space our scratch directory was using:
 
 ```bash
-du -sh ~
+du -sh .
 ```
 
-# Writing to Scratch
+We can change the directory that we would like to run `du` on but providing it a path to the directory instead of using `.`. For example, we can summarize the of our home directory with:
+
+```bash
+du -sh /home/${USER}
+```
