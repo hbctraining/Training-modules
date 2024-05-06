@@ -1,7 +1,8 @@
 # Learning Objectives
 - Create a `scratch` space on O2
-- Check how much space you are using on O2
-- 
+- Utilizing aliases to reduce the need to rememeber long or tedious commands
+- Editing `.bashrc` file to modify your default environment
+- Evaluate how much space you are using on O2
 
 ## Logging into O2
 
