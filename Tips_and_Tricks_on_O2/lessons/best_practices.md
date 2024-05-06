@@ -123,7 +123,7 @@ where the `~` is a shorthand for your home directory.
 This is where aliases can be very helpful. Aliases are shortcuts that you might employ to make common, long commands easier to use. Let's go ahead and make an alias to help us change directories to our scratch directory. 
 
 ```bash
- alias cd_scratch='cd /n/scratch/users/${USER:0:1}/${USER}/'
+alias cd_scratch='cd /n/scratch/users/${USER:0:1}/${USER}/'
 ```
 
 The `alias` command let's us make an alias, then we name our alias `cd_scratch` and then set the alias for what we want it to be shorthand for, `cd /n/scratch/users/${USER:0:1}/${USER}/`. Currently, we should be in our home directory, and we can confirm that with:
@@ -162,9 +162,81 @@ It will return:
 -bash: cd_scratch: command not found
 ```
 
-Ideally we would like to find a way to save our aliases and that is one way we can use our `.bashrc` profile!
+Ideally, we would like to find a way to save our aliases and that is one way we can use our `.bashrc` profile!
 
 ## .bashrc profile
+
+Much like one might have a routine when coming home, like taking their shoes and jacket off, when you log onto your computer or log into any computing cluster, the computer will look for a file with a set of preferences that you have, called the `.bashrc`. This file is located in your home directory and is preceded by a `.`. This period means that it is a "hidden file". You can you the `-a` option with `ls` in order to see **all** files:
+
+```bash
+cd ~
+ls -a
+```
+
+You can see that there are a number of these hidden files that are responsiable for various things. However, you will see one called `.bashrc` and this is the one that we will be adding some preferences too. So let's open up `vim` using:
+
+```bash
+vim .bashrc
+```
+
+Enter insert mode by typing <kbd>i</kbd>, then we can add our alias anywhere in our `.bashrc`:
+
+```bash
+# Alias for navigating to our scratch space
+alias cd_scratch='cd /n/scratch/users/${USER:0:1}/${USER}/'
+```
+
+Now, we can exit `vim` by pressing <kbd>ESC</kbd> and the typing <kbd>:</kbd> + <kbd>w</kbd> + <kbd>q</kbd> + <kbd>Enter/return</kbd>. Next, we need to do one of two things in order for our alias to work:
+
+1) We could log out and log back into O2 and since we are "walking into our house", O2 would automatically *source* this file, or
+2) If we would like to stay logged in, we can run the `source` command:
+
+```bash
+source .bashrc
+```
+
+Now if we type:
+
+```bash
+cd_scratch
+```
+
+We can see that it take us to our scratch space, which we can confirm with:
+
+```bash
+pwd
+```
+
+Now you can create lots of aliases. For example, one that can be useful is:
+
+```bash
+# Requests an interactive node on O2 for 12 hours and 4GB of memory
+alias o2i='srun --pty -p interactive -t 0-12:00 --mem 4G /bin/bash'
+```
+
+This alias allows the user to request an interactive job on O2 for 12 hours and allocate 4GB of memory. This way you don't need to remember all of the option that you need for an interactive job.
+
+### What else do people put in their .bashrc profile?
+
+Placing aliases within a `.bashrc` file is quite common, but it isn't the only thing that people often place within a `.bashrc` file. For example, some people will specifiy the location of their R libraries if they use R on the O2 cluster:
+
+```bash
+# DO NOT RUN
+# Example of how people might specify the location of their R packages on O2 
+echo 'R_LIBS_USER="~/R-4.1.2/library"' >  $HOME/.Renviron
+export R_LIBS_USER="~/R-VersionSelected/library"
+```  
+
+Sometimes people will want to always have some software that they installed in their home directory availible to them, so they will add the path to that software's `bin` directory to their `$PATH` variable:
+
+```bash
+# DO NOT RUN
+# Example of how to add a path to your $PATH variable
+PATH=${PATH}:/home/${USER}/my_software_package/bin/
+export PATH
+```
+
+These are just a few examples of items that one might commonly see in other people's `.bashrc` profiles.
 
 # Writing to Scratch
 
@@ -233,7 +305,7 @@ An example output might look like:
 > PATH=${PATH}:/n/cluster/bin/
 > export PATH
 > ```
-> However, you will need to do this each time you log onto the cluster. The easier way will be to put the above commands into your `.bashrc` profile, which we will be talking about later.
+> However, you will need to do this each time you log onto the cluster. The easier way will be to put the above commands into your `.bashrc` profile.
 
 ## du
 
