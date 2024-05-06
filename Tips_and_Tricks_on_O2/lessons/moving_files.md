@@ -1,13 +1,89 @@
 # Moving files on and off the cluster
 
-At some point you will need to [move files to and from a cluster](moving_files.md#copying-files-to-and-from-the-cluster), [get files from a website](moving_files.md#dowloading-external-data), [create a symbolic link](moving_files.md#symbolic-links-or-sym-links-), or [check that your transfers have worked](moving_files.md#md5sum)
+## Learning Objectives
+-
+-
+-
 
+
+## Downloading external data
+
+When you want to obtain your data from the sequencing facility, it will likely be stored on some remote computer and they will give you login credentials which will allow you to access it. You will then need to copy that over to O2 our your computing cluster of choice so that you can carry out the analysis on it. Next, we will describe the steps that you would need to take to copy files on and off of the cluster.
+
+### `wget`
+
+You will sometimes find yourself wanting to download data from a website. There are two comparable commands that you can use to accomplish this task. The first one is `wget` and the most common syntax for using it is:
+
+```bash
+wget [http://www.example.com/data]
+```
+
+Let's try to do this in order to download the reference genome for _E. coli_ from NCBI:
+
+```bash
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/005/845/GCA_000005845.2_ASM584v2/GCA_000005845.2_ASM584v2_genomic.fna.gz
+```
+
+> Note: If you lose your connection during the download process and would like to resume it midway through, the `-c` will ***c***ontinue the download where it left off:
+>```
+>wget -c [http://www.example.com/data]
+>```
+
+### `curl`
+
+A common alternative to `wget` is `curl` and many purposes they are extremely similiar and which you decide to use is a matter of personal preference. The general syntax is:
+
+```
+curl -L -O [http://www.example.com/data]
+```
+
+The `-O` option will use the filename given on the website as its filename to write to. Alternatively, if you wanted to name it something different, you can use the `-o` option and then follow it with the preferred name like:
+
+```
+curl -L -o preferred_name  [http://www.example.com/data]
+```
+
+The `-L` option tells curl to follow any redirections the HTML address gives to the data. For example, webpage might redirect from it's "Download" button to a different page when the data is actually stored. This `-L` option tells `curl` to follow this redirection. In some cases it is need, 
+
+Let's use `curl` to download the E. coli gene annotations from NCBI:
+
+```bash
+curl -L -O https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/005/845/GCA_000005845.2_ASM584v2/GCA_000005845.2_ASM584v2_genomic.gff.gz
+```
+
+Lastly, if you connection gets lost midway through a transfer, you can use the `-C` option followed by `-` to resume the download where it left off. For example:
+
+```
+curl -C - -L -O [http://www.example.com/data]
+```
+
+### `curl` versus `wget`
+
+For many purposes `curl` and `wget` are similar, but there are some small differences:
+
+1) In `curl` you can use the `-O` option multiple times to carry out multiple downloads simulatenously. 
+
+```
+curl -L -O [http://www.example.com/data_file_1] -O [http://www.example.com/data_file_2]
+```
+
+2) In `wget` you can recursively download a directory (meaning that you also download all subdirectories) with the `-r`. Typically this isn't super useful because the source will typically pack this up all into a compressed package, but nonetheless it is something that `wget` can do that `curl` cannot do.
+
+In general, `curl` has a bit more options and flexibility than `wget` but the vast majority, if not all, of those options are ***far*** beyond the scope of this course and for this course comes down to a personal preference. 
+
+## md5sum
+
+Sometimes you are copying files between two locations and you want to ensure the copying went smoothly or are interested to see if two files are the same. Checksums can be thought of as an alphanumeric fingerprint for a file and they are used to ensure that two files are the same. It is common for people/insitutions to provide an list of md5sums for files that are availible to download. `md5sum` is one common checksum. ***Importantly, it is theorectically possible that two different files have the same md5sum, but it is practically nearly impossible.*** The syntax for checking the md5sum of a file is:
+
+```
+md5sum <file>
+```
 
 ## GLOBUS
 
 ## Copying files to and from the cluster
 
-You can use a program like filezilla to copy over files, but there are other way to do so using the command line interface. When you obtain your data from the sequencing facility, it will likely be stored on some remote computer and they will give you login credentials which will allow you to access it. There are various commands that can be used to help you copy those files from the remote computer over to 1) your local computer, 2) O2, or 3) whatever cluster environment you plan to work on. We present a few options here.
+Alternatively, when you have analyzed your data you may have some files that you would like to download from the cluster. You can use a program like [Filezilla](https://filezilla-project.org/) to copy over files from a computing cluster to your local machine, but there are other way to do so using the command-line interface. 
 
 ### `scp`
 
@@ -80,62 +156,3 @@ $ rsync -av -e ssh testfile username@transfer.rc.hms.harvard.edu:~/large_files/
 
 
 
-## Downloading external data
-
-### `curl`
-
-Oftentimes, you will find yourself wanting to download data from a website. There are two comparable commands that you can use to accomplish this task. The first one is `curl` and the most common syntax for using it is:
-
-```
-curl -L -O [http://www.example.com/data]
-```
-
-The `-O` option will use the filename given on the website as its filename to write to. Alternatively, if you wanted to name it something different, you can use the `-o` option and then follow it with the preferred name like:
-
-```
-curl -L -o preferred_name  [http://www.example.com/data]
-```
-
-The `-L` option tells curl to follow any redirections the HTML address gives to the data. ***I think this is right, but I am really don't understand thins. I just know that I am supposed to do it.***
-
-Lastly, if you connection gets lost midway through a transfer, you can use the `-C` option followed by `-` to resume the download where it left off. For example:
-
-```
-curl -C - -L -O [http://www.example.com/data]
-```
-
-### `wget`
-
-
-A common alternative to `curl` is `wget` and many purposes they are extremely similiar and which you decide to use is a matter of personal preference. The general syntax is a bit more friendly on `wget`:
-
-```
-wget [http://www.example.com/data]
-```
-
-If you lose your connection during the download process and would like to resume it midway through, the `-c` will ***c***ontinue the download where it left off:
-
-```
-wget -c [http://www.example.com/data]
-```
-
-### `curl` versus `wget`
-
-For many purposes `curl` and `wget` are similar, but there are some small differences:
-
-1) In `curl` you can use the `-O` option multiple times to carry out multiple downloads simulatenously. 
-
-```
-curl -L -O [http://www.example.com/data_file_1] -O [http://www.example.com/data_file_2]
-```
-
-2) In `wget` you can recursively download a directory (meaning that you also download all subdirectories) with the `-r`. Typically this isn't super useful because the source will typically pack this up all into a compressed package, but nonetheless it is something that `wget` can do that `curl` cannot do.
-
-In general, `curl` has a bit more options and flexibility than `wget` but the vast majority, if not all, of those options are ***far*** beyond the scope of this course and for this course comes down to a personal preference. 
-
-## md5sum
-
-Sometimes you are copying files between two locations and you want to ensure the copying went smoothly or are interested to see if two files are the same. Checksums can be thought of as an alphanumeric fingerprint for a file and they are used to ensure that two files are the same. It is common for people/insitutions to provide an list of md5sums for files that are availible to download. `md5sum` is one common checksum. ***Importantly, it is theorectically possible that two different files have the same md5sum, but it is practically nearly impossible.*** The syntax for checking the md5sum of a file is:
-
-```
-md5sum <file>
