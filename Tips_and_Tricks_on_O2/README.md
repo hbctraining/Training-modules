@@ -22,10 +22,9 @@ _This workshop is being held in collaboration with HMS Research Computing, and i
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-| [Best Practices](lessons/best_practices.md) | 25 min |
+| [Setting up, .bashrc and checking quotas](lessons/best_practices.md) | 25 min |
 | [Moving Files to and from O2](lessons/moving_files.md) | 25 min |
 | [Symbolic Links](lessons/symbolic_links.md) | 15 min |
-| [Aliases and .bashrc](lessons/aliases_bashrc.md) | 25 min |
 | [Job Dependencies](lessons/job_dependencies.md) | 15 min |
 | [Managing your jobs](lessons/keeping_track_of_time.md)| 15 min |
 | [SLURM Job Arrays](lessons/arrays_in_slurm.md) | 15 min |
