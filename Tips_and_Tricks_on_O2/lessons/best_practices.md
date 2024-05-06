@@ -50,7 +50,7 @@ Once logged in, you should see the O2 icon, some news, and the command prompt, e
 
 > Due to the limited storage space on `/home`, we are going to take advantage of `scratch` to hold some of our intermediate files for this workshop. This is a very common use of the scratch space as many analyses will have large intermediate files, which would otherwise fill up our home directories.
 
-While on the login node, we will create our space on `/n/scratch3`. In order to do so, we will need to run a script provided by the HMS Research Computing team:
+While on the login node, we will create our space on `/n/scratch/`. In order to do so, we will need to run a script provided by the HMS Research Computing team:
 
 ```
 $ sh /n/cluster/bin/scratch_create_directory.sh 
@@ -61,7 +61,7 @@ $ sh /n/cluster/bin/scratch_create_directory.sh
 It will prompt you with the following:
 
 ```
-Do you want to create a scratch3 directory under /n/scratch3/users? [y/N]> 
+Do you want to create a scratch directory under /n/scratch3/users? [y/N]> 
 ```
 
 To this you will respond <kbd>y</kbd>, then hit <kbd>Enter/Return</kbd>.
