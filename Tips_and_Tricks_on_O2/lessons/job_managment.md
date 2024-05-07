@@ -5,6 +5,8 @@
 In this lesson we will:
 - Discuss the advantages of utilizing job dependencies
 - Implement a job dependency
+- 
+- 
 
 ## Job Dependency
 
@@ -76,8 +78,7 @@ squeue -u $USER
 
 You will notice that `job_1` is hopefully running, while `job_2` has a "PENDING" state and the "NODELIST(REASON)" states that it is due to a "(Dependency)". Once, `job_1` finishes, `job_2` will be queued and ran. 
 
-
-We can visualize a sample workflow below:
+Let's consider the case where we have two jobs, `job_3` and `job_4`, that are depenedent on `job_2`. Additionally, we have a single job, `job_5` dependent on `job_3` and `job_4` finishing. We can visualize a sample workflow below:
 
 <p align="center">
 <img src="../img/Job_dependencies.png" width="400">
@@ -86,95 +87,245 @@ We can visualize a sample workflow below:
 Multiple jobs can be dependent on a single job. Conversely, we can have a single job dependent on multiple jobs. If this is the case, then we just separate each job ID with colons like:
 
 ```bash
+# DO NOT RUN
 sbatch --dependency=afterok:353:354 Job_5.sbatch
 ```
 
 > NOTE: While the behavior can change between implementations of SLURM, on O2, when a job exits with an error, it removes all `afterok` dependent jobs from the queue. Some other implementations of SLURM will not remove these jobs from the queue, but the provided reason when you check will be `DependencyNeverSatified`. In this case, you will need to manually cancel these jobs.
 
-## Implementing a job dependency
+As you can hopefully, see is that you can potentially set-up an entire pipeline for analysis and then comeback in a few days after it has all ran and you don't need to be constantly monitoring your jobs.
 
-Let's utilize a toy example so that we can see this in action:
+## scontrol
 
-```
-vim sleep_step_1.sbatch 
-```
-
-Inside of this script it is going to be a simple script that runs two echo commands and does a pauses for 30 seconds in between them.
+When you use `squeue -u $USER`, sometimes you don't get all of the information that you might like. The `scontrol` command can help give you a more detailed picture of the job submission. The syntax for using `scontrol` is:
 
 ```bash
-#!/bin/bash
-# Toy example for understanding how job dependencies work
-#SBATCH -t 0-00:01
-#SBATCH -p priority
-#SBATCH -c 1
-#SBATCH --mem 1M
-#SBATCH -o run_sleep_step_1_%j.out
-#SBATCH -e run_sleep_step_2_%j.err
-
-echo "I am going to take a nap." > sleep.out
-sleep 30
-echo "I have woken up." >> sleep.out
+scontrol show jobid <job_ID_number>
 ```
-
-Now before we submit this, let's create the second script that will be dependent on the first script running:
-
-```
-vim sleep_step_2.sbatch 
-```
-
-Within the script we can insert:
+It will return an output that looks like:
 
 ```bash
-#!/bin/bash
-#SBATCH -t 0-00:01
-#SBATCH -p priority
-#SBATCH -c 1
-#SBATCH --mem 1M
-#SBATCH -o run_sleep_step_2_%j.out
-#SBATCH -e run_sleep_step_2_%j.err
-
-echo "I am going to take a another nap." >> sleep.out
-sleep 30
-echo "I have woken up again." >> sleep.out
+JobId=Job_ID JobName=job_name.sbatch
+   UserId=$USER(XXXXXXX) GroupId=$USER(XXXXXXX) MCS_label=N/A
+   Priority=369878 Nice=0 Account=Account_name QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:40:53 TimeLimit=1-00:00:00 TimeMin=N/A
+   SubmitTime=2024-05-06T22:38:07 EligibleTime=2024-05-06T22:38:07
+   AccrueTime=2024-05-06T22:38:07
+   StartTime=2024-05-06T22:38:31 EndTime=2024-05-07T22:38:31 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-05-06T22:38:31 Scheduler=Backfill
+   Partition=medium AllocNode:Sid=compute-e-16-230:17259
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=compute-a-16-163
+   BatchHost=compute-a-16-163
+   NumNodes=1 NumCPUs=1 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=1,mem=64G,node=1,billing=5
+   AllocTRES=cpu=1,mem=64G,node=1,billing=5
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=1 MinMemoryNode=64G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/Path/to/submission/script/job_name.sbatch
+   WorkDir=/Path/where/script/was/submitted/from
+   StdErr=/Path/where/script/was/submitted/from/Job_ID.err
+   StdIn=/dev/null
+   StdOut=/Path/where/script/was/submitted/from/Job_ID.out
+   Power=
 ```
 
-Once we have written these two scripts we can go ahead and submit the first one:
+This can tell you lots of information about the job. It tells you the job's state, when it started, when the job will end if it doesn't finish early, the compute node that it is on, partition used, any job dependencies it has, the resources requested, where the standard error and standard output is written to. Almost any question you might have about a job can be answered within here.
+
+## Keeping Track of Time
+
+We don't always just submit a command and come back later. There are times when you want to keep track of what is going on, see how long a task takes for future use, or run a command in the background while you continue to use the command line.
+
+### watch
+
+Sometimes one may want to see the ouptut of a command that continuously changes. The `watch` command is particularly useful for this. Add `watch` before your command and your command line will take you to an output page that will continually up your command. Common uses for `watch` could be:
+
+1) Viewing as files get created
 
 ```bash
-sbatch sleep_step_1.sbatch 
+watch ls -lh <directory>
 ```
 
-It should return some text that says:
-
-```
-Submitted batch job [Job_ID]
-```
-
-Now we can submit the second job, while making it dependent on the above Job ID. In the below script replace `Job_ID` with the Job ID from above.
+2) Monitoring jobs on the cluster
 
 ```bash
-sbatch --dependency=afterok:Job_ID sleep_step_2.sbatch 
+watch squeue -u $USER
 ```
 
-You can view your jobs, by using:
+The default interval for update is two seconds, but that can be altered with the `-n` option. Importantly, the options used with `watch` command need to be placed ***before*** the command that you are watching or else the interpreter will evaluate the option as part of the watched command's options. An example of this is below:
+
+Update every 4 seconds
 
 ```bash
-squeue -u $USER
+watch -n 4 squeue -u $USER
 ```
 
-And hopefully, if you were quick enough, you should be able to see that one of the jobs is not running and the `Reason` is `(Dependency)`. This let's you know that it is not running because it is waiting on a dependency.
+## time
 
-Once both jobs finish, you can inspect the `sleep.out` file and it should look like:
+Sometimes you are interested to know how long a task takes to complete. Similarly, to the `watch` command you can place `time` infront of a command and it will tell you how long the command takes to run. This can be particularly useful if you have downsampled a dataset and you are trying to estimate how long the full set will take to run. An example can be found below:
 
-```
-I am going to take a nap.
-I have woken up.
-I am going to take a another nap.
-I have woken up again.
+```bash
+time ls -lh
 ```
 
-While this is just an example, it allows us to highlight how you can create workflows and also allows you to optimize your job submissions to accomate being away from the cluster.
+The output will have three lines:
 
-***
+```
+real	0m0.013s
+user	0m0.002s
+sys	0m0.007s
+```
+
+**real** is most likely the time you are interested in since it displays the time it takes to run a given command. **user** and **sys** represent CPU time used for various aspects of the computing and can be impacted by multithreading. 
+
+### bg
+
+Sometimes you may start a command that will take a few minutes and you want to have your command prompt back to do other tasks while you wait for the initial command to finish. To do this, you will need to do two things:
+
+1) Pause the command with <kbd>Ctrl</kbd> + <kbd>Z</kbd>. 
+2) Send the command to the ***b***ack***g***round with the command `bg`. When you do this the command will continue from where it was paused.
+3) If you want to bring the task back to the ***f***ore***g***round, you can use the command `fg`.
+
+In order to test this, we will briefly re-introduce the `sleep` command. `sleep` just has the command line do nothing for a period of time denoted in seconds by the integer following the `sleep` command. This is sometimes useful if you want a brief pause within a loop, such as between submitting a bunch of jobs to the cluster. The syntax is:
+
+```bash
+# DO NOT RUN
+sleep [integer for time in seconds]
+```
+
+So if you wanted there to be a five second pause, you could use:
+
+```bash
+sleep 5
+```
+
+Now that we have re-introduced the `sleep` command let's go ahead and pause the command like for 180 seconds to simulate a task that is running that might take a few minutes to run.
+
+```bash
+sleep 180
+```
+
+Now type `Ctrl` + `Z` and this will pause that command. This will be followed by the command to move that task to running in the background with:
+
+```bash
+bg
+```
+
+The `sleep` command is now running in the background and you have re-claimed your command-line prompt to use while the `sleep` command runs. If you want to bring the `sleep` command back to the foreground, type:
+
+```bash
+fg
+```
+
+And if it is still running it will be brought to the foreground.
+
+The place that this can be really useful is whenever you are running commands/scripts that take a few minutes to run that don't have large procesing requirements. Examples could be:
+
+- Indexing a FASTA file
+- Executing a long command with many pipes
+- You are running something in the command line and need to check something
+
+Oftentimes, it is best just to submit these types of jobs to the cluster, but sometimes you don't mind running the task on your requested compute node, but is taking a bit longer than you anticipated or something came up. 
+
+## What is a job array?
+
+Atlassian says this about job arrays on O2: "Job arrays can be leveraged to quickly submit a number of similar jobs. For example, you can use job arrays to start multiple instances of the same program on different input files, or with different input parameters. A job array is technically one job, but with multiple tasks." [link](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/1586793632/Using+Slurm+Basic#Job-Arrays).
+
+Array jobs run simultaneously rather than one at a time which means they are very fast! Additionally, running a job array is very simple!  
+
+```bash
+sbatch --array=1-10 my_script.sh
+```
+
+This will run my_script.sh 10 times with the job IDs 1,2,3,4,5,6,7,8,9,10
+
+We can also put this directly into the bash script itself (although we will continue with the command line version here).
+```bash
+$SBATCH --array=1-10
+```
+
+We can specify any job IDs we want.
+
+```bash
+sbatch --array=1,7,12 my_script.sh
+```
+This will run my_script.sh 3 times with the job IDs 1,7,12
+
+Of course we don't want to run the same job on the same input files over and over, that would be pointless. We can use the job IDs within our script to specify different input or output files. In bash the job id is given a special variable `${SLURM_ARRAY_TASK_ID}`
+
+
+## How can I use ${SLURM_ARRAY_TASK_ID}?
+
+The value of `${SLURM_ARRAY_TASK_ID}` is simply job ID. If I run 
+
+```bash
+sbatch --array=1,7 my_script.sh
+```
+This will start two jobs, one where `${SLURM_ARRAY_TASK_ID}` is 1 and one where it is 7
+
+There are several ways we can use this. If we plan ahead and name our files with these numbers (e.g., sample_1.fastq, sample_2.fastq) we can directly refer to these files in our script: `sample_${SLURM_ARRAY_TASK_ID}.fastq` However, using the ID for input files is often not a great idea as it means you need to strip away most of the information that you might put in these names.
+
+Instead we can keep our sample names in a separate file and use [awk](awk.md) to pull the file names. 
+
+here is our complete list of long sample names which is found in our file `samples.txt`:
+
+```
+DMSO_control_day1_rep1
+DMSO_control_day1_rep2
+DMSO_control_day2_rep1
+DMSO_control_day2_rep2
+DMSO_KO_day1_rep1
+DMSO_KO_day1_rep2
+DMSO_KO_day2_rep1
+DMSO_KO_day2_rep2
+Drug_control_day1_rep1
+Drug_control_day1_rep2
+Drug_control_day2_rep1
+Drug_control_day2_rep2
+Drug_KO_day1_rep1
+Drug_KO_day1_rep2
+Drug_KO_day2_rep1
+Drug_KO_day2_rep2
+```
+
+If we renamed all of these to 1-16 we would lose a lot of information that may be helpful to have on hand. If these are all sam files and we want to convert them to bam files our script could look like this
+
+```bash
+
+file=$(awk -v  awkvar="${SLURM_ARRAY_TASK_ID}" 'NR==awkvar' samples.txt)
+
+samtools view -S -b ${file}.sam > ${file}.bam
+
+```
+
+Since we have sixteen samples we would run this as 
+
+```bash
+sbatch --array=1-16 my_script.sh
+```
+
+So what is this script doing? `file=$(awk -v  awkvar="${SLURM_ARRAY_TASK_ID}" 'NR==awkvar' samples.txt)` pulls the line of `samples.txt` that matched the job ID. Then we assign that to a variable called `${file}` and use that to run our command.
+
+Job IDs can also be helpful for output files or folders. We saw above how we used the job ID to help name our output bam file. But creating and naming folders is helpful in some instances as well. 
+
+```bash
+
+file=$(awk -v  awkvar="${SLURM_ARRAY_TASK_ID}" 'NR==awkvar' samples.txt)
+
+PREFIX="Folder_${SLURM_ARRAY_TASK_ID}"
+     mkdir $PREFIX
+        cd $PREFIX
+
+samtools view -S -b ../${file}.sam > ${file}.bam
+
+```    
+
+This script differs from our previous one in that it makes a folder with the job ID (Folder_1 for job ID 1) then moves inside of it to execute the command. Instead of getting all 16 of our bam files output in a single folder each of them will be in its own folder labled Folder_1 to Folder_16. 
+
+**NOTE** That we define `${file}` BEFORE we move into our new folder as samples.txt is only present in the main directory. 
 
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
