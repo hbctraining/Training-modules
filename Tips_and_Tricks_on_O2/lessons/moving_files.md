@@ -1,10 +1,11 @@
 # Moving files on and off the cluster
 
 ## Learning Objectives
--
--
--
-
+- Implement `curl` and `wget` to retrieve data from external resources
+- Transfer data to and from O2 using `scp` and `rsync`
+- Recognize when to implement Globus
+- Recall the iGenomes resource on the cluster
+- Create symbolic links for within your data
 
 ## Downloading external data
 
@@ -197,3 +198,131 @@ ls ~
 Check the `md5sum` for the `GCA_000005845.2_ASM584v2_genomic.fna.gz`. Does it match the `md5sum` on the NCBI website for this file? 
 
 
+### iGenome
+
+Another O2 quality-of-life feature is that HMS-RC has a directory called `/n/shared_db/igenome/03032016/` which holds reference genomes, alignment indexes, annotation files and much more for many common model organisms. Therefore, oftentimes you don't even need to download many of the files that you will need to do any analysis.
+
+### Exercise
+
+Navigate to the `/n/shared_db/igenome/03032016/` directory and see if you can find the organism that you study there.
+
+***
+
+Let's explore the human reference by:
+
+```bash
+cd /n/shared_db/igenome/03032016/Homo_sapiens/UCSC/hg38/
+ls -l
+```
+
+We can we see that there are two directories:
+
+```bash
+total 0
+drwxrwxr-x 2 ld32 ritg 4096 Aug 18  2015 Annotation
+drwxrwxr-x 2 ld32 ritg 4096 Oct 16  2019 Sequence
+```
+
+Let's further go into the `Seqeunce` directory:
+
+```bash
+cd Sequence
+ls -l
+```
+
+From here we can see that this hold directories containing indices for Bowtie, Bowtie2 and STAR aligners, as well as the whole genome reference sequence. 
+
+```bash
+total 0
+drwxrwxr-x 2 ld32 ritg 4096 Aug 18  2015 AbundantSequences
+drwxrwxr-x 2 ld32 ritg 4096 Aug 18  2015 Bowtie2Index
+drwxrwxr-x 2 ld32 ritg 4096 Aug 18  2015 BowtieIndex
+drwxrwxr-x 2 ld32 ritg 4096 Aug 18  2015 BWAIndex
+drwxrwxr-x 2 ld32 ritg 4096 May 14  2020 Chromosomes
+drwxrwxr-x 2 ld32 ritg 4096 Oct 16  2019 star2.5.4a
+drwxrwxr-x 2 ld32 ritg 4096 Jul 12  2020 WholeGenomeFasta
+```
+
+We can look inside of the `WholeGenomeFasta`:
+
+```bash
+ls -l WholeGenomeFasta
+```
+
+And see:
+
+```bash
+total 3087891
+-rwxrwxr-x 1 ld32  ritg      32798 Aug 18  2015 genome.dict
+-rwxrwxr-x 1 ld32  ritg 3161924569 Aug 18  2015 genome.fa
+-rw-rw-r-- 1 ak150 ritg       7802 Jul 12  2020 genome.fa.fai
+-rwxrwxr-x 1 ld32  ritg      34045 Aug 18  2015 GenomeSize.xml
+```
+
+The genome FASTA file is here `genome.fa`, along with a dictionary (genome.dict), FASTA index (genome.fa.fai) and genome size XML (GenomeSize.xml). 
+
+Let's take a brief look at the `Bowtie2Index` directory:
+
+```bash
+ls -l Bowtie2Index
+```
+
+The contents of this directory might seem mostly normal at first glance:
+
+```bash
+total 4068535
+-rwxrwxr-x 1 ld32 ritg 982504890 Aug 18  2015 genome.1.bt2
+-rwxrwxr-x 1 ld32 ritg 733719120 Aug 18  2015 genome.2.bt2
+-rwxrwxr-x 1 ld32 ritg     10880 Aug 18  2015 genome.3.bt2
+-rwxrwxr-x 1 ld32 ritg 733719113 Aug 18  2015 genome.4.bt2
+lrwxrwxrwx 1 ld32 ritg        29 Aug 18  2015 genome.fa -> ../WholeGenomeFasta/genome.fa
+-rwxrwxr-x 1 ld32 ritg 982504890 Aug 18  2015 genome.rev.1.bt2
+-rwxrwxr-x 1 ld32 ritg 733719120 Aug 18  2015 genome.rev.2.bt2
+```
+
+It moslty just indices for Bowtie2 (files ending in .bt2), but there is a particular file of interest here:
+
+```bash
+lrwxrwxrwx 1 ld32 ritg        29 Aug 18  2015 genome.fa -> ../WholeGenomeFasta/genome.fa
+```
+
+This is the first place we have now seen a symbolic link. `genome.fa` is the link name and it is pointing, with a relative path, to the reference genome FASTA file that we were just looking at (../WholeGenomeFasta/genome.fa). We are going to talk more about symbolic links, sometimes called symlinks, in the next section.
+
+## Symbolic Links
+
+Sometimes you will have large files on a computing cluster that you would like to have in a few places. A few cases where this might happen:
+
+1) The software package you are using wants you to have a specific directory structure for the data
+2) While this isn't as much of a concern on O2 since data in `home` and the `data` directories are backed up regularly, you may be on a computing cluster without such rigorous data back-up practices. If this the case, you might like to have your data in two locations in case the original data is accidentally deleted.
+
+Both of these are good places to implement *symbolic links*. Symbolic links can be thought of as arrows for computer, pointing to where a file is located, as we saw in the above example with the human reference genome. Symbolic links require negliable amounts of space and thus mean you can use them to point to large files elsewhere on the computing system. If these symbolic links get deleted or broken, they have no impact on the data they they were pointing to. Additionally, they can be named anything, so it can be helpful if a software package is looking for a specific name for an input file.
+
+Let's go ahead and make our own symbolic link. First, navigate to our `home` directory:
+
+```bash
+cd ~
+```
+
+The syntax for making a symbolic link is:
+
+```
+ln -s <file_to_be_linked_to> <link_name>
+```
+
+Assume we we want to make a symbolic link to our compressed *E. coli* reference annotation that we had downloaded to the `scratch` space and we are going to call it `E_coli.gff.gz`. We could do that:
+
+```
+ln -s /n/scratch/users/${USER:0:1}/${USER}/GCA_000005845.2_ASM584v2_genomic.gff.gz E_coli.gff.gz
+```
+
+When you now view this directory with `ls -l`, it will display the link like:
+
+```
+E_coli.gff.gz -> /n/scratch/users/w/wig051/GCA_000005845.2_ASM584v2_genomic.gff.gz
+```
+
+If you want to keep the current name you can use `.` for `<link name>`.
+
+***Importantly, if the original file is deleted or moved, the symbolic link will become broken.*** It is common on many distributions for symbolic links to blink if they becomes broken.
+
+> Note: The `-s` option is necessacary for creating a symbolic link. Without the `-s` option, a ***hard link*** is created and modifications to the linked file will be carried over to the original. Generally, speaking hard links are typically not very common.
