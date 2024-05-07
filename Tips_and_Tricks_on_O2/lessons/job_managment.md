@@ -1,4 +1,4 @@
-# Job Dependencies
+# Job Management
 
 ## Learning Objectives
 
@@ -6,11 +6,11 @@ In this lesson we will:
 - Discuss the advantages of utilizing job dependencies
 - Implement a job dependency
 
-## What is a job dependency and why would I use it?
+## Job Dependency
 
 Most, if not all, high performance computer clusters (HPCCs) utilize a job scheduler. As we have previously discussed, O2 uses one of the most popular ones, SLURM. These job schedulers aim to allow for fair use of limited computational resources in a shared network. In order to most limit one's use of limited resources, it is oftentimes best practice to place programs that require different computational resources in different job submissions. For example, perhaps program A needs 12 CPUs, 36GB of memory and 6 hours, but the output of program A is used in program B and it requires 1 CPU, 4GB of memory and 8 hours. In this case one *could* request 12 CPUs, 36 GB and 14 hours of compute time, but when program B is running you would be wasting 11 CPUs and 32GB of memory. As a result this type of behavior is *strongly discouraged*.
 
-Now you might be wondering, "Okay, so I need to make two separate jobs, but what if Job 1 running program A finishing at 2am, do I need to log onto the cluster to submit Job 2 running program B?". The good news is that you don't need to and this is the exact goal of job dependencies! Job dependencies allow you to queue jobs to be dependent on other jobs.
+However, you may be interested in having your jobs queue is such a way that once one job finishes, it automatically queues the next job and job dependencies allow you to queue jobs to be dependent on other jobs.
 
 Job dependencies are very useful:
 - When you have consecutive jobs you want to run
@@ -26,14 +26,56 @@ The syntax for using job dependencies in SLURM can be done in two ways:
 
 We will be doing the latter, but either way will use the `--dependency` option. This option has several arguments that it can accept, but the most useful one for the overwhleming number of circumstances is `afterok`. Using `afterok` means that after the following job ends without an error, then it will remove the hold on the dependent job. After the `afterok` part you can separate one or more jobs with colons to signify which jobs are dependent.
 
-The syntax for a dependent job submission could look like:
+Let's go to out `scratch` space to test this out:
 
 ```bash
-# Not a real job submission
-sbatch Job_1.sh
-Submitted batch job 351
-sbatch --dependency=afterok:351 Job_2.sbatch
+cd_scratch
 ```
+
+Travel to the `sleep_scripts` directory that we downloaded earlier
+
+```bash
+cd sleep_scripts
+```
+
+We can inspect these two scripts:
+
+```bash
+cat job_1.sbatch
+cat job_2.sbatch 
+```
+They are very basic scripts that can be submitted to the cluster and pause for 180 second and 30 second, respectively, before being complete. Using `vim` go ahead and modify both of these scripts to have your e-mail address in the line:
+
+```bash
+#SBATCH --mail-user=Enter_your_email_here
+```
+
+Next, go ahead and submit `job_1.sbatch` to the cluster:
+
+```bash
+sbatch job_1.sbatch
+```
+
+It should return:
+
+```bash
+Submitted batch job <job_ID_number>
+```
+
+Use the job_ID_number returned from the first script as a dependency for the second script, `job_2.sbatch`:
+
+```bash
+sbatch --dependency=afterok:<job_ID_number> job_2.sbatch
+```
+
+Now, if you run check on your jobs with:
+
+```bash
+squeue -u $USER
+```
+
+You will notice that `job_1` is hopefully running, while `job_2` has a "PENDING" state and the "NODELIST(REASON)" states that it is due to a "(Dependency)". Once, `job_1` finishes, `job_2` will be queued and ran. 
+
 
 We can visualize a sample workflow below:
 
@@ -41,7 +83,7 @@ We can visualize a sample workflow below:
 <img src="../img/Job_dependencies.png" width="400">
 </p>
 
-Multiple jobs can be dependent on a single job. COnversely, we can have a single job dependent on multiple jobs. If this is the case, then we just separate each job ID with colons like:
+Multiple jobs can be dependent on a single job. Conversely, we can have a single job dependent on multiple jobs. If this is the case, then we just separate each job ID with colons like:
 
 ```bash
 sbatch --dependency=afterok:353:354 Job_5.sbatch
