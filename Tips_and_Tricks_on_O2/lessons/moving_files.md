@@ -179,16 +179,21 @@ We should now be able to see that the reference genome has been uploaded to O2 b
 ls ~
 ```
 
-We could have also done this task with `scp`:
-
-```bash
-scp GCA_000005845.2_ASM584v2_genomic.fna.gz username@transfer.rc.hms.harvard.edu:~
-```
-
-And we could have also downloaded the file to our local machine with `wget` using:
-
-```bash
-rsync -av -e ssh username@transfer.rc.hms.harvard.edu:/n/scratch/users/first_letter_of_username/username/GCA_000005845.2_ASM584v2_genomic.fna.gz  .
-```
+>Note: We could have also done this task with `scp`:
+>```bash
+>scp GCA_000005845.2_ASM584v2_genomic.fna.gz username@transfer.rc.hms.harvard.edu:~
+>```
+>
+>And we could have also downloaded the file to our local machine with `wget` using:
+>
+>```bash
+>rsync -av -e ssh username@transfer.rc.hms.harvard.edu:/n/scratch/users/first_letter_of_username/username/GCA_000005845.2_ASM584v2_genomic.fna.gz  .
+>```
 
 *More helpful information and examples using rsync can be found [at this link](https://www.comentum.com/rsync.html)*
+
+### Exercise
+
+Check the `md5sum` for the `GCA_000005845.2_ASM584v2_genomic.fna.gz`. Does it match the `md5sum` on the NCBI website for this file? 
+
+
