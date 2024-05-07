@@ -27,7 +27,6 @@ _This workshop is being held in collaboration with HMS Research Computing, and i
 | [Data utilies with O2](lessons/moving_files.md) | 60 min |
 | [Job Management on O2](lessons/job_dependencies.md) | 60 min |
 | Wrap-up | 5 min |
-| [Managing your jobs](lessons/keeping_track_of_time.md)| 15 min |
 | [SLURM Job Arrays](lessons/arrays_in_slurm.md) | 15 min |
 | [Snapshot](lessons/snapshot.md) | 15 min|
 
