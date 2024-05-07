@@ -22,9 +22,11 @@ _This workshop is being held in collaboration with HMS Research Computing, and i
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-| [Setting up, .bashrc and checking quotas](lessons/best_practices.md) | 25 min |
-| [Moving Files to and from O2](lessons/moving_files.md) | 25 min |
-| [Job Dependencies](lessons/job_dependencies.md) | 15 min |
+| Introduction | 10 min |
+| [Setting up, .bashrc and checking quotas](lessons/best_practices.md) | 45 min |
+| [Data utilies with O2](lessons/moving_files.md) | 60 min |
+| [Job Management on O2](lessons/job_dependencies.md) | 60 min |
+| Wrap-up | 5 min |
 | [Managing your jobs](lessons/keeping_track_of_time.md)| 15 min |
 | [SLURM Job Arrays](lessons/arrays_in_slurm.md) | 15 min |
 | [Snapshot](lessons/snapshot.md) | 15 min|
