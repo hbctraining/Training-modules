@@ -351,3 +351,37 @@ We can change the directory that we would like to run `du` on but providing it a
 ```bash
 du -sh /home/${USER}
 ```
+
+## `.snapshot`
+
+When we discussed `.bashrc` profiles, we discussed hidden files. In addition to hidden files, O2 has a hidden directory, which you can't even see with `ls -a`, that contains back-ups of your file system. These back-ups occur in only the `/home/`, `/n/data1/`, `/n/data2/` and `/n/groups/` file systems and these back-ups will occur everyday for the past 14 days and every week for the past 60 days. Importantly, these back-ups **DO NOT** occur in `/n/scratch/`. 
+
+In order to see what is in `.snapshot`, let's go to our `home` directory and type:
+
+```bash
+ls .snapshot/
+```
+
+This should return 20 directories that look like:
+
+```bash
+o2_home_<date>_<time>
+```
+
+If we looking inside of one of these directories:
+
+```
+# Edit the data and time appropriate for your files
+ls -lh .snapshot/o2_home_<date>_<time>/
+```
+
+This should look like what your `home` directory looked like at the data and time you selected.
+
+If you have a file you'd like to recover, you can simply copy it to the present like:
+
+```bash
+# EXAMPLE CODE: DO NOT RUN
+cp .snapshot/old_copy_of_file filename_to_be_brought_to_present
+```
+
+It can be noted that each directory within the file systems that have snapshot back-ups, so you can either travel, for example, from your `home` directory to the file that you are looking for in 3 subdirectories down within `.snapshot` or you can travel those three subdirectories down and then use `.snapshot` within that directory to retrieve a file.
