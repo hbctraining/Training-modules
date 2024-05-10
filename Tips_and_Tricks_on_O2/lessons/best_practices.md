@@ -385,3 +385,13 @@ cp .snapshot/old_copy_of_file filename_to_be_brought_to_present
 ```
 
 It can be noted that each directory within the file systems that have snapshot back-ups, so you can either travel, for example, from your `home` directory to the file that you are looking for in 3 subdirectories down within `.snapshot` or you can travel those three subdirectories down and then use `.snapshot` within that directory to retrieve a file.
+
+***
+
+[Next Lesson >>](moving_files.md)
+
+[Back to Schedule](../README.md)
+
+***
+
+*This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
