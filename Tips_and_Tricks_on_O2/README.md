@@ -13,7 +13,13 @@ _This workshop is being held in collaboration with HMS Research Computing, and i
 
 ### Learning Objectives
 
-  
+In this workshop, we will:
+
+- Establish a `scratch` space on the O2 computing cluster and check our storage quotas
+- Modify our `.bashrc` profile with commonly used aliases
+- Download external data to O2 from a website
+- Locally download and upload data to and from O2
+- Manage job submissions to O2 
 
 > These materials are developed for a trainer-led workshop, but are also amenable to self-guided learning.
 
@@ -28,12 +34,15 @@ _This workshop is being held in collaboration with HMS Research Computing, and i
 | [Job Management on O2](lessons/job_managment.md) | 60 min |
 | Wrap-up | 5 min |
 
-### Dataset
-
-
 ### Installation Requirements
 
 
 ***Windows users:***
 [GitBash](https://git-scm.com/download/win)
-[R](https://cran.r-project.org/)
+
+---
+
+*These materials have been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
+
+* *Some materials used in these lessons were derived from work that is Copyright © Data Carpentry (http://datacarpentry.org/). 
+All Data Carpentry instructional material is made available under the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0).*
