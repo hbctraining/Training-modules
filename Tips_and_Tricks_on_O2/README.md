@@ -30,8 +30,8 @@ In this workshop, we will:
 |:------------------------|:----------|
 | Introduction | 10 min |
 | [Setting up, .bashrc and checking quotas](lessons/best_practices.md) | 45 min |
-| [Data utilies with O2](lessons/moving_files.md) | 60 min |
-| [Job Management on O2](lessons/job_managment.md) | 60 min |
+| [Data utilies with O2](lessons/moving_files.md) | 45 min |
+| [Job Management on O2](lessons/job_managment.md) | 45 min |
 | Wrap-up | 5 min |
 
 ### Installation Requirements
