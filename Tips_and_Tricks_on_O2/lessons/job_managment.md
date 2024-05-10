@@ -5,8 +5,10 @@
 In this lesson we will:
 - Discuss the advantages of utilizing job dependencies
 - Implement a job dependency
-- 
-- 
+- Cancel a job that is running on the cluster
+- Look up the CPU, memory and time efficiencies of a job
+- Use the `watch` command to monitor a task
+- Employ job arrays to submit multiple jobs
 
 ## Job Dependency
 
