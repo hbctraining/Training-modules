@@ -136,6 +136,100 @@ JobId=Job_ID JobName=job_name.sbatch
 
 This can tell you lots of information about the job. It tells you the job's state, when it started, when the job will end if it doesn't finish early, the compute node that it is on, partition used, any job dependencies it has, the resources requested, where the standard error and standard output is written to. Almost any question you might have about a job can be answered within here.
 
+## scancel
+
+There might be a time that you want to cancel a job that you've started. The command that you can use to cancel a job is `scancel` and the syntax looks like:
+
+```bash
+# DO NOT RUN
+scancel <job_id>
+```
+
+The `job_id` is the `job_id` that you get when you submit a job or you can find it out by looking at your submitted jobs with using `O2squeue` or `squeue --me`.
+
+If you have many jobs that you need to be cancelled, there is a useful shortcut for running `scancel` across all of your jobs:
+
+```bash
+# DO NOT RUN
+squeue --me
+```
+
+This will cancel all of your jobs, including any interactive jobs you might be running. We can test this out by submitting our `job_1.sh` to the cluster twice:
+
+```bash
+sbatch job_1.sbatch
+sbatch job_1.sbatch
+```
+
+We should be able to see that we know have two `job_1.sbatch` scripts submitted when we use our `O2squeue`:
+
+```bash
+O2squeue
+```
+
+Now let's cancel them both:
+
+```bash
+scancel --me
+```
+
+Now we should see that we have no jobs running when we check `O2squeue`:
+
+```bash
+O2squeue
+```
+
+## O2_jobs_report
+
+Sometimes you might be interested in checking on the jobs that you have submitted. SLURM has a feature to help you do this called `sacct`. Let's see what this looks like:
+
+```bash
+sacct
+```
+
+You output might look something like:
+
+```
+JobID           JobName  Partition    Account  AllocCPUS      State ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- -------- 
+38003155           bash interacti+      bcbio          1 CANCELLED+      0:0 
+38003155.ex+     extern                 bcbio          1  COMPLETED      0:0 
+38003155.0         bash                 bcbio          1  CANCELLED      0:9 
+38003191          job_1      short      bcbio          1 CANCELLED+      0:0 
+38003191.ba+      batch                 bcbio          1  CANCELLED     0:15 
+38003191.ex+     extern                 bcbio          1  COMPLETED      0:0 
+38003285          job_1      short      bcbio          1 CANCELLED+      0:0 
+38003285.ba+      batch                 bcbio          1  CANCELLED     0:15 
+38003285.ex+     extern                 bcbio          1  COMPLETED      0:0 
+38003385           bash interacti+      bcbio          1 CANCELLED+      0:0 
+38003385.ex+     extern                 bcbio          1  COMPLETED      0:0 
+38003385.0         bash                 bcbio          1  CANCELLED     0:15 
+38003495           bash interacti+      bcbio          1    RUNNING      0:0 
+38003495.ex+     extern                 bcbio          1    RUNNING      0:0 
+38003495.0         bash                 bcbio          1    RUNNING      0:0 
+```
+
+This can give you a nice overview of your recently completed jobs. It gives you information about the jobs that ran, are running or pending. However, there is an jobs report that was developed by the folks at HMS-RC that is more informative and the command is  called `O2_jobs_report`. Let's take a look at it:
+
+ ```bash
+O2_jobs_report
+```
+
+The output will look something like:
+
+```bash
+JOBID        USER       ACCOUNT          PARTITION       STATE           STARTTIME       WALLTIME(hr)   RUNTIME(hr)    nCPU,RAM(GB),nGPU    PENDINGTIME(hr)    CPU_EFF(%)   RAM_EFF(%)   WALLTIME_EFF(%)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+37960930     <user>     bcbio            interactive     COMPLETED       2024-05-09      9.0            1.6            1,1.0,0              0.01               0.1          1.2          17.9      
+37962316     <user>     bcbio            priority        COMPLETED       2024-05-09      2.0            0.0            1,8.0,0              0.0                93.8         49.6         1.3       
+37976042     <user>     bcbio            interactive     FAILED          2024-05-09      12.0           1.9            1,4.0,0              0.01               0.0          0.1          15.5      
+38003155     <user>     bcbio            interactive     CANCELLED       2024-05-10      12.0           0.0            1,4.0,0              0.01               2.2          0.1          0.3       
+38003191     <user>     bcbio            short           CANCELLED       2024-05-10      0.1            0.0            1,0.0,0              0.02               0.0          0.0          14.7      
+38003285     <user>     bcbio            short           CANCELLED       2024-05-10      0.1            0.0            1,0.0,0              0.03               0.0          0.0          12.0  
+```
+
+This is an excellent way to not only get the same information that `sacct` provides, but also it gives the user better context about the CPU, memory and time efficiency of their requested jobs. This can very helpful for users to know how they can more responsibly use requested resources in their future jobs. 
+
 ## Keeping Track of Time
 
 We don't always just submit a command and come back later. There are times when you want to keep track of what is going on, see how long a task takes for future use, or run a command in the background while you continue to use the command line.
@@ -327,5 +421,11 @@ samtools view -S -b ../${file}.sam > ${file}.bam
 This script differs from our previous one in that it makes a folder with the job ID (Folder_1 for job ID 1) then moves inside of it to execute the command. Instead of getting all 16 of our bam files output in a single folder each of them will be in its own folder labled Folder_1 to Folder_16. 
 
 **NOTE** That we define `${file}` BEFORE we move into our new folder as samples.txt is only present in the main directory. 
+
+***
+
+[Back to Schedule](../README.md)
+
+***
 
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
