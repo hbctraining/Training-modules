@@ -10,7 +10,17 @@ In this lesson we will:
 - Use the `watch` command to monitor a task
 - Employ job arrays to submit multiple jobs
 
-## Job Dependency
+## Overview
+
+* [Job dependencies and checking on your jobs](#jobdep)
+* [Checking on your jobs using `scontrol` for more information](#jobinfo) 
+* [Canceling your job(s) with `scancel`](#scancel)
+* [Getting additional information about your jobs with `sacct` and `O2_jobs_report`](#saccto2)
+* [Keeping track of time](#time)
+* [Running jobs in the background with `&` and `bg`/`fg`](#bgfg)
+* [Job arrays](#jobarray)
+  
+## Job dependency <a name="jobdep"></a> 
 
 Most, if not all, high performance computer clusters (HPCCs) utilize a job scheduler. As we have previously discussed, O2 uses one of the most popular ones, SLURM. These job schedulers aim to allow for fair use of limited computational resources in a shared network. In order to most limit one's use of limited resources, it is oftentimes best practice to place programs that require different computational resources in different job submissions. For example, perhaps program A needs 12 CPUs, 36GB of memory and 6 hours, but the output of program A is used in program B and it requires 1 CPU, 4GB of memory and 8 hours. In this case one *could* request 12 CPUs, 36 GB and 14 hours of compute time, but when program B is running you would be wasting 11 CPUs and 32GB of memory. As a result this type of behavior is *strongly discouraged*.
 
@@ -97,7 +107,7 @@ sbatch --dependency=afterok:353:354 Job_5.sbatch
 
 As you can hopefully, see is that you can potentially set-up an entire pipeline for analysis and then comeback in a few days after it has all ran and you don't need to be constantly monitoring your jobs.
 
-## scontrol
+## Checking on your jobs using `scontrol` for more information <a name="jobinfo"></a>
 
 When you use `squeue -u $USER`, sometimes you don't get all of the information that you might like. The `scontrol` command can help give you a more detailed picture of the job submission. The syntax for using `scontrol` is:
 
@@ -138,7 +148,7 @@ JobId=Job_ID JobName=job_name.sbatch
 
 This can tell you lots of information about the job. It tells you the job's state, when it started, when the job will end if it doesn't finish early, the compute node that it is on, partition used, any job dependencies it has, the resources requested, where the standard error and standard output is written to. Almost any question you might have about a job can be answered within here.
 
-## scancel
+## Canceling your job(s) with `scancel` <a name="scancel"></a>
 
 There might be a time that you want to cancel a job that you've started. The command that you can use to cancel a job is `scancel` and the syntax looks like:
 
@@ -181,7 +191,7 @@ Now we should see that we have no jobs running when we check `O2squeue`:
 O2squeue
 ```
 
-## O2_jobs_report
+## Getting additional information about your jobs with `sacct` and `O2_jobs_report` <a name="saccto2"></a>
 
 Sometimes you might be interested in checking on the jobs that you have submitted. SLURM has a feature to help you do this called `sacct`. Let's see what this looks like:
 
@@ -232,7 +242,7 @@ JOBID        USER       ACCOUNT          PARTITION       STATE           STARTTI
 
 This is an excellent way to not only get the same information that `sacct` provides, but also it gives the user better context about the CPU, memory and time efficiency of their requested jobs. This can very helpful for users to know how they can more responsibly use requested resources in their future jobs. 
 
-## Keeping Track of Time
+## Keeping Track of Time <a name="time"></a>
 
 We don't always just submit a command and come back later. There are times when you want to keep track of what is going on, see how long a task takes for future use, or run a command in the background while you continue to use the command line.
 
@@ -278,7 +288,7 @@ sys	0m0.007s
 
 **`real`** is most likely the time you are interested in since it displays the time it takes to run a given command. **`user`** and **`sys`** represent CPU time used for various aspects of the computing and can be impacted by multithreading. 
 
-### Running jobs in the background with `&` or `bg`
+### Running jobs in the background with `&` or `bg` <a name="bgfg"></a>
 
 Sometimes you may start a command that will take a few minutes and you want to have your command prompt back to do other tasks while you wait for the initial command to finish. There are two ways to do this. One way is to add the `&` argument to the end of your command when you first type it. Another way, which is useful if you've started your job already but forgot to include the `&` argument, is to use `bg`.  To use `bg`, you will need to do two things:
 
@@ -335,7 +345,7 @@ The place that this can be really useful is whenever you are running commands/sc
 
 Oftentimes, it is best just to submit these types of jobs to the cluster, but sometimes you don't mind running the task on your requested compute node, but is taking a bit longer than you anticipated or something came up. 
 
-## What is a job array?
+## What is a job array? <a name="jobarray"></a>
 
 Atlassian says this about job arrays on O2: "Job arrays can be leveraged to quickly submit a number of similar jobs. For example, you can use job arrays to start multiple instances of the same program on different input files, or with different input parameters. A job array is technically one job, but with multiple tasks." [link](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/1586793632/Using+Slurm+Basic#Job-Arrays).
 
