@@ -4,7 +4,18 @@
 - Editing `.bashrc` file to modify your default environment
 - Evaluate how much space you are using on O2
 
-## Logging into O2
+## Overview/quick links
+
+* [Logging into O2](#LoggingIn)
+* [Creating a scratch space](#scratch)
+* [Logging into an interactive node](#interact)
+* [Aliases and .bashrc profiles](#aliasbashrc)
+* [Writing to scratch](#writingscratch)
+* [Checking quotas with `quota-v2`](#quotas)
+* [Summarizing storage limits with `du`](#du)
+* [Retrieving a backup with `.snapshot`](#snapshot)
+
+## Logging into O2 <a name="LoggingIn"></a>
 
 For this workshop we will be using our own accounts to log into O2. These have been created for us by the [HMS Research Computing (HMS-RC) team](https://it.hms.harvard.edu/our-services/research-computing) and they are the folks that manage the O2 cluster. .
 
@@ -47,7 +58,7 @@ Once logged in, you should see the O2 icon, some news, and the command prompt, e
 > Note 1: ssh stands for secure shell. All of the information (like your password) going between your computer and the O2 login computer is encrypted when using ssh.
 
 
-### Creating a scratch space
+### Creating a scratch space <a name="scratch"></a>
 
 In the course of your analyses, you might find that you you create many large intermediate files, such as SAM files. Oftentimes, these files are purely intermediary, but can take up lots of space on the cluster (>100Gb each). These intermediate can quickly fill your allotted space on the cluster and therefore it is recommended that you utilize "scratch" space on the cluster. `scratch` space on the cluster is much like scratch paper that you may use on the exam. It is a space when you can do your "scratch" work. The files on `scratch` **are not backed up** and **will be deleted in 30 days**. However, you can be allocated ~25TB of space which is great for intermediate large files. We will be using the `scratch` space extensively today, but we will not be using it for large files for the sake of not needlessly consuming space on the cluster.
 
@@ -103,6 +114,8 @@ We can anvigate to our newly created scratch space using this command:
 cd /n/scratch/users/${USER:0:1}/${USER}/
 ```
 
+### Logging into an interactive node <a name="interact"></a>
+
 Now that we have created our `scratch` space, you will need to start an interactive session. A login node's primary function is to enable users to log in to a cluster, it is not meant to be used for any actual work/computing. Since we will be doing some work, let's get on to a compute node:
 
 ```
@@ -111,7 +124,7 @@ $ srun --pty -p interactive -t 0-3:00 --mem 1G  /bin/bash
 
 Make sure that your command prompt is now preceded by a character string that contains the word `compute`.
 
-# Aliases and .bashrc profile
+# Aliases and .bashrc profile <a name="aliasbashrc"></a>
 
 Now that we have created a space on scratch, you might be interested in having a shortcut to getting there just like you have a shortcut to get to your home directory by using:
 
@@ -245,7 +258,7 @@ export PATH
 
 These are just a few examples of items that one might commonly see in other people's `.bashrc` profiles.
 
-# Writing to Scratch
+# Writing to Scratch <a name="writingscratch"></a>
 
 Just like any other storage area on O2, we can copy data to `scratch`. For example, let's copy some scripts over that we will be using in some later exercises:
 
@@ -256,7 +269,7 @@ cp -r /n/groups/hbctraining/sleep_scripts .
 
 > Note: `${USER}` is just a environment variable in bash that hold your username and `${USER:0:1}` just some shorthand to get the first letter of your username.
 
-# Checking Quotas
+# Checking Quotas <a name="quotas"></a>
 
 Now that we have created our `scratch` space on O2 let's discuss how we can know how much space we are using in our various directories. 
 
@@ -314,7 +327,7 @@ An example output might look like:
 > ```
 > However, you will need to do this each time you log onto the cluster. The easier way will be to put the above commands into your `.bashrc` profile.
 
-## du
+## Summarizing storage limits with `du` <a name="du"></a>
 
 The `quota-v2` command is a very useful summary of your storage usage and your storage limits. However, it comes with two caveats:
 
@@ -352,7 +365,7 @@ We can change the directory that we would like to run `du` on but providing it a
 du -sh /home/${USER}
 ```
 
-## `.snapshot`
+## Retrieving a backup with `.snapshot` <a name="snapshot"></a>
 
 When we discussed `.bashrc` profiles, we discussed hidden files. In addition to hidden files, O2 has a hidden directory, which you can't even see with `ls -a`, that contains back-ups of your file system. These back-ups occur in only the `/home/`, `/n/data1/`, `/n/data2/` and `/n/groups/` file systems and these back-ups will occur everyday for the past 14 days and every week for the past 60 days. Importantly, these back-ups **DO NOT** occur in `/n/scratch/`. 
 
