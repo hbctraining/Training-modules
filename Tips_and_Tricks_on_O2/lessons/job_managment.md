@@ -14,7 +14,7 @@ In this lesson we will:
 
 Most, if not all, high performance computer clusters (HPCCs) utilize a job scheduler. As we have previously discussed, O2 uses one of the most popular ones, SLURM. These job schedulers aim to allow for fair use of limited computational resources in a shared network. In order to most limit one's use of limited resources, it is oftentimes best practice to place programs that require different computational resources in different job submissions. For example, perhaps program A needs 12 CPUs, 36GB of memory and 6 hours, but the output of program A is used in program B and it requires 1 CPU, 4GB of memory and 8 hours. In this case one *could* request 12 CPUs, 36 GB and 14 hours of compute time, but when program B is running you would be wasting 11 CPUs and 32GB of memory. As a result this type of behavior is *strongly discouraged*.
 
-However, you may be interested in having your jobs queue is such a way that once one job finishes, it automatically queues the next job and job dependencies allow you to queue jobs to be dependent on other jobs.
+However, you may be interested in having your jobs queue in such a way that once one job finishes, it automatically queues the next job and job dependencies allow you to queue jobs to be dependent on other jobs.
 
 Job dependencies are very useful:
 - When you have consecutive jobs you want to run
@@ -30,7 +30,7 @@ The syntax for using job dependencies in SLURM can be done in two ways:
 
 We will be doing the latter, but either way will use the `--dependency` option. This option has several arguments that it can accept, but the most useful one for the overwhleming number of circumstances is `afterok`. Using `afterok` means that after the following job ends without an error, then it will remove the hold on the dependent job. After the `afterok` part you can separate one or more jobs with colons to signify which jobs are dependent.
 
-Let's go to out `scratch` space to test this out:
+Let's go to our `scratch` space to test this out:
 
 ```bash
 cd_scratch
@@ -211,7 +211,7 @@ JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
 38003495.0         bash                 bcbio          1    RUNNING      0:0 
 ```
 
-This can give you a nice overview of your recently completed jobs. It gives you information about the jobs that ran, are running or pending. However, there is an jobs report that was developed by the folks at HMS-RC that is more informative and the command is  called `O2_jobs_report`. Let's take a look at it:
+This can give you a nice overview of your recently completed jobs. It gives you information about the jobs that ran, are running or pending. However, there is a jobs report that was developed by the folks at HMS-RC that is more informative and the command is  called `O2_jobs_report`. Let's take a look at it:
 
  ```bash
 O2_jobs_report
@@ -262,7 +262,7 @@ watch -n 4 squeue -u $USER
 
 ## time
 
-Sometimes you are interested to know how long a task takes to complete. Similarly, to the `watch` command you can place `time` infront of a command and it will tell you how long the command takes to run. This can be particularly useful if you have downsampled a dataset and you are trying to estimate how long the full set will take to run. An example can be found below:
+Sometimes you are interested to know how long a task takes to complete. Similar to the `watch` command you can place `time` infront of a command and it will tell you how long the command takes to run. This can be particularly useful if you have downsampled a dataset and you are trying to estimate how long the full set will take to run. An example can be found below:
 
 ```bash
 time ls -lh
@@ -276,17 +276,17 @@ user	0m0.002s
 sys	0m0.007s
 ```
 
-**real** is most likely the time you are interested in since it displays the time it takes to run a given command. **user** and **sys** represent CPU time used for various aspects of the computing and can be impacted by multithreading. 
+**`real`** is most likely the time you are interested in since it displays the time it takes to run a given command. **`user`** and **`sys`** represent CPU time used for various aspects of the computing and can be impacted by multithreading. 
 
-### bg
+### Running jobs in the background with `&` or `bg`
 
-Sometimes you may start a command that will take a few minutes and you want to have your command prompt back to do other tasks while you wait for the initial command to finish. To do this, you will need to do two things:
+Sometimes you may start a command that will take a few minutes and you want to have your command prompt back to do other tasks while you wait for the initial command to finish. There are two ways to do this. One way is to add the `&` argument to the end of your command when you first type it. Another way, which is useful if you've started your job already but forgot to include the `&` argument, is to use `bg`.  To use `bg`, you will need to do two things:
 
 1) Pause the command with <kbd>Ctrl</kbd> + <kbd>Z</kbd>. 
 2) Send the command to the ***b***ack***g***round with the command `bg`. When you do this the command will continue from where it was paused.
 3) If you want to bring the task back to the ***f***ore***g***round, you can use the command `fg`.
 
-In order to test this, we will briefly re-introduce the `sleep` command. `sleep` just has the command line do nothing for a period of time denoted in seconds by the integer following the `sleep` command. This is sometimes useful if you want a brief pause within a loop, such as between submitting a bunch of jobs to the cluster. The syntax is:
+In order to test these methods, we will briefly re-introduce the `sleep` command. `sleep` just has the command line do nothing for a period of time denoted in seconds by the integer following the `sleep` command. This is sometimes useful if you want a brief pause within a loop, such as between submitting a bunch of jobs to the cluster. The syntax is:
 
 ```bash
 # DO NOT RUN
@@ -299,7 +299,15 @@ So if you wanted there to be a five second pause, you could use:
 sleep 5
 ```
 
-Now that we have re-introduced the `sleep` command let's go ahead and pause the command like for 180 seconds to simulate a task that is running that might take a few minutes to run.
+Now that we have re-introduced the `sleep` command let's go ahead and run it for 180 seconds to simulate a task that is running that might take a few minutes to run.
+
+If we know in advance we want to do other things while we're running our command, we can simply add the `&` argument:
+
+```bash
+sleep 180 &
+```
+
+You'll notice you can type other commands freely even though `sleep` is running in the background. For now, let's cancel this command by typing `Ctrl` + `X` + `C`. But what if we started `sleep` and didn't add `&` to our command?
 
 ```bash
 sleep 180
@@ -311,13 +319,13 @@ Now type `Ctrl` + `Z` and this will pause that command. This will be followed by
 bg
 ```
 
-The `sleep` command is now running in the background and you have re-claimed your command-line prompt to use while the `sleep` command runs. If you want to bring the `sleep` command back to the foreground, type:
+The `sleep` command is now running in the background and you have re-claimed your command-line prompt to use while the `sleep` command runs. You'll also notice that it added the `&` to your sleep command in the terminal output. If you want to bring the `sleep` command back to the foreground, type:
 
 ```bash
 fg
 ```
 
-And if it is still running it will be brought to the foreground.
+And if it is still running it will be brought to the foreground. `fg` will also work for commands which used the `&`.
 
 The place that this can be really useful is whenever you are running commands/scripts that take a few minutes to run that don't have large procesing requirements. Examples could be:
 
@@ -356,7 +364,7 @@ Of course we don't want to run the same job on the same input files over and ove
 
 ## How can I use ${SLURM_ARRAY_TASK_ID}?
 
-The value of `${SLURM_ARRAY_TASK_ID}` is simply job ID. If I run 
+The value of `${SLURM_ARRAY_TASK_ID}` is simply the job ID. If I run 
 
 ```bash
 sbatch --array=1,7 my_script.sh
