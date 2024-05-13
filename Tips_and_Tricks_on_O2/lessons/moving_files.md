@@ -313,7 +313,7 @@ cd ~
 The syntax for making a symbolic link is:
 
 ```
-ln -s <file_to_be_linked_to> <link_name>
+ln -s </path/to/file_to_be_linked_to> </path/to/link_name>
 ```
 
 Assume we we want to make a symbolic link to our compressed *E. coli* reference annotation that we had downloaded to the `scratch` space and we are going to call it `E_coli.gff.gz`. We could do that:
@@ -328,7 +328,7 @@ When you now view this directory with `ls -l`, it will display the link like:
 E_coli.gff.gz -> /n/scratch/users/w/wig051/GCA_000005845.2_ASM584v2_genomic.gff.gz
 ```
 
-If you want to keep the current name you can use `.` for `<link name>`.
+If you want to keep the original file name as the link name you can use just the path to where the symbolic link will be created and not include a <link name>. Since we are putting the link in our current directory, we can use `.`.
 
 ***Importantly, if the original file is deleted or moved, the symbolic link will become broken.*** It is common on many distributions for symbolic links to blink if they becomes broken.
 
