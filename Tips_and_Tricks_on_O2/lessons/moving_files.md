@@ -148,11 +148,11 @@ scp username@transfer.rc.hms.harvard.edu:/path/to/file_on_O2 Path/to/directory/l
 Let's try copying over the *E. coli* reference genome that we download from NCBI from our scratch space to our local machine. **In a new terminal window**, type:
 
 ```bash
-# Be sure to replace username twice with your O2 username and first_letter_of_username with the first letter of your username
-scp username@transfer.rc.hms.harvard.edu:/n/scratch/users/first_letter_of_username/username/GCA_000005845.2_ASM584v2_genomic.fna.gz  .
+# Be sure to replace `<username>` twice with your O2 username and `<first_letter_of_username>` with the first letter of your username
+scp username@transfer.rc.hms.harvard.edu:/n/scratch/users/<first_letter_of_username>/<username>/GCA_000005845.2_ASM584v2_genomic.fna.gz  .
 ```
 
-Now see that the file has transferred over:
+You will be prompted for your password and silently prompted by approval for Duo. Now see that the file has transferred over:
 
 ```bash
 $ ls GCA_000005845.2_ASM584v2_genomic.fna.gz
@@ -175,15 +175,15 @@ $ ls GCA_000005845.2_ASM584v2_genomic.fna.gz
 When copying over large datasets to or from a remote machine, `rsync` works similarly to `scp`. This time we are going to copy the reference genome back onto the cluster using `rsync`.
 
 ```bash
-# Be sure to replace username with your username
-rsync -av -e ssh GCA_000005845.2_ASM584v2_genomic.fna.gz username@transfer.rc.hms.harvard.edu:~
+# Be sure to replace <username> with your username
+rsync -av -e ssh GCA_000005845.2_ASM584v2_genomic.fna.gz <username>@transfer.rc.hms.harvard.edu:~
 ```
 
 * `a` is for archive - means it preserves permissions (owners, groups), times, symbolic links, and devices.
 * `v` is for verbosity - means that it prints on the screen what is being copied
 * `-e ssh` is for encryption - means that we want to use the ssh protocol for encryption of the file transfer
 
-We should now be able to see that the reference genome has been uploaded to O2 by using `ls` on our home directory on our Terminal window that is connected to O2:
+You will again be prompted for your password and Duo approval. We should now be able to see that the reference genome has been uploaded to O2 by using `ls` on our home directory on our Terminal window that is connected to O2:
 
 ```bash
 ls ~
