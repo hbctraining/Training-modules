@@ -9,7 +9,7 @@
 * [Logging into O2](#LoggingIn)
 * [Creating a scratch space](#scratch)
 * [Logging into an interactive node](#interact)
-* [Aliases and .bashrc profiles](#aliasbashrc)
+* [Aliases and .bashrc profile](#aliasbashrc)
 * [Writing to scratch](#writingscratch)
 * [Checking quotas with `quota-v2`](#quotas)
 * [Summarizing storage limits with `du`](#du)
