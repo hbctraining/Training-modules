@@ -75,7 +75,7 @@ In general, `curl` has *a bit* more options and flexibility than `wget` but the 
 
 ## md5sum
 
-When you are copying files between two locations and you want to ensure the copying went smoothly or are interested to see if two files are the same. Checksums can be thought of as an alphanumeric fingerprint for a file and they are used to ensure that two files are the same. It is common for people/insitutions to provide an list of md5sums for files that are availible to download. `md5sum` is one common checksum. ***Importantly, it is theorectically possible that two different files have the same md5sum, but it is practically nearly impossible.*** The syntax for checking the md5sum of a file is:
+When you are copying files between two locations and you want to ensure the copying went smoothly or are interested to see if two files are the same. Checksums can be thought of as an alphanumeric fingerprint for a file and they are used to ensure that two files are the same. It is common for people/insitutions to provide a list of md5sums for files that are availible to download. `md5sum` is one common checksum. ***Importantly, it is theorectically possible that two different files have the same md5sum, but it is practically nearly impossible.*** The syntax for checking the md5sum of a file is:
 
 ```bash
 md5sum <file>
@@ -198,15 +198,13 @@ ls ~
 Check the `md5sum` for the `GCA_000005845.2_ASM584v2_genomic.fna.gz`. Does it match the `md5sum` on the NCBI website for this file? 
 
 
-### iGenome
+## iGenome
 
 Another O2 quality-of-life feature is that HMS-RC has a directory called `/n/shared_db/igenome/03032016/` which holds reference genomes, alignment indexes, annotation files and much more for many common model organisms. Therefore, oftentimes you don't even need to download many of the files that you will need to do any analysis.
 
 ### Exercise
 
 Navigate to the `/n/shared_db/igenome/03032016/` directory and see if you can find the organism that you study there.
-
-***
 
 Let's explore the human reference by:
 
