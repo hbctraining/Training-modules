@@ -7,9 +7,18 @@
 - Recall the iGenomes resource on the cluster
 - Create symbolic links for within your data
 
-## Downloading external data
+## Overview/quick links
 
-When you want to obtain your data from the sequencing facility, it will likely be stored on some remote computer and they will give you login credentials which will allow you to access it. You will then need to copy that over to O2 our your computing cluster of choice so that you can carry out the analysis on it. Next, we will describe the steps that you would need to take to copy files on and off of the cluster.
+* [Downloading external data from websites using `wget` or `curl`](#dlext)
+* [Checking file download success with md5sum](#md5sum) 
+* [Securely sharing data across clusters with Globus](#globus)
+* [Copying files to and from the cluster with `scp` and `rsync`](#scprsync)
+* [O2 shared reference files (iGenome)](#igenome)
+* [Symbolic links](#symlinks)
+
+## Downloading external data <a name="dlext"></a>
+
+When you want to obtain your data from the sequencing facility, it will likely be stored on some remote computer and they will give you login credentials which will allow you to access it. You will then need to copy that over to O2 or your computing cluster of choice so that you can carry out the analysis on it. Next, we will describe the steps that you would need to take to copy files on and off of the cluster.
 
 ### `wget`
 
@@ -73,9 +82,9 @@ curl -L -O [http://www.example.com/data_file_1] -O [http://www.example.com/data_
 
 In general, `curl` has *a bit* more options and flexibility than `wget` but the vast majority, if not all, of those options are ***far*** beyond the scope of this module and for this module it comes down to a personal preference. That being said, as you download data and tools from various sources you may see different developers having different preferences. This is mostly a primer for understanding both of the cases that you will likely run into.
 
-## md5sum
+## Checking file download success with md5sum <a name="md5sum"></a>
 
-When you are copying files between two locations and you want to ensure the copying went smoothly or are interested to see if two files are the same. Checksums can be thought of as an alphanumeric fingerprint for a file and they are used to ensure that two files are the same. It is common for people/insitutions to provide a list of md5sums for files that are availible to download. `md5sum` is one common checksum. ***Importantly, it is theorectically possible that two different files have the same md5sum, but it is practically nearly impossible.*** The syntax for checking the md5sum of a file is:
+When you are copying files between two locations and you want to ensure the copying went smoothly or are interested to see if two files are the same. Checksums can be thought of as an alphanumeric fingerprint for a file and they are used to ensure that two files are the same -- in other words, you can ensure that the file you downloaded did not get truncated or corrupted during the download. It is common for people/insitutions to provide a list of md5sums for files that are availible to download. `md5sum` is one common checksum. ***Importantly, it is theorectically possible that two different files have the same md5sum, but it is practically nearly impossible.*** The syntax for checking the md5sum of a file is:
 
 ```bash
 md5sum <file>
@@ -87,7 +96,7 @@ Let's check the `md5sum` for the *E. coli* reference genome that we downloaded.
 md5sum GCA_000005845.2_ASM584v2_genomic.fna.gz
 ```
 
-This should hopeful return:
+This should hopefully return:
 
 ```
 7e69874199f23fd21b060dc0b2b72321  GCA_000005845.2_ASM584v2_genomic.fna.gz
@@ -102,7 +111,7 @@ Now, we can cross-reference this md5sum with the md5sum that [NCBI provides for 
 If these match you can have confidence that the file download was complete.
 
 
-## Globus
+## Securely sharing data across clusters with Globus <a name="globus"></a>
 
 Perhaps you are working on a project with a collaborator who works in Europe and you want to securely share your data. This task can be quite difficult without one of you distributing your username and password to the other, which would be a security risk, or posting the data publicly where others could download it and thus the data transfer isn't private. This is where [Globus](https://www.globus.org/) comes in. Globus is a file sharing tool for sharing data with between users on different computing clusters. One example of this is that it is sometimes used with retrieving sequencing data from sequencing cores.
 
@@ -114,7 +123,7 @@ At Harvard, Globus can be used for:
 
 HMS-RC's information page on Globus can be found [here](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/2046689281/Using+Globus+on+O2) and for the purposes of this module we won't dive anymore into it, but it is important to know that this tool exists, particularly when collaborating with researchers who don't have HMS creditials.
 
-## Copying files to and from the cluster
+## Copying files to and from the cluster <a name="scprsync"></a>
 
 Alternatively, when you have analyzed your data you may have some files that you would like to download from the cluster. You can use a program like [Filezilla](https://filezilla-project.org/) to copy over files from a computing cluster to your local machine, but there are other ways to do so using the command-line interface. 
 
@@ -198,7 +207,7 @@ ls ~
 Check the `md5sum` for the `GCA_000005845.2_ASM584v2_genomic.fna.gz`. Does it match the `md5sum` on the NCBI website for this file? 
 
 
-## iGenome
+## O2 shared reference files (iGenome) <a name="igenome"></a>
 
 Another O2 quality-of-life feature is that HMS-RC has a directory called `/n/shared_db/igenome/03032016/` which holds reference genomes, alignment indexes, annotation files and much more for many common model organisms. Therefore, oftentimes you don't even need to download many of the files that you will need to do any analysis.
 
@@ -286,7 +295,7 @@ lrwxrwxrwx 1 ld32 ritg        29 Aug 18  2015 genome.fa -> ../WholeGenomeFasta/g
 
 This is the first place we have now seen a symbolic link. `genome.fa` is the link name and it is pointing, with a relative path, to the reference genome FASTA file that we were just looking at (../WholeGenomeFasta/genome.fa). We are going to talk more about symbolic links, sometimes called symlinks, in the next section.
 
-## Symbolic Links
+## Symbolic Links <a name="symlinks"></a>
 
 Sometimes you will have large files on a computing cluster that you would like to have in a few places. A few cases where this might happen:
 
