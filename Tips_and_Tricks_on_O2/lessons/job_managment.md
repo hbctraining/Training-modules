@@ -381,6 +381,9 @@ Within this configuration file, you can see the number of default windows are 4,
 ```bash
 screen
 ```
+
+Your terminal window should now look like:
+
 <p align="center">
 <img src="../img/O2_screen.png" width="900">
 </p>
@@ -393,7 +396,7 @@ sleep 60
 
 And now let's hop to the first screen while we wait on it to run with <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>1</kbd>.
 
-Now, you might be thinking if I am using <kbd>Ctrl</kbd> + <kbd>a</kbd> + `insert_screen_number` to jump between screens, what happens to the <kbd>Ctrl</kbd> + <kbd>a</kbd> that we use to jump to the beginning of our command-line? We can use <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>a</kbd> to jump to the beginning of the command-line when inside of screens, however <kbd>Ctrl</kbd> + <kbd>e</kbd> remains to jumping to the end of the line.
+Now, you might be thinking if I am using <kbd>Ctrl</kbd> + <kbd>a</kbd> + `insert_screen_number` to jump between screens, what happens to the <kbd>Ctrl</kbd> + <kbd>a</kbd> that we use to jump to the beginning of our command-line? We can use <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>a</kbd> to jump to the beginning of the command-line when inside of screens, however <kbd>Ctrl</kbd> + <kbd>e</kbd> remains for jumping to the end of the line.
 
 We can exit `screen` by using <kbd>Ctrl</kbd> + <kbd>d</kbd>. A few useful keyboard shortcuts for `screen` are listed in the table below:
 
@@ -402,9 +405,9 @@ We can exit `screen` by using <kbd>Ctrl</kbd> + <kbd>d</kbd>. A few useful keybo
 | Jump to screen | <kbd>Ctrl</kbd> + <kbd>a</kbd> + `insert_screen_number` |
 | Return to last screen | <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>Ctrl</kbd> + <kbd>a</kbd> |
 | Create new screen | <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>c</kbd> |
-| Beginning of line| <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>a</kbd> |
-| End of line | <kbd>Ctrl</kbd> + <kbd>e</kbd> |
-|Quit `screen` | <kbd>Ctrl</kbd> + <kbd>d</kbd>  |
+| Jump to the beginning of line| <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>a</kbd> |
+| Jump to the end of line | <kbd>Ctrl</kbd> + <kbd>e</kbd> |
+| Quit `screen` | <kbd>Ctrl</kbd> + <kbd>d</kbd>  |
 
 ## O2 Portal
 
