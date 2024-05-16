@@ -12,10 +12,9 @@ author: "Will Gammerdinger, Heather Wick, Meeta Mistry"
 ## Overview/quick links
 
 * [Logging into O2](#LoggingIn)
-* [Creating a scratch space](#scratch)
 * [Logging into an interactive node](#interact)
 * [Aliases and .bashrc profile](#aliasbashrc)
-* [Writing to scratch](#writingscratch)
+* [`scratch` space](#scratch)
 * [Checking quotas with `quota-v2`](#quotas)
 * [Summarizing storage limits with `du`](#du)
 * [Retrieving a backup with `.snapshot`](#snapshot)
@@ -218,7 +217,8 @@ During the course of your analyses, you might find that you you create many larg
 While on the login node, we will create our space on `/n/scratch/`. In order to do so, we will need to run a script provided by the HMS Research Computing team. But **first you will need to be on a login node to do so.**
 
 ```bash
-$ exit
+$ exit # exit the interactive session
+
 $ sh /n/cluster/bin/scratch_create_directory.sh 
 ```
 
@@ -374,6 +374,8 @@ We can change the directory that we would like to run `du` on but providing it a
 ```bash
 du -sh /home/${USER}
 ```
+
+> For more information on options to use for `du` we recommend using the `man` command.
 
 ## Retrieving a backup with `.snapshot` <a name="snapshot"></a>
 
