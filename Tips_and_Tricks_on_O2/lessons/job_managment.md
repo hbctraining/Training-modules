@@ -345,6 +345,75 @@ The place that this can be really useful is whenever you are running commands/sc
 
 Oftentimes, it is best just to submit these types of jobs to the cluster, but sometimes you don't mind running the task on your requested compute node, but is taking a bit longer than you anticipated or something came up. 
 
+## screen
+
+An alternative to using `&` and `bg`, is to use `screen`, which allows the user to have multiple command-line interfaces open simultaneously while on the cluster. So instead of running something in the background or on a different terimal window, the user can just place it in a different screen and it is easy to navigate between screens. Let's start by copying a screens template configuration file that HMS-RC provides over to our home directory:
+
+```bash
+cp /n/shared_db/misc/rcbio/data/screenrc.template.txt ~/.screenrc
+```
+
+And we can look to see what this template using `less`:
+
+```bash
+less ~/.screenrc
+```
+
+And the contents are:
+
+```bash
+hardstatus alwayslastline
+hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %C%a "
+
+# Default screens  
+screen -t test1            1     
+screen -t test2            2  
+screen -t run1            3 
+screen -t run2            4
+#screen -t other           5
+
+# replace Crtl+a by Ctrl + x
+#escape ^Xx
+```
+
+Within this configuration file, you can see the number of default windows are 4, but this can be modified with the addition or removal of `screen -t` lines. Once you have the `screen` configuration file copied to your `home` directory, you won't need to do it again and to use `screen`, you simply need to type:
+
+```bash
+screen
+```
+<p align="center">
+<img src="../img/O2_screen.png" width="900">
+</p>
+
+In order to navigate between your screens you can type <kbd>Ctrl</kbd> + <kbd>a</kbd> + `insert_screen_number`. For example, if we wanted to jump to the second screen, we can type <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>2</kbd>. Let's go ahead and get a sleep command running:
+
+```bash
+sleep 60
+```
+
+And now let's hop to the first screen while we wait on it to run with <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>1</kbd>.
+
+Now, you might be thinking if I am using <kbd>Ctrl</kbd> + <kbd>a</kbd> + `insert_screen_number` to jump between screens, what happens to the <kbd>Ctrl</kbd> + <kbd>a</kbd> that we use to jump to the beginning of our command-line? We can use <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>a</kbd> to jump to the beginning of the command-line when inside of screens, however <kbd>Ctrl</kbd> + <kbd>e</kbd> remains to jumping to the end of the line.
+
+We can exit `screen` by using <kbd>Ctrl</kbd> + <kbd>d</kbd>. A few useful keyboard shortcuts for `screen` are listed in the table below:
+
+|Description| Shortcut|
+|----------------------|----------------------| 
+| Jump to screen | <kbd>Ctrl</kbd> + <kbd>a</kbd> + `insert_screen_number` |
+| Return to last screen | <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>Ctrl</kbd> + <kbd>a</kbd> |
+| Create new screen | <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>c</kbd> |
+| Beginning of line| <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>a</kbd> |
+| End of line | <kbd>Ctrl</kbd> + <kbd>e</kbd> |
+|Quit `screen` | <kbd>Ctrl</kbd> + <kbd>d</kbd>  |
+
+## O2 Portal
+
+Sometimes when you need to analyze big datasets, you will want to still use a graphical user interface (GUI) that you are familiar with, like RStudio or MatLab. O2 has a service called the [O2 Portal](https://o2portal.rc.hms.harvard.edu) which allows for users to utilize the computational power and datasets located on O2 with the convenience of using a GUI. In order to use the O2 Portal, you need to submit a job request like you would on the command-line via the `sbatch` command and you will provide it SLURM directives like numbers of CPUs, memory, partition and time. Once you are queued it will generate a session for you to use your application in. More information on the O2 Portal can be found [HMS-RC's resource page](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/2230583317/O2Portal) and a tutorial on how to use R Studio on the O2 Portal can be found [here](https://hbctraining.github.io/Intro-to-Unix-QMB/lessons/R_studio_on_02.html).
+
+<p align="center">
+<img src="../img/O2_portal_homepage.png" width="900">
+</p>
+
 ## What is a job array? <a name="jobarray"></a>
 
 Atlassian says this about job arrays on O2: "Job arrays can be leveraged to quickly submit a number of similar jobs. For example, you can use job arrays to start multiple instances of the same program on different input files, or with different input parameters. A job array is technically one job, but with multiple tasks." [link](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/1586793632/Using+Slurm+Basic#Job-Arrays).
