@@ -1,4 +1,9 @@
-# Learning Objectives
+---
+title: "Best Practices on O2"
+author: "Will Gammerdinger, Heather Wick, Meeta Mistry"
+---
+
+## Learning Objectives
 - Create a `scratch` space on O2
 - Utilizing aliases to reduce the need to rememeber long or tedious commands
 - Editing `.bashrc` file to modify your default environment
@@ -17,9 +22,10 @@
 
 ## Logging into O2 <a name="LoggingIn"></a>
 
-For this workshop we will be using our own accounts to log into O2. These have been created for us by the [HMS Research Computing (HMS-RC) team](https://it.hms.harvard.edu/our-services/research-computing) and they are the folks that manage the O2 cluster. .
+For this workshop we will be **using our own personal accounts to log into O2**. If you do not have your own personal account, you can use this workshop as a demo and/or bookmark these materials for future reference. The O2 cluster is managed by the [HMS Research Computing (HMS-RC) team](https://it.hms.harvard.edu/our-services/research-computing) and this workshop is created in collaboration with them.
 
-> If you do not already have one and are interested in getting your own personal account on O2, please follow the instructions provided [here](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/1918304257/How+to+request+or+retain+an+O2+account) after this module.
+
+> If you are interested in getting your own personal account on O2, please follow the instructions provided [here](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/1918304257/How+to+request+or+retain+an+O2+account) after this module.
 
 Let's get started with the hands-on component by typing in the following command to log into our command-line:
 
@@ -57,64 +63,7 @@ Once logged in, you should see the O2 icon, some news, and the command prompt, e
 
 > Note 1: ssh stands for secure shell. All of the information (like your password) going between your computer and the O2 login computer is encrypted when using ssh.
 
-
-### Creating a scratch space <a name="scratch"></a>
-
-In the course of your analyses, you might find that you you create many large intermediate files, such as SAM files. Oftentimes, these files are purely intermediary, but can take up lots of space on the cluster (>100Gb each). These intermediate can quickly fill your allotted space on the cluster and therefore it is recommended that you utilize "scratch" space on the cluster. `scratch` space on the cluster is much like scratch paper that you may use on the exam. It is a space when you can do your "scratch" work. The files on `scratch` **are not backed up** and **will be deleted in 30 days**. However, you can be allocated ~25TB of space which is great for intermediate large files. We will be using the `scratch` space extensively today, but we will not be using it for large files for the sake of not needlessly consuming space on the cluster.
-
-While on the login node, we will create our space on `/n/scratch/`. In order to do so, we will need to run a script provided by the HMS Research Computing team:
-
-```
-$ sh /n/cluster/bin/scratch_create_directory.sh 
-```
-
-> Note: You *MUST* be on a login node in order to create a space on `/n/scratch3`.
-
-It will prompt you with the following:
-
-```
-Do you want to create a scratch directory under /n/scratch3/users? [y/N]> 
-```
-
-To this you will respond <kbd>y</kbd>, then hit <kbd>Enter/Return</kbd>.
-
-
-Next, it will prompt you with:
-
-```
-By typing 'YES' I will comply with HMS RC guidelines for using Scratch3.
-I also confirm that I understand that files in my scratch directory WILL NOT BE BACKED UP IN ANY WAY.
-I also understand that THIRTY DAYS after I last access a given file or directory in my scratch directory,
-it will be DELETED with NO POSSIBILITY of retrieval.
-
-I understand HMS RC guidelines for using Scratch: 
-```
-
-Type <kbd>YES</kbd>, then hit <kbd>Enter/Return</kbd>.
-
-It should return:
-
-```
-Your scratch3 directory was created at /n/scratch/users/<users_first_letter>/<username>.
-This has a limit of 25TiB of storage and 2.5 million files.
-You can check your scratch quota using the quota-v2 command.
-```
-> Note: You might notice that your storage limit is 25TiB and might be confused by this unit. Generally speaking, you can think of a KiB =~ kB, MiB =~ MB, GiB =~ GB and TiB =~ TB. This nonmenclature comes from the difference that computers measure space in binary (base 2), while the prefixes are derived from a metric (base 10) system. So, a KiB is actually 1024 bytes worth of space, while a KB is 1000 bytes worth of space. The table below can help further demonstrate these differences.
-> | Unit | Size in Bytes | Unit | Size in Bytes |
-> |------|---------------|------|---------------|
-> | Kilobyte (kB) |1,000<sup>1</sup> = 1,000 | Kibibyte (KiB) | 1,024<sup>1</sup> = 1,024 |
-> | Megabyte (MB) |1,000<sup>2</sup> = 1,000,000 | Mebibyte (MiB) | 1,024<sup>2</sup> = 1,048,576 |
-> | Gigabyte (GB) |1,000<sup>3</sup> = 1,000,000,000 | Gibibyte (GiB) | 1,024<sup>3</sup> = 1,073,741,824 |
-> | Terabyte (TB) |1,000<sup>4</sup> = 1,000,000,000,000 | Tebibyte (TiB) | 1,024<sup>4</sup> = 1,099,511,627,776 |
-> | Petabyte (PB) |1,000<sup>5</sup> = 1,000,000,000,000,000 | Pebibyte (TiB) | 1,024<sup>5</sup> = 1,125,899,906,842,620 |
-
-We can anvigate to our newly created scratch space using this command:
-
-```bash
-cd /n/scratch/users/${USER:0:1}/${USER}/
-```
-
-### Logging into an interactive node <a name="interact"></a>
+## Logging into an interactive node <a name="interact"></a>
 
 Now that we have created our `scratch` space, you will need to start an interactive session. A login node's primary function is to enable users to log in to a cluster, it is not meant to be used for any actual work/computing. Since we will be doing some work, let's get on to a compute node:
 
@@ -124,7 +73,7 @@ $ srun --pty -p interactive -t 0-3:00 --mem 1G  /bin/bash
 
 Make sure that your command prompt is now preceded by a character string that contains the word `compute`.
 
-# Aliases and .bashrc profile <a name="aliasbashrc"></a>
+## Aliases and .bashrc profile <a name="aliasbashrc"></a>
 
 Now that we have created a space on scratch, you might be interested in having a shortcut to getting there just like you have a shortcut to get to your home directory by using:
 
@@ -189,9 +138,9 @@ ls -a
 
 You can see that there are a number of these hidden files that are responsiable for various things. However, you will see one called `.bashrc` and this is the one that we will be adding some preferences too. 
 
-**MEETA CHECK THIS NOTE AND REPHRASE IT AS NEEDED. I THINK `.bashrc` IS SOURCED ON LOGIN AS WELL.**
+
 > ### `.bashrc` versus `.bash_profile`
-> You might notice a file also called `.bash_profile`. `.bash_profile` is executed for login shells, while `.bashrc` is executed for interactive non-login shells. When you login (type username and password) to O2 the `.bash_profile` is executed. So if you want the alias available **only** when you login, you will want to put it in your `.bash_profile`. 
+> You might notice a file also called `.bash_profile`. `.bash_profile` is executed for login shells, while `.bashrc` is executed for interactive non-login shells. When you login (type username and password) to O2 the `.bash_profile` is executed. So if you want the alias available **only** when you login (for example an `srun` command to start an interactive session), you will want to put it in your `.bash_profile`. 
 
 So let's open up our `.bashrc` using `vim`:
 
@@ -241,7 +190,7 @@ This alias allows the user to request an interactive job on O2 for 12 hours and 
 Placing aliases within a `.bashrc` file is quite common, but it isn't the only thing that people often place within a `.bashrc` file. For example, some people will specifiy the location of their R libraries if they use R on the O2 cluster:
 
 ```bash
-# DO NOT RUN
+# DO NOT ADD TO BASHRC - EXAMPLE ONLY
 # Example of how people might specify the location of their R packages on O2 
 echo 'R_LIBS_USER="~/R-4.1.2/library"' >  $HOME/.Renviron
 export R_LIBS_USER="~/R-VersionSelected/library"
@@ -250,7 +199,7 @@ export R_LIBS_USER="~/R-VersionSelected/library"
 Sometimes people will want to always have some software that they installed in their home directory availible to them, so they will add the path to that software's `bin` directory to their `$PATH` variable:
 
 ```bash
-# DO NOT RUN
+# DO NOT ADD TO BASHRC - EXAMPLE ONLY
 # Example of how to add a path to your $PATH variable
 PATH=${PATH}:/home/${USER}/my_software_package/bin/
 export PATH
@@ -258,7 +207,68 @@ export PATH
 
 These are just a few examples of items that one might commonly see in other people's `.bashrc` profiles.
 
-# Writing to Scratch <a name="writingscratch"></a>
+
+## `scratch` space <a name="scratch"></a>
+
+During the course of your analyses, you might find that you you create many large intermediate files, such as SAM files. Oftentimes, these files are purely intermediary, but can take up lots of space on the cluster (>100Gb each). These intermediate files can quickly fill your allotted space on the cluster and therefore it is **recommended that you utilize "scratch" space on the cluster**. 
+
+### What is `scratch`?
+`scratch` space on the cluster is much like scratch paper that you may use on the exam. It is a space when you can do your "scratch" work. The files on `scratch` **are not backed up** and **will be deleted in 30 days**. However, you can be allocated ~25TB of space which is great for intermediate large files. We will be using the `scratch` space extensively today, but we will not be using it for large files for the sake of not needlessly consuming space on the cluster.
+
+While on the login node, we will create our space on `/n/scratch/`. In order to do so, we will need to run a script provided by the HMS Research Computing team. But **first you will need to be on a login node to do so.**
+
+```bash
+$ exit
+$ sh /n/cluster/bin/scratch_create_directory.sh 
+```
+
+> Note: You *MUST* be on a login node in order to create a space on `/n/scratch3`.
+
+It will prompt you with the following:
+
+```
+Do you want to create a scratch directory under /n/scratch3/users? [y/N]> 
+```
+
+To this you will respond <kbd>y</kbd>, then hit <kbd>Enter/Return</kbd>.
+
+
+Next, it will prompt you with:
+
+```
+By typing 'YES' I will comply with HMS RC guidelines for using Scratch3.
+I also confirm that I understand that files in my scratch directory WILL NOT BE BACKED UP IN ANY WAY.
+I also understand that THIRTY DAYS after I last access a given file or directory in my scratch directory,
+it will be DELETED with NO POSSIBILITY of retrieval.
+
+I understand HMS RC guidelines for using Scratch: 
+```
+
+Type <kbd>YES</kbd>, then hit <kbd>Enter/Return</kbd>.
+
+It should return:
+
+```
+Your scratch3 directory was created at /n/scratch/users/<users_first_letter>/<username>.
+This has a limit of 25TiB of storage and 2.5 million files.
+You can check your scratch quota using the quota-v2 command.
+```
+> Note: You might notice that your storage limit is 25TiB and might be confused by this unit. Generally speaking, you can think of a KiB =~ kB, MiB =~ MB, GiB =~ GB and TiB =~ TB. This nonmenclature comes from the difference that computers measure space in binary (base 2), while the prefixes are derived from a metric (base 10) system. So, a KiB is actually 1024 bytes worth of space, while a KB is 1000 bytes worth of space. The table below can help further demonstrate these differences.
+> | Unit | Size in Bytes | Unit | Size in Bytes |
+> |------|---------------|------|---------------|
+> | Kilobyte (kB) |1,000<sup>1</sup> = 1,000 | Kibibyte (KiB) | 1,024<sup>1</sup> = 1,024 |
+> | Megabyte (MB) |1,000<sup>2</sup> = 1,000,000 | Mebibyte (MiB) | 1,024<sup>2</sup> = 1,048,576 |
+> | Gigabyte (GB) |1,000<sup>3</sup> = 1,000,000,000 | Gibibyte (GiB) | 1,024<sup>3</sup> = 1,073,741,824 |
+> | Terabyte (TB) |1,000<sup>4</sup> = 1,000,000,000,000 | Tebibyte (TiB) | 1,024<sup>4</sup> = 1,099,511,627,776 |
+> | Petabyte (PB) |1,000<sup>5</sup> = 1,000,000,000,000,000 | Pebibyte (TiB) | 1,024<sup>5</sup> = 1,125,899,906,842,620 |
+
+We can anvigate to our newly created scratch space using this command:
+
+```bash
+cd /n/scratch/users/${USER:0:1}/${USER}/
+```
+
+### Writing to Scratch <a name="writingscratch"></a>
 
 Just like any other storage area on O2, we can copy data to `scratch`. For example, let's copy some scripts over that we will be using in some later exercises:
 
@@ -267,13 +277,13 @@ cd /n/scratch/users/${USER:0:1}/${USER}/
 cp -r /n/groups/hbctraining/sleep_scripts . 
 ```
 
-> Note: `${USER}` is just a environment variable in bash that hold your username and `${USER:0:1}` just some shorthand to get the first letter of your username.
+> Note: `${USER}` is just an environment variable in bash that hold your username and `${USER:0:1}` just some shorthand to get the first letter of your username.
 
-# Checking Quotas <a name="quotas"></a>
+## Checking Quotas <a name="quotas"></a>
 
 Now that we have created our `scratch` space on O2 let's discuss how we can know how much space we are using in our various directories. 
 
-## quota-v2
+### quota-v2
 
 The first helpful command is unique to O2, but it does an excellent job summarizing a user's disk usage on the cluster. This command is `quota-v2` and it will outline your disk usage in your home directory, scratch directory and any groups that you belong to. Let's try it out:
 
