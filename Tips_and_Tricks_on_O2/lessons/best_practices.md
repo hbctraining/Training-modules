@@ -62,7 +62,7 @@ Once logged in, you should see the O2 icon, some news, and the command prompt, e
 
 > Note 1: ssh stands for secure shell. All of the information (like your password) going between your computer and the O2 login computer is encrypted when using ssh.
 
-## Logging into an interactive node <a name="interact"></a>
+### Logging into an interactive node <a name="interact"></a>
 
 Now that we have logged in to the login node, you will need to start an interactive session. A login node's primary function is to enable users to log in to a cluster, it is not meant to be used for any actual work/computing. Since we will be doing some work, let's get on to a compute node:
 
