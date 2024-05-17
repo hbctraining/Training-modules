@@ -171,12 +171,12 @@ $ ls GCA_000005845.2_ASM584v2_genomic.fna.gz
 > **NOTE:** Windows users may encounter a permissions error when using `scp` to copy over locally. We are not sure how to troubleshoot this, but will update materials as we obtain more information.
 
 > #### From local machine to the O2 cluster using `scp`
-> If you wanted to do the reverse, you will need to indicate the transfer node in your destinatation as show below:
+> If you wanted to do the reverse, you will need to indicate the transfer node in your destinatation argument as show below:
 > 
 >```bash
 > ### DO NOT RUN
 >scp GCA_000005845.2_ASM584v2_genomic.fna.gz username@transfer.rc.hms.harvard.edu:~
->``
+>```
 
 ### `rsync` 
 
