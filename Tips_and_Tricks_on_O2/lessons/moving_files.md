@@ -1,26 +1,39 @@
-# Moving files on and off the cluster
+---
+title: "Moving files on and off the cluster"
+author: "Will Gammerdinger, Heather Wick, Meeta Mistry"
+---
 
 ## Learning Objectives
 - Implement `curl` and `wget` to retrieve data from external resources
 - Transfer data to and from O2 using `scp` and `rsync`
 - Recognize when to implement Globus
 - Recall the iGenomes resource on the cluster
-- Create symbolic links for within your data
+- Create symbolic links
 
 ## Overview/quick links
 
-* [Downloading external data from websites using `wget` or `curl`](#dlext)
+* [Dowloading data using `wget` or `curl`](#dlext)
 * [Checking file download success with md5sum](#md5sum) 
-* [Securely sharing data across clusters with Globus](#globus)
 * [Copying files to and from the cluster with `scp` and `rsync`](#scprsync)
+* [Securely sharing data across clusters with Globus](#globus)
 * [O2 shared reference files (iGenome)](#igenome)
 * [Symbolic links](#symlinks)
 
-## Downloading external data <a name="dlext"></a>
+## Moving files on and off the cluster
 
-When you want to obtain your data from the sequencing facility, it will likely be stored on some remote computer and they will give you login credentials which will allow you to access it. You will then need to copy that over to O2 or your computing cluster of choice so that you can carry out the analysis on it. Next, we will describe the steps that you would need to take to copy files on and off of the cluster.
+A common question is **how do I get my data on to the cluster?**  
 
-### `wget`
+Depending on the analysis you are performing, the data you want could be located:
+
+* On another cluster or server where your sequencing facility hosts the data
+* On your own local machine
+* Public data that is accessible via a web resource
+
+Next, we will introduce you to commands that help you copy files on and off of the cluster, in addition to some helpfule ways of working with files that currently reside on the cluster.
+
+## Downloading external data using `wget` or `curl` <a name="dlext"></a>
+
+### `wget` 
 
 You will sometimes find yourself wanting to download data from a website. There are two comparable commands that you can use to accomplish this task. The first one is `wget` and the most common syntax for using it is:
 
@@ -82,7 +95,7 @@ curl -L -O [http://www.example.com/data_file_1] -O [http://www.example.com/data_
 
 In general, `curl` has *a bit* more options and flexibility than `wget` but the vast majority, if not all, of those options are ***far*** beyond the scope of this module and for this module it comes down to a personal preference. That being said, as you download data and tools from various sources you may see different developers having different preferences. This is mostly a primer for understanding both of the cases that you will likely run into.
 
-## Checking file download success with md5sum <a name="md5sum"></a>
+### Checking file download success with md5sum <a name="md5sum"></a>
 
 When you are copying files between two locations and you want to ensure the copying went smoothly or are interested to see if two files are the same. Checksums can be thought of as an alphanumeric fingerprint for a file and they are used to ensure that two files are the same -- in other words, you can ensure that the file you downloaded did not get truncated or corrupted during the download. It is common for people/insitutions to provide a list of md5sums for files that are availible to download. `md5sum` is one common checksum. ***Importantly, it is theorectically possible that two different files have the same md5sum, but it is practically nearly impossible.*** The syntax for checking the md5sum of a file is:
 
@@ -108,44 +121,32 @@ Now, we can cross-reference this md5sum with the md5sum that [NCBI provides for 
 7e69874199f23fd21b060dc0b2b72321  ./GCA_000005845.2_ASM584v2_genomic.fna.gz
 ```
 
-If these match you can have confidence that the file download was complete.
-
-
-## Securely sharing data across clusters with Globus <a name="globus"></a>
-
-Perhaps you are working on a project with a collaborator who works in Europe and you want to securely share your data. This task can be quite difficult without one of you distributing your username and password to the other, which would be a security risk, or posting the data publicly where others could download it and thus the data transfer isn't private. This is where [Globus](https://www.globus.org/) comes in. Globus is a file sharing tool for sharing data with between users on different computing clusters. One example of this is that it is sometimes used with retrieving sequencing data from sequencing cores.
-
-At Harvard, Globus can be used for:
-
-- Providing secure access to individual directories on O2 for collaborators outside of Harvard/HMS
-- HMS credentials or O2 user accounts are not required for the collaborators when using Globus
-- HMS-RC offers periodic information sessions on Globus
-
-HMS-RC's information page on Globus can be found [here](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/2046689281/Using+Globus+on+O2) and for the purposes of this module we won't dive anymore into it, but it is important to know that this tool exists, particularly when collaborating with researchers who don't have HMS creditials.
+**If these match you can have confidence that the file download was complete.**
 
 ## Copying files to and from the cluster <a name="scprsync"></a>
 
-Alternatively, when you have analyzed your data you may have some files that you would like to download from the cluster. You can use a program like [Filezilla](https://filezilla-project.org/) to copy over files from a computing cluster to your local machine, but there are other ways to do so using the command-line interface. 
+It is really important that when you are transferring data using `scp` or `rsync` (discussed next), that you **utilize the transfer nodes** for your file transfer. The transfer nodes have the address of:
 
-### `scp`
-
-Similar to the `cp` command to copy there is a command that allows you to **securely copy files between computers**. The command is called `scp` and allows files to be copied to, from, or between different hosts. It uses `ssh` for data transfer and provides the same authentication and same level of security as `ssh`. It is really important that when you are transfer data using `scp` or `rsync` (discussed next), that you utilize the transfer nodes for your file transfer. The transfer nodes have the address of:
-
-```
+```bash
 username@transfer.rc.hms.harvard.edu
 ```
 
-In the usage example below, the first argument is the **location on the remote server** and the second argument is the **destination on your local machine**. **Importantly, you the Terminal window you are using can't be connected to O2.**
-
-> *You can also do this in the opposite direction by swapping the arguments.*
+* If you are **on the cluster** and you want to move/copy files off to a remote location, be sure that you are **logged in to the transfer node**.
+* If you are **at a remote location** and wanting to move/copy the files from the cluster to your current location you will want to include the transfer node in your command as displayed below. We will describe this in more detail later in the section. **Importantly, you the Terminal window you are using can't be connected to O2.**
 
 ```bash
 # DO NOT RUN
-# Usage example for how to use scp
+# Usage example for how to copy a file on O2 to your local machine
 scp username@transfer.rc.hms.harvard.edu:/path/to/file_on_O2 Path/to/directory/local_machine
 ```
 
-Let's try copying over the *E. coli* reference genome that we download from NCBI from our scratch space to our local machine. **In a new terminal window**, type:
+### `scp`
+
+Similar to the `cp` command to copy there is a command that allows you to **securely copy files between computers**. The command is called `scp` and allows files to be copied to, from, or between different hosts. It uses `ssh` for data transfer and provides the same authentication and same level of security as `ssh`.
+
+Let's try copying over the *E. coli* reference genome that we downloaded from NCBI **from our scratch space on O2 to our local machine**. 
+
+First open up a **new terminal** window, that is **not connected to O2.**
 
 ```bash
 # Be sure to replace `<username>` twice with your O2 username and `<first_letter_of_username>` with the first letter of your username
@@ -205,6 +206,24 @@ ls ~
 ### Exercise
 
 Check the `md5sum` for the `GCA_000005845.2_ASM584v2_genomic.fna.gz`. Does it match the `md5sum` on the NCBI website for this file? 
+
+
+
+## Securely sharing data across clusters with Globus <a name="globus"></a>
+
+Perhaps you are working on a project with a collaborator who works in Europe and you want to securely share your data. This task can be quite difficult without one of you distributing your username and password to the other, which would be a security risk, or posting the data publicly where others could download it and thus the data transfer isn't private. This is where [Globus](https://www.globus.org/) comes in. Globus is a file sharing tool for sharing data with between users on different computing clusters. One example of this is that it is sometimes used with retrieving sequencing data from sequencing cores.
+
+At Harvard, Globus can be used for:
+
+- Providing secure access to individual directories on O2 for collaborators outside of Harvard/HMS
+- HMS credentials or O2 user accounts are not required for the collaborators when using Globus
+- HMS-RC offers periodic information sessions on Globus
+
+HMS-RC's information page on Globus can be found [here](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/2046689281/Using+Globus+on+O2) and for the purposes of this module we won't dive anymore into it, but it is important to know that this tool exists, particularly when collaborating with researchers who don't have HMS creditials.
+
+## Copying files to and from the cluster <a name="scprsync"></a>
+
+Alternatively, when you have analyzed your data you may have some files that you would like to download from the cluster. You can use a program like [Filezilla](https://filezilla-project.org/) to copy over files from a computing cluster to your local machine, but there are other ways to do so using the command-line interface. 
 
 
 ## O2 shared reference files (iGenome) <a name="igenome"></a>
