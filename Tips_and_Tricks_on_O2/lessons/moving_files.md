@@ -143,15 +143,15 @@ username@transfer.rc.hms.harvard.edu
 * If you are **on the cluster** and you want to move/copy files off to a remote location, be sure that you are logged in to the **transfer node**.
 * If you are **at a remote location** and wanting to move/copy the files from the cluster to your current location you will want to include the transfer node in your command as displayed below. We will describe this in more detail later in the section. Importantly, you the **Terminal window** you are using **can't be connected to O2.**
 
-```bash
-# DO NOT RUN
-# Usage example for how to copy a file on O2 to your local machine
-scp username@transfer.rc.hms.harvard.edu:/path/to/file_on_O2 Path/to/directory/local_machine
-```
-
 ### `scp`
 
 Similar to the `cp` command to copy there is a command that allows you to **securely copy files between computers**. The command is called `scp` and allows files to be copied to, from, or between different hosts. It uses `ssh` for data transfer and provides the same authentication and same level of security as `ssh`.
+
+```bash
+# DO NOT RUN
+# Usage example for scp to copy a file on O2 to your local machine
+scp username@transfer.rc.hms.harvard.edu:/path/to/file_on_O2 Path/to/directory/local_machine
+```
 
 Let's try copying over the *E. coli* reference genome that we downloaded from NCBI **from our scratch space on O2 to our local machine**. 
 
@@ -193,7 +193,7 @@ When copying over large datasets to or from a remote machine, `rsync` works simi
 
 ```bash
 # DO NOT RUN
-# Usage example for how to copy a file on local machine to O2 using rsync
+# Usage example for ryncs to copy a file on local machine to O2 using rsync
 rsync -av - e ssh Path/to/directory/local_machine username@transfer.rc.hms.harvard.edu:/path/to/file_on_O2
 ```
 
@@ -241,16 +241,21 @@ HMS-RC's information page on Globus can be found [here](https://harvardmed.atlas
 
 ## O2 shared reference files (iGenome) <a name="igenome"></a>
 
-Another O2 quality-of-life feature is that HMS-RC has a directory called `/n/shared_db/igenome/03032016/` which holds reference genomes, alignment indexes, annotation files and much more for many common model organisms. Therefore, oftentimes you don't even need to download many of the files that you will need to do any analysis.
+Another O2 quality-of-life feature is that HMS-RC has a directory called `/n/shared_db/igenome/03032016/` which holds reference genomes, alignment indexes, annotation files and much more for many common model organisms. Therefore, oftentimes you don't even need to download many of the reference files that you will need for your analysis.
 
-### Exercise
+***
 
-Navigate to the `/n/shared_db/igenome/03032016/` directory and see if you can find the organism that you study there.
+**Exercise**
+
+1. Navigate to the `/n/shared_db/igenome/03032016/` directory and see if you can find the organism that you study there.
+
+***
 
 Let's explore the human reference by:
 
 ```bash
 cd /n/shared_db/igenome/03032016/Homo_sapiens/UCSC/hg38/
+
 ls -l
 ```
 
@@ -266,6 +271,7 @@ Let's further go into the `Seqeunce` directory:
 
 ```bash
 cd Sequence
+
 ls -l
 ```
 
@@ -325,14 +331,14 @@ It moslty just indices for Bowtie2 (files ending in .bt2), but there is a partic
 lrwxrwxrwx 1 ld32 ritg        29 Aug 18  2015 genome.fa -> ../WholeGenomeFasta/genome.fa
 ```
 
-This is the first place we have now seen a symbolic link. `genome.fa` is the link name and it is pointing, with a relative path, to the reference genome FASTA file that we were just looking at (../WholeGenomeFasta/genome.fa). We are going to talk more about symbolic links, sometimes called symlinks, in the next section.
+This is the **first place we have now seen a symbolic link**. `genome.fa` is the link name and it is pointing, with a relative path, to the reference genome FASTA file that we were just looking at (../WholeGenomeFasta/genome.fa). We are going to talk more about symbolic links, sometimes called symlinks, in the next section.
 
 ## Symbolic Links <a name="symlinks"></a>
 
-Sometimes you will have large files on a computing cluster that you would like to have in a few places. A few cases where this might happen:
+Sometimes you will have large files on a computing cluster that you would like to have in a few places. A few examples where this might happen:
 
-1) The software package you are using wants you to have a specific directory structure for the data
-2) While this isn't as much of a concern on O2 since data in `home` and the `data` directories are backed up regularly, you may be on a computing cluster without such rigorous data back-up practices. If this the case, you might like to have your data in two locations in case the original data is accidentally deleted.
+1) The software package you are using wants you to have a specific directory structure for the data, but you do not want to move the data.
+2) There is a large file that is used as input to many different analyses and you would rather not have duplicate copies of it.
 
 Both of these are good places to implement *symbolic links*. Symbolic links can be thought of as arrows for computer, pointing to where a file is located, as we saw in the above example with the human reference genome. Symbolic links require negliable amounts of space and thus mean you can use them to point to large files elsewhere on the computing system. If these symbolic links get deleted or broken, they have no impact on the data they they were pointing to. Additionally, they can be named anything, so it can be helpful if a software package is looking for a specific name for an input file.
 
@@ -344,7 +350,7 @@ cd ~
 
 The syntax for making a symbolic link is:
 
-```
+```bash
 ln -s </path/to/file_to_be_linked_to> </path/to/link_name>
 ```
 
@@ -364,7 +370,7 @@ If you want to keep the original file name as the link name you can use just the
 
 ***Importantly, if the original file is deleted or moved, the symbolic link will become broken.*** It is common on many distributions for symbolic links to blink if they becomes broken.
 
-> Note: The `-s` option is necessacary for creating a symbolic link. Without the `-s` option, a ***hard link*** is created and modifications to the linked file will be carried over to the original. Generally, speaking hard links are typically not very common.
+> **NOTE**: The `-s` option is necessacary for creating a symbolic link. Without the `-s` option, a ***hard link*** is created and modifications to the linked file will be carried over to the original. Generally, speaking hard links are typically not very common.
 
 ***
 
