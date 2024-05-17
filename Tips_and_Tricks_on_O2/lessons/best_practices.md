@@ -13,8 +13,8 @@ author: "Will Gammerdinger, Heather Wick, Meeta Mistry"
 
 * [Logging into O2](#LoggingIn)
 * [Logging into an interactive node](#interact)
-* [Aliases and .bashrc profile](#aliasbashrc)
 * [`scratch` space](#scratch)
+* [Aliases and .bashrc profile](#aliasbashrc)
 * [Checking quotas with `quota-v2`](#quotas)
 * [Summarizing storage limits with `du`](#du)
 * [Retrieving a backup with `.snapshot`](#snapshot)
@@ -71,6 +71,77 @@ $ srun --pty -p interactive -t 0-3:00 --mem 1G  /bin/bash
 ````
 
 Make sure that your command prompt is now preceded by a character string that contains the word `compute`.
+
+## `scratch` space <a name="scratch"></a>
+
+During the course of your analyses, you might find that you you create many large intermediate files, such as SAM files. Oftentimes, these files are purely intermediary, but can take up lots of space on the cluster (>100Gb each). These intermediate files can quickly fill your allotted space on the cluster and therefore it is **recommended that you utilize "scratch" space on the cluster**. 
+
+### What is `scratch`?
+`scratch` space on the cluster is much like scratch paper that you may use on the exam. It is a space when you can do your "scratch" work. The files on `scratch` **are not backed up** and **will be deleted in 30 days**. However, you can be allocated ~25TB of space which is great for intermediate large files. We will be using the `scratch` space extensively today, but we will not be using it for large files for the sake of not needlessly consuming space on the cluster.
+
+### Creating your own `scratch` space
+While on the login node, we will create our space on `/n/scratch/`. In order to do so, we will need to run a script provided by the HMS Research Computing team. 
+
+```bash
+ sh /n/cluster/bin/scratch_create_directory.sh 
+```
+
+> **NOTE: You *MUST* be on a login node in order to create a space on `/n/scratch3`.**
+
+It will prompt you with the following:
+
+```
+Do you want to create a scratch directory under /n/scratch3/users? [y/N]> 
+```
+
+To this you will respond <kbd>y</kbd>, then hit <kbd>Enter/Return</kbd>.
+
+
+Next, it will prompt you with:
+
+```
+By typing 'YES' I will comply with HMS RC guidelines for using Scratch3.
+I also confirm that I understand that files in my scratch directory WILL NOT BE BACKED UP IN ANY WAY.
+I also understand that THIRTY DAYS after I last access a given file or directory in my scratch directory,
+it will be DELETED with NO POSSIBILITY of retrieval.
+
+I understand HMS RC guidelines for using Scratch: 
+```
+
+Type <kbd>YES</kbd>, then hit <kbd>Enter/Return</kbd>.
+
+It should return:
+
+```
+Your scratch3 directory was created at /n/scratch/users/<users_first_letter>/<username>.
+This has a limit of 25TiB of storage and 2.5 million files.
+You can check your scratch quota using the quota-v2 command.
+```
+> Note: You might notice that your storage limit is 25TiB and might be confused by this unit. Generally speaking, you can think of a KiB =~ kB, MiB =~ MB, GiB =~ GB and TiB =~ TB. This nonmenclature comes from the difference that computers measure space in binary (base 2), while the prefixes are derived from a metric (base 10) system. So, a KiB is actually 1024 bytes worth of space, while a KB is 1000 bytes worth of space. The table below can help further demonstrate these differences.
+> | Unit | Size in Bytes | Unit | Size in Bytes |
+> |------|---------------|------|---------------|
+> | Kilobyte (kB) |1,000<sup>1</sup> = 1,000 | Kibibyte (KiB) | 1,024<sup>1</sup> = 1,024 |
+> | Megabyte (MB) |1,000<sup>2</sup> = 1,000,000 | Mebibyte (MiB) | 1,024<sup>2</sup> = 1,048,576 |
+> | Gigabyte (GB) |1,000<sup>3</sup> = 1,000,000,000 | Gibibyte (GiB) | 1,024<sup>3</sup> = 1,073,741,824 |
+> | Terabyte (TB) |1,000<sup>4</sup> = 1,000,000,000,000 | Tebibyte (TiB) | 1,024<sup>4</sup> = 1,099,511,627,776 |
+> | Petabyte (PB) |1,000<sup>5</sup> = 1,000,000,000,000,000 | Pebibyte (TiB) | 1,024<sup>5</sup> = 1,125,899,906,842,620 |
+
+We can navigate to our newly created scratch space using this command:
+
+```bash
+cd /n/scratch/users/${USER:0:1}/${USER}/
+```
+
+### Writing to Scratch <a name="writingscratch"></a>
+
+Just like any other storage area on O2, we can copy data to `scratch`. For example, let's copy some scripts over that we will be using in some later exercises:
+
+```bash
+cd /n/scratch/users/${USER:0:1}/${USER}/
+cp -r /n/groups/hbctraining/sleep_scripts . 
+```
+
+> Note: `${USER}` is just an environment variable in bash that hold your username and `${USER:0:1}` just some shorthand to get the first letter of your username.
 
 ## Aliases and .bashrc profile <a name="aliasbashrc"></a>
 
@@ -210,76 +281,7 @@ export PATH
 These are just a few examples of items that one might commonly see in other people's `.bashrc` profiles.
 
 
-## `scratch` space <a name="scratch"></a>
 
-During the course of your analyses, you might find that you you create many large intermediate files, such as SAM files. Oftentimes, these files are purely intermediary, but can take up lots of space on the cluster (>100Gb each). These intermediate files can quickly fill your allotted space on the cluster and therefore it is **recommended that you utilize "scratch" space on the cluster**. 
-
-### What is `scratch`?
-`scratch` space on the cluster is much like scratch paper that you may use on the exam. It is a space when you can do your "scratch" work. The files on `scratch` **are not backed up** and **will be deleted in 30 days**. However, you can be allocated ~25TB of space which is great for intermediate large files. We will be using the `scratch` space extensively today, but we will not be using it for large files for the sake of not needlessly consuming space on the cluster.
-
-### Creating your own `scratch` space
-While on the login node, we will create our space on `/n/scratch/`. In order to do so, we will need to run a script provided by the HMS Research Computing team. 
-
-```bash
- sh /n/cluster/bin/scratch_create_directory.sh 
-```
-
-> **NOTE: You *MUST* be on a login node in order to create a space on `/n/scratch3`.**
-
-It will prompt you with the following:
-
-```
-Do you want to create a scratch directory under /n/scratch3/users? [y/N]> 
-```
-
-To this you will respond <kbd>y</kbd>, then hit <kbd>Enter/Return</kbd>.
-
-
-Next, it will prompt you with:
-
-```
-By typing 'YES' I will comply with HMS RC guidelines for using Scratch3.
-I also confirm that I understand that files in my scratch directory WILL NOT BE BACKED UP IN ANY WAY.
-I also understand that THIRTY DAYS after I last access a given file or directory in my scratch directory,
-it will be DELETED with NO POSSIBILITY of retrieval.
-
-I understand HMS RC guidelines for using Scratch: 
-```
-
-Type <kbd>YES</kbd>, then hit <kbd>Enter/Return</kbd>.
-
-It should return:
-
-```
-Your scratch3 directory was created at /n/scratch/users/<users_first_letter>/<username>.
-This has a limit of 25TiB of storage and 2.5 million files.
-You can check your scratch quota using the quota-v2 command.
-```
-> Note: You might notice that your storage limit is 25TiB and might be confused by this unit. Generally speaking, you can think of a KiB =~ kB, MiB =~ MB, GiB =~ GB and TiB =~ TB. This nonmenclature comes from the difference that computers measure space in binary (base 2), while the prefixes are derived from a metric (base 10) system. So, a KiB is actually 1024 bytes worth of space, while a KB is 1000 bytes worth of space. The table below can help further demonstrate these differences.
-> | Unit | Size in Bytes | Unit | Size in Bytes |
-> |------|---------------|------|---------------|
-> | Kilobyte (kB) |1,000<sup>1</sup> = 1,000 | Kibibyte (KiB) | 1,024<sup>1</sup> = 1,024 |
-> | Megabyte (MB) |1,000<sup>2</sup> = 1,000,000 | Mebibyte (MiB) | 1,024<sup>2</sup> = 1,048,576 |
-> | Gigabyte (GB) |1,000<sup>3</sup> = 1,000,000,000 | Gibibyte (GiB) | 1,024<sup>3</sup> = 1,073,741,824 |
-> | Terabyte (TB) |1,000<sup>4</sup> = 1,000,000,000,000 | Tebibyte (TiB) | 1,024<sup>4</sup> = 1,099,511,627,776 |
-> | Petabyte (PB) |1,000<sup>5</sup> = 1,000,000,000,000,000 | Pebibyte (TiB) | 1,024<sup>5</sup> = 1,125,899,906,842,620 |
-
-We can navigate to our newly created scratch space using this command:
-
-```bash
-cd /n/scratch/users/${USER:0:1}/${USER}/
-```
-
-### Writing to Scratch <a name="writingscratch"></a>
-
-Just like any other storage area on O2, we can copy data to `scratch`. For example, let's copy some scripts over that we will be using in some later exercises:
-
-```bash
-cd /n/scratch/users/${USER:0:1}/${USER}/
-cp -r /n/groups/hbctraining/sleep_scripts . 
-```
-
-> Note: `${USER}` is just an environment variable in bash that hold your username and `${USER:0:1}` just some shorthand to get the first letter of your username.
 
 Now let's try and get back on an interactive node using our alias:
 
