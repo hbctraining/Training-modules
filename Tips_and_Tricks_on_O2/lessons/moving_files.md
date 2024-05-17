@@ -13,7 +13,7 @@ author: "Will Gammerdinger, Heather Wick, Meeta Mistry"
 ## Overview/quick links
 
 * [Dowloading data using `wget` or `curl`](#dlext)
-* [Checking file download success with md5sum](#md5sum) 
+* [Checking file transfer success with md5sum](#md5sum) 
 * [Copying files to and from the cluster with `scp` and `rsync`](#scprsync)
 * [Securely sharing data across clusters with Globus](#globus)
 * [O2 shared reference files (iGenome)](#igenome)
@@ -95,7 +95,7 @@ curl -L -O [http://www.example.com/data_file_1] -O [http://www.example.com/data_
 
 In general, `curl` has *a bit* more options and flexibility than `wget` but the vast majority, if not all, of those options are ***far*** beyond the scope of this module and for this module it comes down to a personal preference. That being said, as you download data and tools from various sources you may see different developers having different preferences. This is mostly a primer for understanding both of the cases that you will likely run into.
 
-### Checking file download success with md5sum <a name="md5sum"></a>
+### Checking file transfer success with md5sum <a name="md5sum"></a>
 
 When you are copying files between two locations and you want to ensure the copying went smoothly or are interested to see if two files are the same. Checksums can be thought of as an alphanumeric fingerprint for a file and they are used to ensure that two files are the same -- in other words, you can ensure that the file you downloaded did not get truncated or corrupted during the download. It is common for people/insitutions to provide a list of md5sums for files that are availible to download. `md5sum` is one common checksum. ***Importantly, it is theorectically possible that two different files have the same md5sum, but it is practically nearly impossible.*** The syntax for checking the md5sum of a file is:
 
