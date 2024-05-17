@@ -196,7 +196,7 @@ It will return:
 
 Ideally, we would like to find a way to save our aliases and that is one way we can use our `.bashrc` profile!
 
-## .bashrc profile
+### .bashrc profile
 
 Much like one might have a routine when coming home, like taking their shoes and jacket off, when you log onto your computer or log into any computing cluster, the computer will look for a file with a set of preferences that you have, called the `.bashrc`. This file is located in your home directory and is preceded by a `.`. This period means that it is a "hidden file". You can you the `-a` option with `ls` in order to see **all** files:
 
