@@ -214,10 +214,11 @@ During the course of your analyses, you might find that you you create many larg
 ### What is `scratch`?
 `scratch` space on the cluster is much like scratch paper that you may use on the exam. It is a space when you can do your "scratch" work. The files on `scratch` **are not backed up** and **will be deleted in 30 days**. However, you can be allocated ~25TB of space which is great for intermediate large files. We will be using the `scratch` space extensively today, but we will not be using it for large files for the sake of not needlessly consuming space on the cluster.
 
-While on the login node, we will create our space on `/n/scratch/`. In order to do so, we will need to run a script provided by the HMS Research Computing team. But **first you will need to be on a login node to do so.**
+### Creating your own `scratch` space
+While on the login node, we will create our space on `/n/scratch/`. In order to do so, we will need to run a script provided by the HMS Research Computing team. But **first you will need to be on a login node to do so.** You will only need to create your scratch space once.
 
 ```bash
-$ exit # exit the interactive session
+$ exit # exit the interactive session (only necessary if you are on an interactive node)
 
 $ sh /n/cluster/bin/scratch_create_directory.sh 
 ```
