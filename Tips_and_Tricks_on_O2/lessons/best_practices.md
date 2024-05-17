@@ -144,7 +144,7 @@ cp -r /n/groups/hbctraining/sleep_scripts .
 
 ## Aliases and .bashrc profile <a name="aliasbashrc"></a>
 
-Now that we have created a space on scratch, you might be interested in having a shortcut to getting there just like you have a shortcut to get to your home directory by using:
+Now that we have created a space on `scratch`, you might be interested in having a shortcut to getting there just like you have a shortcut to get to your home directory by using:
 
 ```bash
 cd ~
@@ -290,7 +290,7 @@ o2i
 
 ## Checking Quotas <a name="quotas"></a>
 
-Now that we have created our `scratch` space on O2 let's discuss how we can know how much space we are using in our various directories. 
+Now that we have logged into an interactive node and created our `scratch` space on O2 let's discuss how we can know how much space we are using in our various directories. 
 
 ### quota-v2
 
