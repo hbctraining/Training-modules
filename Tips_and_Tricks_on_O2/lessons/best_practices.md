@@ -64,7 +64,7 @@ Once logged in, you should see the O2 icon, some news, and the command prompt, e
 
 ## Logging into an interactive node <a name="interact"></a>
 
-Now that we have created our `scratch` space, you will need to start an interactive session. A login node's primary function is to enable users to log in to a cluster, it is not meant to be used for any actual work/computing. Since we will be doing some work, let's get on to a compute node:
+Now that we have logged in to the login node, you will need to start an interactive session. A login node's primary function is to enable users to log in to a cluster, it is not meant to be used for any actual work/computing. Since we will be doing some work, let's get on to a compute node:
 
 ```
 $ srun --pty -p interactive -t 0-3:00 --mem 1G  /bin/bash
@@ -80,13 +80,12 @@ During the course of your analyses, you might find that you you create many larg
 `scratch` space on the cluster is much like scratch paper that you may use on the exam. It is a space when you can do your "scratch" work. The files on `scratch` **are not backed up** and **will be deleted in 30 days**. However, you can be allocated ~25TB of space which is great for intermediate large files. We will be using the `scratch` space extensively today, but we will not be using it for large files for the sake of not needlessly consuming space on the cluster.
 
 ### Creating your own `scratch` space
-While on the login node, we will create our space on `/n/scratch/`. In order to do so, we will need to run a script provided by the HMS Research Computing team. 
+While on the login node, we will create our space on `/n/scratch/`. In order to do so, we will need to run a script provided by the HMS Research Computing team. **You *MUST* be on a login node in order to create a space on `/n/scratch3`**, so we will actually exit our interactive node, even though that's usually where we want to perform any computing work.
 
 ```bash
+ exit # if you are on an interactive node, you need to exit to the login node
  sh /n/cluster/bin/scratch_create_directory.sh 
 ```
-
-> **NOTE: You *MUST* be on a login node in order to create a space on `/n/scratch3`.**
 
 It will prompt you with the following:
 
@@ -279,8 +278,6 @@ export PATH
 ```
 
 These are just a few examples of items that one might commonly see in other people's `.bashrc` profiles.
-
-
 
 
 Now let's try and get back on an interactive node using our alias:
