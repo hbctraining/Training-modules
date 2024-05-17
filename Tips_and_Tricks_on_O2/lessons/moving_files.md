@@ -29,7 +29,7 @@ Depending on the analysis you are performing, the data you want could be located
 * On your own local machine
 * Public data that is accessible via a web resource
 
-Next, we will introduce you to commands that help you copy files on and off of the cluster, in addition to some helpfule ways of working with files that currently reside on the cluster.
+Next, we will introduce you to commands that help you copy files on and off of the cluster, in addition to some helpful ways of working with files that currently reside on the cluster.
 
 ## Downloading external data using `wget` or `curl` <a name="dlext"></a>
 
@@ -123,6 +123,15 @@ Now, we can cross-reference this md5sum with the md5sum that [NCBI provides for 
 
 **If these match you can have confidence that the file download was complete.**
 
+***
+
+**Exercise**
+
+1. Check the `md5sum` for the `GCA_000005845.2_ASM584v2_genomic.gff.gz`. Does it match the `md5sum` on the NCBI website for this file? 
+
+***
+
+
 ## Copying files to and from the cluster <a name="scprsync"></a>
 
 It is really important that when you are transferring data using `scp` or `rsync` (discussed next), that you **utilize the transfer nodes** for your file transfer. The transfer nodes have the address of:
@@ -131,8 +140,8 @@ It is really important that when you are transferring data using `scp` or `rsync
 username@transfer.rc.hms.harvard.edu
 ```
 
-* If you are **on the cluster** and you want to move/copy files off to a remote location, be sure that you are **logged in to the transfer node**.
-* If you are **at a remote location** and wanting to move/copy the files from the cluster to your current location you will want to include the transfer node in your command as displayed below. We will describe this in more detail later in the section. **Importantly, you the Terminal window you are using can't be connected to O2.**
+* If you are **on the cluster** and you want to move/copy files off to a remote location, be sure that you are logged in to the **transfer node**.
+* If you are **at a remote location** and wanting to move/copy the files from the cluster to your current location you will want to include the transfer node in your command as displayed below. We will describe this in more detail later in the section. Importantly, you the **Terminal window** you are using **can't be connected to O2.**
 
 ```bash
 # DO NOT RUN
@@ -161,9 +170,17 @@ $ ls GCA_000005845.2_ASM584v2_genomic.fna.gz
 
 > **NOTE:** Windows users may encounter a permissions error when using `scp` to copy over locally. We are not sure how to troubleshoot this, but will update materials as we obtain more information.
 
+> #### From local machine to the O2 cluster using `scp`
+> If you wanted to do the reverse, you will need to indicate the transfer node in your destinatation as show below:
+> 
+>```bash
+> ### DO NOT RUN
+>scp GCA_000005845.2_ASM584v2_genomic.fna.gz username@transfer.rc.hms.harvard.edu:~
+>``
+
 ### `rsync` 
 
-`rsync` is used to copy or synchronize data between directories. It has many advantages over `cp`, `scp` etc. It works in a specific direction, i.e. from the first directory **to** the second directory, similar to `cp`.
+`rsync` is used to **copy or synchronize data between directories**. This can be on/off the cluster or within the cluster filesystem. It has many advantages over `cp`, `scp` etc. 
 
 **Salient Features of `rsync`**
 
@@ -171,47 +188,47 @@ $ ls GCA_000005845.2_ASM584v2_genomic.fna.gz
 * Once a folder has been synced between 2 locations, the next time you run `rsync` it will *only update and not copy everything over again*. 
 * It runs a check to ensure that every file it is "syncing" over is the exact same in both locations. This check is run using a version of [checksum](https://en.wikipedia.org/wiki/Checksum) which ensures the data integrity during the data transfer process. 
 
-### Between different machines
 
-When copying over large datasets to or from a remote machine, `rsync` works similarly to `scp`. This time we are going to copy the reference genome back onto the cluster using `rsync`.
+When copying over large datasets to or from a remote machine, `rsync` works similarly to `scp` as shown below. This time we are going to **copy the reference genome back onto the cluster using `rsync`**.
+
+```bash
+# DO NOT RUN
+# Usage example for how to copy a file on local machine to O2 using rsync
+rsync -av - e ssh Path/to/directory/local_machine username@transfer.rc.hms.harvard.edu:/path/to/file_on_O2
+```
+
+Let's first change the name of our file so we can distinguis it from the file that is already present on O2. **In your Terminal window that you were using with the `scp` example above, type in:**
+
+```bash
+mv GCA_000005845.2_ASM584v2_genomic.fna.gz renamed_GCA_000005845.2_ASM584v2_genomic.fna.gz
+```
 
 ```bash
 # Be sure to replace <username> with your username
-rsync -av -e ssh GCA_000005845.2_ASM584v2_genomic.fna.gz <username>@transfer.rc.hms.harvard.edu:~
+rsync -av -e ssh renamed_GCA_000005845.2_ASM584v2_genomic.fna.gz <username>@transfer.rc.hms.harvard.edu:~
 ```
 
 * `a` is for archive - means it preserves permissions (owners, groups), times, symbolic links, and devices.
 * `v` is for verbosity - means that it prints on the screen what is being copied
 * `-e ssh` is for encryption - means that we want to use the ssh protocol for encryption of the file transfer
 
-You will again be prompted for your password and Duo approval. We should now be able to see that the reference genome has been uploaded to O2 by using `ls` on our home directory on our Terminal window that is connected to O2:
+You will again be prompted for your password and Duo approval. We should now be able to see that the newly named reference genome has been uploaded to O2 by using **`ls` in the Terminal window that is connected to O2**:
 
 ```bash
 ls ~
 ```
 
->Note: We could have also done this task with `scp`:
->```bash
->scp GCA_000005845.2_ASM584v2_genomic.fna.gz username@transfer.rc.hms.harvard.edu:~
->```
->
->And we could have also downloaded the file to our local machine with `wget` using:
->
->```bash
->rsync -av -e ssh username@transfer.rc.hms.harvard.edu:/n/scratch/users/first_letter_of_username/username/GCA_000005845.2_ASM584v2_genomic.fna.gz  .
->```
-
 *More helpful information and examples using rsync can be found [at this link](https://www.comentum.com/rsync.html)*
 
-### Exercise
-
-Check the `md5sum` for the `GCA_000005845.2_ASM584v2_genomic.fna.gz`. Does it match the `md5sum` on the NCBI website for this file? 
-
+> ### A file transfer alternative without using the command line interface
+> If you have a few fairly small files to move on/off the cluster, you can also use a program like [Filezilla](https://filezilla-project.org/) to copy over files. It is not recommended for larger files or big datasets as it can timeout and cause issues. Note that here the transfer nodes are also required.
 
 
 ## Securely sharing data across clusters with Globus <a name="globus"></a>
 
-Perhaps you are working on a project with a collaborator who works in Europe and you want to securely share your data. This task can be quite difficult without one of you distributing your username and password to the other, which would be a security risk, or posting the data publicly where others could download it and thus the data transfer isn't private. This is where [Globus](https://www.globus.org/) comes in. Globus is a file sharing tool for sharing data with between users on different computing clusters. One example of this is that it is sometimes used with retrieving sequencing data from sequencing cores.
+<img src="../img/logo_globus-solid.svg" width="200" align="center">
+
+Perhaps you are working on a project with a collaborator who works in Europe and you want to securely share your data. This task can be quite difficult without one of you distributing your username and password to the other, which would be a security risk, or posting the data publicly where others could download it and thus the data transfer isn't private. This is where [Globus](https://www.globus.org/) comes in. Globus is **a file sharing tool for sharing data with between users on different computing clusters**. One example of this is that it is sometimes used with retrieving sequencing data from sequencing cores.
 
 At Harvard, Globus can be used for:
 
@@ -220,10 +237,6 @@ At Harvard, Globus can be used for:
 - HMS-RC offers periodic information sessions on Globus
 
 HMS-RC's information page on Globus can be found [here](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/2046689281/Using+Globus+on+O2) and for the purposes of this module we won't dive anymore into it, but it is important to know that this tool exists, particularly when collaborating with researchers who don't have HMS creditials.
-
-## Copying files to and from the cluster <a name="scprsync"></a>
-
-Alternatively, when you have analyzed your data you may have some files that you would like to download from the cluster. You can use a program like [Filezilla](https://filezilla-project.org/) to copy over files from a computing cluster to your local machine, but there are other ways to do so using the command-line interface. 
 
 
 ## O2 shared reference files (iGenome) <a name="igenome"></a>
