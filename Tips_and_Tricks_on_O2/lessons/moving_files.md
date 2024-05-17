@@ -335,12 +335,12 @@ This is the **first place we have now seen a symbolic link**. `genome.fa` is the
 
 ## Symbolic Links <a name="symlinks"></a>
 
-Sometimes you will have large files on a computing cluster that you would like to have in a few places. A few examples where this might happen:
+Sometimes you will have files or folders containing files on a computing cluster that you would like to have in a few places. A few examples where this might happen:
 
 1) The software package you are using wants you to have a specific directory structure for the data, but you do not want to move the data.
 2) There is a large file that is used as input to many different analyses and you would rather not have duplicate copies of it.
 
-Both of these are good places to implement *symbolic links*. Symbolic links can be thought of as arrows for computer, pointing to where a file is located, as we saw in the above example with the human reference genome. Symbolic links require negliable amounts of space and thus mean you can use them to point to large files elsewhere on the computing system. If these symbolic links get deleted or broken, they have no impact on the data they they were pointing to. Additionally, they can be named anything, so it can be helpful if a software package is looking for a specific name for an input file.
+Both of these are good places to implement *symbolic links*. Symbolic links can be thought of as arrows for computer, pointing to where a file or folder is located, as we saw in the above example with the human reference genome. Symbolic links require negliable amounts of space and thus mean you can use them to point to large files elsewhere on the computing system. If these symbolic links get deleted or broken, they have no impact on the data they they were pointing to. Additionally, they can be named anything, so it can be helpful if a software package is looking for a specific name for an input file.
 
 Let's go ahead and make our own symbolic link. First, navigate to our `home` directory:
 
@@ -366,11 +366,26 @@ When you now view this directory with `ls -l`, it will display the link like:
 E_coli.gff.gz -> /n/scratch/users/w/wig051/GCA_000005845.2_ASM584v2_genomic.gff.gz
 ```
 
-If you want to keep the original file name as the link name you can use just the path to where the symbolic link will be created and not include a <link name>. Since we are putting the link in our current directory, we can use `.`.
+If you want to keep the original file name as the link name you can use just the path to where the symbolic link will be created and not include a new `<link_name>`. Since we are putting the link in our current directory, we can use `.`.
 
-***Importantly, if the original file is deleted or moved, the symbolic link will become broken.*** It is common on many distributions for symbolic links to blink if they becomes broken.
+***Importantly, if the original file or folder is deleted or moved, the symbolic link will become broken.*** It is common on many distributions for symbolic links to blink if they becomes broken.
 
 > **NOTE**: The `-s` option is necessacary for creating a symbolic link. Without the `-s` option, a ***hard link*** is created and modifications to the linked file will be carried over to the original. Generally, speaking hard links are typically not very common.
+
+### Removing symbolic links
+
+Sometimes, you will no longer need a symbolic link -- maybe the original file has been deleted or moved, rendering the link broken, or you are restructuring your directory. You can remove a symbolic link just as you would remove a file or directory, and it will not delete the original file:
+
+```
+rm E_coli.gff.gz
+```
+
+You can check to see for yourself that the original file was not deleted:
+
+```
+ls /n/scratch/users/w/wig051/GCA_000005845.2_ASM584v2_genomic.gff.gz
+```
+> Note: to remove a symbolic link to a directory, you will need to use `rm -r <symbolic_link>`. **Be very careful that you are in the directory that contains the symbolic link and not in the directory that contains the original directory, or you will delete the entire contents of the original directory!**
 
 ***
 
