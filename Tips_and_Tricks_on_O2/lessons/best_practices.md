@@ -131,11 +131,14 @@ Ideally, we would like to find a way to save our aliases and that is one way we 
 Much like one might have a routine when coming home, like taking their shoes and jacket off, when you log onto your computer or log into any computing cluster, the computer will look for a file with a set of preferences that you have, called the `.bashrc`. This file is located in your home directory and is preceded by a `.`. This period means that it is a "hidden file". You can you the `-a` option with `ls` in order to see **all** files:
 
 ```bash
+# Back to home directory
 cd ~
+
+# List all files
 ls -a
 ```
 
-You can see that there are a number of these hidden files that are responsiable for various things. However, you will see one called `.bashrc` and this is the one that we will be adding some preferences too. 
+You can see that there are a number of these hidden files that are responsiable for various things. However, you **will see one called `.bashrc`** and this is the one that we will be adding some preferences too. 
 
 
 > ### `.bashrc` versus `.bash_profile`
@@ -182,7 +185,7 @@ Now you can create lots of aliases. For example, one that can be useful is:
 alias o2i='srun --pty -p interactive -t 0-12:00 --mem 4G /bin/bash'
 ```
 
-This alias allows the user to request an interactive job on O2 for 12 hours and allocate 4GB of memory. This way you don't need to remember all of the option that you need for an interactive job.
+This alias allows the user to request an interactive job on O2 for 12 hours and allocate 4GB of memory. This way you don't need to remember all of the option that you need for an interactive job. **We can test out the alias `o2i` a little bit later in the lesson!**
 
 ### What else do people put in their .bashrc profile?
 
@@ -215,15 +218,13 @@ During the course of your analyses, you might find that you you create many larg
 `scratch` space on the cluster is much like scratch paper that you may use on the exam. It is a space when you can do your "scratch" work. The files on `scratch` **are not backed up** and **will be deleted in 30 days**. However, you can be allocated ~25TB of space which is great for intermediate large files. We will be using the `scratch` space extensively today, but we will not be using it for large files for the sake of not needlessly consuming space on the cluster.
 
 ### Creating your own `scratch` space
-While on the login node, we will create our space on `/n/scratch/`. In order to do so, we will need to run a script provided by the HMS Research Computing team. But **first you will need to be on a login node to do so.** You will only need to create your scratch space once.
+While on the login node, we will create our space on `/n/scratch/`. In order to do so, we will need to run a script provided by the HMS Research Computing team. 
 
 ```bash
-$ exit # exit the interactive session (only necessary if you are on an interactive node)
-
-$ sh /n/cluster/bin/scratch_create_directory.sh 
+ sh /n/cluster/bin/scratch_create_directory.sh 
 ```
 
-> Note: You *MUST* be on a login node in order to create a space on `/n/scratch3`.
+> **NOTE: You *MUST* be on a login node in order to create a space on `/n/scratch3`.**
 
 It will prompt you with the following:
 
@@ -263,7 +264,7 @@ You can check your scratch quota using the quota-v2 command.
 > | Terabyte (TB) |1,000<sup>4</sup> = 1,000,000,000,000 | Tebibyte (TiB) | 1,024<sup>4</sup> = 1,099,511,627,776 |
 > | Petabyte (PB) |1,000<sup>5</sup> = 1,000,000,000,000,000 | Pebibyte (TiB) | 1,024<sup>5</sup> = 1,125,899,906,842,620 |
 
-We can anvigate to our newly created scratch space using this command:
+We can navigate to our newly created scratch space using this command:
 
 ```bash
 cd /n/scratch/users/${USER:0:1}/${USER}/
@@ -279,6 +280,14 @@ cp -r /n/groups/hbctraining/sleep_scripts .
 ```
 
 > Note: `${USER}` is just an environment variable in bash that hold your username and `${USER:0:1}` just some shorthand to get the first letter of your username.
+
+Now let's try and get back on an interactive node using our alias:
+
+```bash
+source ~/.bashrc
+
+o2i
+```
 
 ## Checking Quotas <a name="quotas"></a>
 
