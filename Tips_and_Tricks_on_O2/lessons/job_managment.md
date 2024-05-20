@@ -334,8 +334,8 @@ Sometimes you may start a command that will take a few minutes and you want to h
   
 2. If you've started your job already but forgot to include the `&` argument, is to **use `bg`**.  To use `bg`, you will need to know the following:
 
-  * Pause the command with <kbd>Ctrl</kbd> + <kbd>Z</kbd>.
-  * Send the command to the ***b***ack***g***round with the command `bg`. When you do this the command will continue from where it was paused.
+    * Pause the command with <kbd>Ctrl</kbd> + <kbd>Z</kbd>.
+    * Send the command to the ***b***ack***g***round with the command `bg`. When you do this the command will continue from where it was paused.
   * If you want to bring the task back to the ***f***ore***g***round, you can use the command `fg`.
 
 In order to test these methods, we will briefly re-introduce the `sleep` command. `sleep` just has the command line do nothing for a period of time denoted in seconds by the integer following the `sleep` command. This is useful if you want a brief pause within a loop, such as between submitting a bunch of jobs to the cluster. The syntax is:
