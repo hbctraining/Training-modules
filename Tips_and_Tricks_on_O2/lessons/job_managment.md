@@ -431,7 +431,7 @@ screen
 Your terminal window should now look like:
 
 <p align="center">
-<img src="../img/O2_screen.png" width="900">
+<img src="../img/O2_screen.png" width="600">
 </p>
 
 In order to navigate between your screens you can type <kbd>Ctrl</kbd> + <kbd>a</kbd> + `insert_screen_number`. For example, if we wanted to jump to the second screen, we can type <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>2</kbd>. Let's go ahead and get a sleep command running:
