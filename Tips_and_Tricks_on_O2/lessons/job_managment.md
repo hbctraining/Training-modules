@@ -12,13 +12,14 @@ author: "Will Gammerdinger, Heather Wick, Meeta Mistry"
 
 ## Overview
 
-* [Job dependencies](#jobdep)  
+* [Job dependencies](#jobdep)
+* [Job arrays](#jobarray)
 * [Checking on your jobs in queue](#jobinfo)
 * [Getting additional information about your jobs with `sacct` and `O2_jobs_report`](#saccto2)
 * [Canceling your job(s) with `scancel`](#scancel)
 * [Keeping track of time](#time)
 * [Running jobs in the background with `&` and `bg`/`fg`](#bgfg)
-* [Job arrays](#jobarray)
+
   
 ## Managing jobs on the cluster
 
@@ -110,6 +111,13 @@ squeue -u $USER
 You will notice that `job_1` is hopefully running, while `job_2` has a "PENDING" state and the "NODELIST(REASON)" states that it is due to a "(Dependency)". 
 
 > NOTE: While the behavior can change between implementations of SLURM, on O2, when a job exits with an error, it removes all `afterok` dependent jobs from the queue. Some other implementations of SLURM will not remove these jobs from the queue, but the provided reason when you check will be `DependencyNeverSatified`. In this case, you will need to manually cancel these jobs.
+
+
+## Job arrays <a name="jobarray"></a>
+
+If your work consists of a large number of tasks which differ only in some parameter, you can conveniently submit many tasks at once using a job array, also known as a task array or an array job.
+
+
 
 ## Monitoring your jobs 
 
@@ -448,13 +456,13 @@ We can exit `screen` by using <kbd>Ctrl</kbd> + <kbd>d</kbd>. A few useful keybo
 
 ## Using the O2 Portal 
 
-Sometimes when you need to analyze big datasets, you will want to still use a graphical user interface (GUI) that you are familiar with, like RStudio or MatLab. O2 has a service called the [O2 Portal](https://o2portal.rc.hms.harvard.edu) which allows for users to utilize the computational power and datasets located on O2 with the convenience of using a GUI. In order to use the O2 Portal, you need to submit a job request like you would on the command-line via the `sbatch` command and you will provide it SLURM directives like numbers of CPUs, memory, partition and time. Once you are queued it will generate a session for you to use your application in. More information on the O2 Portal can be found [HMS-RC's resource page](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/2230583317/O2Portal) and a tutorial on how to use R Studio on the O2 Portal can be found [here](https://hbctraining.github.io/Intro-to-Unix-QMB/lessons/R_studio_on_02.html).
+When working with big datasets, it can beneficial to have access to an IDE (intergated development environment) while writing your code. IDE's provide a graphical user interface (GUI) such as RStudio or MatLab allowing you to view your environment and plots all within the same space. 
 
 <p align="center">
 <img src="../img/O2_portal_homepage.png" width="900">
 </p>
 
-## Job arrays <a name="jobarray"></a>
+O2 has a service called the [O2 Portal](https://o2portal.rc.hms.harvard.edu) which **allows for users to utilize a GUI on O2**. This allows you to work more conveniently on the cluster where your data is stored and access increased computational power. In order to **use the O2 Portal, you need to submit a job request** like you would on the command-line via the `sbatch` command and you will provide it SLURM directives like numbers of CPUs, memory, partition and time. Once you are queued it will generate a session for you to use your application in. More information on the O2 Portal can be found [HMS-RC's resource page](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/2230583317/O2Portal) and a tutorial on how to use R Studio on the O2 Portal can be found [here](https://hbctraining.github.io/Intro-to-Unix-QMB/lessons/R_studio_on_02.html).
 
 
 
