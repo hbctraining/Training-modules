@@ -1,18 +1,18 @@
-# Job Management
+---
+title: "Job Monitoring"
+author: "Will Gammerdinger, Heather Wick, Meeta Mistry"
+---
 
 ## Learning Objectives
 
-In this lesson we will:
 - Discuss the advantages of utilizing job dependencies
 - Implement a job dependency
 - Cancel a job that is running on the cluster
-- Look up the CPU, memory and time efficiencies of a job
-- Use the `watch` command to monitor a task
-- Employ job arrays to submit multiple jobs
+- Monitor submitted jobs
 
 ## Overview
 
-* [Job dependencies and checking on your jobs](#jobdep)
+* [Job dependencies and checking on your jobs](#jobdep)  
 * [Checking on your jobs using `scontrol` for more information](#jobinfo) 
 * [Canceling your job(s) with `scancel`](#scancel)
 * [Getting additional information about your jobs with `sacct` and `O2_jobs_report`](#saccto2)
@@ -20,45 +20,64 @@ In this lesson we will:
 * [Running jobs in the background with `&` and `bg`/`fg`](#bgfg)
 * [Job arrays](#jobarray)
   
-## Job dependency <a name="jobdep"></a> 
+## Managing jobs on the cluster
 
-Most, if not all, high performance computer clusters (HPCCs) utilize a job scheduler. As we have previously discussed, O2 uses one of the most popular ones, SLURM. These job schedulers aim to allow for fair use of limited computational resources in a shared network. In order to most limit one's use of limited resources, it is oftentimes best practice to place programs that require different computational resources in different job submissions. For example, perhaps program A needs 12 CPUs, 36GB of memory and 6 hours, but the output of program A is used in program B and it requires 1 CPU, 4GB of memory and 8 hours. In this case one *could* request 12 CPUs, 36 GB and 14 hours of compute time, but when program B is running you would be wasting 11 CPUs and 32GB of memory. As a result this type of behavior is *strongly discouraged*.
+Most, if not all, high performance compute clusters (HPCs) utilize a job scheduler. As we have previously discussed, O2 uses one of the most popular ones, SLURM. These job schedulers aim to allow for fair use of limited computational resources in a shared network. The purpose of this lesson is to introduce you to **various ways of effectively setting up and managing your jobs on an HPC environment**.
 
-However, you may be interested in having your jobs queue in such a way that once one job finishes, it automatically queues the next job and job dependencies allow you to queue jobs to be dependent on other jobs.
+## Job dependencies on SLURM <a name="jobdep"></a> 
+
+Before we get to more basic commands on how to monitor our running jobs, we will introduce a few concepts that are helpful for scenarios that go beyond the simple job submission script.
+
+Let's begin with the idea that perhaps one of your jobs is dependent on the completion of another job. Do you sit there for 48 hours (or however long it takes to run to completion) before you set up the next job to run? Do you add all the commands for you workflow into a single script to run serially, even though each step requires different resources?
+
+**The answer to each of the questions above, is no.** 
+
+The solution is to have your jobs queue in such a way that once one job finishes, it automatically queues the next job.
 
 Job dependencies are very useful:
 - When you have consecutive jobs you want to run
-- When you don't want to/have to time manage the submission of consecutive jobs
+- When you don't want to/have the time to manage the submission of consecutive jobs
 
 > NOTE: Job dependencies are not unique to SLURM, many other job schedulers, like PBS, also have a feature similar to this!
 
-## Job dependencies on SLURM
+The **syntax for using job dependencies** in SLURM is implemented as an SBATCH directive/option called `--dependency`.
 
-The syntax for using job dependencies in SLURM can be done in two ways:
-1) It can be part of a SBATCH directive in your job submission script
-2) It can be an option in your `sbatch` command
+This option has several arguments that it can accept, but the most commonly used one is `afterok`. 
 
-We will be doing the latter, but either way will use the `--dependency` option. This option has several arguments that it can accept, but the most useful one for the overwhleming number of circumstances is `afterok`. Using `afterok` means that after the following job ends without an error, then it will remove the hold on the dependent job. After the `afterok` part you can separate one or more jobs with colons to signify which jobs are dependent.
+```bash
+sbatch --dependency=afterok:<job_ID_number> job_2.sbatch
+```
 
-Let's go to our `scratch` space to test this out:
+Using `afterok` means that after the following job ends without an error, then it will remove the hold on the dependent job. After the `afterok` part you can separate one or more jobs with colons to signify which jobs are dependent.
+
+Multiple jobs can be dependent on a single job. Conversely, we can have a single job dependent on multiple jobs. Both of these examples (and their associated commands) are shown in the figure below.
+
+<p align="center">
+<img src="../img/Job_dependencies.png" width="400">
+</p>
+
+### Example of job dependencies
+
+Let's go to our `scratch` space to test this out!
 
 ```bash
 cd_scratch
 ```
 
-Travel to the `sleep_scripts` directory that we downloaded earlier
+Move in to the `sleep_scripts` directory that we downloaded earlier:
 
 ```bash
 cd sleep_scripts
 ```
 
-We can inspect these two scripts:
+We can inspect these two scripts by using the `cat` command:
 
 ```bash
 cat job_1.sbatch
 cat job_2.sbatch 
 ```
-They are very basic scripts that can be submitted to the cluster and pause for 180 second and 30 second, respectively, before being complete. Using `vim` go ahead and modify both of these scripts to have your e-mail address in the line:
+
+They are very basic scripts that contain the `sleep` command. Each script simply pauses for 180 second and 30 second, in job 1 and 2 respectively. Before we run these scripts, use `vim` to modify both of these scripts to have your e-mail address in the line shown below. In this way, you will receive the email notification on the status of these jobs.
 
 ```bash
 #SBATCH --mail-user=Enter_your_email_here
@@ -70,46 +89,105 @@ Next, go ahead and submit `job_1.sbatch` to the cluster:
 sbatch job_1.sbatch
 ```
 
-It should return:
+At the command prompt you should observe the following text:
 
 ```bash
 Submitted batch job <job_ID_number>
 ```
 
-Use the job_ID_number returned from the first script as a dependency for the second script, `job_2.sbatch`:
+Use the job_ID_number which was returned from the first script as a dependency when submitting your second script `job_2.sbatch`. Make sure to use the `afterok` option as we show below:
 
 ```bash
 sbatch --dependency=afterok:<job_ID_number> job_2.sbatch
 ```
 
-Now, if you run check on your jobs with:
+Now, the **second job will only begin after the completion of the first**. If you want to take a quick look at your jobs with `squeue`:
 
 ```bash
 squeue -u $USER
 ```
 
-You will notice that `job_1` is hopefully running, while `job_2` has a "PENDING" state and the "NODELIST(REASON)" states that it is due to a "(Dependency)". Once, `job_1` finishes, `job_2` will be queued and ran. 
-
-Let's consider the case where we have two jobs, `job_3` and `job_4`, that are depenedent on `job_2`. Additionally, we have a single job, `job_5` dependent on `job_3` and `job_4` finishing. We can visualize a sample workflow below:
-
-<p align="center">
-<img src="../img/Job_dependencies.png" width="400">
-</p>
-
-Multiple jobs can be dependent on a single job. Conversely, we can have a single job dependent on multiple jobs. If this is the case, then we just separate each job ID with colons like:
-
-```bash
-# DO NOT RUN
-sbatch --dependency=afterok:353:354 Job_5.sbatch
-```
+You will notice that `job_1` is hopefully running, while `job_2` has a "PENDING" state and the "NODELIST(REASON)" states that it is due to a "(Dependency)". 
 
 > NOTE: While the behavior can change between implementations of SLURM, on O2, when a job exits with an error, it removes all `afterok` dependent jobs from the queue. Some other implementations of SLURM will not remove these jobs from the queue, but the provided reason when you check will be `DependencyNeverSatified`. In this case, you will need to manually cancel these jobs.
 
-As you can hopefully, see is that you can potentially set-up an entire pipeline for analysis and then comeback in a few days after it has all ran and you don't need to be constantly monitoring your jobs.
+## Monitoring your jobs 
 
-## Checking on your jobs using `scontrol` for more information <a name="jobinfo"></a>
+As your jobs are running, there are various commands you can use to check in on them and see how things are going. If things are not okay, there is also opportunity for you to intervene if necessary. 
 
-When you use `squeue -u $USER`, sometimes you don't get all of the information that you might like. The `scontrol` command can help give you a more detailed picture of the job submission. The syntax for using `scontrol` is:
+### Checking jobs in the queue using `squeue` 
+
+Earlier we had used the `squeue` command to check on our jobs. This command is used to view **information about jobs located in the SLURM scheduling queue**. We had demonstrated that we could provide the `-u $USER` argument to print only $USER's jobs. A shortuct to getting the same output would be:
+
+```bash
+squeue --me
+```
+
+Alternatively, HMSRC has RC created a simplified command which returns the results of `squeue --me` with some addtional columns of information related to resources as shown below:
+
+```bash
+ O2squeue
+
+
+JOBID     PARTITION     STATE       TIME_LIMIT     TIME           NODELIST(REASON)         ELIGIBLE_TIME         START_TIME            TRES_ALLOC
+21801263  interactive   RUNNING     12:00:00       2:09:52        compute-a-16-160         2020-11-09T11:35:49   2020-11-09T11:36:19   cpu=1,mem=2G,node=1,billing=1
+```
+
+### Checking on all submitted jobs using `sacct` or `O2_jobs_report`  <a name="saccto2"></a>
+
+The `sacct` command displays information on jobs, job steps, status, and exitcodes by default (this is jobs completed in addition to those in the queue):
+
+```bash
+sacct
+```
+
+Your output might look something like:
+
+```
+JobID           JobName  Partition    Account  AllocCPUS      State ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- -------- 
+38003155           bash interacti+      bcbio          1 CANCELLED+      0:0 
+38003155.ex+     extern                 bcbio          1  COMPLETED      0:0 
+38003155.0         bash                 bcbio          1  CANCELLED      0:9 
+38003191          job_1      short      bcbio          1 CANCELLED+      0:0 
+38003191.ba+      batch                 bcbio          1  CANCELLED     0:15 
+38003191.ex+     extern                 bcbio          1  COMPLETED      0:0 
+38003285          job_1      short      bcbio          1 CANCELLED+      0:0 
+38003285.ba+      batch                 bcbio          1  CANCELLED     0:15 
+38003285.ex+     extern                 bcbio          1  COMPLETED      0:0 
+38003385           bash interacti+      bcbio          1 CANCELLED+      0:0 
+38003385.ex+     extern                 bcbio          1  COMPLETED      0:0 
+38003385.0         bash                 bcbio          1  CANCELLED     0:15 
+38003495           bash interacti+      bcbio          1    RUNNING      0:0 
+38003495.ex+     extern                 bcbio          1    RUNNING      0:0 
+38003495.0         bash                 bcbio          1    RUNNING      0:0 
+```
+
+This can give you a nice **overview of your recently completed jobs**. It gives you information about the **jobs that are running or pending**. However, there is a jobs report that was developed by the folks at HMS-RC that is more informative and the command is  called `O2_jobs_report`. Let's take a look at it:
+
+ ```bash
+O2_jobs_report
+```
+
+The output will look something like:
+
+```bash
+JOBID        USER       ACCOUNT          PARTITION       STATE           STARTTIME       WALLTIME(hr)   RUNTIME(hr)    nCPU,RAM(GB),nGPU    PENDINGTIME(hr)    CPU_EFF(%)   RAM_EFF(%)   WALLTIME_EFF(%)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+37960930     <user>     bcbio            interactive     COMPLETED       2024-05-09      9.0            1.6            1,1.0,0              0.01               0.1          1.2          17.9      
+37962316     <user>     bcbio            priority        COMPLETED       2024-05-09      2.0            0.0            1,8.0,0              0.0                93.8         49.6         1.3       
+37976042     <user>     bcbio            interactive     FAILED          2024-05-09      12.0           1.9            1,4.0,0              0.01               0.0          0.1          15.5      
+38003155     <user>     bcbio            interactive     CANCELLED       2024-05-10      12.0           0.0            1,4.0,0              0.01               2.2          0.1          0.3       
+38003191     <user>     bcbio            short           CANCELLED       2024-05-10      0.1            0.0            1,0.0,0              0.02               0.0          0.0          14.7      
+38003285     <user>     bcbio            short           CANCELLED       2024-05-10      0.1            0.0            1,0.0,0              0.03               0.0          0.0          12.0  
+```
+
+This is an excellent way to not only get the same information that `sacct` provides, but also it **gives the user better context about the CPU, memory and time efficiency of their requested jobs**. This can very helpful for users to know how they can more responsibly use requested resources in their future jobs. 
+
+
+### Using `scontrol` for detailed information <a name="jobinfo"></a>
+
+When you use `squeue`, sometimes you don't get all of the information that you might like. The `scontrol` command can help give you a more **detailed picture of the job submission**. The syntax for using `scontrol` is:
 
 ```bash
 scontrol show jobid <job_ID_number>
@@ -146,9 +224,9 @@ JobId=Job_ID JobName=job_name.sbatch
    Power=
 ```
 
-This can tell you lots of information about the job. It tells you the job's state, when it started, when the job will end if it doesn't finish early, the compute node that it is on, partition used, any job dependencies it has, the resources requested, where the standard error and standard output is written to. Almost any question you might have about a job can be answered within here.
+As you can see, there is a lot of information about the job reported back to you. It tells you the job's state, when it started, when the job will end if it doesn't finish early, the compute node that it is on, partition used, any job dependencies it has, the resources requested, where the standard error and standard output is written to. Almost any question you might have about a job can be answered within here.
 
-## Canceling your job(s) with `scancel` <a name="scancel"></a>
+### Canceling your job(s) with `scancel` <a name="scancel"></a>
 
 There might be a time that you want to cancel a job that you've started. The command that you can use to cancel a job is `scancel` and the syntax looks like:
 
@@ -159,11 +237,11 @@ scancel <job_id>
 
 The `job_id` is the `job_id` that you get when you submit a job or you can find it out by looking at your submitted jobs with using `O2squeue` or `squeue --me`.
 
-If you have many jobs that you need to be cancelled, there is a useful shortcut for running `scancel` across all of your jobs:
+If you have many jobs that you need to be cancelled, there is a useful shortcut for **running `scancel` across all of your jobs**:
 
 ```bash
 # DO NOT RUN
-squeue --me
+scancel --me
 ```
 
 This will cancel all of your jobs, including any interactive jobs you might be running. We can test this out by submitting our `job_1.sh` to the cluster twice:
@@ -191,62 +269,11 @@ Now we should see that we have no jobs running when we check `O2squeue`:
 O2squeue
 ```
 
-## Getting additional information about your jobs with `sacct` and `O2_jobs_report` <a name="saccto2"></a>
-
-Sometimes you might be interested in checking on the jobs that you have submitted. SLURM has a feature to help you do this called `sacct`. Let's see what this looks like:
-
-```bash
-sacct
-```
-
-You output might look something like:
-
-```
-JobID           JobName  Partition    Account  AllocCPUS      State ExitCode 
------------- ---------- ---------- ---------- ---------- ---------- -------- 
-38003155           bash interacti+      bcbio          1 CANCELLED+      0:0 
-38003155.ex+     extern                 bcbio          1  COMPLETED      0:0 
-38003155.0         bash                 bcbio          1  CANCELLED      0:9 
-38003191          job_1      short      bcbio          1 CANCELLED+      0:0 
-38003191.ba+      batch                 bcbio          1  CANCELLED     0:15 
-38003191.ex+     extern                 bcbio          1  COMPLETED      0:0 
-38003285          job_1      short      bcbio          1 CANCELLED+      0:0 
-38003285.ba+      batch                 bcbio          1  CANCELLED     0:15 
-38003285.ex+     extern                 bcbio          1  COMPLETED      0:0 
-38003385           bash interacti+      bcbio          1 CANCELLED+      0:0 
-38003385.ex+     extern                 bcbio          1  COMPLETED      0:0 
-38003385.0         bash                 bcbio          1  CANCELLED     0:15 
-38003495           bash interacti+      bcbio          1    RUNNING      0:0 
-38003495.ex+     extern                 bcbio          1    RUNNING      0:0 
-38003495.0         bash                 bcbio          1    RUNNING      0:0 
-```
-
-This can give you a nice overview of your recently completed jobs. It gives you information about the jobs that ran, are running or pending. However, there is a jobs report that was developed by the folks at HMS-RC that is more informative and the command is  called `O2_jobs_report`. Let's take a look at it:
-
- ```bash
-O2_jobs_report
-```
-
-The output will look something like:
-
-```bash
-JOBID        USER       ACCOUNT          PARTITION       STATE           STARTTIME       WALLTIME(hr)   RUNTIME(hr)    nCPU,RAM(GB),nGPU    PENDINGTIME(hr)    CPU_EFF(%)   RAM_EFF(%)   WALLTIME_EFF(%)
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-37960930     <user>     bcbio            interactive     COMPLETED       2024-05-09      9.0            1.6            1,1.0,0              0.01               0.1          1.2          17.9      
-37962316     <user>     bcbio            priority        COMPLETED       2024-05-09      2.0            0.0            1,8.0,0              0.0                93.8         49.6         1.3       
-37976042     <user>     bcbio            interactive     FAILED          2024-05-09      12.0           1.9            1,4.0,0              0.01               0.0          0.1          15.5      
-38003155     <user>     bcbio            interactive     CANCELLED       2024-05-10      12.0           0.0            1,4.0,0              0.01               2.2          0.1          0.3       
-38003191     <user>     bcbio            short           CANCELLED       2024-05-10      0.1            0.0            1,0.0,0              0.02               0.0          0.0          14.7      
-38003285     <user>     bcbio            short           CANCELLED       2024-05-10      0.1            0.0            1,0.0,0              0.03               0.0          0.0          12.0  
-```
-
-This is an excellent way to not only get the same information that `sacct` provides, but also it gives the user better context about the CPU, memory and time efficiency of their requested jobs. This can very helpful for users to know how they can more responsibly use requested resources in their future jobs. 
-
 ## Keeping Track of Time <a name="time"></a>
 
-We don't always just submit a command and come back later. There are times when you want to keep track of what is going on, see how long a task takes for future use, or run a command in the background while you continue to use the command line.
+There are times when you want to keep track of what is going on. If you are able to see how long a task takes to run - you can easily plan for your requested resources on a future run. 
 
-### watch
+### `watch`
 
 Sometimes one may want to see the ouptut of a command that continuously changes. The `watch` command is particularly useful for this. Add `watch` before your command and your command line will take you to an output page that will continually up your command. Common uses for `watch` could be:
 
