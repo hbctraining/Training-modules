@@ -280,7 +280,7 @@ export PATH
 These are just a few examples of items that one might commonly see in other people's `.bashrc` profiles.
 
 
-Now let's try and get back on an interactive node using our alias:
+Now let's try and **get back on an interactive node using our alias**:
 
 ```bash
 source ~/.bashrc
