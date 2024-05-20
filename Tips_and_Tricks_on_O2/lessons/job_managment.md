@@ -460,7 +460,7 @@ We can exit `screen` by using <kbd>Ctrl</kbd> + <kbd>d</kbd>. A few useful keybo
 When working with big datasets, it can beneficial to have access to an IDE (intergated development environment) while writing your code. IDE's provide a graphical user interface (GUI) such as RStudio or MatLab allowing you to view your environment and plots all within the same space. 
 
 <p align="center">
-<img src="../img/O2_portal_homepage.png" width="900">
+<img src="../img/O2_portal_homepage.png" width="700">
 </p>
 
 O2 has a service called the [O2 Portal](https://o2portal.rc.hms.harvard.edu) which **allows for users to utilize a GUI on O2**. This allows you to work more conveniently on the cluster where your data is stored and access increased computational power. In order to **use the O2 Portal, you need to submit a job request** like you would on the command-line via the `sbatch` command and you will provide it SLURM directives like numbers of CPUs, memory, partition and time. Once you are queued it will generate a session for you to use your application in. More information on the O2 Portal can be found [HMS-RC's resource page](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/2230583317/O2Portal) and a tutorial on how to use R Studio on the O2 Portal can be found [here](https://hbctraining.github.io/Intro-to-Unix-QMB/lessons/R_studio_on_02.html).
