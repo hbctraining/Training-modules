@@ -19,6 +19,7 @@ author: "Will Gammerdinger, Heather Wick, Meeta Mistry"
 * [Canceling your job(s) with `scancel`](#scancel)
 * [Keeping track of time](#time)
 * [Running jobs in the background with `&` and `bg`/`fg`](#bgfg)
+* [O2 Portal](#portal)
 
   
 ## Managing jobs on the cluster
@@ -454,7 +455,7 @@ We can exit `screen` by using <kbd>Ctrl</kbd> + <kbd>d</kbd>. A few useful keybo
 | Jump to the end of line | <kbd>Ctrl</kbd> + <kbd>e</kbd> |
 | Quit `screen` | <kbd>Ctrl</kbd> + <kbd>d</kbd>  |
 
-## Using the O2 Portal 
+## Using the O2 Portal <a name="portal"></a>
 
 When working with big datasets, it can beneficial to have access to an IDE (intergated development environment) while writing your code. IDE's provide a graphical user interface (GUI) such as RStudio or MatLab allowing you to view your environment and plots all within the same space. 
 
