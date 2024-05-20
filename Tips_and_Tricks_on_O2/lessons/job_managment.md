@@ -12,10 +12,10 @@ author: "Will Gammerdinger, Heather Wick, Meeta Mistry"
 
 ## Overview
 
-* [Job dependencies and checking on your jobs](#jobdep)  
-* [Checking on your jobs using `scontrol` for more information](#jobinfo) 
-* [Canceling your job(s) with `scancel`](#scancel)
+* [Job dependencies](#jobdep)  
+* [Checking on your jobs in queue](#jobinfo)
 * [Getting additional information about your jobs with `sacct` and `O2_jobs_report`](#saccto2)
+* [Canceling your job(s) with `scancel`](#scancel)
 * [Keeping track of time](#time)
 * [Running jobs in the background with `&` and `bg`/`fg`](#bgfg)
 * [Job arrays](#jobarray)
@@ -115,7 +115,7 @@ You will notice that `job_1` is hopefully running, while `job_2` has a "PENDING"
 
 As your jobs are running, there are various commands you can use to check in on them and see how things are going. If things are not okay, there is also opportunity for you to intervene if necessary. 
 
-### Checking jobs in the queue using `squeue` 
+### Checking jobs in the queue using `squeue`  <a name="jobinfo"></a>
 
 Earlier we had used the `squeue` command to check on our jobs. This command is used to view **information about jobs located in the SLURM scheduling queue**. We had demonstrated that we could provide the `-u $USER` argument to print only $USER's jobs. A shortuct to getting the same output would be:
 
@@ -185,7 +185,7 @@ JOBID        USER       ACCOUNT          PARTITION       STATE           STARTTI
 This is an excellent way to not only get the same information that `sacct` provides, but also it **gives the user better context about the CPU, memory and time efficiency of their requested jobs**. This can very helpful for users to know how they can more responsibly use requested resources in their future jobs. 
 
 
-### Using `scontrol` for detailed information <a name="jobinfo"></a>
+### Using `scontrol` for detailed information
 
 When you use `squeue`, sometimes you don't get all of the information that you might like. The `scontrol` command can help give you a more **detailed picture of the job submission**. The syntax for using `scontrol` is:
 
@@ -275,31 +275,32 @@ There are times when you want to keep track of what is going on. If you are able
 
 ### `watch`
 
-Sometimes one may want to see the ouptut of a command that continuously changes. The `watch` command is particularly useful for this. Add `watch` before your command and your command line will take you to an output page that will continually up your command. Common uses for `watch` could be:
+Sometimes one may want to see the ouptut of a command that continuously changes. The `watch` command is particularly useful for this. Add `watch` before your command and your command line will take you to an output page that will continually up your command. Common uses for `watch` include:
 
-1) Viewing as files get created
+1) Viewing as files as they created:
 
 ```bash
 watch ls -lh <directory>
 ```
 
-2) Monitoring jobs on the cluster
+2) Monitoring jobs on the cluster:
 
 ```bash
 watch squeue -u $USER
 ```
 
-The default interval for update is two seconds, but that can be altered with the `-n` option. Importantly, the options used with `watch` command need to be placed ***before*** the command that you are watching or else the interpreter will evaluate the option as part of the watched command's options. An example of this is below:
+The default interval for update is two seconds, but that can be altered with the `-n` option. Importantly, the **options used with `watch` command need to be placed before*** the command that you are watching or else the interpreter will evaluate the option as part of the watched command's options. An example of this is below:
 
-Update every 4 seconds
+
 
 ```bash
+# Update the watch every 4 seconds
 watch -n 4 squeue -u $USER
 ```
 
-## time
+### `time`
 
-Sometimes you are interested to know how long a task takes to complete. Similar to the `watch` command you can place `time` infront of a command and it will tell you how long the command takes to run. This can be particularly useful if you have downsampled a dataset and you are trying to estimate how long the full set will take to run. An example can be found below:
+Sometimes you are interested in knowing how long a task takes to complete. Similar to the `watch` command you can place `time` in front of a command and it will tell you how long the command takes to run. This can be particularly useful if you have downsampled a dataset and you are trying to estimate how long the full dataset will take to run. An example can be found below:
 
 ```bash
 time ls -lh
@@ -313,17 +314,22 @@ user	0m0.002s
 sys	0m0.007s
 ```
 
-**`real`** is most likely the time you are interested in since it displays the time it takes to run a given command. **`user`** and **`sys`** represent CPU time used for various aspects of the computing and can be impacted by multithreading. 
+* **`real`** is most likely the time you are interested in since it displays the time it takes to run a given command.
+* **`user`** and **`sys`** represent CPU time used for various aspects of the computing and can be impacted by multithreading. 
 
-### Running jobs in the background with `&` or `bg` <a name="bgfg"></a>
+## Running jobs in the background <a name="bgfg"></a>
 
-Sometimes you may start a command that will take a few minutes and you want to have your command prompt back to do other tasks while you wait for the initial command to finish. There are two ways to do this. One way is to add the `&` argument to the end of your command when you first type it. Another way, which is useful if you've started your job already but forgot to include the `&` argument, is to use `bg`.  To use `bg`, you will need to do two things:
+Sometimes you may start a command that will take a few minutes and you want to have your command prompt back to do other tasks while you wait for the initial command to finish. There are various ways to do this. 
 
-1) Pause the command with <kbd>Ctrl</kbd> + <kbd>Z</kbd>. 
-2) Send the command to the ***b***ack***g***round with the command `bg`. When you do this the command will continue from where it was paused.
-3) If you want to bring the task back to the ***f***ore***g***round, you can use the command `fg`.
+1. One way is to **add the `&` argument to the end of your command when you first type it**.
+  
+2. If you've started your job already but forgot to include the `&` argument, is to **use `bg`**.  To use `bg`, you will need to know the following:
 
-In order to test these methods, we will briefly re-introduce the `sleep` command. `sleep` just has the command line do nothing for a period of time denoted in seconds by the integer following the `sleep` command. This is sometimes useful if you want a brief pause within a loop, such as between submitting a bunch of jobs to the cluster. The syntax is:
+  * Pause the command with <kbd>Ctrl</kbd> + <kbd>Z</kbd>.
+  * Send the command to the ***b***ack***g***round with the command `bg`. When you do this the command will continue from where it was paused.
+  * If you want to bring the task back to the ***f***ore***g***round, you can use the command `fg`.
+
+In order to test these methods, we will briefly re-introduce the `sleep` command. `sleep` just has the command line do nothing for a period of time denoted in seconds by the integer following the `sleep` command. This is useful if you want a brief pause within a loop, such as between submitting a bunch of jobs to the cluster. The syntax is:
 
 ```bash
 # DO NOT RUN
@@ -344,37 +350,41 @@ If we know in advance we want to do other things while we're running our command
 sleep 180 &
 ```
 
-You'll notice you can type other commands freely even though `sleep` is running in the background. For now, let's cancel this command by typing `Ctrl` + `X` + `C`. But what if we started `sleep` and didn't add `&` to our command?
+You'll notice you can type other commands freely even though `sleep` is running in the background. For now, let's cancel this command by typing `Ctrl` + `X` + `C`. 
+
+**Now, what if we started `sleep` and didn't add `&` to our command?**
 
 ```bash
 sleep 180
 ```
 
-Now type `Ctrl` + `Z` and this will pause that command. This will be followed by the command to move that task to running in the background with:
+Type `Ctrl` + `Z` and this will pause that command. Then move that task to be running in the background with:
 
 ```bash
 bg
 ```
 
-The `sleep` command is now running in the background and you have re-claimed your command-line prompt to use while the `sleep` command runs. You'll also notice that it added the `&` to your sleep command in the terminal output. If you want to bring the `sleep` command back to the foreground, type:
+The `sleep` command is now running in the background and you have reclaimed your command-line prompt to use while the `sleep` command runs. You'll also notice that it added the `&` to your sleep command in the terminal output. 
+
+If you want to **bring the `sleep` command back to the foreground**, type:
 
 ```bash
 fg
 ```
 
-And if it is still running it will be brought to the foreground. `fg` will also work for commands which used the `&`.
+> `fg` will also work for commands which used the `&`.
 
-The place that this can be really useful is whenever you are running commands/scripts that take a few minutes to run that don't have large procesing requirements. Examples could be:
+These commands are useful whenever you are running commands/scripts that take a few minutes to run but don't have super large processing requirements. Some examples include:
 
 - Indexing a FASTA file
 - Executing a long command with many pipes
-- You are running something in the command line and need to check something
+- Testing a command interactively
 
-Oftentimes, it is best just to submit these types of jobs to the cluster, but sometimes you don't mind running the task on your requested compute node, but is taking a bit longer than you anticipated or something came up. 
+Typically, lengthy tasks should be submitted as jobs to the cluster. However, you will find it is not uncommon to be running an interactive session and wanting to concurrently have access to the command prompt to do other things. 
 
-## screen
+### `screen`
 
-An alternative to using `&` and `bg`, is to use `screen`, which allows the user to have multiple command-line interfaces open simultaneously while on the cluster. So instead of running something in the background or on a different terimal window, the user can just place it in a different screen and it is easy to navigate between screens. Let's start by copying a screens template configuration file that HMS-RC provides over to our home directory:
+An alternative to using `&` and `bg`, is to use `screen`, which allows the user to have multiple command-line interfaces open simultaneously while on the cluster. So instead of running something in the background or on a different terminal window, the user can just place it in a different screen and it is easy to navigate between screens. Let's start by copying a screens template configuration file that HMS-RC provides over to our home directory:
 
 ```bash
 cp /n/shared_db/misc/rcbio/data/screenrc.template.txt ~/.screenrc
@@ -436,7 +446,7 @@ We can exit `screen` by using <kbd>Ctrl</kbd> + <kbd>d</kbd>. A few useful keybo
 | Jump to the end of line | <kbd>Ctrl</kbd> + <kbd>e</kbd> |
 | Quit `screen` | <kbd>Ctrl</kbd> + <kbd>d</kbd>  |
 
-## O2 Portal
+## Using the O2 Portal 
 
 Sometimes when you need to analyze big datasets, you will want to still use a graphical user interface (GUI) that you are familiar with, like RStudio or MatLab. O2 has a service called the [O2 Portal](https://o2portal.rc.hms.harvard.edu) which allows for users to utilize the computational power and datasets located on O2 with the convenience of using a GUI. In order to use the O2 Portal, you need to submit a job request like you would on the command-line via the `sbatch` command and you will provide it SLURM directives like numbers of CPUs, memory, partition and time. Once you are queued it will generate a session for you to use your application in. More information on the O2 Portal can be found [HMS-RC's resource page](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/2230583317/O2Portal) and a tutorial on how to use R Studio on the O2 Portal can be found [here](https://hbctraining.github.io/Intro-to-Unix-QMB/lessons/R_studio_on_02.html).
 
@@ -444,102 +454,9 @@ Sometimes when you need to analyze big datasets, you will want to still use a gr
 <img src="../img/O2_portal_homepage.png" width="900">
 </p>
 
-## What is a job array? <a name="jobarray"></a>
-
-Atlassian says this about job arrays on O2: "Job arrays can be leveraged to quickly submit a number of similar jobs. For example, you can use job arrays to start multiple instances of the same program on different input files, or with different input parameters. A job array is technically one job, but with multiple tasks." [link](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/1586793632/Using+Slurm+Basic#Job-Arrays).
-
-Array jobs run simultaneously rather than one at a time which means they are very fast! Additionally, running a job array is very simple!  
-
-```bash
-sbatch --array=1-10 my_script.sh
-```
-
-This will run my_script.sh 10 times with the job IDs 1,2,3,4,5,6,7,8,9,10
-
-We can also put this directly into the bash script itself (although we will continue with the command line version here).
-```bash
-$SBATCH --array=1-10
-```
-
-We can specify any job IDs we want.
-
-```bash
-sbatch --array=1,7,12 my_script.sh
-```
-This will run my_script.sh 3 times with the job IDs 1,7,12
-
-Of course we don't want to run the same job on the same input files over and over, that would be pointless. We can use the job IDs within our script to specify different input or output files. In bash the job id is given a special variable `${SLURM_ARRAY_TASK_ID}`
+## Job arrays <a name="jobarray"></a>
 
 
-## How can I use ${SLURM_ARRAY_TASK_ID}?
-
-The value of `${SLURM_ARRAY_TASK_ID}` is simply the job ID. If I run 
-
-```bash
-sbatch --array=1,7 my_script.sh
-```
-This will start two jobs, one where `${SLURM_ARRAY_TASK_ID}` is 1 and one where it is 7
-
-There are several ways we can use this. If we plan ahead and name our files with these numbers (e.g., sample_1.fastq, sample_2.fastq) we can directly refer to these files in our script: `sample_${SLURM_ARRAY_TASK_ID}.fastq` However, using the ID for input files is often not a great idea as it means you need to strip away most of the information that you might put in these names.
-
-Instead we can keep our sample names in a separate file and use [awk](awk.md) to pull the file names. 
-
-here is our complete list of long sample names which is found in our file `samples.txt`:
-
-```
-DMSO_control_day1_rep1
-DMSO_control_day1_rep2
-DMSO_control_day2_rep1
-DMSO_control_day2_rep2
-DMSO_KO_day1_rep1
-DMSO_KO_day1_rep2
-DMSO_KO_day2_rep1
-DMSO_KO_day2_rep2
-Drug_control_day1_rep1
-Drug_control_day1_rep2
-Drug_control_day2_rep1
-Drug_control_day2_rep2
-Drug_KO_day1_rep1
-Drug_KO_day1_rep2
-Drug_KO_day2_rep1
-Drug_KO_day2_rep2
-```
-
-If we renamed all of these to 1-16 we would lose a lot of information that may be helpful to have on hand. If these are all sam files and we want to convert them to bam files our script could look like this
-
-```bash
-
-file=$(awk -v  awkvar="${SLURM_ARRAY_TASK_ID}" 'NR==awkvar' samples.txt)
-
-samtools view -S -b ${file}.sam > ${file}.bam
-
-```
-
-Since we have sixteen samples we would run this as 
-
-```bash
-sbatch --array=1-16 my_script.sh
-```
-
-So what is this script doing? `file=$(awk -v  awkvar="${SLURM_ARRAY_TASK_ID}" 'NR==awkvar' samples.txt)` pulls the line of `samples.txt` that matched the job ID. Then we assign that to a variable called `${file}` and use that to run our command.
-
-Job IDs can also be helpful for output files or folders. We saw above how we used the job ID to help name our output bam file. But creating and naming folders is helpful in some instances as well. 
-
-```bash
-
-file=$(awk -v  awkvar="${SLURM_ARRAY_TASK_ID}" 'NR==awkvar' samples.txt)
-
-PREFIX="Folder_${SLURM_ARRAY_TASK_ID}"
-     mkdir $PREFIX
-        cd $PREFIX
-
-samtools view -S -b ../${file}.sam > ${file}.bam
-
-```    
-
-This script differs from our previous one in that it makes a folder with the job ID (Folder_1 for job ID 1) then moves inside of it to execute the command. Instead of getting all 16 of our bam files output in a single folder each of them will be in its own folder labled Folder_1 to Folder_16. 
-
-**NOTE** That we define `${file}` BEFORE we move into our new folder as samples.txt is only present in the main directory. 
 
 ***
 
