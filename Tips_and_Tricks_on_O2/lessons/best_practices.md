@@ -144,7 +144,13 @@ cp -r /n/groups/hbctraining/sleep_scripts .
 
 ## Aliases and .bashrc profile <a name="aliasbashrc"></a>
 
-Now that we have created a space on `scratch`, you might be interested in having a shortcut to getting there just like you have a shortcut to get to your home directory by using:
+Now that we have created a space on `scratch`, let's log back in to an interactive node:
+
+```bash
+srun --pty -p interactive -t 0-3:00 --mem 1G  /bin/bash
+```
+
+With the scratch folder in place, you might be interested in having a shortcut to getting there just like you have a shortcut to get to your home directory by using:
 
 ```bash
 cd ~
@@ -169,11 +175,13 @@ The return should look like `/home/your_username`.Now we can use our newly creat
 ```bash
 cd_scratch
 ```
+
 Now we should be able to see that we are within our scratch space by using:
 
 ```bash
 pwd
 ```
+
 And now it should say that we are within `/n/scratch/users/<first_letter_of_username>/<username>/`
 
 This is great, but this alias is not saved anywhere but the currently computing node that you are using. If we exit the computing node with:
@@ -195,6 +203,12 @@ It will return:
 ```
 
 Ideally, we would like to find a way to save our aliases and that is one way we can use our `.bashrc` profile!
+
+Before moving on, let's log back into the interactive node again; it may be repetitive for this module, but it is best practice to work on an interactive node:
+
+```bash
+srun --pty -p interactive -t 0-3:00 --mem 1G  /bin/bash
+```
 
 ### .bashrc profile
 
