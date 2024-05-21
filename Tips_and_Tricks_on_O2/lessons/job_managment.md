@@ -122,7 +122,7 @@ If your work consists of a **large number of tasks which differ only in some par
 * You **set the range of values** with the `--array` parameter.
 
 
-Let's look at a very simple example [adapted from technical documentation wiki of the Digital Research Alliance of Canada](https://docs.alliancecan.ca/wiki/Job_arrays):
+Let's look at a very simple example adapted from the technical [documentation wiki](https://docs.alliancecan.ca/wiki/Job_arrays) of the Digital Research Alliance of Canada:
 
 
 ```bash
