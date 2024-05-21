@@ -143,7 +143,7 @@ This job will be scheduled as *ten independent tasks*.
 
 **What is stored in the $SLURM_ARRAY_TASK_ID variable?**
 
-This variable takes on the numbers 1 through 10 (from `--array=1-10`) and is used to **assign the individual tasks a job ID**. In the commmands that follow the slurm directives we can use the value stored as the distinguishing factor between the 10 tasks.
+This variable takes on the numbers 1 through 10 (from `--array=1-10`) and is used to **assign the individual tasks a job ID**. In the commands that follow, we can use the $SLURM_ARRAY_TASK_ID value stored as the distinguishing factor between the 10 tasks.
 
 For example, we can use the vlalyes 1-10 to identify **10 different samples** that we want to run the software on:
 
