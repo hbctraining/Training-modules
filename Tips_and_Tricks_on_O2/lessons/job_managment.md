@@ -116,8 +116,50 @@ You will notice that `job_1` is hopefully running, while `job_2` has a "PENDING"
 
 ## Job arrays <a name="jobarray"></a>
 
-If your work consists of a large number of tasks which differ only in some parameter, you can conveniently submit many tasks at once using a job array, also known as a task array or an array job.
+If your work consists of a **large number of tasks which differ only in some parameter**, you can conveniently **submit** many tasks at **once using a job array**. There are two important components to note:
 
+* The **individual tasks in the array are distinguished by an environment variable, `$SLURM_ARRAY_TASK_ID`**, which Slurm sets to a different value for each task.
+* You **set the range of values** with the `--array` parameter.
+
+
+Let's look at a very simple example [adapted from technical documentation wiki of the Digital Research Alliance of Canada](https://docs.alliancecan.ca/wiki/Job_arrays):
+
+
+```bash
+
+## DO NOT RUN - EXAMPLE ONLY
+
+#!/bin/bash
+#SBATCH --array=1-10
+#SBATCH --time=3:00:00
+
+<command 1>
+<command 2> ...
+```
+
+This job will be scheduled as *ten independent tasks*. 
+* Each task has a separate time limit of 3 hours.
+* Each task may start at a different time on a different node.
+
+**What is stored in the $SLURM_ARRAY_TASK_ID variable?**
+
+This variable takes on the numbers 1 through 10 (from `--array=1-10`) and is used to **assign the individual tasks a job ID**. In the commmands that follow the slurm directives we can use the value stored as the distinguishing factor between the 10 tasks.
+
+For example, we can use the vlalyes 1-10 to identify **10 different samples** that we want to run the software on:
+
+```bash
+software_program_x  mydataset_sample_${SLURM_ARRAY_TASK_ID}
+```
+
+Alternatively, we might want to run the the software on the **same sample but with each task changing a specific parameter value**:
+
+```bash
+program_y $SLURM_ARRAY_TASK_ID some_argument another_arg
+```
+
+There are also various ways in which we can use the numbers to access a document which contains the values we need for each task. Using a job array instead of a large number of separate serial jobs has advantages for you and other users! It increases efficiency and you spend less time waiting, but the scheduler does not have to analyze job requirements for each task in the array separately, so it can run more efficiently too.
+
+> **NOT:** You should not use a job array to submit tasks with very short run times, e.g. much less than an hour. These tasks are better off run using a shell loop inside a job.
 
 
 ## Monitoring your jobs 
