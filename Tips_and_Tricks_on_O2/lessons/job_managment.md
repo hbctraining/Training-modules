@@ -14,11 +14,11 @@ author: "Will Gammerdinger, Heather Wick, Meeta Mistry"
 
 * [Job dependencies](#jobdep)
 * [Job arrays](#jobarray)
-* [Checking on your jobs in queue](#jobinfo)
+* [Checking on your jobs in queue with `squeue` and `scontrol`](#jobinfo)
 * [Getting additional information about your jobs with `sacct` and `O2_jobs_report`](#saccto2)
 * [Canceling your job(s) with `scancel`](#scancel)
 * [Keeping track of time](#time)
-* [Running jobs in the background with `&` and `bg`/`fg`](#bgfg)
+* [Running jobs in the background with `&`, `bg`/`fg`, and `screen`](#bgfg)
 * [O2 Portal](#portal)
 
   
@@ -116,7 +116,7 @@ You will notice that `job_1` is hopefully running, while `job_2` has a "PENDING"
 
 ## Job arrays <a name="jobarray"></a>
 
-If your work consists of a **large number of tasks which differ only in some parameter**, you can conveniently **submit** many tasks at **once using a job array**. There are two important components to note:
+If your work consists of a **large number of tasks which differ only in some parameter**, you can conveniently **submit many tasks at once using a job array**. There are two important components to note:
 
 * The **individual tasks in the array are distinguished by an environment variable, `$SLURM_ARRAY_TASK_ID`**, which Slurm sets to a different value for each task.
 * You **set the range of values** with the `--array` parameter.
@@ -161,6 +161,7 @@ There are also various ways in which we can use the $SLURM_ARRAY_TASK_ID numbers
 
 > **NOTE:** You should not use a job array to submit tasks with very short run times, e.g. much less than an hour. These tasks are better off run using a shell loop inside a job.
 
+You can learn more about implementing Slurm arrays in our [Accelerate with automation: Arrays in Slurm](https://github.com/hbctraining/Training-modules/blob/master/Accelerate_with_automation/lessons/arrays_in_slurm.md) lesson.
 
 ## Monitoring your jobs 
 
@@ -183,6 +184,47 @@ Alternatively, HMSRC has RC created a simplified command which returns the resul
 JOBID     PARTITION     STATE       TIME_LIMIT     TIME           NODELIST(REASON)         ELIGIBLE_TIME         START_TIME            TRES_ALLOC
 21801263  interactive   RUNNING     12:00:00       2:09:52        compute-a-16-160         2020-11-09T11:35:49   2020-11-09T11:36:19   cpu=1,mem=2G,node=1,billing=1
 ```
+### Using `scontrol` for detailed information
+
+When you use `squeue`, sometimes you don't get all of the information that you might like. The `scontrol` command can help give you a more **detailed picture of the job submission**. The syntax for using `scontrol` is:
+
+```bash
+scontrol show jobid <job_ID_number>
+```
+
+It will return an output that looks like:
+
+```bash
+JobId=Job_ID JobName=job_name.sbatch
+   UserId=$USER(XXXXXXX) GroupId=$USER(XXXXXXX) MCS_label=N/A
+   Priority=369878 Nice=0 Account=Account_name QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:40:53 TimeLimit=1-00:00:00 TimeMin=N/A
+   SubmitTime=2024-05-06T22:38:07 EligibleTime=2024-05-06T22:38:07
+   AccrueTime=2024-05-06T22:38:07
+   StartTime=2024-05-06T22:38:31 EndTime=2024-05-07T22:38:31 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-05-06T22:38:31 Scheduler=Backfill
+   Partition=medium AllocNode:Sid=compute-e-16-230:17259
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=compute-a-16-163
+   BatchHost=compute-a-16-163
+   NumNodes=1 NumCPUs=1 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=1,mem=64G,node=1,billing=5
+   AllocTRES=cpu=1,mem=64G,node=1,billing=5
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=1 MinMemoryNode=64G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/Path/to/submission/script/job_name.sbatch
+   WorkDir=/Path/where/script/was/submitted/from
+   StdErr=/Path/where/script/was/submitted/from/Job_ID.err
+   StdIn=/dev/null
+   StdOut=/Path/where/script/was/submitted/from/Job_ID.out
+   Power=
+```
+
+As you can see, there is a lot of information about the job reported back to you. It tells you the job's state, when it started, when the job will end if it doesn't finish early, the compute node that it is on, partition used, any job dependencies it has, the resources requested, where the standard error and standard output is written to. Almost any question you might have about a job can be answered within here. You can also use `scontrol` to check information about a job that has already completed.
 
 ### Checking on all submitted jobs using `sacct` or `O2_jobs_report`  <a name="saccto2"></a>
 
@@ -234,48 +276,6 @@ JOBID        USER       ACCOUNT          PARTITION       STATE           STARTTI
 ```
 
 This is an excellent way to not only get the same information that `sacct` provides, but also it **gives the user better context about the CPU, memory and time efficiency of their requested jobs**. This can very helpful for users to know how they can more responsibly use requested resources in their future jobs. 
-
-
-### Using `scontrol` for detailed information
-
-When you use `squeue`, sometimes you don't get all of the information that you might like. The `scontrol` command can help give you a more **detailed picture of the job submission**. The syntax for using `scontrol` is:
-
-```bash
-scontrol show jobid <job_ID_number>
-```
-It will return an output that looks like:
-
-```bash
-JobId=Job_ID JobName=job_name.sbatch
-   UserId=$USER(XXXXXXX) GroupId=$USER(XXXXXXX) MCS_label=N/A
-   Priority=369878 Nice=0 Account=Account_name QOS=normal
-   JobState=RUNNING Reason=None Dependency=(null)
-   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
-   RunTime=00:40:53 TimeLimit=1-00:00:00 TimeMin=N/A
-   SubmitTime=2024-05-06T22:38:07 EligibleTime=2024-05-06T22:38:07
-   AccrueTime=2024-05-06T22:38:07
-   StartTime=2024-05-06T22:38:31 EndTime=2024-05-07T22:38:31 Deadline=N/A
-   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-05-06T22:38:31 Scheduler=Backfill
-   Partition=medium AllocNode:Sid=compute-e-16-230:17259
-   ReqNodeList=(null) ExcNodeList=(null)
-   NodeList=compute-a-16-163
-   BatchHost=compute-a-16-163
-   NumNodes=1 NumCPUs=1 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
-   ReqTRES=cpu=1,mem=64G,node=1,billing=5
-   AllocTRES=cpu=1,mem=64G,node=1,billing=5
-   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
-   MinCPUsNode=1 MinMemoryNode=64G MinTmpDiskNode=0
-   Features=(null) DelayBoot=00:00:00
-   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
-   Command=/Path/to/submission/script/job_name.sbatch
-   WorkDir=/Path/where/script/was/submitted/from
-   StdErr=/Path/where/script/was/submitted/from/Job_ID.err
-   StdIn=/dev/null
-   StdOut=/Path/where/script/was/submitted/from/Job_ID.out
-   Power=
-```
-
-As you can see, there is a lot of information about the job reported back to you. It tells you the job's state, when it started, when the job will end if it doesn't finish early, the compute node that it is on, partition used, any job dependencies it has, the resources requested, where the standard error and standard output is written to. Almost any question you might have about a job can be answered within here.
 
 ### Canceling your job(s) with `scancel` <a name="scancel"></a>
 
@@ -374,11 +374,11 @@ Sometimes you may start a command that will take a few minutes and you want to h
 
 1. One way is to **add the `&` argument to the end of your command when you first type it**.
   
-2. If you've started your job already but forgot to include the `&` argument, is to **use `bg`**.  To use `bg`, you will need to know the following:
+2. If you've started your job already but forgot to include the `&` argument, **use `bg`**.  To use `bg`, you will need to know the following:
 
     * Pause the command with <kbd>Ctrl</kbd> + <kbd>Z</kbd>.
     * Send the command to the ***b***ack***g***round with the command `bg`. When you do this the command will continue from where it was paused.
-  * If you want to bring the task back to the ***f***ore***g***round, you can use the command `fg`.
+    * If you want to bring the task back to the ***f***ore***g***round, you can use the command `fg`.
 
 In order to test these methods, we will briefly re-introduce the `sleep` command. `sleep` just has the command line do nothing for a period of time denoted in seconds by the integer following the `sleep` command. This is useful if you want a brief pause within a loop, such as between submitting a bunch of jobs to the cluster. The syntax is:
 
