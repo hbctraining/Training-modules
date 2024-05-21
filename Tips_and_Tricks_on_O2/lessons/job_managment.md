@@ -145,7 +145,7 @@ This job will be scheduled as *ten independent tasks*.
 
 This variable takes on the numbers 1 through 10 (from `--array=1-10`) and is used to **assign the individual tasks a job ID**. In the commands that follow, we can use the $SLURM_ARRAY_TASK_ID value stored as the distinguishing factor between the 10 tasks.
 
-For example, we can use the vlalyes 1-10 to identify **10 different samples** that we want to run the software on:
+For example, we can use the values 1-10 to identify **10 different samples** that we want to run the software on:
 
 ```bash
 software_program_x  mydataset_sample_${SLURM_ARRAY_TASK_ID}
@@ -157,9 +157,9 @@ Alternatively, we might want to run the the software on the **same sample but wi
 program_y $SLURM_ARRAY_TASK_ID some_argument another_arg
 ```
 
-There are also various ways in which we can use the numbers to access a document which contains the values we need for each task. Using a job array instead of a large number of separate serial jobs has advantages for you and other users! It increases efficiency and you spend less time waiting, but the scheduler does not have to analyze job requirements for each task in the array separately, so it can run more efficiently too.
+There are also various ways in which we can use the $SLURM_ARRAY_TASK_ID numbers to access a text file which contains the values we need for each task. Using a job array instead of a large number of separate serial jobs has advantages for you and other users! It increases efficiency and you spend less time waiting, but the scheduler does not have to analyze job requirements for each task in the array separately, so it can run more efficiently too.
 
-> **NOT:** You should not use a job array to submit tasks with very short run times, e.g. much less than an hour. These tasks are better off run using a shell loop inside a job.
+> **NOTE:** You should not use a job array to submit tasks with very short run times, e.g. much less than an hour. These tasks are better off run using a shell loop inside a job.
 
 
 ## Monitoring your jobs 
