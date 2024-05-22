@@ -97,7 +97,7 @@ At the command prompt you should observe the following text:
 Submitted batch job <job_ID_number>
 ```
 
-Use the job_ID_number which was returned from the first script as a dependency when submitting your second script `job_2.sbatch`. Make sure to use the `afterok` option as we show below:
+Use the `job_ID_number` which was returned from the first script as a dependency when submitting your second script `job_2.sbatch`. Make sure to use the `afterok` option as we show below:
 
 ```bash
 sbatch --dependency=afterok:<job_ID_number> job_2.sbatch
@@ -157,7 +157,7 @@ Alternatively, we might want to run the the software on the **same sample but wi
 program_y $SLURM_ARRAY_TASK_ID some_argument another_arg
 ```
 
-There are also various ways in which we can use the $SLURM_ARRAY_TASK_ID numbers to access a text file which contains the values we need for each task. Using a job array instead of a large number of separate serial jobs has advantages for you and other users! It increases efficiency and you spend less time waiting, but the scheduler does not have to analyze job requirements for each task in the array separately, so it can run more efficiently too.
+There are also various ways in which we can use the `$SLURM_ARRAY_TASK_ID` numbers to access a text file which contains the values we need for each task. Using a job array instead of a large number of separate serial jobs has advantages for you and other users! It increases efficiency and you spend less time waiting, but the scheduler does not have to analyze job requirements for each task in the array separately, so it can run more efficiently too.
 
 > **NOTE:** You should not use a job array to submit tasks with very short run times, e.g. much less than an hour. These tasks are better off run using a shell loop inside a job.
 
@@ -169,18 +169,21 @@ As your jobs are running, there are various commands you can use to check in on 
 
 ### Checking jobs in the queue using `squeue`  <a name="jobinfo"></a>
 
-Earlier we had used the `squeue` command to check on our jobs. This command is used to view **information about jobs located in the SLURM scheduling queue**. We had demonstrated that we could provide the `-u $USER` argument to print only $USER's jobs. A shortuct to getting the same output would be:
+Earlier we had used the `squeue` command to check on our jobs. This command is used to view **information about jobs located in the SLURM scheduling queue**. We had demonstrated that we could provide the `-u $USER` argument to print only $USER's jobs. A shortcut to getting the same output would be:
 
 ```bash
 squeue --me
 ```
 
-Alternatively, HMSRC has RC created a simplified command which returns the results of `squeue --me` with some addtional columns of information related to resources as shown below:
+Alternatively, HMS-RC has created a simplified command which returns the results of `squeue --me` with some addtional columns of information related to resources as shown below:
 
 ```bash
  O2squeue
+```
 
+This returns:
 
+``` bash
 JOBID     PARTITION     STATE       TIME_LIMIT     TIME           NODELIST(REASON)         ELIGIBLE_TIME         START_TIME            TRES_ALLOC
 21801263  interactive   RUNNING     12:00:00       2:09:52        compute-a-16-160         2020-11-09T11:35:49   2020-11-09T11:36:19   cpu=1,mem=2G,node=1,billing=1
 ```
