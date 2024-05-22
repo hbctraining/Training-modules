@@ -37,13 +37,14 @@ Next, we will introduce you to commands that help you copy files on and off of t
 
 You will sometimes find yourself wanting to download data from a website. There are two comparable commands that you can use to accomplish this task. The first one is `wget` and the most common syntax for using it is:
 
-```bash
+```
 wget [http://www.example.com/data]
 ```
 
-Let's try to do this in order to download the reference genome for _E. coli_ from NCBI:
+Let's move to our scratch space and try to do this in order to download the reference genome for _E. coli_ from NCBI:
 
 ```bash
+cd_scratch
 wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/005/845/GCA_000005845.2_ASM584v2/GCA_000005845.2_ASM584v2_genomic.fna.gz
 ```
 
@@ -66,7 +67,7 @@ The `-O` option will use the filename given on the website as its filename to wr
 curl -L -o preferred_name  [http://www.example.com/data]
 ```
 
-The `-L` option tells curl to follow any redirections the HTML address gives to the data. For example, webpage might redirect from it's "Download" button to a different page when the data is actually stored. This `-L` option tells `curl` to follow this redirection. In some cases it is need, 
+The `-L` option tells curl to follow any redirections the HTML address gives to the data. For example, webpage might redirect from it's "Download" button to a different page when the data is actually stored. This `-L` option tells `curl` to follow this redirection. In some cases it is needed.
 
 Let's use `curl` to download the *E. coli* gene annotations from NCBI:
 
@@ -139,9 +140,8 @@ It is really important that when you are transferring data using `scp` or `rsync
 ```bash
 username@transfer.rc.hms.harvard.edu
 ```
-
-* If you are **on the cluster** and you want to move/copy files off to a remote location, be sure that you are logged in to the **transfer node**.
-* If you are **at a remote location** and wanting to move/copy the files from the cluster to your current location you will want to include the transfer node in your command as displayed below. We will describe this in more detail later in the section. Importantly, you the **Terminal window** you are using **can't be connected to O2.**
+* If you are **at a remote location** and wanting to copy the files between cluster and your current location you will want to include the transfer node in your command as displayed below. We will describe this in more detail later in the section. Importantly, the **Terminal window** you are using **can't be connected to O2.**
+* If you are **on the cluster** and you want to copy files between the cluster and a remote location, be sure that you are logged into the **transfer node**.
 
 ### `scp`
 
@@ -150,7 +150,7 @@ Similar to the `cp` command to copy there is a command that allows you to **secu
 ```bash
 # DO NOT RUN
 # Usage example for scp to copy a file on O2 to your local machine
-scp username@transfer.rc.hms.harvard.edu:/path/to/file_on_O2 Path/to/directory/local_machine
+scp username@transfer.rc.hms.harvard.edu:/path/to/file_on_O2 /path/to/directory/local_machine 
 ```
 
 Let's try copying over the *E. coli* reference genome that we downloaded from NCBI **from our scratch space on O2 to our local machine**. 
@@ -171,7 +171,7 @@ $ ls GCA_000005845.2_ASM584v2_genomic.fna.gz
 > **NOTE:** Windows users may encounter a permissions error when using `scp` to copy over locally. We are not sure how to troubleshoot this, but will update materials as we obtain more information.
 
 > #### From local machine to the O2 cluster using `scp`
-> If you wanted to do the reverse, you will need to indicate the transfer node in your destinatation argument as show below:
+> If you wanted to do the reverse and upload the file to our home directory, you will need to indicate the transfer node in your destination argument as show below:
 > 
 >```bash
 > ### DO NOT RUN
@@ -194,10 +194,10 @@ When copying over large datasets to or from a remote machine, `rsync` works simi
 ```bash
 # DO NOT RUN
 # Usage example for ryncs to copy a file on local machine to O2 using rsync
-rsync -av - e ssh Path/to/directory/local_machine username@transfer.rc.hms.harvard.edu:/path/to/file_on_O2
+rsync -av - e ssh /path/to/directory/local_machine username@transfer.rc.hms.harvard.edu:/path/to/file_on_O2
 ```
 
-Let's first change the name of our file so we can distinguis it from the file that is already present on O2. **In your Terminal window that you were using with the `scp` example above, type in:**
+Let's first change the name of our file so we can distinguish it from the file that is already present on O2. **In your Terminal window that you were using with the `scp` example above, type in:**
 
 ```bash
 mv GCA_000005845.2_ASM584v2_genomic.fna.gz renamed_GCA_000005845.2_ASM584v2_genomic.fna.gz
@@ -217,6 +217,15 @@ You will again be prompted for your password and Duo approval. We should now be 
 ```bash
 ls ~
 ```
+
+> #### From O2 cluster to a local machine using `rsync`
+> If you wanted to do the reverse and download the file to our home directory, you will need to indicate the transfer node in your destination argument as show below:
+> 
+>```bash
+> # Be sure to replace `<username>` twice with your O2 username and `<first_letter_of_username>` with the first letter of your username
+> rsync -av -e ssh <username>@transfer.rc.hms.harvard.edu:/n/scratch/users/<first_letter_of_username>/<username>/GCA_000005845.2_ASM584v2_genomic.gff.gz .
+>```
+
 
 *More helpful information and examples using rsync can be found [at this link](https://www.comentum.com/rsync.html)*
 
@@ -325,19 +334,20 @@ lrwxrwxrwx 1 ld32 ritg        29 Aug 18  2015 genome.fa -> ../WholeGenomeFasta/g
 -rwxrwxr-x 1 ld32 ritg 733719120 Aug 18  2015 genome.rev.2.bt2
 ```
 
-It moslty just indices for Bowtie2 (files ending in .bt2), but there is a particular file of interest here:
+It is mostly just indices for Bowtie2 (files ending in .bt2), but there is a particular file of interest here:
 
 ```bash
 lrwxrwxrwx 1 ld32 ritg        29 Aug 18  2015 genome.fa -> ../WholeGenomeFasta/genome.fa
 ```
 
-This is the **first place we have now seen a symbolic link**. `genome.fa` is the link name and it is pointing, with a relative path, to the reference genome FASTA file that we were just looking at (../WholeGenomeFasta/genome.fa). We are going to talk more about symbolic links, sometimes called symlinks, in the next section.
+This is the **first place we have now seen a symbolic link**. `genome.fa` is the link name and it is pointing, with a relative path, to the reference genome FASTA file that we were just looking at (`../WholeGenomeFasta/genome.fa`). We are going to talk more about symbolic links, sometimes called symlinks, in the next section.
 
 ## Symbolic Links <a name="symlinks"></a>
 
 Sometimes you will have files or folders containing files on a computing cluster that you would like to have in a few places. A few examples where this might happen:
 
 1) The software package you are using wants you to have a specific directory structure for the data, but you do not want to move the data.
+
 2) There is a large file that is used as input to many different analyses and you would rather not have duplicate copies of it.
 
 Both of these are good places to implement *symbolic links*. Symbolic links can be thought of as arrows for computer, pointing to where a file or folder is located, as we saw in the above example with the human reference genome. Symbolic links require negliable amounts of space and thus mean you can use them to point to large files elsewhere on the computing system. If these symbolic links get deleted or broken, they have no impact on the data they they were pointing to. Additionally, they can be named anything, so it can be helpful if a software package is looking for a specific name for an input file.
@@ -363,10 +373,10 @@ ln -s /n/scratch/users/${USER:0:1}/${USER}/GCA_000005845.2_ASM584v2_genomic.gff.
 When you now view this directory with `ls -l`, it will display the link like:
 
 ```
-E_coli.gff.gz -> /n/scratch/users/w/wig051/GCA_000005845.2_ASM584v2_genomic.gff.gz
+E_coli.gff.gz -> /n/scratch/users/<first_letter_of_username>/<username>/GCA_000005845.2_ASM584v2_genomic.gff.gz
 ```
 
-If you want to keep the original file name as the link name you can use just the path to where the symbolic link will be created and not include a new `<link_name>`. Since we are putting the link in our current directory, we can use `.`.
+If you want to keep the original file name as the link name you can use just the path to where the symbolic link will be created and not include a new `<link_name>`. Since we are putting the link in our current directory, we can use `.`, but it is not necessary.
 
 ***Importantly, if the original file or folder is deleted or moved, the symbolic link will become broken.*** It is common on many distributions for symbolic links to blink if they becomes broken.
 
