@@ -340,7 +340,7 @@ watch ls -lh <directory>
 2) Monitoring jobs on the cluster:
 
 ```bash
-watch squeue -u $USER
+watch squeue --me
 ```
 
 The default interval for update is two seconds, but that can be altered with the `-n` option. Importantly, the **options used with `watch` command need to be placed before*** the command that you are watching or else the interpreter will evaluate the option as part of the watched command's options. An example of this is below:
@@ -349,7 +349,7 @@ The default interval for update is two seconds, but that can be altered with the
 
 ```bash
 # Update the watch every 4 seconds
-watch -n 4 squeue -u $USER
+watch -n 4 squeue --me
 ```
 
 ### `time`
