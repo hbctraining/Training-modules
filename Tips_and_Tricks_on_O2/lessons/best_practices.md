@@ -77,7 +77,7 @@ Make sure that your command prompt is now preceded by a character string that co
 During the course of your analyses, you might find that you you create many large intermediate files, such as SAM files. Oftentimes, these files are purely intermediary, but can take up lots of space on the cluster (>100Gb each). These intermediate files can quickly fill your allotted space on the cluster and therefore it is **recommended that you utilize "scratch" space on the cluster**. 
 
 ### What is `scratch`?
-`scratch` space on the cluster is much like scratch paper that you may use on the exam. It is a space when you can do your "scratch" work. The files on `scratch` **are not backed up** and **will be deleted in 30 days**. However, you can be allocated ~25TB of space which is great for intermediate large files. We will be using the `scratch` space extensively today, but we will not be using it for large files for the sake of not needlessly consuming space on the cluster.
+`scratch` space on the cluster is much like scratch paper that you may use on the exam. It is a space when you can do your "scratch" work. The files on `scratch` **are not backed up** and **will be deleted in 45 days**. However, you can be allocated ~25TB of space which is great for intermediate large files. We will be using the `scratch` space extensively today, but we will not be using it for large files for the sake of not needlessly consuming space on the cluster.
 
 ### Creating your own `scratch` space
 While on the login node, we will create our space on `/n/scratch/`. In order to do so, we will need to run a script provided by the HMS Research Computing team. **You *MUST* be on a login node in order to create a space on `/n/scratch3`**, so we will actually exit our interactive node, even though that's usually where we want to perform any computing work.
@@ -90,7 +90,7 @@ While on the login node, we will create our space on `/n/scratch/`. In order to 
 It will prompt you with the following:
 
 ```
-Do you want to create a scratch directory under /n/scratch3/users? [y/N]> 
+Do you want to create a scratch directory under /n/scratch/users? [y/N]> 
 ```
 
 To this you will respond <kbd>y</kbd>, then hit <kbd>Enter/Return</kbd>.
@@ -99,9 +99,9 @@ To this you will respond <kbd>y</kbd>, then hit <kbd>Enter/Return</kbd>.
 Next, it will prompt you with:
 
 ```
-By typing 'YES' I will comply with HMS RC guidelines for using Scratch3.
+By typing 'YES' I will comply with HMS RC guidelines for using Scratch.
 I also confirm that I understand that files in my scratch directory WILL NOT BE BACKED UP IN ANY WAY.
-I also understand that THIRTY DAYS after I last access a given file or directory in my scratch directory,
+I also understand that 45 DAYS after I last modify a given file or directory in my scratch directory,
 it will be DELETED with NO POSSIBILITY of retrieval.
 
 I understand HMS RC guidelines for using Scratch: 
@@ -112,11 +112,12 @@ Type <kbd>YES</kbd>, then hit <kbd>Enter/Return</kbd>.
 It should return:
 
 ```
-Your scratch3 directory was created at /n/scratch/users/<users_first_letter>/<username>.
+Your scratch directory was created at /n/scratch/users/<users_first_letter>/<username>.
 This has a limit of 25TiB of storage and 2.5 million files.
 You can check your scratch quota using the quota-v2 command.
 ```
 > Note: You might notice that your storage limit is 25TiB and might be confused by this unit. Generally speaking, you can think of a KiB =~ kB, MiB =~ MB, GiB =~ GB and TiB =~ TB. This nonmenclature comes from the difference that computers measure space in binary (base 2), while the prefixes are derived from a metric (base 10) system. So, a KiB is actually 1024 bytes worth of space, while a KB is 1000 bytes worth of space. The table below can help further demonstrate these differences.
+>
 > | Unit | Size in Bytes | Unit | Size in Bytes |
 > |------|---------------|------|---------------|
 > | Kilobyte (kB) |1,000<sup>1</sup> = 1,000 | Kibibyte (KiB) | 1,024<sup>1</sup> = 1,024 |
