@@ -137,7 +137,6 @@ cd /n/scratch/users/${USER:0:1}/${USER}/
 Just like any other storage area on O2, we can copy data to `scratch`. For example, let's copy some scripts over that we will be using in some later exercises:
 
 ```bash
-cd /n/scratch/users/${USER:0:1}/${USER}/
 cp -r /n/groups/hbctraining/sleep_scripts . 
 ```
 
@@ -171,7 +170,7 @@ The `alias` command let's us make an alias, then we name our alias `cd_scratch` 
 pwd
 ```
 
-The return should look like `/home/your_username`.Now we can use our newly created alias to change directories to our scratch space:
+The return should look like `/home/your_username`. Now we can use our newly created alias to change directories to our scratch space:
 
 ```bash
 cd_scratch
@@ -272,6 +271,12 @@ alias o2i='srun --pty -p interactive -t 0-12:00 --mem 4G /bin/bash'
 
 This alias allows the user to request an interactive job on O2 for 12 hours and allocate 4GB of memory. This way you don't need to remember all of the option that you need for an interactive job. **We can test out the alias `o2i` a little bit later in the lesson!**
 
+Let's once again `exit` our interactive node:
+
+```bash
+exit
+```
+
 ### What else do people put in their .bashrc profile?
 
 Placing aliases within a `.bashrc` file is quite common, but it isn't the only thing that people often place within a `.bashrc` file. For example, some people will specifiy the location of their R libraries if they use R on the O2 cluster:
@@ -365,20 +370,22 @@ An example output might look like:
 
 The `quota-v2` command is a very useful summary of your storage usage and your storage limits. However, it comes with two caveats:
 
-1) It is O2-specific. This command is something that the folks at HMS-RC have written to help us. If you are on other clusters, they may have a similar command or they may not, however it will almost certainly look different than this. If you plan on working on other computing clusters, then this command will not likely be very exportable.
+1) **It is O2-specific**. This command is something that the folks at HMS-RC have written to help us. If you are on other clusters, they may have a similar command or they may not, however it will almost certainly look different than this. If you plan on working on other computing clusters, then this command will not likely be very exportable.
+
 2) It only gives the user a broad overview of how their disk usage allocation is being used. If you want to dig further into which directories/files within a given directory are taking up the most space then we will need to use a different command.
 
 The `du` command stands for "disk usage" and it will traverse the directories and subdirectories of the directory that you are currently using located in and tell you the files sizes of the files. This command on it's own has two drawbacks:
 
 1) If you are within a directory that has large file system underneath it, it maybe take a while to run and it will be telling you the size (in bytes) of thousands of files, which will be difficult to sort through.
+
 2) It is telling you the size in bytes, which is not always the most intuitative way to visualize data sizes
 
 Fortunately, there are a few options within the `du` command that are extremely useful:
 
 - `-h` This option makes the file sizes "human-readable". In others word, it will tell you the sizes of the files in kB, Mb, GB, TB, etc.
 - Limiting the scope of your `du` output
- - `--max-depth=1` This option will look within each file and directory of the given directory and summarize the total space for those files and/or directories (and its subdirectories). You can increase the integer to `--max-depth=2` or `--max-depth=3` if you would like the summary to traverse subdirectories deeper.
- - `-s` This option will summarize the size of the given directory
+  - `--max-depth=1` This option will look within each file and directory of the given directory and summarize the total space for those files and/or directories (and its subdirectories). You can increase the integer to `--max-depth=2` or `--max-depth=3` if you would like the summary to traverse subdirectories deeper.
+  - `-s` This option will summarize the size of the given directory
 
 Let's go ahead and try this a bit and look at the size usage of our current scratch directory:
 
