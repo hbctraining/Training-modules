@@ -13,7 +13,7 @@ Approximate time: 15 minutes
 
 ## What is R?
 
-The common misconception is that R is a programming language but in fact it is much more than that. Think of R as an environment for statistical computing and graphics, which brings together a number of features to provide powerful functionality.
+The common misconception is that R is a programming language, but in fact it is much more than that. Think of R as an environment for statistical computing and graphics, which brings together a number of features to provide powerful functionality.
 
 The R environment combines:
 
@@ -139,13 +139,7 @@ There are a few files that we will be working with in the next few lessons and y
 
 This is more of a housekeeping task. We will be writing long lines of code in our script editor and want to make sure that the lines "wrap" and you don't have to scroll back and forth to look at your long line of code.
 
-Click on "Edit" at the top of your RStudio screen and click on "Preferences..." in the pull down menu.
-
-On the left, select "Code" and put a check against "Soft-wrap R source files". Make sure you click the "Apply" button at the bottom of the Window before saying "OK".
-
-<p align="center">
-<img src="../img/Soft_wrap_RStudio.gif" width="900">
-</p>
+Click on "Code" at the top of your RStudio screen and select "Soft Wrap Long Lines" in the pull down menu.
 
 ## Interacting with R
 
