@@ -56,7 +56,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | [R Basics Practice](IntroR_practical_online_resource) | R Basics or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 8/16/2023 | Closed |
 | [Publication Perfect: Part I](publication_perfect#part-i) | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 9/20/2023	| Closed |
 | [Publication Perfect: Part II](publication_perfect#part-ii) | [Publication Perfect: Part I](publication_perfect#part-i) | 10/18/2023	| Closed |
-| [Rmarkdown](Rmarkdown) | R Basics or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 11/15/2023	| [Sign up!](https://harvard.zoom.us/meeting/register/tJYkcuyrrzwqEtNmyYCs8d5_SmAXxtN5ktgt) |
+| [Rmarkdown](Rmarkdown) | R Basics or [Online R course - Harvard Catalyst](https://catalyst.harvard.edu/courses/intro-to-r/) | 11/15/2023	| [Sign up!](https://harvard.zoom.us/-add URL) |
 -->
 
 ***
@@ -85,9 +85,9 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | [Accelerate with Automation - Making your code work for you](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/)	| [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 
 | [Needle in a Haystack - Finding and summarizing data from colossal files](https://hbctraining.github.io/Training-modules/Finding_and_summarizing_colossal_files/) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) |
 | [Shell Tips and Tricks on O2](https://hbctraining.github.io/Training-modules/Tips_and_Tricks_on_O2/) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) |
-| [Version control using Git and Github](Git-Github) | Beginner shell or [Intro to the command-line interface](Intro_shell)  |
-| [Accessing genomic reference and experimental sequencing data](https://hbctraining.github.io/Accessing_public_genomic_data) | Beginner shell or [Intro to the command-line interface](Intro_shell)  |
-| [Exploring genomic variants using GEMINI](Exploring_variants_with_GEMINI) | Beginner shell or [Intro to the command-line interface](Intro_shell) |
+| [Version control using Git and Github](Git-Github) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) |
+| [Accessing genomic reference and experimental sequencing data](https://hbctraining.github.io/Accessing_public_genomic_data) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) |
+| [Exploring genomic variants using GEMINI](Exploring_variants_with_GEMINI) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/)|
 
 <!-- This content will not appear in the rendered Markdown -->
 <!-- Old material and links:
