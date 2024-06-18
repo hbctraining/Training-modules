@@ -18,6 +18,18 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 ***
 
+### Current Topics in Bioinformatics workshops 2024 Summer Schedule (1pm - 4pm):
+
+| Topic and Link(s) to lessons | Prerequisites | Date | Registration |
+|:---------------|:-------------:|:-------------:|:-------------:|
+| [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) | None | 6/26/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJUpdeqtqzgoH9bU3UQAbQUWMURjZVRsWjaV#/registration) |
+| [Publication Perfect: Part I](publication_perfect#part-i) | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 7/17/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJUuf-CqrDoiHd3bNxt2Ipb6dCxpEwT8LCTw#/registration) |
+| [Publication Perfect: Part II](publication_perfect#part-ii) | [Publication Perfect: Part I](publication_perfect#part-i) | 8/21/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJIldumuqj8iHtDgD4_79fjo2vQf4QWWFlj3#/registration) |
+| Rshiny | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 9/18/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJMkcuyopz0pE9QZtumH6JdGGpngSJDXCoBD#/registration) |
+
+<!-- This content will not appear in the rendered Markdown -->
+<!--
+
 ### Current Topics in Bioinformatics workshops 2024 Spring Schedule (1pm - 4pm): 
 **Big data? Big computer! The skill set you need to succeed**
 
@@ -29,8 +41,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | [Needle in a Haystack - Finding and summarizing data from colossal files](https://hbctraining.github.io/Training-modules/Finding_and_summarizing_colossal_files/) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 4/17/2024	| Closed  |
 | [Shell Tips and Tricks on O2](https://hbctraining.github.io/Training-modules/Tips_and_Tricks_on_O2/) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 5/22/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJIvf-igrDIvHNTgmccDlkWbmSBavwfR5Iw9) |
 
-<!-- This content will not appear in the rendered Markdown -->
-<!--
+
 ### Current Topics in Bioinformatics workshops 2023 Schedule (1pm - 4pm):
 
 | Topic and Link(s) to lessons | Prerequisites | Date | Registration |
