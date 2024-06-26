@@ -141,6 +141,10 @@ This is more of a housekeeping task. We will be writing long lines of code in ou
 
 Click on "Code" at the top of your RStudio screen and select "Soft Wrap Long Lines" in the pull down menu.
 
+<p align="center">
+<img src="../img/Soft_wrap.gif" width="600">
+</p>
+
 ## Interacting with R
 
 Now that we have our interface and directory structure set up, let's start playing with R! There are **two main ways** of interacting with R in RStudio: using the **console** or by using **script editor** (plain text files that contain your code).
