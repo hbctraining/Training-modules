@@ -10,6 +10,8 @@ Input options
 - Date
 - Observe vs. Reactive
 - Action Buttons
+- Req
+- Isolate?
 
 Visualization and Interactive Visuals
 - Data table output
