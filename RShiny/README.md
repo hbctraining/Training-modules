@@ -25,11 +25,11 @@ In this workshop, users will be able to:
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-| [R Shiny App Structure and Syntax]() | 20 min |
-| [Input options]() | 30 min |
-| [Visualization and Interactive Visuals]() | 45 min |
-| [Arranging Layouts]() | 30 min |
-| [Hosting Platforms]() | 15 min |
+| [R Shiny App Structure and Syntax]() | 20 min (July 25th) |
+| [Input options]() | 30 min (July 3rd) |
+| [Visualization and Interactive Visuals]() | 45 min (July 11th) |
+| [Arranging Layouts]() | 30 min (July 18th) |
+| [Hosting Platforms]() | 15 min (Aug 1) |
 
 ## Installation Requirements
 
