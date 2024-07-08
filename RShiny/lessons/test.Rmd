@@ -1,0 +1,7 @@
+# Test Shiny Embedding
+
+Testing Shiny App Embed
+
+```{r, out.width =  "100%"}
+knitr::include_app("https://gammerdinger.shinyapps.io/histogram_example/")
+```
