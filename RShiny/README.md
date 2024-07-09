@@ -25,7 +25,7 @@ In this workshop, users will be able to:
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-| [R Shiny App Structure and Syntax]() | 20 min (July 25th) |
+| [R Shiny App Structure and Syntax](lessons/01_syntax_and_structure.md) | 20 min (July 25th) |
 | [Input options]() | 30 min (July 3rd) |
 | [Visualization and Interactive Visuals]() | 45 min (July 11th) |
 | [Arranging Layouts]() | 30 min (July 18th) |
