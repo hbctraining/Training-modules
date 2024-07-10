@@ -11,46 +11,109 @@ In this lesson, you will:
 - Differentiate between Observe and Reactive family of functions 
 - Implement an action buttons within an app
 
-# 
 
-Let's create your first R Shiny app! In this app we are going to have R shiny return text that you type into a text box. It will look like:
+# Input options
 
-<p align="center">
-<img src="../img/R_Shiny_hello_world.gif" width="800">
-</p>
+In the previous lesson, we introduced using the `textInput()`.  We will explor each of these different input options below.
 
-Let's put this below below into our R Script and run it:
+## textAreaInput()
+
+Similar to `textInput()`, `textAreaInput()` functions in many of the same ways, but instead of have a single line where you can enter text into, you will get a text box that allows for multi-line input. An example of the code you would use to do that is below:
 
 ```
 library(shiny)
 
 ui <- fluidPage(
-    textInput("input_text", "My input text"),
-    textOutput("output_text")
+  textAreaInput("input_text", "My input text"),
+  textOutput("output_text")
 )
 
-server <- function(input, output){
-    output$output_text <- renderText({
-        input$input_text
+server <- function(input, output) {
+  output$output_text <- renderText({ 
+    input$input_text 
     })
 }
 
 shinyApp(ui = ui, server = server)
 ```
 
-A window should pop-up and allow you to enter text that is returned below the input field. Let's spend some time discussing how this code is being processed. The UI uses having two functions `textInput()` and `textOutput()`. Notably, `textInput()` is before `textOutput()`, which is why it is rendered above `textOutput()`
+This will render an app that looks like:
+
+<iframe src="https://hcbc.connect.hms.harvard.edu/Input_text_area_demo/?showcase=0" width="100%" height="625px" data-external="1"> </iframe>
 
 
+> Note: If you want to maintain new line character you could use `verbatimTextOutput()` rather than `textOutput()`. `verbatimTextOutput()` will treat the text output exactly like it is entered without any formatting.
 
-<p align="center">
-<img src="../img/Shiny_process.png" width="800">
-</p>
+If you would like to have there be default text in your app's text area input, you can change:
+
+```
+textAreaInput("input_text", "My input text")
+```
+
+To:
+
+```
+textAreaInput("input_text", "My input text", "My Default text")
+```
+
+Adding this third parameter `"My Default text"` creates that default text and also works with `textInput()` in the same way.
+
+## sliderInput
+
+Sliders inputs are a great way to provide an interactive range for the user to select a value from. Below we will have the example code that one can use to create a slider:
+
+```
+library(shiny)
+
+ui <- fluidPage(
+  sliderInput("input_slider", "My input slider", min = 0, max = 10, value = 6),
+  textOutput("output_text")
+)
+
+server <- function(input, output) {
+  output$output_text <- renderText({ 
+    input$input_slider
+    })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This app would visualize like:
+
+<iframe src="https://hcbc.connect.hms.harvard.edu/Input_slider_demo/?showcase=0" width="100%" height="625px" data-external="1"> </iframe>
+
+Note that the only line we changed was the `textAreaInput()` line to `sliderInput()`. We can see that the `renderText()` function has no issues handling integer or character data types. Above we have provided the minimum number of input arguments for `sliderInput()`. However, there are some interesting arguments that you can also add to your slider in the table below:
+
+| Argument | Description |  Example  |
+|----------|-------------|-----------|
+| step | This can define the step size of the slider rather than using the default step size | `step = 2` |
+| pre | Allows you to add text _prior_ the value in the slider | `pre = "Sample_"` |
+| post | Allows you to add text _after_ the value in the slider | `post = "kg"` |
+| ticks | Allows you toggle tick marks on/off | `ticks = FALSE` |
+| dragRange | Allows you to create a range with your slider. You will likely want to change `value` to be a vector containing the default start and stop of this range like `value = c(2,6)` | `dragRange = TRUE` |
 
 
+## selectInput
 
-Input options
+| Argument | Description |  Example  |
+|----------|-------------|-----------|
+| multiple | Allows you to select multiple option from the selection dropdown menu | `multiple = TRUE` |
+| selected | Allows you to define the default selection, otherwise the default selection will be the first item in the list, unless the `multiple` arugment is `TRUE`, then it will default to no selection | `selected = "Twillight Imperium"` |
 
-Text
+
+Note on `selectizeInput()` https://selectize.dev/docs/usage
+
+
+## Radiobuttons
+
+## Checkboxes
+
+## Date
+
+## Action buttons
+
+
 Checkboxes
 Slider
 RadioButtons
