@@ -39,7 +39,7 @@ shinyApp(ui = ui, server = server)
 
 This will render an app that looks like:
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Input_text_area_demo/?showcase=0" width="100%" height="125px" data-external="1"> </iframe>
+<iframe src="https://hcbc.connect.hms.harvard.edu/Input_text_area_demo/?showcase=0" width="100%" height="175px" data-external="1"> </iframe>
 
 
 > Note: If you want to maintain new line character you could use `verbatimTextOutput()` rather than `textOutput()`. `verbatimTextOutput()` will treat the text output exactly like it is entered without any formatting.
@@ -81,7 +81,7 @@ shinyApp(ui = ui, server = server)
 
 This app would visualize like:
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Input_slider_demo/?showcase=0" width="100%" height="125px" data-external="1"> </iframe>
+<iframe src="https://hcbc.connect.hms.harvard.edu/Input_slider_demo/?showcase=0" width="100%" height="150px" data-external="1"> </iframe>
 
 Note that the only line we changed was the `textAreaInput()` line to `sliderInput()`. We can see that the `renderText()` function has no issues handling integer or character data types. Above we have provided the minimum number of input arguments for `sliderInput()`. However, there are some interesting arguments that you can also add to your slider in the table below:
 
@@ -114,7 +114,7 @@ server <- function(input, output) {
 
 shinyApp(ui = ui, server = server)
 ```
-<iframe src="https://hcbc.connect.hms.harvard.edu/Input_select_demo/?showcase=0" width="100%" height="125px" data-external="1"> </iframe>
+<iframe src="https://hcbc.connect.hms.harvard.edu/Input_select_demo/?showcase=0" width="100%" height="200px" data-external="1"> </iframe>
 
 
 > Within the choices argument, you can see that we made a placeholder value in the first position, `"Pick a game" = ""`, and this visualizes as the default placeholder. Otherwise, the placeholder will default to the first element in the choice vector.
@@ -150,12 +150,14 @@ shinyApp(ui = ui, server = server)
 
 This would visualize like:
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Input_radio_button_demo/?showcase=0" width="100%" height="200px" data-external="1"> </iframe>
+<iframe src="https://hcbc.connect.hms.harvard.edu/Input_radio_button_demo/?showcase=0" width="100%" height="175px" data-external="1"> </iframe>
 
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
 | inline | Allows you to display the radio buttons horizontally rather than vertically | `inline = TRUE` |
 | selected | Allows you to define the default selection, otherwise the default selection will be the first item in the list | `selected = Strawberry` |  
+
+> Note that you can set `selected` to be `selected = character(0)` and no itial option will be selected, but the documentation recommends against this since users will not be able to return back to this default 
 
 ## Checkboxes
 
