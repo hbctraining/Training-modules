@@ -155,11 +155,69 @@ This would visualize like:
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
 | inline | Allows you to display the radio buttons horizontally rather than vertically | `inline = TRUE` |
-| selected | Allows you to define the default selection, otherwise the default selection will be the first item in the list | `selected = Strawberry` |  
+| selected | Allows you to define the default selection, otherwise the default selection will be the first item in the list | `selected = "Strawberry"` |  
 
-> Note that you can set `selected` to be `selected = character(0)` and no itial option will be selected, but the documentation recommends against this since users will not be able to return back to this default 
+> Note that you can set `selected` to be `selected = character(0)` and no initial option will be selected, but the documentation recommends against this since users will not be able to return back to this default state.
 
 ## Checkboxes
+
+The are two styles of checkboxes that you can choose from. A single checkbox (`checkboxInput()`) that will return the values of `TRUE` and `FALSE` and also a group of checkboxes (`checkboxGroupInput()`) where you can select multiple items from. 
+
+### checkboxInput
+
+If we want a single checkbox to toggle then we can use `checkboxInput()`. An example is below:
+
+```
+library(shiny)
+
+ui <- fluidPage(
+  checkboxInput("checkbox_input", "Apply Benjamini–Hochberg correction", value = TRUE),
+  textOutput("output_text")
+)
+
+server <- function(input, output) {
+  output$output_text <- renderText({ 
+    input$checkbox_input
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+<iframe src="https://hcbc.connect.hms.harvard.edu/Input_checkbox_demo/?showcase=0" width="100%" height="175px" data-external="1"> </iframe>
+
+| Argument | Description |  Example  |
+|----------|-------------|-----------|
+| value | Allows you set the default to be equal to `TRUE` or `FALSE` | `value = TRUE` |
+
+
+### checkboxGroupInput
+
+Similar to radio buttons, Shiny apps can provide checkboxes for users to utilize. Let's look at an example code for this:
+
+```
+library(shiny)
+
+ui <- fluidPage(
+  checkboxGroupInput("checkbox_input", "Which fruits do you like?", choices = c("Orange", "Strawberry", "Apple", "Pinnapple")),
+  textOutput("output_text")
+)
+
+server <- function(input, output) {
+  output$output_text <- renderText({ 
+    input$checkbox_input
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+<iframe src="https://hcbc.connect.hms.harvard.edu/Input_checkbox_group_demo/?showcase=0" width="100%" height="175px" data-external="1"> </iframe>
+
+| Argument | Description |  Example  |
+|----------|-------------|-----------|
+| inline | Allows you to display the checkboxes horizontally rather than vertically | `inline = TRUE` |
+| selected | Allows you to define the default selection, otherwise the default selection will be nothing checked. You can also have multiple selected options by putting the selected options in a vector | `selected = "Strawberry"` or  `selected = c("Strawberry", "Pinnapple")`|  
 
 ## Date
 
@@ -170,9 +228,6 @@ In this exercise, you will attempt to recrete the following app. It will take th
 ## Action buttons
 
 
-Checkboxes
-Slider
-RadioButtons
 Date
 Observe vs. Reactive
 Action Buttons
