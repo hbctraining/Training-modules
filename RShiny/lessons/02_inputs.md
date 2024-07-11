@@ -96,13 +96,37 @@ Note that the only line we changed was the `textAreaInput()` line to `sliderInpu
 
 ## selectInput
 
+Oftentimes when you are working with input data, you would like to select some of your data from a list of options. One way of doing this is to have a dropdown list of options and `selectInput()` is the function you would use to accomplish this. 
+
+```
+library(shiny)
+
+ui <- fluidPage(
+  selectInput("input_select", "My favorite game", choices = c("Pick a game" = "", "Catan", "Carcassonne", "Caverna", "Twillight Imperium")),
+  textOutput("output_text")
+)
+
+server <- function(input, output) {
+  output$output_text <- renderText({ 
+    input$input_select
+    })
+}
+
+shinyApp(ui = ui, server = server)
+```
+<iframe src="https://hcbc.connect.hms.harvard.edu/Input_select_demo/?showcase=0" width="100%" height="625px" data-external="1"> </iframe>
+
+
+> Within the choices argument, you can see that we made a placeholder value in the first position, `"Pick a game" = ""`, and this visualizes as the default placeholder. Otherwise, the placeholder will default to the first element in the choice vector.
+
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
 | multiple | Allows you to select multiple option from the selection dropdown menu | `multiple = TRUE` |
 | selected | Allows you to define the default selection, otherwise the default selection will be the first item in the list, unless the `multiple` arugment is `TRUE`, then it will default to no selection | `selected = "Twillight Imperium"` |
 
 
-Note on `selectizeInput()` https://selectize.dev/docs/usage
+
+> Note that you can alternatively use `selectizeInput()` instead of `selectInput()` to have more control over the dropdown. While this is outside of the scope of this lesson, the documentation foir this can be found [here](https://selectize.dev/docs/usage).
 
 
 ## Radiobuttons
