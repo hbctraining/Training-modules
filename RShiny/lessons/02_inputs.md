@@ -247,6 +247,8 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
+> Note that we have had to add the `as.character()` function around `input$date_input` otherwise it will return the number of days since the Unix Epoch (https://en.wikipedia.org/wiki/Unix_time).
+
 <iframe src="https://hcbc.connect.hms.harvard.edu/Input_date_demo/?showcase=0" width="100%" height="175px" data-external="1"> </iframe>
 
 | Argument | Description |  Example  |
@@ -277,18 +279,104 @@ server <- function(input, output) {
 }
 
 shinyApp(ui = ui, server = server)
-
 ```
+
+This would look like:
+
+<iframe src="https://hcbc.connect.hms.harvard.edu/Input_date_range_demo/?showcase=0" width="100%" height="175px" data-external="1"> </iframe>
+
+| Argument | Description |  Example  |
+|----------|-------------|-----------|
+| start | Allows you to set the default _starting_ day to open the calendar on. If not set, then it will default to the current day in yyyy-mm-dd format |  value = "2024-07-24"|
+| end | Allows you to set the default _ending_ day to open the calendar on. If not set, then it will default to the current day in yyyy-mm-dd format |  value = "2024-07-29"|
+| min | Allows you to set _earliest_ date that can be selected | `min = "2024-07-20"` |
+| max | Allows you to set _latest_ date that can be selected | `max = "2024-07-28"` |
+| weekstart | Allows you to select which day of the week the calendar should start on with Sunday being 0 and incrementing to Saturday being 6 | `weekstart = 1` |
+| language | Allows you to set the language for the calendar | `language = "de"` |
+| daysofweekdisabled | Allows you to make certain days of the week unavailible for selection with Sunday being 0 and incrementing to Saturday being 6. You can also make a vector of values to block out multiple days of the week. | `daysofweekdisabled = c(0,6)` |
 
 ## Exercise
 
 In this exercise, you will attempt to recrete the following app. It will take the input from a select dropdown, radio button and slider and return the product of the values. Feel free to play with the app below to help model the way your app should look.
 
+# Conditional Panel
+
+It is not uncommon that you might run into a case where you want some input appearing to be conditional on another input's value. This is a good place to utilize the `conditionalPanel()` function. The general syntax for using `conditionalPanel()` is:
+
+```
+conditionalPanel(
+  condition = "input.<variable_name> == '<value>'",
+  <what_to_appear_if_the_condition_is_true>
+)
+```
+
+> When using boolean values the `'<value>'` is `0` for `FALSE` and `1` for `TRUE`. Entering `TRUE` or `FALSE` for the value will not work.
+
+Below is an example of using the `conditionalPanel()`:
+
+```
+library(shiny)
+
+ui <- fluidPage(
+  selectInput("select_input", "Have you taken a Current Topics in Bioinformatics module with us before?", choices = c("Please Answer" = "", "Yes", "No")),
+  conditionalPanel(
+    condition = "input.select_input == 'Yes'",
+    selectInput("select_courses", "Which courses have you taken?", choices = c("R Basics", "Shell basics", "Advanced shell"), multiple = TRUE)
+  ),
+  textOutput("courses")
+)
+
+server <- function(input, output) {
+   output$courses <- renderText({ 
+     input$select_courses
+   })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+<iframe src="https://hcbc.connect.hms.harvard.edu/Conditional_panel_demo/?showcase=0" width="100%" height="250px" data-external="1"> </iframe>
+
+## Req
+
+Let's imagine now that we have data that _requires_ input in order to be evaluated. We can actually see this in the previous app. With the previous app still open, select "Yes", then select a course of your choosing. Next, change the input to "No". You'll see that the course selections we've made are still present. If we didn't want this type of contradiction, then one way that we could resolve this is with the use of the `req()` function. Let's look at an example of the `req()`:
+
+```
+library(shiny)
+
+ui <- fluidPage(
+  selectInput("select_input", "Have you taken a Current Topics in Bioinformatics module with us before?", choices = c("Please Answer" = "", "Yes", "No")),
+  conditionalPanel(
+    condition = "input.select_input == 'Yes'",
+    selectInput("select_courses", "Which courses have you taken?", choices = c("R Basics", "Shell basics", "Advanced shell"), multiple = TRUE)
+  ),
+  textOutput("courses")
+)
+
+server <- function(input, output) {
+   output$courses <- renderText({ 
+     req(input$select_input == "Yes")
+     input$select_courses
+   })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+We added:
+
+```
+req(input$select_input == "Yes")
+```
+
+Which tells Shiny that we are **_req_**uiring `input$select_input` to be equal to "Yes" in order to have the `input$select_courses` text rendered. This app would look like:
+
+
+<iframe src="https://hcbc.connect.hms.harvard.edu/Conditional_panel_demo_2/?showcase=0" width="100%" height="250px" data-external="1"> </iframe>
+
 ## Action buttons
 
 
-Date
 Observe vs. Reactive
 Action Buttons
-Req
 Isolate?
