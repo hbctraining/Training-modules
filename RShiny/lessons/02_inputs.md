@@ -127,11 +127,39 @@ shinyApp(ui = ui, server = server)
 > Note that you can alternatively use `selectizeInput()` instead of `selectInput()` to have more control over the dropdown. While this is outside of the scope of this lesson, the documentation foir this can be found [here](https://selectize.dev/docs/usage).
 
 
-## Radiobuttons
+## Radio buttons
+
+If you would like your user to be able to toggle between various options, then radio buttons might an an option that you are interested in. Below we have an example code for radio buttons:
+
+```
+library(shiny)
+
+ui <- fluidPage(
+  radioButtons("radio_button_input", "My favorite ice cream", choices = c("Vanilla", "Chocolate", "Strawberry", "Mint Chocolate Chip")),
+  textOutput("output_text")
+)
+
+server <- function(input, output) {
+  output$output_text <- renderText({ 
+    input$radio_button_input
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This would visualize like:
+
+<iframe src="https://hcbc.connect.hms.harvard.edu/Input_radio_button_demo/?showcase=0" width="100%" height="300px" data-external="1"> </iframe>
+
 
 ## Checkboxes
 
 ## Date
+
+## Exercise
+
+In this exercise, you will attempt to recrete the following app. It will take the input from a select dropdown, radio button and slider and return the product of the values. Feel free to play with the app below to help model the way your app should look.
 
 ## Action buttons
 
