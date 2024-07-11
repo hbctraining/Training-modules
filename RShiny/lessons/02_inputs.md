@@ -219,7 +219,66 @@ shinyApp(ui = ui, server = server)
 | inline | Allows you to display the checkboxes horizontally rather than vertically | `inline = TRUE` |
 | selected | Allows you to define the default selection, otherwise the default selection will be nothing checked. You can also have multiple selected options by putting the selected options in a vector | `selected = "Strawberry"` or  `selected = c("Strawberry", "Pinnapple")`|  
 
-## Date
+## Dates
+
+Within selecting dates, you have two choices:
+
+1) Selecting a single date 
+2) Selecting a range of dates
+
+### Single date
+
+When selecting a single date from a calendar, we can use the `dateInput()` function. An example is below:
+
+```
+library(shiny)
+
+ui <- fluidPage(
+  dateInput("date_input", "When is this project due?"),
+  textOutput("output_text")
+)
+
+server <- function(input, output) {
+  output$output_text <- renderText({ 
+    as.character(input$date_input)
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+<iframe src="https://hcbc.connect.hms.harvard.edu/Input_date_demo/?showcase=0" width="100%" height="175px" data-external="1"> </iframe>
+
+| Argument | Description |  Example  |
+|----------|-------------|-----------|
+| value | Allows you to set the default day to open the calendar on. If not set, then it will default to the current day in yyyy-mm-dd format |  value = "2024-07-24"|
+| min | Allows you to set _earliest_ date that can be selected | `min = "2024-07-20"` |
+| max | Allows you to set _latest_ date that can be selected | `max = "2024-07-28"` |
+| weekstart | Allows you to select which day of the week the calendar should start on with Sunday being 0 and incrementing to Saturday being 6 | `weekstart = 1` |
+| language | Allows you to set the language for the calendar | `language = "de"` |
+| daysofweekdisabled | Allows you to make certain days of the week unavailible for selection with Sunday being 0 and incrementing to Saturday being 6. You can also make a vector of values to block out multiple days of the week. | `daysofweekdisabled = c(0,6)` |
+
+### Date Range
+
+You can also collect a date range using Shiny. An example of this is below:
+
+```
+library(shiny)
+
+ui <- fluidPage(
+  dateRangeInput("date_input", "When is your vacation?"),
+  textOutput("output_text")
+)
+
+server <- function(input, output) {
+  output$output_text <- renderText({ 
+    as.character(input$date_input)
+  })
+}
+
+shinyApp(ui = ui, server = server)
+
+```
 
 ## Exercise
 
