@@ -124,8 +124,6 @@ shinyApp(ui = ui, server = server)
 | multiple | Allows you to select multiple option from the selection dropdown menu | `multiple = TRUE` |
 | selected | Allows you to define the default selection, otherwise the default selection will be the first item in the list, unless the `multiple` arugment is `TRUE`, then it will default to no selection | `selected = "Twillight Imperium"` |
 
-
-
 > Note that you can alternatively use `selectizeInput()` instead of `selectInput()` to have more control over the dropdown. While this is outside of the scope of this lesson, the documentation foir this can be found [here](https://selectize.dev/docs/usage).
 
 
