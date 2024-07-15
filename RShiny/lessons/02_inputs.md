@@ -526,5 +526,5 @@ actionButton("inputID", "Label", class = "btn-primary")
 [shinyWidgets](https://github.com/dreamRs/shinyWidgets) is an R package that you can install that give you even more stylistic options you have when choosing widget inputs for your Shiny app. The gallery of widget input that you can create using shinyWidgets can be found [here](https://shinyapps.dreamrs.fr/shinyWidgets/). A useful part of the gallery is that each widget input displayed has a `</> Show code` section that gives you the code needed to create the widget input on the UI side.
 
 <p align="center">
-<img src="../img/Shiny_widgets.png" width="400">
+<img src="../img/Shiny_widgets.png" width="800">
 </p>
