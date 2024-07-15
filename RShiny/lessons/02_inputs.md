@@ -385,13 +385,13 @@ Previously, we have seen the case of input being used to directly create outputs
 Below we see relationship between input and output that we have seen up to this point:
 
 <p align="center">
-<img src="../img/Reactive_graph_without_reactive_expression.png" width="600">
+<img src="../img/Reactive_graph_without_reactive_expression.png" width="300">
 </p>
 
 As we see once we add a reactive expression, it functions as a intermediary between inputs and outputs. 
 
 <p align="center">
-<img src="../img/Reactive_graph_with_reactive_expression.png" width="600">
+<img src="../img/Reactive_graph_with_reactive_expression.png" width="400">
 </p>
 
 When we use a reactive expression, we will wrap it within a `reactive()` function. We will use a `reactive()` function in the next section when we use an action button.
@@ -402,14 +402,26 @@ When we use a reactive expression, we will wrap it within a `reactive()` functio
 
 Action buttons allow the user to tell Shiny to carry out a given function. This can be helpful when you have a computationally heavy task where you don't want R to be trying to carry out the computation for each input value as you drag a a slider across its scale. Rather you'd only like for outputs to be computed when you have all of your input parameters set. The syntax for using an action button looks like:
 
+On the UI side:
+```
+actionButton("inputID", "Label")
+```
+
+On the Server side:
 ```
 reactive_expression_with_action_button <- bindEvent(reactive(
     <reactive_expression>
   ), input$<action_button_inputID>)
 ```
 
-Alternatively, you may see in other's code using a pipe (from the tidyverse package):
+The `actionButton("inputID", "Label")` line creates our action button in the UI, while `bindEvent(reactive(<reactive_expression>), input$<action_button_inputID>)` wraps a reactive expression within the `bindEvent()` function on the server side. Alternatively, you may see in other's code using a pipe (from the tidyverse package), but this is equivalent code to what is listed above:
 
+On the UI side:
+```
+actionButton("inputID", "Label")
+```
+
+On the server side:
 ```
 reactive_expression_with_action_button <- reactive(
     <reactive_expression>
@@ -441,42 +453,69 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-We have added the `actionButton()` function to our UI with:
+A wide variety of action button styles exist by adding the `class` argument to your `actionButton()` function. Such as:
 
 ```
-actionButton("calculate", "Multiply!")
+actionButton("inputID", "Label", class = "btn-primary")
 ```
 
-A variety of action button styles exist by adding the `class` argument to your `actionButton()` function.
 
-
-
-|   Class  | Description |  Example Code  | Example | 
-|----------|-------------|----------------|---------|
-| btn-default / btn-primary| Default white button | `class = "btn-default"` / `class = "btn-primary"` | <p align="center">
-<img src="../img/Action_button_default.png" width="50">
-</p> |
-| btn-secondary | Creates a dark blue button | `class = "btn-secondary"` | <p align="center">
-<img src="../img/Action_button_secondary.png" width="50">
-</p> | 
-| btn-warning | Creates an orange button | `class = "btn-warning"` | <p align="center">
-<img src="../img/Action_button_warning.png" width="50">
-</p> |
-| btn-danger | Creates a read button| `class = "btn-danger"` | <p align="center">
-<img src="../img/Action_button_danger.png" width="50">
-</p> |
-| btn-info | Creates a light blue button | `class = "btn-info"` | <p align="center">
-<img src="../img/Action_button_info.png" width="50">
-</p> |
-| btn-lg | Creates a larger button| `class = "btn-lg"` | <p align="center">
-<img src="../img/Action_button_lg.png" width="50">
-</p> |
-I btn-sm | Creates a smaller button| `class = "btn-sm"` | <p align="center">
-<img src="../img/Action_button_sm.png" width="50">
-</p> |
-I btn-link | Creates a hyperlink-style button| `class = "btn-link"` | <p align="center">
-<img src="../img/Action_button_link.png" width="50">
-</p> |
+<table>
+  <tr>
+    <th>Clas</th>
+    <th>Description</th>
+    <th>Example Code</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td>btn-default / btn-primary</td>
+    <td>Default white button</td>
+    <td><code>class = "btn-default"</code> / <code>class = "btn-primary"</code></td>
+    <td><img src="../img/Action_button_default.png" width="100"></td>
+  </tr>
+  <tr>
+    <td>btn-secondary</td>
+    <td>Creates a dark blue button</td>
+    <td><code>class = "btn-secondary"</code></td>
+    <td><img src="../img/Action_button_secondary.png" width="100"></td>
+  </tr>
+  <tr>
+    <td>btn-warning</td>
+    <td>Creates an orange button</td>
+    <td><code>class = "btn-warning"</code></td>
+    <td><img src="../img/Action_button_warning.png" width="100"></td>
+  </tr>
+  <tr>
+    <td>btn-danger</td>
+    <td>Creates a red button</td>
+    <td><code>class = "btn-danger"</code></td>
+    <td><img src="../img/Action_button_danger.png" width="100"></td>
+  </tr>
+  <tr>
+    <td>btn-info</td>
+    <td>Creates a light blue button</td>
+    <td><code>class = "btn-info"</code></td>
+    <td><img src="../img/Action_button_info.png" width="100"></td>
+  </tr>
+  <tr>
+    <td>btn-lg</td>
+    <td>Creates a larger button</td>
+    <td>class = "btn-lg"</td>
+    <td><img src="../img/Action_button_lg.png" width="100"></td>
+  </tr>
+  <tr>
+    <td>btn-sm</td>
+    <td>Creates a smaller button</td>
+    <td>class = "btn-sm"</td>
+    <td><img src="../img/Action_button_sm.png" width="100"></td>
+  </tr>
+  <tr>
+    <td>btn-link</td>
+    <td>Creates a hyperlink-style button</td>
+    <td><code>class = "btn-link"</code></td>
+    <td><img src="../img/Action_button_link.png" width="100"></td>
+  </tr>
+</table>
 
 > Note: `bindEvent()` is a newer function and it replaces functions like `observeEvent()` and `eventReactive()` when coupled with `observe()` and `reactive()` function, respectively. It is recommended to use `bindEvent()` moving forward as it is more flexible, but you may still run across code that utilizes `observeEvent()` and `eventReactive()`. 
 
