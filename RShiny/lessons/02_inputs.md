@@ -374,9 +374,110 @@ Which tells Shiny that we are **_req_**uiring `input$select_input` to be equal t
 
 <iframe src="https://hcbc.connect.hms.harvard.edu/Conditional_panel_demo_2/?showcase=0" width="100%" height="250px" data-external="1"> </iframe>
 
+## Reactive Expressions
+
+Previously, we have seen the case of input being used to directly create outputs. However, there is third tool in the Shiny toolkit and it is called reactive expressions. Reactive expressions are useful because they take inputs and produce outputs and they cache, or store, their output. This can be very useful for three reasons:
+
+1) When a step is present multiple times in your code and this step that is either computationally intensive or requires interacting with outside databases, Shiny will only need to carry out the task once rather than each time the process is called since the output will be cached for future uses
+2) It makes your code cleaner because you only need to maintain the code for a repetitive step in a single place
+3) They are needed to use action buttons (discussed in the next section)
+
+Below we see relationship between input and output that we have seen up to this point:
+
+<p align="center">
+<img src="../img/Reactive_graph_without_reactive_expression.png" width="600">
+</p>
+
+As we see once we add a reactive expression, it functions as a intermediary between inputs and outputs. 
+
+<p align="center">
+<img src="../img/Reactive_graph_with_reactive_expression.png" width="600">
+</p>
+
+When we use a reactive expression, we will wrap it within a `reactive()` function. We will use a `reactive()` function in the next section when we use an action button.
+
+> Note: You can also have multiple reactive expressions that connect to each other in between inputs and outputs. 
+
 ## Action buttons
 
+Action buttons allow the user to tell Shiny to carry out a given function. This can be helpful when you have a computationally heavy task where you don't want R to be trying to carry out the computation for each input value as you drag a a slider across its scale. Rather you'd only like for outputs to be computed when you have all of your input parameters set. The syntax for using an action button looks like:
 
-Observe vs. Reactive
-Action Buttons
-Isolate?
+```
+reactive_expression_with_action_button <- bindEvent(reactive(
+    <reactive_expression>
+  ), input$<action_button_inputID>)
+```
+
+Alternatively, you may see in other's code using a pipe (from the tidyverse package):
+
+```
+reactive_expression_with_action_button <- reactive(
+    <reactive_expression>
+  ) >%>
+  bindEvent(input$<action_button_inputID>)
+```
+
+Below is some example code on how we could implement this:
+
+```
+library(shiny)
+
+ui <- fluidPage(
+  sliderInput("slider_input_1", "Select a number", value = 5, min = 1, max = 10),
+  sliderInput("slider_input_2", "Select a number", value = 5, min = 1, max = 10),
+  actionButton("calculate", "Multiply!"),
+  textOutput("product")
+)
+
+server <- function(input, output) {
+  multiply <- bindEvent(reactive(
+    input$slider_input_1 * input$slider_input_2
+  ), input$calculate)
+  output$product <- renderText({ 
+    multiply()
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+We have added the `actionButton()` function to our UI with:
+
+```
+actionButton("calculate", "Multiply!")
+```
+
+A variety of action button styles exist by adding the `class` argument to your `actionButton()` function.
+
+
+
+|   Class  | Description |  Example Code  | Example | 
+|----------|-------------|----------------|---------|
+| btn-default / btn-primary| Default white button | `class = "btn-default"` / `class = "btn-primary"` | <p align="center">
+<img src="../img/Action_button_default.png" width="50">
+</p> |
+| btn-secondary | Creates a dark blue button | `class = "btn-secondary"` | <p align="center">
+<img src="../img/Action_button_secondary.png" width="50">
+</p> | 
+| btn-warning | Creates an orange button | `class = "btn-warning"` | <p align="center">
+<img src="../img/Action_button_warning.png" width="50">
+</p> |
+| btn-danger | Creates a read button| `class = "btn-danger"` | <p align="center">
+<img src="../img/Action_button_danger.png" width="50">
+</p> |
+| btn-info | Creates a light blue button | `class = "btn-info"` | <p align="center">
+<img src="../img/Action_button_info.png" width="50">
+</p> |
+| btn-lg | Creates a larger button| `class = "btn-lg"` | <p align="center">
+<img src="../img/Action_button_lg.png" width="50">
+</p> |
+I btn-sm | Creates a smaller button| `class = "btn-sm"` | <p align="center">
+<img src="../img/Action_button_sm.png" width="50">
+</p> |
+I btn-link | Creates a hyperlink-style button| `class = "btn-link"` | <p align="center">
+<img src="../img/Action_button_link.png" width="50">
+</p> |
+
+> Note: `bindEvent()` is a newer function and it replaces functions like `observeEvent()` and `eventReactive()` when coupled with `observe()` and `reactive()` function, respectively. It is recommended to use `bindEvent()` moving forward as it is more flexible, but you may still run across code that utilizes `observeEvent()` and `eventReactive()`. 
+
+## Isolate?
