@@ -12,9 +12,9 @@ In this lesson, you will:
 - Implement an action buttons within an app
 
 
-# Input options
+# Widget options
 
-In the previous lesson, we introduced using the `textInput()`.  We will explor each of these different input options below.
+In the previous lesson, we introduced using the `textInput()` as type of wdiget. Hoever, there are many widgets that exist. In this next section, we will explore some of these different input widgets.
 
 ## textAreaInput()
 
@@ -500,13 +500,13 @@ actionButton("inputID", "Label", class = "btn-primary")
   <tr>
     <td>btn-lg</td>
     <td>Creates a larger button</td>
-    <td>class = "btn-lg"</td>
+    <td><code>class = "btn-lg"</code></td>
     <td><img src="../img/Action_button_lg.png" width="100"></td>
   </tr>
   <tr>
     <td>btn-sm</td>
     <td>Creates a smaller button</td>
-    <td>class = "btn-sm"</td>
+    <td><code>class = "btn-sm"</code></td>
     <td><img src="../img/Action_button_sm.png" width="100"></td>
   </tr>
   <tr>
@@ -520,3 +520,11 @@ actionButton("inputID", "Label", class = "btn-primary")
 > Note: `bindEvent()` is a newer function and it replaces functions like `observeEvent()` and `eventReactive()` when coupled with `observe()` and `reactive()` function, respectively. It is recommended to use `bindEvent()` moving forward as it is more flexible, but you may still run across code that utilizes `observeEvent()` and `eventReactive()`. 
 
 ## Isolate?
+
+# shinyWidgets
+
+[shinyWidgets](https://github.com/dreamRs/shinyWidgets) is an R package that you can install that give you even more stylistic options you have when choosing widget inputs for your Shiny app. The gallery of widget input that you can create using shinyWidgets can be found [here](https://shinyapps.dreamrs.fr/shinyWidgets/). A useful part of the gallery is that each widget input displayed has a `</> Show code` section that gives you the code needed to create the widget input on the UI side.
+
+<p align="center">
+<img src="../img/Shiny_widgets.png" width="400">
+</p>
