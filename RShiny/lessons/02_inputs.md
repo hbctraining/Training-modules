@@ -471,16 +471,16 @@ actionButton("inputID", "Label", class = "btn-primary")
     <th>Example</th>
   </tr>
   <tr>
-    <td>btn-default / btn-primary</td>
-    <td>Default white button</td>
-    <td><code>class = "btn-default"</code> / <code>class = "btn-primary"</code></td>
-    <td><img src="../img/Action_button_default.png" width="100"></td>
+    <td>btn-primary</td>
+    <td>Default dark blue button</td>
+    <td><code>class = "btn-primary"</code></td>
+    <td><img src="../img/Action_button_primary.png" width="100"></td>
   </tr>
   <tr>
-    <td>btn-secondary</td>
-    <td>Creates a dark blue button</td>
-    <td><code>class = "btn-secondary"</code></td>
-    <td><img src="../img/Action_button_secondary.png" width="100"></td>
+    <td>btn-default / btn-secondary</td>
+    <td>Creates a white button</td>
+    <td><code>class = "btn-default"</code> / <br/><code>class = "btn-secondary"</code></td>
+    <td><img src="../img/Action_button_default.png" width="100"></td>
   </tr>
   <tr>
     <td>btn-warning</td>
@@ -518,7 +518,14 @@ actionButton("inputID", "Label", class = "btn-primary")
     <td><code>class = "btn-link"</code></td>
     <td><img src="../img/Action_button_link.png" width="100"></td>
   </tr>
+  <tr>
+    <td>btn-block</td>
+    <td>Creates a button the width of the page</td>
+    <td><code>class = "btn-block"</code></td>
+    <td><img src="../img/Action_button_block.png" width="100"></td>
 </table>
+
+> Note: You can have multiple classes for a given action button as long as each class is separated by a space. For example, if you wanted a large, dark blue action button that goes across the entire browser, then you could use: `class = "btn-primary btn-lg btn-block"`. However, whichever non-white color you put last in your list of classes will be the color of the button.
 
 > Note: `bindEvent()` is a newer function and it replaces functions like `observeEvent()` and `eventReactive()` when coupled with `observe()` and `reactive()` function, respectively. It is recommended to use `bindEvent()` moving forward as it is more flexible, but you may still run across code that utilizes `observeEvent()` and `eventReactive()`. 
 
