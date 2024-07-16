@@ -474,55 +474,55 @@ actionButton("inputID", "Label", class = "btn-primary")
     <td>btn-primary</td>
     <td>Default dark blue button</td>
     <td><code>class = "btn-primary"</code></td>
-    <td><img src="../img/Action_button_primary.png" width="100"></td>
+    <td><p align="center"><img src="../img/Action_button_primary.png" width="100"></p></td>
   </tr>
   <tr>
-    <td>btn-default / btn-secondary</td>
+    <td>btn-default /  <br/>btn-secondary</td>
     <td>Creates a white button</td>
     <td><code>class = "btn-default"</code> / <br/><code>class = "btn-secondary"</code></td>
-    <td><img src="../img/Action_button_default.png" width="100"></td>
+    <td><p align="center"><img src="../img/Action_button_default.png" width="100"></p></td>
   </tr>
   <tr>
     <td>btn-warning</td>
     <td>Creates an orange button</td>
     <td><code>class = "btn-warning"</code></td>
-    <td><img src="../img/Action_button_warning.png" width="100"></td>
+    <td><p align="center"><img src="../img/Action_button_warning.png" width="100"></p></td>
   </tr>
   <tr>
     <td>btn-danger</td>
     <td>Creates a red button</td>
     <td><code>class = "btn-danger"</code></td>
-    <td><img src="../img/Action_button_danger.png" width="100"></td>
+    <td><p align="center"><img src="../img/Action_button_danger.png" width="100"></p></td>
   </tr>
   <tr>
     <td>btn-info</td>
     <td>Creates a light blue button</td>
     <td><code>class = "btn-info"</code></td>
-    <td><img src="../img/Action_button_info.png" width="100"></td>
+    <td><p align="center"><img src="../img/Action_button_info.png" width="100"></p></td>
   </tr>
   <tr>
     <td>btn-lg</td>
     <td>Creates a larger button</td>
     <td><code>class = "btn-lg"</code></td>
-    <td><img src="../img/Action_button_lg.png" width="100"></td>
+    <td><p align="center"><img src="../img/Action_button_lg.png" width="100"></p></td>
   </tr>
   <tr>
     <td>btn-sm</td>
     <td>Creates a smaller button</td>
     <td><code>class = "btn-sm"</code></td>
-    <td><img src="../img/Action_button_sm.png" width="100"></td>
+    <td><p align="center"><img src="../img/Action_button_sm.png" width="100"></p></td>
   </tr>
   <tr>
     <td>btn-link</td>
     <td>Creates a hyperlink-style button</td>
     <td><code>class = "btn-link"</code></td>
-    <td><img src="../img/Action_button_link.png" width="100"></td>
+    <td><p align="center"><img src="../img/Action_button_link.png" width="100"></p></td>
   </tr>
   <tr>
     <td>btn-block</td>
     <td>Creates a button the width of the page</td>
     <td><code>class = "btn-block"</code></td>
-    <td><img src="../img/Action_button_block.png" width="100"></td>
+    <td><img src="../img/Action_button_block.png" width="225"></td>
 </table>
 
 > Note: You can have multiple classes for a given action button as long as each class is separated by a space. For example, if you wanted a large, dark blue action button that goes across the entire browser, then you could use: `class = "btn-primary btn-lg btn-block"`. However, whichever non-white color you put last in your list of classes will be the color of the button.
