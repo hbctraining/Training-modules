@@ -472,7 +472,7 @@ actionButton("inputID", "Label", class = "btn-primary")
   </tr>
   <tr>
     <td>btn-primary</td>
-    <td>Default dark blue button</td>
+    <td>Creates a dark blue button</td>
     <td><code>class = "btn-primary"</code></td>
     <td><p align="center"><img src="../img/Action_button_primary.png" width="100"></p></td>
   </tr>
