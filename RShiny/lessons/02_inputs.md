@@ -39,7 +39,7 @@ shinyApp(ui = ui, server = server)
 
 This will render an app that looks like:
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Input_text_area_demo/?showcase=0" width="100%" height="175px" data-external="1"> </iframe>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_text_area_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe></p>
 
 
 > Note: If you want to maintain new line character you could use `verbatimTextOutput()` rather than `textOutput()`. `verbatimTextOutput()` will treat the text output exactly like it is entered without any formatting.
@@ -81,7 +81,7 @@ shinyApp(ui = ui, server = server)
 
 This app would visualize like:
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Input_slider_demo/?showcase=0" width="100%" height="150px" data-external="1"> </iframe>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_slider_demo/?showcase=0" width="300" height="150px" data-external="1" </iframe></p>
 
 Note that the only line we changed was the `textAreaInput()` line to `sliderInput()`. We can see that the `renderText()` function has no issues handling integer or character data types. Above we have provided the minimum number of input arguments for `sliderInput()`. However, there are some interesting arguments that you can also add to your slider in the table below:
 
@@ -114,7 +114,7 @@ server <- function(input, output) {
 
 shinyApp(ui = ui, server = server)
 ```
-<iframe src="https://hcbc.connect.hms.harvard.edu/Input_select_demo/?showcase=0" width="100%" height="200px" data-external="1"> </iframe>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_select_demo/?showcase=0" width="300" height="200px" data-external="1"></iframe></p>
 
 
 > Within the choices argument, you can see that we made a placeholder value in the first position, `"Pick a game" = ""`, and this visualizes as the default placeholder. Otherwise, the placeholder will default to the first element in the choice vector.
@@ -150,7 +150,7 @@ shinyApp(ui = ui, server = server)
 
 This would visualize like:
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Input_radio_button_demo/?showcase=0" width="100%" height="175px" data-external="1"> </iframe>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_radio_button_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe></p>
 
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
@@ -184,7 +184,7 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Input_checkbox_demo/?showcase=0" width="100%" height="175px" data-external="1"> </iframe>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_checkbox_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe></p>
 
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
@@ -212,7 +212,7 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Input_checkbox_group_demo/?showcase=0" width="100%" height="175px" data-external="1"> </iframe>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_checkbox_group_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe></p>
 
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
@@ -287,8 +287,8 @@ This would look like:
 
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
-| start | Allows you to set the default _starting_ day to open the calendar on. If not set, then it will default to the current day in yyyy-mm-dd format |  value = "2024-07-24"|
-| end | Allows you to set the default _ending_ day to open the calendar on. If not set, then it will default to the current day in yyyy-mm-dd format |  value = "2024-07-29"|
+| start | Allows you to set the default _starting_ day to open the calendar on. If not set, then it will default to the current day in yyyy-mm-dd format |  `value = "2024-07-24"` |
+| end | Allows you to set the default _ending_ day to open the calendar on. If not set, then it will default to the current day in yyyy-mm-dd format |  `value = "2024-07-29"` |
 | min | Allows you to set _earliest_ date that can be selected | `min = "2024-07-20"` |
 | max | Allows you to set _latest_ date that can be selected | `max = "2024-07-28"` |
 | weekstart | Allows you to select which day of the week the calendar should start on with Sunday being 0 and incrementing to Saturday being 6 | `weekstart = 1` |
@@ -335,7 +335,7 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Conditional_panel_demo/?showcase=0" width="100%" height="250px" data-external="1"> </iframe>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Conditional_panel_demo/?showcase=0" width="300" height="250px" data-external="1"></iframe></p>
 
 ## Req
 
@@ -372,7 +372,7 @@ req(input$select_input == "Yes")
 Which tells Shiny that we are **_req_**uiring `input$select_input` to be equal to "Yes" in order to have the `input$select_courses` text rendered. This app would look like:
 
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Conditional_panel_demo_2/?showcase=0" width="100%" height="250px" data-external="1"> </iframe>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Conditional_panel_demo_2/?showcase=0" width="300" height="250px" data-external="1"></iframe></p>
 
 ## Reactive Expressions
 
@@ -455,7 +455,7 @@ shinyApp(ui = ui, server = server)
 
 This app would visualize like:
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Input_action_button_demo/?showcase=0" width="400px" height="300px" data-external="1"> </iframe>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_action_button_demo/?showcase=0" width="400px" height="300px" data-external="1"></iframe></p>
 
 A wide variety of action button styles exist by adding the `class` argument to your `actionButton()` function. Such as:
 
@@ -560,6 +560,35 @@ This app would look like:
 
 > Note: If we had used `isolate(input$slider_input_1 * input$slider_input_2)` instead of `input$slider_input_1 * isolate(input$slider_input_2)`, then this app would fucntion similarly to the app above since now more sliders; inputs are within the `isolate()` function.
 
+# Exercise
+
+Create an app that asks the user Yes or No if they know any programming languages. If they do, provide a handful of progrmaming languages in a checkbox group. Once the user has made their selection, allow to hit an action put to display the languages that they selected. The app should look like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_exercise_2//?showcase=0" width="400px" height="300px" data-external="1"></iframe></p>
+
+```
+library(shiny)
+
+ui <- fluidPage(
+  radioButtons("radio_button_input", "Do you know any programming languages?", choices = c("No", "Yes")),
+   conditionalPanel(
+     condition = "input.radio_button_input == 'Yes'",
+    checkboxGroupInput("checkbox_group_language_input", "Which programming languages do you know?", choices = c("R", "Perl", "Python", "Ruby", "C++"), inline = TRUE),
+  ),
+  actionButton("languages_action_button", "Submit!", class = "btn-primary"),
+  textOutput("languages")
+)
+
+server <- function(input, output) {
+  output$languages <- renderText({
+    input$languages_action_button
+    isolate(input$checkbox_group_language_input)
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
 # shinyWidgets
 
 [shinyWidgets](https://github.com/dreamRs/shinyWidgets) is an R package that you can install that give you even more stylistic options you have when choosing widget inputs for your Shiny app. The gallery of widget input that you can create using shinyWidgets can be found [here](https://shinyapps.dreamrs.fr/shinyWidgets/). A useful part of the gallery is that each widget input displayed has a `</> Show code` section that gives you the code needed to create the widget input on the UI side.
@@ -567,3 +596,7 @@ This app would look like:
 <p align="center">
 <img src="../img/Shiny_widgets.png" width="800">
 </p>
+
+
+
+
