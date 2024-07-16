@@ -249,7 +249,7 @@ shinyApp(ui = ui, server = server)
 
 > Note that we have had to add the `as.character()` function around `input$date_input` otherwise it will return the number of days since the Unix Epoch (https://en.wikipedia.org/wiki/Unix_time).
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Input_date_demo/?showcase=0" width="100%" height="250px" data-external="1"> </iframe>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_date_demo/?showcase=0" width="400px" height="325px" data-external="1"></iframe></p>
 
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
@@ -283,7 +283,7 @@ shinyApp(ui = ui, server = server)
 
 This would look like:
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Input_date_range_demo/?showcase=0" width="100%" height="250px" data-external="1"> </iframe>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_date_range_demo/?showcase=0" width="500px" height="325px" data-external="1"></iframe></p>
 
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
@@ -523,7 +523,42 @@ actionButton("inputID", "Label", class = "btn-primary")
 
 > Note: `bindEvent()` is a newer function and it replaces functions like `observeEvent()` and `eventReactive()` when coupled with `observe()` and `reactive()` function, respectively. It is recommended to use `bindEvent()` moving forward as it is more flexible, but you may still run across code that utilizes `observeEvent()` and `eventReactive()`. 
 
-## Isolate?
+## Isolate
+
+In Shiny, you may find that you will want to limit the reactivity as we did in the previous example. However, you might want only partial reactivity and this is where the `isolate()` feature can be quite helpful. You can create a non=-reactive scope around an expression using `isolate`. The syntax for using `isolate()` is:
+
+```
+isolate(<non_reactive_expression>)
+```
+
+We can create a similar app to the one above but edit the code to use isolate. In this example, we will see that the first slider is completely reactive, however the second slider is only reacts once the action button has been clicked:
+
+```
+library(shiny)
+
+ui <- fluidPage(
+  sliderInput("slider_input_1", "Select a number", value = 5, min = 1, max = 10),
+  sliderInput("slider_input_2", "Select a number", value = 5, min = 1, max = 10),
+  actionButton("calculate", "Multiply!"),
+  textOutput("product")
+)
+
+server <- function(input, output) {
+  output$product <- renderText({
+    input$calculate
+    input$slider_input_1 * isolate(input$slider_input_2)
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This app would look like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_isolate_demo/?showcase=0" width="400px" height="300px" data-external="1"></iframe></p>
+
+
+> Note: If we had used `isolate(input$slider_input_1 * input$slider_input_2)` instead of `input$slider_input_1 * isolate(input$slider_input_2)`, then this app would fucntion similarly to the app above since now more sliders; inputs are within the `isolate()` function.
 
 # shinyWidgets
 
