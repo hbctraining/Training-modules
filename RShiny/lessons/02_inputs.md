@@ -249,7 +249,7 @@ shinyApp(ui = ui, server = server)
 
 > Note that we have had to add the `as.character()` function around `input$date_input` otherwise it will return the number of days since the Unix Epoch (https://en.wikipedia.org/wiki/Unix_time).
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Input_date_demo/?showcase=0" width="100%" height="175px" data-external="1"> </iframe>
+<iframe src="https://hcbc.connect.hms.harvard.edu/Input_date_demo/?showcase=0" width="100%" height="250px" data-external="1"> </iframe>
 
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
@@ -283,7 +283,7 @@ shinyApp(ui = ui, server = server)
 
 This would look like:
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Input_date_range_demo/?showcase=0" width="100%" height="175px" data-external="1"> </iframe>
+<iframe src="https://hcbc.connect.hms.harvard.edu/Input_date_range_demo/?showcase=0" width="100%" height="250px" data-external="1"> </iframe>
 
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
@@ -452,6 +452,10 @@ server <- function(input, output) {
 
 shinyApp(ui = ui, server = server)
 ```
+
+This app would visualize like:
+
+<iframe src="https://hcbc.connect.hms.harvard.edu/Input_action_button_demo/?showcase=0" width="400px" height="300px" data-external="1"> </iframe>
 
 A wide variety of action button styles exist by adding the `class` argument to your `actionButton()` function. Such as:
 
