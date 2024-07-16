@@ -74,3 +74,80 @@ server <- function(input, output) {
 
 shinyApp(ui = ui, server = server)
 ```
+
+# Interacting with plots
+
+## Clicking
+
+```
+library(shiny)
+library(ggplot2)
+library(DT)
+
+ui <- fluidPage(
+  plotOutput("plot", click = "plot_click"),
+  DTOutput("table")
+)
+
+server <- function(input, output) {
+  output$plot <- renderPlot(
+    ggplot(mtcars) +
+      geom_point(aes(x = mpg, y = disp))
+  )
+  output$table <- renderDT({
+    nearPoints(mtcars, input$plot_click)
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+## Hover
+
+```
+library(shiny)
+library(ggplot2)
+library(DT)
+
+ui <- fluidPage(
+  plotOutput("plot", hover = hoverOpts("plot_hover", delay = 25)),
+  DTOutput("table")
+)
+
+server <- function(input, output) {
+  output$plot <- renderPlot(
+    ggplot(mtcars) +
+      geom_point(aes(x = mpg, y = disp))
+  )
+  output$table <- renderDT({
+    nearPoints(mtcars, input$plot_hover)
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+## Brush
+
+```
+library(shiny)
+library(ggplot2)
+library(DT)
+
+ui <- fluidPage(
+  plotOutput("plot", brush = "plot_brush"),
+  DTOutput("table")
+)
+
+server <- function(input, output) {
+  output$plot <- renderPlot(
+    ggplot(mtcars) +
+      geom_point(aes(x = mpg, y = disp))
+  )
+  output$table <- renderDT({
+    brushedPoints(mtcars, input$plot_brush)
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
