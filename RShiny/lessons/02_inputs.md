@@ -7,14 +7,13 @@ author: "Will Gammerdinger"
 
 In this lesson, you will:
 
-- Create apps that accept a diverse array of inputs
-- Differentiate between Observe and Reactive family of functions 
+- Create apps that accept a diverse array of Widget inputs
 - Implement an action buttons within an app
 
 
 # Widget options
 
-In the previous lesson, we introduced using the `textInput()` as type of wdiget. Hoever, there are many widgets that exist. In this next section, we will explore some of these different input widgets.
+In the previous lesson, we introduced using the `textInput()` as type of wdiget. Hoever, there are many widget inputs that exist. In this next section, we will explore some of these different input widgets.
 
 ## textAreaInput()
 
@@ -558,7 +557,7 @@ This app would look like:
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_isolate_demo/?showcase=0" width="400px" height="300px" data-external="1"></iframe></p>
 
 
-> Note: If we had used `isolate(input$slider_input_1 * input$slider_input_2)` instead of `input$slider_input_1 * isolate(input$slider_input_2)`, then this app would fucntion similarly to the app above since now more sliders; inputs are within the `isolate()` function.
+> Note: If we had used `isolate(input$slider_input_1 * input$slider_input_2)` instead of `input$slider_input_1 * isolate(input$slider_input_2)`, then this app would function similarly to the app from the previous section since there are now two sliders' widget inputs are within the `isolate()` function.
 
 # Exercise
 
