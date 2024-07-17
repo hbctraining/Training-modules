@@ -74,6 +74,24 @@ There are some additional options that you might want to consider when using the
 
 \* Uploading multiple files can be a bit tricky and is outside of the scope of this workshop, but it can be done.
 
+On the server side it would look like:
+
+```
+  uploaded_file <- reactive({
+    req(input$<input_fileID>)
+    read.table(input$<input_fileID>$datapath)
+  })
+  output$table <- renderDT(
+    uploaded_file()
+  )
+```
+
+The first part is creating the reactive object `uploaded_file()`. We require that the file exist with `req(input$<input_fileID>)`, otherwise Shiny will return an error until we upload a file. Then we read in the file with a function from the `read.table()` family of functions. Notice our use of a reactive object here. While a reactive object isn't necessary in this very basic example, it is a good practice to get into when uploading data in order to save on computation if you are render multiple objects from a single file.
+
+Within our `renderDT()` function, we are calling out reactive object that we made in the lines above.
+
+The example app for this would look like:
+
 ```
 library(shiny)
 library(ggplot2)
