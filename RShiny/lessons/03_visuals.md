@@ -53,7 +53,7 @@ This will visualize in the app as:
 
 # Uploading a file
 
-
+[Animals](https://raw.githubusercontent.com/hbctraining/Training-modules/RShiny/master/data/animals.csv)
 
 # Creating a plot 
 
