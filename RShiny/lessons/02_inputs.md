@@ -80,7 +80,8 @@ shinyApp(ui = ui, server = server)
 
 This app would visualize like:
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_slider_demo/?showcase=0" width="300" height="150px" data-external="1" </iframe></p>
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_slider_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe></p>
 
 Note that the only line we changed was the `textAreaInput()` line to `sliderInput()`. We can see that the `renderText()` function has no issues handling integer or character data types. Above we have provided the minimum number of input arguments for `sliderInput()`. However, there are some interesting arguments that you can also add to your slider in the table below:
 
