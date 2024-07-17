@@ -53,7 +53,53 @@ This will visualize in the app as:
 
 # Uploading a file
 
-[Animals](https://raw.githubusercontent.com/hbctraining/Training-modules/RShiny/master/data/animals.csv)
+You may find that you would like to make an app that allows users to upload their own data into the app. To demonstrat this, we first must have some data to upload. We have provided a simple [CSV file](https://raw.githubusercontent.com/hbctraining/Training-modules/master/RShiny/data/animals.csv) that we can use for this task. First you will need to download this file but right-clicking on the link and selecting "Save Link As.." or "Download Linked File As..." depending on your browser. You can save this anywhere on your computer where you will be able to easily locate it. 
+
+Next, let's talk about how you incorporate file uploads into your R Shiny App. The syntax would look like:
+
+On the UI side:
+
+```
+fileInput("<input_fileID>", "<Text_above_file_upload>"),
+```
+
+There are some additional options that you might want to consider when using the `fileInput()` function. 
+
+| Argument | Description |  Example  |
+|----------|-------------|-----------|
+| multiple | Allows the user to upload multiple files\* | `multiple = TRUE` |
+| accept | Limit the file extensions that can be selected by the user | `accept = ".csv"` |
+| placeholder | Text to be entered as a placeholder instead of the "No file selected" default | `placeholder = "Waiting for file selection"` |
+| buttonLabel | Text to be entered onto the upload button instead of "Browse..." default | `buttonLabel = "Select File..."` |
+
+\* Uploading multiple files can be a bit tricky and is outside of the scope of this workshop, but it can be done.
+
+```
+library(shiny)
+library(ggplot2)
+library(DT)
+
+ui <- fluidPage(
+  fileInput("input_file", "Upload your file"),
+  DTOutput("table")
+)
+
+server <- function(input, output) {
+  uploaded_file <- reactive({
+    req(input$input_file)
+    read.csv(input$input_file$datapath, header = TRUE, row.names = 1)
+  })
+  output$table <- renderDT(
+    uploaded_file()
+  )
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This app would look like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/File_upload_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
 
 # Creating a plot 
 
@@ -253,6 +299,8 @@ shinyApp(ui = ui, server = server)
 This app would look like:
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_brush_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
+
+# File Download 
 
 # Exercise
 
