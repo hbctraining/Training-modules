@@ -60,7 +60,7 @@ Next, let's talk about how you incorporate file uploads into your R Shiny App. T
 On the UI side:
 
 ```
-fileInput("<input_fileID>", "<Text_above_file_upload>"),
+fileInput("<input_fileID>", "<Text_above_file_upload>")
 ```
 
 There are some additional options that you might want to consider when using the `fileInput()` function. 
@@ -459,5 +459,60 @@ This app looks like:
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_download_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
 
 # Exercise
+
+Create an app in R Shiny that lets users upload the iris dataset that can be found [here](https://raw.githubusercontent.com/hbctraining/Training-modules/master/RShiny/data/iris.csv). Then create a scatterplot where the user selects x-axis and y-axis from separate `selectInput()` menus, containing the values `Sepal.Length`, `Sepal.Width`, `Petal.Length` and `Petal.Width`. Lastly, allow the user to be able to download the boxplot to a `.png`.
+
+Step 1. Write the UI with the appriopriate `fileInput()`, `selectInput()`, `plotOutput` and `downloadButton()` functions
+
+Step 2. Write the server side with:
+    a. A `reactive()` function for reading in the CSV file
+    b. A `reactive()` function to create the ggplot figure
+    c. A `renderPlot()` function to render the ggplot figure from the reactive object
+    d. A `downloadHandler()` function for downloading the image
+
+The app will look like:
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_upload_download_exercise/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
+
+<details>
+  <summary><b>Click here to see the solution</b></summary> 
+<pre>
+library(shiny)
+library(ggplot2)<br/>
+
+ui <- fluidPage(
+&#9;fileInput("input_file", "Upload file"),
+&#9;selectInput("x_axis_input", "Select x-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+&#9;selectInput("y_axis_input", "Select y-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+&#9;plotOutput("plot"),
+&#9;downloadButton("download_button", "Download the data .png")
+)
+
+server <- function(input, output) {
+&#9;iris_data <- reactive({
+&#9;&#9;req(input$input_file)
+&#9;&#9;read.csv(input$input_file$datapath)
+&#9;})
+&#9;iris_plot <- reactive ({
+&#9;ggplot(iris_data()) +
+&#9;&#9;geom_point(aes_string(x = input$x_axis_input, y = input$y_axis_input))
+&#9;})
+&#9;output$plot <- renderPlot({
+&#9;&#9;iris_plot()
+&#9;})
+&#9;output$download_button <- downloadHandler(
+&#9;&#9;filename = function() {
+&#9;&#9;&#9;"iris_plot.png"
+&#9;&#9;},
+&#9;&#9;content = function(file) {
+&#9;&#9;&#9;png(file)
+&#9;&#9;&#9;print(iris_plot())
+&#9;&#9;&#9;dev.off()
+&#9;&#9;}
+&#9;)
+}
+
+shinyApp(ui = ui, server = server)
+</pre>
+</details>
 
 
