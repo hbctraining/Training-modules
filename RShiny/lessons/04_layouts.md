@@ -63,7 +63,7 @@ shinyApp(ui = ui, server = server)
 
 This app would look like:
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/Sidepanel_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Sidepanel_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe>
 
 
 
