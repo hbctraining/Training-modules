@@ -117,7 +117,7 @@ This app would now look like:
 
 # Creating columns
 
-We have shown how to use the `sidebarLayout()` function, but we may want to have multiple columns in our data and the `sidebarLayout()` function can't help to much with that. Fortunately, there is the `fluidRow()` function that allows us to divide up the row into columns using the `column()` function nested within it. The first argument within the `column()` function defines the width of the column and the sum of all of the widths of a column for a given `fluidRow()` function should sum to 12. An example of this syntax would be:
+We have shown how to use the `sidebarLayout()` function, but we may want to have multiple columns in our data and the `sidebarLayout()` function can't help to much with that. Fortunately, there is the `fluidRow()` function that allows us to divide up the row into columns using the `column()` function nested within it. The first argument within the `column()` function defines the width of the column and the sum of all of the widths of a column for a given `fluidRow()` function should sum to 12. If the width value in `fluidRow()` is left undefined then it defaults to 12. An example of this syntax would be:
 
 ```
 fluidRow(
@@ -234,8 +234,116 @@ This app would look like:
 
 ## Multiple Rows
 
+Now that we've seen how to make multiple columns, let's breifly talk about multiple rows. Instead of nesting `fluidRow()` function within one another, we will treat them like we've treated objects that go underneath one another, by putting complete `fluidRow()` functions underneath each other in out code. An example of this syntax can be seen below:
+
+```
+fluidRow(
+  column(<width_of_first_column_in_the_first_row>,
+    <objects_in_first_column_first_row>
+  ),
+  column(<width_of_second_column_in_the_first_row>,
+    <objects_in_second_column_first_row>
+  )
+),
+fluidRow(
+  column(<width_of_first_column_in_the_second_row>,
+    <objects_in_first_column_second_row>
+  ),
+  column(<width_of_second_column_in_the_second_row>,
+    <objects_in_second_column_second_row>
+  )
+)
+```
+
+We can apply the concept of multiple rows to our app:
+
+```
+library(shiny)
+library(ggplot2)
+
+ui <- fluidPage(
+  titlePanel(
+    h1("My iris Shiny App", align = "center")
+  ),
+  fluidRow(
+    column(6,
+      h3("First Row: First column"),
+      selectInput("x_axis_input", "Select x-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+    ),
+      column(6,
+      h3("First Row: Second column"),
+      selectInput("y_axis_input", "Select y-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+    )
+  ),
+  fluidRow(
+      h3("Second Row"),
+      plotOutput("plot")
+  )
+)
+
+server <- function(input, output) {
+  output$plot <- renderPlot({
+    ggplot(iris) +
+      geom_point(aes(x = .data[[input$x_axis_input]], y = .data[[input$y_axis_input]]))
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This app would look like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Fluid_row_multiple_rows_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe>
+
 ## Thematic Breaks
+
+Thematic breaks are a great way to break-up different parts of an app. The function to add a themetic break is also borrowed from HTML and it is called `hr()`. The syntax for using it is very simple:
+
+```
+hr()
+```
+
+In the previous example, if we wanted to break up the `selectInput()` functions from the `plotOutput()` function, then we could add a thematic break like:
+
+```
+library(shiny)
+library(ggplot2)
+
+ui <- fluidPage(
+  titlePanel(
+    h1("My iris Shiny App", align = "center")
+  ),
+  fluidRow(
+    column(6,
+           h3("First Row: First column"),
+           selectInput("x_axis_input", "Select x-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+    ),
+    column(6,
+           h3("First Row: Second column"),
+           selectInput("y_axis_input", "Select y-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+    )
+  ),
+  hr(),
+  fluidRow(
+    h3("Second Row"),
+    plotOutput("plot")
+  )
+)
+
+server <- function(input, output) {
+  output$plot <- renderPlot({
+    ggplot(iris) +
+      geom_point(aes(x = .data[[input$x_axis_input]], y = .data[[input$y_axis_input]]))
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This app would now look like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Fluid_row_multiple_rows_with_break_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe>
 
 # Topics to still be written up
 
-fluid row, tabset, hr, navbar, shiny themes
+tabset, navbar, shiny themes
