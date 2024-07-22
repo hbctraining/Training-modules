@@ -344,6 +344,295 @@ This app would now look like:
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Fluid_row_multiple_rows_with_break_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe>
 
-# Topics to still be written up
+# Navbar
 
-tabset, navbar, shiny themes
+Within an app, adding a navigation bar can help users more easily more around an app. The syntax for adding a navigation bar looks like:
+
+```
+navbarPage("<title_of_navigation_bar>",
+  tabPanel("<title_of_tab_1>",
+    <content_of_tab_1>
+  ),
+  tabPanel("<title_of_tab_2>",
+    <content_of_tab_2>
+  ),
+)
+```
+
+The use of the `navbarPage()` function lets the Shiny UI know that there will be a nagivation bar on the app. The `tabPanel()` is used within the `navbarPage()` function along with a few other functions that we will explore to define the contents of each tab. An example of this code is shown below:
+
+```
+library(shiny)
+library(ggplot2)
+
+ui <- fluidPage(
+  navbarPage("My iris dataset",
+    tabPanel("Inputs",
+      selectInput("x_axis_input", "Select x-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+      selectInput("y_axis_input", "Select y-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+    ),
+    tabPanel("Output Plot",
+      plotOutput("plot")
+    ),
+  )
+)
+
+server <- function(input, output) {
+  output$plot <- renderPlot({
+    ggplot(iris) +
+      geom_point(aes(x = .data[[input$x_axis_input]], y = .data[[input$y_axis_input]]))
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This app would looke like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Navbar_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe>
+
+Within the `navbarPage()` function there is a `position` argument, with three options:
+
+| Argument | Description |
+|----------|-------------|
+| `position = "static-top"` | The navigation bar is at the top of the app and when you scroll down it disappears | 
+| `position = "fixed-top"` | The navigation bar is at the top of the app and when you scroll down it stays in the frame for the browser window |
+| `position = "fixed-bottom"` | The navigation bar is at the bottom of the app and when you scroll down it stays in the frame for the browser window |
+## Navigation Bar Menu
+
+Within the navigaton bar, we can have a dropdown menu that gives us more options in a list. This would be accomplished using the `navbarMenu()` function, which also utilizes `tabPanel()` function that `navbarPage()` uses. The syntax for using a dropdown menu anvigation bar menu is:
+
+```
+navbarPage("<title_of_navigation_bar>",
+  navbarMenu("<name_for_dropdown_menu>",
+    tabPanel("<title_of_option_1_in_menu>",
+      <content_of_option_1_in_menu>
+    ),
+    tabPanel("<title_of_option_2_in_menu>",
+      <content_of_option_2_in_menu>
+    )
+  )
+)
+```
+
+
+A code example of the `navbarMenu()` function can be seen below:
+
+```
+library(shiny)
+library(ggplot2)
+library(DT)
+
+ui <- fluidPage(
+  navbarPage("My iris dataset",
+    tabPanel("Inputs",
+      selectInput("x_axis_input", "Select x-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+      selectInput("y_axis_input", "Select y-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+    ),
+    navbarMenu("Outputs",
+      tabPanel("Plot",
+        plotOutput("plot")
+      ),
+      tabPanel("Table",
+        DTOutput("table")   
+      )
+    )
+  )
+)
+
+server <- function(input, output) {
+  output$plot <- renderPlot({
+    ggplot(iris) +
+      geom_point(aes(x = .data[[input$x_axis_input]], y = .data[[input$y_axis_input]]))
+  })
+  output$table <- renderDT({
+    iris[,c(input$x_axis_input, input$y_axis_input), drop = FALSE]
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This app would look like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Navbar_menu_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe>
+
+## Navigation List
+
+In place of of a navigation bar along the top of the window, you can also opt for a list down the side of the app using the `navlistPanel()` in place of the `navbarPage()` function. The syntax for using this style of list looks like:
+
+```
+navlistPanel("<title_of_navigation_list>",
+  tabPanel("<title_of_tab_1>",
+    <content_of_tab_1>
+  ),
+  tabPanel("<title_of_tab_2>",
+    <content_of_tab_2>
+  ),
+)
+```
+
+An example for this code is below:
+
+```
+library(shiny)
+library(ggplot2)
+library(DT)
+
+ui <- fluidPage(
+  navlistPanel("My iris dataset",
+             tabPanel("Inputs",
+                      selectInput("x_axis_input", "Select x-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+                      selectInput("y_axis_input", "Select y-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+             ),
+             navbarMenu("Outputs",
+                        tabPanel("Plot",
+                                 plotOutput("plot")
+                        ),
+                        tabPanel("Table",
+                                 DTOutput("table")   
+                        )
+             )
+  )
+)
+
+server <- function(input, output) {
+  output$plot <- renderPlot({
+    ggplot(iris) +
+      geom_point(aes(x = .data[[input$x_axis_input]], y = .data[[input$y_axis_input]]))
+  })
+  output$table <- renderDT({
+    iris[,c(input$x_axis_input, input$y_axis_input), drop = FALSE]
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This would create an app that looks like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Nav_list_panel_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe>
+
+> Note that the `navbarMenu()` function also works within `navlistPanel()` just like it works within `navbarPage()`.
+
+# Creating tabs without a navigation bar
+
+An app might require that the user can click on various tabs on a single page. While this could be accomplished with the navigation bar, this can be accomplished by providing different tabs that can easily be embedded within parts of an app using `tabsetPanel()`. The syntax looks like:
+
+```
+tabsetPanel(
+  tabPanel("<title_of_tab_1>",
+    <content_of_tab_1>
+  ),
+  tabPanel("<title_of_tab_2>",
+    <content_of_tab_2>
+  ),
+)
+```
+
+We will embed this within `mainPanel()` function below, but it doesn't necessarily need to be that way:
+
+```
+library(shiny)
+library(ggplot2)
+library(DT)
+
+ui <- fluidPage(
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("x_axis_input", "Select x-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+      selectInput("y_axis_input", "Select y-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+    ),
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Plot", 
+          plotOutput("plot")
+        ),
+        tabPanel("Table",
+          DTOutput("table")
+        )
+      )
+    )
+  )
+)
+
+server <- function(input, output) {
+  output$plot <- renderPlot({
+    ggplot(iris) +
+      geom_point(aes(x = .data[[input$x_axis_input]], y = .data[[input$y_axis_input]]))
+  })
+  output$table <- renderDT({
+    iris[,c(input$x_axis_input, input$y_axis_input), drop = FALSE]
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This app would look like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Tabset_panel_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe>
+
+> Note: `navbarPage()` can also be embedded within `mainPanel()`. However, traditionally you will see `navbarPage()` be used to as the banner at the top of the app while `tabsetPanel()` will be used as different tabs within a single tab of `navbarPage()`.
+
+# Shiny Themes
+
+Until now we have used the default UI color scheme within Shiny. However, that is not the only option. There is a package of preset themes that app developers can choose from to make their app more visually appealing. This package is called `shinythemes` and it has over a {dozen different themes](https://rstudio.github.io/shinythemes/) that app developers can choose from. Implementing a theme is straightforward once you've loaded the `shinythemes` package:
+
+```
+ui <- fluidPage(theme = shinytheme("<name_of_shiny_theme>")
+  <rest_of_the_ui>
+)
+```
+
+We can add this to the previous app we made:
+
+```
+library(shiny)
+library(ggplot2)
+library(DT)
+library(shinythemes)
+
+ui <- fluidPage(theme = shinytheme("cerulean"),
+  navbarPage("My iris dataset",
+    tabPanel("Inputs",
+      selectInput("x_axis_input", "Select x-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+      selectInput("y_axis_input", "Select y-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+    ),
+    navbarMenu("Outputs",
+      tabPanel("Plot",
+        plotOutput("plot")
+      ),
+      tabPanel("Table",
+        DTOutput("table")   
+      )
+    )
+  )
+)
+
+server <- function(input, output) {
+  output$plot <- renderPlot({
+    ggplot(iris) +
+      geom_point(aes(x = .data[[input$x_axis_input]], y = .data[[input$y_axis_input]]))
+  })
+  output$table <- renderDT({
+    iris[,c(input$x_axis_input, input$y_axis_input), drop = FALSE]
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This app would look like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Shiny_themes_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe>
+
+If you wanted to see how various themes might look on your specific app, instead of in the gallery provided by `shinythemes`, then you can apply them from a selection menu by adding this code to your app:
+
+```
+ui <- fluidPage(themeSelector(),
+  <rest_of_the_ui>
+)
+```
+
+
