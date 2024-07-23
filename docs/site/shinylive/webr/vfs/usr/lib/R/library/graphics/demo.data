@@ -1,0 +1,1575 @@
+#  Copyright (C) 2003-2009 The R Core Team
+
+#### --- Hershey Vector Fonts ---
+
+require(grDevices); require(graphics)
+
+######
+# create tables of vector font functionality
+######
+make.table <- function(nr, nc) {
+    savepar <- par(mar=rep(0, 4), pty="s")
+    plot(c(0, nc*2 + 1), c(0, -(nr + 1)),
+         type="n", xlab="", ylab="", axes=FALSE)
+    invisible(savepar)
+}
+
+get.r <- function(i, nr)     i %% nr + 1
+get.c <- function(i, nr)     i %/% nr + 1
+
+draw.title <- function(title, i = 0, nr, nc) {
+    r <- get.r(i, nr)
+    c <- get.c(i, nr)
+    text((nc*2 + 1)/2, 0, title, font=2)
+}
+
+draw.sample.cell <- function(typeface, fontindex, string, i, nr) {
+    r <- get.r(i, nr)
+    c <- get.c(i, nr)
+    text(2*(c - 1) + 1, -r, paste(typeface, fontindex))
+    text(2*c, -r, string, vfont=c(typeface, fontindex), cex=1.5)
+    rect(2*(c - 1) + .5, -(r - .5), 2*c + .5, -(r + .5), border="grey")
+}
+
+draw.vf.cell <- function(typeface, fontindex, string, i, nr, raw.string=NULL) {
+    r <- get.r(i, nr)
+    c <- get.c(i, nr)
+    if (is.null(raw.string))
+        raw.string <- paste("\\", string, sep="")
+    text(2*(c - 1) + 1, -r, raw.string, col="grey")
+    text(2*c, -r, string, vfont=c(typeface, fontindex))
+    rect(2*(c - 1) + .5, -(r - .5), (2*c + .5), -(r + .5), border="grey")
+}
+
+nr <- 23
+nc <- 1
+oldpar <- make.table(nr, nc)
+i <- 0
+draw.title("Sample 'a' for each available font", i, nr, nc)
+draw.sample.cell("serif", "plain", "a", i, nr); i <- i + 1
+draw.sample.cell("serif", "italic", "a", i, nr); i <- i + 1
+draw.sample.cell("serif", "bold", "a", i, nr); i <- i + 1
+draw.sample.cell("serif", "bold italic", "a", i, nr); i <- i + 1
+draw.sample.cell("serif", "cyrillic", "\301", i, nr); i <- i + 1
+draw.sample.cell("serif", "oblique cyrillic", "\301", i, nr); i <- i + 1
+draw.sample.cell("serif", "EUC", "a", i, nr); i <- i + 1
+draw.sample.cell("sans serif", "plain", "a", i, nr); i <- i + 1
+draw.sample.cell("sans serif", "italic", "a", i, nr); i <- i + 1
+draw.sample.cell("sans serif", "bold", "a", i, nr); i <- i + 1
+draw.sample.cell("sans serif", "bold italic", "a", i, nr); i <- i + 1
+draw.sample.cell("script", "plain", "a", i, nr); i <- i + 1
+draw.sample.cell("script", "italic", "a", i, nr); i <- i + 1
+draw.sample.cell("script", "bold", "a", i, nr); i <- i + 1
+draw.sample.cell("gothic english", "plain", "a", i, nr); i <- i + 1
+draw.sample.cell("gothic german", "plain", "a", i, nr); i <- i + 1
+draw.sample.cell("gothic italian", "plain", "a", i, nr); i <- i + 1
+draw.sample.cell("serif symbol", "plain", "a", i, nr); i <- i + 1
+draw.sample.cell("serif symbol", "italic", "a", i, nr); i <- i + 1
+draw.sample.cell("serif symbol", "bold", "a", i, nr); i <- i + 1
+draw.sample.cell("serif symbol", "bold italic", "a", i, nr); i <- i + 1
+draw.sample.cell("sans serif symbol", "plain", "a", i, nr); i <- i + 1
+draw.sample.cell("sans serif symbol", "italic", "a", i, nr); i <- i + 1
+
+nr <- 25
+nc <- 6
+tf <- "serif"
+fi <- "plain"
+make.table(nr, nc)
+i <- 0
+draw.title("Symbol (incl. Greek) Escape Sequences", i, nr, nc)
+## Greek alphabet in order
+draw.vf.cell(tf, fi, "\\*A", i, nr); i<-i+1; { "Alpha"}
+draw.vf.cell(tf, fi, "\\*B", i, nr); i<-i+1; { "Beta"}
+draw.vf.cell(tf, fi, "\\*G", i, nr); i<-i+1; { "Gamma"}
+draw.vf.cell(tf, fi, "\\*D", i, nr); i<-i+1; { "Delta"}
+draw.vf.cell(tf, fi, "\\*E", i, nr); i<-i+1; { "Epsilon"}
+draw.vf.cell(tf, fi, "\\*Z", i, nr); i<-i+1; { "Zeta"}
+draw.vf.cell(tf, fi, "\\*Y", i, nr); i<-i+1; { "Eta"}
+draw.vf.cell(tf, fi, "\\*H", i, nr); i<-i+1; { "Theta"}
+draw.vf.cell(tf, fi, "\\*I", i, nr); i<-i+1; { "Iota"}
+draw.vf.cell(tf, fi, "\\*K", i, nr); i<-i+1; { "Kappa"}
+draw.vf.cell(tf, fi, "\\*L", i, nr); i<-i+1; { "Lambda"}
+draw.vf.cell(tf, fi, "\\*M", i, nr); i<-i+1; { "Mu"}
+draw.vf.cell(tf, fi, "\\*N", i, nr); i<-i+1; { "Nu"}
+draw.vf.cell(tf, fi, "\\*C", i, nr); i<-i+1; { "Xi"}
+draw.vf.cell(tf, fi, "\\*O", i, nr); i<-i+1; { "Omicron"}
+draw.vf.cell(tf, fi, "\\*P", i, nr); i<-i+1; { "Pi"}
+draw.vf.cell(tf, fi, "\\*R", i, nr); i<-i+1; { "Rho"}
+draw.vf.cell(tf, fi, "\\*S", i, nr); i<-i+1; { "Sigma"}
+draw.vf.cell(tf, fi, "\\*T", i, nr); i<-i+1; { "Tau"}
+draw.vf.cell(tf, fi, "\\*U", i, nr); i<-i+1; { "Upsilon"}
+draw.vf.cell(tf, fi, "\\+U", i, nr); i<-i+1; { "Upsilon1"}
+draw.vf.cell(tf, fi, "\\*F", i, nr); i<-i+1; { "Phi"}
+draw.vf.cell(tf, fi, "\\*X", i, nr); i<-i+1; { "Chi"}
+draw.vf.cell(tf, fi, "\\*Q", i, nr); i<-i+1; { "Psi"}
+draw.vf.cell(tf, fi, "\\*W", i, nr); i<-i+1; { "Omega"}
+#
+draw.vf.cell(tf, fi, "\\*a", i, nr); i<-i+1; { "alpha"}
+draw.vf.cell(tf, fi, "\\*b", i, nr); i<-i+1; { "beta"}
+draw.vf.cell(tf, fi, "\\*g", i, nr); i<-i+1; { "gamma"}
+draw.vf.cell(tf, fi, "\\*d", i, nr); i<-i+1; { "delta"}
+draw.vf.cell(tf, fi, "\\*e", i, nr); i<-i+1; { "epsilon"}
+draw.vf.cell(tf, fi, "\\*z", i, nr); i<-i+1; { "zeta"}
+draw.vf.cell(tf, fi, "\\*y", i, nr); i<-i+1; { "eta"}
+draw.vf.cell(tf, fi, "\\*h", i, nr); i<-i+1; { "theta"}
+draw.vf.cell(tf, fi, "\\+h", i, nr); i<-i+1; { "theta1"}
+draw.vf.cell(tf, fi, "\\*i", i, nr); i<-i+1; { "iota"}
+draw.vf.cell(tf, fi, "\\*k", i, nr); i<-i+1; { "kappa"}
+draw.vf.cell(tf, fi, "\\*l", i, nr); i<-i+1; { "lambda"}
+draw.vf.cell(tf, fi, "\\*m", i, nr); i<-i+1; { "mu"}
+draw.vf.cell(tf, fi, "\\*n", i, nr); i<-i+1; { "nu"}
+draw.vf.cell(tf, fi, "\\*c", i, nr); i<-i+1; { "xi"}
+draw.vf.cell(tf, fi, "\\*o", i, nr); i<-i+1; { "omicron"}
+draw.vf.cell(tf, fi, "\\*p", i, nr); i<-i+1; { "pi"}
+draw.vf.cell(tf, fi, "\\*r", i, nr); i<-i+1; { "rho"}
+draw.vf.cell(tf, fi, "\\*s", i, nr); i<-i+1; { "sigma"}
+draw.vf.cell(tf, fi, "\\ts", i, nr); i<-i+1; { "sigma1"}
+draw.vf.cell(tf, fi, "\\*t", i, nr); i<-i+1; { "tau"}
+draw.vf.cell(tf, fi, "\\*u", i, nr); i<-i+1; { "upsilon"}
+draw.vf.cell(tf, fi, "\\*f", i, nr); i<-i+1; { "phi"}
+draw.vf.cell(tf, fi, "\\+f", i, nr); i<-i+1; { "phi1"}
+draw.vf.cell(tf, fi, "\\*x", i, nr); i<-i+1; { "chi"}
+draw.vf.cell(tf, fi, "\\*q", i, nr); i<-i+1; { "psi"}
+draw.vf.cell(tf, fi, "\\*w", i, nr); i<-i+1; { "omega"}
+draw.vf.cell(tf, fi, "\\+p", i, nr); i<-i+1; { "omega1"}
+#
+draw.vf.cell(tf, fi, "\\fa", i, nr); i<-i+1; { "universal"}
+draw.vf.cell(tf, fi, "\\te", i, nr); i<-i+1; { "existential"}
+draw.vf.cell(tf, fi, "\\st", i, nr); i<-i+1; { "suchthat"}
+draw.vf.cell(tf, fi, "\\**", i, nr); i<-i+1; { "asteriskmath"}
+draw.vf.cell(tf, fi, "\\=~", i, nr); i<-i+1; { "congruent"}
+draw.vf.cell(tf, fi, "\\tf", i, nr); i<-i+1; { "therefore"}
+draw.vf.cell(tf, fi, "\\pp", i, nr); i<-i+1; { "perpendicular"}
+draw.vf.cell(tf, fi, "\\ul", i, nr); i<-i+1; { "underline"}
+draw.vf.cell(tf, fi, "\\rx", i, nr); i<-i+1; { "radicalex"}
+
+draw.vf.cell(tf, fi, "\\ap", i, nr); i<-i+1; { "similar"}
+draw.vf.cell(tf, fi, "\\fm", i, nr); i<-i+1; { "minute"}
+draw.vf.cell(tf, fi, "\\<=", i, nr); i<-i+1; { "lessequal"}
+draw.vf.cell(tf, fi, "\\f/", i, nr); i<-i+1; { "fraction"}
+draw.vf.cell(tf, fi, "\\if", i, nr); i<-i+1; { "infinity"}
+draw.vf.cell(tf, fi, "\\Fn", i, nr); i<-i+1; { "florin"}
+draw.vf.cell(tf, fi, "\\CL", i, nr); i<-i+1; { "club"}
+draw.vf.cell(tf, fi, "\\DI", i, nr); i<-i+1; { "diamond"}
+draw.vf.cell(tf, fi, "\\HE", i, nr); i<-i+1; { "heart"}
+draw.vf.cell(tf, fi, "\\SP", i, nr); i<-i+1; { "spade"}
+draw.vf.cell(tf, fi, "\\<>", i, nr); i<-i+1; { "arrowboth"}
+draw.vf.cell(tf, fi, "\\<-", i, nr); i<-i+1; { "arrowleft"}
+draw.vf.cell(tf, fi, "\\ua", i, nr); i<-i+1; { "arrowup"}
+draw.vf.cell(tf, fi, "\\->", i, nr); i<-i+1; { "arrowright"}
+draw.vf.cell(tf, fi, "\\da", i, nr); i<-i+1; { "arrowdown"}
+draw.vf.cell(tf, fi, "\\de", i, nr); i<-i+1; { "degree"}
+draw.vf.cell(tf, fi, "\\+-", i, nr); i<-i+1; { "plusminus"}
+draw.vf.cell(tf, fi, "\\sd", i, nr); i<-i+1; { "second"}
+draw.vf.cell(tf, fi, "\\>=", i, nr); i<-i+1; { "greaterequal"}
+draw.vf.cell(tf, fi, "\\mu", i, nr); i<-i+1; { "multiply"}
+draw.vf.cell(tf, fi, "\\pt", i, nr); i<-i+1; { "proportional"}
+draw.vf.cell(tf, fi, "\\pd", i, nr); i<-i+1; { "partialdiff"}
+draw.vf.cell(tf, fi, "\\bu", i, nr); i<-i+1; { "bullet"}
+draw.vf.cell(tf, fi, "\\di", i, nr); i<-i+1; { "divide"}
+draw.vf.cell(tf, fi, "\\!=", i, nr); i<-i+1; { "notequal"}
+draw.vf.cell(tf, fi, "\\==", i, nr); i<-i+1; { "equivalence"}
+draw.vf.cell(tf, fi, "\\~~", i, nr); i<-i+1; { "approxequal"}
+draw.vf.cell(tf, fi, "\\..", i, nr); i<-i+1; { "ellipsis"}
+draw.vf.cell(tf, fi, "\\an", i, nr); i<-i+1; { "arrowhorizex"}
+draw.vf.cell(tf, fi, "\\CR", i, nr); i<-i+1; { "carriagereturn"}
+draw.vf.cell(tf, fi, "\\Ah", i, nr); i<-i+1; { "aleph"}
+draw.vf.cell(tf, fi, "\\Im", i, nr); i<-i+1; { "Ifraktur"}
+draw.vf.cell(tf, fi, "\\Re", i, nr); i<-i+1; { "Rfraktur"}
+draw.vf.cell(tf, fi, "\\wp", i, nr); i<-i+1; { "weierstrass"}
+draw.vf.cell(tf, fi, "\\c*", i, nr); i<-i+1; { "circlemultiply"}
+draw.vf.cell(tf, fi, "\\c+", i, nr); i<-i+1; { "circleplus"}
+draw.vf.cell(tf, fi, "\\es", i, nr); i<-i+1; { "emptyset"}
+draw.vf.cell(tf, fi, "\\ca", i, nr); i<-i+1; { "cap"}
+draw.vf.cell(tf, fi, "\\cu", i, nr); i<-i+1; { "cup"}
+draw.vf.cell(tf, fi, "\\SS", i, nr); i<-i+1; { "superset"}
+draw.vf.cell(tf, fi, "\\ip", i, nr); i<-i+1; { "reflexsuperset"}
+draw.vf.cell(tf, fi, "\\n<", i, nr); i<-i+1; { "notsubset"}
+draw.vf.cell(tf, fi, "\\SB", i, nr); i<-i+1; { "subset"}
+draw.vf.cell(tf, fi, "\\ib", i, nr); i<-i+1; { "reflexsubset"}
+draw.vf.cell(tf, fi, "\\mo", i, nr); i<-i+1; { "element"}
+draw.vf.cell(tf, fi, "\\nm", i, nr); i<-i+1; { "notelement"}
+draw.vf.cell(tf, fi, "\\/_", i, nr); i<-i+1; { "angle"}
+draw.vf.cell(tf, fi, "\\gr", i, nr); i<-i+1; { "nabla"}
+draw.vf.cell(tf, fi, "\\rg", i, nr); i<-i+1; { "registerserif"}
+draw.vf.cell(tf, fi, "\\co", i, nr); i<-i+1; { "copyrightserif"}
+draw.vf.cell(tf, fi, "\\tm", i, nr); i<-i+1; { "trademarkserif"}
+draw.vf.cell(tf, fi, "\\PR", i, nr); i<-i+1; { "product"}
+draw.vf.cell(tf, fi, "\\sr", i, nr); i<-i+1; { "radical"}
+draw.vf.cell(tf, fi, "\\md", i, nr); i<-i+1; { "dotmath"}
+draw.vf.cell(tf, fi, "\\no", i, nr); i<-i+1; { "logicalnot"}
+draw.vf.cell(tf, fi, "\\AN", i, nr); i<-i+1; { "logicaland"}
+draw.vf.cell(tf, fi, "\\OR", i, nr); i<-i+1; { "logicalor"}
+draw.vf.cell(tf, fi, "\\hA", i, nr); i<-i+1; { "arrowdblboth"}
+draw.vf.cell(tf, fi, "\\lA", i, nr); i<-i+1; { "arrowdblleft"}
+draw.vf.cell(tf, fi, "\\uA", i, nr); i<-i+1; { "arrowdblup"}
+draw.vf.cell(tf, fi, "\\rA", i, nr); i<-i+1; { "arrowdblright"}
+draw.vf.cell(tf, fi, "\\dA", i, nr); i<-i+1; { "arrowdbldown"}
+draw.vf.cell(tf, fi, "\\lz", i, nr); i<-i+1; { "lozenge"}
+draw.vf.cell(tf, fi, "\\la", i, nr); i<-i+1; { "angleleft"}
+draw.vf.cell(tf, fi, "\\RG", i, nr); i<-i+1; { "registersans"}
+draw.vf.cell(tf, fi, "\\CO", i, nr); i<-i+1; { "copyrightsans"}
+draw.vf.cell(tf, fi, "\\TM", i, nr); i<-i+1; { "trademarksans"}
+draw.vf.cell(tf, fi, "\\SU", i, nr); i<-i+1; { "summation"}
+draw.vf.cell(tf, fi, "\\lc", i, nr); i<-i+1; { "bracketlefttp"}
+draw.vf.cell(tf, fi, "\\lf", i, nr); i<-i+1; { "bracketleftbt"}
+draw.vf.cell(tf, fi, "\\ra", i, nr); i<-i+1; { "angleright"}
+draw.vf.cell(tf, fi, "\\is", i, nr); i<-i+1; { "integral"}
+draw.vf.cell(tf, fi, "\\rc", i, nr); i<-i+1; { "bracketrighttp"}
+draw.vf.cell(tf, fi, "\\rf", i, nr); i<-i+1; { "bracketrightbt"}
+draw.vf.cell(tf, fi, "\\~=", i, nr); i<-i+1; { "congruent"}
+draw.vf.cell(tf, fi, "\\pr", i, nr); i<-i+1; { "minute"}
+draw.vf.cell(tf, fi, "\\in", i, nr); i<-i+1; { "infinity"}
+draw.vf.cell(tf, fi, "\\n=", i, nr); i<-i+1; { "notequal"}
+draw.vf.cell(tf, fi, "\\dl", i, nr); i<-i+1; { "nabla"}
+
+nr <- 25
+nc <- 4
+make.table(nr, nc)
+i <- 0
+draw.title("ISO Latin-1 Escape Sequences", i, nr, nc)
+draw.vf.cell(tf, fi, "\\r!", i, nr); i<-i+1; { "exclamdown"}
+draw.vf.cell(tf, fi, "\\ct", i, nr); i<-i+1; { "cent"}
+draw.vf.cell(tf, fi, "\\Po", i, nr); i<-i+1; { "sterling"}
+draw.vf.cell(tf, fi, "\\Ye", i, nr); i<-i+1; { "yen"}
+draw.vf.cell(tf, fi, "\\bb", i, nr); i<-i+1; { "brokenbar"}
+draw.vf.cell(tf, fi, "\\sc", i, nr); i<-i+1; { "section"}
+draw.vf.cell(tf, fi, "\\ad", i, nr); i<-i+1; { "dieresis"}
+draw.vf.cell(tf, fi, "\\co", i, nr); i<-i+1; { "copyright"}
+draw.vf.cell(tf, fi, "\\Of", i, nr); i<-i+1; { "ordfeminine"}
+draw.vf.cell(tf, fi, "\\no", i, nr); i<-i+1; { "logicalnot"}
+draw.vf.cell(tf, fi, "\\hy", i, nr); i<-i+1; { "hyphen"}
+draw.vf.cell(tf, fi, "\\rg", i, nr); i<-i+1; { "registered"}
+draw.vf.cell(tf, fi, "\\a-", i, nr); i<-i+1; { "macron"}
+draw.vf.cell(tf, fi, "\\de", i, nr); i<-i+1; { "degree"}
+draw.vf.cell(tf, fi, "\\+-", i, nr); i<-i+1; { "plusminus"}
+draw.vf.cell(tf, fi, "\\S2", i, nr); i<-i+1; { "twosuperior"}
+draw.vf.cell(tf, fi, "\\S3", i, nr); i<-i+1; { "threesuperior"}
+draw.vf.cell(tf, fi, "\\aa", i, nr); i<-i+1; { "acute"}
+draw.vf.cell(tf, fi, "\\*m", i, nr); i<-i+1; { "mu"}
+draw.vf.cell(tf, fi, "\\md", i, nr); i<-i+1; { "periodcentered"}
+draw.vf.cell(tf, fi, "\\S1", i, nr); i<-i+1; { "onesuperior"}
+draw.vf.cell(tf, fi, "\\Om", i, nr); i<-i+1; { "ordmasculine"}
+draw.vf.cell(tf, fi, "\\14", i, nr); i<-i+1; { "onequarter"}
+draw.vf.cell(tf, fi, "\\12", i, nr); i<-i+1; { "onehalf"}
+draw.vf.cell(tf, fi, "\\34", i, nr); i<-i+1; { "threequarters"}
+draw.vf.cell(tf, fi, "\\r?", i, nr); i<-i+1; { "questiondown"}
+draw.vf.cell(tf, fi, "\\`A", i, nr); i<-i+1; { "Agrave"}
+draw.vf.cell(tf, fi, "\\'A", i, nr); i<-i+1; { "Aacute"}
+draw.vf.cell(tf, fi, "\\^A", i, nr); i<-i+1; { "Acircumflex"}
+draw.vf.cell(tf, fi, "\\~A", i, nr); i<-i+1; { "Atilde"}
+draw.vf.cell(tf, fi, "\\:A", i, nr); i<-i+1; { "Adieresis"}
+draw.vf.cell(tf, fi, "\\oA", i, nr); i<-i+1; { "Aring"}
+draw.vf.cell(tf, fi, "\\AE", i, nr); i<-i+1; { "AE"}
+draw.vf.cell(tf, fi, "\\,C", i, nr); i<-i+1; { "Ccedilla"}
+draw.vf.cell(tf, fi, "\\`E", i, nr); i<-i+1; { "Egrave"}
+draw.vf.cell(tf, fi, "\\'E", i, nr); i<-i+1; { "Eacute"}
+draw.vf.cell(tf, fi, "\\^E", i, nr); i<-i+1; { "Ecircumflex"}
+draw.vf.cell(tf, fi, "\\:E", i, nr); i<-i+1; { "Edieresis"}
+draw.vf.cell(tf, fi, "\\`I", i, nr); i<-i+1; { "Igrave"}
+draw.vf.cell(tf, fi, "\\'I", i, nr); i<-i+1; { "Iacute"}
+draw.vf.cell(tf, fi, "\\^I", i, nr); i<-i+1; { "Icircumflex"}
+draw.vf.cell(tf, fi, "\\:I", i, nr); i<-i+1; { "Idieresis"}
+draw.vf.cell(tf, fi, "\\~N", i, nr); i<-i+1; { "Ntilde"}
+draw.vf.cell(tf, fi, "\\`O", i, nr); i<-i+1; { "Ograve"}
+draw.vf.cell(tf, fi, "\\'O", i, nr); i<-i+1; { "Oacute"}
+draw.vf.cell(tf, fi, "\\^O", i, nr); i<-i+1; { "Ocircumflex"}
+draw.vf.cell(tf, fi, "\\~O", i, nr); i<-i+1; { "Otilde"}
+draw.vf.cell(tf, fi, "\\:O", i, nr); i<-i+1; { "Odieresis"}
+draw.vf.cell(tf, fi, "\\mu", i, nr); i<-i+1; { "multiply"}
+draw.vf.cell(tf, fi, "\\/O", i, nr); i<-i+1; { "Oslash"}
+draw.vf.cell(tf, fi, "\\`U", i, nr); i<-i+1; { "Ugrave"}
+draw.vf.cell(tf, fi, "\\'U", i, nr); i<-i+1; { "Uacute"}
+draw.vf.cell(tf, fi, "\\^U", i, nr); i<-i+1; { "Ucircumflex"}
+draw.vf.cell(tf, fi, "\\:U", i, nr); i<-i+1; { "Udieresis"}
+draw.vf.cell(tf, fi, "\\'Y", i, nr); i<-i+1; { "Yacute"}
+draw.vf.cell(tf, fi, "\\ss", i, nr); i<-i+1; { "germandbls"} # WRONG!
+draw.vf.cell(tf, fi, "\\`a", i, nr); i<-i+1; { "agrave"}
+draw.vf.cell(tf, fi, "\\'a", i, nr); i<-i+1; { "aacute"}
+draw.vf.cell(tf, fi, "\\^a", i, nr); i<-i+1; { "acircumflex"}
+draw.vf.cell(tf, fi, "\\~a", i, nr); i<-i+1; { "atilde"}
+draw.vf.cell(tf, fi, "\\:a", i, nr); i<-i+1; { "adieresis"}
+draw.vf.cell(tf, fi, "\\oa", i, nr); i<-i+1; { "aring"}
+draw.vf.cell(tf, fi, "\\ae", i, nr); i<-i+1; { "ae"}
+draw.vf.cell(tf, fi, "\\,c", i, nr); i<-i+1; { "ccedilla"}
+draw.vf.cell(tf, fi, "\\`e", i, nr); i<-i+1; { "egrave"}
+draw.vf.cell(tf, fi, "\\'e", i, nr); i<-i+1; { "eacute"}
+draw.vf.cell(tf, fi, "\\^e", i, nr); i<-i+1; { "ecircumflex"}
+draw.vf.cell(tf, fi, "\\:e", i, nr); i<-i+1; { "edieresis"}
+draw.vf.cell(tf, fi, "\\`i", i, nr); i<-i+1; { "igrave"}
+draw.vf.cell(tf, fi, "\\'i", i, nr); i<-i+1; { "iacute"}
+draw.vf.cell(tf, fi, "\\^i", i, nr); i<-i+1; { "icircumflex"}
+draw.vf.cell(tf, fi, "\\:i", i, nr); i<-i+1; { "idieresis"}
+draw.vf.cell(tf, fi, "\\~n", i, nr); i<-i+1; { "ntilde"}
+draw.vf.cell(tf, fi, "\\`o", i, nr); i<-i+1; { "ograve"}
+draw.vf.cell(tf, fi, "\\'o", i, nr); i<-i+1; { "oacute"}
+draw.vf.cell(tf, fi, "\\^o", i, nr); i<-i+1; { "ocircumflex"}
+draw.vf.cell(tf, fi, "\\~o", i, nr); i<-i+1; { "otilde"}
+draw.vf.cell(tf, fi, "\\:o", i, nr); i<-i+1; { "odieresis"}
+draw.vf.cell(tf, fi, "\\di", i, nr); i<-i+1; { "divide"}
+draw.vf.cell(tf, fi, "\\/o", i, nr); i<-i+1; { "oslash"}
+draw.vf.cell(tf, fi, "\\`u", i, nr); i<-i+1; { "ugrave"}
+draw.vf.cell(tf, fi, "\\'u", i, nr); i<-i+1; { "uacute"}
+draw.vf.cell(tf, fi, "\\^u", i, nr); i<-i+1; { "ucircumflex"}
+draw.vf.cell(tf, fi, "\\:u", i, nr); i<-i+1; { "udieresis"}
+draw.vf.cell(tf, fi, "\\'y", i, nr); i<-i+1; { "yacute"}
+draw.vf.cell(tf, fi, "\\:y", i, nr); i<-i+1; { "ydieresis"}
+
+nr <- 25
+nc <- 2
+make.table(nr, nc)
+i <- 0
+draw.title("Special Escape Sequences", i, nr, nc)
+draw.vf.cell(tf, fi, "\\AR", i, nr); i<-i+1; { "aries"}
+draw.vf.cell(tf, fi, "\\TA", i, nr); i<-i+1; { "taurus"}
+draw.vf.cell(tf, fi, "\\GE", i, nr); i<-i+1; { "gemini"}
+draw.vf.cell(tf, fi, "\\CA", i, nr); i<-i+1; { "cancer"}
+draw.vf.cell(tf, fi, "\\LE", i, nr); i<-i+1; { "leo"}
+draw.vf.cell(tf, fi, "\\VI", i, nr); i<-i+1; { "virgo"}
+draw.vf.cell(tf, fi, "\\LI", i, nr); i<-i+1; { "libra"}
+draw.vf.cell(tf, fi, "\\SC", i, nr); i<-i+1; { "scorpio"}
+draw.vf.cell(tf, fi, "\\SG", i, nr); i<-i+1; { "sagittarius"}
+draw.vf.cell(tf, fi, "\\CP", i, nr); i<-i+1; { "capricornus"}
+draw.vf.cell(tf, fi, "\\AQ", i, nr); i<-i+1; { "aquarius"}
+draw.vf.cell(tf, fi, "\\PI", i, nr); i<-i+1; { "pisces"}
+draw.vf.cell(tf, fi, "\\~-", i, nr); i<-i+1; { "modifiedcongruent"}
+draw.vf.cell(tf, fi, "\\hb", i, nr); i<-i+1; { "hbar"}
+draw.vf.cell(tf, fi, "\\IB", i, nr); i<-i+1; { "interbang"}
+draw.vf.cell(tf, fi, "\\Lb", i, nr); i<-i+1; { "lambdabar"}
+draw.vf.cell(tf, fi, "\\UD", i, nr); i<-i+1; { "undefined"}
+draw.vf.cell(tf, fi, "\\SO", i, nr); i<-i+1; { "sun"}
+draw.vf.cell(tf, fi, "\\ME", i, nr); i<-i+1; { "mercury"}
+draw.vf.cell(tf, fi, "\\VE", i, nr); i<-i+1; { "venus"}
+draw.vf.cell(tf, fi, "\\EA", i, nr); i<-i+1; { "earth"}
+draw.vf.cell(tf, fi, "\\MA", i, nr); i<-i+1; { "mars"}
+draw.vf.cell(tf, fi, "\\JU", i, nr); i<-i+1; { "jupiter"}
+draw.vf.cell(tf, fi, "\\SA", i, nr); i<-i+1; { "saturn"}
+draw.vf.cell(tf, fi, "\\UR", i, nr); i<-i+1; { "uranus"}
+draw.vf.cell(tf, fi, "\\NE", i, nr); i<-i+1; { "neptune"}
+draw.vf.cell(tf, fi, "\\PL", i, nr); i<-i+1; { "pluto"}
+draw.vf.cell(tf, fi, "\\LU", i, nr); i<-i+1; { "moon"}
+draw.vf.cell(tf, fi, "\\CT", i, nr); i<-i+1; { "comet"}
+draw.vf.cell(tf, fi, "\\ST", i, nr); i<-i+1; { "star"}
+draw.vf.cell(tf, fi, "\\AS", i, nr); i<-i+1; { "ascendingnode"}
+draw.vf.cell(tf, fi, "\\DE", i, nr); i<-i+1; { "descendingnode"}
+draw.vf.cell(tf, fi, "\\s-", i, nr); i<-i+1; { "s1"}
+draw.vf.cell(tf, fi, "\\dg", i, nr); i<-i+1; { "dagger"}
+draw.vf.cell(tf, fi, "\\dd", i, nr); i<-i+1; { "daggerdbl"}
+draw.vf.cell(tf, fi, "\\li", i, nr); i<-i+1; { "line integral"}
+draw.vf.cell(tf, fi, "\\-+", i, nr); i<-i+1; { "minusplus"}
+draw.vf.cell(tf, fi, "\\||", i, nr); i<-i+1; { "parallel"}
+draw.vf.cell(tf, fi, "\\rn", i, nr); i<-i+1; { "overscore"}
+draw.vf.cell(tf, fi, "\\ul", i, nr); i<-i+1; { "underscore"}
+
+nr <- 25
+nc <- 3
+make.table(nr, nc)
+## octal escape codes, as decimals
+code <- c(300:307,310:317,320:327,330:337,340:347,350:357,360:367,370:377,
+          243,263)
+ocode <- 64*(code%/%100) + 8*(code%/%10)%%10 + code%%10
+string <- rawToChar(as.raw(ocode), multiple=TRUE)
+draw.title("Cyrillic Octal Codes", i = 0, nr ,nc)
+for (i in 1:66)
+    draw.vf.cell(tf, "cyrillic", string[i], i-1, nr,
+                 raw.string=paste("\\", as.character(code[i]), sep=""))
+
+nr <- 25
+nc <- 3
+make.table(nr, nc)
+code <- c(252,254,256,262:269,275,278:281,284,745,746,750:768,796:802,
+          804:807,809,814:828,830:834,840:844)
+draw.title("Raw Hershey Escape Sequences", i=0, nr, nc)
+for (i in 1:75)
+    draw.vf.cell(tf, fi, paste("\\#H",formatC(code[i],wid=4,flag="0"),sep=""),
+                 i-1, nr)
+make.table(nr, nc)
+code <- c(845:847,850:856,860:874,899:909,2296:2299,2318:2332,2367:2382,
+          4014,4109)
+draw.title("More Raw Hershey Escape Sequences", i=0, nr, nc)
+for (i in 1:73)
+    draw.vf.cell(tf, fi, paste("\\#H",formatC(code[i],wid=4,flag="0"),sep=""),
+                 i-1, nr)
+
+par(oldpar)
+#  Copyright (C) 2003-2009 The R Core Team
+
+require(grDevices); require(graphics)
+
+## --- Japanese characters in the Hershey Vector Fonts
+
+######
+# create tables of Japanese characters
+######
+make.table <- function(nr, nc) {
+    opar <- par(mar=rep(0, 4), pty="s")
+    plot(c(0, nc*(10%/%nc) + 1), c(0, -(nr + 1)),
+         type="n", xlab="", ylab="", axes=FALSE)
+    invisible(opar)
+}
+
+get.r <- function(i, nr)   i %% nr + 1
+get.c <- function(i, nr)   i %/% nr + 1
+Esc2 <- function(str)	   paste("\\", str, sep="")
+
+draw.title <- function(title, nc)
+    text((nc*(10%/%nc) + 1)/2, 0, title, font=2)
+
+draw.vf.cell <- function(typeface, fontindex, string, i, nr, raw.string=NULL) {
+    r <- get.r(i, nr)
+    c <- get.c(i, nr)
+    x0 <- 2*(c - 1)
+    if (is.null(raw.string)) raw.string <- Esc2(string)
+    text(x0 + 1.1, -r, raw.string, col="grey")
+    text(x0 + 2,   -r, string, vfont=c(typeface, fontindex))
+    rect(x0 +  .5, -(r - .5), x0 + 2.5, -(r + .5), border="grey")
+}
+
+draw.vf.cell2 <- function(string, alt, i, nr) {
+    r <- get.r(i, nr)
+    c <- get.c(i, nr)
+    x0 <- 3*(c - 1)
+    text(x0 + 1.1, -r, Esc2(string <- Esc2(string)), col="grey")
+    text(x0 + 2.2, -r, Esc2(Esc2(alt)), col="grey", cex=.6)
+    text(x0 + 3,   -r, string, vfont=c("serif", "plain"))
+    rect(x0 +  .5, -(r - .5), x0 + 3.5, -(r + .5), border="grey")
+}
+
+tf <- "serif"
+fi <- "plain"
+nr <- 25
+nc <- 4
+oldpar <- make.table(nr, nc)
+index <- 0
+digits <- c(0:9,"a","b","c","d","e","f")
+draw.title("Hiragana : \\\\#J24nn", nc)
+for (i in 2:7) {
+    for (j in 1:16) {
+	if (!((i == 2 && j == 1) || (i == 7 && j > 4))) {
+	    draw.vf.cell(tf, fi, paste("\\#J24", i, digits[j], sep=""),
+	                 index, nr)
+            index <- index + 1
+	}
+    }
+}
+
+nr <- 25
+nc <- 4
+make.table(nr, nc)
+index <- 0
+digits <- c(0:9,"a","b","c","d","e","f")
+draw.title("Katakana : \\\\#J25nn", nc)
+for (i in 2:7) {
+    for (j in 1:16) {
+	if (!((i == 2 && j == 1) || (i == 7 && j > 7))) {
+	    draw.vf.cell(tf, fi, paste("\\#J25", i, digits[j], sep=""),
+	                 index, nr)
+            index <- index + 1
+	}
+    }
+}
+
+nr <- 26
+nc <- 3
+make.table(nr, nc)
+i <- 0
+draw.title("Kanji (1)", nc)
+draw.vf.cell2("#J3021", "#N0043", i, nr); i <- i + 1
+draw.vf.cell2("#J3026", "#N2829", i, nr); i <- i + 1
+draw.vf.cell2("#J302d", "#N0062", i, nr); i <- i + 1
+draw.vf.cell2("#J3035", "#N0818", i, nr); i <- i + 1
+draw.vf.cell2("#J303f", "#N1802", i, nr); i <- i + 1
+draw.vf.cell2("#J3045", "#N2154", i, nr); i <- i + 1
+draw.vf.cell2("#J304c", "#N0401", i, nr); i <- i + 1
+draw.vf.cell2("#J3057", "#N2107", i, nr); i <- i + 1
+draw.vf.cell2("#J3059", "#N0138", i, nr); i <- i + 1
+draw.vf.cell2("#J305b", "#N3008", i, nr); i <- i + 1
+draw.vf.cell2("#J305e", "#N3579", i, nr); i <- i + 1
+draw.vf.cell2("#J3061", "#N4214", i, nr); i <- i + 1
+draw.vf.cell2("#J306c", "#N0001", i, nr); i <- i + 1
+draw.vf.cell2("#J3070", "#N3294", i, nr); i <- i + 1
+draw.vf.cell2("#J3078", "#N1026", i, nr); i <- i + 1
+draw.vf.cell2("#J307a", "#N1562", i, nr); i <- i + 1
+draw.vf.cell2("#J3122", "#N5006", i, nr); i <- i + 1
+draw.vf.cell2("#J3126", "#N0878", i, nr); i <- i + 1
+draw.vf.cell2("#J3127", "#N1280", i, nr); i <- i + 1
+draw.vf.cell2("#J3129", "#N3673", i, nr); i <- i + 1
+draw.vf.cell2("#J312b", "#N5042", i, nr); i <- i + 1
+draw.vf.cell2("#J3132", "#N2629", i, nr); i <- i + 1
+draw.vf.cell2("#J313b", "#N2973", i, nr); i <- i + 1
+draw.vf.cell2("#J313f", "#N4725", i, nr); i <- i + 1
+draw.vf.cell2("#J3140", "#N5046", i, nr); i <- i + 1
+draw.vf.cell2("#J314a", "#N0130", i, nr); i <- i + 1
+draw.vf.cell2("#J3155", "#N2599", i, nr); i <- i + 1
+draw.vf.cell2("#J315f", "#N0617", i, nr); i <- i + 1
+draw.vf.cell2("#J3173", "#N4733", i, nr); i <- i + 1
+draw.vf.cell2("#J3176", "#N1125", i, nr); i <- i + 1
+draw.vf.cell2("#J3177", "#N2083", i, nr); i <- i + 1
+draw.vf.cell2("#J317e", "#N1504", i, nr); i <- i + 1
+draw.vf.cell2("#J3221", "#N1885", i, nr); i <- i + 1
+draw.vf.cell2("#J3223", "#N2361", i, nr); i <- i + 1
+draw.vf.cell2("#J3226", "#N2922", i, nr); i <- i + 1
+draw.vf.cell2("#J322b", "#N5399", i, nr); i <- i + 1
+draw.vf.cell2("#J322f", "#N0551", i, nr); i <- i + 1
+draw.vf.cell2("#J3235", "#N0260", i, nr); i <- i + 1
+draw.vf.cell2("#J3239", "#N2634", i, nr); i <- i + 1
+draw.vf.cell2("#J323b", "#N5110", i, nr); i <- i + 1
+draw.vf.cell2("#J323c", "#N0009", i, nr); i <- i + 1
+draw.vf.cell2("#J323d", "#N0350", i, nr); i <- i + 1
+draw.vf.cell2("#J323f", "#N0409", i, nr); i <- i + 1
+draw.vf.cell2("#J3241", "#N0422", i, nr); i <- i + 1
+draw.vf.cell2("#J3243", "#N0716", i, nr); i <- i + 1
+draw.vf.cell2("#J3244", "#N0024", i, nr); i <- i + 1
+draw.vf.cell2("#J3246", "#N0058", i, nr); i <- i + 1
+draw.vf.cell2("#J3248", "#N1311", i, nr); i <- i + 1
+draw.vf.cell2("#J324a", "#N3272", i, nr); i <- i + 1
+draw.vf.cell2("#J324c", "#N0107", i, nr); i <- i + 1
+draw.vf.cell2("#J324f", "#N2530", i, nr); i <- i + 1
+draw.vf.cell2("#J3250", "#N2743", i, nr); i <- i + 1
+draw.vf.cell2("#J3256", "#N3909", i, nr); i <- i + 1
+draw.vf.cell2("#J3259", "#N3956", i, nr); i <- i + 1
+draw.vf.cell2("#J3261", "#N4723", i, nr); i <- i + 1
+draw.vf.cell2("#J3267", "#N2848", i, nr); i <- i + 1
+draw.vf.cell2("#J3268", "#N0050", i, nr); i <- i + 1
+draw.vf.cell2("#J3272", "#N4306", i, nr); i <- i + 1
+draw.vf.cell2("#J3273", "#N1028", i, nr); i <- i + 1
+draw.vf.cell2("#J3323", "#N2264", i, nr); i <- i + 1
+draw.vf.cell2("#J3324", "#N2553", i, nr); i <- i + 1
+draw.vf.cell2("#J3326", "#N2998", i, nr); i <- i + 1
+draw.vf.cell2("#J3328", "#N3537", i, nr); i <- i + 1
+draw.vf.cell2("#J332b", "#N4950", i, nr); i <- i + 1
+draw.vf.cell2("#J332d", "#N4486", i, nr); i <- i + 1
+draw.vf.cell2("#J3330", "#N1168", i, nr); i <- i + 1
+draw.vf.cell2("#J3346", "#N1163", i, nr); i <- i + 1
+draw.vf.cell2("#J334b", "#N2254", i, nr); i <- i + 1
+draw.vf.cell2("#J3351", "#N4301", i, nr); i <- i + 1
+draw.vf.cell2("#J3353", "#N4623", i, nr); i <- i + 1
+draw.vf.cell2("#J3357", "#N5088", i, nr); i <- i + 1
+draw.vf.cell2("#J3358", "#N1271", i, nr); i <- i + 1
+draw.vf.cell2("#J335a", "#N2324", i, nr); i <- i + 1
+draw.vf.cell2("#J3364", "#N0703", i, nr); i <- i + 1
+draw.vf.cell2("#J3424", "#N2977", i, nr); i <- i + 1
+draw.vf.cell2("#J3428", "#N1322", i, nr); i <- i + 1
+
+make.table(nr, nc)
+i <- 0
+draw.title("Kanji (2)", nc)
+draw.vf.cell2("#J342c", "#N1466", i, nr); i <- i + 1
+draw.vf.cell2("#J3433", "#N1492", i, nr); i <- i + 1
+draw.vf.cell2("#J3434", "#N0790", i, nr); i <- i + 1
+draw.vf.cell2("#J3436", "#N1731", i, nr); i <- i + 1
+draw.vf.cell2("#J3437", "#N1756", i, nr); i <- i + 1
+draw.vf.cell2("#J3445", "#N2988", i, nr); i <- i + 1
+draw.vf.cell2("#J3449", "#N3416", i, nr); i <- i + 1
+draw.vf.cell2("#J3454", "#N4750", i, nr); i <- i + 1
+draw.vf.cell2("#J3456", "#N4949", i, nr); i <- i + 1
+draw.vf.cell2("#J3458", "#N4958", i, nr); i <- i + 1
+draw.vf.cell2("#J346f", "#N0994", i, nr); i <- i + 1
+draw.vf.cell2("#J3470", "#N1098", i, nr); i <- i + 1
+draw.vf.cell2("#J3476", "#N1496", i, nr); i <- i + 1
+draw.vf.cell2("#J347c", "#N3785", i, nr); i <- i + 1
+draw.vf.cell2("#J3521", "#N2379", i, nr); i <- i + 1
+draw.vf.cell2("#J3522", "#N1582", i, nr); i <- i + 1
+draw.vf.cell2("#J3524", "#N2480", i, nr); i <- i + 1
+draw.vf.cell2("#J3525", "#N2507", i, nr); i <- i + 1
+draw.vf.cell2("#J352d", "#N4318", i, nr); i <- i + 1
+draw.vf.cell2("#J3530", "#N4610", i, nr); i <- i + 1
+draw.vf.cell2("#J3534", "#N5276", i, nr); i <- i + 1
+draw.vf.cell2("#J3535", "#N5445", i, nr); i <- i + 1
+draw.vf.cell2("#J3546", "#N3981", i, nr); i <- i + 1
+draw.vf.cell2("#J3555", "#N4685", i, nr); i <- i + 1
+draw.vf.cell2("#J355a", "#N0154", i, nr); i <- i + 1
+draw.vf.cell2("#J355b", "#N0885", i, nr); i <- i + 1
+draw.vf.cell2("#J355d", "#N1560", i, nr); i <- i + 1
+draw.vf.cell2("#J3565", "#N2941", i, nr); i <- i + 1
+draw.vf.cell2("#J3566", "#N3314", i, nr); i <- i + 1
+draw.vf.cell2("#J3569", "#N3496", i, nr); i <- i + 1
+draw.vf.cell2("#J356d", "#N2852", i, nr); i <- i + 1
+draw.vf.cell2("#J356e", "#N1051", i, nr); i <- i + 1
+draw.vf.cell2("#J356f", "#N1387", i, nr); i <- i + 1
+draw.vf.cell2("#J3575", "#N4109", i, nr); i <- i + 1
+draw.vf.cell2("#J3577", "#N4548", i, nr); i <- i + 1
+draw.vf.cell2("#J357b", "#N5281", i, nr); i <- i + 1
+draw.vf.cell2("#J357e", "#N0295", i, nr); i <- i + 1
+draw.vf.cell2("#J3621", "#N0431", i, nr); i <- i + 1
+draw.vf.cell2("#J3626", "#N0581", i, nr); i <- i + 1
+draw.vf.cell2("#J362d", "#N1135", i, nr); i <- i + 1
+draw.vf.cell2("#J362f", "#N1571", i, nr); i <- i + 1
+draw.vf.cell2("#J3635", "#N2052", i, nr); i <- i + 1
+draw.vf.cell2("#J3636", "#N2378", i, nr); i <- i + 1
+draw.vf.cell2("#J364a", "#N0103", i, nr); i <- i + 1
+draw.vf.cell2("#J364b", "#N2305", i, nr); i <- i + 1
+draw.vf.cell2("#J364c", "#N2923", i, nr); i <- i + 1
+draw.vf.cell2("#J3651", "#N1065", i, nr); i <- i + 1
+draw.vf.cell2("#J3661", "#N4671", i, nr); i <- i + 1
+draw.vf.cell2("#J3662", "#N4815", i, nr); i <- i + 1
+draw.vf.cell2("#J3664", "#N4855", i, nr); i <- i + 1
+draw.vf.cell2("#J3665", "#N0146", i, nr); i <- i + 1
+draw.vf.cell2("#J3671", "#N3128", i, nr); i <- i + 1
+draw.vf.cell2("#J3675", "#N3317", i, nr); i <- i + 1
+draw.vf.cell2("#J367e", "#N1386", i, nr); i <- i + 1
+draw.vf.cell2("#J3738", "#N0449", i, nr); i <- i + 1
+draw.vf.cell2("#J3739", "#N0534", i, nr); i <- i + 1
+draw.vf.cell2("#J373e", "#N2937", i, nr); i <- i + 1
+draw.vf.cell2("#J373f", "#N1077", i, nr); i <- i + 1
+draw.vf.cell2("#J3741", "#N1589", i, nr); i <- i + 1
+draw.vf.cell2("#J3742", "#N1602", i, nr); i <- i + 1
+draw.vf.cell2("#J374f", "#N0195", i, nr); i <- i + 1
+draw.vf.cell2("#J3750", "#N3523", i, nr); i <- i + 1
+draw.vf.cell2("#J3757", "#N4312", i, nr); i <- i + 1
+draw.vf.cell2("#J375a", "#N4620", i, nr); i <- i + 1
+draw.vf.cell2("#J3767", "#N2412", i, nr); i <- i + 1
+draw.vf.cell2("#J3768", "#N2509", i, nr); i <- i + 1
+draw.vf.cell2("#J376a", "#N3313", i, nr); i <- i + 1
+draw.vf.cell2("#J376b", "#N3540", i, nr); i <- i + 1
+draw.vf.cell2("#J376c", "#N4205", i, nr); i <- i + 1
+draw.vf.cell2("#J376e", "#N2169", i, nr); i <- i + 1
+draw.vf.cell2("#J3777", "#N1045", i, nr); i <- i + 1
+draw.vf.cell2("#J3824", "#N2868", i, nr); i <- i + 1
+draw.vf.cell2("#J3826", "#N3180", i, nr); i <- i + 1
+draw.vf.cell2("#J3828", "#N3543", i, nr); i <- i + 1
+draw.vf.cell2("#J382b", "#N4284", i, nr); i <- i + 1
+draw.vf.cell2("#J3833", "#N5220", i, nr); i <- i + 1
+
+make.table(nr, nc)
+i <- 0
+draw.title("Kanji (3)", nc)
+draw.vf.cell2("#J3835", "#N0275", i, nr); i <- i + 1
+draw.vf.cell2("#J3836", "#N0825", i, nr); i <- i + 1
+draw.vf.cell2("#J3839", "#N1568", i, nr); i <- i + 1
+draw.vf.cell2("#J383a", "#N2637", i, nr); i <- i + 1
+draw.vf.cell2("#J383b", "#N2656", i, nr); i <- i + 1
+draw.vf.cell2("#J383d", "#N2943", i, nr); i <- i + 1
+draw.vf.cell2("#J3840", "#N4309", i, nr); i <- i + 1
+draw.vf.cell2("#J3842", "#N4987", i, nr); i <- i + 1
+draw.vf.cell2("#J3845", "#N0770", i, nr); i <- i + 1
+draw.vf.cell2("#J3847", "#N1036", i, nr); i <- i + 1
+draw.vf.cell2("#J384c", "#N1567", i, nr); i <- i + 1
+draw.vf.cell2("#J384d", "#N1817", i, nr); i <- i + 1
+draw.vf.cell2("#J384e", "#N2044", i, nr); i <- i + 1
+draw.vf.cell2("#J385d", "#N5415", i, nr); i <- i + 1
+draw.vf.cell2("#J385e", "#N0015", i, nr); i <- i + 1
+draw.vf.cell2("#J3861", "#N0162", i, nr); i <- i + 1
+draw.vf.cell2("#J3865", "#N1610", i, nr); i <- i + 1
+draw.vf.cell2("#J3866", "#N1628", i, nr); i <- i + 1
+draw.vf.cell2("#J386c", "#N4374", i, nr); i <- i + 1
+draw.vf.cell2("#J3872", "#N0290", i, nr); i <- i + 1
+draw.vf.cell2("#J3877", "#N1358", i, nr); i <- i + 1
+draw.vf.cell2("#J3878", "#N0579", i, nr); i <- i + 1
+draw.vf.cell2("#J387d", "#N0868", i, nr); i <- i + 1
+draw.vf.cell2("#J387e", "#N0101", i, nr); i <- i + 1
+draw.vf.cell2("#J3929", "#N1451", i, nr); i <- i + 1
+draw.vf.cell2("#J3931", "#N1683", i, nr); i <- i + 1
+draw.vf.cell2("#J393d", "#N2343", i, nr); i <- i + 1
+draw.vf.cell2("#J3943", "#N0092", i, nr); i <- i + 1
+draw.vf.cell2("#J394d", "#N3684", i, nr); i <- i + 1
+draw.vf.cell2("#J3954", "#N4213", i, nr); i <- i + 1
+draw.vf.cell2("#J3955", "#N1641", i, nr); i <- i + 1
+draw.vf.cell2("#J395b", "#N4843", i, nr); i <- i + 1
+draw.vf.cell2("#J395d", "#N4883", i, nr); i <- i + 1
+draw.vf.cell2("#J395f", "#N4994", i, nr); i <- i + 1
+draw.vf.cell2("#J3960", "#N1459", i, nr); i <- i + 1
+draw.vf.cell2("#J3961", "#N5188", i, nr); i <- i + 1
+draw.vf.cell2("#J3962", "#N5248", i, nr); i <- i + 1
+draw.vf.cell2("#J3966", "#N0882", i, nr); i <- i + 1
+draw.vf.cell2("#J3967", "#N0383", i, nr); i <- i + 1
+draw.vf.cell2("#J3971", "#N1037", i, nr); i <- i + 1
+draw.vf.cell2("#J3975", "#N5403", i, nr); i <- i + 1
+draw.vf.cell2("#J397c", "#N5236", i, nr); i <- i + 1
+draw.vf.cell2("#J397e", "#N4660", i, nr); i <- i + 1
+draw.vf.cell2("#J3a21", "#N2430", i, nr); i <- i + 1
+draw.vf.cell2("#J3a23", "#N0352", i, nr); i <- i + 1
+draw.vf.cell2("#J3a2c", "#N2261", i, nr); i <- i + 1
+draw.vf.cell2("#J3a38", "#N1455", i, nr); i <- i + 1
+draw.vf.cell2("#J3a39", "#N3662", i, nr); i <- i + 1
+draw.vf.cell2("#J3a42", "#N1515", i, nr); i <- i + 1
+draw.vf.cell2("#J3a46", "#N0035", i, nr); i <- i + 1
+draw.vf.cell2("#J3a47", "#N2146", i, nr); i <- i + 1
+draw.vf.cell2("#J3a59", "#N3522", i, nr); i <- i + 1
+draw.vf.cell2("#J3a5f", "#N1055", i, nr); i <- i + 1
+draw.vf.cell2("#J3a6e", "#N0407", i, nr); i <- i + 1
+draw.vf.cell2("#J3a72", "#N2119", i, nr); i <- i + 1
+draw.vf.cell2("#J3a79", "#N2256", i, nr); i <- i + 1
+draw.vf.cell2("#J3b2e", "#N3113", i, nr); i <- i + 1
+draw.vf.cell2("#J3b30", "#N0008", i, nr); i <- i + 1
+draw.vf.cell2("#J3b33", "#N1407", i, nr); i <- i + 1
+draw.vf.cell2("#J3b36", "#N2056", i, nr); i <- i + 1
+draw.vf.cell2("#J3b3b", "#N3415", i, nr); i <- i + 1
+draw.vf.cell2("#J3b40", "#N4789", i, nr); i <- i + 1
+draw.vf.cell2("#J3b45", "#N0362", i, nr); i <- i + 1
+draw.vf.cell2("#J3b4d", "#N1025", i, nr); i <- i + 1
+draw.vf.cell2("#J3b4e", "#N1160", i, nr); i <- i + 1
+draw.vf.cell2("#J3b4f", "#N1208", i, nr); i <- i + 1
+draw.vf.cell2("#J3b52", "#N1264", i, nr); i <- i + 1
+draw.vf.cell2("#J3b54", "#N0284", i, nr); i <- i + 1
+draw.vf.cell2("#J3b57", "#N3001", i, nr); i <- i + 1
+draw.vf.cell2("#J3b58", "#N1904", i, nr); i <- i + 1
+draw.vf.cell2("#J3b59", "#N2039", i, nr); i <- i + 1
+draw.vf.cell2("#J3b5e", "#N2211", i, nr); i <- i + 1
+draw.vf.cell2("#J3b5f", "#N2429", i, nr); i <- i + 1
+draw.vf.cell2("#J3b60", "#N2439", i, nr); i <- i + 1
+draw.vf.cell2("#J3b61", "#N2478", i, nr); i <- i + 1
+draw.vf.cell2("#J3b64", "#N3265", i, nr); i <- i + 1
+
+make.table(nr, nc)
+i <- 0
+draw.title("Kanji (4)", nc)
+draw.vf.cell2("#J3b65", "#N3492", i, nr); i <- i + 1
+draw.vf.cell2("#J3b66", "#N3510", i, nr); i <- i + 1
+draw.vf.cell2("#J3b6a", "#N3845", i, nr); i <- i + 1
+draw.vf.cell2("#J3b73", "#N2435", i, nr); i <- i + 1
+draw.vf.cell2("#J3b75", "#N5428", i, nr); i <- i + 1
+draw.vf.cell2("#J3b76", "#N0272", i, nr); i <- i + 1
+draw.vf.cell2("#J3b7a", "#N1281", i, nr); i <- i + 1
+draw.vf.cell2("#J3b7d", "#N1903", i, nr); i <- i + 1
+draw.vf.cell2("#J3b7e", "#N2126", i, nr); i <- i + 1
+draw.vf.cell2("#J3c21", "#N0638", i, nr); i <- i + 1
+draw.vf.cell2("#J3c27", "#N3209", i, nr); i <- i + 1
+draw.vf.cell2("#J3c28", "#N3228", i, nr); i <- i + 1
+draw.vf.cell2("#J3c2a", "#N3697", i, nr); i <- i + 1
+draw.vf.cell2("#J3c2b", "#N3841", i, nr); i <- i + 1
+draw.vf.cell2("#J3c2d", "#N3860", i, nr); i <- i + 1
+draw.vf.cell2("#J3c2f", "#N5375", i, nr); i <- i + 1
+draw.vf.cell2("#J3c30", "#N1556", i, nr); i <- i + 1
+draw.vf.cell2("#J3c34", "#N4619", i, nr); i <- i + 1
+draw.vf.cell2("#J3c37", "#N0261", i, nr); i <- i + 1
+draw.vf.cell2("#J3c3c", "#N1300", i, nr); i <- i + 1
+draw.vf.cell2("#J3c3e", "#N2631", i, nr); i <- i + 1
+draw.vf.cell2("#J3c41", "#N4518", i, nr); i <- i + 1
+draw.vf.cell2("#J3c42", "#N1297", i, nr); i <- i + 1
+draw.vf.cell2("#J3c4d", "#N4603", i, nr); i <- i + 1
+draw.vf.cell2("#J3c50", "#N2074", i, nr); i <- i + 1
+draw.vf.cell2("#J3c54", "#N3685", i, nr); i <- i + 1
+draw.vf.cell2("#J3c56", "#N4608", i, nr); i <- i + 1
+draw.vf.cell2("#J3c5c", "#N1377", i, nr); i <- i + 1
+draw.vf.cell2("#J3c61", "#N4809", i, nr); i <- i + 1
+draw.vf.cell2("#J3c63", "#N3926", i, nr); i <- i + 1
+draw.vf.cell2("#J3c67", "#N0285", i, nr); i <- i + 1
+draw.vf.cell2("#J3c68", "#N3699", i, nr); i <- i + 1
+draw.vf.cell2("#J3c6a", "#N1827", i, nr); i <- i + 1
+draw.vf.cell2("#J3c6f", "#N3295", i, nr); i <- i + 1
+draw.vf.cell2("#J3c72", "#N2573", i, nr); i <- i + 1
+draw.vf.cell2("#J3c73", "#N5186", i, nr); i <- i + 1
+draw.vf.cell2("#J3c7e", "#N0622", i, nr); i <- i + 1
+draw.vf.cell2("#J3d29", "#N3273", i, nr); i <- i + 1
+draw.vf.cell2("#J3d2a", "#N3521", i, nr); i <- i + 1
+draw.vf.cell2("#J3d2e", "#N3863", i, nr); i <- i + 1
+draw.vf.cell2("#J3d39", "#N4798", i, nr); i <- i + 1
+draw.vf.cell2("#J3d3d", "#N0768", i, nr); i <- i + 1
+draw.vf.cell2("#J3d3e", "#N1613", i, nr); i <- i + 1
+draw.vf.cell2("#J3d44", "#N3597", i, nr); i <- i + 1
+draw.vf.cell2("#J3d45", "#N0224", i, nr); i <- i + 1
+draw.vf.cell2("#J3d50", "#N0097", i, nr); i <- i + 1
+draw.vf.cell2("#J3d51", "#N1621", i, nr); i <- i + 1
+draw.vf.cell2("#J3d55", "#N2122", i, nr); i <- i + 1
+draw.vf.cell2("#J3d60", "#N0791", i, nr); i <- i + 1
+draw.vf.cell2("#J3d63", "#N3509", i, nr); i <- i + 1
+draw.vf.cell2("#J3d68", "#N1162", i, nr); i <- i + 1
+draw.vf.cell2("#J3d6b", "#N2138", i, nr); i <- i + 1
+draw.vf.cell2("#J3d71", "#N3719", i, nr); i <- i + 1
+draw.vf.cell2("#J3d77", "#N1185", i, nr); i <- i + 1
+draw.vf.cell2("#J3d7c", "#N4993", i, nr); i <- i + 1
+draw.vf.cell2("#J3e26", "#N0321", i, nr); i <- i + 1
+draw.vf.cell2("#J3e2e", "#N1355", i, nr); i <- i + 1
+draw.vf.cell2("#J3e2f", "#N0166", i, nr); i <- i + 1
+draw.vf.cell2("#J3e3d", "#N2137", i, nr); i <- i + 1
+draw.vf.cell2("#J3e3e", "#N2212", i, nr); i <- i + 1
+draw.vf.cell2("#J3e46", "#N2772", i, nr); i <- i + 1
+draw.vf.cell2("#J3e4b", "#N3192", i, nr); i <- i + 1
+draw.vf.cell2("#J3e4e", "#N3280", i, nr); i <- i + 1
+draw.vf.cell2("#J3e57", "#N1638", i, nr); i <- i + 1
+draw.vf.cell2("#J3e5a", "#N4341", i, nr); i <- i + 1
+draw.vf.cell2("#J3e5d", "#N4472", i, nr); i <- i + 1
+draw.vf.cell2("#J3e65", "#N0798", i, nr); i <- i + 1
+draw.vf.cell2("#J3e68", "#N0223", i, nr); i <- i + 1
+draw.vf.cell2("#J3e6c", "#N1113", i, nr); i <- i + 1
+draw.vf.cell2("#J3e6f", "#N1364", i, nr); i <- i + 1
+draw.vf.cell2("#J3e75", "#N2839", i, nr); i <- i + 1
+draw.vf.cell2("#J3e78", "#N4002", i, nr); i <- i + 1
+draw.vf.cell2("#J3f22", "#N2303", i, nr); i <- i + 1
+draw.vf.cell2("#J3f27", "#N3889", i, nr); i <- i + 1
+draw.vf.cell2("#J3f29", "#N5154", i, nr); i <- i + 1
+draw.vf.cell2("#J3f2d", "#N0403", i, nr); i <- i + 1
+
+make.table(nr, nc)
+i <- 0
+draw.title("Kanji (5)", nc)
+draw.vf.cell2("#J3f34", "#N1645", i, nr); i <- i + 1
+draw.vf.cell2("#J3f36", "#N1920", i, nr); i <- i + 1
+draw.vf.cell2("#J3f37", "#N2080", i, nr); i <- i + 1
+draw.vf.cell2("#J3f39", "#N2301", i, nr); i <- i + 1
+draw.vf.cell2("#J3f3f", "#N0783", i, nr); i <- i + 1
+draw.vf.cell2("#J3f43", "#N3837", i, nr); i <- i + 1
+draw.vf.cell2("#J3f48", "#N4601", i, nr); i <- i + 1
+draw.vf.cell2("#J3f49", "#N4646", i, nr); i <- i + 1
+draw.vf.cell2("#J3f4a", "#N4709", i, nr); i <- i + 1
+draw.vf.cell2("#J3f4c", "#N5055", i, nr); i <- i + 1
+draw.vf.cell2("#J3f4d", "#N0339", i, nr); i <- i + 1
+draw.vf.cell2("#J3f5e", "#N1034", i, nr); i <- i + 1
+draw.vf.cell2("#J3f62", "#N0211", i, nr); i <- i + 1
+draw.vf.cell2("#J3f65", "#N2482", i, nr); i <- i + 1
+draw.vf.cell2("#J3f69", "#N3676", i, nr); i <- i + 1
+draw.vf.cell2("#J3f74", "#N2057", i, nr); i <- i + 1
+draw.vf.cell2("#J402d", "#N1666", i, nr); i <- i + 1
+draw.vf.cell2("#J402e", "#N1799", i, nr); i <- i + 1
+draw.vf.cell2("#J4030", "#N2436", i, nr); i <- i + 1
+draw.vf.cell2("#J4031", "#N2121", i, nr); i <- i + 1
+draw.vf.cell2("#J4032", "#N2143", i, nr); i <- i + 1
+draw.vf.cell2("#J4035", "#N0027", i, nr); i <- i + 1
+draw.vf.cell2("#J4038", "#N2991", i, nr); i <- i + 1
+draw.vf.cell2("#J403e", "#N4273", i, nr); i <- i + 1
+draw.vf.cell2("#J4044", "#N5076", i, nr); i <- i + 1
+draw.vf.cell2("#J4045", "#N5077", i, nr); i <- i + 1
+draw.vf.cell2("#J404e", "#N2108", i, nr); i <- i + 1
+draw.vf.cell2("#J404f", "#N2194", i, nr); i <- i + 1
+draw.vf.cell2("#J4050", "#N3176", i, nr); i <- i + 1
+draw.vf.cell2("#J4051", "#N3306", i, nr); i <- i + 1
+draw.vf.cell2("#J4056", "#N4534", i, nr); i <- i + 1
+draw.vf.cell2("#J405a", "#N0667", i, nr); i <- i + 1
+draw.vf.cell2("#J405c", "#N1951", i, nr); i <- i + 1
+draw.vf.cell2("#J405e", "#N1855", i, nr); i <- i + 1
+draw.vf.cell2("#J4063", "#N5044", i, nr); i <- i + 1
+draw.vf.cell2("#J4064", "#N3539", i, nr); i <- i + 1
+draw.vf.cell2("#J4065", "#N3855", i, nr); i <- i + 1
+draw.vf.cell2("#J4068", "#N0571", i, nr); i <- i + 1
+draw.vf.cell2("#J4069", "#N0156", i, nr); i <- i + 1
+draw.vf.cell2("#J406e", "#N1447", i, nr); i <- i + 1
+draw.vf.cell2("#J4070", "#N1823", i, nr); i <- i + 1
+draw.vf.cell2("#J407e", "#N3580", i, nr); i <- i + 1
+draw.vf.cell2("#J4125", "#N3873", i, nr); i <- i + 1
+draw.vf.cell2("#J4130", "#N0595", i, nr); i <- i + 1
+draw.vf.cell2("#J4133", "#N2770", i, nr); i <- i + 1
+draw.vf.cell2("#J4134", "#N0384", i, nr); i <- i + 1
+draw.vf.cell2("#J4147", "#N3511", i, nr); i <- i + 1
+draw.vf.cell2("#J4148", "#N3520", i, nr); i <- i + 1
+draw.vf.cell2("#J4150", "#N0859", i, nr); i <- i + 1
+draw.vf.cell2("#J4158", "#N1402", i, nr); i <- i + 1
+draw.vf.cell2("#J415b", "#N1728", i, nr); i <- i + 1
+draw.vf.cell2("#J4161", "#N2100", i, nr); i <- i + 1
+draw.vf.cell2("#J416a", "#N2241", i, nr); i <- i + 1
+draw.vf.cell2("#J416d", "#N3567", i, nr); i <- i + 1
+draw.vf.cell2("#J4170", "#N3939", i, nr); i <- i + 1
+draw.vf.cell2("#J4175", "#N4234", i, nr); i <- i + 1
+draw.vf.cell2("#J4176", "#N4539", i, nr); i <- i + 1
+draw.vf.cell2("#J417c", "#N0540", i, nr); i <- i + 1
+draw.vf.cell2("#J417d", "#N1137", i, nr); i <- i + 1
+draw.vf.cell2("#J4224", "#N4701", i, nr); i <- i + 1
+draw.vf.cell2("#J4226", "#N0509", i, nr); i <- i + 1
+draw.vf.cell2("#J422b", "#N0196", i, nr); i <- i + 1
+draw.vf.cell2("#J422c", "#N2632", i, nr); i <- i + 1
+draw.vf.cell2("#J422d", "#N4546", i, nr); i <- i + 1
+draw.vf.cell2("#J422e", "#N4700", i, nr); i <- i + 1
+draw.vf.cell2("#J4233", "#N3544", i, nr); i <- i + 1
+draw.vf.cell2("#J4236", "#N0590", i, nr); i <- i + 1
+draw.vf.cell2("#J4238", "#N1267", i, nr); i <- i + 1
+draw.vf.cell2("#J423e", "#N0361", i, nr); i <- i + 1
+draw.vf.cell2("#J423f", "#N1169", i, nr); i <- i + 1
+draw.vf.cell2("#J4240", "#N1172", i, nr); i <- i + 1
+draw.vf.cell2("#J424a", "#N2313", i, nr); i <- i + 1
+draw.vf.cell2("#J424e", "#N0405", i, nr); i <- i + 1
+draw.vf.cell2("#J4250", "#N2067", i, nr); i <- i + 1
+draw.vf.cell2("#J4256", "#N1743", i, nr); i <- i + 1
+draw.vf.cell2("#J4265", "#N0364", i, nr); i <- i + 1
+
+make.table(nr, nc)
+i <- 0
+draw.title("Kanji (6)", nc)
+draw.vf.cell2("#J4267", "#N1171", i, nr); i <- i + 1
+draw.vf.cell2("#J4268", "#N3385", i, nr); i <- i + 1
+draw.vf.cell2("#J426a", "#N2164", i, nr); i <- i + 1
+draw.vf.cell2("#J426c", "#N2655", i, nr); i <- i + 1
+draw.vf.cell2("#J4274", "#N2503", i, nr); i <- i + 1
+draw.vf.cell2("#J4323", "#N4721", i, nr); i <- i + 1
+draw.vf.cell2("#J432b", "#N4458", i, nr); i <- i + 1
+draw.vf.cell2("#J432f", "#N4384", i, nr); i <- i + 1
+draw.vf.cell2("#J4331", "#N0139", i, nr); i <- i + 1
+draw.vf.cell2("#J433a", "#N1418", i, nr); i <- i + 1
+draw.vf.cell2("#J433b", "#N3172", i, nr); i <- i + 1
+draw.vf.cell2("#J4346", "#N1575", i, nr); i <- i + 1
+draw.vf.cell2("#J434b", "#N2996", i, nr); i <- i + 1
+draw.vf.cell2("#J434d", "#N0488", i, nr); i <- i + 1
+draw.vf.cell2("#J434e", "#N3169", i, nr); i <- i + 1
+draw.vf.cell2("#J434f", "#N1056", i, nr); i <- i + 1
+draw.vf.cell2("#J4356", "#N3644", i, nr); i <- i + 1
+draw.vf.cell2("#J4359", "#N4722", i, nr); i <- i + 1
+draw.vf.cell2("#J435d", "#N3366", i, nr); i <- i + 1
+draw.vf.cell2("#J4362", "#N3325", i, nr); i <- i + 1
+draw.vf.cell2("#J4363", "#N3940", i, nr); i <- i + 1
+draw.vf.cell2("#J4365", "#N3665", i, nr); i <- i + 1
+draw.vf.cell2("#J4366", "#N0081", i, nr); i <- i + 1
+draw.vf.cell2("#J4368", "#N1291", i, nr); i <- i + 1
+draw.vf.cell2("#J436b", "#N0053", i, nr); i <- i + 1
+draw.vf.cell2("#J436c", "#N2236", i, nr); i <- i + 1
+draw.vf.cell2("#J436e", "#N4115", i, nr); i <- i + 1
+draw.vf.cell2("#J442b", "#N3788", i, nr); i <- i + 1
+draw.vf.cell2("#J442c", "#N2702", i, nr); i <- i + 1
+draw.vf.cell2("#J4436", "#N4543", i, nr); i <- i + 1
+draw.vf.cell2("#J4439", "#N4938", i, nr); i <- i + 1
+draw.vf.cell2("#J443b", "#N5340", i, nr); i <- i + 1
+draw.vf.cell2("#J443e", "#N0775", i, nr); i <- i + 1
+draw.vf.cell2("#J444c", "#N4703", i, nr); i <- i + 1
+draw.vf.cell2("#J4463", "#N0406", i, nr); i <- i + 1
+draw.vf.cell2("#J446a", "#N1296", i, nr); i <- i + 1
+draw.vf.cell2("#J446c", "#N1508", i, nr); i <- i + 1
+draw.vf.cell2("#J446d", "#N1514", i, nr); i <- i + 1
+draw.vf.cell2("#J4472", "#N1914", i, nr); i <- i + 1
+draw.vf.cell2("#J4478", "#N3285", i, nr); i <- i + 1
+draw.vf.cell2("#J4479", "#N3581", i, nr); i <- i + 1
+draw.vf.cell2("#J4526", "#N1987", i, nr); i <- i + 1
+draw.vf.cell2("#J452a", "#N3097", i, nr); i <- i + 1
+draw.vf.cell2("#J452f", "#N0931", i, nr); i <- i + 1
+draw.vf.cell2("#J4534", "#N4844", i, nr); i <- i + 1
+draw.vf.cell2("#J4535", "#N0588", i, nr); i <- i + 1
+draw.vf.cell2("#J4537", "#N0016", i, nr); i <- i + 1
+draw.vf.cell2("#J453e", "#N4615", i, nr); i <- i + 1
+draw.vf.cell2("#J4540", "#N0804", i, nr); i <- i + 1
+draw.vf.cell2("#J4544", "#N2994", i, nr); i <- i + 1
+draw.vf.cell2("#J4545", "#N5050", i, nr); i <- i + 1
+draw.vf.cell2("#J454c", "#N1614", i, nr); i <- i + 1
+draw.vf.cell2("#J4559", "#N1511", i, nr); i <- i + 1
+draw.vf.cell2("#J455a", "#N1050", i, nr); i <- i + 1
+draw.vf.cell2("#J455f", "#N1161", i, nr); i <- i + 1
+draw.vf.cell2("#J4561", "#N0665", i, nr); i <- i + 1
+draw.vf.cell2("#J4563", "#N1109", i, nr); i <- i + 1
+draw.vf.cell2("#J4567", "#N0230", i, nr); i <- i + 1
+draw.vf.cell2("#J456c", "#N0213", i, nr); i <- i + 1
+draw.vf.cell2("#J4574", "#N2745", i, nr); i <- i + 1
+draw.vf.cell2("#J4576", "#N1359", i, nr); i <- i + 1
+draw.vf.cell2("#J4579", "#N3396", i, nr); i <- i + 1
+draw.vf.cell2("#J4626", "#N4465", i, nr); i <- i + 1
+draw.vf.cell2("#J4630", "#N0730", i, nr); i <- i + 1
+draw.vf.cell2("#J4631", "#N0619", i, nr); i <- i + 1
+draw.vf.cell2("#J4633", "#N1354", i, nr); i <- i + 1
+draw.vf.cell2("#J463b", "#N4724", i, nr); i <- i + 1
+draw.vf.cell2("#J463c", "#N4853", i, nr); i <- i + 1
+draw.vf.cell2("#J4643", "#N2860", i, nr); i <- i + 1
+draw.vf.cell2("#J4649", "#N4375", i, nr); i <- i + 1
+draw.vf.cell2("#J465e", "#N2160", i, nr); i <- i + 1
+draw.vf.cell2("#J4662", "#N0082", i, nr); i <- i + 1
+draw.vf.cell2("#J466e", "#N0778", i, nr); i <- i + 1
+draw.vf.cell2("#J4671", "#N5038", i, nr); i <- i + 1
+draw.vf.cell2("#J4673", "#N0273", i, nr); i <- i + 1
+draw.vf.cell2("#J4679", "#N3724", i, nr); i <- i + 1
+
+make.table(nr, nc)
+i <- 0
+draw.title("Kanji (7)", nc)
+draw.vf.cell2("#J467c", "#N2097", i, nr); i <- i + 1
+draw.vf.cell2("#J467e", "#N0574", i, nr); i <- i + 1
+draw.vf.cell2("#J4721", "#N1189", i, nr); i <- i + 1
+draw.vf.cell2("#J472e", "#N2797", i, nr); i <- i + 1
+draw.vf.cell2("#J472f", "#N0188", i, nr); i <- i + 1
+draw.vf.cell2("#J4733", "#N2808", i, nr); i <- i + 1
+draw.vf.cell2("#J4734", "#N3472", i, nr); i <- i + 1
+draw.vf.cell2("#J4748", "#N2529", i, nr); i <- i + 1
+draw.vf.cell2("#J474f", "#N5191", i, nr); i <- i + 1
+draw.vf.cell2("#J4769", "#N3275", i, nr); i <- i + 1
+draw.vf.cell2("#J4772", "#N3095", i, nr); i <- i + 1
+draw.vf.cell2("#J477e", "#N5385", i, nr); i <- i + 1
+draw.vf.cell2("#J4821", "#N0049", i, nr); i <- i + 1
+draw.vf.cell2("#J482c", "#N0577", i, nr); i <- i + 1
+draw.vf.cell2("#J482f", "#N3092", i, nr); i <- i + 1
+draw.vf.cell2("#J483e", "#N0132", i, nr); i <- i + 1
+draw.vf.cell2("#J483f", "#N0817", i, nr); i <- i + 1
+draw.vf.cell2("#J4841", "#N1469", i, nr); i <- i + 1
+draw.vf.cell2("#J484c", "#N3865", i, nr); i <- i + 1
+draw.vf.cell2("#J4856", "#N4811", i, nr); i <- i + 1
+draw.vf.cell2("#J4860", "#N1604", i, nr); i <- i + 1
+draw.vf.cell2("#J4866", "#N2470", i, nr); i <- i + 1
+draw.vf.cell2("#J4869", "#N3109", i, nr); i <- i + 1
+draw.vf.cell2("#J4873", "#N5080", i, nr); i <- i + 1
+draw.vf.cell2("#J4874", "#N5152", i, nr); i <- i + 1
+draw.vf.cell2("#J4878", "#N1383", i, nr); i <- i + 1
+draw.vf.cell2("#J4879", "#N1631", i, nr); i <- i + 1
+draw.vf.cell2("#J487e", "#N3658", i, nr); i <- i + 1
+draw.vf.cell2("#J4921", "#N5421", i, nr); i <- i + 1
+draw.vf.cell2("#J492e", "#N3397", i, nr); i <- i + 1
+draw.vf.cell2("#J4934", "#N0033", i, nr); i <- i + 1
+draw.vf.cell2("#J4938", "#N2359", i, nr); i <- i + 1
+draw.vf.cell2("#J4939", "#N0131", i, nr); i <- i + 1
+draw.vf.cell2("#J493d", "#N0108", i, nr); i <- i + 1
+draw.vf.cell2("#J4942", "#N3042", i, nr); i <- i + 1
+draw.vf.cell2("#J4943", "#N3271", i, nr); i <- i + 1
+draw.vf.cell2("#J494a", "#N0923", i, nr); i <- i + 1
+draw.vf.cell2("#J4954", "#N0017", i, nr); i <- i + 1
+draw.vf.cell2("#J495b", "#N1468", i, nr); i <- i + 1
+draw.vf.cell2("#J4963", "#N2832", i, nr); i <- i + 1
+draw.vf.cell2("#J4969", "#N4488", i, nr); i <- i + 1
+draw.vf.cell2("#J4977", "#N5148", i, nr); i <- i + 1
+draw.vf.cell2("#J497d", "#N1484", i, nr); i <- i + 1
+draw.vf.cell2("#J4a23", "#N4255", i, nr); i <- i + 1
+draw.vf.cell2("#J4a26", "#N0173", i, nr); i <- i + 1
+draw.vf.cell2("#J4a2a", "#N2857", i, nr); i <- i + 1
+draw.vf.cell2("#J4a2c", "#N0578", i, nr); i <- i + 1
+draw.vf.cell2("#J4a38", "#N2064", i, nr); i <- i + 1
+draw.vf.cell2("#J4a39", "#N4959", i, nr); i <- i + 1
+draw.vf.cell2("#J4a3f", "#N0026", i, nr); i <- i + 1
+draw.vf.cell2("#J4a42", "#N0589", i, nr); i <- i + 1
+draw.vf.cell2("#J4a44", "#N4945", i, nr); i <- i + 1
+draw.vf.cell2("#J4a46", "#N3461", i, nr); i <- i + 1
+draw.vf.cell2("#J4a50", "#N0511", i, nr); i <- i + 1
+draw.vf.cell2("#J4a51", "#N0306", i, nr); i <- i + 1
+draw.vf.cell2("#J4a52", "#N2842", i, nr); i <- i + 1
+draw.vf.cell2("#J4a55", "#N4661", i, nr); i <- i + 1
+draw.vf.cell2("#J4a6c", "#N2466", i, nr); i <- i + 1
+draw.vf.cell2("#J4a7c", "#N2084", i, nr); i <- i + 1
+draw.vf.cell2("#J4a7d", "#N2082", i, nr); i <- i + 1
+draw.vf.cell2("#J4b21", "#N2535", i, nr); i <- i + 1
+draw.vf.cell2("#J4b26", "#N3749", i, nr); i <- i + 1
+draw.vf.cell2("#J4b4c", "#N0751", i, nr); i <- i + 1
+draw.vf.cell2("#J4b4f", "#N5404", i, nr); i <- i + 1
+draw.vf.cell2("#J4b5c", "#N0096", i, nr); i <- i + 1
+draw.vf.cell2("#J4b63", "#N5390", i, nr); i <- i + 1
+draw.vf.cell2("#J4b68", "#N2467", i, nr); i <- i + 1
+draw.vf.cell2("#J4b74", "#N0855", i, nr); i <- i + 1
+draw.vf.cell2("#J4b7c", "#N0007", i, nr); i <- i + 1
+draw.vf.cell2("#J4c23", "#N0913", i, nr); i <- i + 1
+draw.vf.cell2("#J4c24", "#N0179", i, nr); i <- i + 1
+draw.vf.cell2("#J4c29", "#N1316", i, nr); i <- i + 1
+draw.vf.cell2("#J4c35", "#N2773", i, nr); i <- i + 1
+draw.vf.cell2("#J4c37", "#N3164", i, nr); i <- i + 1
+draw.vf.cell2("#J4c3e", "#N1170", i, nr); i <- i + 1
+draw.vf.cell2("#J4c40", "#N2110", i, nr); i <- i + 1
+
+make.table(nr, nc)
+i <- 0
+draw.title("Kanji (8)", nc)
+draw.vf.cell2("#J4c4c", "#N5087", i, nr); i <- i + 1
+draw.vf.cell2("#J4c53", "#N2473", i, nr); i <- i + 1
+draw.vf.cell2("#J4c5a", "#N2170", i, nr); i <- i + 1
+draw.vf.cell2("#J4c5c", "#N3127", i, nr); i <- i + 1
+draw.vf.cell2("#J4c64", "#N4944", i, nr); i <- i + 1
+draw.vf.cell2("#J4c67", "#N4940", i, nr); i <- i + 1
+draw.vf.cell2("#J4c6b", "#N0298", i, nr); i <- i + 1
+draw.vf.cell2("#J4c70", "#N3168", i, nr); i <- i + 1
+draw.vf.cell2("#J4c72", "#N1598", i, nr); i <- i + 1
+draw.vf.cell2("#J4c74", "#N4074", i, nr); i <- i + 1
+draw.vf.cell2("#J4c78", "#N2233", i, nr); i <- i + 1
+draw.vf.cell2("#J4c7d", "#N2534", i, nr); i <- i + 1
+draw.vf.cell2("#J4d2d", "#N3727", i, nr); i <- i + 1
+draw.vf.cell2("#J4d30", "#N2565", i, nr); i <- i + 1
+draw.vf.cell2("#J4d3a", "#N5030", i, nr); i <- i + 1
+draw.vf.cell2("#J4d3c", "#N1167", i, nr); i <- i + 1
+draw.vf.cell2("#J4d3e", "#N0408", i, nr); i <- i + 1
+draw.vf.cell2("#J4d4f", "#N2659", i, nr); i <- i + 1
+draw.vf.cell2("#J4d51", "#N2993", i, nr); i <- i + 1
+draw.vf.cell2("#J4d53", "#N3656", i, nr); i <- i + 1
+draw.vf.cell2("#J4d55", "#N4001", i, nr); i <- i + 1
+draw.vf.cell2("#J4d57", "#N4274", i, nr); i <- i + 1
+draw.vf.cell2("#J4d5b", "#N5012", i, nr); i <- i + 1
+draw.vf.cell2("#J4d63", "#N3680", i, nr); i <- i + 1
+draw.vf.cell2("#J4d68", "#N0202", i, nr); i <- i + 1
+draw.vf.cell2("#J4d6b", "#N5049", i, nr); i <- i + 1
+draw.vf.cell2("#J4d70", "#N3856", i, nr); i <- i + 1
+draw.vf.cell2("#J4d71", "#N0199", i, nr); i <- i + 1
+draw.vf.cell2("#J4d72", "#N1431", i, nr); i <- i + 1
+draw.vf.cell2("#J4d78", "#N3264", i, nr); i <- i + 1
+draw.vf.cell2("#J4d7d", "#N2942", i, nr); i <- i + 1
+draw.vf.cell2("#J4e24", "#N4813", i, nr); i <- i + 1
+draw.vf.cell2("#J4e25", "#N5040", i, nr); i <- i + 1
+draw.vf.cell2("#J4e26", "#N5005", i, nr); i <- i + 1
+draw.vf.cell2("#J4e28", "#N0319", i, nr); i <- i + 1
+draw.vf.cell2("#J4e29", "#N3343", i, nr); i <- i + 1
+draw.vf.cell2("#J4e2e", "#N2576", i, nr); i <- i + 1
+draw.vf.cell2("#J4e32", "#N3191", i, nr); i <- i + 1
+draw.vf.cell2("#J4e33", "#N3471", i, nr); i <- i + 1
+draw.vf.cell2("#J4e35", "#N5440", i, nr); i <- i + 1
+draw.vf.cell2("#J4e3e", "#N0034", i, nr); i <- i + 1
+draw.vf.cell2("#J4e41", "#N3468", i, nr); i <- i + 1
+draw.vf.cell2("#J4e49", "#N3885", i, nr); i <- i + 1
+draw.vf.cell2("#J4e4c", "#N2141", i, nr); i <- i + 1
+draw.vf.cell2("#J4e4f", "#N0715", i, nr); i <- i + 1
+draw.vf.cell2("#J4e53", "#N2210", i, nr); i <- i + 1
+draw.vf.cell2("#J4e55", "#N2807", i, nr); i <- i + 1
+draw.vf.cell2("#J4e58", "#N4630", i, nr); i <- i + 1
+draw.vf.cell2("#J4e60", "#N5138", i, nr); i <- i + 1
+draw.vf.cell2("#J4e63", "#N0428", i, nr); i <- i + 1
+draw.vf.cell2("#J4e64", "#N0642", i, nr); i <- i + 1
+draw.vf.cell2("#J4e6d", "#N5048", i, nr); i <- i + 1
+draw.vf.cell2("#J4e6e", "#N5056", i, nr); i <- i + 1
+draw.vf.cell2("#J4e73", "#N2438", i, nr); i <- i + 1
+draw.vf.cell2("#J4f22", "#N4702", i, nr); i <- i + 1
+draw.vf.cell2("#J4f27", "#N2750", i, nr); i <- i + 1
+draw.vf.cell2("#J4f29", "#N4561", i, nr); i <- i + 1
+draw.vf.cell2("#J4f37", "#N3683", i, nr); i <- i + 1
+draw.vf.cell2("#J4f3b", "#N0283", i, nr); i <- i + 1
+draw.vf.cell2("#J4f40", "#N4391", i, nr); i <- i + 1
+draw.vf.cell2("#J4f42", "#N3268", i, nr); i <- i + 1
+draw.vf.cell2("#J4f43", "#N4358", i, nr); i <- i + 1
+draw.vf.cell2("#J4f44", "#N0054", i, nr); i <- i + 1
+draw.vf.cell2("#J4f47", "#N1710", i, nr); i <- i + 1
+
+draw.vf.cell2("#J534c", "#N0973", i, nr); i <- i + 1
+draw.vf.cell2("#J5879", "#N1794", i, nr); i <- i + 1
+draw.vf.cell2("#J5960", "#N1942", i, nr); i <- i + 1
+draw.vf.cell2("#J626f", "#N3200", i, nr); i <- i + 1
+draw.vf.cell2("#J6446", "#N3458", i, nr); i <- i + 1
+draw.vf.cell2("#J6647", "#N5083", i, nr); i <- i + 1
+draw.vf.cell2("#J6d55", "#N4633", i, nr); i <- i + 1
+
+par(oldpar)
+#  Copyright (C) 1997-2009 The R Core Team
+
+require(datasets)
+require(grDevices); require(graphics)
+
+## Here is some code which illustrates some of the differences between
+## R and S graphics capabilities.  Note that colors are generally specified
+## by a character string name (taken from the X11 rgb.txt file) and that line
+## textures are given similarly.  The parameter "bg" sets the background
+## parameter for the plot and there is also an "fg" parameter which sets
+## the foreground color.
+
+
+x <- stats::rnorm(50)
+opar <- par(bg = "white")
+plot(x, ann = FALSE, type = "n")
+abline(h = 0, col = gray(.90))
+lines(x, col = "green4", lty = "dotted")
+points(x, bg = "limegreen", pch = 21)
+title(main = "Simple Use of Color In a Plot",
+      xlab = "Just a Whisper of a Label",
+      col.main = "blue", col.lab = gray(.8),
+      cex.main = 1.2, cex.lab = 1.0, font.main = 4, font.lab = 3)
+
+
+## A little color wheel.	 This code just plots equally spaced hues in
+## a pie chart.	If you have a cheap SVGA monitor (like me) you will
+## probably find that numerically equispaced does not mean visually
+## equispaced.  On my display at home, these colors tend to cluster at
+## the RGB primaries.  On the other hand on the SGI Indy at work the
+## effect is near perfect.
+
+par(bg = "gray")
+pie(rep(1,24), col = rainbow(24), radius = 0.9)
+title(main = "A Sample Color Wheel", cex.main = 1.4, font.main = 3)
+title(xlab = "(Use this as a test of monitor linearity)",
+      cex.lab = 0.8, font.lab = 3)
+
+
+## We have already confessed to having these.  This is just showing off X11
+## color names (and the example (from the postscript manual) is pretty "cute".
+
+pie.sales <- c(0.12, 0.3, 0.26, 0.16, 0.04, 0.12)
+names(pie.sales) <- c("Blueberry", "Cherry",
+		      "Apple", "Boston Cream", "Other", "Vanilla Cream")
+pie(pie.sales,
+    col = c("purple","violetred1","green3","cornsilk","cyan","white"))
+title(main = "January Pie Sales", cex.main = 1.8, font.main = 1)
+title(xlab = "(Don't try this at home kids)", cex.lab = 0.8, font.lab = 3)
+
+
+## Boxplots:  I couldn't resist the capability for filling the "box".
+## The use of color seems like a useful addition, it focuses attention
+## on the central bulk of the data.
+
+par(bg="cornsilk")
+n <- 10
+g <- gl(n, 100, n*100)
+x <- rnorm(n*100) + sqrt(as.numeric(g))
+boxplot(split(x,g), col="lavender", notch=TRUE)
+title(main="Notched Boxplots", xlab="Group", font.main=4, font.lab=1)
+
+
+## An example showing how to fill between curves.
+
+par(bg="white")
+n <- 100
+x <- c(0,cumsum(rnorm(n)))
+y <- c(0,cumsum(rnorm(n)))
+xx <- c(0:n, n:0)
+yy <- c(x, rev(y))
+plot(xx, yy, type="n", xlab="Time", ylab="Distance")
+polygon(xx, yy, col="gray")
+title("Distance Between Brownian Motions")
+
+
+## Colored plot margins, axis labels and titles.	 You do need to be
+## careful with these kinds of effects.	It's easy to go completely
+## over the top and you can end up with your lunch all over the keyboard.
+## On the other hand, my market research clients love it.
+
+x <- c(0.00, 0.40, 0.86, 0.85, 0.69, 0.48, 0.54, 1.09, 1.11, 1.73, 2.05, 2.02)
+par(bg="lightgray")
+plot(x, type="n", axes=FALSE, ann=FALSE)
+usr <- par("usr")
+rect(usr[1], usr[3], usr[2], usr[4], col="cornsilk", border="black")
+lines(x, col="blue")
+points(x, pch=21, bg="lightcyan", cex=1.25)
+axis(2, col.axis="blue", las=1)
+axis(1, at=1:12, lab=month.abb, col.axis="blue")
+box()
+title(main= "The Level of Interest in R", font.main=4, col.main="red")
+title(xlab= "1996", col.lab="red")
+
+
+## A filled histogram, showing how to change the font used for the
+## main title without changing the other annotation.
+
+par(bg="cornsilk")
+x <- rnorm(1000)
+hist(x, xlim=range(-4, 4, x), col="lavender", main="")
+title(main="1000 Normal Random Variates", font.main=3)
+
+
+## A scatterplot matrix
+## The good old Iris data (yet again)
+
+pairs(iris[1:4], main="Edgar Anderson's Iris Data", font.main=4, pch=19)
+pairs(iris[1:4], main="Edgar Anderson's Iris Data", pch=21,
+      bg = c("red", "green3", "blue")[unclass(iris$Species)])
+
+
+## Contour plotting
+## This produces a topographic map of one of Auckland's many volcanic "peaks".
+
+x <- 10*1:nrow(volcano)
+y <- 10*1:ncol(volcano)
+lev <- pretty(range(volcano), 10)
+par(bg = "lightcyan")
+pin <- par("pin")
+xdelta <- diff(range(x))
+ydelta <- diff(range(y))
+xscale <- pin[1]/xdelta
+yscale <- pin[2]/ydelta
+scale <- min(xscale, yscale)
+xadd <- 0.5*(pin[1]/scale - xdelta)
+yadd <- 0.5*(pin[2]/scale - ydelta)
+plot(numeric(0), numeric(0),
+     xlim = range(x)+c(-1,1)*xadd, ylim = range(y)+c(-1,1)*yadd,
+     type = "n", ann = FALSE)
+usr <- par("usr")
+rect(usr[1], usr[3], usr[2], usr[4], col="green3")
+contour(x, y, volcano, levels = lev, col="yellow", lty="solid", add=TRUE)
+box()
+title("A Topographic Map of Maunga Whau", font= 4)
+title(xlab = "Meters North", ylab = "Meters West", font= 3)
+mtext("10 Meter Contour Spacing", side=3, line=0.35, outer=FALSE,
+      at = mean(par("usr")[1:2]), cex=0.7, font=3)
+
+## Conditioning plots
+
+par(bg="cornsilk")
+coplot(lat ~ long | depth, data = quakes, pch = 21, bg = "green3")
+
+par(opar)
+#  Copyright (C) 1997-2009 The R Core Team
+
+require(datasets)
+require(grDevices); require(graphics)
+
+x <- 10*(1:nrow(volcano)); x.at <- seq(100, 800, by=100)
+y <- 10*(1:ncol(volcano)); y.at <- seq(100, 600, by=100)
+
+					# Using Terrain Colors
+
+image(x, y, volcano, col=terrain.colors(100),axes=FALSE)
+contour(x, y, volcano, levels=seq(90, 200, by=5), add=TRUE, col="brown")
+axis(1, at=x.at)
+axis(2, at=y.at)
+box()
+title(main="Maunga Whau Volcano", sub = "col=terrain.colors(100)", font.main=4)
+
+					# Using Heat Colors
+
+image(x, y, volcano, col=heat.colors(100), axes=FALSE)
+contour(x, y, volcano, levels=seq(90, 200, by=5), add=TRUE, col="brown")
+axis(1, at=x.at)
+axis(2, at=y.at)
+box()
+title(main="Maunga Whau Volcano", sub = "col=heat.colors(100)", font.main=4)
+
+					# Using Gray Scale
+
+image(x, y, volcano, col=gray(100:200/200), axes=FALSE)
+contour(x, y, volcano, levels=seq(90, 200, by=5), add=TRUE, col="black")
+axis(1, at=x.at)
+axis(2, at=y.at)
+box()
+title(main="Maunga Whau Volcano \n col=gray(100:200/200)", font.main=4)
+
+## Filled Contours are even nicer sometimes :
+example(filled.contour)
+### Demos for  persp()  plots   -- things not in  example(persp)
+### -------------------------
+
+require(datasets)
+require(grDevices); require(graphics)
+
+## (1) The Obligatory Mathematical surface.
+##     Rotated sinc function.
+
+x <- seq(-10, 10, length.out = 50)
+y <- x
+rotsinc <- function(x,y)
+{
+    sinc <- function(x) { y <- sin(x)/x ; y[is.na(y)] <- 1; y }
+    10 * sinc( sqrt(x^2+y^2) )
+}
+sinc.exp <- expression(z == Sinc(sqrt(x^2 + y^2)))
+
+z <- outer(x, y, rotsinc)
+
+
+oldpar <- par(bg = "white")
+persp(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue")
+title(sub=".")## work around persp+plotmath bug
+title(main = sinc.exp)
+
+persp(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue",
+      ltheta = 120, shade = 0.75, ticktype = "detailed",
+      xlab = "X", ylab = "Y", zlab = "Z")
+title(sub=".")## work around persp+plotmath bug
+title(main = sinc.exp)
+
+
+
+## (2) Visualizing a simple DEM model
+
+z <- 2 * volcano        # Exaggerate the relief
+x <- 10 * (1:nrow(z))   # 10 meter spacing (S to N)
+y <- 10 * (1:ncol(z))   # 10 meter spacing (E to W)
+persp(x, y, z, theta = 120, phi = 15, scale = FALSE, axes = FALSE)
+
+
+## (3) Now something more complex
+##     We border the surface, to make it more "slice like"
+##     and color the top and sides of the surface differently.
+
+z0 <- min(z) - 20
+z <- rbind(z0, cbind(z0, z, z0), z0)
+x <- c(min(x) - 1e-10, x, max(x) + 1e-10)
+y <- c(min(y) - 1e-10, y, max(y) + 1e-10)
+
+fill <- matrix("green3", nrow = nrow(z)-1, ncol = ncol(z)-1)
+fill[ , i2 <- c(1,ncol(fill))] <- "gray"
+fill[i1 <- c(1,nrow(fill)) , ] <- "gray"
+
+par(bg = "lightblue")
+persp(x, y, z, theta = 120, phi = 15, col = fill, scale = FALSE, axes = FALSE)
+title(main = "Maunga Whau\nOne of 50 Volcanoes in the Auckland Region.",
+      font.main = 4)
+
+par(bg = "slategray")
+persp(x, y, z, theta = 135, phi = 30, col = fill, scale = FALSE,
+      ltheta = -120, lphi = 15, shade = 0.65, axes = FALSE)
+## Don't draw the grid lines :  border = NA
+persp(x, y, z, theta = 135, phi = 30, col = "green3", scale = FALSE,
+      ltheta = -120, shade = 0.75, border = NA, box = FALSE)
+
+## `color gradient in the soil' :
+fcol <- fill ; fcol[] <- terrain.colors(nrow(fcol))
+persp(x, y, z, theta = 135, phi = 30, col = fcol, scale = FALSE,
+      ltheta = -120, shade = 0.3, border = NA, box = FALSE)
+
+## `image like' colors on top :
+fcol <- fill
+zi <- volcano[ -1,-1] + volcano[ -1,-61] +
+           volcano[-87,-1] + volcano[-87,-61]  ## / 4
+fcol[-i1,-i2] <-
+    terrain.colors(20)[cut(zi,
+                           stats::quantile(zi, seq(0,1, length.out = 21)),
+                           include.lowest = TRUE)]
+persp(x, y, 2*z, theta = 110, phi = 40, col = fcol, scale = FALSE,
+      ltheta = -120, shade = 0.4, border = NA, box = FALSE)
+
+
+## reset par():
+par(oldpar)
+#  Copyright (C) 2002-2016 The R Core Team
+
+require(datasets)
+require(grDevices); require(graphics)
+
+## --- "math annotation" in plots :
+
+######
+# create tables of mathematical annotation functionality
+######
+make.table <- function(nr, nc) {
+    savepar <- par(mar=rep(0, 4), pty="s")
+    plot(c(0, nc*2 + 1), c(0, -(nr + 1)),
+         type="n", xlab="", ylab="", axes=FALSE)
+    savepar
+}
+
+get.r <- function(i, nr) {
+    i %% nr + 1
+}
+
+get.c <- function(i, nr) {
+    i %/% nr + 1
+}
+
+draw.title.cell <- function(title, i, nr) {
+    r <- get.r(i, nr)
+    c <- get.c(i, nr)
+    text(2*c - .5, -r, title)
+    rect((2*(c - 1) + .5), -(r - .5), (2*c + .5), -(r + .5))
+}
+
+draw.plotmath.cell <- function(expr, i, nr, string = NULL) {
+    r <- get.r(i, nr)
+    c <- get.c(i, nr)
+    if (is.null(string)) {
+        string <- deparse(expr)
+        string <- substr(string, 12, nchar(string) - 1)
+    }
+    text((2*(c - 1) + 1), -r, string, col="grey50")
+    text((2*c), -r, expr, adj=c(.5,.5))
+    rect((2*(c - 1) + .5), -(r - .5), (2*c + .5), -(r + .5), border="grey")
+}
+
+nr <- 20
+nc <- 2
+oldpar <- make.table(nr, nc)
+i <- 0
+draw.title.cell("Arithmetic Operators", i, nr); i <- i + 1
+draw.plotmath.cell(expression(x + y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x - y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x * y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x / y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %+-% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %/% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %*% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %.% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(-x), i, nr); i <- i + 1
+draw.plotmath.cell(expression(+x), i, nr); i <- i + 1
+draw.title.cell("Sub/Superscripts", i, nr); i <- i + 1
+draw.plotmath.cell(expression(x[i]), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x^2), i, nr); i <- i + 1
+draw.title.cell("Juxtaposition", i, nr); i <- i + 1
+draw.plotmath.cell(expression(x * y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(paste(x, y, z)), i, nr); i <- i + 1
+draw.title.cell("Radicals", i, nr); i <- i + 1
+draw.plotmath.cell(expression(sqrt(x)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(sqrt(x, y)), i, nr); i <- i + 1
+draw.title.cell("Lists", i, nr); i <- i + 1
+draw.plotmath.cell(expression(list(x, y, z)), i, nr); i <- i + 1
+draw.title.cell("Relations", i, nr); i <- i + 1
+draw.plotmath.cell(expression(x == y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x != y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x < y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x <= y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x > y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x >= y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %~~% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %=~% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %==% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %prop% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %~% y), i, nr); i <- i + 1
+draw.title.cell("Typeface", i, nr); i <- i + 1
+draw.plotmath.cell(expression(plain(x)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(italic(x)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(bold(x)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(bolditalic(x)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(underline(x)), i, nr); i <- i + 1
+
+# Need fewer, wider columns for ellipsis ...
+nr <- 20
+nc <- 2
+make.table(nr, nc)
+i <- 0
+draw.title.cell("Ellipsis", i, nr); i <- i + 1
+draw.plotmath.cell(expression(list(x[1], ..., x[n])), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x[1] + ... + x[n]), i, nr); i <- i + 1
+draw.plotmath.cell(expression(list(x[1], cdots, x[n])), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x[1] + ldots + x[n]), i, nr); i <- i + 1
+draw.title.cell("Set Relations", i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %subset% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %subseteq% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %supset% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %supseteq% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %notsubset% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %in% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %notin% y), i, nr); i <- i + 1
+draw.title.cell("Accents", i, nr); i <- i + 1
+draw.plotmath.cell(expression(hat(x)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(tilde(x)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(ring(x)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(bar(xy)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(widehat(xy)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(widetilde(xy)), i, nr); i <- i + 1
+draw.title.cell("Arrows", i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %<->% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %->% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %<-% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %up% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %down% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %<=>% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %=>% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %<=% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %dblup% y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x %dbldown% y), i, nr); i <- i + 1
+draw.title.cell("Symbolic Names", i, nr); i <- i + 1
+draw.plotmath.cell(expression(Alpha - Omega), i, nr); i <- i + 1
+draw.plotmath.cell(expression(alpha - omega), i, nr); i <- i + 1
+draw.plotmath.cell(expression(phi1 + sigma1), i, nr); i <- i + 1
+draw.plotmath.cell(expression(Upsilon1), i, nr); i <- i + 1
+draw.plotmath.cell(expression(infinity), i, nr); i <- i + 1
+draw.plotmath.cell(expression(32 * degree), i, nr); i <- i + 1
+draw.plotmath.cell(expression(60 * minute), i, nr); i <- i + 1
+draw.plotmath.cell(expression(30 * second), i, nr); i <- i + 1
+
+# Need even fewer, wider columns for typeface and style ...
+nr <- 20
+nc <- 1
+make.table(nr, nc)
+i <- 0
+draw.title.cell("Style", i, nr); i <- i + 1
+draw.plotmath.cell(expression(displaystyle(x)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(textstyle(x)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(scriptstyle(x)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(scriptscriptstyle(x)), i, nr); i <- i + 1
+draw.title.cell("Spacing", i, nr); i <- i + 1
+draw.plotmath.cell(expression(x ~~ y), i, nr); i <- i + 1
+
+# Need fewer, taller rows for fractions ...
+# cheat a bit to save pages
+par(new = TRUE)
+nr <- 10
+nc <- 1
+make.table(nr, nc)
+i <- 4
+draw.plotmath.cell(expression(x + phantom(0) + y), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x + over(1, phantom(0))), i, nr); i <- i + 1
+draw.title.cell("Fractions", i, nr); i <- i + 1
+draw.plotmath.cell(expression(frac(x, y)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(over(x, y)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(atop(x, y)), i, nr); i <- i + 1
+
+# Need fewer, taller rows and fewer, wider columns for big operators ...
+nr <- 10
+nc <- 1
+make.table(nr, nc)
+i <- 0
+draw.title.cell("Big Operators", i, nr); i <- i + 1
+draw.plotmath.cell(expression(sum(x[i], i=1, n)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(prod(plain(P)(X == x), x)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(integral(f(x) * dx, a, b)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(union(A[i], i==1, n)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(intersect(A[i], i==1, n)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(lim(f(x), x %->% 0)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(min(g(x), x >= 0)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(inf(S)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(sup(S)), i, nr); i <- i + 1
+
+nr <- 12
+nc <- 1
+make.table(nr, nc)
+i <- 0
+draw.title.cell("Grouping", i, nr); i <- i + 1
+# Those involving '{ . }' have to be done "by hand"
+draw.plotmath.cell(expression({}(x , y)), i, nr, string="{}(x, y)"); i <- i + 1
+draw.plotmath.cell(expression((x + y)*z), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x^y + z),   i, nr); i <- i + 1
+draw.plotmath.cell(expression(x^(y + z)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(x^{y + z}), i, nr, string="x^{y + z}"); i <- i + 1
+draw.plotmath.cell(expression(group("(", list(a, b), "]")), i, nr); i <- i + 1
+draw.plotmath.cell(expression(bgroup("(", atop(x, y), ")")), i, nr); i <- i + 1
+draw.plotmath.cell(expression(group(lceil, x, rceil)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(group(lfloor, x, rfloor)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(group(langle, list(x, y), rangle)), i, nr); i <- i + 1
+draw.plotmath.cell(expression(group("|", x, "|")), i, nr); i <- i + 1
+
+par(oldpar)

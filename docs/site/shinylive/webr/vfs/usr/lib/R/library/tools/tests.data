@@ -1,0 +1,318 @@
+require("tools")
+
+# -------------------------------------------------------------------
+# find_wide_Rd_lines_in_Rd_object: render stage=render \Sexpr
+# expressions within \examples if installed = TRUE.
+
+rd <- sprintf("
+\\name{foo}
+\\title{Title}
+\\description{Desc.}
+\\examples{
+  \\Sexpr[stage=render]{\"# foobar\"}
+  \\Sexpr[stage=render]{strrep(\"long \", 30)}
+  # %s
+}", strrep("123456789 ", 10))
+
+rd <- parse_Rd(con <- textConnection(rd)); close(con)
+
+# does not error, but finds long lines, dynamic ones as well
+bad <- tools:::find_wide_Rd_lines_in_Rd_object(rd, installed = TRUE)
+stopifnot(
+  "examples" %in% names(bad),
+  "warn" %in% names(bad$examples),
+  any(grepl("123456789 ", bad$examples$warn)),
+  any(grepl("long ", bad$examples$warn))
+)
+
+# does error currently
+err <- NULL
+tryCatch(
+  tools:::find_wide_Rd_lines_in_Rd_object(rd, installed = FALSE),
+  error = function(e) err <<- e
+)
+stopifnot(!is.null(err))
+\name{Rd-Sexpr-error}
+\title{Trigger an Error when Evaluating Code from \verb{\\Sexpr}}
+\description{
+  \Sexpr[stage=render]{
+    % this will give an error
+    1 + "error"
+  }
+}
+\name{SexprExample}
+\title{title}
+\description{description}
+\details{
+  Hello
+  \Sexpr[stage=build,results=hide]{
+    invisible(NULL)
+    invisible(NULL)
+    invisible(NULL)
+    invisible(NULL)
+    invisible(NULL)
+    invisible(NULL)
+    invisible(NULL)
+    invisible(NULL)
+    invisible(NULL)
+    "" # workaround: remove results=hide and use the return value
+  }
+}
+\name{Rd-Sexpr-warning}
+\title{Trigger a \code{checkRd} Warning for \verb{\\Sexpr} Output}
+\description{Regression test for c75410}
+\section{Rd issue}{ % in line 5 (strong is invalid in code block)
+  \Sexpr[results=rd,stage=build]{"\\\\code{\\\\strong{x}}"}
+}
+\name{Rd-braces_ignored}
+\title{Ignored Rd Braces}
+
+\description{
+
+  \describe{
+    \item{a}{{
+        desc
+    }}
+  }
+
+  \enumerate{
+    \item {First item.}
+  }
+
+  foo {\code{bar}}
+
+  -{\R}-{\sspace}-
+
+}
+
+\references{
+{
+  \dQuote{{The \pkg{tools} package}}
+  \emph{{R} Journal},
+{Special Issue}
+  ({EM}) {P}oisson--{G}amma [{C}omputer {S}oftware]
+}
+}
+\name{Rd-braces_reported}
+\title{Reported Rd Braces}
+
+\description{
+
+  code{\link{\{}}
+
+  integer in {1,2,..,5}
+
+  \itemize{
+    \item {numeric} or {character} % 2nd is noted
+    \item{a:}{desc} % false \describe
+  }
+
+}
+
+\value{
+\itemize{
+\item{comp1}{desc1}
+}
+}
+
+\references{
+  Averig\"{u}\'{e}.
+  emph{Journal}.
+  \doi{10....}{Spurious link text}
+  [Spurious link text]{http...}
+}
+require("tools")
+
+# -------------------------------------------------------------------
+# prepare_Rd() is OK with a top level \Sexpr that is yet to be rendered
+
+txt <- "
+\\name{foo}
+\\title{Title}
+\\description{Desc.}
+\\Sexpr[stage=render,results=rd]{\"\\\\\\details{This is dynamic.}\"}
+"
+
+rd <- parse_Rd(con <- textConnection(txt)); close(con)
+
+warn <- NULL
+withCallingHandlers(
+  rd2 <- tools:::prepare_Rd(rd),
+  warning = function(w) { warn <<- w; invokeRestart("muffleWarning") }
+)
+stopifnot(is.null(warn))
+stopifnot("\\Sexpr" %in% tools:::RdTags(rd2))
+
+
+## \Sexpr[stage=build, results=hide]{ <a dozen "empty" lines> }
+tf <- textConnection("RdTeX", "w")
+Rd2latex("Rd-Sexpr-hide-empty.Rd", tf, stages="build")
+tex <- textConnectionValue(tf); close(tf); rm(tf)
+(H2end <- tex[grep("^Hello", tex):length(tex)])
+stopifnot((n <- length(H2end)) <= 4, # currently '3'; was 13 in R < 4.2.0
+          H2end[-c(1L,n)] == "")     # also had \\AsIs{ .. }  " "  "   "
+
+
+## checkRd() gives file name and correct line number of \Sexpr[results=rd] chunk
+stopifnot(grepl("Rd-Sexpr-warning.Rd:5:",
+                print(checkRd("Rd-Sexpr-warning.Rd", stages = "build")),
+                fixed = TRUE))
+
+## processRdChunk() gives file name and location of eval error
+(msg <- tryCatch(checkRd(file_path_as_absolute("Rd-Sexpr-error.Rd")),
+                 error = conditionMessage))
+stopifnot(startsWith(msg, "Rd-Sexpr-error.Rd:4-7:"),
+          length(checkRd("Rd-Sexpr-error.Rd", stages = NULL)) == 0)
+## file name and line numbers were missing in R < 4.2.0
+
+
+## \doi with hash symbol or Rd specials
+rd <- parse_Rd("doi.Rd")
+writeLines(out <- capture.output(Rd2txt(rd, stages = "build")))
+stopifnot(grepl("10.1000/456#789", out[5], fixed = TRUE),
+          grepl("doi.org/10.1000/456%23789", out[5], fixed = TRUE),
+          grepl("10.1000/{}", out[7], fixed = TRUE),
+          grepl("doi.org/10.1000/%7B%7D", out[7], fixed = TRUE))
+## R < 4.2.0 failed to encode the hash and lost {}
+
+
+## \title and \section name should not end in a period
+rd <- parse_Rd(textConnection(r"(
+\name{test}
+\title{title.}
+\description{description}
+\section{section.}{nothing}
+)"))
+stopifnot(identical(endsWith(print(checkRd(rd)), "end in a period"),
+                    rep(TRUE, 2)))
+
+## checkRd() with duplicated \name (is documented to fail from prepare_Rd)
+assertError(checkRd(parse_Rd(textConnection(r"(
+\name{test}\title{test}\name{test2}
+)"))), verbose = TRUE)
+## no error in R < 4.4.0
+
+## prepared NEWS should check cleanly
+NEWS_Rd <- readRDS(file.path(R.home("doc"), "NEWS.rds"))
+stopifnot(inherits(NEWS_Rd, "Rd"),
+          length(print(checkRd(NEWS_Rd))) == 0L)
+## "Must have a \description" in R < 4.4.0, now moved to checkRdContents()
+
+## checkRd() raises some instances of "lost braces"
+Sys.setenv("_R_CHECK_RD_NOTE_LOST_BRACES_" = TRUE)
+bad <- function (Rd) sum(startsWith(checkRd(Rd), "checkRd: (-1) "))
+stopifnot(bad("Rd-braces_ignored.Rd") == 0L,
+          bad("Rd-braces_reported.Rd") == 10L)
+
+
+## An unmatched un-escaped '{' in a comment in \examples{} ... should *NOT* trip up, but does
+
+txt <- r"(\title{Commented left-brace in Example}
+\name{ex-comm-brace}
+\examples{
+  if(1 <= 11) { # if(require("MASS")) \{  << only works when escaped with '\\'
+    fractions(355, 112)
+  }% if(.)
+}
+\keyword{misc})"
+## these all work fine:
+
+(rd1 <- parse_Rd(con <- textConnection(txt))); close(con)
+Rd2ex(rd1)
+Rd2txt(rd1)
+## etc
+
+## however: When I try the bare "{" instead of  "\{"
+txt0 <- sub("\\{", "{", txt, fixed=TRUE)
+stopifnot(nchar(txt0) == nchar(txt) - 1)
+## This currently gives a warning .. and later problems {-> package checking etc}
+rd0 <- parse_Rd(con0 <- textConnection(txt0)); close(con0)
+## Warning message:
+## In parse_Rd(con0) : <connection>:8: unexpected section header '\keyword'
+checkRd(rd0)
+Rd2ex(rd0) # shows extra "}" and "{misc}"
+require("tools")
+
+x <- Rd_db("base")
+system.time(y <- lapply(x, function(e)
+    tryCatch(Rd2HTML(e, out = nullfile()), error = identity))) # 3-5 sec
+stopifnot(!vapply(y, inherits, NA, "error"))
+## Gave error when "running" \Sexpr{.} DateTimeClasses.Rd
+
+
+## PR#18052: \dots must not be interpreted inside \preformatted
+Rdsnippet <- tempfile()
+writeLines(r"(\preformatted{
+\item{\dots}{foo(arg = "\\\\dots", ...)}
+})", Rdsnippet)
+#file.show(Rdsnippet)
+stopifnot(exprs = {
+    identical(capture.output(Rd2HTML(Rdsnippet, fragment = TRUE))[2L],
+              r"(\item{\dots}{foo(arg = "\\dots", ...)})")
+    identical(capture.output(Rd2txt(Rdsnippet, fragment = TRUE))[2L],
+              r"(\item{\dots}{foo(arg = "\\dots", ...)})")
+    identical(capture.output(Rd2latex(Rdsnippet, fragment = TRUE))[2L],
+              r"(\bsl{}item\{\bsl{}dots\}\{foo(arg = "\bsl{}\bsl{}dots", ...)\})")
+}) # the last two failed in R < 4.1.0
+
+## also do not translate \dots in R code lines in \examples
+Rdsnippet <- tempfile()
+writeLines(r"(\examples{
+foo <- function(arg = "\\\\dots", ...) NULL # \dots
+})", Rdsnippet)
+#file.show(Rdsnippet)
+stopifnot(exprs = {
+    identical(capture.output(Rd2ex(parse_Rd(Rdsnippet), fragment = TRUE))[5L],
+              r"(foo <- function(arg = "\\dots", ...) NULL # \dots)")
+}) # failed in R < 4.1.0
+
+## \usage: keep quoted "\\\\dots", but _do_ translate formal \dots arg
+Rdsnippet <- tempfile()
+writeLines(r"(\name{foo}\title{foo}\usage{
+## keep this comment to ensure a newline at the end
+foo(arg = "\\\\dots", \dots)
+})", Rdsnippet)
+Rdobj <- parse_Rd(Rdsnippet)
+check_dots_usage <- function(FUN) {
+    out <- trimws(grep("foo(", capture.output(FUN(Rdobj)),
+                       value = TRUE, fixed = TRUE))
+    if (!identical(out, r"(foo(arg = "\\dots", ...))"))
+        stop("unexpected output: ", out)
+}
+check_dots_usage(Rd2HTML)
+check_dots_usage(Rd2txt)
+check_dots_usage(Rd2latex)
+## the last two failed in R < 4.1.0; output was foo(arg = "\...", ...)
+## check that all S3 methods in base are registered.
+(function() {
+  old <-  Sys.getlocale("LC_COLLATE")
+  on.exit(Sys.setlocale("LC_COLLATE", old))
+          Sys.setlocale("LC_COLLATE", "C")
+  stopifnot(identical(base:::.S3_methods_table, # >>> end of ../../base/R/zzz.R ; update *there* !
+                      tools:::.make_S3_methods_table_for_base()))
+})()
+
+
+## check that all .internalGenerics  have .Internal :
+(iGens <- .internalGenerics)
+names(iGens) <- iGens
+str(bdI <- lapply(iGens, body))
+stopifnot(lengths(bdI) >= 2L)
+
+is.qI  <- function(.) identical(., quote(.Internal))
+has.qI <- function(E) is.qI(E) || is.qI(E[[1L]])
+str(l1 <- lapply(bdI, \(bd) if(bd[[1]] == quote(`{`)) bd[[length(bd)]] else bd[[1]]))
+(r <- vapply(l1, \(b) has.qI(b) || has.qI(b[[length(b)]]), NA))
+stopifnot(r)
+\RdOpts{stage = build}   % emulate pre-4.2.0 default for \doi
+\name{doi}
+\title{Test \verb{\\doi} with hash or Rd specials}
+\description{
+  \doi{10.1000/456#789}  % example from DOI handbook (Section 2.5.2.3)
+  
+  \doi{10.1000/\{\}}     % hypothetical DOI with curly braces
+}
+require("tools")
+
+(ud4 <- undoc("stats4"))
+stopifnot(sapply(ud4, length) == 0)

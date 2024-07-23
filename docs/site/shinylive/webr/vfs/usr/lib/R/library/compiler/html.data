@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head><title>R: The R Compiler Package</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+<h1> The R Compiler Package
+<img class="toplogo" src="../../../doc/html/Rlogo.svg" alt="[R logo]" />
+</h1>
+<hr/>
+<div style="text-align: center;">
+<a href="../../../doc/html/packages.html"><img class="arrow" src="../../../doc/html/left.jpg" alt="[Up]" /></a>
+<a href="../../../doc/html/index.html"><img class="arrow" src="../../../doc/html/up.jpg" alt="[Top]" /></a>
+</div><h2>Documentation for package &lsquo;compiler&rsquo; version 4.4.1</h2>
+
+<ul><li><a href="../DESCRIPTION">DESCRIPTION file</a>.</li>
+</ul>
+
+<h2>Help Pages</h2>
+
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="compile.html">cmpfile</a></td>
+<td>Byte Code Compiler</td></tr>
+<tr><td style="width: 25%;"><a href="compile.html">cmpfun</a></td>
+<td>Byte Code Compiler</td></tr>
+<tr><td style="width: 25%;"><a href="compile.html">compile</a></td>
+<td>Byte Code Compiler</td></tr>
+<tr><td style="width: 25%;"><a href="compile.html">compilePKGS</a></td>
+<td>Byte Code Compiler</td></tr>
+<tr><td style="width: 25%;"><a href="compile.html">disassemble</a></td>
+<td>Byte Code Compiler</td></tr>
+<tr><td style="width: 25%;"><a href="compile.html">enableJIT</a></td>
+<td>Byte Code Compiler</td></tr>
+<tr><td style="width: 25%;"><a href="compile.html">getCompilerOption</a></td>
+<td>Byte Code Compiler</td></tr>
+<tr><td style="width: 25%;"><a href="compile.html">loadcmp</a></td>
+<td>Byte Code Compiler</td></tr>
+<tr><td style="width: 25%;"><a href="compile.html">setCompilerOptions</a></td>
+<td>Byte Code Compiler</td></tr>
+</table>
+</div></body></html>
+@media screen {
+    .container {
+	padding-right: 10px;
+	padding-left: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 900px;
+    }
+}
+
+.rimage img { /* from knitr - for examples and demos */
+    width: 96%;
+    margin-left: 2%;
+} 	
+
+.katex { font-size: 1.1em; }
+
+code {
+    color: inherit;
+    background: inherit;
+}
+
+body {
+    line-height: 1.4;
+    background: white;
+    color: black;
+}
+
+a:link {
+    background: white;
+    color: blue;
+}
+
+a:visited {
+    background: white;
+    color: rgb(50%, 0%, 50%);
+}
+
+h1 {
+    background: white;
+    color: rgb(55%, 55%, 55%);
+    font-family: monospace;
+    font-size: 1.4em; /* x-large; */
+    text-align: center;
+}
+
+h2 {
+    background: white;
+    color: rgb(40%, 40%, 40%);
+    font-family: monospace;
+    font-size: 1.2em; /* large; */
+    text-align: center;
+}
+
+h3 {
+    background: white;
+    color: rgb(40%, 40%, 40%);
+    font-family: monospace;
+    font-size: 1.2em; /* large; */
+}
+
+h4 {
+    background: white;
+    color: rgb(40%, 40%, 40%);
+    font-family: monospace;
+    font-style: italic;
+    font-size: 1.2em; /* large; */
+}
+
+h5 {
+    background: white;
+    color: rgb(40%, 40%, 40%);
+    font-family: monospace;
+}
+
+h6 {
+    background: white;
+    color: rgb(40%, 40%, 40%);
+    font-family: monospace;
+    font-style: italic;
+}
+
+img.toplogo {
+    width: 4em;
+    vertical-align: middle;
+}
+
+img.arrow {
+    width: 30px;
+    height: 30px;
+    border: 0;
+}
+
+span.acronym {
+    font-size: small;
+}
+
+span.env {
+    font-family: monospace;
+}
+
+span.file {
+    font-family: monospace;
+}
+
+span.option{
+    font-family: monospace;
+}
+
+span.pkg {
+    font-weight: bold;
+}
+
+span.samp{
+    font-family: monospace;
+}
+
+div.vignettes a:hover {
+    background: rgb(85%, 85%, 85%);
+}
+
+tr {
+    vertical-align: top;
+}
+
+span.rlang {
+    font-family: Courier New, Courier;
+    color: #666666;
+}
+
