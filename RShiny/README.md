@@ -29,7 +29,7 @@ In this workshop, users will be able to:
 | [Input options](lessons/02_inputs.md) | 30 min (July 3rd) |
 | [Visualization and Interactive Visuals](lessons/03_visuals.md) | 45 min (July 11th) |
 | [Arranging Layouts](lessons/04_layouts.md) | 30 min (July 18th) |
-| [Hosting Platforms]() | 15 min (Aug 1) |
+| [Hosting Platforms](lessons/05_hosting.md) | 15 min (Aug 1) |
 
 ## Installation Requirements
 
