@@ -43,4 +43,6 @@ Download the most recent versions of R and RStudio for your laptop:
 Prior to the workshop please install the following R packages:
 
 - Shiny
-- Tidyverse 
+- Tidyverse
+- shinythemes
+- DT
