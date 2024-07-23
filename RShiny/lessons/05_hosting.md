@@ -35,3 +35,5 @@ One option for hosting your Shiny apps is availible to **HMS Quad-based faculty,
 If you aren't eligible for the HMS Research Data Visualization Platform then [Shinyapps.io](https://www.shinyapps.io/) is a platform that is run by Posit for hosting Shiny apps and it is likely your next best choice. It has several different levels of access. Its lowest level of access is free and allows the developer to upload up to 5 apps and have 25 hours of computing per month. This level is recommendeded if you are new to the Shiny world. It allows you host a few apps and play around with them a bit. However, you can quickly go through the 25 hours of computational resources and it won't be too hard to create more than 5 apps. After the free level, they have higher levels service that provide the developer with more computaitonal hours and higher, or even, no limits on the number of apps. Higher levels also come with more customer services options as well.
 
 ## Serverless with Shinylive
+
+The last option for 
