@@ -5,13 +5,19 @@ In this lesson we will user Shinylive to create a server-less shiny app hosted o
 # Creating your app
 
 <p align="center">
-<img src="../img/Create_project_demo.gif" width="200">
+<img src="../img/Create_project_demo.gif" width="700">
 </p>
 
 
 <p align="center">
-<img src="../img/Make_app.gif" width="200">
+<img src="../img/Make_app.gif" width="700">
 </p>
+
+
+<p align="center">
+<img src="../img/Exporting_app.gif" width="700">
+</p>
+
 
 1. create project
 2. create app
