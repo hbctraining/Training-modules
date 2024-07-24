@@ -20,6 +20,8 @@ In this lesson we will user Shinylive to create a server-less shiny app hosted o
 <img src="../img/Exporting_app.gif" width="700">
 </p>
 
+4. View with httpuv
+
 <p align="center">
 <img src="../img/Run_static_server.gif" width="700">
 </p>
@@ -29,4 +31,5 @@ In this lesson we will user Shinylive to create a server-less shiny app hosted o
 7. clone github
 8. copy files over
 9. Push
+10. View
 
