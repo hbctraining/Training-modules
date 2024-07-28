@@ -1,5 +1,6 @@
 This is a place to compile CSS documentation and style code.
 
+```
 h2("my Title", style = "font-size: 10px"),
 tags$style(HTML(".js-irs-0 .irs-single, .js-irs-0 .irs-bar-edge, .js-irs-0 .irs-bar {background: orange}")),
 tags$style(HTML(".js-irs-1 .irs-single, .js-irs-1 .irs-bar-edge, .js-irs-1 .irs-bar {background: orange}")),
@@ -16,3 +17,4 @@ actionButton("calculate", "Multiply!",
                          border-color: orange;
                          font-size: 24px;
                          font-weight: 800")
+```
