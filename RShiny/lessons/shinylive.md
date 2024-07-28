@@ -27,9 +27,32 @@ In this lesson we will user Shinylive to create a server-less shiny app hosted o
 </p>
 
 5. make github page
-6. settings
-7. clone github
-8. copy files over
-9. Push
-10. View
 
+<p align="center">
+<img src="../img/Make_GitHub_page.gif" width="700">
+</p>
+
+6. settings
+   
+<p align="center">
+<img src="../img/Change_GitHub_Pages_settings.gif" width="700">
+</p>
+
+7. clone github
+    
+<p align="center">
+<img src="../img/GitHub_clone.gif" width="700">
+</p>
+
+8. copy files over
+
+<p align="center">
+<img src="../img/Copying_app_pushing_repo.gif" width="700">
+</p>
+
+
+9. View
+
+<p align="center">
+<img src="../img/Moving_to_shinylive_app.gif" width="700">
+</p>
