@@ -48,12 +48,12 @@ These steps are shown in the GIF below:
 <img src="../img/Create_project_demo.gif" width="700">
 </p>
 
-## Make app
+## Make the app
 
-The next step in this process is likely the longest step because you now need to make your app! However, we are going to take a shortcut here and use an app that we have already created.
+The next step in this process is likely the longest step because you now need to make your app! However, we are going to take a shortcut here and use an app that we have already created for this demonstration.
 
-1. Highlight and delete the default app that came along with create you Shiny application RStudio project
-2. Copy the RShiny App below by highlighting it and right-clicking selecting "**Copy**"
+1. Highlight and delete the default app that came along with create your Shiny application RStudio project
+2. Copy the RShiny App below by highlighting it and right-clicking the highliughted text and selecting "**Copy**"
 
 ```
 library(shiny)
@@ -81,40 +81,92 @@ shinyApp(ui = ui, server = server)
 3. Right-click the script editor panel in your RStudio project and select "**Paste**"
 4. Save your app by left-clicking on the "Save" icon in RStudio
 
+These steps are shown in the GIF below:
+
 <p align="center">
 <img src="../img/Make_app.gif" width="700">
 </p>
 
-3. Create docs and export
+## Create docs and export
+
+In order for GitHub Pages to be able to render your Shiny app, you will need to have a specifically named directory called "docs", which will hold the files output from Shinylive. 
+
+1. Click the "Create a new folder" icon in RStudio
+2. Named the new directory "docs"
+3. Within the console type the following command:
+
+```
+shinylive::export(appdir = "../mtcars_demo/", destdir = "docs")
+```
+
+This command uses `shinylive` to export your app found in the app directory (`appdir` in the command) and direct the output (`destdir`) into our newly created `docs` directory. 
+
+These steps are shown in the GIF below:
+
 <p align="center">
 <img src="../img/Exporting_app.gif" width="700">
 </p>
 
-4. View with httpuv
+>**Note**: The following command will also work:
+>```
+>shinylive::export(appdir = ".", destdir = "docs")
+>```
+>However, we opted not to use this command in this demo so it would be a bit more clear what the `appdir` argument was taking in. As a result, we used a relative path to go up a directory then come back down into our current directory. However, for your own work you may opt for this alternative method of directly calling the current directory.
+
+## View with httpuv (Optional; but strongly encouraged)
+
+Once you have created your app with `shinylive` you will likely want to inspect your app locally to be sure that it is how you want it. This is an optional step, but we recommend visualizing your app at this point as a check to make sure the app was rendered correctly. However, one issue with visualizing your app at this point is that it can't be visualized through tradional methods of looking at your app. You will instead need to emulate the static webpage and visualize it in there. The `httpuv` package allows you to visualize static webpages in R.
+
+1. In the console enter:
+```
+httpuv::runStaticServer("docs/", port = 8008)
+```
+2. Inspect your app within your browser to make sure that it is working correctly
+3. Left-click on the stop sign above your R console to stop the app
+
+These steps are shown in the GIF below:
 
 <p align="center">
 <img src="../img/Run_static_server.gif" width="700">
 </p>
 
-5. make github page
+## Make GitHub Repository
+
+Now that we have made the app and prepped it for being on GitHub, we now need to create a GitHub repository ready to hold our app.
+
+1. Navigate to your GitHub page
+2. Scroll down to the green "**New**" button to create a new repository on GitHub
+3. Name your repository in the box underneath "Repsitory name". We named our app `shinylive_app` and this will be used in the app URL when we are finished
+4. (Optional) Include a description of your app
+5. Select that you would like this repository to be a "**Public**" repository rather than a "**Private**" repository
+6. (Optional) You can check the text box next to "**Add a README file**" if you would like to have a README file automaically created with your repository
+7. Left-click "**Create Repository**" at the bottom of the webpage
+
+These steps are shown in the GIF below:
 
 <p align="center">
 <img src="../img/Make_GitHub_page.gif" width="700">
 </p>
 
-6. settings
+## Magange GitHub Pages Settings
    
+These steps are shown in the GIF below:
+
 <p align="center">
 <img src="../img/Change_GitHub_Pages_settings.gif" width="700">
 </p>
 
 7. clone github
     
+These steps are shown in the GIF below:
+
 <p align="center">
 <img src="../img/GitHub_clone.gif" width="700">
 </p>
 
 8. copy files over
+
+These steps are shown in the GIF below:
 
 <p align="center">
 <img src="../img/Copying_app_pushing_repo.gif" width="700">
@@ -122,6 +174,8 @@ shinyApp(ui = ui, server = server)
 
 
 9. View
+
+These steps are shown in the GIF below:
 
 <p align="center">
 <img src="../img/Moving_to_shinylive_app.gif" width="700">
