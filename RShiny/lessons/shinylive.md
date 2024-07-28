@@ -81,7 +81,9 @@ shinyApp(ui = ui, server = server)
 3. Right-click the script editor panel in your RStudio project and select "**Paste**"
 4. Save your app by left-clicking on the "Save" icon in RStudio
 
-
+<p align="center">
+<img src="../img/Make_app.gif" width="700">
+</p>
 
 3. Create docs and export
 <p align="center">
