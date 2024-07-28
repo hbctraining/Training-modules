@@ -3,7 +3,7 @@ title: "Hosting Options for RShiny Apps"
 author: "Will Gammerdinger"
 ---
 
-# Learnign Objectives
+# Learning Objectives
 
 In this lesson, you will:
 
@@ -22,18 +22,26 @@ One option for distributing your app is for it to be run on people own computers
 
 As we previously mentioned, the most common way for apps to hosted is via servers. One nice aspect of hosting an app within a server is that the version concerns of runing an app locally disappearing because the developers versions of the loaded packages are the ones that are used on the server. There are two ways that you might choose to host your apps on a server:
 
-### HMS Research Data Visualization Platform (RDVP)
+### Posit Connect / HMS Research Data Visualization Platform (RDVP)
 
-One option for hosting your Shiny apps is availible to **HMS Quad-based faculty, staff, and students** is through the [HMS Research Data Visualization Platform](https://it.hms.harvard.edu/service/research-data-visualization-platform-rdvp-pilot). Unfortunately, HSDM, HSPH, hospital affiliates, and hospital-based labs are _not_ eligible. Currently, the HMS-Research Data Visualization Platform is running a pilot program for Posit (RStudio) Connect. Users who use this option have access to an unlimited number of apps and computation hours for the duration of the pilot at no cost. This is the likely best option for people who are eligible. Uploading apps through this platforma has a few advantages:
+One option for hosting your Shiny apps is to use [Posit Connect](https://posit.co/products/enterprise/connect/), which you instituition may have an account for. HMS has made a pilot for Posit Connect availible to **HMS Quad-based faculty, staff, and students** is through the [HMS Research Data Visualization Platform](https://it.hms.harvard.edu/service/research-data-visualization-platform-rdvp-pilot). Unfortunately, HSDM, HSPH, hospital affiliates, and hospital-based labs are _not_ eligible. Currently, the HMS-Research Data Visualization Platform is running a pilot program for Posit (RStudio) Connect. Users who use this option have access to an unlimited number of apps and computation hours for the duration of the pilot at no cost. This is the likely best option for people who are eligible. Uploading apps through this platforma has a few advantages:
 
-1) Uploading apps is pretty straightforward
+1) Uploading apps is simple
 2) It allows you to control access to who can see/use your app. You can let anyone use it, require a login or only invite certain people to be able to use it
 3) You can give it a custom URL
 
 ### Shinyapps.io
 
-If you aren't eligible for the HMS Research Data Visualization Platform then [Shinyapps.io](https://www.shinyapps.io/) is a platform that is run by Posit for hosting Shiny apps and it is likely your next best choice. It has several different levels of access. Its lowest level of access is free and allows the developer to upload up to 5 apps and have 25 hours of computing per month. This level is recommendeded if you are new to the Shiny world. It allows you host a few apps and play around with them a bit. However, you can quickly go through the 25 hours of computational resources and it won't be too hard to create more than 5 apps. After the free level, they have higher levels service that provide the developer with more computaitonal hours and higher, or even, no limits on the number of apps. Higher levels also come with more customer services options as well.
+If you aren't eligible for Posit Connect or the HMS Research Data Visualization Platform then [Shinyapps.io](https://www.shinyapps.io/) is a platform that is run by Posit for hosting Shiny apps and it is likely your next best choice. It has several different levels of access. Its lowest level of access is free and allows the developer to upload up to 5 apps and have 25 hours of computing per month. This level is recommendeded if you are new to the Shiny world. It allows you host a few apps and play around with them a bit. However, you can quickly go through the 25 hours of computational resources and it won't be too hard to create more than 5 apps. After the free level, they have higher levels service that provide developers with more computaitonal hours and higher, or even, no limits on the number of apps. Higher levels also come with more customer services options as well.
 
 ## Serverless with Shinylive
 
-The last option for 
+The last option for hosting is to host your app online on a site like GitHub Pages in a serverless manner. This can work because at the heart of R, it uses C/C++ and modern web browsers can interpret C/C++ code. While there are some limitations to this approach, what it means is that you can host the code for your Shiny app on a website and it is interpretted locally in the user's browser. To the user it feels like a traditional, server-hosted app, but under the hood it is actually being run from their own web browser. Due to it being running locally from the user's web browser, the user is limited by their local memory constraints. The image below contrasts this server-less shinylive approach with the more traditional server-hosted approach:
+
+<p align="center">
+<img src="../img/shinylive-webr.png" width="600">
+</p>
+
+*Image credit: Joe Cheng "Running Shiny without a server"*
+
+Full documentation for how to host your app using `shinylive` can be found [here](shinylive.md).
