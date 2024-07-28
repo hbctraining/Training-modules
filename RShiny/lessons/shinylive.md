@@ -28,6 +28,8 @@ library(shinylive)
 library(httpuv)
 ```
 
+We will also be using [GitHub Desktop](https://github.com/apps/desktop) in this demo. If you feel comfortable using `git` from the command-line, then this is optional. GitHub has documentation on [how to get set-up with GitHub Desktop](https://docs.github.com/en/desktop/overview/getting-started-with-github-desktop). If you are going to use GitHub Desktop, be sure that you have downloaded it and gotten yourself set-up on GitHub Desktop.
+
 If you have done all of this, then you are ready to upload your app to GitHub Pages using Shinylive!
 
 # Creating your app
@@ -148,15 +150,34 @@ These steps are shown in the GIF below:
 <img src="../img/Make_GitHub_page.gif" width="700">
 </p>
 
-## Magange GitHub Pages Settings
-   
+## Manage GitHub Pages Settings
+
+Now that we have created our GitHub repository, we will need to edit a few of the settings to allow us to have the Shiny app visualized directory.
+
+1. In your repository, left-click on the "**Settings**" tab
+2. On the left-hand side of the webpage, you should now be able to select "**Pages**" from a menu bar
+3. Left-click on the "**Branch**" dropdown menu and select "`main`"
+4. Left-click on the "**Folder**" dropdown menu that has just appeared next to the "**Branch**" dropdown menu and select "`/docs`". This is why we had to name our destination directory `docs` when creating it using `shinylive`
+5. Left-click the "**Save**" button
+6. (Optional) You can return back to your code tab on GitHub if you wish, we will not need to adjust any further settings 
+
 These steps are shown in the GIF below:
 
 <p align="center">
 <img src="../img/Change_GitHub_Pages_settings.gif" width="700">
 </p>
 
-7. clone github
+## Clone your GitHub Repository
+
+Now that we add created our GitHub repository and gotten the settings right, we now will need to clone (or copy) our repository to our local computers.
+
+1. Open GitHub Desktop
+2. Left-click on the "**Current Repository**" tab on the top left corner of GitHub Desktop
+3. Left-click on the dropdown menu currently displaying "**Add**"
+4. Select "**Clone Repository...**"
+5. Type the repository name that you used when creating your repository into the "**Filter your repositories**" text box. In our case, we type are typing in "shinylive_app", but by the time we have typed in "shinylive" there is only one option left.
+6. Make sure the GitHub repository that you want to clone is highlighted
+7. Left-click the blue "**Clone**" button
     
 These steps are shown in the GIF below:
 
@@ -164,7 +185,16 @@ These steps are shown in the GIF below:
 <img src="../img/GitHub_clone.gif" width="700">
 </p>
 
-8. copy files over
+## Copy app to your cloned GitHub Repository and push to the origin
+
+Now that we've cloned our GitHub repository locally, we will need to add the "`docs`" directory from our app's directory to our cloned GitHub directory.
+
+1. In a file browser, right-click on "`docs`" directory within your app's directory and select "**Copy**"
+2. In a second file browser open your cloned GitHub repository or by navigating to your cloned GitHub repository in your same file browser, right-click and select "**Paste**" or "**Paste Item**"
+3. In GitHub Desktop, add a summary for this commit in the "**Summary (required)**" text box
+4. (Optional) You can add an optional description for this commit
+5. Left-click the blue "**Commit to main**" button
+6. At the top of your GitHub Desktop, left-click the "**Push origin**" button
 
 These steps are shown in the GIF below:
 
@@ -173,10 +203,25 @@ These steps are shown in the GIF below:
 </p>
 
 
-9. View
+## View your app on GitHub Pages
+
+You have now uploaded your app to GitHub, so we can look at what it 
+
+1. In your web browser's URL enter:
+
+```
+https://<github_username>.github.io/<app_name>/
+```
+
+Replace `<github_username>` with your GitHub username and `<app_name>` with your app's name. Your app should appear after taking a moment to load!
 
 These steps are shown in the GIF below:
 
 <p align="center">
 <img src="../img/Moving_to_shinylive_app.gif" width="700">
 </p>
+
+Congratulations! You have successfully added your app to a GitHub Pages using `shinylive`! Now you can share your app with your colleagues without the need of having a server to host your app!
+
+You can see the app that we created [here](https://hbctraining.github.io/shinylive_app/).
+
