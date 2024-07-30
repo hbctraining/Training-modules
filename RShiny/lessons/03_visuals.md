@@ -343,6 +343,7 @@ On the server side:
     content = function(file) {
       write.csv(<your_data_frame>, file, quote = FALSE)
     }
+)
 ```
 
 On the server side, we need to use the `downloadHandler()` function. The `downloadHandler()` function has two main arguments:
