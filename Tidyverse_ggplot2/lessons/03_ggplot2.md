@@ -43,7 +43,7 @@ One type of layer is **geometric objects**. This is a mandatory layer and it spe
 * lines (`geom_line()`, for time series, trend lines, etc)
 * boxplot (`geom_boxplot()`, for, well, boxplots!)
 
-For a more exhaustive list on all possible geometric objects and when to use them check out [Hadley Wickham's RPubs](http://rpubs.com/hadley/ggplot2-layers) or the [RStudio cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf). 
+For a more exhaustive list on all possible geometric objects and when to use them check out [Hadley Wickham's RPubs](http://rpubs.com/hadley/ggplot2-layers) or the [RStudio cheatsheet](https://rstudio.github.io/cheatsheets/html/data-visualization.html). 
 
 A plot **must have at least one `geom`**, and there can be multiple *complementary* `geom`s; there is no upper limit. 
 
@@ -131,7 +131,7 @@ ggplot(bp_plot) +
 
 > **Note:** The size of the points is personal preference, and you may need to play around with the parameter to decide which size is best. That seems a bit too small, so we can try out a slightly larger size. 
 
-As we do that, let's see how we can change the shape of the data point. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf). Let's explore this parameter by changing all of the points to squares:
+As we do that, let's see how we can change the shape of the data point. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://rstudio.github.io/cheatsheets/html/data-visualization.html). Let's explore this parameter by changing all of the points to squares:
 
 ```r
 ggplot(bp_plot) +
@@ -182,7 +182,7 @@ ggplot(bp_plot) +
 >
 > **Note #2:** You can use the `example("geom_point")` function here to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different `geom` layers available in `ggplot2` to learn how you can easily modify your plots! 
 > 
-> **Note #3:** RStudio provides this very [useful cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) for plotting using `ggplot2`. Different example plots are provided and the associated code (i.e which `geom` or `theme` to use in the appropriate situation.)
+> **Note #3:** RStudio provides this very [useful cheatsheet](https://rstudio.github.io/cheatsheets/html/data-visualization.html) for plotting using `ggplot2`. Different example plots are provided and the associated code (i.e which `geom` or `theme` to use in the appropriate situation.)
 > 
 
 ***
@@ -304,7 +304,7 @@ ggplot(bp_plot) +
 
 ***
 
-So far we have explored many layers that can be added to any plot with the ggplot2 package. However, we haven't explored the different `geom`s available. The type of data you are plotting will determine the type of `geom` needed, but a nice summary of the main `geom`s is available on the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf).
+So far we have explored many layers that can be added to any plot with the ggplot2 package. However, we haven't explored the different `geom`s available. The type of data you are plotting will determine the type of `geom` needed, but a nice summary of the main `geom`s is available on the [RStudio ggplot2 cheatsheet](https://rstudio.github.io/cheatsheets/html/data-visualization.html).
 
 Let's explore different `geom`s by creating a couple of different plots. We'll start with a bar plot of the number of genes per category. We can start with the most basic plot by specifying the dataframe, geom, and aesthetics. 
 
