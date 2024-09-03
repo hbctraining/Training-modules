@@ -297,9 +297,9 @@ The same addtional arguments apply here.
 
 ***
 
-# Conditional Panel
+## Conditional Panel
 
-It is not uncommon that you might run into a case where you want some input appearing to be conditional on another input's value. This is a good place to utilize the `conditionalPanel()` function. The general syntax for using `conditionalPanel()` is:
+Suppose you want some input appearing to be conditional on another input's value. This is a good place to utilize the `conditionalPanel()` function. The general syntax for using `conditionalPanel()` is:
 
 ```
 conditionalPanel(
