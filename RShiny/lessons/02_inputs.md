@@ -13,11 +13,11 @@ In this lesson, you will:
 
 # Widget options
 
-In the previous lesson, we introduced using the `textInput()` as type of wdiget. Hoever, there are many widget inputs that exist. In this next section, we will explore some of these different input widgets.
+In the previous lesson, we introduced using the `textInput()` function. This function is actually a type of widget and there are many widget inputs that exist. In this next section, we will explore some of these different input widgets.
 
 ## textAreaInput()
 
-Similar to `textInput()`, `textAreaInput()` functions in many of the same ways, but instead of have a single line where you can enter text into, you will get a text box that allows for multi-line input. An example of the code you would use to do that is below:
+Similar to `textInput()`, `textAreaInput()` functions in many of the same ways, but instead of having a single line where you can enter text into, it allows for multi-line input. An example of the code you would use to do that is below:
 
 ```
 library(shiny)
@@ -43,19 +43,19 @@ This will render an app that looks like:
 
 > Note: If you want to maintain new line character you could use `verbatimTextOutput()` rather than `textOutput()`. `verbatimTextOutput()` will treat the text output exactly like it is entered without any formatting.
 
-If you would like to have there be default text in your app's text area input, you can change:
+If you would like to have some text appear by default in your app's text area input, you can change:
 
 ```
 textAreaInput("input_text", "My input text")
 ```
 
-To:
+to add a third argument:
 
 ```
-textAreaInput("input_text", "My input text", "My Default text")
+  textAreaInput("input_text", "My input text", "Write about anything you like here...")
 ```
 
-Adding this third parameter `"My Default text"` creates that default text and also works with `textInput()` in the same way.
+Adding this in creates that default text to appear in the box, giving the user an example. 
 
 ## sliderInput
 
