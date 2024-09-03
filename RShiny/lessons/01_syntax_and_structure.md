@@ -32,11 +32,11 @@ Each Shiny App has 3 main components:
 3. **shinyApp** - This is the line that ties the UI and the server together and launches the app
 
 ## Setup
-**Add some text here on opening RStudio and setting ap and R project with a script?**
+**Add some text here on opening RStudio and setting up an R project? Include a script?**
 
 ## Your first app
 
-Let's go ahead and create an app to help demonstrate these components and how they tie together. Copy and paste this code into your Rscript, hihglight all of the code then send the code to the console using <kbd>Ctrl</kbd> + <kbd>Enter/Return</kbd>:
+Let's go ahead and create an app to help demonstrate these components and how they tie together. Copy and paste this code into your Rscript, highlight all of the code then send the code to the console using <kbd>Ctrl</kbd> + <kbd>Enter/Return</kbd>:
 
 ```
 library(shiny)
@@ -59,7 +59,7 @@ The app that returns should look like the one below:
 
 <iframe src="https://hcbc.connect.hms.harvard.edu/input_text_demo/?showcase=0" width="100%" height="625px" data-external="1"> </iframe>
 
-You can see that while your app is running it is will something similar to:
+You can see that while your app is running it will look something similar to:
 
 ```
 Listening on http://127.0.0.1:4108
@@ -86,10 +86,10 @@ The `fluidPage()` function is a common wrapper used to develop UI's in Shiny and
 textInput("input_text", "My input text")
 ```
 
-There are many types of input and output types in RShiny, e will discuss these types at length in the [next lesson](). In this example, we are **creating a text input** using the `textInput()` function. There are two arguments:
+There are many types of input and output types in RShiny, we will discuss these types at length in the [next lesson](). In this example, we are **creating a text input** using the `textInput()` function. There are two arguments:
 
 1. The first argument is the variable name for the user input to be stored to.
-2. The second argument is a character string representign the text which will be placed above the input text box.
+2. The second argument is a character string representing the text which will be placed above the input text box.
 
 Because this is the first line of code for the app, this input text box will appear at the top of the app.
 
@@ -119,14 +119,16 @@ The server function is created with the variables `input` and `output` to hold t
     })
 ```
 
-Here, we are taking the `input$input_text` object from `textInput()` and asking for it to be rendered using the `renderText()` function. We then take that rendering and assign it to `output$output_text` which ties back to the `output_text` variable that we were calling with `textOutput()` in the UI. **Importantly, the `render[Type]()` functions are specific to the type of `[type]Output()`.** We will talk about this more in the next lesson.
+Here, we are using the `renderText()` function to take the object from `textInput()` render it as output. We then take that rendering and assign it to `output$output_text` which ties back to the  `textOutput()` function we had in the UI section of code. 
+
+> **NOTE:** The `render[Type]()` family of functions are specific to the type of `[type]Output()`. We will talk about this more in the next lesson.
 
 ## Putting it all together 
 
 Now that we've gone through each line, let's talk about what happens when we run the `shinyApp()` function to tie it all together. 
 
 1. The input text is entered into the box created by `textInput()` and saved as `input$input_text`
-2. This `input$input_text` object is sent to the server which sees that `input$input_text` is used to crate the rendered text for `output$output_text`.
+2. This `input$input_text` object is sent to the server which sees that `input$input_text` is used to create the rendered text for `output$output_text`.
 3. This `output$output_text` output is then sent back to the UI where it is displayed in the `textOutput()` fucntion
 
 The diagram below illustrates how this works.
