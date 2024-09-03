@@ -15,7 +15,7 @@ In this lesson, you will:
 
 In the previous lesson, we introduced using the `textInput()` function. This function is actually a type of widget and there are many widget inputs that exist. In this next section, we will explore some of these different input widgets.
 
-## textAreaInput()
+## Text box
 
 Similar to `textInput()`, `textAreaInput()` functions in many of the same ways, but instead of having a single line where you can enter text into, it allows for multi-line input. An example of the code you would use to do that is below:
 
@@ -57,7 +57,7 @@ to add a third argument:
 
 Adding this in creates that default text to appear in the box, giving the user an example. 
 
-## sliderInput
+## Sliding range 
 
 Sliders inputs are a great way to provide an interactive range for the user to select a value from. Below we will have the example code that one can use to create a slider:
 
@@ -83,7 +83,7 @@ This app would visualize like:
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_slider_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe></p>
 
-Note that the only line we changed was the `textAreaInput()` line to `sliderInput()`. We can see that the `renderText()` function has no issues handling integer or character data types. Above we have provided the minimum number of input arguments for `sliderInput()`. However, there are some interesting arguments that you can also add to your slider in the table below:
+Note that the only line we changed was the `textAreaInput()` line to `sliderInput()`. The `renderText()` function has no issues handling integer or character data types. We also provided arguments to specify the minimum and maximum values and the `value` we would like the slider to sit at by default. There are some additional `sliderInput()` arguments provided in the table below:
 
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
@@ -94,9 +94,9 @@ Note that the only line we changed was the `textAreaInput()` line to `sliderInpu
 | dragRange | Allows you to create a range with your slider. You will likely want to change `value` to be a vector containing the default start and stop of this range like `value = c(2,6)` | `dragRange = TRUE` |
 
 
-## selectInput
+## Dropdown 
 
-Oftentimes when you are working with input data, you would like to select some of your data from a list of options. One way of doing this is to have a dropdown list of options and `selectInput()` is the function you would use to accomplish this. 
+Oftentimes when you are working with input data, you would like to select some of your data from a list of options. One way of doing this is to have a dropdown list of options and `selectInput()` is the function you would use to accomplish this. For this function, the additonal argument is `choices`, used to specify all the options in the dropdown.
 
 ```
 library(shiny)
@@ -117,7 +117,9 @@ shinyApp(ui = ui, server = server)
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_select_demo/?showcase=0" width="300" height="200px" data-external="1"></iframe></p>
 
 
-> Within the choices argument, you can see that we made a placeholder value in the first position, `"Pick a game" = ""`, and this visualizes as the default placeholder. Otherwise, the placeholder will default to the first element in the choice vector.
+> **NOTE:** Within the choices argument, you can see that we made a placeholder value in the first position, `"Pick a game" = ""`, and this visualizes as the default placeholder. Otherwise, the placeholder will default to the first element in the choice vector.
+
+Some additional arguments for `selectInput()` are provided below:
 
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
@@ -157,11 +159,11 @@ This would visualize like:
 | inline | Allows you to display the radio buttons horizontally rather than vertically | `inline = TRUE` |
 | selected | Allows you to define the default selection, otherwise the default selection will be the first item in the list | `selected = "Strawberry"` |  
 
-> Note that you can set `selected` to be `selected = character(0)` and no initial option will be selected, but the documentation recommends against this since users will not be able to return back to this default state.
+> **NOTE:** that you can set `selected` to be `selected = character(0)` and no initial option will be selected, but the documentation recommends against this since users will not be able to return back to this default state.
 
 ## Checkboxes
 
-The are two styles of checkboxes that you can choose from. A single checkbox (`checkboxInput()`) that will return the values of `TRUE` and `FALSE` and also a group of checkboxes (`checkboxGroupInput()`) where you can select multiple items from. 
+The are **two styles** of checkboxes that you can choose from. A single checkbox (`checkboxInput()`) that will return the values of `TRUE` and `FALSE` and also a group of checkboxes (`checkboxGroupInput()`) where you can select multiple items from. 
 
 ### checkboxInput
 
@@ -221,10 +223,10 @@ shinyApp(ui = ui, server = server)
 
 ## Dates
 
-Within selecting dates, you have two choices:
+The widget for dates allows you to select a specific date from a dropdown calendar. There are two functions that allow you to do this:
 
-1) Selecting a single date 
-2) Selecting a range of dates
+1. `dateInput()`: Selecting a single date 
+2. `dateRangeInput()`: Selecting a range of dates
 
 ### Single date
 
@@ -247,7 +249,7 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-> Note that we have had to add the `as.character()` function around `input$date_input` otherwise it will return the number of days since the Unix Epoch (https://en.wikipedia.org/wiki/Unix_time).
+> **NOTE:** We have had to add the `as.character()` function around `input$date_input` otherwise it will return the number of days because of the Unix Epoch (https://en.wikipedia.org/wiki/Unix_time).
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_date_demo/?showcase=0" width="400px" height="325px" data-external="1"></iframe></p>
 
@@ -285,19 +287,15 @@ This would look like:
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_date_range_demo/?showcase=0" width="500px" height="325px" data-external="1"></iframe></p>
 
-| Argument | Description |  Example  |
-|----------|-------------|-----------|
-| start | Allows you to set the default _starting_ day to open the calendar on. If not set, then it will default to the current day in yyyy-mm-dd format |  `value = "2024-07-24"` |
-| end | Allows you to set the default _ending_ day to open the calendar on. If not set, then it will default to the current day in yyyy-mm-dd format |  `value = "2024-07-29"` |
-| min | Allows you to set _earliest_ date that can be selected | `min = "2024-07-20"` |
-| max | Allows you to set _latest_ date that can be selected | `max = "2024-07-28"` |
-| weekstart | Allows you to select which day of the week the calendar should start on with Sunday being 0 and incrementing to Saturday being 6 | `weekstart = 1` |
-| language | Allows you to set the language for the calendar | `language = "de"` |
-| daysofweekdisabled | Allows you to make certain days of the week unavailible for selection with Sunday being 0 and incrementing to Saturday being 6. You can also make a vector of values to block out multiple days of the week. | `daysofweekdisabled = c(0,6)` |
+The same addtional arguments apply here.
 
-## Exercise
+***
 
-In this exercise, you will attempt to recrete the following app. It will take the input from a select dropdown, radio button and slider and return the product of the values. Feel free to play with the app below to help model the way your app should look.
+**Exercise**
+
+1. In this exercise, you will use the widget options presented above and the associate code to create your own RShiny app! It will take the input from a select dropdown, radio button and slider and return the product of the values. Feel free to play with the app below to help model the way your app should look.
+
+***
 
 # Conditional Panel
 
