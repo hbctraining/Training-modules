@@ -335,9 +335,15 @@ shinyApp(ui = ui, server = server)
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Conditional_panel_demo/?showcase=0" width="300" height="250px" data-external="1"></iframe></p>
 
-## Req (can we put this in a dropdown?)
+## Required Input
 
-Let's imagine now that we have data that _requires_ input in order to be evaluated. We can actually see this in the previous app. With the previous app still open, select "Yes", then select a course of your choosing. Next, change the input to "No". You'll see that the course selections we've made are still present. If we didn't want this type of contradiction, then one way that we could resolve this is with the use of the `req()` function. Let's look at an example of the `req()`:
+We may have situation in which the app _requires_ input in order for folowing code to be evaluated. We can actually see an example of this in the previous app. If you still have the previous app still open, select "Yes", then select a course of your choosing. Next, change the input to "No". You'll see that the course selections we've made are still present!
+
+
+If we didn't want this type of contradiction (i.e if they select "No" then there should not be any course selections present), then one way that we could **resolve this is with the use of the `req()` function**. 
+
+
+Let's look at an example of the `req()`. On the UI side, nothing has really changed. On the server side we have placed `req()` inside the `renderText()` which tells Shiny that we are **_req_**uiring `input$select_input` to be equal to "Yes" in order to have the `input$select_courses` text rendered.
 
 ```
 library(shiny)
@@ -361,21 +367,15 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-We added:
 
-```
-req(input$select_input == "Yes")
-```
-
-Which tells Shiny that we are **_req_**uiring `input$select_input` to be equal to "Yes" in order to have the `input$select_courses` text rendered. This app would look like:
-
+Test out the app with the "Yes" and "No" options and see how it differs from before!
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Conditional_panel_demo_2/?showcase=0" width="300" height="250px" data-external="1"></iframe></p>
 
 
 ## shinyWidgets
 
-We have only scratched the surface of widgets for RShiny! Pleas see this [linked lesson]() with more some more advanced topcs of you are interested.
+We have only scratched the surface of widgets for RShiny! There is so much more you can do, and we encourage you to delve deeper and explore added functionality.
 
 Also, to enhance the widget inputs, [shinyWidgets](https://github.com/dreamRs/shinyWidgets) is an R package that you can install that give you even more stylistic options for your Shiny app. The gallery of widget input that you can create using shinyWidgets can be found [here](https://shinyapps.dreamrs.fr/shinyWidgets/). A useful part of the gallery is that each widget input displayed has a `</> Show code` section that gives you the code needed to create the widget input on the UI side.
 
