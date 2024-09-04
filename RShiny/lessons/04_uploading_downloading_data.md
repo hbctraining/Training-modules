@@ -1,10 +1,21 @@
-# Uploading a file
+---
+title: "Uploading and dowloading data in RShiny"
+author: "Will Gammerdinger"
+---
 
-You may find that you would like to make an app that allows users to upload their own data into the app. To demonstrat this, we first must have some data to upload. We have provided a simple [CSV file](https://raw.githubusercontent.com/hbctraining/Training-modules/master/RShiny/data/animals.csv) that we can use for this task. First you will need to download this file but right-clicking on the link and selecting "Save Link As.." or "Download Linked File As..." depending on your browser. You can save this anywhere on your computer where you will be able to easily locate it. 
+## Learning Objectives
 
-Next, let's talk about how you incorporate file uploads into your R Shiny App. The syntax would look like:
+In this lesson, you will:
+- Learn how to incorporate data into your Shiny app
+- Add functionality to download table data from Shiny app
+- Download plot created in Shiny app
 
-On the UI side:
+# Uploads and Downloads
+
+Transferring files to and from the user is a common feature of Shiny apps. You can use it to upload data for analysis, or download the results as a dataset or as a figure you generated. In this lesson we introduce you to functions that help with file handling in addition to some other advanced topics which ties in nicely (and are helpful when running these functions).
+
+## Uploading data
+Often apps are created such that one can explore their own data in some way. To allows users to upload their own data into the app we use the `fileInput()` function on the UI side:
 
 ```
 fileInput("<input_fileID>", "<Text_above_file_upload>")
@@ -19,7 +30,7 @@ There are some additional options that you might want to consider when using the
 | placeholder | Text to be entered as a placeholder instead of the "No file selected" default | `placeholder = "Waiting for file selection"` |
 | buttonLabel | Text to be entered onto the upload button instead of "Browse..." default | `buttonLabel = "Select File..."` |
 
-\* Uploading multiple files can be a bit tricky and is outside of the scope of this workshop, but it can be done.
+_\* Uploading multiple files can be a bit tricky and is outside of the scope of this workshop, but it can be done._
 
 On the server side it would look like:
 
@@ -33,9 +44,18 @@ On the server side it would look like:
   )
 ```
 
-The first part is creating the reactive object `uploaded_file()`. We require that the file exist with `req(input$<input_fileID>)`, otherwise Shiny will return an error until we upload a file. Then we read in the file with a function from the `read.table()` family of functions. Notice our use of a reactive object here. While a reactive object isn't necessary in this very basic example, it is a good practice to get into when uploading data in order to save on computation if you are render multiple objects from a single file.
+The first part of this code is **creating the reactive object `uploaded_file()`**. We require that the file exist with `req(input$<input_fileID>)`, otherwise Shiny will return an error until we upload a file. Then we read in the file with a function from the `read.table()` family of functions. 
 
-Within our `renderDT()` function, we are calling out reactive object that we made in the lines above.
+**What is a reactive object?**
+
+So far we have seen the case of input being used to directly create outputs. However, there is third tool in the Shiny toolkit and it is called reactive expressions. Reactive expressions are useful because they **take inputs and produce outputs and they cache, or store, their output**. This can be very useful for three reasons:
+
+1. When a step is repeated multiple times in your code, and this step that is either computationally intensive or requires interacting with outside databases, Shiny will only need to carry out the task once.
+2. It makes your code cleaner because you only need to maintain the code for a repetitive step in a single place.
+3. They are needed to use action buttons (described in detail below).
+
+
+Notice our use of a reactive object here. While a reactive object isn't necessary in this very basic example, it is a **good practice to get into when uploading data** in order to save on computation if you are rendering multiple objects from a single file.
 
 The example app for this would look like:
 
@@ -66,15 +86,17 @@ This app would look like:
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/File_upload_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
 
-# Downloading Analysis
-
+## Downloading Analysis
 In the course of doing your analysis, it is likely that you will get to a point where you want to download data stored in a data frame or a plot that you've created. Shiny also provides functionality to do this. When you are interested in downloading data or plots, you are going to want to use the `downloadButton()` (UI side) and `downloadHandler()` (server) functions.
 
-## Downloading data frame
+### Action buttons
+
+### Downloading data frame
 
 If you have a data frame that you want to download then the important pieces of syntax are:
 
 On the UI side:
+
 ```
 downloadButton("<download_buttonID>", "Download the data .csv")
 ```
@@ -142,7 +164,7 @@ This app looks like:
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Data_frame_download_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
 
-## Downloading a plot
+### Downloading a plot
 
 Downloading a plot is similiar to downloading a table. It also uses the `downloadButton()` and `downloadHandler()` functions and the arguments are largely similiar. The syntax looks like:
 
