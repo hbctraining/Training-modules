@@ -3,7 +3,7 @@ title: "Input functions in RShiny"
 author: "Will Gammerdinger"
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 In this lesson, you will:
 
