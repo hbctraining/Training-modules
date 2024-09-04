@@ -3,31 +3,38 @@ title: "Visualization and Interactive Visuals in RShiny"
 author: "Will Gammerdinger"
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 In this lesson, you will:
 - Create a data table output
 - Create a plot output
 - Create an interactive plot
 
-# Creating a data table output
+## Creating a data table output
 
-Within your Shiny app you might like to have a datatable. Shiny has some native datatable functions (`dataTableOutput()` for the UI side and `renderDataTable()` for the server side). However, these function are depreciated and in their documentation, they recommend using the `DT` package for handling datatables. When you load `DT` it will mask the base Shiny functions `dataTableOutput()` with `DTOutput()` and `renderDataTable()` with `renderDT()`. To render a table:
+Shiny has some native datatable functions, however using the `DT` package is recommended as it supports additional datatable features. When you load `DT` it will mask the base Shiny functions `dataTableOutput()` with `DTOutput()` and `renderDataTable()` with `renderDT()`. 
 
-On the UI side:
+To render a table on the UI side you would use:
 
 ```
 DTOutput("inputID")
 ```
 
-On the server side:
+On the server side you would use:
 ```
 output$<outputID> <- renderDT({
     <insert_dataframe>
   })
 ```
 
-We can visualize an example of a data table within a Shiny app using the code below and the built-in dataset `mtcars`:
+Let's use the built-in dataset `mtcars` to visualize an example of a data table within a Shiny app. 
+
+On the UI side:
+* We are using the input function described earlier `checkboxGroupInput()`, which will allow users to select which columns to display from the table.
+* We use the `DTOutput()` with "table" value to correspond with the output object in the server side code
+
+On the server side:
+* We use `renderDT()` and provide the mtcars dataframe, using square brackets to subset the columns selected.
 
 ```
 library(shiny)
@@ -51,91 +58,29 @@ This will visualize in the app as:
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Datatable_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
 
-# Uploading a file
 
-You may find that you would like to make an app that allows users to upload their own data into the app. To demonstrat this, we first must have some data to upload. We have provided a simple [CSV file](https://raw.githubusercontent.com/hbctraining/Training-modules/master/RShiny/data/animals.csv) that we can use for this task. First you will need to download this file but right-clicking on the link and selecting "Save Link As.." or "Download Linked File As..." depending on your browser. You can save this anywhere on your computer where you will be able to easily locate it. 
 
-Next, let's talk about how you incorporate file uploads into your R Shiny App. The syntax would look like:
+## Creating a plot 
 
-On the UI side:
-
-```
-fileInput("<input_fileID>", "<Text_above_file_upload>")
-```
-
-There are some additional options that you might want to consider when using the `fileInput()` function. 
-
-| Argument | Description |  Example  |
-|----------|-------------|-----------|
-| multiple | Allows the user to upload multiple files\* | `multiple = TRUE` |
-| accept | Limit the file extensions that can be selected by the user | `accept = ".csv"` |
-| placeholder | Text to be entered as a placeholder instead of the "No file selected" default | `placeholder = "Waiting for file selection"` |
-| buttonLabel | Text to be entered onto the upload button instead of "Browse..." default | `buttonLabel = "Select File..."` |
-
-\* Uploading multiple files can be a bit tricky and is outside of the scope of this workshop, but it can be done.
-
-On the server side it would look like:
-
-```
-  uploaded_file <- reactive({
-    req(input$<input_fileID>)
-    read.table(input$<input_fileID>$datapath)
-  })
-  output$table <- renderDT(
-    uploaded_file()
-  )
-```
-
-The first part is creating the reactive object `uploaded_file()`. We require that the file exist with `req(input$<input_fileID>)`, otherwise Shiny will return an error until we upload a file. Then we read in the file with a function from the `read.table()` family of functions. Notice our use of a reactive object here. While a reactive object isn't necessary in this very basic example, it is a good practice to get into when uploading data in order to save on computation if you are render multiple objects from a single file.
-
-Within our `renderDT()` function, we are calling out reactive object that we made in the lines above.
-
-The example app for this would look like:
-
-```
-library(shiny)
-library(ggplot2)
-library(DT)
-
-ui <- fluidPage(
-  fileInput("input_file", "Upload your file"),
-  DTOutput("table")
-)
-
-server <- function(input, output) {
-  uploaded_file <- reactive({
-    req(input$input_file)
-    read.csv(input$input_file$datapath, header = TRUE, row.names = 1)
-  })
-  output$table <- renderDT(
-    uploaded_file()
-  )
-}
-
-shinyApp(ui = ui, server = server)
-```
-
-This app would look like:
-
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/File_upload_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
-
-# Creating a plot 
-
-Oftentimes when you are using a Shiny App it is oftentimes because you want to have interactive visuals that respond to user inputs, so creating plots is an essential skill for being able to create apps in Shiny. The syntax for implementing plots is:
+Creating plots is an essential skill for being able to create apps in Shiny, and is exciting because there are so many ways in which you can enhance the visualization. Let's begin with first demonstrating static plot using the `mtcars` dataset again. The syntax for implementing plots is:
 
 On the UI side:
+
 ```
 plotOutput("<outputID>")
 ```
 
 On the Server side:
+
 ```
 output$<outputID> <- renderPlot({
     <insert_plot_creation>
 })
 ```
 
-This syntax can be seen in the example below:
+In the example below we are using the `selectInput()` function to allow users to select from which column to display on the x-axis and y-axis. The choices given are the column names of the dataframe.
+
+On the server side, we place ggplot2 code inside the `renderPlot()` function, specifying what type of plot we want to draw. The `aes_string()` function allows us to provide information stored in the input object as the x and y values.
 
 ```
 library(shiny)
@@ -157,20 +102,21 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-> Note: In this lesson we are using the package `ggplot2` to make our visualizations, but plots used in Shiny can also be made in base R graphics.
+> Note: In this lesson we are using the package `ggplot2` to create our visualizations, but plots used in Shiny can also be made using the base R graphics or any other packages.
 
 This sample code would look like:
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
 
 
-# Interacting with plots
+## Interacting with plots
 
-While the above plot was interesting for being able to select various metrics to plot, it lacked an ability to interact with the actual data points on the graph. If we saw an outlier, how could we try to identify that outlier point. In the seciton below we will discuss methods that we can use to actually interact with the data points on our plots.
+While the above plot was interesting for being able to select various metrics to plot, it lacked an ability to interact with the actual data points on the graph. For example, if we saw an outlier, how could we try to identify the specific data point. In the section below we will discuss methods that we can use to actually **interact with the data points on our plots**.
 
-## Clicking
+### Clicking
 
-The first way that we can interact will a plot is by clicking a point on the plot. The syntax for this is a bit interesting because it has a `input` buried within an `Output` function. Let's take a look:
+The first way that we can interact will a plot is by clicking a point on the plot. The syntax for this is a bit interesting because it has an `input` buried within an `Output` function. 
+
 
 On the UI side:
 
@@ -178,9 +124,10 @@ On the UI side:
 plotOutput("plot", click = "<plot_clickID>")
 ```
 
-This looks like our normal `plotOutput()` function from before, but now we have added this `click = "<plot_clickID>"` argument to it. And the click argument allows for an input, so the inputID from the click action in this case would be `input$<plot_clickID>`. 
+The `click = "<plot_clickID>"` argument allows for an inputfrom the click action. 
 
-> Note: Instead of `click = "<plot_clickID>"`, we could use `click = clickOpts("<plot_clickID>")` and this will allow us more options on our clicking. However the extra options for clicking are outside of the scope of this workshop, but since we will be using `hoverOpts()` and `brushOpts()` in the next upcoming sections, so we introduced the idea and syntax here. 
+> Note: Instead of `click = "<plot_clickID>"`, we could use `click = clickOpts("<plot_clickID>")` and this will allow us more options on our clicking. 
+
 
 On the server side, we have a few new functions as well:
 
@@ -190,7 +137,7 @@ On the server side, we have a few new functions as well:
   })
 ```
 
-The `nearPoints()` function creates a data frame of points near where the cursor clicked on the plot. There are ways around using the `nearPoints()` function, but it is a user-friendly way of managing this task. You can adjust how close (in pixels) you'd like the threshold to be when click a point to register nearby points by changing the `threshold` argument. An example app of this is below:
+The `nearPoints()` function creates a data frame of points near where the cursor clicked on the plot. You can adjust how close (in pixels) you'd like the `threshold` such that when a click is made on the plot which nearby points would register as the selected data point. An example app of this is provided below:
 
 ```
 library(shiny)
@@ -219,9 +166,9 @@ This app would look like:
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_click_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
 
-## Hover
+### Hover
 
-Instead of clicking on points in your plot, you can instead simply hover over them. In order to do this, we need to tweak the UI side of the app.
+Instead of clicking on points in your plot, you can instead simply hover over them and identify more information. In order to do this, we need to tweak the UI side of the app.
 
 On the UI side:
 ```
@@ -260,9 +207,9 @@ This app would look like:
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_hover_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
 
 
-## Brush
+### Brush
 
-The last way that you can make your plots interactive is with brushing. Perhaps you notice a cluster on points in one part of your scatter plot that you'd like to invrestigate further. Brushing allows you to use a rectangle to select the points that you would like to interact with. We need a make a few changes to our UI to accommodate brushing:
+The last way that you can make your plots interactive is with brushing. Perhaps you notice a cluster on points in one part of your scatter plot that you'd like to investigate further. Brushing allows you to **use a rectangle to select the points that you would like to interact with**. We need a make a few changes to our UI to accommodate brushing:
 
 On the UI side:
 
