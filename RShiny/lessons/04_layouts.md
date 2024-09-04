@@ -399,6 +399,7 @@ Within the `navbarPage()` function there is a `position` argument, with three op
 | `position = "static-top"` | The navigation bar is at the top of the app and when you scroll down it disappears | 
 | `position = "fixed-top"` | The navigation bar is at the top of the app and when you scroll down it stays in the frame for the browser window |
 | `position = "fixed-bottom"` | The navigation bar is at the bottom of the app and when you scroll down it stays in the frame for the browser window |
+
 ## Navigation Bar Menu
 
 Within the navigaton bar, we can have a dropdown menu that gives us more options in a list. This would be accomplished using the `navbarMenu()` function, which also utilizes `tabPanel()` function that `navbarPage()` uses. The syntax for using a dropdown menu anvigation bar menu is:
