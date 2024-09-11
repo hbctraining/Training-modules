@@ -24,8 +24,8 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 |:---------------|:-------------:|:-------------:|:-------------:|
 | [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) | None | 6/26/2024	| Closed |
 | [Publication Perfect: Part I](publication_perfect#part-i) | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 7/17/2024	| Closed |
-| [Publication Perfect: Part II](publication_perfect#part-ii) | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 8/21/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJIldumuqj8iHtDgD4_79fjo2vQf4QWWFlj3#/registration) |
-| Rshiny | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 9/18/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJMkcuyopz0pE9QZtumH6JdGGpngSJDXCoBD#/registration) |
+| [Publication Perfect: Part II](publication_perfect#part-ii) | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 8/21/2024	| Closed |
+| [Interact with your data using Rshiny](https://hbctraining.github.io/Training-modules/RShiny/) | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 9/18/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJMkcuyopz0pE9QZtumH6JdGGpngSJDXCoBD#/registration) |
 
 <!-- This content will not appear in the rendered Markdown -->
 <!--
