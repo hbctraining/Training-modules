@@ -84,7 +84,7 @@ shinyApp(ui = ui, server = server)
 
 This app would look like:
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/File_upload_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/File_upload_demo/?showcase=0" width="300" height="150px" data-external="1"></iframe></p>
 
 ## Downloading Analysis
 In the course of doing your analysis, it is likely that you will get to a point where you want to download data stored in a data frame or a plot that you've created. Shiny also provides functionality to do this. When you are interested in downloading data or plots, you are going to want to use the `downloadButton()` (UI side) and `downloadHandler()` (server) functions.
@@ -162,7 +162,7 @@ In the above script, we tweaked our script to allow us to download the table con
 
 This app looks like:
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Data_frame_download_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Data_frame_download_demo/?showcase=0" width="800" height="750px" data-external="1"></iframe></p>
 
 ### Downloading a plot
 
@@ -242,7 +242,7 @@ Step 2. Write the server side with:
     d. A `downloadHandler()` function for downloading the image
 
 The app will look like:
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_upload_download_exercise/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_upload_download_exercise/?showcase=0" width="800" height="700px" data-external="1"></iframe></p>
 
 <details>
   <summary><b>Click here to see the solution</b></summary> 
@@ -286,5 +286,14 @@ shinyApp(ui = ui, server = server)
 </pre>
 </details>
 
+***
+
+[Next Lesson >>](05_hosting.md)
+
+[Back to Schedule](..)
+
+*** 
+
+*This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
 
 
