@@ -89,15 +89,15 @@ shinyApp(ui = ui, server = server)
 
 The app that returns should look like the one below:
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/input_text_demo/?showcase=0" width="100%" height="200px" data-external="1"> </iframe>
+<iframe src="https://hcbc.connect.hms.harvard.edu/input_text_demo/?showcase=0" width="300px" height="200px" data-external="1"> </iframe>
 
-You can see that while your app is running it will look something similar to:
+You can see that while your app is running the console will look something similar to:
 
 ```
 Listening on http://127.0.0.1:4108
 ```
 
-When you are running an app your console will be unavailable. In order **to get your console back** you need to either **close the app or press the red stop sign** in the top right of the console. If you relaunch the app (by re-running the `shinyApp` function), you can view the app in a web browser by:
+When you are running an app, your console will be unavailable. In order **to get your console back** you need to either **close the app or press the red stop sign** in the top right of the console. If you relaunch the app (by re-running the `shinyApp` function), you can view the app in a web browser by:
 
 1. Clicking "Open in Browser" at the top of the the app window
 2. Copy and paste the URL in your console after "Listening on" into the URL of your preferred browser
@@ -107,6 +107,7 @@ When you are running an app your console will be unavailable. In order **to get 
 Let's go line-by line and breakdown the code for the UI:
 
 ```
+# User Interface
 ui <- fluidPage(
   ...
 )
@@ -115,6 +116,7 @@ ui <- fluidPage(
 The `fluidPage()` function is a common wrapper used to develop UI's in Shiny and it is being assigned to the object `ui`.
 
 ```
+# The input text box
 textInput("input_text", "My input text")
 ```
 
@@ -126,6 +128,7 @@ There are many types of input and output types in RShiny, we will discuss these 
 Because this is the first line of code for the app, this input text box will appear at the top of the app.
 
 ```
+# The output text
 textOutput("output_text")
 ```
 
@@ -138,6 +141,7 @@ Importantly, each line at the same scope in the UI is separated by a comma.
 Now let's investigate the server side of the app:
 
 ```
+# Server
 server <- function(input, output){
   ...
   })
@@ -146,6 +150,7 @@ server <- function(input, output){
 The server function is created with the variables `input` and `output` to hold the input and output of the app. Inside the function we place the following code:
 
 ```
+    # Render the text
     output$output_text <- renderText({
         input$input_text
     })
@@ -169,7 +174,7 @@ The diagram below illustrates how this works.
 <img src="../img/Shiny_process.png" width="800">
 </p>
 
-Now that we have a created our first Shiny app in R, we will explore various input and output options in the next lesson.
+Now that we have a created our first Shiny app in R, we will explore various input and output options in the next lessons.
 
 ***
 
