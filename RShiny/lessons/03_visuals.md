@@ -164,7 +164,7 @@ shinyApp(ui = ui, server = server)
 
 This app would look like:
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_click_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_click_demo/?showcase=0" width="8" height="625px" data-external="1"></iframe></p>
 
 ### Hover
 
@@ -204,7 +204,7 @@ shinyApp(ui = ui, server = server)
 
 This app would look like:
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_hover_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_hover_demo/?showcase=0" width="800" height="650px" data-external="1"></iframe></p>
 
 
 ### Brush
@@ -263,6 +263,14 @@ shinyApp(ui = ui, server = server)
 
 This app would look like:
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_brush_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_brush_demo/?showcase=0" width="800" height="725px" data-external="1"></iframe></p>
 
+***
 
+[Next Lesson >>](04_uploading_downloading_data.md)
+
+[Back to Schedule](..)
+
+*** 
+
+*This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
