@@ -19,39 +19,71 @@ In this lesson, you will:
 <img src="../img/Shiny_logo.png" width="200">
 </p>
 
-Before we dig too far into the syntax or structure of an app, let's first look at one that we recently made for the Bioinformatics Core to help us carry out quality control on single-cell RNA-seq data. The link to this app can be found [here](). **MISSING LINK**
+Before we dig too far into the syntax or structure of an app, let's first look take a look at a [gallery of Shiny Apps that have been made by others](https://shiny.posit.co/r/gallery/).
 
-As you can see, we can toggle the thresholds that we would like to use for... 
+As you can see, there are a wide array of use cases for apps made with Shiny.
 
 ## RShiny App Structure
 
 Each Shiny App has 3 main components:
 
-1. **User Interface (UI)** - This section outlines how the app will look and where items are placed. This is referred to as the _front-end_ of the app.
+1. **User Interface (UI)** - This section outlines how the app will look and where items are placed. This is referred to as the _front-end_ of the app
 2. **Server** - This section provides the instructions for how input data will be processed and returned by the app. This is referred to as the _back-end_ of the app
 3. **shinyApp** - This is the line that ties the UI and the server together and launches the app
 
 ## Setup
 **Add some text here on opening RStudio and setting up an R project? Include a script?**
 
+Before we make our first app, let's get our RStudio environment set-up:
+
+1. Open RStudio
+2. On the top menu, click "**File**" and then "**New Project...**"
+3. Select "**New Dirctory**"
+4. Select "**New Project**"
+5. Name your project "**Shiny_demo**" and then click "**Create Project**"
+
+<p align="center">
+<img src="../img/Create_project_Shiny_demo.gif" width="700">
+</p>
+
+6. On the top menu, click "**File**", then "**New File >**" and then "**R Script**"
+7. Next, we want to save this R Script file, so on the top menu, click "**File**"  and then "**Save As...**"
+8. Save the file as "**app.R**" then click "**Save**"
+
+<p align="center">
+<img src="../img/Create_script_demo.gif" width="700">
+</p>
+
+At the top of the script add and run the command to load Shiny:
+
+```
+library(shiny)
+```
+
+> Note: It is very important when you go to host your apps on external platforms that the app is titled "**app.R**". We will be using this R Script to write all of our apps in during this 
+
 ## Your first app
 
 Let's go ahead and create an app to help demonstrate these components and how they tie together. Copy and paste this code into your Rscript, highlight all of the code then send the code to the console using <kbd>Ctrl</kbd> + <kbd>Enter/Return</kbd>:
 
 ```
-library(shiny)
-
+# User Interface
 ui <- fluidPage(
+    # The input text box
     textInput("input_text", "My input text"),
+    # The output text
     textOutput("output_text")
 )
 
+# Server
 server <- function(input, output){
+    # Render the text
     output$output_text <- renderText({
         input$input_text
     })
 }
 
+# Run the app
 shinyApp(ui = ui, server = server)
 ```
 
