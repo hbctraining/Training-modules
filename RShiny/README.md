@@ -18,7 +18,6 @@ In this workshop, users will be able to:
 - Create apps that take a variety of input formats, including test, checkboxes, dropdown menus and sliders
 - Visualize text, figure and table output using an RShiny App
 - Upload data into an RShiny app
-- Design the user interface for an RShiny App
 - Discuss the various hosting options for RShiny Apps 
 
 ## Contents
@@ -28,7 +27,6 @@ In this workshop, users will be able to:
 | [R Shiny App Structure and Syntax](lessons/01_syntax_and_structure.md) | 20 min |
 | [Input options](lessons/02_inputs.md) | 30 min |
 | [Visualization and Interactive Visuals](lessons/03_visuals.md) | 45 min |
-| [Arranging Layouts](lessons/04_layouts.md) | 30 min |
 | [Hosting Platforms](lessons/05_hosting.md) | 15 min |
 
 ## Installation Requirements
@@ -46,3 +44,7 @@ Prior to the workshop please install the following R packages:
 - Tidyverse
 - shinythemes
 - DT
+
+## Additional Resources
+
+- [Arranging Layouts](lessons/04_layouts.md)
