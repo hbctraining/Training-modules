@@ -186,7 +186,7 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_checkbox_demo/?showcase=0" width="300" height="175px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_checkbox_demo/?showcase=0" width="200" height="175px" data-external="1"></iframe></p>
 
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
@@ -383,6 +383,12 @@ Also, to enhance the widget inputs, [shinyWidgets](https://github.com/dreamRs/sh
 <img src="../img/Shiny_widgets.png" width="800">
 </p>
 
+***
 
+[Next Lesson >>](03_visuals.md)
 
+[Back to Schedule](..)
 
+*** 
+
+*This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
