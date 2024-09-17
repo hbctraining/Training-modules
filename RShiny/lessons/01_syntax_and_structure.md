@@ -89,7 +89,7 @@ shinyApp(ui = ui, server = server)
 
 The app that returns should look like the one below:
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/input_text_demo/?showcase=0" width="300px" height="200px" data-external="1"> </iframe>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/input_text_demo/?showcase=0" width="300px" height="200px" data-external="1"> </iframe></p>
 
 You can see that while your app is running the console will look something similar to:
 
