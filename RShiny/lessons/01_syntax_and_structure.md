@@ -57,7 +57,7 @@ shinyApp(ui = ui, server = server)
 
 The app that returns should look like the one below:
 
-<iframe src="https://hcbc.connect.hms.harvard.edu/input_text_demo/?showcase=0" width="100%" height="625px" data-external="1"> </iframe>
+<iframe src="https://hcbc.connect.hms.harvard.edu/input_text_demo/?showcase=0" width="100%" height="200px" data-external="1"> </iframe>
 
 You can see that while your app is running it will look something similar to:
 
@@ -138,3 +138,13 @@ The diagram below illustrates how this works.
 </p>
 
 Now that we have a created our first Shiny app in R, we will explore various input and output options in the next lesson.
+
+***
+
+[Next Lesson >>](02_inputs.md)
+
+[Back to Schedule](..)
+
+*** 
+
+*This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
