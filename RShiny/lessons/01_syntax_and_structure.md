@@ -8,7 +8,7 @@ author: "Will Gammerdinger"
 In this lesson, you will:
 
 - Describe RShiny
-- Describe the structure of a RShiny App
+- Describe the structure of an RShiny App
 - Define the syntax needed to create an RShiny App
 
 ## What is Shiny?
@@ -59,7 +59,7 @@ At the top of the script add and run the command to load Shiny:
 library(shiny)
 ```
 
-> Note: It is very important when you go to host your apps on external platforms that the app is titled "**app.R**". Typically `app.R` will contain code for a single shiny app, however for this workshop we will paste in multiple apps to demonstrate RShiny capabilities.
+> Note: It is very important when you go to host your apps on external platforms that the app is titled "**app.R**". Typically `app.R` will contain code for a single Shiny app, however for this workshop we will paste in multiple apps to demonstrate Shiny's capabilities.
 
 ## Your first app
 
@@ -99,7 +99,7 @@ Listening on http://127.0.0.1:4108
 When you are running an app, your console will be unavailable. In order **to get your console back** you need to either **close the app or press the red stop sign** in the top right of the console. If you relaunch the app (by re-running the `shinyApp` function), you can view the app in a web browser by:
 
 1. Clicking "Open in Browser" at the top of the the app window
-2. Copy and paste the URL in your console after "Listening on" into the URL of your preferred browser
+2. Copy and paste the URL in your console after "Listening on" into the URL of your preferred web browser
 
 ### User Interface
 
@@ -119,12 +119,12 @@ The `fluidPage()` function is a common wrapper used to develop UI's in Shiny and
 textInput("input_text", "My input text")
 ```
 
-There are many types of input and output types in RShiny, we will discuss these types at length in the [next lesson](). In this example, we are **creating a text input** using the `textInput()` function. There are two arguments:
+There are many types of input and output types in RShiny, we will discuss these types at length in the upcoming lessons. In this example, we are **creating a text input** using the `textInput()` function. There are two arguments:
 
 1. The first argument is the variable name for the user input to be stored to.
 2. The second argument is a character string representing the text which will be placed above the input text box.
 
-Because this is the first line of code for the app, this input text box will appear at the top of the app.
+Because this is the first line of code for the user interface, this input text box will appear at the top of the app.
 
 ```
 # The output text
@@ -157,7 +157,7 @@ The server function is created with the variables `input` and `output` to hold t
 
 Here, we are using the `renderText()` function to take the object from `textInput()` render it as output. We then take that rendering and assign it to `output$output_text` which ties back to the  `textOutput()` function we had in the UI section of code. 
 
-> **NOTE:** The `render[Type]()` family of functions are specific to the type of `[type]Output()`. We will talk about this more in the next lesson.
+> **NOTE:** The `render[Type]()` family of functions are specific to the type of `[type]Output()`. We will talk about this more in upcoming lessons.
 
 ## Putting it all together 
 
@@ -173,7 +173,7 @@ The diagram below illustrates how this works.
 <img src="../img/Shiny_process.png" width="800">
 </p>
 
-Now that we have a created our first Shiny app in R, we will explore various input and output options in the next lessons.
+Now that we have created our first Shiny app in R, we will explore various input and output options in the next lessons.
 
 ***
 
