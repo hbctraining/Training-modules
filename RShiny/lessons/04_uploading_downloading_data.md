@@ -453,10 +453,10 @@ Step 1. Write the UI with the appriopriate `fileInput()`, `selectInput()`, `plot
 
 Step 2. Write the server side with:
 
-    1. A `reactive()` function for reading in the CSV file
-    2. A `reactive()` function to create the ggplot figure
-    3. A `renderPlot()` function to render the ggplot figure from the reactive expression
-    4. A `downloadHandler()` function for downloading the image
+1. A `reactive()` function for reading in the CSV file
+2. A `reactive()` function to create the ggplot figure
+3. A `renderPlot()` function to render the ggplot figure from the reactive expression
+4. A `downloadHandler()` function for downloading the image
 
 The app will look like:
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_upload_download_exercise/?showcase=0" width="800" height="700px" data-external="1"></iframe></p>
