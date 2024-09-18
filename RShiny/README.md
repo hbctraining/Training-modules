@@ -49,3 +49,4 @@ Prior to the workshop please install the following R packages:
 ## Additional Resources
 
 - [Arranging Layouts](lessons/layouts.md)
+- [Mastering Shiny](https://mastering-shiny.org/)
