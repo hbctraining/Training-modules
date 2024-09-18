@@ -32,7 +32,6 @@ Each Shiny App has 3 main components:
 3. **shinyApp** - This is the line that ties the UI and the server together and launches the app
 
 ## Setup
-**Add some text here on opening RStudio and setting up an R project? Include a script?**
 
 Before we make our first app, let's get our RStudio environment set-up:
 
@@ -60,7 +59,7 @@ At the top of the script add and run the command to load Shiny:
 library(shiny)
 ```
 
-> Note: It is very important when you go to host your apps on external platforms that the app is titled "**app.R**". We will be using this R Script to write all of our apps in during this 
+> Note: It is very important when you go to host your apps on external platforms that the app is titled "**app.R**". Typically `app.R` will contain code for a single shiny app, however for this workshop we will paste in multiple apps to demonstrate RShiny capabilities.
 
 ## Your first app
 
