@@ -15,9 +15,9 @@ This repository has teaching materials for a **2-3 hour**, hands-on workshop cov
 
 In this workshop, users will be able to:
 - Differentiate between the User Interface and Server side of a RShiny App
-- Create apps that take a variety of input formats, including test, checkboxes, dropdown menus and sliders
+- Create apps that take a variety of input formats, including text, checkboxes, dropdown menus and sliders
 - Visualize text, figure and table output using an RShiny App
-- Upload data into an RShiny app
+- Upload data into an RShiny app and download data and figures from an RShiny app
 - Discuss the various hosting options for RShiny Apps 
 
 ## Contents
