@@ -48,4 +48,4 @@ Prior to the workshop please install the following R packages:
 
 ## Additional Resources
 
-- [Arranging Layouts](lessons/04_layouts.md)
+- [Arranging Layouts](lessons/layouts.md)
