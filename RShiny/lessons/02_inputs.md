@@ -347,25 +347,25 @@ In this exercise, you will use the widget options presented above and the associ
 <details>
 <summary>Click here to see the solution</summary>
 <pre>
-&#35 User Interface
+&#35; User Interface
 ui <- fluidPage(
-&#9;&#35 Select a number between 1 and 3 from a select dropdown menu
+&#9;&#35; Select a number between 1 and 3 from a select dropdown menu
 &#9;selectInput("selected_number", "Pick a number", choices = c(1, 2, 3)),
-&#9;&#35 Select a number between 4 and 6 from radio buttons
+&#9;&#35; Select a number between 4 and 6 from radio buttons
 &#9;radioButtons("radio_number", "Pick a number", choices = c(4, 5, 6)),
-&#9;&#35 Select a number between 7 and 9 from a slider
+&#9;&#35; Select a number between 7 and 9 from a slider
 &#9;sliderInput("slider_number", "Pick a number", min = 7, max = 9, value = 8),
-&#9;&#35 The output text
+&#9;&#35; The output text
 &#9;textOutput("output_text")
 )<br/>
-&#35 Server
+&#35; Server
 server <- function(input, output) {
-&#9;&#35 Render the product of the input values tas text
+&#9;&#35; Render the product of the input values tas text
 &#9;output$output_text <- renderText({ 
 &#9;&#9;as.numeric(input$selected_number) * as.numeric(input$radio_number) * as.numeric(input$slider_number)
 &#9;})
 }<br/>
-&#35 Run the app
+&#35; Run the app
 shinyApp(ui = ui, server = server)
     </pre>
 </details>
