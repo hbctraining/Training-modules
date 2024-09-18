@@ -11,7 +11,7 @@ In this lesson, you will:
 
 # Widget Inputs
 
-In the previous lesson, we introduced using the `textInput()` function. This function is actually a type of widget and there are many widget inputs that exist. In this next section, we will explore some of these different input widgets.
+In the previous lesson, we introduced using the `textInput()` function. This function is actually a type of widget and there are many widget inputs that exist. In this next sections, we will explore some of these different input widgets.
 
 ## Text box
 
@@ -54,14 +54,14 @@ textAreaInput("input_text", "My input text")
 To have a third, placeholder, argument:
 
 ```
-  textAreaInput("input_text", "My input text", "Write about anything you like here...")
+  textAreaInput("input_text", "My input text", placeholder = "Write about anything you like here...")
 ```
 
 Adding this in creates default text to appear in the box, giving the user an example. 
 
 ## Sliding range 
 
-Sliders inputs are a great way to provide an interactive range for the user to select a value from. Below we will have the example code that one can use to create a slider input:
+Slider inputs are a great way to provide an interactive range for the user to select a value from. Below we will have the example code that one can use to create a slider input:
 
 ```
 # User Interface
@@ -154,7 +154,7 @@ ui <- fluidPage(
 
 # Server
 server <- function(input, output) {
-  # Render the seledction from the radio button as text
+  # Render the selection from the radio button as text
   output$output_text <- renderText({ 
     input$radio_button_input
   })
@@ -255,7 +255,7 @@ Additional arguments that you might want to use with `checkboxGroupInput()` are:
 
 ## Dates
 
-The widget for dates allows you to select a specific date from a dropdown calendar. There are two functions that allow you to do this:
+The input widget for dates allows you to select a specific date from a dropdown calendar. There are two functions that allow you to do this:
 
 1. `dateInput()`: Selecting a single date 
 2. `dateRangeInput()`: Selecting a range of dates
@@ -285,7 +285,7 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-> **NOTE:** We have had to add the `as.character()` function around `input$date_input` otherwise it will return the number of days in  [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time) format.
+> **NOTE:** We have had to add the `as.character()` function around `input$date_input` otherwise it will return the time in  [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time) format.
 
 This would visualize like:
 
@@ -337,12 +337,12 @@ The same additional arguments that were used with `dateInput()` also apply here.
 
 **Exercise**
 
-In this exercise, you will use the widget options presented above and the associate code to create your own RShiny app! It will take numeric input from a select dropdown menu, radio button and slider and then multiply the values together and return the product. Let's break this down into a few parts:
+In this exercise, you will use the input widgets presented above and the associate code to create your own RShiny app! It will take numeric input from a select dropdown menu, radio button and slider and then multiply the values together and return the product. Let's break this down into a few parts:
 
 1. Create the user interface for the app that allows the user to select the values 1-3 from a `selectInput()` function, the values 4-6 from a `radioButtons()` function and the values 7-9 from a `sliderInput()`.
-2. In the user interface create a place for the output text for the product of these values to appear
-3. Create a server for the app that multiples the three input values together and renders their product as text. _Hint: You will need to wrap each input in a `as.numeric()` function.
-4. Run the app
+2. In the user interface create a place for the output text for the product of these values to appear.
+3. Create a server for the app that multiples the three input values together and renders their product as text. _Hint: You will need to wrap each input in a `as.numeric()` function._
+4. Run the app.
 
 <details>
 <summary><b>Click here to see the solution</b></summary>
@@ -383,7 +383,7 @@ conditionalPanel(
 )
 ```
 
-Below is an example of using the `conditionalPanel()`. In this example, the user selects 'Yes' or 'No', and if they select 'Yes' they are prompted to select from a list of courses that they have taken. If they select 'No', there is nothing further.
+Below is an example of using the `conditionalPanel()`. In this example, the user selects 'Yes' or 'No', and if they select 'Yes', then they are prompted to select from a list of courses that they have taken. If they select 'No', there is nothing further.
 
 ```
 # User interface
@@ -413,7 +413,7 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-> **NOTE:** When using boolean values with conditional panels, the '\<value\>' is `0` for `FALSE` and `1` for `TRUE`. Entering the character values `TRUE` or `FALSE` for these values will not work.
+> **NOTE:** When using boolean values with conditional panels, the '\<value\>' is `0` for `FALSE` and `1` for `TRUE`. Entering the boolean values `TRUE` or `FALSE` for these values will not work.
 
 This would look like:
 
@@ -468,7 +468,7 @@ Test out the app with the "Yes" and "No" options and see how it differs from bef
 
 We have only scratched the surface of widgets for RShiny! There is so much more you can do, and we encourage you to delve deeper and explore added functionality.
 
-Also, to enhance the widget inputs, [shinyWidgets](https://github.com/dreamRs/shinyWidgets) is an R package that you can install that give you even more stylistic options for your Shiny app. The gallery of widget input that you can create using shinyWidgets can be found [here](https://shinyapps.dreamrs.fr/shinyWidgets/). A useful part of the gallery is that each widget input displayed has a `</> Show code` section that gives you the code needed to create the widget input on the UI side.
+Also, to enhance the widget inputs, [shinyWidgets](https://github.com/dreamRs/shinyWidgets) is an R package that you can install that gives you even more stylistic options for your Shiny app. The gallery of input widgets that you can create using shinyWidgets can be found [here](https://shinyapps.dreamrs.fr/shinyWidgets/). A useful part of the gallery is that each input widget displayed has a `</> Show code` section that gives you the code needed to create the input widget on the UI side.
 
 <p align="center">
 <img src="../img/Shiny_widgets.png" width="800">
