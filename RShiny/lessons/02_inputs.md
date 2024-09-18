@@ -345,7 +345,7 @@ In this exercise, you will use the widget options presented above and the associ
 4. Run the app
 
 <details>
-<summary>Click here to see the solution</summary>
+<summary><b>Click here to see the solution</b></summary>
 <pre>
 &#35; User Interface
 ui <- fluidPage(
