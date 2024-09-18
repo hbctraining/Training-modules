@@ -9,7 +9,8 @@ In this lesson, you will:
 - Implement reactive expressions
 - Learn how to incorporate data into your Shiny app
 - Add functionality to download table data from Shiny app
-- Download plot created in Shiny app
+- Download plots created in Shiny app
+- Create action buttons for a Shiny app
 
 # Reactive Expressions
 
@@ -100,7 +101,7 @@ actionButton("inputID", "Label", class = "btn-primary")
 <summary><b>Click here if you would like to see a table of availible action button styles</b></summary>
 <table>
   <tr>
-    <th>Clas</th>
+    <th>Class</th>
     <th>Description</th>
     <th>Example Code</th>
     <th>Example</th>
@@ -212,7 +213,7 @@ This app would look like:
 
 # Uploads and Downloads
 
-Transferring files to and from the user is a common feature of Shiny apps. You can use it to upload data for analysis, download the results of an analysis or a figure you generated. Now we introduce you to functions that help with file handling in addition to some other advanced topics which tie in nicely (and are helpful when running these functions).
+Transferring files to and from an app is a common feature of Shiny apps. You can use it to upload data for analysis, download the results of an analysis or a figure you generated. Now we will introduce you to functions that help with file handling in addition to some other advanced topics which tie in nicely (and are helpful when running these functions).
 
 ## Uploading data
 Often apps are created such that one can explore their own data in some way. To allows users to upload their own data into the app we use the `fileInput()` function on the UI side:
@@ -244,7 +245,7 @@ On the server side it would look like:
   )
 ```
 
-The first part of this code is **creating the reactive object `uploaded_file()`**. We require that the file exist with `req(input$<input_fileID>)`, otherwise Shiny will return an error until we upload a file. Then we read in the file with a function from the `read.table()` family of functions. 
+The first part of this code is **creating the reactive expression `uploaded_file()`**. We require that the file exist with `req(input$<input_fileID>)`, otherwise Shiny will return an error until we upload a file. Then we read in the file with a function from the `read.table()` family of functions. 
 
 The example app for this would look like:
 
@@ -279,9 +280,9 @@ This app would look like:
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/File_upload_demo/?showcase=0" width="300" height="150px" data-external="1"></iframe></p>
 
 ## Downloading Analysis
-In the course of doing your analyses, it is likely that you will get to a point where you want to download data stored in a data frame or a plot that you've created. Shiny also provides functionality to do this. When you are interested in downloading data or plots, you are going to want to use the `downloadButton()` (UI side) and `downloadHandler()` (server) functions.
+In the course of doing your analyses, it is likely that you will get to a point where you want to download data stored in a data frame or a plot that you've created. Shiny also provides functionality to do this. When you are interested in downloading data or plots, you are going to want to use the `downloadButton()` (UI side) and `downloadHandler()` (server side) functions.
 
-### Downloading data frame
+### Downloading a Data Frame
 
 If you have a data frame that you want to download then the important pieces of syntax are:
 
@@ -291,7 +292,7 @@ On the UI side:
 downloadButton("<download_buttonID>", "Download the data .csv")
 ```
 
-The download button is very similar to the `actionButton()` function that we've recently explored. In fact, it also accepts the `class` arugment(s) similar to the `actionButton()` function. 
+The download button is very similar to the `actionButton()` function that we've recently explored. In fact, it also accepts the `class` argument(s) similar to the `actionButton()` function. 
 
 On the server side:
 
@@ -311,7 +312,7 @@ On the server side, we need to use the `downloadHandler()` function. The `downlo
 - `filename` - This is the default filename that will pop-up when you try to save the file.
 - `content` - This is the argument where you write your data frame to a file. In this case, we are writing to a `.csv`, so we use `write.csv()`. We are writing it to a temporary object called `file` that `downloadHandler()` recognizes as the output from `content`.
 
-An example app using this is similar to the brush points example we used previously:
+An example app using this is similar to the brushed points example we used previously:
 
 ```
 # User interface
@@ -438,7 +439,7 @@ shinyApp(ui = ui, server = server)
 
 Some key aspects of this app are:
 - Similarly to when we downloaded the data frame, we have moved our plot function to be within a `reactive()` function (called `mtcars_plot`).
-- Our `renderPlot()` function called the `mtcars_plot()` reactive object.
+- Our `renderPlot()` function called the `mtcars_plot()` reactive expression.
 - We call our `downloadHandler()` function and provide it a default file name of `"mtcars_plot.png"` and for `content`, we call it mostly the same way as we would write a plot out in R; calling the `png()` function, plotting our plot, then closing the device with the `dev.off()` function. The only thing of note here is that we go need to wrap the `mtcars_plot()` reactive expression within a `print()` function.
 
 This app looks like:
