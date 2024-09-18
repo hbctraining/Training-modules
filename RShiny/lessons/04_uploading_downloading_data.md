@@ -291,7 +291,7 @@ On the UI side:
 downloadButton("<download_buttonID>", "Download the data .csv")
 ```
 
-The download button is very simialr to the `actionButton()` function that we've already explored (../02_inputs.md). In fact it also accepts the `class` arugment(s) similar to the `actionButton()` function. 
+The download button is very similar to the `actionButton()` function that we've recently explored. In fact, it also accepts the `class` arugment(s) similar to the `actionButton()` function. 
 
 On the server side:
 
@@ -311,44 +311,56 @@ On the server side, we need to use the `downloadHandler()` function. The `downlo
 - `filename` - This is the default filename that will pop-up when you try to save the file.
 - `content` - This is the argument where you write your data frame to a file. In this case, we are writing to a `.csv`, so we use `write.csv()`. We are writing it to a temporary object called `file` that `downloadHandler()` recognizes as the output from `content`.
 
-An example app using this is simialr to the bursh points example we used previously:
+An example app using this is similar to the brush points example we used previously:
 
 ```
-library(shiny)
-library(ggplot2)
-library(DT)
-
+# User interface
 ui <- fluidPage(
-  plotOutput("plot", brush = "plot_brush"),
-  DTOutput("table"),
-  downloadButton("download_button", "Download the data .csv")
+    #  Plot the output with an interactive brushing argument
+    plotOutput("plot", brush = "plot_brush"),
+    # The output table
+    DTOutput("table"),
+    # Download button
+    downloadButton("download_button", "Download the data .csv")
 )
 
+# Server
 server <- function(input, output) {
-  output$plot <- renderPlot(
-    ggplot(mtcars) +
-      geom_point(aes(x = mpg, y = disp))
-  )
-  brushed_points <- reactive(
-    brushedPoints(mtcars, input$plot_brush)
-  )
-  output$table <- renderDT({
-    brushed_points()
-  })
-  output$download_button <- downloadHandler(
-    filename = function() {
-      "mtcars_subset.csv"
-    },
-    content = function(file) {
-      write.csv(brushed_points(), file, quote = FALSE)
-    }
-  )
+    # Render a plot from the built-in mtcars dataset
+    output$plot <- renderPlot(
+        ggplot(mtcars) +
+            geom_point(aes(x = mpg, y = disp))
+    )
+    # Reactive expression to hold the brushed points
+    brushed_points <- reactive(
+        brushedPoints(mtcars, input$plot_brush)
+    )
+    # Render a table from brushed points the reactive expression is caching
+    output$table <- renderDT({
+        brushed_points()
+    })
+    # Download the data
+    output$download_button <- downloadHandler(
+        # The placeholder name for the file will be called mtcars_subset.csv
+        filename = function() {
+            "mtcars_subset.csv"
+        },
+        # The content of the file will be the contents of the brushed points reactive expression
+        content = function(file) {
+            write.csv(brushed_points(), file, quote = FALSE)
+        }
+    )
 }
 
+# Run the app
 shinyApp(ui = ui, server = server)
 ```
 
-In the above script, we tweaked our script to allow us to download the table containing the brushed points. First, we added a download button to out UI with `downloadButton("download_button", "Download the data .csv")`. Next, we moved our `brushedPoints()` function out of `renderDT()` and placed it within a `reactive()` function since we will be calling it twice, once in the `renderDT()` function and again when we write our data in the `downloadHandler()` function. Within the `downloadHandler()` function we provided a filename to use as a placeholder (`"mtcars_subset.csv"`) as well as defining the content of our `.csv` file (`write.csv(brushed_points(), file, quote = FALSE)`). 
+In the above script, we tweaked our script to allow us to download the table containing the brushed points. 
+
+- We added a download button to our UI with `downloadButton("download_button", "Download the data .csv")`
+- We moved our `brushedPoints()` function out of `renderDT()` and placed it within a `reactive()` function since we will be calling it twice, once in the `renderDT()` function and again when we write our data in the `downloadHandler()` function
+- Within the `downloadHandler()` function we provided a filename to use as a placeholder (`"mtcars_subset.csv"`) as well as defining the content of our `.csv` file (`write.csv(brushed_points(), file, quote = FALSE)`)
 
 This app looks like:
 
@@ -356,7 +368,7 @@ This app looks like:
 
 ### Downloading a plot
 
-Downloading a plot is similiar to downloading a table. It also uses the `downloadButton()` and `downloadHandler()` functions and the arguments are largely similiar. The syntax looks like:
+Downloading a plot is similiar to downloading a table. It also uses the `downloadButton()` and `downloadHandler()` functions and the arguments are largely similar. The syntax looks like:
 
 On the UI side:
 ```
@@ -377,43 +389,57 @@ On the server side:
   )
 ```
 
-We modified our first plot app to allow us to download the plot:
+We can modify our first plot app to allow us to download the plot:
 
 ```
-library(shiny)
-library(ggplot2)
-
+# User Interface
 ui <- fluidPage(
-  selectInput("x_axis_input", "Select x-axis", choices = colnames(mtcars)),
-  selectInput("y_axis_input", "Select y-axis", choices = colnames(mtcars), selected = "disp"),
-  plotOutput("plot"),
-  downloadButton("download_button", "Download the data .png")
+    # Dropdown menu to select the column of data to put on the x-axis
+    selectInput("x_axis_input", "Select x-axis", choices = colnames(mtcars)),
+    # Dropdown menu to select the column of data to put on the y-axis
+    selectInput("y_axis_input", "Select y-axis", choices = colnames(mtcars), selected = "disp"),
+    # The output plot
+    plotOutput("plot"),
+    # Download button
+    downloadButton("download_button", "Download the data .png")
 )
 
+# Server
 server <- function(input, output) {
-  mtcars_plot <- reactive({
-    ggplot(mtcars) +
-      geom_point(aes_string(x = input$x_axis_input, y = input$y_axis_input))
-  })
-  output$plot <- renderPlot({
-    mtcars_plot()
-  })
-  output$download_button <- downloadHandler(
-    filename = function() {
-      "mtcars_plot.png"
-    },
-    content = function(file) {
-      png(file)
-      print(mtcars_plot())
-      dev.off()
-    }
-  )
+    # Reactive expression to hold the scatter plot
+    mtcars_plot <- reactive({
+        ggplot(mtcars) +
+            geom_point(aes_string(x = input$x_axis_input, y = input$y_axis_input))
+    })
+    # Render plot from the reactive expression
+    output$plot <- renderPlot({
+        mtcars_plot()
+    })
+    # Download the data
+    output$download_button <- downloadHandler(
+        # The placeholder name for the file will be called mtcars_plot.png
+        filename = function() {
+            "mtcars_plot.png"
+        },
+        # The content of the file will be the contents of the mtcars_plot() reactive expression
+        # Note how we need to encapsulate the plot in png() and dev.off() functions
+        # The syntax also demands that we put print() around our plot
+        content = function(file) {
+            png(file)
+            print(mtcars_plot())
+            dev.off()
+        }
+    )
 }
 
+# Run the app
 shinyApp(ui = ui, server = server)
 ```
 
-Similiarly to when we downloaded the data frame, we have moved our plot function to be within a `reactive()` function (called `mtcars_plot`). Next, our `renderPlot()` function called the `mtcars_plot()` reactive object. Lastly, we call our `downloadHandler()` function and provide it a default file name of `"mtcars_plot.png"` and for `content`, we call it mostly the same way as we would write a plot out in R; calling the `png()` function, plotting our plot, then closing the device with the `dev.off()` function. The only thing of note here is that we go need to wrap the `mtcars_plot()` reactive object within a `print()` function.
+Some key aspects of this app are:
+- Similarly to when we downloaded the data frame, we have moved our plot function to be within a `reactive()` function (called `mtcars_plot`).
+- Our `renderPlot()` function called the `mtcars_plot()` reactive object.
+- We call our `downloadHandler()` function and provide it a default file name of `"mtcars_plot.png"` and for `content`, we call it mostly the same way as we would write a plot out in R; calling the `png()` function, plotting our plot, then closing the device with the `dev.off()` function. The only thing of note here is that we go need to wrap the `mtcars_plot()` reactive expression within a `print()` function.
 
 This app looks like:
 
@@ -426,10 +452,11 @@ Create an app in R Shiny that lets users upload the iris dataset that can be fou
 Step 1. Write the UI with the appriopriate `fileInput()`, `selectInput()`, `plotOutput` and `downloadButton()` functions
 
 Step 2. Write the server side with:
-    a. A `reactive()` function for reading in the CSV file
-    b. A `reactive()` function to create the ggplot figure
-    c. A `renderPlot()` function to render the ggplot figure from the reactive object
-    d. A `downloadHandler()` function for downloading the image
+
+    1. A `reactive()` function for reading in the CSV file
+    2. A `reactive()` function to create the ggplot figure
+    3. A `renderPlot()` function to render the ggplot figure from the reactive expression
+    4. A `downloadHandler()` function for downloading the image
 
 The app will look like:
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_upload_download_exercise/?showcase=0" width="800" height="700px" data-external="1"></iframe></p>
@@ -437,41 +464,50 @@ The app will look like:
 <details>
   <summary><b>Click here to see the solution</b></summary> 
 <pre>
-library(shiny)
-library(ggplot2)<br/>
-
+&#35; User Interface
 ui <- fluidPage(
+&#9;&#35; Upload the file
 &#9;fileInput("input_file", "Upload file"),
+&#9;&#35; Select from the dropdown menu the column you want on the x-axis
 &#9;selectInput("x_axis_input", "Select x-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+&#9;&#35; Select from the dropdown menu the column you want on the y-axis
 &#9;selectInput("y_axis_input", "Select y-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+&#9;&#35; The output plot
 &#9;plotOutput("plot"),
+&#9;&#35; The download plot button
 &#9;downloadButton("download_button", "Download the data .png")
-)
-
+)<br/>
+&#35; Server
 server <- function(input, output) {
+&#9;&#35; Reactive expression to hold the uploaded data 
 &#9;iris_data <- reactive({
 &#9;&#9;req(input$input_file)
 &#9;&#9;read.csv(input$input_file$datapath)
 &#9;})
+&#9;&#35; Reactive expression to create a scatterplot from the uploaded data and user selected axes
 &#9;iris_plot <- reactive ({
 &#9;ggplot(iris_data()) +
 &#9;&#9;geom_point(aes_string(x = input$x_axis_input, y = input$y_axis_input))
 &#9;})
+&#9;&#35; Render the plot from the iris_plot() reactive expression
 &#9;output$plot <- renderPlot({
 &#9;&#9;iris_plot()
 &#9;})
+&#9;&#35; Download the data
 &#9;output$download_button <- downloadHandler(
+&#9;&#9;&#35; The placeholder name for the file will be called iris_plot.png
 &#9;&#9;filename = function() {
 &#9;&#9;&#9;"iris_plot.png"
 &#9;&#9;},
+&#9;&#9;&#35; The content of the file will be the contents of the iris_plot() reactive expression
 &#9;&#9;content = function(file) {
 &#9;&#9;&#9;png(file)
 &#9;&#9;&#9;print(iris_plot())
 &#9;&#9;&#9;dev.off()
 &#9;&#9;}
 &#9;)
-}
-
+}<br/>
+&#35; Run the app
 shinyApp(ui = ui, server = server)
 </pre>
 </details>
