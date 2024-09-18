@@ -23,117 +23,6 @@ When we use a reactive expression, we will wrap it within a `reactive()` functio
 
 > Note: You can also have multiple reactive expressions that connect to each other in between inputs and outputs. 
 
-## Isolate
-
-In Shiny, you may find that you will want to limit the reactivity. However, you might want only partial reactivity and this is where the `isolate()` feature can be quite helpful. You can create a non-reactive scope around an expression using `isolate`. The syntax for using `isolate()` is:
-
-```
-isolate(<non_reactive_expression>)
-```
-
-We can create a similar app to the one above but edit the code to use isolate. In this example, we will see that the first slider is completely reactive, however the second slider is only reacts once the action button has been clicked:
-
-```
-# User interface
-ui <- fluidPage(
-    # Slider for the user to select a number between 1 and 10
-    sliderInput("slider_input_1", "Select a number", value = 5, min = 1, max = 10),
-    # Slider for the user to select a number between 1 and 10
-    sliderInput("slider_input_2", "Select a number", value = 5, min = 1, max = 10),
-    # The button that will re-process the calculation containing elements within the isolate function after it has been clicked
-    actionButton("calculate", "Multiply!"),
-    # The output text
-    textOutput("product")
-)
-
-# Server
-server <- function(input, output) {
-    # Renders the text for the product of the values from the two sliders
-    # Note that the first slider is not inside an isolate function and will thus react in real-time, while the second slider is within an isolate function, so it will only be evaluated when the action button has been clicked
-    output$product <- renderText({
-        input$calculate
-        input$slider_input_1 * isolate(input$slider_input_2)
-    })
-}
-
-# Run the app
-shinyApp(ui = ui, server = server)
-```
-
-This app would look like:
-
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_isolate_demo/?showcase=0" width="400px" height="300px" data-external="1"></iframe></p>
-
-
-> Note: If we had used `isolate(input$slider_input_1 * input$slider_input_2)` instead of `input$slider_input_1 * isolate(input$slider_input_2)`, then this app would function similarly to the app from the previous section since there are now two sliders' widget inputs are within the `isolate()` function.
-
-# Uploads and Downloads
-
-Transferring files to and from the user is a common feature of Shiny apps. You can use it to upload data for analysis, download the results of an analysis or a figure you generated. Now we introduce you to functions that help with file handling in addition to some other advanced topics which tie in nicely (and are helpful when running these functions).
-
-## Uploading data
-Often apps are created such that one can explore their own data in some way. To allows users to upload their own data into the app we use the `fileInput()` function on the UI side:
-
-```
-fileInput("<input_fileID>", "<Text_above_file_upload>")
-```
-
-There are some additional options that you might want to consider when using the `fileInput()` function. 
-
-| Argument | Description |  Example  |
-|----------|-------------|-----------|
-| multiple | Allows the user to upload multiple files\* | `multiple = TRUE` |
-| accept | Limit the file extensions that can be selected by the user | `accept = ".csv"` |
-| placeholder | Text to be entered as a placeholder instead of the "No file selected" default | `placeholder = "Waiting for file selection"` |
-| buttonLabel | Text to be entered onto the upload button instead of "Browse..." default | `buttonLabel = "Select File..."` |
-
-_\* Uploading multiple files can be a bit tricky and is outside of the scope of this workshop, but it can be done._
-
-On the server side it would look like:
-
-```
-  uploaded_file <- reactive({
-    req(input$<input_fileID>)
-    read.table(input$<input_fileID>$datapath)
-  })
-  output$table <- renderDT(
-    uploaded_file()
-  )
-```
-
-The first part of this code is **creating the reactive object `uploaded_file()`**. We require that the file exist with `req(input$<input_fileID>)`, otherwise Shiny will return an error until we upload a file. Then we read in the file with a function from the `read.table()` family of functions. 
-
-The example app for this would look like:
-
-```
-# User interface
-ui <- fluidPage(
-    # File upload button
-    fileInput("input_file", "Upload your file"),
-    # The output table
-    DTOutput("table")
-)
-
-# Server
-server <- function(input, output) {
-    # Create a reactive expression that requires a file have been uploaded and reads in the CSV file that was uploaded
-    uploaded_file <- reactive({
-        req(input$input_file)
-        read.csv(input$input_file$datapath, header = TRUE, row.names = 1)
-    })
-    # Renders the reactive expression as a table
-    output$table <- renderDT(
-        uploaded_file()
-    )
-}
-
-# Run the app
-shinyApp(ui = ui, server = server)
-```
-
-This app would look like:
-
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/File_upload_demo/?showcase=0" width="300" height="150px" data-external="1"></iframe></p>
 
 ## Action Buttons
 
@@ -277,6 +166,117 @@ actionButton("inputID", "Label", class = "btn-primary")
 
 > Note: `bindEvent()` is a newer function and when coupled with `observe()` and `reactive()` functions, it replaces `observeEvent()` and `eventReactive()` functions, respectively. It is recommended to use `bindEvent()` moving forward as it is more flexible, but you may still run across code that utilizes `observeEvent()` and `eventReactive()`. 
 
+## Isolate
+
+In Shiny, you may find that you will want to limit the reactivity. However, you might want only partial reactivity and this is where the `isolate()` feature can be quite helpful. You can create a non-reactive scope around an expression using `isolate`. The syntax for using `isolate()` is:
+
+```
+isolate(<non_reactive_expression>)
+```
+
+We can create a similar app to the one above but edit the code to use isolate. In this example, we will see that the first slider is completely reactive, however the second slider is only reacts once the action button has been clicked:
+
+```
+# User interface
+ui <- fluidPage(
+    # Slider for the user to select a number between 1 and 10
+    sliderInput("slider_input_1", "Select a number", value = 5, min = 1, max = 10),
+    # Slider for the user to select a number between 1 and 10
+    sliderInput("slider_input_2", "Select a number", value = 5, min = 1, max = 10),
+    # The button that will re-process the calculation containing elements within the isolate function after it has been clicked
+    actionButton("calculate", "Multiply!"),
+    # The output text
+    textOutput("product")
+)
+
+# Server
+server <- function(input, output) {
+    # Renders the text for the product of the values from the two sliders
+    # Note that the first slider is not inside an isolate function and will thus react in real-time, while the second slider is within an isolate function, so it will only be evaluated when the action button has been clicked
+    output$product <- renderText({
+        input$calculate
+        input$slider_input_1 * isolate(input$slider_input_2)
+    })
+}
+
+# Run the app
+shinyApp(ui = ui, server = server)
+```
+
+This app would look like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_isolate_demo/?showcase=0" width="400px" height="300px" data-external="1"></iframe></p>
+
+
+> Note: If we had used `isolate(input$slider_input_1 * input$slider_input_2)` instead of `input$slider_input_1 * isolate(input$slider_input_2)`, then this app would function similarly to the app from the previous section since there are now two sliders' widget inputs are within the `isolate()` function.
+
+# Uploads and Downloads
+
+Transferring files to and from the user is a common feature of Shiny apps. You can use it to upload data for analysis, download the results of an analysis or a figure you generated. Now we introduce you to functions that help with file handling in addition to some other advanced topics which tie in nicely (and are helpful when running these functions).
+
+## Uploading data
+Often apps are created such that one can explore their own data in some way. To allows users to upload their own data into the app we use the `fileInput()` function on the UI side:
+
+```
+fileInput("<input_fileID>", "<Text_above_file_upload>")
+```
+
+There are some additional options that you might want to consider when using the `fileInput()` function. 
+
+| Argument | Description |  Example  |
+|----------|-------------|-----------|
+| multiple | Allows the user to upload multiple files\* | `multiple = TRUE` |
+| accept | Limit the file extensions that can be selected by the user | `accept = ".csv"` |
+| placeholder | Text to be entered as a placeholder instead of the "No file selected" default | `placeholder = "Waiting for file selection"` |
+| buttonLabel | Text to be entered onto the upload button instead of "Browse..." default | `buttonLabel = "Select File..."` |
+
+_\* Uploading multiple files can be a bit tricky and is outside of the scope of this workshop, but it can be done._
+
+On the server side it would look like:
+
+```
+  uploaded_file <- reactive({
+    req(input$<input_fileID>)
+    read.table(input$<input_fileID>$datapath)
+  })
+  output$table <- renderDT(
+    uploaded_file()
+  )
+```
+
+The first part of this code is **creating the reactive object `uploaded_file()`**. We require that the file exist with `req(input$<input_fileID>)`, otherwise Shiny will return an error until we upload a file. Then we read in the file with a function from the `read.table()` family of functions. 
+
+The example app for this would look like:
+
+```
+# User interface
+ui <- fluidPage(
+    # File upload button
+    fileInput("input_file", "Upload your file"),
+    # The output table
+    DTOutput("table")
+)
+
+# Server
+server <- function(input, output) {
+    # Create a reactive expression that requires a file have been uploaded and reads in the CSV file that was uploaded
+    uploaded_file <- reactive({
+        req(input$input_file)
+        read.csv(input$input_file$datapath, header = TRUE, row.names = 1)
+    })
+    # Renders the reactive expression as a table
+    output$table <- renderDT(
+        uploaded_file()
+    )
+}
+
+# Run the app
+shinyApp(ui = ui, server = server)
+```
+
+This app would look like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/File_upload_demo/?showcase=0" width="300" height="150px" data-external="1"></iframe></p>
 
 ## Downloading Analysis
 In the course of doing your analyses, it is likely that you will get to a point where you want to download data stored in a data frame or a plot that you've created. Shiny also provides functionality to do this. When you are interested in downloading data or plots, you are going to want to use the `downloadButton()` (UI side) and `downloadHandler()` (server) functions.
