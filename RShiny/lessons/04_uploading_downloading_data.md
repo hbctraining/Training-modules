@@ -23,9 +23,121 @@ When we use a reactive expression, we will wrap it within a `reactive()` functio
 
 > Note: You can also have multiple reactive expressions that connect to each other in between inputs and outputs. 
 
-## Action buttons
+## Isolate
 
-Action buttons allow the user to tell Shiny to carry out a given function. This can be helpful when you have a computationally heavy task where you don't want R to be trying to carry out the computation for each input value as you drag a a slider across its scale. Rather you'd only like for outputs to be computed when you have all of your input parameters set. The syntax for using an action button looks like:
+In Shiny, you may find that you will want to limit the reactivity. However, you might want only partial reactivity and this is where the `isolate()` feature can be quite helpful. You can create a non-reactive scope around an expression using `isolate`. The syntax for using `isolate()` is:
+
+```
+isolate(<non_reactive_expression>)
+```
+
+We can create a similar app to the one above but edit the code to use isolate. In this example, we will see that the first slider is completely reactive, however the second slider is only reacts once the action button has been clicked:
+
+```
+# User interface
+ui <- fluidPage(
+    # Slider for the user to select a number between 1 and 10
+    sliderInput("slider_input_1", "Select a number", value = 5, min = 1, max = 10),
+    # Slider for the user to select a number between 1 and 10
+    sliderInput("slider_input_2", "Select a number", value = 5, min = 1, max = 10),
+    # The button that will re-process the calculation containing elements within the isolate function after it has been clicked
+    actionButton("calculate", "Multiply!"),
+    # The output text
+    textOutput("product")
+)
+
+# Server
+server <- function(input, output) {
+    # Renders the text for the product of the values from the two sliders
+    # Note that the first slider is not inside an isolate function and will thus react in real-time, while the second slider is within an isolate function, so it will only be evaluated when the action button has been clicked
+    output$product <- renderText({
+        input$calculate
+        input$slider_input_1 * isolate(input$slider_input_2)
+    })
+}
+
+# Run the app
+shinyApp(ui = ui, server = server)
+```
+
+This app would look like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_isolate_demo/?showcase=0" width="400px" height="300px" data-external="1"></iframe></p>
+
+
+> Note: If we had used `isolate(input$slider_input_1 * input$slider_input_2)` instead of `input$slider_input_1 * isolate(input$slider_input_2)`, then this app would function similarly to the app from the previous section since there are now two sliders' widget inputs are within the `isolate()` function.
+
+# Uploads and Downloads
+
+Transferring files to and from the user is a common feature of Shiny apps. You can use it to upload data for analysis, download the results of an analysis or a figure you generated. Now we introduce you to functions that help with file handling in addition to some other advanced topics which tie in nicely (and are helpful when running these functions).
+
+## Uploading data
+Often apps are created such that one can explore their own data in some way. To allows users to upload their own data into the app we use the `fileInput()` function on the UI side:
+
+```
+fileInput("<input_fileID>", "<Text_above_file_upload>")
+```
+
+There are some additional options that you might want to consider when using the `fileInput()` function. 
+
+| Argument | Description |  Example  |
+|----------|-------------|-----------|
+| multiple | Allows the user to upload multiple files\* | `multiple = TRUE` |
+| accept | Limit the file extensions that can be selected by the user | `accept = ".csv"` |
+| placeholder | Text to be entered as a placeholder instead of the "No file selected" default | `placeholder = "Waiting for file selection"` |
+| buttonLabel | Text to be entered onto the upload button instead of "Browse..." default | `buttonLabel = "Select File..."` |
+
+_\* Uploading multiple files can be a bit tricky and is outside of the scope of this workshop, but it can be done._
+
+On the server side it would look like:
+
+```
+  uploaded_file <- reactive({
+    req(input$<input_fileID>)
+    read.table(input$<input_fileID>$datapath)
+  })
+  output$table <- renderDT(
+    uploaded_file()
+  )
+```
+
+The first part of this code is **creating the reactive object `uploaded_file()`**. We require that the file exist with `req(input$<input_fileID>)`, otherwise Shiny will return an error until we upload a file. Then we read in the file with a function from the `read.table()` family of functions. 
+
+The example app for this would look like:
+
+```
+# User interface
+ui <- fluidPage(
+    # File upload button
+    fileInput("input_file", "Upload your file"),
+    # The output table
+    DTOutput("table")
+)
+
+# Server
+server <- function(input, output) {
+    # Create a reactive expression that requires a file have been uploaded and reads in the CSV file that was uploaded
+    uploaded_file <- reactive({
+        req(input$input_file)
+        read.csv(input$input_file$datapath, header = TRUE, row.names = 1)
+    })
+    # Renders the reactive expression as a table
+    output$table <- renderDT(
+        uploaded_file()
+    )
+}
+
+# Run the app
+shinyApp(ui = ui, server = server)
+```
+
+This app would look like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/File_upload_demo/?showcase=0" width="300" height="150px" data-external="1"></iframe></p>
+
+## Action Buttons
+
+Action buttons allow the user to tell Shiny when to process data. This can be helpful when you have a computationally heavy task where you don't want R to be trying to carry out the computation for each input value as you drag a a slider across its scale. Rather you'd only like for outputs to be computed when you have all of your input parameters set. The syntax for using an action button looks like:
 
 On the UI side:
 ```
@@ -39,7 +151,7 @@ reactive_expression_with_action_button <- bindEvent(reactive(
   ), input$<action_button_inputID>)
 ```
 
-The `actionButton("inputID", "Label")` line creates our action button in the UI, while `bindEvent(reactive(<reactive_expression>), input$<action_button_inputID>)` wraps a reactive expression within the `bindEvent()` function on the server side. Alternatively, you may see in other's code using a pipe (from the tidyverse package), but this is equivalent code to what is listed above:
+The `actionButton("inputID", "Label")` line creates our action button in the UI, while `bindEvent(reactive(<reactive_expression>), input$<action_button_inputID>)` wraps a reactive expression within the `bindEvent()` function on the server side. Alternatively, you may see in others' code using a pipe (see below), but this is equivalent code to what is listed above:
 
 On the UI side:
 ```
@@ -54,27 +166,34 @@ reactive_expression_with_action_button <- reactive(
   bindEvent(input$<action_button_inputID>)
 ```
 
-Below is some example code on how we could implement this:
+Below is example code on how we could implement this:
 
 ```
-library(shiny)
-
+# User interface
 ui <- fluidPage(
-  sliderInput("slider_input_1", "Select a number", value = 5, min = 1, max = 10),
-  sliderInput("slider_input_2", "Select a number", value = 5, min = 1, max = 10),
-  actionButton("calculate", "Multiply!"),
-  textOutput("product")
+    # Slider for the user to select a number between 1 and 10
+    sliderInput("slider_input_1", "Select a number", value = 5, min = 1, max = 10),
+    # Slider for the user to select a number between 1 and 10
+    sliderInput("slider_input_2", "Select a number", value = 5, min = 1, max = 10),
+    # Action button to tell Shiny to evaluate the multiplication when it is clicked
+    actionButton("calculate", "Multiply!"),
+    # The text output
+    textOutput("product")
 )
 
+# Server
 server <- function(input, output) {
-  multiply <- bindEvent(reactive(
-    input$slider_input_1 * input$slider_input_2
-  ), input$calculate)
-  output$product <- renderText({ 
-    multiply()
-  })
+    # Create a reactive expression that responds to a mouse clicking the action button
+    multiply <- bindEvent(reactive(
+        input$slider_input_1 * input$slider_input_2
+    ), input$calculate)
+    # Render the reactive expression as text
+    output$product <- renderText({ 
+        multiply()
+    })
 }
 
+# Run the app
 shinyApp(ui = ui, server = server)
 ```
 
@@ -88,7 +207,8 @@ A wide variety of action button styles exist by adding the `class` argument to y
 actionButton("inputID", "Label", class = "btn-primary")
 ```
 
-
+<details>
+<summary><b>Click here if you would like to see a table of availible action button styles</b></summary>
 <table>
   <tr>
     <th>Clas</th>
@@ -151,157 +271,15 @@ actionButton("inputID", "Label", class = "btn-primary")
     <td><img src="../img/Action_button_block.png" width="225"></td>
   </tr>
 </table>
+</details>
 
 > Note: You can have multiple classes for a given action button as long as each class is separated by a space. For example, if you wanted a large, dark blue action button that goes across the entire browser, then you could use: `class = "btn-primary btn-lg btn-block"`. However, whichever non-white color you put last in your list of classes will be the color of the button.
 
-> Note: `bindEvent()` is a newer function and it replaces functions like `observeEvent()` and `eventReactive()` when coupled with `observe()` and `reactive()` function, respectively. It is recommended to use `bindEvent()` moving forward as it is more flexible, but you may still run across code that utilizes `observeEvent()` and `eventReactive()`. 
+> Note: `bindEvent()` is a newer function and when coupled with `observe()` and `reactive()` functions, it replaces `observeEvent()` and `eventReactive()` functions, respectively. It is recommended to use `bindEvent()` moving forward as it is more flexible, but you may still run across code that utilizes `observeEvent()` and `eventReactive()`. 
 
-## Isolate
-
-In Shiny, you may find that you will want to limit the reactivity as we did in the previous example. However, you might want only partial reactivity and this is where the `isolate()` feature can be quite helpful. You can create a non=-reactive scope around an expression using `isolate`. The syntax for using `isolate()` is:
-
-```
-isolate(<non_reactive_expression>)
-```
-
-We can create a similar app to the one above but edit the code to use isolate. In this example, we will see that the first slider is completely reactive, however the second slider is only reacts once the action button has been clicked:
-
-```
-library(shiny)
-
-ui <- fluidPage(
-  sliderInput("slider_input_1", "Select a number", value = 5, min = 1, max = 10),
-  sliderInput("slider_input_2", "Select a number", value = 5, min = 1, max = 10),
-  actionButton("calculate", "Multiply!"),
-  textOutput("product")
-)
-
-server <- function(input, output) {
-  output$product <- renderText({
-    input$calculate
-    input$slider_input_1 * isolate(input$slider_input_2)
-  })
-}
-
-shinyApp(ui = ui, server = server)
-```
-
-This app would look like:
-
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_isolate_demo/?showcase=0" width="400px" height="300px" data-external="1"></iframe></p>
-
-
-> Note: If we had used `isolate(input$slider_input_1 * input$slider_input_2)` instead of `input$slider_input_1 * isolate(input$slider_input_2)`, then this app would function similarly to the app from the previous section since there are now two sliders' widget inputs are within the `isolate()` function.
-
-# Exercise
-
-Create an app that asks the user Yes or No if they know any programming languages. If they do, provide a handful of progrmaming languages in a checkbox group. Once the user has made their selection, allow to hit an action put to display the languages that they selected. The app should look like:
-
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_exercise_2//?showcase=0" width="400px" height="300px" data-external="1"></iframe></p>
-
-```
-library(shiny)
-
-ui <- fluidPage(
-  radioButtons("radio_button_input", "Do you know any programming languages?", choices = c("No", "Yes")),
-   conditionalPanel(
-     condition = "input.radio_button_input == 'Yes'",
-    checkboxGroupInput("checkbox_group_language_input", "Which programming languages do you know?", choices = c("R", "Perl", "Python", "Ruby", "C++"), inline = TRUE),
-  ),
-  actionButton("languages_action_button", "Submit!", class = "btn-primary"),
-  textOutput("languages")
-)
-
-server <- function(input, output) {
-  output$languages <- renderText({
-    input$languages_action_button
-    isolate(input$checkbox_group_language_input)
-  })
-}
-
-shinyApp(ui = ui, server = server)
-```
-
-# Uploads and Downloads
-
-Transferring files to and from the user is a common feature of Shiny apps. You can use it to upload data for analysis, or download the results as a dataset or as a figure you generated. In this lesson we introduce you to functions that help with file handling in addition to some other advanced topics which ties in nicely (and are helpful when running these functions).
-
-## Uploading data
-Often apps are created such that one can explore their own data in some way. To allows users to upload their own data into the app we use the `fileInput()` function on the UI side:
-
-```
-fileInput("<input_fileID>", "<Text_above_file_upload>")
-```
-
-There are some additional options that you might want to consider when using the `fileInput()` function. 
-
-| Argument | Description |  Example  |
-|----------|-------------|-----------|
-| multiple | Allows the user to upload multiple files\* | `multiple = TRUE` |
-| accept | Limit the file extensions that can be selected by the user | `accept = ".csv"` |
-| placeholder | Text to be entered as a placeholder instead of the "No file selected" default | `placeholder = "Waiting for file selection"` |
-| buttonLabel | Text to be entered onto the upload button instead of "Browse..." default | `buttonLabel = "Select File..."` |
-
-_\* Uploading multiple files can be a bit tricky and is outside of the scope of this workshop, but it can be done._
-
-On the server side it would look like:
-
-```
-  uploaded_file <- reactive({
-    req(input$<input_fileID>)
-    read.table(input$<input_fileID>$datapath)
-  })
-  output$table <- renderDT(
-    uploaded_file()
-  )
-```
-
-The first part of this code is **creating the reactive object `uploaded_file()`**. We require that the file exist with `req(input$<input_fileID>)`, otherwise Shiny will return an error until we upload a file. Then we read in the file with a function from the `read.table()` family of functions. 
-
-**What is a reactive object?**
-
-So far we have seen the case of input being used to directly create outputs. However, there is third tool in the Shiny toolkit and it is called reactive expressions. Reactive expressions are useful because they **take inputs and produce outputs and they cache, or store, their output**. This can be very useful for three reasons:
-
-1. When a step is repeated multiple times in your code, and this step that is either computationally intensive or requires interacting with outside databases, Shiny will only need to carry out the task once.
-2. It makes your code cleaner because you only need to maintain the code for a repetitive step in a single place.
-3. They are needed to use action buttons (described in detail below).
-
-
-Notice our use of a reactive object here. While a reactive object isn't necessary in this very basic example, it is a **good practice to get into when uploading data** in order to save on computation if you are rendering multiple objects from a single file.
-
-The example app for this would look like:
-
-```
-library(shiny)
-library(ggplot2)
-library(DT)
-
-ui <- fluidPage(
-  fileInput("input_file", "Upload your file"),
-  DTOutput("table")
-)
-
-server <- function(input, output) {
-  uploaded_file <- reactive({
-    req(input$input_file)
-    read.csv(input$input_file$datapath, header = TRUE, row.names = 1)
-  })
-  output$table <- renderDT(
-    uploaded_file()
-  )
-}
-
-shinyApp(ui = ui, server = server)
-```
-
-This app would look like:
-
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/File_upload_demo/?showcase=0" width="300" height="150px" data-external="1"></iframe></p>
 
 ## Downloading Analysis
-In the course of doing your analysis, it is likely that you will get to a point where you want to download data stored in a data frame or a plot that you've created. Shiny also provides functionality to do this. When you are interested in downloading data or plots, you are going to want to use the `downloadButton()` (UI side) and `downloadHandler()` (server) functions.
-
-### Action buttons
+In the course of doing your analyses, it is likely that you will get to a point where you want to download data stored in a data frame or a plot that you've created. Shiny also provides functionality to do this. When you are interested in downloading data or plots, you are going to want to use the `downloadButton()` (UI side) and `downloadHandler()` (server) functions.
 
 ### Downloading data frame
 
