@@ -18,14 +18,13 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 ***
 
-### Current Topics in Bioinformatics workshops 2024 Summer Schedule (1pm - 4pm):
+## Current Topics in Bioinformatics workshops 2024 Schedule (1pm - 4pm):
 
 | Topic and Link(s) to lessons | Prerequisites | Date | Registration |
 |:---------------|:-------------:|:-------------:|:-------------:|
-| [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) | None | 6/26/2024	| Closed |
-| [Publication Perfect: Part I](publication_perfect#part-i) | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 7/17/2024	| Closed |
-| [Publication Perfect: Part II](publication_perfect#part-ii) | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 8/21/2024	| Closed |
-| [Interact with your data using Rshiny](https://hbctraining.github.io/Training-modules/RShiny/) | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 9/18/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJMkcuyopz0pE9QZtumH6JdGGpngSJDXCoBD#/registration) |
+| Introduction to scRNA-seq and data pre-processing | [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) and [Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 10/23/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJAtce6grTsqHtZD_QC8aXUyqiRH__mjze6K#/registration) |
+| [Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/)	| None | 11/20/2024	| Coming soon! |
+| [Shell Tips and Tricks on O2](https://hbctraining.github.io/Training-modules/Tips_and_Tricks_on_O2/) | [Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 12/11/2024	| Coming soon! |
 
 <!-- This content will not appear in the rendered Markdown -->
 <!--
@@ -41,7 +40,14 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | [Needle in a Haystack - Finding and summarizing data from colossal files](https://hbctraining.github.io/Training-modules/Finding_and_summarizing_colossal_files/) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 4/17/2024	| Closed  |
 | [Shell Tips and Tricks on O2](https://hbctraining.github.io/Training-modules/Tips_and_Tricks_on_O2/) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 5/22/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJIvf-igrDIvHNTgmccDlkWbmSBavwfR5Iw9) |
 
+### Current Topics in Bioinformatics workshops 2024 Summer Schedule (1pm - 4pm):
 
+| Topic and Link(s) to lessons | Prerequisites | Date | Registration |
+|:---------------|:-------------:|:-------------:|:-------------:|
+| [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) | None | 6/26/2024	| Closed |
+| [Publication Perfect: Part I](publication_perfect#part-i) | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 7/17/2024	| Closed |
+| [Publication Perfect: Part II](publication_perfect#part-ii) | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 8/21/2024	| Closed |
+| [Interact with your data using Rshiny](https://hbctraining.github.io/Training-modules/RShiny/) | R Basics or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 9/18/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJMkcuyopz0pE9QZtumH6JdGGpngSJDXCoBD#/registration) |
 ### Current Topics in Bioinformatics workshops 2023 Schedule (1pm - 4pm):
 
 | Topic and Link(s) to lessons | Prerequisites | Date | Registration |
