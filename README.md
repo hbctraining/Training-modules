@@ -19,19 +19,18 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 ***
 
 ## Current Topics in Bioinformatics workshops 2024 Schedule (1pm - 4pm):
+**Big data? Big computer! The skill set you need to succeed**
 
 | Topic and Link(s) to lessons | Prerequisites | Date | Registration |
 |:---------------|:-------------:|:-------------:|:-------------:|
-| Introduction to scRNA-seq and data pre-processing | [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) and [Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 10/23/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJAtce6grTsqHtZD_QC8aXUyqiRH__mjze6K#/registration) |
-| [Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/)	| None | 11/20/2024	| Coming soon! |
-| [Shell Tips and Tricks on O2](https://hbctraining.github.io/Training-modules/Tips_and_Tricks_on_O2/) | [Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 12/11/2024	| Coming soon! |
+| [Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/)	| None | 11/20/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJYldumopzMjG9M7hzCr5TA7nYXkMB5QGfeJ#/registration) |
+| [Shell Tips and Tricks on O2](https://hbctraining.github.io/Training-modules/Tips_and_Tricks_on_O2/) | [Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 12/11/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJ0odOCtqz8oE9Np7iCY2l5xhcY2B0Ye5i0w#/registration)|
 
 <!-- This content will not appear in the rendered Markdown -->
-<!--
 
+<!--
 ### Current Topics in Bioinformatics workshops 2024 Spring Schedule (1pm - 4pm): 
 **Big data? Big computer! The skill set you need to succeed**
-
 
 | Topic and Link(s) to lessons | Prerequisites | Date | Registration |
 |:---------------|:-------------:|:-------------:|:-------------:|
@@ -110,7 +109,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | [Planning a bulk RNA-seq analysis: Part II](planning_successful_rnaseq#part-ii) | None |
 | [Make your (RNA-seq) data analysis reproducible](reproducible_analyses)- *Taught by [Julie Goldman](https://scholar.harvard.edu/julie_goldman) from Countway Library* | None |
 | [Improving your (RNA-seq) data analysis using version control (Git)](https://hbctraining.github.io/versioning_data_scripts/) | None |
-
+| Introduction to scRNA-seq and data pre-processing | [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) and [Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 
 
 ***
 
