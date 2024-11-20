@@ -28,7 +28,7 @@ This repository has teaching materials for a **2-3 hour**, hands-on **Basic Shel
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Why Shell?](lectures/Intro_to_basic_shell_noextraslides.pdf) | 15 min |
+|[Why Shell?](lectures/workshop_intro_slides.pdf) | 15 min |
 |[Acessing the Shell](01_setting_up.md) | 15 min |
 |[Moving around and basics](02_shell_basics.md) | 45 min |
 |[Creating Files and Searching](03_creating_files.md) | 45 min |
