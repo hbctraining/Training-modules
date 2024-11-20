@@ -33,7 +33,7 @@ This repository has teaching materials for a **2-3 hour**, hands-on **Basic Shel
 |[Moving around and basics](02_shell_basics.md) | 45 min |
 |[Creating Files and Searching](03_creating_files.md) | 45 min |
 |[Shell Scripts](04_shell_scripts.md) | 20 min |
-|[Preview of other modules](lectures/Wrapup_basic_shell.pdf) | 15 min |
+|[Preview of other modules](lectures/wrapup_slides.pdf) | 15 min |
 
 
 
