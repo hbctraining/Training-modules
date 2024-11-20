@@ -16,7 +16,10 @@ You have likely heard the words **bash**, **shell**, **unix**, and **linux** bef
 * **Shell** is a general term for a command line interpreter, a program that lets users control their operating system with text commands. **Shell** has been described as user-facing “**shell** around the computer’s whirring innards” ([Louis Pouzin](https://en.wikipedia.org/wiki/Louis_Pouzin))
 * Since **shell** is a general term, there are many different **shells**. The most prevalent is **bash** which is short for "Bourne-Again SHell" which replaced the original Bourne shell that was NOT developed by [Jason Bourne](https://en.wikipedia.org/wiki/Jason_Bourne) but by [Stephen Bourne](https://en.wikipedia.org/wiki/Stephen_R._Bourne) a programmer at Bell labs.
 
-  ![Foxtrot by Bill Amend](img/open_sores.png)
+
+<p align="center">
+  <img src="img/open_sores.png" width="600">
+</p>
 
   *Foxtrot by Bill Amend*
 
