@@ -36,9 +36,9 @@ Let's begin with the idea that perhaps one of your jobs is dependent on the comp
 
 The solution is to have your jobs queue in such a way that once one job finishes, it automatically queues the next job.
 
-Job dependencies are very useful:
-- When you have consecutive jobs you want to run
-- When you don't want to/have the time to manage the submission of consecutive jobs
+Job dependencies are very useful when you:
+- Have consecutive jobs you want to run
+- Don't want to/have the time to manage the submission of consecutive jobs
 
 > NOTE: Job dependencies are not unique to SLURM, many other job schedulers, like PBS, also have a feature similar to this!
 
@@ -79,7 +79,7 @@ cat job_1.sbatch
 cat job_2.sbatch 
 ```
 
-They are very basic scripts that contain the `sleep` command. Each script simply pauses for 180 second and 30 second, in job 1 and 2 respectively. Before we run these scripts, use `vim` to modify both of these scripts to have your e-mail address in the line shown below. In this way, you will receive the email notification on the status of these jobs.
+They are very basic scripts that contain the `sleep` command. Each script simply pauses for 180 seconds and 30 seconds, in jobs 1 and 2, respectively. Before we run these scripts, use `vim` to modify both of these scripts to have your e-mail address in the line shown below. In this way, you will receive the email notification on the status of these jobs.
 
 ```bash
 #SBATCH --mail-user=Enter_your_email_here
@@ -154,7 +154,7 @@ software_program_x  mydataset_sample_${SLURM_ARRAY_TASK_ID}
 Alternatively, we might want to run the the software on the **same sample but with each task changing a specific parameter value**:
 
 ```bash
-program_y $SLURM_ARRAY_TASK_ID some_argument another_arg
+software_program_y $SLURM_ARRAY_TASK_ID some_argument another_arg
 ```
 
 There are also various ways in which we can use the `$SLURM_ARRAY_TASK_ID` numbers to access a text file which contains the values we need for each task. Using a job array instead of a large number of separate serial jobs has advantages for you and other users! It increases efficiency and you spend less time waiting, but the scheduler does not have to analyze job requirements for each task in the array separately, so it can run more efficiently too.
@@ -169,13 +169,13 @@ As your jobs are running, there are various commands you can use to check in on 
 
 ### Checking jobs in the queue using `squeue`  <a name="jobinfo"></a>
 
-Earlier we had used the `squeue` command to check on our jobs. This command is used to view **information about jobs located in the SLURM scheduling queue**. We had demonstrated that we could provide the `-u $USER` argument to print only $USER's jobs. A shortcut to getting the same output would be:
+Earlier we had used the `squeue` command to check on our jobs. This command is used to view **information about jobs located in the SLURM scheduling queue**. We had demonstrated that we could provide the `-u $USER` argument to print only `$USER`'s jobs. A shortcut to getting the same output would be:
 
 ```bash
 squeue --me
 ```
 
-Alternatively, HMS-RC has created a simplified command which returns the results of `squeue --me` with some addtional columns of information related to resources as shown below:
+Alternatively, HMS-RC has created a simplified command which returns the results of `squeue --me` with some additional columns of information related to resources as shown below:
 
 ```bash
  O2squeue
@@ -231,7 +231,7 @@ As you can see, there is a lot of information about the job reported back to you
 
 ### Checking on all submitted jobs using `sacct` or `O2_jobs_report`  <a name="saccto2"></a>
 
-The `sacct` command displays information on jobs, job steps, status, and exitcodes by default (this is jobs completed in addition to those in the queue):
+The `sacct` command displays information on jobs, job steps, status, and exitcodes by default (these are jobs completed in addition to those in the queue):
 
 ```bash
 sacct
@@ -305,7 +305,7 @@ sbatch job_1.sbatch
 sbatch job_1.sbatch
 ```
 
-We should be able to see that we know have two `job_1.sbatch` scripts submitted when we use our `O2squeue`:
+We should be able to see that we now have two `job_1.sbatch` scripts submitted when we use our `O2squeue`:
 
 ```bash
 O2squeue
@@ -329,7 +329,7 @@ There are times when you want to keep track of what is going on. If you are able
 
 ### `watch`
 
-Sometimes one may want to see the ouptut of a command that continuously changes. The `watch` command is particularly useful for this. Add `watch` before your command and your command line will take you to an output page that will continually up your command. Common uses for `watch` include:
+Sometimes one may want to see the output of a command that continuously changes. The `watch` command is particularly useful for this. Add `watch` before your command and your command line will take you to an output page that will continually update your command. Common uses for `watch` include:
 
 1) Viewing as files as they created:
 
@@ -343,7 +343,7 @@ watch ls -lh <directory>
 watch squeue --me
 ```
 
-The default interval for update is two seconds, but that can be altered with the `-n` option. Importantly, the **options used with `watch` command need to be placed before*** the command that you are watching or else the interpreter will evaluate the option as part of the watched command's options. An example of this is below:
+The default interval for update is two seconds, but that can be altered with the `-n` option. Importantly, the **options used with `watch` command need to be placed before** the command that you are watching or else the interpreter will evaluate the option as part of the watched command's options. An example of this is below:
 
 
 
@@ -387,7 +387,7 @@ In order to test these methods, we will briefly re-introduce the `sleep` command
 
 ```bash
 # DO NOT RUN
-sleep [integer for time in seconds]
+sleep [integer_for_time_in_seconds]
 ```
 
 So if you wanted there to be a five second pause, you could use:
@@ -404,7 +404,7 @@ If we know in advance we want to do other things while we're running our command
 sleep 180 &
 ```
 
-You'll notice you can type other commands freely even though `sleep` is running in the background. For now, let's cancel this command by typing `Ctrl` + `X` + `C`. 
+You'll notice you can type other commands freely even though `sleep` is running in the background. For now, let's cancel this command by typing <kbd>Ctrl</kbd> + <kbd>X</kbd> + <kbd>C</kbd>. 
 
 **Now, what if we started `sleep` and didn't add `&` to our command?**
 
@@ -412,7 +412,7 @@ You'll notice you can type other commands freely even though `sleep` is running 
 sleep 180
 ```
 
-Type `Ctrl` + `Z` and this will pause that command. Then move that task to be running in the background with:
+Type <kbd>Ctrl</kbd> + <kbd>Z</kbd> and this will pause that command. Then move that task to be running in the background with:
 
 ```bash
 bg
@@ -487,7 +487,7 @@ sleep 60
 
 And now let's hop to the first screen while we wait on it to run with <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>1</kbd>.
 
-Now, you might be thinking if I am using <kbd>Ctrl</kbd> + <kbd>a</kbd> + `insert_screen_number` to jump between screens, what happens to the <kbd>Ctrl</kbd> + <kbd>a</kbd> that we use to jump to the beginning of our command-line? We can use <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>a</kbd> to jump to the beginning of the command-line when inside of screens, however <kbd>Ctrl</kbd> + <kbd>e</kbd> remains for jumping to the end of the line.
+Now, you might be thinking, "If I am using <kbd>Ctrl</kbd> + <kbd>a</kbd> + `insert_screen_number` to jump between screens, what happens to the <kbd>Ctrl</kbd> + <kbd>a</kbd> that we use to jump to the beginning of our command-line?" We can use <kbd>Ctrl</kbd> + <kbd>a</kbd> + <kbd>a</kbd> to jump to the beginning of the command-line when inside of screens, however <kbd>Ctrl</kbd> + <kbd>e</kbd> remains for jumping to the end of the line.
 
 We can exit `screen` by using <kbd>Ctrl</kbd> + <kbd>d</kbd>. A few useful keyboard shortcuts for `screen` are listed in the table below:
 
@@ -508,7 +508,7 @@ When working with big datasets, it can beneficial to have access to an IDE (inte
 <img src="../img/O2_portal_homepage.png" width="700">
 </p>
 
-O2 has a service called the [O2 Portal](https://o2portal.rc.hms.harvard.edu) which **allows for users to utilize a GUI on O2**. This allows you to work more conveniently on the cluster where your data is stored and access increased computational power. In order to **use the O2 Portal, you need to submit a job request** like you would on the command-line via the `sbatch` command and you will provide it SLURM directives like numbers of CPUs, memory, partition and time. Once you are queued it will generate a session for you to use your application in. More information on the O2 Portal can be found [HMS-RC's resource page](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/2230583317/O2Portal) and a tutorial on how to use R Studio on the O2 Portal can be found [here](https://hbctraining.github.io/Intro-to-Unix-QMB/lessons/R_studio_on_02.html).
+O2 has a service called the [O2 Portal](https://o2portal.rc.hms.harvard.edu) which **allows for users to utilize a GUI on O2**. This allows you to work more conveniently on the cluster where your data is stored and access increased computational power. In order to **use the O2 Portal, you need to submit a job request** like you would on the command-line via the `sbatch` command and you will provide it SLURM directives like numbers of CPUs, memory, partition and time. Once you are queued, it will generate a session for you to use your application in. More information on the O2 Portal can be found [HMS-RC's resource page](https://harvardmed.atlassian.net/wiki/spaces/O2/pages/2230583317/O2Portal) and a tutorial on how to use R Studio on the O2 Portal can be found [here](https://hbctraining.github.io/BMI713_Intro_to_HPC/schedule/workshop_schedule.html).
 
 
 
