@@ -364,7 +364,7 @@ The syntax for making a symbolic link is:
 ln -s </path/to/file_to_be_linked_to> </path/to/link_name>
 ```
 
-Assume we we want to make a symbolic link to our compressed *E. coli* reference annotation that we had downloaded to the `scratch` space and we are going to call it `E_coli.gff.gz`. We could do that:
+Assume we want to make a symbolic link to our compressed *E. coli* reference annotation that we had downloaded to the `scratch` space and we are going to call it `E_coli.gff.gz`. We could do that:
 
 ```
 ln -s /n/scratch/users/${USER:0:1}/${USER}/GCA_000005845.2_ASM584v2_genomic.gff.gz E_coli.gff.gz
@@ -393,7 +393,7 @@ rm E_coli.gff.gz
 You can check to see for yourself that the original file was not deleted:
 
 ```
-ls /n/scratch/users/w/wig051/GCA_000005845.2_ASM584v2_genomic.gff.gz
+ls /n/scratch/users/${USER:0:1}/${USER}/GCA_000005845.2_ASM584v2_genomic.gff.gz
 ```
 > Note: to remove a symbolic link to a directory, you will need to use `rm -r <symbolic_link>`. **Be very careful that you are in the directory that contains the symbolic link and not in the directory that contains the original directory, or you will delete the entire contents of the original directory!**
 
