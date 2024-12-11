@@ -77,7 +77,7 @@ Make sure that your command prompt is now preceded by a character string that co
 During the course of your analyses, you might find that you you create many large intermediate files, such as SAM files. Oftentimes, these files are purely intermediary, but can take up lots of space on the cluster (>100Gb each). These intermediate files can quickly fill your allotted space on the cluster and therefore it is **recommended that you utilize "scratch" space on the cluster**. 
 
 ### What is `scratch`?
-`scratch` space on the cluster is much like scratch paper that you may use on the exam. It is a space when you can do your "scratch" work. The files on `scratch` **are not backed up** and **will be deleted in 45 days**. However, you can be allocated ~25TB of space which is great for intermediate large files. We will be using the `scratch` space extensively today, but we will not be using it for large files for the sake of not needlessly consuming space on the cluster.
+`scratch` space on the cluster is much like scratch paper that you may use on the exam. It is a space where you can do your "scratch" work. The files on `scratch` **are not backed up** and **will be deleted in 45 days**. However, you can be allocated ~25TB of space which is great for large, intermediate files. We will be using the `scratch` space extensively today, but we will not be using it for large files for the sake of not needlessly consuming space on the cluster.
 
 ### Creating your own `scratch` space
 While on the login node, we will create our space on `/n/scratch/`. In order to do so, we will need to run a script provided by the HMS Research Computing team. **You *MUST* be on a login node in order to create a space on `/n/scratch3`**, so we will actually exit our interactive node, even though that's usually where we want to perform any computing work.
@@ -132,6 +132,8 @@ We can navigate to our newly created scratch space using this command:
 cd /n/scratch/users/${USER:0:1}/${USER}/
 ```
 
+> Note: `${USER}` is just an environment variable in bash that hold your username and `${USER:0:1}` just some shorthand to get the first letter of your username.
+
 ### Writing to Scratch <a name="writingscratch"></a>
 
 Just like any other storage area on O2, we can copy data to `scratch`. For example, let's copy some scripts over that we will be using in some later exercises:
@@ -139,8 +141,6 @@ Just like any other storage area on O2, we can copy data to `scratch`. For examp
 ```bash
 cp -r /n/groups/hbctraining/sleep_scripts . 
 ```
-
-> Note: `${USER}` is just an environment variable in bash that hold your username and `${USER:0:1}` just some shorthand to get the first letter of your username.
 
 ## Aliases and .bashrc profile <a name="aliasbashrc"></a>
 
@@ -222,7 +222,7 @@ cd ~
 ls -a
 ```
 
-You can see that there are a number of these hidden files that are responsiable for various things. However, you **will see one called `.bashrc`** and this is the one that we will be adding some preferences too. 
+You can see that there are a number of these hidden files that are responsible for various things. However, you **will see one called `.bashrc`** and this is the one that we will be adding some preferences too. 
 
 
 > ### `.bashrc` versus `.bash_profile`
@@ -279,7 +279,7 @@ exit
 
 ### What else do people put in their .bashrc profile?
 
-Placing aliases within a `.bashrc` file is quite common, but it isn't the only thing that people often place within a `.bashrc` file. For example, some people will specifiy the location of their R libraries if they use R on the O2 cluster:
+Placing aliases within a `.bashrc` file is quite common, but it isn't the only thing that people often place within a `.bashrc` file. For example, some people will specify the location of their R libraries if they use R on the O2 cluster:
 
 ```bash
 # DO NOT ADD TO BASHRC - EXAMPLE ONLY
@@ -374,7 +374,7 @@ The `quota-v2` command is a very useful summary of your storage usage and your s
 
 2) It only gives the user a broad overview of how their disk usage allocation is being used. If you want to dig further into which directories/files within a given directory are taking up the most space then we will need to use a different command.
 
-The `du` command stands for "disk usage" and it will traverse the directories and subdirectories of the directory that you are currently using located in and tell you the files sizes of the files. This command on it's own has two drawbacks:
+The `du` command stands for "disk usage" and it will traverse the directories and subdirectories of the directory that you are currently using located in and tell you the file size's of the files. This command on its own has two drawbacks:
 
 1) If you are within a directory that has large file system underneath it, it maybe take a while to run and it will be telling you the size (in bytes) of thousands of files, which will be difficult to sort through.
 
@@ -440,7 +440,7 @@ If you have a file you'd like to recover, you can simply copy it to the present 
 cp .snapshot/old_copy_of_file filename_to_be_brought_to_present
 ```
 
-It can be noted that each directory within the file systems that have snapshot back-ups, so you can either travel, for example, from your `home` directory to the file that you are looking for in 3 subdirectories down within `.snapshot` or you can travel those three subdirectories down and then use `.snapshot` within that directory to retrieve a file.
+>Note: Each directory within the file systems that have snapshot back-ups (`/home/`, `/n/data1/`, `/n/data2/` and `/n/groups/`) also have a `.snapshot directory`. So you can either travel, for example, from your `home` directory to the file that you are looking for in 3 subdirectories down within `.snapshot` or you can travel those three subdirectories down and then use `.snapshot` within that directory to retrieve a file.
 
 ***
 
