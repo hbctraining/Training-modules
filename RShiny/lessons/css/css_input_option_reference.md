@@ -70,6 +70,13 @@ Below is a cheatsheet for the different cursor options:
 
 <p align="center"><img src="../../img/CSS_Cursors.png" width="1000"></p>
 
+## opacity
+
+This controls the the opacity, or alpha, for an object. Opacity can be given values:
+
+- On a scale from 0-1, where 0 is completely transparent and 1 is completely opaque
+- On a scale from 0-100%, where 0% is completely transparent and 100% is completely opaque
+
 ## padding
 
 | Number of arguments |  Example | Explanation |
