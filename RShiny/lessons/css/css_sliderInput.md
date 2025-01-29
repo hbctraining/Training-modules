@@ -30,8 +30,8 @@ An example CSS entry for the slider handle is below:
 | `height` | Height of the slider handle |
 | `width` | Width of the slider handle |
 | `background-color` | Color of the inner circle of the slider handle |
-| `border-width` | Width of the border (see [reference](css_input_option_reference.md#border-width) |
-| `border-style` | Style of the border (see [reference](css_input_option_reference.md#border-style) |
+| `border-width` | Width of the border (see [reference](css_input_option_reference.md#border-width)) |
+| `border-style` | Style of the border (see [reference](css_input_option_reference.md#border-style)) |
 | `cursor` | Image of cursor (see [reference](css_input_option_reference.md#cursor)) |
 
 
