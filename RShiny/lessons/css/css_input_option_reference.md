@@ -20,6 +20,10 @@ This document gives a more detailed guide to the different options that one can 
 
 ## cursor
 
+Below is a cheatsheet for the different cursor options:
+
+<p align="center"><img src="../../img/CSS_Cursors.png" width="1000"></p>
+
 ## padding
 
 | Number of arguments |  Example | Explanation |
