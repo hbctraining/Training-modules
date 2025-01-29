@@ -18,6 +18,8 @@ This document gives a more detailed guide to the different options that one can 
 
 ## border-style
 
+## border-width
+
 ## cursor
 
 Below is a cheatsheet for the different cursor options:
