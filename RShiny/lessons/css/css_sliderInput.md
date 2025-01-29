@@ -21,6 +21,7 @@ An example CSS entry for the slider handle is below:
   border-width: 2px;
   border-style: solid;
   border-color: green;
+  opacity: 70%
   cursor: pointer;
 }
 ```
@@ -32,6 +33,8 @@ An example CSS entry for the slider handle is below:
 | `background-color` | Color of the inner circle of the slider handle ([reference](css_input_option_reference.md#background-color))|
 | `border-width` | Width of the border ([reference](css_input_option_reference.md#border-width)) |
 | `border-style` | Style of the border ([reference](css_input_option_reference.md#border-style)) |
+| `border-color` | Color of the corder ([reference](css_input_option_reference.md#border-color)) |
+| `opacity` | Opacity of the slider handle ([reference](css_input_option_reference.md#opacity)) |
 | `cursor` | Image of cursor ([reference](css_input_option_reference.md#cursor)) |
 
 
@@ -71,6 +74,7 @@ An example CSS entry for the slider label is below:
   font-weight: 100;
   font-family: Monospace;
   font-style: italic;
+  opacity: 50%;
 }
 ```
 
@@ -84,6 +88,7 @@ An example CSS entry for the slider label is below:
 | `font-weight` | How thick the font is (values from 100 to 900 by 100) |
 | `font-family` | The font used |
 | `font-style` | Whether the font is `normal` or `italic` |
+| `opacity` | Opacity of the label ([reference](css_input_option_reference.md#opacity)) |
 
 ## Slider Minimum
 
@@ -93,6 +98,7 @@ An example CSS entry for the slider minimum label is below:
 .irs--shiny .irs-min{
   background-color: blue;
   color: white;
+  opacity: 70%
   font-size: 10px;
   font-family: sans-serif;
   font-style: italic;
@@ -101,6 +107,7 @@ An example CSS entry for the slider minimum label is below:
   border-style: dashed;
   border-width: 5px;
   padding: 1px 2px 3px 4px
+  opacity: 40%;
 }
 ```
 
@@ -108,6 +115,7 @@ An example CSS entry for the slider minimum label is below:
 |----------|------|
 | `background-color` | The background color for the text ([reference](css_input_option_reference.md#background-color)) |
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
+| `opacity` | The opacity of the slider minimum box |
 | `font-size` | The size of the font (as measured in pixels(px)) |
 | `font-family` | The font used |
 | `font-style` | Whether the font is `normal` or `italic` |
@@ -116,6 +124,7 @@ An example CSS entry for the slider minimum label is below:
 | `border-style` | Style of the border ([reference](css_input_option_reference.md#border-style)) |
 | `border-width` | Width of the border |
 | `padding` | How much space to leave around the text([reference](css_input_option_reference.md#padding)) |
+| `opacity` |  Opacity of the slider minimum ([reference](css_input_option_reference.md#opacity)) |
 
 ## Slider Maximum
 
@@ -132,7 +141,8 @@ An example CSS entry for the slider maximum label is below:
   border-radius: 10px;
   border-style: dashed;
   border-width: 5px;
-  padding: 1px 2px 3px 4px
+  padding: 1px 2px 3px 4px;
+  opacity: 60%;
 }
 ```
 | Argument | Note |
@@ -147,6 +157,7 @@ An example CSS entry for the slider maximum label is below:
 | `border-style` | Style of the border ([reference](css_input_option_reference.md#border-style)) |
 | `border-width` | Width of the border |
 | `padding` | How much space to leave around the text ([reference](css_input_option_reference.md#padding)) |
+| `opacity` |  Opacity of the slider maximum ([reference](css_input_option_reference.md#opacity)) |
 
 ## Slider Minimum and Maximum
 
@@ -163,7 +174,8 @@ Likely, we want want the slider's minimum and maximum to be identical and this c
   border-radius: 10px;
   border-style: dashed;
   border-width: 5px;
-  padding: 1px 2px 3px 4px
+  padding: 1px 2px 3px 4px;
+  opacity: 30%;
 }
 ```
 
@@ -179,6 +191,7 @@ Likely, we want want the slider's minimum and maximum to be identical and this c
 | `border-style` | Style of the border ([reference](css_input_option_reference.md#border-style)) |
 | `border-width` | Width of the border |
 | `padding` | How much space to leave around the text ([reference](css_input_option_reference.md#padding)) |
+| `opacity` |  Opacity of the slider minimum and maximum ([reference](css_input_option_reference.md#opacity)) |
 
 
 
