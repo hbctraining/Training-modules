@@ -22,6 +22,7 @@ Now, let's open up the `style.css` file in RStudio next to our app and get to wo
 
 ## Table of Contents
 
+[radioButtons](css_radioButtons.md)
 [sliderInput](css_sliderInput.md)
 
 
