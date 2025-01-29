@@ -28,6 +28,32 @@ Similar options availible to [color](#color).
 
 Similar options availible to [color](#color).
 
+## box-shadow
+
+If you's like to create shadow gradient for an object it can either be an outset shadow (behind the object) or an inset shadow (on top of the object):
+
+### outset
+
+```
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2),
+```
+
+### inset
+
+```
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2),
+```
+
+### outset and inset
+
+It is a little bit trickier to back an object to have both an inset and outset shadow. You can define the outset shadow, then add a comma and then add the inset shadow argument after. However it will not work in the reverse order.
+
+```
+  box-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 0.2),    /* Outset shadow */
+    inset 0 0 10px rgba(0, 0, 0, 0.5);  /* Inset shadow */
+```
+
 ## color
 
 There are a few ways to define color in CSS:
