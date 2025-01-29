@@ -22,7 +22,7 @@ Now, let's open up the `style.css` file in RStudio next to our app and get to wo
 
 ## Table of Contents
 
-[sliderInput](cc_sliderInput.md)
+[sliderInput](css_sliderInput.md)
 
 
 [css Input Option Reference](css_input_option_reference.md)
