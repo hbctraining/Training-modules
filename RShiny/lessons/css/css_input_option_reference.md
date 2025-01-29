@@ -1,3 +1,8 @@
+---
+title: "css Input Option Reference"
+author: "Will Gammerdinger"
+---
+
 # css Input Option Reference
 
 This document gives a more detailed guide to the different options that one can use for each of the css inputs.
@@ -19,3 +24,5 @@ This document gives a more detailed guide to the different options that one can 
 | 2 | `padding: 1px 2px;` | The top and bottom have the same amount of space around the text using the first value (1px)<br>The left and right have the same amount of space around the text using the second value (2px)|
 | 3 | `padding: 1px 2px 3px;` | The top has amount of space around the text using the first value (1px)<br>The left and right have the same amount of space around the text using the second value (2px)<br>The bottom has amount of space around the text using the third value (3px) |
 | 4 | `padding: 1px 2px 3px 4px;` | The top has amount of space around the text using the first value (1px)<br>The right has amount of space around the text using the second value (2px)<br>The bottom has amount of space around the text using the third value (3px)<br>The left has amount of space around the text using the fourth value (4px) |
+
+[Back to Table of Contents](table_of_contents.md)
