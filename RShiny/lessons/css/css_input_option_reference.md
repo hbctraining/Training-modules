@@ -24,6 +24,10 @@ Similar options availible to [color](#color).
 
 ## border-width
 
+## border-color
+
+Similar options availible to [color](#color).
+
 ## color
 
 There are a few ways to define color in CSS:
