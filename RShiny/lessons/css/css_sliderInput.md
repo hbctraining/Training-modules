@@ -19,6 +19,7 @@ An example CSS entry for the slider handle is below:
   width: 22px;
   background-color: pink;
   border-width: 2px;
+  border-radius: 10px;
   border-style: solid;
   border-color: green;
   opacity: 70%
@@ -32,6 +33,7 @@ An example CSS entry for the slider handle is below:
 | `width` | Width of the slider handle |
 | `background-color` | Color of the inner circle of the slider handle ([reference](css_input_option_reference.md#background-color))|
 | `border-width` | Width of the border ([reference](css_input_option_reference.md#border-width)) |
+| `border-radius` | How curved the radius of the slider handle is ([reference](css_input_option_reference.md#border-radius)) |
 | `border-style` | Style of the border ([reference](css_input_option_reference.md#border-style)) |
 | `border-color` | Color of the corder ([reference](css_input_option_reference.md#border-color)) |
 | `opacity` | Opacity of the slider handle ([reference](css_input_option_reference.md#opacity)) |
