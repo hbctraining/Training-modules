@@ -58,27 +58,8 @@ An example CSS entry for the slider minimum label is below:
 | `font-size` | The size of the font (as measured in pixels(px)) |
 | `font-family` | The font used |
 | `font-style` | Whether the font is `normal` or `italic` |
-| `border-radius` | How curved the radius of the box is. This can have one to four values to define (see note on `border-radius` below) |
-| `padding` | How much space to leave around the text. This can have one to four values to define (see note on `padding` below) |
-
-> `border-radius` Note Reference
->
->| Number of arguments |  Example | Explanation |
->|:---:|---|:---|
->| 1 | `border-radius: 1px;` | All corners have the same radius of curve (1px) |
->| 2 | `border-radius: 1px 2px;` | The top-left and bottom-right corners use the radius of the first value (1px)<br>The top-right and bottom-left coners use the radius of the second value (2px) |
->| 3 | `border-radius: 1px 2px 3px;` | The top-left corner uses the radius of the first value (1px)<br>The top-right and bottom-left use the radius of the second value (2px)<br>The bottom-right uses the radius of the third value (3px) |
->| 4 | `border-radius: 1px 2px 3px 4px;` | The top-left corner uses the radius of the first value (1px)<br>The top-right corner uses the radius of the second value (2px)<br>The bottom-right corner uses the radius of the third value (3px)<br>The bottom-left corner uses the radius of the fourth value (4px) |
-
->`padding` Note Reference
->
->| Number of arguments |  Example | Explanation |
->|:---:|---|:---|
->| 1 | `padding: 1px;` | All sides have the same amount of space around the text (1px) |
->| 2 | `padding: 1px 2px;` | The top and bottom have the same amount of space around the text using the first value (1px)<br>The left and right have the same amount of space around the text using the second value (2px)|
->| 3 | `padding: 1px 2px 3px;` | The top has amount of space around the text using the first value (1px)<br>The left and right have the same amount of space around the text using the second value (2px)<br>The bottom has amount of space around the text using the third value (3px) |
->| 4 | `padding: 1px 2px 3px 4px;` | The top has amount of space around the text using the first value (1px)<br>The right has amount of space around the text using the second value (2px)<br>The bottom has amount of space around the text using the third value (3px)<br>The left has amount of space around the text using the fourth value (4px) |
-
+| `border-radius` | How curved the radius of the box is. This can have one to four values to define (see [reference](css_input_option_reference.md#border-radius)) |
+| `padding` | How much space to leave around the text. This can have one to four values to define (see [reference](css_input_option_reference.md#padding)) |
 
 ```
 .irs--shiny .irs-max{
@@ -101,6 +82,8 @@ An example CSS entry for the slider minimum label is below:
   font-style: italic;
 }
 ```
+
+[Back to Table of Contents](table_of_contents.md)
 
 ### Radio buttons
 https://stackoverflow.com/questions/23167637/is-it-possible-to-change-the-color-of-selected-radio-buttons-center-circle
