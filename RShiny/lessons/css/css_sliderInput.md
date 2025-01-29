@@ -9,6 +9,42 @@ Below is a key for the many of the elements that can be altered within the `slid
 
 <p align="center"><img src="../../img/sliderInput_CSS_key.png" width="1000"></p>
 
+## Slider Handle
+
+An example CSS entry for the slider handle is below:
+
+```
+.irs--shiny .irs-handle{
+  height: 22px;
+  width: 22px;
+  background-color: pink;
+  border-width: 2px;
+  border-style: solid;
+  border-color: green;
+  cursor: pointer;
+}
+```
+
+### Hover pseudo-class
+
+The default sliderInput changes slight shades as you hover over it. If you would like to edit this behavior you will need to use the `:hover` pseudo-class:
+
+```
+.irs--shiny .irs-handle:hover{
+  cursor: grab;
+}
+```
+
+### Active pseudo-class
+
+You can also alter the the slider handle while you are dragging it by using the `:active` pseudoclass:
+
+```
+.irs--shiny .irs-handle:active{
+  cursor: grabbing;
+}
+```
+
 ## Slider Label
 
 An example CSS entry for the slider label is below:
