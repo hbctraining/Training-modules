@@ -25,6 +25,16 @@ An example CSS entry for the slider handle is below:
 }
 ```
 
+| Argument | Note |
+|----------|------|
+| `height` | Height of the slider handle |
+| `width` | Width of the slider handle |
+| `background-color` | Color of the inner circle of the slider handle |
+| `border-width` | Width of the border (see [reference](css_input_option_reference.md#border-width) |
+| `border-style` | Style of the border (see [reference](css_input_option_reference.md#border-style) |
+| `cursor` | Image of cursor (see [reference](css_input_option_reference.md#cursor)) |
+
+
 ### Hover pseudo-class
 
 The default sliderInput changes slight shades as you hover over it. If you would like to edit this behavior you will need to use the `:hover` pseudo-class:
@@ -35,6 +45,8 @@ The default sliderInput changes slight shades as you hover over it. If you would
 }
 ```
 
+The options availible to the hover pseudo-class are the same as for the normal slider handle.
+
 ### Active pseudo-class
 
 You can also alter the the slider handle while you are dragging it by using the `:active` pseudoclass:
@@ -44,6 +56,8 @@ You can also alter the the slider handle while you are dragging it by using the 
   cursor: grabbing;
 }
 ```
+
+The options availible to the active pseudo-class are the same as for the normal slider handle.
 
 ## Slider Label
 
