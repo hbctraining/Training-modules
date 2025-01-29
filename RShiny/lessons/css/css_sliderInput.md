@@ -96,7 +96,10 @@ An example CSS entry for the slider minimum label is below:
   font-size: 10px;
   font-family: sans-serif;
   font-style: italic;
-  border-radius: 3px;
+  border-color: green;
+  border-radius: 10px;
+  border-style: dashed;
+  border-width: 5px;
   padding: 1px 2px 3px 4px
 }
 ```
@@ -108,8 +111,11 @@ An example CSS entry for the slider minimum label is below:
 | `font-size` | The size of the font (as measured in pixels(px)) |
 | `font-family` | The font used |
 | `font-style` | Whether the font is `normal` or `italic` |
-| `border-radius` | How curved the radius of the box is. This can have one to four values to define (see [reference](css_input_option_reference.md#border-radius)) |
-| `padding` | How much space to leave around the text. This can have one to four values to define (see [reference](css_input_option_reference.md#padding)) |
+| `border-color` | Color of the border |
+| `border-radius` | How curved the radius of the box is (see [reference](css_input_option_reference.md#border-radius)) |
+| `border-style` | Style of the border (see [reference](css_input_option_reference.md#border-style)) |
+| `border-width` | Width of the border |
+| `padding` | How much space to leave around the text(see [reference](css_input_option_reference.md#padding)) |
 
 ## Slider Maximum
 
@@ -122,7 +128,10 @@ An example CSS entry for the slider maximum label is below:
   font-size: 10px;
   font-family: sans-serif;
   font-style: italic;
+  border-color: green;
   border-radius: 10px;
+  border-style: dashed;
+  border-width: 5px;
   padding: 1px 2px 3px 4px
 }
 ```
@@ -133,8 +142,11 @@ An example CSS entry for the slider maximum label is below:
 | `font-size` | The size of the font (as measured in pixels(px)) |
 | `font-family` | The font used |
 | `font-style` | Whether the font is `normal` or `italic` |
-| `border-radius` | How curved the radius of the box is. This can have one to four values to define (see [reference](css_input_option_reference.md#border-radius)) |
-| `padding` | How much space to leave around the text. This can have one to four values to define (see [reference](css_input_option_reference.md#padding)) |
+| `border-color` | Color of the border |
+| `border-radius` | How curved the radius of the box is (see [reference](css_input_option_reference.md#border-radius)) |
+| `border-style` | Style of the border (see [reference](css_input_option_reference.md#border-style)) |
+| `border-width` | Width of the border |
+| `padding` | How much space to leave around the text (see [reference](css_input_option_reference.md#padding)) |
 
 ## Slider Minimum and Maximum
 
@@ -147,7 +159,10 @@ Likely, we want want the slider's minimum and maximum to be identical and this c
   font-size: 10px;
   font-family: sans-serif;
   font-style: italic;
+  border-color: green;
   border-radius: 10px;
+  border-style: dashed;
+  border-width: 5px;
   padding: 1px 2px 3px 4px
 }
 ```
@@ -159,8 +174,11 @@ Likely, we want want the slider's minimum and maximum to be identical and this c
 | `font-size` | The size of the font (as measured in pixels(px)) |
 | `font-family` | The font used |
 | `font-style` | Whether the font is `normal` or `italic` |
-| `border-radius` | How curved the radius of the box is. This can have one to four values to define (see [reference](css_input_option_reference.md#border-radius)) |
-| `padding` | How much space to leave around the text. This can have one to four values to define (see [reference](css_input_option_reference.md#padding)) |
+| `border-color` | Color of the border |
+| `border-radius` | How curved the radius of the box is (see [reference](css_input_option_reference.md#border-radius)) |
+| `border-style` | Style of the border (see [reference](css_input_option_reference.md#border-style)) |
+| `border-width` | Width of the border |
+| `padding` | How much space to leave around the text (see [reference](css_input_option_reference.md#padding)) |
 
 
 
