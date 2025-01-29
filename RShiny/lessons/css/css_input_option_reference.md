@@ -26,6 +26,40 @@ Similar options availible to [color](#color).
 
 ## color
 
+There are a few ways to define color in CSS:
+
+- Use their HTML standard color name (if available)
+- Define them using rgb()
+- Call them by their hexidecimal code
+
+Here is a [helpful resource](https://www.rapidtables.com/web/color/html-color-codes.html) that connects the 140 HTML Standard colors with their RGB and hexidecimal equivalents. It also has a tool that you can use to select a color and it will provide you with the RBG and hexidecimal code for that color.
+
+An example of each method of defining a color is given below:
+
+### HTML Standard Color Name
+
+There are 140 recognized colors in HTML that have names associated with them. You can use the HTML color name (if available):
+
+```
+color: cornflowerblue
+```
+
+### RGB
+
+Alternatively, you can use the RGB code for the color:
+
+```
+color: rgb(100,149,237)
+```
+
+### Hexidecimal
+
+This RGB code can also be converted into its hexidecimal code:
+
+```
+color: #6495ED
+```
+
 ## cursor
 
 Below is a cheatsheet for the different cursor options:
