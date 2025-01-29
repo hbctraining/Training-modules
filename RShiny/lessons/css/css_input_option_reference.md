@@ -7,6 +7,10 @@ author: "Will Gammerdinger"
 
 This document gives a more detailed guide to the different options that one can use for each of the css inputs.
 
+## background-color
+
+Similar options availible to [color](#color).
+
 ## border-radius
 
 | Number of arguments |  Example | Explanation |
@@ -19,6 +23,8 @@ This document gives a more detailed guide to the different options that one can 
 ## border-style
 
 ## border-width
+
+## color
 
 ## cursor
 
