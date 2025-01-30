@@ -46,8 +46,8 @@ If you want a shadow on the background of the object then you want to use outset
 |:---:|:---:|:---|
 | 1 | `4px` | x offset, where negative values are to the left and positive values are to the right |
 | 2 | `-6px` | y offset, where negative value are up and positive values are down |
-| 3 | `3px` | Magnitude of the blue, where 0 is no blur and higher numbers are more blue, this is measured in pixels (`px`) |
-| 4 | `rgba(0, 0, 0, 0.2)` | Color of the blur following `color` guidlines (see [color](#color))
+| 3 | `3px` | Magnitude of the blur, where 0 is no blur and higher numbers are more blur, this is measured in pixels (`px`) |
+| 4 | `rgba(0, 0, 0, 0.2)` | Color of the blur following `color` guidlines (see [color](#color)) |
 
 
 ### inset
@@ -63,7 +63,7 @@ If you want a shadow on the foreground of the object then you want to use inset.
 | 1 | `inset` | Needed to define the shadow as inset |
 | 2 | `-2px` | x offset, where negative values are to the left and positive values are to the right |
 | 3 | `3px` | y offset, where negative value are up and positive values are down |
-| 4 | `0px` | Magnitude of the blue, where 0 is no blur and higher numbers are more blue, this is measured in pixels (`px`) |
+| 4 | `0px` | Magnitude of the blur, where 0 is no blur and higher numbers are more blur, this is measured in pixels (`px`) |
 | 5 | `green` | Color of the blur following `color` guidlines (see [color](#color)) |
 
 ### outset and inset
@@ -140,5 +140,22 @@ This controls the the opacity, or alpha, for an object. Opacity can be given val
 | 2 | `padding: 1px 2px;` | The top and bottom have the same amount of space around the text using the first value (1px)<br>The left and right have the same amount of space around the text using the second value (2px)|
 | 3 | `padding: 1px 2px 3px;` | The top has amount of space around the text using the first value (1px)<br>The left and right have the same amount of space around the text using the second value (2px)<br>The bottom has amount of space around the text using the third value (3px) |
 | 4 | `padding: 1px 2px 3px 4px;` | The top has amount of space around the text using the first value (1px)<br>The right has amount of space around the text using the second value (2px)<br>The bottom has amount of space around the text using the third value (3px)<br>The left has amount of space around the text using the fourth value (4px) |
+
+## text-shadow
+
+`text-shadow` works very similar to `box-shadow` (see [box-shadow](#box-shadow)) except it gives a shadow for the text rather than for the object. Another notable difference from `box-shadow` is that `text-shadow` only utilizes `outset` (background shadow) and not `inset` (foreground shadow). Below we have an example of the `text-shadow` syntax:
+
+```
+text-shadow: -2px 2px 0px tomato;
+```
+
+| Argument Position | Example | Explanation |
+|:---:|:---:|:---|
+| 1 | `-2px` | x offset, where negative values are to the left and positive values are to the right |
+| 2 | `2px` | y offset, where negative value are up and positive values are down |
+| 3 | `0px` | Magnitude of the blur, where 0 is no blur and higher numbers are more blur, this is measured in pixels (`px`) |
+| 4 | `tomato` | Color of the blur following `color` guidlines (see [color](#color)) |
+
+---
 
 [Back to Table of Contents](table_of_contents.md)
