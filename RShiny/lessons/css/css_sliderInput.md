@@ -13,6 +13,7 @@ Jump to the following sections:
 
 - [Slider Label](#slider-label)
 - [Slider Handle](#slider-handle)
+- [Slider Handles with Range](#slider-handles-with-range)
 - [Slider Minimum](#slider-minimum)
 - [Slider Maximum](#slider-maximum)
 - [Slider Minimum and Maximum](#slider-minimum-and-maximum)
@@ -121,6 +122,29 @@ You can also alter the the slider handle while you are dragging it by using the 
 
 The options availible to the active pseudo-class are the same as for the normal slider handle.
 
+## Slider Handles with Range
+
+Slider handles within ranges work the same as single slider handles except the class is either appended with `.from` or `.to` to the end. The options you have are consistent the same as with what you have within Slider Handle and anything not specific for the `.from` or `.to` slider will be inherited from the general `.irs--shiny .irs-handle` which will apply to both.
+
+### "From" Slider
+
+An example CSS entry for the "from" slider handle is below:
+
+```
+.irs--shiny .irs-handle.from{
+  background-color: black;
+}
+```
+
+### "To" Slider
+
+An example CSS entry for the "to" slider handle is below:
+
+```
+.irs--shiny .irs-handle.to{
+  background-color: pink;
+}
+```
 
 ## Slider Minimum
 
