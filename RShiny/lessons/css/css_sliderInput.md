@@ -14,8 +14,9 @@ Below is a key for the many of the elements that can be altered within the `slid
 An example CSS entry for the slider handle is below:
 
 ```
+/* Slider Handle */
 .irs--shiny .irs-handle{
-  height: 22px;
+  height: 22px; 
   width: 22px;
   background-color: pink;
   border-width: 2px;
@@ -24,6 +25,7 @@ An example CSS entry for the slider handle is below:
   border-color: green;
   opacity: 70%
   cursor: pointer;
+  box-shadow: 4px 4px 8px purple;
 }
 ```
 
@@ -38,6 +40,7 @@ An example CSS entry for the slider handle is below:
 | `border-color` | Color of the corder ([reference](css_input_option_reference.md#border-color)) |
 | `opacity` | Opacity of the slider handle ([reference](css_input_option_reference.md#opacity)) |
 | `cursor` | Image of cursor ([reference](css_input_option_reference.md#cursor)) |
+| `box-shadow` | The shadow of the slider handle ([reference](css_input_option_reference.md#box-shadow)) |
 
 
 ### Hover pseudo-class
@@ -45,6 +48,7 @@ An example CSS entry for the slider handle is below:
 The default sliderInput changes slight shades as you hover over it. If you would like to edit this behavior you will need to use the `:hover` pseudo-class:
 
 ```
+/* While hovering over the slider handle*/
 .irs--shiny .irs-handle:hover{
   cursor: grab;
 }
@@ -57,6 +61,7 @@ The options availible to the hover pseudo-class are the same as for the normal s
 You can also alter the the slider handle while you are dragging it by using the `:active` pseudoclass:
 
 ```
+/* While grabbing a hold to the slider handle */
 .irs--shiny .irs-handle:active{
   cursor: grabbing;
 }
@@ -69,6 +74,7 @@ The options availible to the active pseudo-class are the same as for the normal 
 An example CSS entry for the slider label is below:
 
 ```
+/* Slider Label */
 #<inputID>-label{
   background-color: red;
   color: orange;
@@ -97,6 +103,7 @@ An example CSS entry for the slider label is below:
 An example CSS entry for the slider minimum label is below:
 
 ```
+/* Slider Minimum Value */
 .irs--shiny .irs-min{
   background-color: blue;
   color: white;
@@ -110,6 +117,7 @@ An example CSS entry for the slider minimum label is below:
   border-width: 5px;
   padding: 1px 2px 3px 4px
   opacity: 40%;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
 }
 ```
 
@@ -127,12 +135,14 @@ An example CSS entry for the slider minimum label is below:
 | `border-width` | Width of the border |
 | `padding` | How much space to leave around the text([reference](css_input_option_reference.md#padding)) |
 | `opacity` |  Opacity of the slider minimum ([reference](css_input_option_reference.md#opacity)) |
+| `box-shadow` | The shadow of the slider minimum ([reference](css_input_option_reference.md#box-shadow)) |
 
 ## Slider Maximum
 
 An example CSS entry for the slider maximum label is below:
 
 ```
+/* Slider Maximum Value */
 .irs--shiny .irs-max{
   background-color: yellow;
   color: green;
@@ -145,6 +155,7 @@ An example CSS entry for the slider maximum label is below:
   border-width: 5px;
   padding: 1px 2px 3px 4px;
   opacity: 60%;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2)
 }
 ```
 | Argument | Note |
@@ -160,12 +171,14 @@ An example CSS entry for the slider maximum label is below:
 | `border-width` | Width of the border |
 | `padding` | How much space to leave around the text ([reference](css_input_option_reference.md#padding)) |
 | `opacity` |  Opacity of the slider maximum ([reference](css_input_option_reference.md#opacity)) |
+| `box-shadow` | The shadow of the slider maximum ([reference](css_input_option_reference.md#box-shadow)) |
 
 ## Slider Minimum and Maximum
 
 Likely, we want want the slider's minimum and maximum to be identical and this can be accomplished by separating `.irs--shiny .irs-min` and `.irs--shiny .irs-max` with a comma.
 
 ```
+/* Slider Minimum and Maximum Value */
 .irs--shiny .irs-min, .irs--shiny .irs-max{
   background-color: yellow;
   color: green;
@@ -178,6 +191,7 @@ Likely, we want want the slider's minimum and maximum to be identical and this c
   border-width: 5px;
   padding: 1px 2px 3px 4px;
   opacity: 30%;
+  box-shadow: 2px -2px 10px green
 }
 ```
 
@@ -194,6 +208,7 @@ Likely, we want want the slider's minimum and maximum to be identical and this c
 | `border-width` | Width of the border |
 | `padding` | How much space to leave around the text ([reference](css_input_option_reference.md#padding)) |
 | `opacity` |  Opacity of the slider minimum and maximum ([reference](css_input_option_reference.md#opacity)) |
+| `box-shadow` | The shadow of the slider minimum and maximum ([reference](css_input_option_reference.md#box-shadow)) |
 
 
 
