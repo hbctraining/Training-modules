@@ -79,8 +79,16 @@ color: cornflowerblue
 Alternatively, you can use the RGB code for the color:
 
 ```
-color: rgb(100,149,237)
+color: rgb(100, 149, 237)
 ```
+
+You can also include the opacity, or alpha, value in when using `rbg()` but using `rgba()`, where the last value is the transparency (alpha) value and it needs to be between 0 (completely transparent) to 1 (completely opaque):
+
+```
+color: rgba(100, 149, 237, 0.2),
+```
+
+Alternatively, to `rgba()`, you can also just use `rgb()` for `color` and set your opacity, or alpha, with `opacity`. See [opacity](#opacity). 
 
 ### Hexidecimal
 
