@@ -143,7 +143,11 @@ This controls the the opacity, or alpha, for an object. Opacity can be given val
 
 ## text-shadow
 
-`text-shadow` works very similar to `box-shadow` (see [box-shadow](#box-shadow)) except it gives a shadow for the text rather than for the object. Another notable difference from `box-shadow` is that `text-shadow` only utilizes `outset` (background shadow) and not `inset` (foreground shadow). Below we have an example of the `text-shadow` syntax:
+`text-shadow` works very similar to `box-shadow` (see [box-shadow](#box-shadow)) except it gives a shadow for the text rather than for the object. Another notable difference from `box-shadow` is that `text-shadow` only utilizes `outset` (background shadow) and not `inset` (foreground shadow). Like `box-shadow`, the y-axis is a feels inverted. The image below can help you figure out if your value of x and y need to be negative or positive. 
+
+<p align="center"><img src="../../img/shadow_axes.png" width="400"></p>
+
+Below we have an example of the `text-shadow` syntax:
 
 ```
 text-shadow: -2px 2px 0px tomato;
