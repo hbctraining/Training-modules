@@ -116,7 +116,6 @@ An example CSS entry for the slider minimum label is below:
   border-style: dashed;
   border-width: 5px;
   padding: 1px 2px 3px 4px
-  opacity: 40%;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
 }
 ```
@@ -134,7 +133,6 @@ An example CSS entry for the slider minimum label is below:
 | `border-style` | Style of the border ([reference](css_input_option_reference.md#border-style)) |
 | `border-width` | Width of the border |
 | `padding` | How much space to leave around the text([reference](css_input_option_reference.md#padding)) |
-| `opacity` |  Opacity of the slider minimum ([reference](css_input_option_reference.md#opacity)) |
 | `box-shadow` | The shadow of the slider minimum ([reference](css_input_option_reference.md#box-shadow)) |
 
 ## Slider Maximum
