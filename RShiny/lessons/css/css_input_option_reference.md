@@ -125,6 +125,20 @@ Below is a cheatsheet for the different cursor options:
 
 <p align="center"><img src="../../img/CSS_Cursors.png" width="1000"></p>
 
+## font-color
+
+## font-family
+
+## font-size
+
+## font-weight
+
+`font-weight` refer to the thickness or how bold text is. The values to select from go from 100 to 900 in 100 increments. You can also use 'normal', which can correspond to around a thickness of 400 in some fonts or 'bold', which can correspond to around a thickness of 700 in some fonts. An example of the syntax for `font-weight` is:
+
+```
+font-weight: 500
+```
+
 ## opacity
 
 This controls the the opacity, or alpha, for an object. Opacity can be given values:
