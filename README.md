@@ -18,13 +18,15 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 ***
 
-## Current Topics in Bioinformatics workshops 2024 Schedule (1pm - 4pm):
-**Big data? Big computer! The skill set you need to succeed**
+## Current Topics in Bioinformatics workshops Winter 2025 Schedule (1pm - 4pm):
+**Tools for Transparent Research - Hands-On with Git & RMarkdown**
 
 | Topic and Link(s) to lessons | Prerequisites | Date | Registration |
 |:---------------|:-------------:|:-------------:|:-------------:|
-| [Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/)	| None | 11/20/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJYldumopzMjG9M7hzCr5TA7nYXkMB5QGfeJ#/registration) |
-| [Shell Tips and Tricks on O2](https://hbctraining.github.io/Training-modules/Tips_and_Tricks_on_O2/) | [Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 12/11/2024	| [Sign up!](https://harvard.zoom.us/meeting/register/tJ0odOCtqz8oE9Np7iCY2l5xhcY2B0Ye5i0w#/registration)|
+| [R Basics](https://hbctraining.github.io/Training-modules/IntroR/)	| None | 2/19/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/Ne9vXo0qS56eOvWlS5AtEg#/registration) |
+| [RMarkdown for Reproducible Reporting](https://hbctraining.github.io/) | [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) | 3/19/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/kLHG2wfzTm2LJeCfqPKWkQ#/registration)|
+| [“Track Changes” for your code: An Introduction to Git and GitHub](https://hbctraining.github.io/Training-modules/)	| None | 4/16/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/qbesTp4RSxSMN7B9jPsp8g#/registration) |
+| [Coding with others: Managing conflicts on GitHub](https://hbctraining.github.io/Training-modules/)	| “Track Changes” for your code: An Introduction to Git and GitHub | 5/21/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/6D99-EskR--kUNBUKq-anA#/registration) |
 
 <!-- This content will not appear in the rendered Markdown -->
 
