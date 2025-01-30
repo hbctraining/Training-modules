@@ -78,11 +78,18 @@ An example CSS entry for the slider label is below:
 #<inputID>-label{
   background-color: red;
   color: orange;
-  font-size: 20px;
-  font-weight: 100;
   font-family: Monospace;
+  font-size: 20px;
   font-style: italic;
+  font-weight: 100;
+  border-color: green;
+  border-radius: 10px;
+  border-style: dashed;
+  border-width: 5px;
+  padding: 1px 2px 3px 4px
   opacity: 50%;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  text-shadow: -3px -3px 2px tomato;
 }
 ```
 
@@ -90,13 +97,20 @@ An example CSS entry for the slider label is below:
 
 | Argument | Note |
 |----------|------|
-| `background-color` | The background color for the text |
+| `background-color` | The background color for the text space ([reference](css_input_option_reference.md#background-color)) |
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
-| `font-size` | The size of the font (as measured in pixels(px)) |
-| `font-weight` | How thick the font is (values from 100 to 900 by 100) |
 | `font-family` | The font used |
+| `font-size` | The size of the font (as measured in pixels(px)) |
 | `font-style` | Whether the font is `normal` or `italic` |
+| `font-weight` | How thick or bold the font is ([reference](css_input_option_reference.md#font-weight)) |
+| `border-color` | Color of the border ([reference](css_input_option_reference.md#border-color)) |
+| `border-radius` | How curved the radius of the corners are ([reference](css_input_option_reference.md#border-radius)) |
+| `border-style` | Style of the border ([reference](css_input_option_reference.md#border-style)) |
+| `border-width` | Width of the border |
+| `padding` | How much space to leave around the text([reference](css_input_option_reference.md#padding)) |
 | `opacity` | Opacity of the label ([reference](css_input_option_reference.md#opacity)) |
+| `box-shadow` | The shadow of the box outlining the text space ([reference](css_input_option_reference.md#box-shadow)) |
+| `text-shadow` | The shadow of the text within the text space ([reference](css_input_option_reference.md#text-shadow)) |
 
 ## Slider Minimum
 
@@ -107,16 +121,18 @@ An example CSS entry for the slider minimum label is below:
 .irs--shiny .irs-min{
   background-color: blue;
   color: white;
-  opacity: 70%
-  font-size: 10px;
   font-family: sans-serif;
+  font-size: 10px;
   font-style: italic;
+  font-weight: 100;
   border-color: green;
   border-radius: 10px;
   border-style: dashed;
   border-width: 5px;
   padding: 1px 2px 3px 4px
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
+  opacity: 70%
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  text-shadow: -3px -3px 2px tomato;
 }
 ```
 
@@ -124,16 +140,18 @@ An example CSS entry for the slider minimum label is below:
 |----------|------|
 | `background-color` | The background color for the text ([reference](css_input_option_reference.md#background-color)) |
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
-| `opacity` | The opacity of the slider minimum box |
-| `font-size` | The size of the font (as measured in pixels(px)) |
 | `font-family` | The font used |
+| `font-size` | The size of the font (as measured in pixels(px)) |
 | `font-style` | Whether the font is `normal` or `italic` |
-| `border-color` | Color of the border |
-| `border-radius` | How curved the radius of the box is ([reference](css_input_option_reference.md#border-radius)) |
+| `font-weight` | How thick or bold the font is ([reference](css_input_option_reference.md#font-weight)) |
+| `border-color` | Color of the border ([reference](css_input_option_reference.md#border-color)) |
+| `border-radius` | How curved the radius of the corners of box are ([reference](css_input_option_reference.md#border-radius)) |
 | `border-style` | Style of the border ([reference](css_input_option_reference.md#border-style)) |
 | `border-width` | Width of the border |
 | `padding` | How much space to leave around the text([reference](css_input_option_reference.md#padding)) |
+| `opacity` | The opacity of the slider minimum box |
 | `box-shadow` | The shadow of the slider minimum ([reference](css_input_option_reference.md#box-shadow)) |
+| `text-shadow` | The shadow of the text within the slider minimum ([reference](css_input_option_reference.md#text-shadow)) |
 
 ## Slider Maximum
 
@@ -144,32 +162,36 @@ An example CSS entry for the slider maximum label is below:
 .irs--shiny .irs-max{
   background-color: yellow;
   color: green;
-  font-size: 10px;
   font-family: sans-serif;
+  font-size: 10px;
   font-style: italic;
+  font-weight: 100;
   border-color: green;
   border-radius: 10px;
   border-style: dashed;
   border-width: 5px;
   padding: 1px 2px 3px 4px;
   opacity: 60%;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2)
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  text-shadow: -3px -3px 2px tomato;
 }
 ```
 | Argument | Note |
 |----------|------|
 | `background-color` | The background color for the text ([reference](css_input_option_reference.md#background-color)) |
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
-| `font-size` | The size of the font (as measured in pixels(px)) |
 | `font-family` | The font used |
+| `font-size` | The size of the font (as measured in pixels(px)) |
 | `font-style` | Whether the font is `normal` or `italic` |
-| `border-color` | Color of the border |
-| `border-radius` | How curved the radius of the box is ([reference](css_input_option_reference.md#border-radius)) |
+| `font-weight` | How thick or bold the font is ([reference](css_input_option_reference.md#font-weight)) |
+| `border-color` | Color of the border ([reference](css_input_option_reference.md#border-color)) |
+| `border-radius` | How curved the radius of the corners of box are ([reference](css_input_option_reference.md#border-radius)) |
 | `border-style` | Style of the border ([reference](css_input_option_reference.md#border-style)) |
 | `border-width` | Width of the border |
 | `padding` | How much space to leave around the text ([reference](css_input_option_reference.md#padding)) |
 | `opacity` |  Opacity of the slider maximum ([reference](css_input_option_reference.md#opacity)) |
 | `box-shadow` | The shadow of the slider maximum ([reference](css_input_option_reference.md#box-shadow)) |
+| `text-shadow` | The shadow of the text within the slider maximum ([reference](css_input_option_reference.md#text-shadow)) |
 
 ## Slider Minimum and Maximum
 
@@ -180,16 +202,18 @@ Likely, we want want the slider's minimum and maximum to be identical and this c
 .irs--shiny .irs-min, .irs--shiny .irs-max{
   background-color: yellow;
   color: green;
-  font-size: 10px;
   font-family: sans-serif;
+  font-size: 10px;
   font-style: italic;
+  font-weight: 100;
   border-color: green;
   border-radius: 10px;
   border-style: dashed;
   border-width: 5px;
   padding: 1px 2px 3px 4px;
   opacity: 30%;
-  box-shadow: 2px -2px 10px green
+  box-shadow: 2px -2px 10px green;
+  text-shadow: -3px -3px 2px rgba(0, 0, 0, 0.8);
 }
 ```
 
@@ -197,18 +221,20 @@ Likely, we want want the slider's minimum and maximum to be identical and this c
 |----------|------|
 | `background-color` | The background color for the text ([reference](css_input_option_reference.md#background-color)) |
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
-| `font-size` | The size of the font (as measured in pixels(px)) |
 | `font-family` | The font used |
+| `font-size` | The size of the font (as measured in pixels(px)) |
 | `font-style` | Whether the font is `normal` or `italic` |
-| `border-color` | Color of the border |
-| `border-radius` | How curved the radius of the box is ([reference](css_input_option_reference.md#border-radius)) |
+| `font-weight` | How thick or bold the font is ([reference](css_input_option_reference.md#font-weight)) |
+| `border-color` | Color of the border ([reference](css_input_option_reference.md#border-color)) |
+| `border-radius` | How curved the radius of the corners of box are ([reference](css_input_option_reference.md#border-radius)) |
 | `border-style` | Style of the border ([reference](css_input_option_reference.md#border-style)) |
 | `border-width` | Width of the border |
 | `padding` | How much space to leave around the text ([reference](css_input_option_reference.md#padding)) |
 | `opacity` |  Opacity of the slider minimum and maximum ([reference](css_input_option_reference.md#opacity)) |
 | `box-shadow` | The shadow of the slider minimum and maximum ([reference](css_input_option_reference.md#box-shadow)) |
+| `text-shadow` | The shadow of the text within the slider minimum and maximum ([reference](css_input_option_reference.md#text-shadow)) |
 
-
+---
 
 [Back to Table of Contents](table_of_contents.md)
 
