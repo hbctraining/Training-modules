@@ -30,28 +30,49 @@ Similar options availible to [color](#color).
 
 ## box-shadow
 
-If you's like to create shadow gradient for an object it can either be an outset shadow (behind the object) or an inset shadow (on top of the object):
+If you's like to create shadow gradient for an object it can either be an outset shadow (behind the object) or an inset shadow (on top of the object). When creating the shadow, it is important to consider the x and y offset for the shadow. The image below can help you figure out if your value of x and y need to be negative or positive. 
+
+<p align="center"><img src="../../img/shadow_axes.png" width="400"></p>
 
 ### outset
 
+If you want a shadow on the background of the object then you want to use outset. An example for the syntax for outset is:
+
 ```
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2),
+  box-shadow: 4px -6px 3px rgba(0, 0, 0, 0.2),
 ```
+
+| Argument Position | Example | Explanation |
+|:---:|:---:|:---|
+| 1 | `4px` | x offset, where negative values are to the left and positive values are to the right |
+| 2 | `-6px` | y offset, where negative value are up and positive values are down |
+| 3 | `3px` | Magnitude of the blue, where 0 is no blur and higher numbers are more blue, this is measured in pixels (`px`) |
+| 4 | `rgba(0, 0, 0, 0.2)` | Color of the blur following `color` guidlines (see [color](#color))
+
 
 ### inset
 
+If you want a shadow on the foreground of the object then you want to use inset. An example for the syntax for inset is:
+
 ```
-  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2),
+  box-shadow: inset -2px 3px 0px green,
 ```
+
+| Argument Position | Example | Explanation |
+|:---:|:---:|:---|
+| 1 | `inset` | Needed to define the shadow as inset |
+| 2 | `-2px` | x offset, where negative values are to the left and positive values are to the right |
+| 3 | `3px` | y offset, where negative value are up and positive values are down |
+| 4 | `0px` | Magnitude of the blue, where 0 is no blur and higher numbers are more blue, this is measured in pixels (`px`) |
+| 5 | `green` | Color of the blur following `color` guidlines (see [color](#color)) |
 
 ### outset and inset
 
-It is a little bit trickier to back an object to have both an inset and outset shadow. You can define the outset shadow, then add a comma and then add the inset shadow argument after. However it will not work in the reverse order.
+It is a little bit trickier to back an object to have both an inset and outset shadow. You can define the outset shadow, then add a comma and then add the inset shadow argument after on the next line. However it will not work in the reverse order.
 
 ```
-  box-shadow: 
-    4px 4px 8px rgba(0, 0, 0, 0.2),    /* Outset shadow */
-    inset 0 0 10px rgba(0, 0, 0, 0.5);  /* Inset shadow */
+box-shadow: -1px 3px 6px #6495ED,
+  inset 5px -4px 10px rgba(0, 0, 0, 0.5);  
 ```
 
 ## color
