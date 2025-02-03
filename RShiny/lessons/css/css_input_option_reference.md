@@ -3,13 +3,31 @@ title: "css Input Option Reference"
 author: "Will Gammerdinger"
 ---
 
-# css Input Option Reference
+# CSS Input Option Reference
 
 This document gives a more detailed guide to the different options that one can use for each of the css inputs.
+
+[background-color](#background-color)
+[border-radius](#border-radius)
+[border-style](#border-style)
+[border-width](#border-width)
+[border-color](#border-color)
+[box-shadow](#box-shadow)
+[color](#color)
+[cursor](#cursor)
+[font-color](#font-color)
+[font-family](#font-family)
+[font-size](#font-size)
+[font-weight](#font-weight)
+[opacity](#opacity)
+[padding](#padding)
+[text-shadow](#text-shadow)
 
 ## background-color
 
 Similar options availible to [color](#color).
+
+[Back to the top](#CSS-Input-Option-Reference)
 
 ## border-radius
 
@@ -20,13 +38,21 @@ Similar options availible to [color](#color).
 | 3 | `border-radius: 1px 2px 3px;` | The top-left corner uses the radius of the first value (1px)<br>The top-right and bottom-left use the radius of the second value (2px)<br>The bottom-right uses the radius of the third value (3px) |
 | 4 | `border-radius: 1px 2px 3px 4px;` | The top-left corner uses the radius of the first value (1px)<br>The top-right corner uses the radius of the second value (2px)<br>The bottom-right corner uses the radius of the third value (3px)<br>The bottom-left corner uses the radius of the fourth value (4px) |
 
+[Back to the top](#CSS-Input-Option-Reference)
+
 ## border-style
+
+[Back to the top](#CSS-Input-Option-Reference)
 
 ## border-width
 
+[Back to the top](#CSS-Input-Option-Reference)
+
 ## border-color
 
-Similar options availible to [color](#color).
+This defines the border color using similar options availible to [color](#color).
+
+[Back to the top](#CSS-Input-Option-Reference)
 
 ## box-shadow
 
@@ -75,6 +101,8 @@ box-shadow: -1px 3px 6px #6495ED,
   inset 5px -4px 10px rgba(0, 0, 0, 0.5);  
 ```
 
+[Back to the top](#CSS-Input-Option-Reference)
+
 ## color
 
 There are a few ways to define color in CSS:
@@ -119,13 +147,21 @@ This RGB code can also be converted into its hexidecimal code:
 color: #6495ED
 ```
 
+[Back to the top](#CSS-Input-Option-Reference)
+
 ## cursor
 
 Below is a cheatsheet for the different cursor options:
 
 <p align="center"><img src="../../img/CSS_Cursors.png" width="1000"></p>
 
+[Back to the top](#CSS-Input-Option-Reference)
+
 ## font-color
+
+This defines the color of the font similar to the options available to [color](#color).
+
+[Back to the top](#CSS-Input-Option-Reference)
 
 ## font-family
 
@@ -197,7 +233,11 @@ Once, you have your fonts imported, then you can use them just like a pre-define
 font-family: "Just Me Again Down Here", serif;
 ```
 
+[Back to the top](#CSS-Input-Option-Reference)
+
 ## font-size
+
+[Back to the top](#CSS-Input-Option-Reference)
 
 ## font-weight
 
@@ -207,12 +247,16 @@ font-family: "Just Me Again Down Here", serif;
 font-weight: 500
 ```
 
+[Back to the top](#CSS-Input-Option-Reference)
+
 ## opacity
 
 This controls the the opacity, or alpha, for an object. Opacity can be given values:
 
 - On a scale from 0-1, where 0 is completely transparent and 1 is completely opaque
 - On a scale from 0-100%, where 0% is completely transparent and 100% is completely opaque
+
+[Back to the top](#CSS-Input-Option-Reference)
 
 ## padding
 
@@ -222,6 +266,8 @@ This controls the the opacity, or alpha, for an object. Opacity can be given val
 | 2 | `padding: 1px 2px;` | The top and bottom have the same amount of space around the text using the first value (1px)<br>The left and right have the same amount of space around the text using the second value (2px)|
 | 3 | `padding: 1px 2px 3px;` | The top has amount of space around the text using the first value (1px)<br>The left and right have the same amount of space around the text using the second value (2px)<br>The bottom has amount of space around the text using the third value (3px) |
 | 4 | `padding: 1px 2px 3px 4px;` | The top has amount of space around the text using the first value (1px)<br>The right has amount of space around the text using the second value (2px)<br>The bottom has amount of space around the text using the third value (3px)<br>The left has amount of space around the text using the fourth value (4px) |
+
+[Back to the top](#CSS-Input-Option-Reference)
 
 ## text-shadow
 
@@ -241,6 +287,8 @@ text-shadow: -2px 2px 0px tomato;
 | 2 | `2px` | y offset, where negative value are up and positive values are down |
 | 3 | `0px` | Magnitude of the blur, where 0 is no blur and higher numbers are more blur, this is measured in pixels (`px`) |
 | 4 | `tomato` | Color of the blur following `color` guidlines (see [color](#color)) |
+
+[Back to the top](#CSS-Input-Option-Reference)
 
 ---
 
