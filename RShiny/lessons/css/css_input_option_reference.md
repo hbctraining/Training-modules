@@ -7,21 +7,21 @@ author: "Will Gammerdinger"
 
 This document gives a more detailed guide to the different options that one can use for each of the css inputs.
 
-[background-color](#background-color)
-[border-radius](#border-radius)
-[border-style](#border-style)
-[border-width](#border-width)
-[border-color](#border-color)
-[box-shadow](#box-shadow)
-[color](#color)
-[cursor](#cursor)
-[font-color](#font-color)
-[font-family](#font-family)
-[font-size](#font-size)
-[font-weight](#font-weight)
-[opacity](#opacity)
-[padding](#padding)
-[text-shadow](#text-shadow)
+- [background-color](#background-color)
+- [border-radius](#border-radius)
+- [border-style](#border-style)
+- [border-width](#border-width)
+- [border-color](#border-color)
+- [box-shadow](#box-shadow)
+- [color](#color)
+- [cursor](#cursor)
+- [font-color](#font-color)
+- [font-family](#font-family)
+- [font-size](#font-size)
+- [font-weight](#font-weight)
+- [opacity](#opacity)
+- [padding](#padding)
+- [text-shadow](#text-shadow)
 
 ## background-color
 
