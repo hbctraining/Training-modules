@@ -171,23 +171,23 @@ This will dictate the font that will be used for a given piece of text.
 
 Let's briefly start by discussing the five major font families:
 
-1. `Monospace` - This family is defined as fonts that have a fixed-width to them. Things like code are often Monospace and a popular font in this family is Courier New.
-2. `Serif` - This family is characterized by having small strokes that extend beyond the letters. Times New Roman is an example of a font in this family.
-3. `Sans Serif` - Since "sans" means "without", this family is characterized by not having the small strokes that extend beyond the letters. Arial is an example of a font in this family.
+1. `monospace` - This family is defined as fonts that have a fixed-width to them. Things like code are often Monospace and a popular font in this family is Courier New.
+2. `serif` - This family is characterized by having small strokes that extend beyond the letters. Times New Roman is an example of a font in this family.
+3. `sans-serif` - Since "sans" means "without", this family is characterized by not having the small strokes that extend beyond the letters. Arial is an example of a font in this family.
 
 The image below can help detail the difference between a serif font and a sans serif font:
 
 <p align="center"><img src="../../img/CSS_serif_sans_serif.png" width="1000"></p>
 
-4. `Cursive` - This family of fonts are supposed to imitate handwriting. Comic Sans MS is an example of a font in this family.
-5. `Fanstay` - This family is characterized by being more decorative or whimsical. Impact is an example of a font in this family.
+4. `cursive` - This family of fonts are supposed to imitate handwriting. Comic Sans MS is an example of a font in this family.
+5. `fanstay` - This family is characterized by being more decorative or whimsical. Impact is an example of a font in this family.
 
 More examples of fonts in each of these generic families can be found [here](https://www.w3.org/Style/Examples/007/fonts.en.html).
 
 You can use these generic font families in a declaration block like:
 
 ```
-font-family: Monospace
+font-family: monospace
 ```
 
 ### Specific Fonts
