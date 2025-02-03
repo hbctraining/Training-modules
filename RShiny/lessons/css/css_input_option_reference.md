@@ -129,6 +129,74 @@ Below is a cheatsheet for the different cursor options:
 
 ## font-family
 
+This will dictate the font that will be used for a given piece of text. 
+
+### Font Families
+
+Let's briefly start by discussing the five major font families:
+
+1. `Monospace` - This family is defined as fonts that have a fixed-width to them. Things like code are often Monospace and a popular font in this family is Courier New.
+2. `Serif` - This family is characterized by having small strokes that extend beyond the letters. Times New Roman is an example of a font in this family.
+3. `Sans Serif` - Since "sans" means "without", this family is characterized by not having the small strokes that extend beyond the letters. Arial is an example of a font in this family.
+
+The image below can help detail the difference between a serif font and a sans serif font:
+
+<p align="center"><img src="../../img/CSS_serif_sans_serif.png" width="1000"></p>
+
+4. `Cursive` - This family of fonts are supposed to imitate handwriting. Comic Sans MS is an example of a font in this family.
+5. `Fanstay` - This family is characterized by being more decorative or whimsical. Impact is an example of a font in this family.
+
+More examples of fonts in each of these generic families can be found [here](https://www.w3.org/Style/Examples/007/fonts.en.html).
+
+You can use these generic font families in a declaration block like:
+
+```
+font-family: Monospace
+```
+
+### Specific Fonts
+
+You can also use specific fonts and these are broken up into two classes:
+
+1. Pre-defined fonts
+2. Imported fonts
+
+#### Pre-defined fonts
+
+While not all fonts are universal, there are some that are more popular than others and they fall into one of the five above generic categories. It is not guaranteed that a given browser will have one of these fonts. So when using one fo these it is imperative to provide a fallback generic font family to have it rendered. For example, you may want to use Comic Sans MS, but if it is unavailble you want it to fall back on the sans serif family. Notably, it does not need to fal; back on the generic font family that the specific font comes from. It would looke like this within the declaration block:
+
+```
+  font-family: 'Comic Sans MS', sans-serif;
+```
+
+#### Imported Fonts
+
+Since not all fonts are universal across browsers, you may want to create a command to import a font. A popular place to import a font from is [Google Fonts](https://fonts.google.com/). When you import a font, it is important that you place the `@import` line at the beginning of your CSS file. It is possible to place it other locations, but the recommended practice is to place it at the top as to not cause any issues. Like pre-defined fonts, it is always a good idea to provide a fallback generic font family in case the font fails to be rendered.
+
+You can also import multiple font families. In the upcoming examples, we are going to try to import "Just Me Again Down Here" and "Meow Script". This can be do individually:
+
+```
+@import url('https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Meow+Script&display=swap');
+```
+
+In the GIF below, we show how to get this `@import` line from Google Fonts:
+
+
+Or together:
+
+```
+@import url('https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&family=Meow+Script&display=swap');
+```
+
+Similarly to getting a font individually, if you select both of the fonts and improt then, then they will both be in the same `@import` as shown in the GIF below:
+
+Once, you have your fonts imported, then you can use them just like a pre-defined font in your declaration block:
+
+```
+font-family: "Just Me Again Down Here", serif;
+```
+
 ## font-size
 
 ## font-weight
