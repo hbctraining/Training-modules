@@ -177,7 +177,7 @@ Let's briefly start by discussing the five major font families:
 
 The image below can help detail the difference between a serif font and a sans serif font:
 
-<p align="center"><img src="../../img/CSS_serif_sans_serif.png" width="1000"></p>
+<p align="center"><img src="../../img/CSS_serif_sans_serif.png" width="500"></p>
 
 4. `cursive` - This family of fonts are supposed to imitate handwriting. Comic Sans MS is an example of a font in this family.
 5. `fanstay` - This family is characterized by being more decorative or whimsical. Impact is an example of a font in this family.
@@ -202,7 +202,7 @@ You can also use specific fonts and these are broken up into two classes:
 While not all fonts are universal, there are some that are more popular than others and they fall into one of the five above generic categories. It is not guaranteed that a given browser will have one of these fonts. So when using one fo these it is imperative to provide a fallback generic font family to have it rendered. For example, you may want to use Comic Sans MS, but if it is unavailble you want it to fall back on the sans serif family. Notably, it does not need to fal; back on the generic font family that the specific font comes from. It would looke like this within the declaration block:
 
 ```
-  font-family: 'Comic Sans MS', sans-serif;
+  font-family: "Comic Sans MS", sans-serif;
 ```
 
 #### Imported Fonts
