@@ -22,7 +22,7 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 
 ## Schedule
 
-### Part I
+### Part I: Data visualization basics with ggplot2
 
 | Time | Topic | Instructor |
 :-----------------------|:-------------|:----------|
@@ -33,7 +33,7 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 | 14:20 - 14:45	| [Consistent plots with custom themes](https://hbctraining.github.io/publication_perfect/lessons/03_custom_themes.html) | Upen |
 | 14:45 - 15:15	| [Application of plotting basics](https://hbctraining.github.io/publication_perfect/lessons/04_boxplot_application_of_basic_plotting.html) | Heather |
 
-### Part II
+### Part II: Figure formatting in R
 
 | Time | Topic | Instructor |
 :-----------------------|:-------------|:----------|
