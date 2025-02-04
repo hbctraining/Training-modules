@@ -1,4 +1,4 @@
-## Basic Shell
+## Foundations in Shell
 
 | Audience | Computational skills required | Duration |
 :----------|:----------|:----------|
@@ -7,7 +7,7 @@
 
 ### Description
 
-This repository has teaching materials for a **2-3 hour**, hands-on **Basic Shell** workshop led at a relaxed pace. 
+This repository has teaching materials for a **2-3 hour**, hands-on **Foundations in Shell** workshop led at a relaxed pace. 
 
 
 ### Learning Objectives
@@ -38,7 +38,7 @@ This repository has teaching materials for a **2-3 hour**, hands-on **Basic Shel
 
 
 ### Dataset
-[Introduction to Shell: Dataset](https://www.dropbox.com/s/t3lkyz1pz021222/unix_lesson.tar.gz?dl=1)
+[Foundations in Shell: Dataset](https://www.dropbox.com/s/t3lkyz1pz021222/unix_lesson.tar.gz?dl=1)
 
 ### Installation Requirements
 
