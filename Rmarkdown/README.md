@@ -1,4 +1,4 @@
-## Reproducible Research using R
+## Reproducible Research using RMarkdown
 
 | Audience | Computational Skills | Prerequisites | Duration |
 :----------|:----------|:----------|:----------|
