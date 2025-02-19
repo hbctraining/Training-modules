@@ -30,7 +30,7 @@ These materials are intended to provide a **quick overview** of the R programmin
 
 ### Dataset
 
-All the files used for the above lessons are linked within, but can also be [accessed here](https://github.com/hbctraining/Intro-to-R-flipped/tree/master/data).
+All the files used for the above lessons are linked within, but can also be [accessed here](https://github.com/hbctraining/Training-modules/tree/master/IntroR/data).
 
 ### Installation Requirements
 
