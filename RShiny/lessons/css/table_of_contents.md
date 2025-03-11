@@ -5,7 +5,7 @@ author: "Will Gammerdinger"
 
 # What is CSS?
 
-CSS, also known as Cascading Style Sheet, is a style sheet language. When we use a CSS file in confunction with our Shiny app, it gives up much more control over the styling of each aspect of the elements in our UI in the same way that you can have fine control over your plots when creating them in R. To this end, it should be noted that this resource is not intended to be exhaustive as there are virtually endless combinations of things you can tweak and way to tweak them. We will try over time, to compile common items and things you might want to edits within parts of your UI.
+CSS, also known as Cascading Style Sheet, is a style sheet language. When we use a CSS file in confunction with our Shiny app, it gives us much more control over the styling of each aspect of the elements in our UI in the same way that you can have fine control over your plots when creating them in R. To this end, it should be noted that this resource is not intended to be exhaustive as there are virtually endless combinations of things you can tweak and ways to tweak them. We will try over time, to compile common items and things you might want to edits within parts of your UI.
 
 # Setting your workspace up for CSS
 
@@ -19,6 +19,23 @@ ui <- fluidPage(
 ```
 
 Now, let's open up the `style.css` file in RStudio next to our app and get to work!
+
+## Example CSS file
+
+Your CSS file might look like:
+
+```
+/* Sample CSS Entry */
+Put a simple sample CSS here
+```
+
+## Commenting your CSS
+
+Commenting your code is a great practice in order to make your code more readable to other. While in many languages you comment your code with a `#`, in CSS you open a comment with `/*` and close a comment with `*/`. In the example code above you can see that we had a comment in front of each CSS Option(?).
+
+## Structure of an CSS entry
+
+Write about how a CSS entry is formatted here.
 
 ## Table of Contents
 
