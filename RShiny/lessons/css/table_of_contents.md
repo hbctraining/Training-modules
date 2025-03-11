@@ -37,6 +37,10 @@ Commenting your code is a great practice in order to make your code more readabl
 
 Write about how a CSS entry is formatted here.
 
+## Targeting specific elements
+
+If you would like an alteration of the CSS file to target only one of your input sliders but not the rest of them...
+
 ## Table of Contents
 
 [radioButtons](css_radioButtons.md)
