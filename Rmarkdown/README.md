@@ -21,7 +21,7 @@ Reproducible research is as important for computational analysis as it is at the
 
 | Lessons            |  Estimated Duration  | 
 |:------------------------:|:------------------------------------------------:|
-| [Introduction to Reproducibility](https://www.dropbox.com/s/cqgis7d15jo9911/Reproducibility.pdf?dl=1) | 10 min |
+| [Introduction to Reproducibility]() | 10 min |
 | [RMarkdown Basics](https://hbctraining.github.io/Tools-for-reproducible-research/lessons/01-Rmarkdown_basics.html) | 45 min |
 | [RMarkdown Intermediate](https://hbctraining.github.io/Tools-for-reproducible-research/lessons/02-Rmarkdown_intermediate.html) | 45 min | 
 | [Practice with RMarkdown](https://hbctraining.github.io/Tools-for-reproducible-research/activities/Rmd_exercise4.html) | 30 min | 
