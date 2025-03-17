@@ -32,11 +32,14 @@ While initially designed for saving and developing code collaboratively, there a
 | [Using GitHub for version control "remotely"](https://hbctraining.github.io/Tools-for-reproducible-research/lessons/05_GitHub_Dekstop_remote1.html) | 50 min |
 | Q&A | 30 min |
 
-
-
-
 ### Coding with Others: Managing Conflicts on GitHub
 
+|  Lessons  | Estimated Duration  |
+|:------------------------:|:------------------------------------------------:|
+| [Managing Conflicts with GitHub](https://hbctraining.github.io/Tools-for-reproducible-research/lessons/07_Managing_conflicts_GitHub_Desktop.html) | 45 min |
+| [Modifying commits](https://hbctraining.github.io/Tools-for-reproducible-research/lessons/08_Working_with_commits.html) | 30 min|
+| [Using branches for collaboration](https://hbctraining.github.io/Tools-for-reproducible-research/lessons/09_branches.html) | 30 min |
+| Q&A | 30 min |
 
 
 ### Dataset
