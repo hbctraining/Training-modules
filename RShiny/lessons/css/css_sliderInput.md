@@ -210,6 +210,7 @@ An example CSS entry for the slider maximum label is below:
   text-shadow: -3px -3px 2px tomato;
 }
 ```
+
 | Argument | Note |
 |----------|------|
 | `background-color` | The background color for the text ([reference](css_input_option_reference.md#background-color)) |
