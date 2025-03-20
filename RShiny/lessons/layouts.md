@@ -63,7 +63,7 @@ shinyApp(ui = ui, server = server)
 
 This app would look like:
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Sidepanel_demo/?showcase=0" width="800" height="500px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Sidepanel_demo/?showcase=0" width="800" height="400px" data-external="1"></iframe></p>
 
 
 # Adding a title
@@ -164,7 +164,7 @@ shinyApp(ui = ui, server = server)
 
 This app would look like:
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Fluid_row_demo/?showcase=0" width="800" height="500px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Fluid_row_demo/?showcase=0" width="800" height="550px" data-external="1"></iframe></p>
 
 ## Nesting columns
 
@@ -231,7 +231,7 @@ shinyApp(ui = ui, server = server)
 
 This app would look like:
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Fluid_row_nested_demo/?showcase=0" width="800" height="500px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Fluid_row_nested_demo/?showcase=0" width="800" height="550px" data-external="1"></iframe></p>
 
 ## Multiple Rows
 
@@ -294,7 +294,7 @@ shinyApp(ui = ui, server = server)
 
 This app would look like:
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Fluid_row_multiple_rows_demo/?showcase=0" width="800" height="500px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Fluid_row_multiple_rows_demo/?showcase=0" width="800" height="700px" data-external="1"></iframe></p>
 
 ## Thematic Breaks
 
@@ -343,7 +343,7 @@ shinyApp(ui = ui, server = server)
 
 This app would now look like:
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Fluid_row_multiple_rows_with_break_demo/?showcase=0" width="800" height="500px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Fluid_row_multiple_rows_with_break_demo/?showcase=0" width="800" height="750px" data-external="1"></iframe></p>
 
 # Navbar
 
@@ -457,7 +457,7 @@ shinyApp(ui = ui, server = server)
 
 This app would look like:
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Navbar_menu_demo/?showcase=0" width="800" height="500px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Navbar_menu_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
 
 ## Navigation List
 
@@ -513,7 +513,7 @@ shinyApp(ui = ui, server = server)
 
 This would create an app that looks like:
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Nav_list_panel_demo/?showcase=0" width="800" height="500px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Nav_list_panel_demo/?showcase=0" width="800" height="550px" data-external="1"></iframe></p>
 
 > Note that the `navbarMenu()` function also works within `navlistPanel()` just like it works within `navbarPage()`.
 
@@ -573,7 +573,7 @@ shinyApp(ui = ui, server = server)
 
 This app would look like:
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Tabset_panel_demo/?showcase=0" width="800" height="500px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Tabset_panel_demo/?showcase=0" width="800" height="650px" data-external="1"></iframe></p>
 
 > Note: `navbarPage()` can also be embedded within `mainPanel()`. However, traditionally you will see `navbarPage()` be used to as the banner at the top of the app while `tabsetPanel()` will be used as different tabs within a single tab of `navbarPage()`.
 
@@ -627,7 +627,7 @@ shinyApp(ui = ui, server = server)
 
 This app would look like:
 
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Shiny_themes_demo/?showcase=0" width="800" height="500px" data-external="1"></iframe></p>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Shiny_themes_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
 
 If you wanted to see how various themes might look on your specific app, instead of in the gallery provided by `shinythemes`, then you can apply them from a selection menu by adding this code to your app:
 
