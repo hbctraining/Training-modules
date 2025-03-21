@@ -37,7 +37,7 @@ Before we make our first app, let's get our RStudio environment set-up:
 
 1. Open RStudio
 2. On the top menu, click "**File**" and then "**New Project...**"
-3. Select "**New Dirctory**"
+3. Select "**New Directory**"
 4. Select "**New Project**"
 5. Name your project "**Shiny_demo**" and then click "**Create Project**"
 
