@@ -23,7 +23,7 @@ While initially designed for saving and developing code collaboratively, there a
 
 ## Contents
 
-### "Track Changes" with your code: An Introduction to Git and GitHub (Part 1)
+### "Track Changes" with your code: An Introduction to Git and GitHub
 
 |  Lessons  | Estimated Duration  |
 |:------------------------:|:------------------------------------------------:|
