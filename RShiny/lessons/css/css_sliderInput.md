@@ -51,7 +51,7 @@ An example CSS entry for the slider label is below:
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
 | `font-family` | The font used ([reference](css_input_option_reference.md#font-family)) |
 | `font-size` | The size of the font ([reference](css_input_option_reference.md#font-size)) |
-| `font-style` | Whether the font is `normal` or `italic` |
+| `font-style` | Whether the font is `normal` or `italic` ([reference](css_input_option_reference.md#font-style)) |
 | `font-weight` | How thick or bold the font is ([reference](css_input_option_reference.md#font-weight)) |
 | `border-color` | Color of the border ([reference](css_input_option_reference.md#border-color)) |
 | `border-radius` | How curved the radius of the corners are ([reference](css_input_option_reference.md#border-radius)) |
@@ -176,7 +176,7 @@ An example CSS entry for the slider minimum label is below:
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
 | `font-family` | The font used ([reference](css_input_option_reference.md#font-family)) |
 | `font-size` | The size of the font ([reference](css_input_option_reference.md#font-size)) |
-| `font-style` | Whether the font is `normal` or `italic` |
+| `font-style` | Whether the font is `normal` or `italic` ([reference](css_input_option_reference.md#font-style)) |
 | `font-weight` | How thick or bold the font is ([reference](css_input_option_reference.md#font-weight)) |
 | `border-color` | Color of the border ([reference](css_input_option_reference.md#border-color)) |
 | `border-radius` | How curved the radius of the corners of box are ([reference](css_input_option_reference.md#border-radius)) |
@@ -217,7 +217,7 @@ An example CSS entry for the slider maximum label is below:
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
 | `font-family` | The font used ([reference](css_input_option_reference.md#font-family)) |
 | `font-size` | The size of the font ([reference](css_input_option_reference.md#font-size)) |
-| `font-style` | Whether the font is `normal` or `italic` |
+| `font-style` | Whether the font is `normal` or `italic` ([reference](css_input_option_reference.md#font-style)) |
 | `font-weight` | How thick or bold the font is ([reference](css_input_option_reference.md#font-weight)) |
 | `border-color` | Color of the border ([reference](css_input_option_reference.md#border-color)) |
 | `border-radius` | How curved the radius of the corners of box are ([reference](css_input_option_reference.md#border-radius)) |
@@ -258,7 +258,7 @@ Likely, we want want the slider's minimum and maximum to be identical and this c
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
 | `font-family` | The font used ([reference](css_input_option_reference.md#font-family)) |
 | `font-size` | The size of the font ([reference](css_input_option_reference.md#font-size)) |
-| `font-style` | Whether the font is `normal` or `italic` |
+| `font-style` | Whether the font is `normal` or `italic` ([reference](css_input_option_reference.md#font-style)) |
 | `font-weight` | How thick or bold the font is ([reference](css_input_option_reference.md#font-weight)) |
 | `border-color` | Color of the border ([reference](css_input_option_reference.md#border-color)) |
 | `border-radius` | How curved the radius of the corners of box are ([reference](css_input_option_reference.md#border-radius)) |
@@ -298,7 +298,7 @@ An example CSS entry for the value of the slider handle is below:
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
 | `font-family` | The font used ([reference](css_input_option_reference.md#font-family)) |
 | `font-size` | The size of the font ([reference](css_input_option_reference.md#font-size)) |
-| `font-style` | Whether the font is `normal` or `italic` |
+| `font-style` | Whether the font is `normal` or `italic` ([reference](css_input_option_reference.md#font-style)) |
 | `font-weight` | How thick or bold the font is ([reference](css_input_option_reference.md#font-weight)) |
 | `border-color` | Color of the border ([reference](css_input_option_reference.md#border-color)) |
 | `border-radius` | How curved the radius of the corners of box are ([reference](css_input_option_reference.md#border-radius)) |
