@@ -20,14 +20,14 @@ This document gives a more detailed guide to the different options that one can 
 - [font-style](#font-style)
 - [font-size](#font-size)
 - [font-weight](#font-weight)
+- [height](#height)
 - [opacity](#opacity)
 - [padding](#padding)
 - [text-shadow](#text-shadow)
+- [width](#width)
 
 Items left to address:
 - **ADD FONT-FAMILY GIFS**
-- `height`
--  `width`
 
 ## background-color
 
@@ -378,6 +378,16 @@ font-size: 10px
 font-weight: 500
 ```
 
+## height
+
+The height for a box. An example syntax for this is:
+
+```
+height: 15px
+```
+
+> Note: You can use other units instead of pixels (`px`) such as `in` for inches, `cm` for centimeters and `mm` for millimeters, among others.
+
 [Back to the top](#CSS-Input-Option-Reference)
 
 ## opacity
@@ -437,6 +447,18 @@ text-shadow: -2px 2px 0px tomato;
 | 2 | `2px` | y offset, where negative value are up and positive values are down |
 | 3 | `0px` | Magnitude of the blur, where 0 is no blur and higher numbers are more blur, this is measured in pixels (`px`) |
 | 4 | `tomato` | Color of the blur following `color` guidlines (see [color](#color)) |
+
+[Back to the top](#CSS-Input-Option-Reference)
+
+## width
+
+The width for a box. An example syntax for this is:
+
+```
+width: 15px
+```
+
+> Note: You can use other units instead of pixels (`px`) such as `in` for inches, `cm` for centimeters and `mm` for millimeters, among others.
 
 [Back to the top](#CSS-Input-Option-Reference)
 
