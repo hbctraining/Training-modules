@@ -34,6 +34,8 @@ An example CSS entry for the slider label is below:
 ```
 /* Slider Label */
 #<inputID>-label{
+  height: 100px;
+  width: 200px;
   background-color: red;
   color: orange;
   font-family: Monospace;
@@ -55,6 +57,8 @@ An example CSS entry for the slider label is below:
 
 | Argument | Note |
 |----------|------|
+| `height` | Height of the slider label box ([reference](css_input_option_reference.md#height)) |
+| `width` | Width of the slider label box ([reference](css_input_option_reference.md#width)) |
 | `background-color` | The background color for the text space ([reference](css_input_option_reference.md#background-color)) |
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
 | `font-family` | The font used ([reference](css_input_option_reference.md#font-family)) |
@@ -92,8 +96,8 @@ An example CSS entry for the slider handle is below:
 
 | Argument | Note |
 |----------|------|
-| `height` | Height of the slider handle |
-| `width` | Width of the slider handle |
+| `height` | Height of the slider handle ([reference](css_input_option_reference.md#height)) |
+| `width` | Width of the slider handle ([reference](css_input_option_reference.md#width)) |
 | `background-color` | Color of the inner circle of the slider handle ([reference](css_input_option_reference.md#background-color))|
 | `border-width` | Width of the border ([reference](css_input_option_reference.md#border-width)) |
 | `border-radius` | How curved the radius of the slider handle is ([reference](css_input_option_reference.md#border-radius)) |
@@ -161,6 +165,8 @@ An example CSS entry for the slider minimum label is below:
 ```
 /* Slider Minimum Value */
 .irs--shiny .irs-min{
+  height: 22px; 
+  width: 22px;
   background-color: blue;
   color: white;
   font-family: sans-serif;
@@ -180,6 +186,8 @@ An example CSS entry for the slider minimum label is below:
 
 | Argument | Note |
 |----------|------|
+| `height` | Height of the slider minimum box ([reference](css_input_option_reference.md#height)) |
+| `width` | Width of the slider minimum box ([reference](css_input_option_reference.md#width)) |
 | `background-color` | The background color for the text ([reference](css_input_option_reference.md#background-color)) |
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
 | `font-family` | The font used ([reference](css_input_option_reference.md#font-family)) |
@@ -202,6 +210,8 @@ An example CSS entry for the slider maximum label is below:
 ```
 /* Slider Maximum Value */
 .irs--shiny .irs-max{
+  height: 22px; 
+  width: 22px;
   background-color: yellow;
   color: green;
   font-family: sans-serif;
@@ -221,6 +231,8 @@ An example CSS entry for the slider maximum label is below:
 
 | Argument | Note |
 |----------|------|
+| `height` | Height of the slider maximum box ([reference](css_input_option_reference.md#height)) |
+| `width` | Width of the slider maximum box ([reference](css_input_option_reference.md#width)) |
 | `background-color` | The background color for the text ([reference](css_input_option_reference.md#background-color)) |
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
 | `font-family` | The font used ([reference](css_input_option_reference.md#font-family)) |
@@ -243,6 +255,8 @@ Likely, we want want the slider's minimum and maximum to be identical and this c
 ```
 /* Slider Minimum and Maximum Value */
 .irs--shiny .irs-min, .irs--shiny .irs-max{
+  height: 22px; 
+  width: 22px;
   background-color: yellow;
   color: green;
   font-family: sans-serif;
@@ -262,6 +276,8 @@ Likely, we want want the slider's minimum and maximum to be identical and this c
 
 | Argument | Note |
 |----------|------|
+| `height` | Height of the slider minimum and maximum box ([reference](css_input_option_reference.md#height)) |
+| `width` | Width of the slider minimum and maximum box ([reference](css_input_option_reference.md#width)) |
 | `background-color` | The background color for the text ([reference](css_input_option_reference.md#background-color)) |
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
 | `font-family` | The font used ([reference](css_input_option_reference.md#font-family)) |
