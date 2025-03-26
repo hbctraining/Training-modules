@@ -158,6 +158,8 @@ If you want a shadow on the background of the object then you want to use outset
   box-shadow: 4px -6px 3px rgba(0, 0, 0, 0.2),
 ```
 
+> Note: You can use other units instead of pixels (`px`) such as `in` for inches, `cm` for centimeters and `mm` for millimeters, among others.
+
 | Argument Position | Example | Explanation |
 |:---:|:---:|:---|
 | 1 | `4px` | x offset, where negative values are to the left and positive values are to the right |
@@ -173,6 +175,8 @@ If you want a shadow on the foreground of the object then you want to use inset.
 ```
   box-shadow: inset -2px 3px 0px green,
 ```
+
+> Note: You can use other units instead of pixels (`px`) such as `in` for inches, `cm` for centimeters and `mm` for millimeters, among others.
 
 | Argument Position | Example | Explanation |
 |:---:|:---:|:---|
@@ -190,6 +194,8 @@ It is a little bit trickier to back an object to have both an inset and outset s
 box-shadow: -1px 3px 6px #6495ED,
   inset 5px -4px 10px rgba(0, 0, 0, 0.5);  
 ```
+
+> Note: You can use other units instead of pixels (`px`) such as `in` for inches, `cm` for centimeters and `mm` for millimeters, among others.
 
 [Back to the top](#CSS-Input-Option-Reference)
 
@@ -356,12 +362,29 @@ This controls the the opacity, or alpha, for an object. Opacity can be given val
 
 ## padding
 
+Paddig is the amount of space around text. An example of the syntax for `padding` is:
+
+```
+padding: 10px
+```
+
+> Note: You can use other units instead of pixels (`px`) such as `in` for inches, `cm` for centimeters and `mm` for millimeters, among others.
+
 | Number of arguments |  Example | Explanation |
 |:---:|---|:---|
 | 1 | `padding: 1px;` | All sides have the same amount of space around the text (1px) |
 | 2 | `padding: 1px 2px;` | The top and bottom have the same amount of space around the text using the first value (1px)<br>The left and right have the same amount of space around the text using the second value (2px)|
 | 3 | `padding: 1px 2px 3px;` | The top has amount of space around the text using the first value (1px)<br>The left and right have the same amount of space around the text using the second value (2px)<br>The bottom has amount of space around the text using the third value (3px) |
 | 4 | `padding: 1px 2px 3px 4px;` | The top has amount of space around the text using the first value (1px)<br>The right has amount of space around the text using the second value (2px)<br>The bottom has amount of space around the text using the third value (3px)<br>The left has amount of space around the text using the fourth value (4px) |
+
+If you want more control that what more control that what `padding` can provide, you can also define it using these related set of options:
+
+| Option | Example | Explanation |
+|:---|---|:---|
+| `padding-top` | `padding-top: 1px` | The border style for the top side |
+| `padding-right` | `padding-right: 2px` | The border style for the right side |
+| `padding-bottom` | `padding-bottom: 3px` | The border style for the bottom side |
+| `padding-left` | `padding-left: 4px` | The border style for the left side |
 
 [Back to the top](#CSS-Input-Option-Reference)
 
@@ -376,6 +399,8 @@ Below we have an example of the `text-shadow` syntax:
 ```
 text-shadow: -2px 2px 0px tomato;
 ```
+
+> Note: You can use other units instead of pixels (`px`) such as `in` for inches, `cm` for centimeters and `mm` for millimeters, among others.
 
 | Argument Position | Example | Explanation |
 |:---:|:---:|:---|
