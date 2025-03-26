@@ -19,6 +19,14 @@ Jump to the following sections:
 - [Slider Minimum and Maximum](#slider-minimum-and-maximum)
 - [Value of Slider Handle](#value-of-slider-handle)
 
+Things to add:
+- Slider Handle with Range figure
+- .irs-bar
+- .irs-grid-text
+- .irs-grid-pol
+- .irs-grid-pol.small
+- .irs-line
+
 ## Slider Label
 
 An example CSS entry for the slider label is below:
