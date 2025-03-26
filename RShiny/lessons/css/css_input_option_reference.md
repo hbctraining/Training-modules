@@ -25,6 +25,9 @@ This document gives a more detailed guide to the different options that one can 
 
 Items left to address:
 - **ADD FONT-FAMILY GIFS**
+- `font-style`
+- `height`
+-  `width`
 
 ## background-color
 
