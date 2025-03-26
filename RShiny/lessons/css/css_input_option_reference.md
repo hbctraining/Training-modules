@@ -17,6 +17,7 @@ This document gives a more detailed guide to the different options that one can 
 - [cursor](#cursor)
 - [font-color](#font-color)
 - [font-family](#font-family)
+- [font-style](#font-style)
 - [font-size](#font-size)
 - [font-weight](#font-weight)
 - [opacity](#opacity)
@@ -25,7 +26,6 @@ This document gives a more detailed guide to the different options that one can 
 
 Items left to address:
 - **ADD FONT-FAMILY GIFS**
-- `font-style`
 - `height`
 -  `width`
 
@@ -343,9 +343,24 @@ font-family: "Just Me Again Down Here", serif;
 
 [Back to the top](#CSS-Input-Option-Reference)
 
+## font-style
+
+The style of the font. An example of the syntax for `font-style` is:
+
+```
+font-style: italic
+```
+
+|  Options | Explanation |
+|:---:|:---|
+| `font-style: normal;` | Text will be upright |
+| `font-style: italic;` | Text will be italicized |
+
+[Back to the top](#CSS-Input-Option-Reference)
+
 ## font-size
 
-The size fo the font is control by this option. An example of the syntax for `font-size` is:
+The size of the font is control by this option. An example of the syntax for `font-size` is:
 
 ```
 font-size: 10px
