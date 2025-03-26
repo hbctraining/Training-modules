@@ -36,7 +36,7 @@ An example CSS entry for the slider label is below:
   border-radius: 10px;
   border-style: dashed;
   border-width: 5px;
-  padding: 1px 2px 3px 4px
+  padding: 1px 2px 3px 4px;
   opacity: 50%;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
   text-shadow: -3px -3px 2px tomato;
@@ -163,7 +163,7 @@ An example CSS entry for the slider minimum label is below:
   border-radius: 10px;
   border-style: dashed;
   border-width: 5px;
-  padding: 1px 2px 3px 4px
+  padding: 1px 2px 3px 4px;
   opacity: 70%
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
   text-shadow: -3px -3px 2px tomato;
