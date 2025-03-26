@@ -42,6 +42,10 @@ Similar options availible to [color](#color).
 
 ## border-style
 
+Below is a cheatsheet for the different border style options:
+
+<p align="center"><img src="../../img/CSS_border_style.png" width="800"></p>
+
 [Back to the top](#CSS-Input-Option-Reference)
 
 ## border-width
