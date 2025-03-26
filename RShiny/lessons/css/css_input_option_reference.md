@@ -25,11 +25,21 @@ This document gives a more detailed guide to the different options that one can 
 
 ## background-color
 
-Similar options availible to [color](#color).
+Similar options availible to [color](#color). An example syntax for this is:
+
+```
+background-color: red
+```
 
 [Back to the top](#CSS-Input-Option-Reference)
 
 ## border-radius
+
+The border radius is the amount of curvature for the border to have at the corners. An example syntax for this is:
+
+```
+border-radius: 5px
+```
 
 | Number of arguments |  Example | Explanation |
 |:---:|---|:---|
@@ -38,23 +48,99 @@ Similar options availible to [color](#color).
 | 3 | `border-radius: 1px 2px 3px;` | The top-left corner uses the radius of the first value (1px)<br>The top-right and bottom-left use the radius of the second value (2px)<br>The bottom-right uses the radius of the third value (3px) |
 | 4 | `border-radius: 1px 2px 3px 4px;` | The top-left corner uses the radius of the first value (1px)<br>The top-right corner uses the radius of the second value (2px)<br>The bottom-right corner uses the radius of the third value (3px)<br>The bottom-left corner uses the radius of the fourth value (4px) |
 
+If you want more control that what more control that what `border-radius` can provide, you can also define it using these related set of options:
+
+| Option | Example | Explanation |
+|:---|---|:---|
+| `border-top-left-radius` | `border-top-left-radius: 1px;` | The radius for the top-left corner |
+| `border-top-right-radius` | `border-top-right-radius: 2px;` | The radius for the top-right corner |
+| `border-bottom-right-radius` | `border-bottom-right-radius: 3px;` | The radius for the bottom-right corner |
+| `border-bottom-left-radius` | `border-bottom-left-radius: 4px;` | The radius for the bottom-left corner |
+
 [Back to the top](#CSS-Input-Option-Reference)
 
 ## border-style
+
+The border style is the pattern for the border to be. An example syntax for this is:
+
+```
+border-style: dashed
+```
 
 Below is a cheatsheet for the different border style options:
 
 <p align="center"><img src="../../img/CSS_border_style.png" width="800"></p>
 
+| Number of arguments |  Example | Explanation |
+|:---:|---|:---|
+| 1 | `border-style: dashed;` | All sides will be dashed |
+| 2 | `border-style: dashed dotted;` | The top and bottom sides will use the first value (dashed)<br>The left and right sides will use the second value (dotted) |
+| 3 | `border-style: dashed dotted solid;` | The top side will use the first value (dashed)<br>The left and right sides will use the second value (dotted)<br>The bottom side will use the third value (solid) |
+| 4 | `border-style: dashed dotted solid double;` | The top side will use the first value (dashed)<br>The right side will use the second value (dotted)<br>The bottom side will use the third value (solid)<br>The left side will use the fourth value (double) |
+
+If you want more control that what more control that what `border-style` can provide, you can also define it using these related set of options:
+
+| Option | Example | Explanation |
+|:---|---|:---|
+| `border-top-style` | `border-top-style: dashed;` | The border style for the top side |
+| `border-right-style` | `border-right-style: dotted;` | The border style for the right side |
+| `border-bottom-style` | `border-bottom-style: solid;` | The border style for the bottom side |
+| `border-left-style` | `border-left-style: double;` | The border style for the left side |
+
 [Back to the top](#CSS-Input-Option-Reference)
 
 ## border-width
+
+The width of the border is defined by the number of pixels the width should be. An example syntax for this is:
+
+```
+border-width: 5px;
+```
+
+> Note: You can use other units instead of pixels (`px`) such as `in` for inches, `cm` for centimeters and `mm` for millimeters, among others.
+
+| Number of arguments |  Example | Explanation |
+|:---:|---|:---|
+| 1 | `border-width: 1px;` | All sides will be the same width (1px) |
+| 2 | `border-width: 1px 3px;` | The top and bottom sides will use the first value (1px)<br>The left and right sides will use the second value (3px) |
+| 3 | `border-width: 1px 3px 5px;` | The top side will use the first value (1px)<br>The left and right sides will use the second value (3px)<br>The bottom side will use the third value (5px) |
+| 4 | `border-width: 1px 3px 5px 10px;` | The top side will use the first value (1px)<br>The right side will use the second value (3px)<br>The bottom side will use the third value (5px)<br>The left side will use the fourth value (10px) |
+
+If you want more control that what more control that what `border-width` can provide, you can also define it using these related set of options:
+
+| Option | Example | Explanation |
+|:---|---|:---|
+| `border-top-width` | `border-top-width: 1px` | The border style for the top side |
+| `border-right-width` | `border-right-width: 3px` | The border style for the right side |
+| `border-bottom-width` | `border-bottom-width: 5px` | The border style for the bottom side |
+| `border-left-width` | `border-left-width: 10px` | The border style for the left side |
 
 [Back to the top](#CSS-Input-Option-Reference)
 
 ## border-color
 
-This defines the border color using similar options availible to [color](#color).
+This defines the border color using similar options availible to [color](#color). An example syntax is:
+
+```
+border-color: blue
+```
+
+| Number of arguments |  Example | Explanation |
+|:---:|---|:---|
+| 1 | `border-color: black;` | All sides have the same color (black) |
+| 2 | `border-color: black red;` | The top and bottom sides will use the first value (black)<br>The left and right sides will use the second value (red) |
+| 3 | `border-color: black red blue;` | The top side will use the first value (black)<br>The left and right sides will use the second value (red)<br>The bottom side will use the third value (blue) |
+| 4 | `border-color: black red blue orange;` | The top side will use the first value (black)<br>The right side will use the second value (red)<br>The bottom side will use the third value (blue)<br>The left side will use the fourth value (orange) |
+
+If you want more control that what more control that what `border-color` can provide, you can also define it using these related set of options:
+
+| Option | Example | Explanation |
+|:---|---|:---|
+| `border-top-color` | `border-top-color: black;` | The border color for the top side |
+| `border-right-color` | `border-right-color: red;` | The border color for the right side |
+| `border-bottom-color` | `border-bottom-color: blue;` | The border color for the bottom side |
+| `border-left-color` | `border-left-color: orange;` | The border color for the left side |
+
 
 [Back to the top](#CSS-Input-Option-Reference)
 
@@ -154,6 +240,12 @@ color: #6495ED
 [Back to the top](#CSS-Input-Option-Reference)
 
 ## cursor
+
+The cursor option sets the appearance for the cursor to be. An example syntax for this is:
+
+```
+cursor: crosshair
+```
 
 Below is a cheatsheet for the different cursor options:
 
