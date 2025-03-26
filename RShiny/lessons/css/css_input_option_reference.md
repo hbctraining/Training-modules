@@ -23,6 +23,9 @@ This document gives a more detailed guide to the different options that one can 
 - [padding](#padding)
 - [text-shadow](#text-shadow)
 
+Items left to address:
+- **ADD FONT-FAMILY GIFS**
+
 ## background-color
 
 Similar options availible to [color](#color). An example syntax for this is:
@@ -338,6 +341,14 @@ font-family: "Just Me Again Down Here", serif;
 [Back to the top](#CSS-Input-Option-Reference)
 
 ## font-size
+
+The size fo the font is control by this option. An example of the syntax for `font-size` is:
+
+```
+font-size: 10px
+```
+
+> Note: You can use other units instead of pixels (`px`) such as `in` for inches, `cm` for centimeters and `mm` for millimeters, among others.
 
 [Back to the top](#CSS-Input-Option-Reference)
 
