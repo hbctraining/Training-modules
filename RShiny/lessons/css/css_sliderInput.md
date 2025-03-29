@@ -20,14 +20,12 @@ Jump to the following sections:
 - [Value of Slider Handle](#value-of-slider-handle)
 - [Slider Bar](#slider-bar)
 - [Filled Portion of the Bar](#filled-portion-of-the-bar)
+- [Text on the Tick Marks](#text-on-the-tick-marks)
 
 Things to add:
-- Slider Handle with Range figure
-- .irs-bar
-- .irs-grid-text
+- Make a figure to show Slider Handle with Range
 - .irs-grid-pol
 - .irs-grid-pol.small
-- .irs-line
 
 ## Slider Label
 
@@ -90,7 +88,7 @@ An example CSS entry for the slider handle is below:
   border-radius: 10px;
   border-style: solid;
   border-color: green;
-  opacity: 70%
+  opacity: 70%;
   cursor: pointer;
   box-shadow: 4px 4px 8px purple;
 }
@@ -180,7 +178,7 @@ An example CSS entry for the slider minimum label is below:
   border-style: dashed;
   border-width: 5px;
   padding: 1px 2px 3px 4px;
-  opacity: 70%
+  opacity: 70%;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
   text-shadow: -3px -3px 2px tomato;
 }
@@ -387,6 +385,79 @@ An example CSS entry for the value of the filled portion of the bar is below:
 | `opacity` |  Opacity of the value box ([reference](css_input_option_reference.md#opacity)) |
 | `box-shadow` | The shadow of the value box ([reference](css_input_option_reference.md#box-shadow)) |
 
+# Text on the Tick Marks
+
+## Control across all of the text on tick marks
+
+An example CSS entry for the value of the filled portion of the bar is below:
+
+```
+.irs--shiny .irs-grid-text{
+  height: 30px; 
+  width: 30px;
+  background-color: green;
+  color: white;
+  font-family: sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 800;
+  border-color: orange;
+  border-radius: 5px;
+  border-style: dotted;
+  border-width: 3px;
+  padding: 1px 2px 3px 4px;
+  opacity: 80%;
+  box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.6);
+  text-shadow: -3px -3px 2px purple;
+}
+```
+
+| Argument | Note |
+|----------|------|
+| `height` | Height of the slider minimum box ([reference](css_input_option_reference.md#height)) |
+| `width` | Width of the slider minimum box ([reference](css_input_option_reference.md#width)) |
+| `background-color` | The background color for the text ([reference](css_input_option_reference.md#background-color)) |
+| `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
+| `font-family` | The font used ([reference](css_input_option_reference.md#font-family)) |
+| `font-size` | The size of the font ([reference](css_input_option_reference.md#font-size)) |
+| `font-style` | Whether the font is `normal` or `italic` ([reference](css_input_option_reference.md#font-style)) |
+| `font-weight` | How thick or bold the font is ([reference](css_input_option_reference.md#font-weight)) |
+| `border-color` | Color of the border ([reference](css_input_option_reference.md#border-color)) |
+| `border-radius` | How curved the radius of the corners of box are ([reference](css_input_option_reference.md#border-radius)) |
+| `border-style` | Style of the border ([reference](css_input_option_reference.md#border-style)) |
+| `border-width` | Width of the border ([reference](css_input_option_reference.md#border-width)) |
+| `padding` | How much space to leave around the text([reference](css_input_option_reference.md#padding)) |
+| `opacity` | The opacity of the slider minimum box ([reference](css_input_option_reference.md#opacity)) |
+| `box-shadow` | The shadow of the slider minimum ([reference](css_input_option_reference.md#box-shadow)) |
+| `text-shadow` | The shadow of the text within the slider minimum ([reference](css_input_option_reference.md#text-shadow)) |
+
+## Control over specific text on the tick marks 
+
+If you would like to have finer control over the text on the tick mark and assign different CSS input for different text you can modify the CSS entry to be:
+
+```
+.irs--shiny .irs-grid-text.js-grid-text-<insert_integer>{
+  Enter formatting...
+}
+```
+
+In this above example, replace `<insert_integer>` with a zero-indexed integer associated with the text. For example, if you wanted the first text element to be different than the rest than you would use:
+
+```
+.irs--shiny .irs-grid-text.js-grid-text-0{
+  Enter formatting...
+}
+```
+
+And if you wantd to modify the fourth text element then you would use:
+
+```
+.irs--shiny .irs-grid-text.js-grid-text-3{
+  Enter formatting...
+}
+```
+
+> NOTE: Remember the indexing is zero-indexed!
 
 ---
 
