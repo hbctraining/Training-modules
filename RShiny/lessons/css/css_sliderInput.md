@@ -18,6 +18,8 @@ Jump to the following sections:
 - [Slider Maximum](#slider-maximum)
 - [Slider Minimum and Maximum](#slider-minimum-and-maximum)
 - [Value of Slider Handle](#value-of-slider-handle)
+- [Slider Bar](#slider-bar)
+- [Filled Portion of the Bar](#filled-portion-of-the-bar)
 
 Things to add:
 - Slider Handle with Range figure
@@ -332,6 +334,59 @@ An example CSS entry for the value of the slider handle is below:
 | `opacity` |  Opacity of the value box ([reference](css_input_option_reference.md#opacity)) |
 | `box-shadow` | The shadow of the value box ([reference](css_input_option_reference.md#box-shadow)) |
 | `text-shadow` | The shadow of the text within the value box ([reference](css_input_option_reference.md#text-shadow)) |
+
+# Slider Bar
+
+An example CSS entry for the value of the filled portion of the bar is below:
+
+```
+.irs--shiny .irs-line{
+  background: violet;
+  border-color: red;
+  border-radius: 1px;
+  border-style: double;
+  border-width: 2px;
+  opacity: 70%;
+  box-shadow: 4px -4px 6px rgba(0, 0, 255, 0.8);
+}
+```
+
+| Argument | Note |
+|----------|------|
+| `background` | The color for the filled portion of the bar ([reference](css_input_option_reference.md#background)) |
+| `border-color` | Color of the border ([reference](css_input_option_reference.md#border-color)) |
+| `border-radius` | How curved the radius of the corners of box are ([reference](css_input_option_reference.md#border-radius)) |
+| `border-style` | Style of the border ([reference](css_input_option_reference.md#border-style)) |
+| `border-width` | Width of the border ([reference](css_input_option_reference.md#border-width)) |
+| `opacity` |  Opacity of the value box ([reference](css_input_option_reference.md#opacity)) |
+| `box-shadow` | The shadow of the value box ([reference](css_input_option_reference.md#box-shadow)) |
+
+# Filled Portion of the Bar
+
+An example CSS entry for the value of the filled portion of the bar is below:
+
+```
+.irs--shiny .irs-bar{
+  background-color: orange;
+  border-color: green;
+  border-radius: 2px;
+  border-style: dashed;
+  border-width: 2px;
+  opacity: 90%;
+  box-shadow: 4px -4px 6px rgba(0, 255, 255, 0.8);
+}
+```
+
+| Argument | Note |
+|----------|------|
+| `background-color` | The color for the filled portion of the bar ([reference](css_input_option_reference.md#background-color)) |
+| `border-color` | Color of the border ([reference](css_input_option_reference.md#border-color)) |
+| `border-radius` | How curved the radius of the corners of box are ([reference](css_input_option_reference.md#border-radius)) |
+| `border-style` | Style of the border ([reference](css_input_option_reference.md#border-style)) |
+| `border-width` | Width of the border ([reference](css_input_option_reference.md#border-width)) |
+| `opacity` |  Opacity of the value box ([reference](css_input_option_reference.md#opacity)) |
+| `box-shadow` | The shadow of the value box ([reference](css_input_option_reference.md#box-shadow)) |
+
 
 ---
 
