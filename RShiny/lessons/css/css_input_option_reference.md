@@ -7,6 +7,7 @@ author: "Will Gammerdinger"
 
 This document gives a more detailed guide to the different options that one can use for each of the css inputs.
 
+- [background](#background)
 - [background-color](#background-color)
 - [border-radius](#border-radius)
 - [border-style](#border-style)
@@ -28,6 +29,16 @@ This document gives a more detailed guide to the different options that one can 
 
 Items left to address:
 - **ADD FONT-FAMILY GIFS**
+
+## background
+
+Some elements require `background` rather than `background-color` to determine their color. Otherwise, it has similar options availible to [color](#color). An example syntax for this is:
+
+```
+background: purple
+```
+
+[Back to the top](#CSS-Input-Option-Reference)
 
 ## background-color
 
