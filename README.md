@@ -24,7 +24,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 | Topic and Link(s) to lessons | Prerequisites | Date | Registration |
 |:---------------|:-------------:|:-------------:|:-------------:|
 | [R Basics](https://hbctraining.github.io/Training-modules/IntroR/)	| None | 2/19/2025	| Closed |
-| [Markdown for Reproducible Reporting](https://hbctraining.github.io/Training-modules/Rmarkdown/)| [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) | 3/19/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/kLHG2wfzTm2LJeCfqPKWkQ#/registration)|
+| [Markdown for Reproducible Reporting](https://hbctraining.github.io/Training-modules/Rmarkdown/)| [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) | 3/19/2025	| Closed |
 | “Track Changes” for your code: An Introduction to Git and GitHub	| None | 4/16/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/qbesTp4RSxSMN7B9jPsp8g#/registration) |
 | Coding with others: Managing conflicts on GitHub	| “Track Changes” for your code: An Introduction to Git and GitHub | 5/21/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/6D99-EskR--kUNBUKq-anA#/registration) |
 
