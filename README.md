@@ -25,8 +25,10 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 |:---------------|:-------------:|:-------------:|:-------------:|
 | [R Basics](https://hbctraining.github.io/Training-modules/IntroR/)	| None | 2/19/2025	| Closed |
 | [Markdown for Reproducible Reporting](https://hbctraining.github.io/Training-modules/Rmarkdown/)| [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) | 3/19/2025	| Closed |
-| “Track Changes” for your code: An Introduction to Git and GitHub	| None | 4/16/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/qbesTp4RSxSMN7B9jPsp8g#/registration) |
-| Coding with others: Managing conflicts on GitHub	| “Track Changes” for your code: An Introduction to Git and GitHub | 5/21/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/6D99-EskR--kUNBUKq-anA#/registration) |
+| [“Track Changes” for your code: An Introduction to Git and GitHub](https://hbctraining.github.io/Training-modules/Git-Github/#track-changes-with-your-code-an-introduction-to-git-and-github)	| None | 4/16/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/qbesTp4RSxSMN7B9jPsp8g#/registration) |
+| [Coding with others: Managing conflicts on GitHub](https://hbctraining.github.io/Training-modules/Git-Github/#coding-with-others-managing-conflicts-on-github)	| “Track Changes” for your code: An Introduction to Git and GitHub | 5/21/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/6D99-EskR--kUNBUKq-anA#/registration) |
+| Statistics for Computational Biology Projects	| None | 6/18/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/v734MhlbRYuFEFdSNJqihg#/registration) |
+| Deeper differential expression analysis with shrinkage correction| [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) | 7/16/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/4cngaM9WSHKHkOlfUeFLlA#/registration) |
 
 <!-- This content will not appear in the rendered Markdown -->
 
