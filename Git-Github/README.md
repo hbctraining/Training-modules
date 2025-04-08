@@ -44,7 +44,7 @@ While initially designed for saving and developing code collaboratively, there a
 
 ### Dataset
 
-Download the [workshop sample files zipped folder]() and unzip it.
+Download the [workshop sample files zipped folder](https://github.com/hbctraining/reproducibility-tools/raw/master/data/example_files.zip) and unzip it.
 
 ### Installation Requirements
 
