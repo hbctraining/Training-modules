@@ -18,8 +18,7 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 ***
 
-## Current Topics in Bioinformatics workshops Winter 2025 Schedule (1pm - 4pm):
-**Tools for Transparent Research - Hands-On with Git & RMarkdown**
+## Current Topics in Bioinformatics workshops 2025 Schedule (1pm - 4pm):
 
 | Topic and Link(s) to lessons | Prerequisites | Date | Registration |
 |:---------------|:-------------:|:-------------:|:-------------:|
@@ -33,6 +32,8 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 <!-- This content will not appear in the rendered Markdown -->
 
 <!--
+Winter 2025:
+**Tools for Transparent Research - Hands-On with Git & RMarkdown**
 ### Current Topics in Bioinformatics workshops 2024 Spring Schedule (1pm - 4pm): 
 **Big data? Big computer! The skill set you need to succeed**
 
