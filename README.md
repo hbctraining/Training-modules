@@ -4,17 +4,20 @@
 :----------|:----------|:----------|
 | Biologists | Beginner or intermediate R and/or beginner bash | 2-3 hour workshops |
 
+
+<!-- This content will not appear in the rendered Markdown -->
+
+<!--
 <p align="center">
 Use https://tinyurl.com/hcbc-modules to access this page.
 </p>
+-->
 
-This repository has teaching materials for **2-3 hour**, hands-on workshops covering a variety of topics related to bioinformatics data analysis. The workshops will lead participants through performing different types of analyses using R/RStudio or Linux. 
-
-Some workshops will require a working knowledge of R or completion of the [Introduction to R workshop](IntroR). Other workshops will require a working knowledge of the bash scripting language or completion of the [Introduction to Shell workshop](https://hbctraining.github.io/Training-modules/Basic_shell/). 
+This repository has teaching materials for **2-3 hour**, hands-on workshops covering a variety of topics related to bioinformatics data analysis. The workshops will lead participants through performing different types of analyses using R/RStudio or Shell/bash. 
 
 ** **NOTE: Detailed information** and **preparation instructions** for each of the workshops can be found by clicking on the workshop links in the table below.
 
-> Workshop introduction slides are available [here](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2022.pdf).
+> Workshop introduction slides are available [here](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2025.pdf).
 
 ***
 
@@ -22,12 +25,12 @@ Some workshops will require a working knowledge of R or completion of the [Intro
 
 | Topic and Link(s) to lessons | Prerequisites | Date | Registration |
 |:---------------|:-------------:|:-------------:|:-------------:|
-| [R Basics](https://hbctraining.github.io/Training-modules/IntroR/)	| None | 2/19/2025	| Closed |
-| [Markdown for Reproducible Reporting](https://hbctraining.github.io/Training-modules/Rmarkdown/)| [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) | 3/19/2025	| Closed |
+| [Foundations in R](https://hbctraining.github.io/Training-modules/IntroR/)	| None | 2/19/2025	| Closed |
+| [Markdown for Reproducible Reporting](https://hbctraining.github.io/Training-modules/Rmarkdown/)| [Introduction to R](https://hbctraining.github.io/Intro-to-R-flipped/), [Foundations in R](IntroR), <br> or [Introduction to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 3/19/2025	| Closed |
 | [“Track Changes” for your code: An Introduction to Git and GitHub](https://hbctraining.github.io/Training-modules/Git-Github/#track-changes-with-your-code-an-introduction-to-git-and-github)	| None | 4/16/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/qbesTp4RSxSMN7B9jPsp8g#/registration) |
 | [Coding with others: Managing conflicts on GitHub](https://hbctraining.github.io/Training-modules/Git-Github/#coding-with-others-managing-conflicts-on-github)	| “Track Changes” for your code: An Introduction to Git and GitHub | 5/21/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/6D99-EskR--kUNBUKq-anA#/registration) |
 | Statistics for Computational Biology Projects	| None | 6/18/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/v734MhlbRYuFEFdSNJqihg#/registration) |
-| Deeper differential expression analysis with shrinkage correction| [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) | 7/16/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/4cngaM9WSHKHkOlfUeFLlA#/registration) |
+| Deeper differential expression analysis with shrinkage correction| [Introduction to R](https://hbctraining.github.io/Intro-to-R-flipped/), [Foundations in R](IntroR), <br> or [Introduction to R online resource](https://projects.iq.harvard.edu/hcatrresource/) | 7/16/2025	| [Sign up!](https://harvard.zoom.us/meeting/register/4cngaM9WSHKHkOlfUeFLlA#/registration) |
 
 <!-- This content will not appear in the rendered Markdown -->
 
@@ -56,10 +59,10 @@ Winter 2025:
 
 | Topic and Link(s) to lessons | Prerequisites | Date | Registration |
 |:---------------|:-------------:|:-------------:|:-------------:|
-| [Introduction to Shell](https://hbctraining.github.io/Training-modules/Intro_shell/)	| None | 1/18/2023	| Closed |
-| [Intermediate Shell](https://hbctraining.github.io/Training-modules/Intermediate_shell/)	| [Introduction to Shell](https://hbctraining.github.io/Training-modules/Intro_shell/) | 2/15/2023	| Closed |
-| [Advanced Shell](https://hbctraining.github.io/Training-modules/Advanced_shell/) | [Intermediate Shell](https://hbctraining.github.io/Training-modules/Intermediate_shell/) | 3/13/2023	| Closed |
-| [Git/Github](https://hbctraining.github.io/Training-modules/Git-Github/) | [Introduction to Shell](https://hbctraining.github.io/Training-modules/Intro_shell/) | 4/19/2023	| Closed | 
+| [Foundations in Shell](https://hbctraining.github.io/Training-modules/Intro_shell/)	| None | 1/18/2023	| Closed |
+| [Intermediate Shell](https://hbctraining.github.io/Training-modules/Intermediate_shell/)	| [Foundations in Shell](https://hbctraining.github.io/Training-modules/Intro_shell/) | 2/15/2023	| Closed |
+| [Advanced Shell](https://hbctraining.github.io/Training-modules/Advanced_shell/) | [Foundations in Shell](https://hbctraining.github.io/Training-modules/Intermediate_shell/) | 3/13/2023	| Closed |
+| [Git/Github](https://hbctraining.github.io/Training-modules/Git-Github/) | [Foundations in Shell](https://hbctraining.github.io/Training-modules/Intro_shell/) | 4/19/2023	| Closed | 
 | [ML4Bio](https://hbctraining.github.io/Training-modules/ML4bio_installation_instructions) | None | 5/17/2023	| Closed |
 | [Basics of Python](Python) | None | 6/21/2023	| Closed |
 | [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) | None | 7/19/2023	| Closed |
@@ -77,27 +80,27 @@ Winter 2025:
 
 | Topic and Link(s) to lessons | Prerequisites |
 |:---------------|:-------------:|
-| [Introduction to R](IntroR) | None |
-| [Tidyverse](Tidyverse_ggplot2) | Beginner R or [Intro to R workshop](IntroR) |
-| [Introduction to R Practical](IntroR_practical_online_resource) | Beginner R or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) |
-| [Gene annotations and functional analysis of gene lists](DGE-functional-analysis) | Beginner R or [Intro to R workshop](IntroR) |
-| [Generating research analysis reports with RMarkdown](Rmarkdown) | Beginner R or [Intro to R workshop](IntroR) |
-| [Interactive Data Visualization with Shiny in R (with Ista Zahn from the Harvard Business School)](https://github.com/izahn/shiny_workshop) | Beginner R or [Intro to R workshop](IntroR) |
-| [Publication Perfect: Part I](publication_perfect#part-i) | Beginner R or [Completion of the Intro to R online resource](https://projects.iq.harvard.edu/hcatrresource/) |
+| [Foundations in R](IntroR) | None |
+| [Tidyverse](Tidyverse_ggplot2) | [Introduction to R](https://hbctraining.github.io/Intro-to-R-flipped/), [Foundations in R](IntroR), <br> or [Introduction to R online resource](https://projects.iq.harvard.edu/hcatrresource/) |
+| [Introduction to R Practical](IntroR_practical_online_resource) | [Introduction to R](https://hbctraining.github.io/Intro-to-R-flipped/), [Foundations in R](IntroR), <br> or [Introduction to R online resource](https://projects.iq.harvard.edu/hcatrresource/) |
+| [Gene annotations and functional analysis of gene lists](DGE-functional-analysis) | [Introduction to R](https://hbctraining.github.io/Intro-to-R-flipped/), [Foundations in R](IntroR), <br> or [Introduction to R online resource](https://projects.iq.harvard.edu/hcatrresource/) |
+| [Generating research analysis reports with RMarkdown](Rmarkdown) | [Introduction to R](https://hbctraining.github.io/Intro-to-R-flipped/), [Foundations in R](IntroR), <br> or [Introduction to R online resource](https://projects.iq.harvard.edu/hcatrresource/) |
+| [Interactive Data Visualization with Shiny in R (with Ista Zahn from the Harvard Business School)](https://github.com/izahn/shiny_workshop) | [Introduction to R](https://hbctraining.github.io/Intro-to-R-flipped/), [Foundations in R](IntroR), <br> or [Introduction to R online resource](https://projects.iq.harvard.edu/hcatrresource/) |
+| [Publication Perfect: Part I](publication_perfect#part-i) | [Introduction to R](https://hbctraining.github.io/Intro-to-R-flipped/), [Foundations in R](IntroR), <br> or [Introduction to R online resource](https://projects.iq.harvard.edu/hcatrresource/) |
 | [Publication Perfect: Part II](publication_perfect#part-ii) | [Publication Perfect: Part I](publication_perfect#part-i) |
-| [Functional analysis of gene lists](DGE-functional-analysis/) | Beginner R or [Intro to R workshop](IntroR) |
+| [Functional analysis of gene lists](DGE-functional-analysis/) | [Introduction to R](https://hbctraining.github.io/Intro-to-R-flipped/), [Foundations in R](IntroR), <br> or [Introduction to R online resource](https://projects.iq.harvard.edu/hcatrresource/) |
 
 ### Shell-based workshops:
 
 | Topic and Link(s) to lessons | Prerequisites |
 |:---------------|:-------------:|
-| [Basic Shell/Introduction to the command-line interface](https://hbctraining.github.io/Training-modules/Basic_shell/) | None |
-| [Accelerate with Automation - Making your code work for you](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/)	| [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 
-| [Needle in a Haystack - Finding and summarizing data from colossal files](https://hbctraining.github.io/Training-modules/Finding_and_summarizing_colossal_files/) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) |
-| [Shell Tips and Tricks on O2](https://hbctraining.github.io/Training-modules/Tips_and_Tricks_on_O2/) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) |
-| [Version control using Git and Github](Git-Github) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) |
-| [Accessing genomic reference and experimental sequencing data](https://hbctraining.github.io/Accessing_public_genomic_data) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) |
-| [Exploring genomic variants using GEMINI](Exploring_variants_with_GEMINI) | [The Foundation - Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/)|
+| [Foundations in Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | None |
+| [Accelerate with Automation - Making your code work for you](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/)	| [Shell for Bioinformatics](https://hbctraining.github.io/Shell-for-bioinformatics/) or [Foundations in Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 
+| [Needle in a Haystack - Finding and summarizing data from colossal files](https://hbctraining.github.io/Training-modules/Finding_and_summarizing_colossal_files/) | [Shell for Bioinformatics](https://hbctraining.github.io/Shell-for-bioinformatics/) or [Foundations in Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) |
+| [Shell Tips and Tricks on O2](https://hbctraining.github.io/Training-modules/Tips_and_Tricks_on_O2/) | [Shell for Bioinformatics](https://hbctraining.github.io/Shell-for-bioinformatics/) or [Foundations in Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) |
+| [Version control using Git and Github](Git-Github) | [Shell for Bioinformatics](https://hbctraining.github.io/Shell-for-bioinformatics/) or [Foundations in Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) |
+| [Accessing genomic reference and experimental sequencing data](https://hbctraining.github.io/Accessing_public_genomic_data) | [Shell for Bioinformatics](https://hbctraining.github.io/Shell-for-bioinformatics/) or [Foundations in Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) |
+| [Exploring genomic variants using GEMINI](Exploring_variants_with_GEMINI) | [Shell for Bioinformatics](https://hbctraining.github.io/Shell-for-bioinformatics/) or [Foundations in Shell](https://hbctraining.github.io/Training-modules/Basic_shell/)|
 
 <!-- This content will not appear in the rendered Markdown -->
 <!-- Old material and links:
@@ -114,7 +117,7 @@ Winter 2025:
 | [Planning a bulk RNA-seq analysis: Part II](planning_successful_rnaseq#part-ii) | None |
 | [Make your (RNA-seq) data analysis reproducible](reproducible_analyses)- *Taught by [Julie Goldman](https://scholar.harvard.edu/julie_goldman) from Countway Library* | None |
 | [Improving your (RNA-seq) data analysis using version control (Git)](https://hbctraining.github.io/versioning_data_scripts/) | None |
-| Introduction to scRNA-seq and data pre-processing | [R Basics](https://hbctraining.github.io/Training-modules/IntroR/) and [Basic Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 
+| Introduction to scRNA-seq and data pre-processing | [Introduction to R](https://hbctraining.github.io/Intro-to-R-flipped/), [Foundations in R](IntroR), <br> or [Introduction to R online resource](https://projects.iq.harvard.edu/hcatrresource/) and [Shell for Bioinformatics](https://hbctraining.github.io/Shell-for-bioinformatics/) or [Foundations in Shell](https://hbctraining.github.io/Training-modules/Basic_shell/) | 
 
 ***
 
