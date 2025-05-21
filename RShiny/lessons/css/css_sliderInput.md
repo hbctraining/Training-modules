@@ -145,6 +145,7 @@ Slider handles within ranges work the same as single slider handles except the c
 An example CSS entry for the "from" slider handle is below:
 
 ```
+/* "From" slider handle in a range */
 .irs--shiny .irs-handle.from{
   background-color: black;
 }
@@ -155,6 +156,7 @@ An example CSS entry for the "from" slider handle is below:
 An example CSS entry for the "to" slider handle is below:
 
 ```
+/* "To" slider handle in a range */
 .irs--shiny .irs-handle.to{
   background-color: pink;
 }
@@ -300,6 +302,7 @@ Likely, we want want the slider's minimum and maximum to be identical and this c
 An example CSS entry for the value of the slider handle is below:
 
 ```
+/* Value of slider handle */
 .irs--shiny .irs-single{
   background-color: orange;
   color: rgb(0, 0, 0);
@@ -344,6 +347,7 @@ The values of the slider handles within ranges work the same as the value of a s
 An example CSS entry for the value of the "from" slider handle is below:
 
 ```
+/* Value of "From" slider handle in a range */
 .irs--shiny .irs-from{
   background-color: blue;
 }
@@ -354,6 +358,7 @@ An example CSS entry for the value of the "from" slider handle is below:
 An example CSS entry for the value of the "to" slider handle is below:
 
 ```
+/* Value of "To" slider handle in a range */
 .irs--shiny .irs-to{
   background-color: red;
 }
@@ -364,6 +369,7 @@ An example CSS entry for the value of the "to" slider handle is below:
 There could be cases where you want both slider handle to be the same. You could make separate `.irs--shiny .irs-from` and `.irs--shiny .irs-to` CSS entries, or you can make a single one for both:
 
 ```
+/* Values of "To" and "From" slider handle in a range */
 .irs--shiny .irs-to,
 .irs--shiny .irs-from{
   background-color: pink;
@@ -373,9 +379,10 @@ There could be cases where you want both slider handle to be the same. You could
 
 ## Slider Bar
 
-An example CSS entry for the value of the filled portion of the bar is below:
+An example CSS entry for the background bar is below:
 
 ```
+/* Background bar */
 .irs--shiny .irs-line{
   background: violet;
   border-color: red;
@@ -399,9 +406,10 @@ An example CSS entry for the value of the filled portion of the bar is below:
 
 ## Filled Portion of the Bar
 
-An example CSS entry for the value of the filled portion of the bar is below:
+An example CSS entry for the filled portion of the bar is below:
 
 ```
+/* Filled portion of the bar in the foreground */
 .irs--shiny .irs-bar{
   background-color: orange;
   border-color: green;
@@ -430,6 +438,7 @@ An example CSS entry for the value of the filled portion of the bar is below:
 An example CSS entry for the value of the filled portion of the bar is below:
 
 ```
+/* Text on the tick marks */
 .irs--shiny .irs-grid-text{
   height: 30px; 
   width: 30px;
@@ -474,6 +483,7 @@ An example CSS entry for the value of the filled portion of the bar is below:
 If you would like to have finer control over the text on the tick mark and assign different CSS input for different text you can modify the CSS entry to be:
 
 ```
+/* Text on the <insert_integer> tick marks */
 .irs--shiny .irs-grid-text.js-grid-text-<insert_integer>{
   Enter formatting...
 }
@@ -482,6 +492,7 @@ If you would like to have finer control over the text on the tick mark and assig
 In this above example, replace `<insert_integer>` with a zero-indexed integer associated with the text. For example, if you wanted the first text element to be different than the rest than you would use:
 
 ```
+/* Text on the first tick marks */
 .irs--shiny .irs-grid-text.js-grid-text-0{
   Enter formatting...
 }
@@ -490,6 +501,7 @@ In this above example, replace `<insert_integer>` with a zero-indexed integer as
 And if you wantd to modify the fourth text element then you would use:
 
 ```
+/* Text on the fourth tick marks */
 .irs--shiny .irs-grid-text.js-grid-text-3{
   Enter formatting...
 }
@@ -502,6 +514,7 @@ And if you wantd to modify the fourth text element then you would use:
 An example CSS entry for the values of the major tick marks is below:
 
 ```
+/* Major tick marks */
 .irs--shiny .irs-grid-pol:not(.small){
   height: 15px; 
   width: 4px;
@@ -530,6 +543,7 @@ An example CSS entry for the values of the major tick marks is below:
 An example CSS entry for the values of the major tick marks is below:
 
 ```
+/* Minor tick marks */
 .irs--shiny .irs-grid-pol.small{
   height: 10px; 
   width: 5px;
