@@ -59,7 +59,7 @@ To have a third, placeholder, argument:
 
 Adding this in creates default text to appear in the box, giving the user an example. 
 
-## Sliding range 
+## Sliders
 
 Slider inputs are a great way to provide an interactive range for the user to select a value from. Below we will have the example code that one can use to create a slider input:
 
