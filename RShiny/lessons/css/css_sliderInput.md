@@ -22,6 +22,7 @@ Jump to the following sections:
 - [Slider Maximum](#slider-maximum)
 - [Slider Minimum and Maximum](#slider-minimum-and-maximum)
 - [Value of Slider Handle](#value-of-slider-handle)
+- [Value of Slider Handle with Range](#value-of-slider-handle-with-range)
 - [Slider Bar](#slider-bar)
 - [Filled Portion of the Bar](#filled-portion-of-the-bar)
 - [Text on the Tick Marks](#text-on-the-tick-marks)
@@ -333,6 +334,42 @@ An example CSS entry for the value of the slider handle is below:
 | `opacity` |  Opacity of the value box ([reference](css_input_option_reference.md#opacity)) |
 | `box-shadow` | The shadow of the value box ([reference](css_input_option_reference.md#box-shadow)) |
 | `text-shadow` | The shadow of the text within the value box ([reference](css_input_option_reference.md#text-shadow)) |
+
+## Value of Slider Handle with Range
+
+The values of the slider handles within ranges work the same as the value of a single slider handle except the classes have different names. The options you have are consistent the same as with what you have within Value of Slider Handle.
+
+### Value of "From" Slider Handle
+
+An example CSS entry for the value of the "from" slider handle is below:
+
+```
+.irs--shiny .irs-from{
+  background-color: blue;
+}
+```
+
+### Value of "To" Slider Handle
+
+An example CSS entry for the value of the "to" slider handle is below:
+
+```
+.irs--shiny .irs-to{
+  background-color: red;
+}
+```
+
+### Value of "To" and "From" Slider Handle
+
+There could be cases where you want both slider handle to be the same. You could make separate `.irs--shiny .irs-from` and `.irs--shiny .irs-to` CSS entries, or you can make a single one for both:
+
+```
+.irs--shiny .irs-to,
+.irs--shiny .irs-from{
+  background-color: pink;
+}
+```
+
 
 ## Slider Bar
 
