@@ -54,7 +54,7 @@ textAreaInput("input_text", "My input text")
 To have a third, placeholder, argument:
 
 ```
-  textAreaInput("input_text", "My input text", placeholder = "Write about anything you like here...")
+textAreaInput("input_text", "My input text", placeholder = "Write about anything you like here...")
 ```
 
 Adding this in creates default text to appear in the box, giving the user an example. 
