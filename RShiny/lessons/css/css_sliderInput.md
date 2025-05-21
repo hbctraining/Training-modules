@@ -5,9 +5,13 @@ author: "Will Gammerdinger"
 
 # sliderInput
 
-Below is a key for the many of the elements that can be altered within the `sliderInput()`. 
+Below is a key for the many of the elements that can be altered within the `sliderInput()`:
 
 <p align="center"><img src="../../img/sliderInput_CSS_key.png" width="1000"></p>
+
+It gets slightly more complicated with a slider range within the `sliderInput()`:
+
+<p align="center"><img src="../../img/sliderInput_range_CSS_key.png" width="1000"></p>
 
 Jump to the following sections:
 
@@ -23,9 +27,6 @@ Jump to the following sections:
 - [Text on the Tick Marks](#text-on-the-tick-marks)
 - [Major Tick Marks](#major-tick-marks)
 - [Minor Tick Marks](#minor-tick-marks)
-
-Things to add:
-- Make a figure to show Slider Handle with Range
 
 ## Slider Label
 
