@@ -97,7 +97,8 @@ Note that the only line we changed was the `textAreaInput()` line to `sliderInpu
 | pre | Allows you to add text _prior_ the value in the slider | `pre = "Sample_"` |
 | post | Allows you to add text _after_ the value in the slider | `post = "kg"` |
 | ticks | Allows you toggle tick marks on/off | `ticks = FALSE` |
-| dragRange | Allows you to create a range with your slider. You will likely want to change `value` to be a vector containing the default start and stop of this range like `value = c(2,6)` | `dragRange = TRUE` |
+
+> NOTE: If you would like the slider to contain a range of values, then you would need to use a vector within the `value` option like  `value = c(2,6)` where the first value is the default "from" position in the range and the second value is the default "to" value in the range.
 
 
 ## Dropdown 
