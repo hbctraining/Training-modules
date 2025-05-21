@@ -21,11 +21,11 @@ Jump to the following sections:
 - [Slider Bar](#slider-bar)
 - [Filled Portion of the Bar](#filled-portion-of-the-bar)
 - [Text on the Tick Marks](#text-on-the-tick-marks)
+- [Major Tick Marks](#major-tick-marks)
+- [Minor Tick Marks](#minor-tick-marks)
 
 Things to add:
 - Make a figure to show Slider Handle with Range
-- .irs-grid-pol
-- .irs-grid-pol.small
 
 ## Slider Label
 
@@ -333,7 +333,7 @@ An example CSS entry for the value of the slider handle is below:
 | `box-shadow` | The shadow of the value box ([reference](css_input_option_reference.md#box-shadow)) |
 | `text-shadow` | The shadow of the text within the value box ([reference](css_input_option_reference.md#text-shadow)) |
 
-# Slider Bar
+## Slider Bar
 
 An example CSS entry for the value of the filled portion of the bar is below:
 
@@ -359,7 +359,7 @@ An example CSS entry for the value of the filled portion of the bar is below:
 | `opacity` |  Opacity of the value box ([reference](css_input_option_reference.md#opacity)) |
 | `box-shadow` | The shadow of the value box ([reference](css_input_option_reference.md#box-shadow)) |
 
-# Filled Portion of the Bar
+## Filled Portion of the Bar
 
 An example CSS entry for the value of the filled portion of the bar is below:
 
@@ -385,9 +385,9 @@ An example CSS entry for the value of the filled portion of the bar is below:
 | `opacity` |  Opacity of the value box ([reference](css_input_option_reference.md#opacity)) |
 | `box-shadow` | The shadow of the value box ([reference](css_input_option_reference.md#box-shadow)) |
 
-# Text on the Tick Marks
+## Text on the Tick Marks
 
-## Control across all of the text on tick marks
+### Control across all of the text on tick marks
 
 An example CSS entry for the value of the filled portion of the bar is below:
 
@@ -431,7 +431,7 @@ An example CSS entry for the value of the filled portion of the bar is below:
 | `box-shadow` | The shadow of the slider minimum ([reference](css_input_option_reference.md#box-shadow)) |
 | `text-shadow` | The shadow of the text within the slider minimum ([reference](css_input_option_reference.md#text-shadow)) |
 
-## Control over specific text on the tick marks 
+### Control over specific text on the tick marks 
 
 If you would like to have finer control over the text on the tick mark and assign different CSS input for different text you can modify the CSS entry to be:
 
@@ -458,6 +458,62 @@ And if you wantd to modify the fourth text element then you would use:
 ```
 
 > NOTE: Remember the indexing is zero-indexed!
+
+## Major Tick Marks
+
+An example CSS entry for the values of the major tick marks is below:
+
+```
+.irs--shiny .irs-grid-pol:not(.small){
+  height: 15px; 
+  width: 4px;
+  background-color: green;
+  border-color: pink;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  opacity: 80%;
+}
+
+| Argument | Note |
+|----------|------|
+| `height` | Height of the major tick mark ([reference](css_input_option_reference.md#height)) |
+| `width` | Width of the major tick mark ([reference](css_input_option_reference.md#width)) |
+| `background-color` | The color for the major tick mark ([reference](css_input_option_reference.md#background-color)) |
+| `border-color` | Color of the border ([reference](css_input_option_reference.md#border-color)) |
+| `border-radius` | How curved the radius of the corners of tick mark are ([reference](css_input_option_reference.md#border-radius)) |
+| `border-style` | Style of the border ([reference](css_input_option_reference.md#border-style)) |
+| `border-width` | Width of the border ([reference](css_input_option_reference.md#border-width)) |
+| `opacity` |  Opacity of the major tick marks ([reference](css_input_option_reference.md#opacity)) |
+```
+
+## Minor Tick Marks
+
+An example CSS entry for the values of the major tick marks is below:
+
+```
+.irs--shiny .irs-grid-pol.small{
+  height: 10px; 
+  width: 5px;
+  background-color: blue;
+  border-color: red;
+  border-radius: 4px;
+  border-style: dotted;
+  border-width: 2px;
+  opacity: 90%;
+}
+
+| Argument | Note |
+|----------|------|
+| `height` | Height of the minor tick mark ([reference](css_input_option_reference.md#height)) |
+| `width` | Width of the minor tick mark ([reference](css_input_option_reference.md#width)) |
+| `background-color` | The color for the minor tick mark ([reference](css_input_option_reference.md#background-color)) |
+| `border-color` | Color of the border ([reference](css_input_option_reference.md#border-color)) |
+| `border-radius` | How curved the radius of the corners of tick mark are ([reference](css_input_option_reference.md#border-radius)) |
+| `border-style` | Style of the border ([reference](css_input_option_reference.md#border-style)) |
+| `border-width` | Width of the border ([reference](css_input_option_reference.md#border-width)) |
+| `opacity` |  Opacity of the minor tick marks ([reference](css_input_option_reference.md#opacity)) |
+```
 
 ---
 
