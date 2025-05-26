@@ -12,7 +12,7 @@ Below is a key for the many of the elements that can be altered within the `radi
 Jump to the following sections:
 
 - [radioButtons Label](#radioButtons-label)
-- [radioButtons Options](#radioButtons-options)]
+- [radioButtons Options](#radioButtons-options)
 
 Still to do:
 - Make image
@@ -91,6 +91,8 @@ An example CSS entry for the slider label is below:
 }
 ```
 
+
+| Argument | Note |
 |----------|------|
 | `height` | Height of the slider label box ([reference](css_input_option_reference.md#height)) |
 | `width` | Width of the slider label box ([reference](css_input_option_reference.md#width)) |
