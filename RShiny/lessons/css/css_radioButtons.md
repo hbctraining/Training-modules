@@ -12,35 +12,33 @@ Below is a key for the many of the elements that can be altered within the `radi
 Jump to the following sections:
 
 - [radioButtons Label](#radioButtons-label)
-- [radioButtons Options](#radioButtons-options)
+- [radioButtons Selection Lables](#radioButtons-selection-labels)
+- [radioButtons Selection Circles](#radioButtons-selection-circles)
 
 Still to do:
 - Make image
-- Incorporate linked material
-- Tweak options
-- Update text around the options
 
 ## radioButtons Label
 
-An example CSS entry for the slider label is below:
+An example CSS entry for the radioButtons label is below:
 
 ```
 /* radioButtons Label */
 #<inputID>-label{
   height: 100px;
   width: 200px;
-  background-color: red;
-  color: orange;
+  background-color: purple;
+  color: green;
   font-family: Monospace;
   font-size: 20px;
   font-style: italic;
-  font-weight: 100;
-  border-color: green;
-  border-radius: 10px;
-  border-style: dashed;
+  font-weight: 400;
+  border-color: orange;
+  border-radius: 5px;
+  border-style: dotted;
   border-width: 5px;
   padding: 1px 2px 3px 4px;
-  opacity: 50%;
+  opacity: 40%;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
   text-shadow: -3px -3px 2px tomato;
 }
@@ -50,8 +48,8 @@ An example CSS entry for the slider label is below:
 
 | Argument | Note |
 |----------|------|
-| `height` | Height of the slider label box ([reference](css_input_option_reference.md#height)) |
-| `width` | Width of the slider label box ([reference](css_input_option_reference.md#width)) |
+| `height` | Height of the radioButtons label box ([reference](css_input_option_reference.md#height)) |
+| `width` | Width of the radioButtons label box ([reference](css_input_option_reference.md#width)) |
 | `background-color` | The background color for the text space ([reference](css_input_option_reference.md#background-color)) |
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
 | `font-family` | The font used ([reference](css_input_option_reference.md#font-family)) |
@@ -67,7 +65,9 @@ An example CSS entry for the slider label is below:
 | `box-shadow` | The shadow of the box outlining the text space ([reference](css_input_option_reference.md#box-shadow)) |
 | `text-shadow` | The shadow of the text within the text space ([reference](css_input_option_reference.md#text-shadow)) |
 
-# radioButtons Options
+# radioButtons Selection Labels
+
+An example CSS entry for the radioButtons selections labels is below:
 
 ```
 /* radioButtons Options*/
@@ -94,8 +94,8 @@ An example CSS entry for the slider label is below:
 
 | Argument | Note |
 |----------|------|
-| `height` | Height of the slider label box ([reference](css_input_option_reference.md#height)) |
-| `width` | Width of the slider label box ([reference](css_input_option_reference.md#width)) |
+| `height` | Height of the radioButtons selections label boxes ([reference](css_input_option_reference.md#height)) |
+| `width` | Width of the radioButtons selections label boxes ([reference](css_input_option_reference.md#width)) |
 | `background-color` | The background color for the text space ([reference](css_input_option_reference.md#background-color)) |
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
 | `font-family` | The font used ([reference](css_input_option_reference.md#font-family)) |
@@ -111,6 +111,22 @@ An example CSS entry for the slider label is below:
 | `box-shadow` | The shadow of the box outlining the text space ([reference](css_input_option_reference.md#box-shadow)) |
 | `text-shadow` | The shadow of the text within the text space ([reference](css_input_option_reference.md#text-shadow)) |
 
-https://stackoverflow.com/questions/23167637/is-it-possible-to-change-the-color-of-selected-radio-buttons-center-circle
+## radioButtons Selection Circles
+
+An example CSS entry for the radioButtons selection circles is below:
+
+```
+input[type="radio"] {
+  accent-color: red;
+  opacity: 50%;
+}
+```
+
+| Argument | Note |
+|----------|------|
+| `accent-color` | The color of the radioButtons selection circles ([reference](css_input_option_reference.md#accent-color)) |
+| `opacity` | Opacity of the radioButtons selection circles ([reference](css_input_option_reference.md#opacity)) |
+
+---
 
 [Back to Table of Contents](table_of_contents.md)
