@@ -7,6 +7,7 @@ author: "Will Gammerdinger"
 
 This document gives a more detailed guide to the different options that one can use for each of the css inputs.
 
+- [accent-color(#accent-color)]
 - [background](#background)
 - [background-color](#background-color)
 - [border-radius](#border-radius)
@@ -29,6 +30,16 @@ This document gives a more detailed guide to the different options that one can 
 
 Items left to address:
 - **ADD FONT-FAMILY GIFS**
+
+## accent-color
+
+Similar options availible to [color](#color). An example syntax for this is:
+
+```
+accent-color: cornflowerblue
+```
+
+[Back to the top](#CSS-Input-Option-Reference)
 
 ## background
 
