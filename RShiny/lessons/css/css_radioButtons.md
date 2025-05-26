@@ -12,11 +12,12 @@ Below is a key for the many of the elements that can be altered within the `radi
 Jump to the following sections:
 
 - [radioButtons Label](#radioButtons-label)
-- [radioButtons Selection Lables](#radioButtons-selection-labels)
+- [radioButtons Selection Labels](#radioButtons-selection-labels)
 - [radioButtons Selection Circles](#radioButtons-selection-circles)
 
 Still to do:
 - Make image
+- add nth-child to Selection Labels and Selection Circles
 
 ## radioButtons Label
 
@@ -116,7 +117,7 @@ An example CSS entry for the radioButtons selections labels is below:
 An example CSS entry for the radioButtons selection circles is below:
 
 ```
-input[type="radio"] {
+.radio input[type="radio"] {
   accent-color: red;
   opacity: 50%;
 }
