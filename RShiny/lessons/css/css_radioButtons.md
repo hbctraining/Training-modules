@@ -7,17 +7,13 @@ author: "Will Gammerdinger"
 
 Below is a key for the many of the elements that can be altered within the `radioButtons()`:
 
-<p align="center"><img src="../../img/sliderInput_CSS_key.png" width="1000"></p>
+<p align="center"><img src="../../img/radioButtons_CSS_key.png" width="600"></p>
 
 Jump to the following sections:
 
 - [radioButtons Label](#radioButtons-label)
-- [radioButtons Selection Labels](#radioButtons-selection-labels)
-- [radioButtons Selection Circles](#radioButtons-selection-circles)
-
-Still to do:
-- Make image
-- add nth-child to Selection Labels and Selection Circles
+- [radioButtons Choice Labels](#radioButtons-choice-labels)
+- [radioButtons Choice Circles](#radioButtons-choice-circles)
 
 ## radioButtons Label
 
@@ -66,9 +62,9 @@ An example CSS entry for the radioButtons label is below:
 | `box-shadow` | The shadow of the box outlining the text space ([reference](css_input_option_reference.md#box-shadow)) |
 | `text-shadow` | The shadow of the text within the text space ([reference](css_input_option_reference.md#text-shadow)) |
 
-# radioButtons Selection Labels
+## radioButtons Choice Labels
 
-An example CSS entry for the radioButtons selections labels is below:
+An example CSS entry for the radioButtons choice labels is below:
 
 ```
 /* radioButtons Options*/
@@ -92,11 +88,10 @@ An example CSS entry for the radioButtons selections labels is below:
 }
 ```
 
-
 | Argument | Note |
 |----------|------|
-| `height` | Height of the radioButtons selections label boxes ([reference](css_input_option_reference.md#height)) |
-| `width` | Width of the radioButtons selections label boxes ([reference](css_input_option_reference.md#width)) |
+| `height` | Height of the radioButtons choice label boxes ([reference](css_input_option_reference.md#height)) |
+| `width` | Width of the radioButtons choice label boxes ([reference](css_input_option_reference.md#width)) |
 | `background-color` | The background color for the text space ([reference](css_input_option_reference.md#background-color)) |
 | `color` | The color of the text ([reference](css_input_option_reference.md#color)) |
 | `font-family` | The font used ([reference](css_input_option_reference.md#font-family)) |
@@ -112,9 +107,21 @@ An example CSS entry for the radioButtons selections labels is below:
 | `box-shadow` | The shadow of the box outlining the text space ([reference](css_input_option_reference.md#box-shadow)) |
 | `text-shadow` | The shadow of the text within the text space ([reference](css_input_option_reference.md#text-shadow)) |
 
-## radioButtons Selection Circles
+### Targeting Specific Choices
 
-An example CSS entry for the radioButtons selection circles is below:
+If you only want to make changes to a specific choices then you can use `:nth-child` pseudo class like:
+
+```
+.radio:nth-child(<insert_element_number>) {
+  color: red
+}
+```
+
+Where `<insert_element_number>` represents a 1-indexed numbering of the radioButton choices.
+
+## radioButtons Choice Circles
+
+An example CSS entry for the radioButtons choice circles is below:
 
 ```
 .radio input[type="radio"] {
@@ -125,8 +132,20 @@ An example CSS entry for the radioButtons selection circles is below:
 
 | Argument | Note |
 |----------|------|
-| `accent-color` | The color of the radioButtons selection circles ([reference](css_input_option_reference.md#accent-color)) |
-| `opacity` | Opacity of the radioButtons selection circles ([reference](css_input_option_reference.md#opacity)) |
+| `accent-color` | The color of the radioButtons choice circles ([reference](css_input_option_reference.md#accent-color)) |
+| `opacity` | Opacity of the radioButtons choice circles ([reference](css_input_option_reference.md#opacity)) |
+
+### Targeting Specific Choice Circles
+
+If you only want to make changes to a specific choice circles then you can use `:nth-child()` pseudo class like:
+
+```
+.radio:nth-child(<insert_element_number>) input[type="radio"] {
+  color: red
+}
+```
+
+Where `<insert_element_number>` represents a 1-indexed numbering of the radioButton choice circles.
 
 ---
 
