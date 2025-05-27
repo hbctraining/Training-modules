@@ -43,13 +43,19 @@ If you would like an alteration of the CSS file to target only one of your input
 
 ## Table of Contents
 
+[`actionButton`]()
+
 [`checkboxInput`/`checkboxGroupInput`]()
 
 [`dateInput`/`dateRangeInput`]()
 
+[`navbar`]()
+
 [`radioButtons`](css_radioButtons.md)
 
 [`selectInput`]()
+
+[`sidebarPanel`]()
 
 [`sliderInput`](css_sliderInput.md)
 
