@@ -43,9 +43,18 @@ If you would like an alteration of the CSS file to target only one of your input
 
 ## Table of Contents
 
-[radioButtons](css_radioButtons.md)
+[`checkboxInput`/`checkboxGroupInput`]()
 
-[sliderInput](css_sliderInput.md)
+[`dateInput`/`dateRangeInput`]()
+
+[`radioButtons`](css_radioButtons.md)
+
+[`selectInput`]()
+
+[`sliderInput`](css_sliderInput.md)
+
+[`textInput`/`textAreaInput`]()
+
 
 
 [css Input Option Reference](css_input_option_reference.md)
