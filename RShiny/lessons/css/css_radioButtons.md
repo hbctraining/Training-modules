@@ -5,7 +5,7 @@ author: "Will Gammerdinger"
 
 # radioButtons
 
-Below is a key for the many of the elements that can be altered within the `radioButtons()`:
+Below is a key for the elements that can be altered within the `radioButtons()`:
 
 <p align="center"><img src="../../img/radioButtons_CSS_key.png" width="600"></p>
 
@@ -17,7 +17,7 @@ Jump to the following sections:
 
 ## radioButtons Label
 
-An example CSS entry for the radioButtons label is below:
+An example CSS entry for the `radioButtons` label is below:
 
 ```
 /* radioButtons Label */
@@ -64,10 +64,10 @@ An example CSS entry for the radioButtons label is below:
 
 ## radioButtons Choice Labels
 
-An example CSS entry for the radioButtons choice labels is below:
+An example CSS entry for the `radioButtons` choice labels is below:
 
 ```
-/* radioButtons Options*/
+/* radioButtons Choice Labels */
 .radio {
   height: 50px; 
   width: 200px;
@@ -109,21 +109,23 @@ An example CSS entry for the radioButtons choice labels is below:
 
 ### Targeting Specific Choices
 
-If you only want to make changes to a specific choices then you can use `:nth-child` pseudo class like:
+If you only want to make changes to specific choices then you can use `:nth-child` pseudo class like:
 
 ```
+/* radioButtons Choice Label Specific */
 .radio:nth-child(<insert_element_number>) {
   color: red
 }
 ```
 
-Where `<insert_element_number>` represents a 1-indexed numbering of the radioButton choices.
+Where `<insert_element_number>` represents a 1-indexed numbering of the `radioButton` choice.
 
 ## radioButtons Choice Circles
 
-An example CSS entry for the radioButtons choice circles is below:
+An example CSS entry for the `radioButtons` choice circles is below:
 
 ```
+/* radioButtons Choice Circles */
 .radio input[type="radio"] {
   accent-color: red;
   opacity: 50%;
@@ -137,15 +139,16 @@ An example CSS entry for the radioButtons choice circles is below:
 
 ### Targeting Specific Choice Circles
 
-If you only want to make changes to a specific choice circles then you can use `:nth-child()` pseudo class like:
+If you only want to make changes to a specific choice circle then you can use `:nth-child()` pseudo class like:
 
 ```
+/* radioButtons Choice Circle Specific */
 .radio:nth-child(<insert_element_number>) input[type="radio"] {
-  color: red
+  accent-color: red
 }
 ```
 
-Where `<insert_element_number>` represents a 1-indexed numbering of the radioButton choice circles.
+Where `<insert_element_number>` represents a 1-indexed numbering of the `radioButton` choice circle.
 
 ---
 
