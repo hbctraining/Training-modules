@@ -50,3 +50,7 @@ Prior to the workshop please install the following R packages:
 
 - [Arranging Layouts](lessons/layouts.md)
 - [Mastering Shiny](https://mastering-shiny.org/)
+
+## Interesting Input Widgets
+- [Picker](https://github.com/hms-dbmi/picker)
+- [shinyChakraSlider](https://github.com/stla/shinyChakraSlider)
