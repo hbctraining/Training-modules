@@ -1,4 +1,4 @@
-# Introduction to Python
+# Foundations in Python
 
 ## Description
 Python is a powerful open source programming language for many applications in bioinformatics. In this 3 hour, hands-on workshop, we will teach basic concepts and applications in Python programming. These materials are developed for a trainer-led workshop aimed at beginners, but are also amenable to self-guided learning.
