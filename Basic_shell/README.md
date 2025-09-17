@@ -28,12 +28,12 @@ This repository has teaching materials for a **2-3 hour**, hands-on **Foundation
 
 | Lessons            | Estimated Duration |
 |:------------------------|:----------|
-|[Introduction and Why Shell?](lectures/workshop_intro_slides.pdf) | 15 min |
+|[Introduction and Why Shell?](lectures/Intro_current_topics_online_2025.pdf) | 15 min |
 |[Acessing the Shell](01_setting_up.md) | 15 min |
 |[Moving around and basics](02_shell_basics.md) | 60 min |
 |[Creating Files and Searching](03_creating_files.md) | 30 min |
 |[Shell Scripts](04_shell_scripts.md) | 20 min |
-|[Wrap-up](lectures/wrapup_slides.pdf) | 15 min |
+|[Wrap-up](lectures/Intro_current_topics_online_2025.pdf) | 15 min |
 
 
 
