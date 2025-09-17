@@ -122,7 +122,7 @@ For **large files** the command, `less`, can be useful. Let's take a look at the
 ```bash
 $ cd ~/unix_lesson/raw_fastq
 
-$ ls- lh
+$ ls -lh
 ```
 
 These files are quite large, so we probably do not want to use the `cat` command to look at them. Instead, we can use the `less` command. Let's try this with one of the files.
