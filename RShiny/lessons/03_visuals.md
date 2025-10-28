@@ -21,11 +21,13 @@ library(DT)
 To render a data table on the UI side you would use:
 
 ```
+# Do Not Run
 DTOutput("outputID")
 ```
 
 On the server side you would use:
 ```
+# Do Not Run
 output$<outputID> <- renderDT({
     <insert_dataframe>
   })
@@ -37,7 +39,7 @@ Let's use the built-in dataset `mtcars` to visualize an example of a data table 
 # User interface
 ui <- fluidPage(
     # Checkbox group to select which columns we would like to see in the data table
-    checkboxGroupInput("column_input", "Select columns", choices = colnames(mtcars), inline = TRUE),
+    checkboxGroupInput(inputId = "column_input", label = "Select columns", choices = colnames(mtcars), inline = TRUE),
     # The output table
     DTOutput("table")
 )
@@ -80,12 +82,14 @@ The syntax for implementing plots is:
 On the UI side:
 
 ```
+# Do Not Run
 plotOutput("<outputID>")
 ```
 
 On the server side:
 
 ```
+# Do Not Run
 output$<outputID> <- renderPlot({
     <insert_plot_creation>
 })
@@ -99,9 +103,9 @@ On the server side, we place ggplot2 code inside the `renderPlot()` function, sp
 # User Interface
 ui <- fluidPage(
     # Dropdown menu to select which column will be used for the x-axis
-    selectInput("x_axis_input", "Select x-axis", choices = colnames(mtcars)),
+    selectInput(inputId = "x_axis_input", label = "Select x-axis", choices = colnames(mtcars)),
     # Dropdown menu to select which column will be used for the y-axis
-    selectInput("y_axis_input", "Select y-axis", choices = colnames(mtcars), selected = "disp"),
+    selectInput(inputId = "y_axis_input", label = "Select y-axis", choices = colnames(mtcars), selected = "disp"),
     # The output plot
     plotOutput("plot")
 )
@@ -139,6 +143,7 @@ The first way that we can interact with a plot is by clicking a point on the plo
 On the UI side:
 
 ```
+# Do Not Run
 plotOutput("plot", click = "<plot_clickID>")
 ```
 
@@ -150,6 +155,7 @@ The `click = "<plot_clickID>"` argument allows for an input from the click actio
 On the server side, we have a few new functions as well:
 
 ```
+# Do Not Run
   output$table <- renderDT({
     nearPoints(<dataframe_used_in_plotting>, input$<plot_clickID>)
   })
@@ -193,6 +199,7 @@ Instead of clicking on points in your plot, you can instead hover over them and 
 
 On the UI side:
 ```
+# Do Not Run
 plotOutput("plot", hover = hoverOpts("<plot_hoverID>", delay = 25))
 ```
 
@@ -238,6 +245,7 @@ The last way that you can make your plots interactive is with brushing. Perhaps 
 On the UI side:
 
 ```
+# Do Not Run
 plotOutput("plot", brush = "<plot_brushID>")
 ```
 
@@ -253,6 +261,7 @@ We can change `brush = "<plot_brushID>"` to `brush = brushOpt("<plot_brushID>")`
 On the server side we need to use:
 
 ```
+# Do Not Run
   output$table <- renderDT({
     brushedPoints(<dataframe_used_in_plotting>, input$<plot_brushID>)
   })
