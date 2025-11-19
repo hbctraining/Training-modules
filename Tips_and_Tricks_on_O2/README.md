@@ -28,11 +28,11 @@ In this workshop, we will:
 
 | Lessons            | Estimated Duration | Instructor |
 |:------------------------|:----------|:--------|
-| Introduction | 10 min | Meeta |
-| [Setting up, .bashrc and checking quotas](lessons/best_practices.md) | 45 min | Will |
-| [Data utilies with O2](lessons/moving_files.md) | 45 min | Meeta |
-| [Job Management on O2](lessons/job_managment.md) | 45 min | Will |
-| Wrap-up | 5 min | Meeta |
+| Introduction | 10 min | Will |
+| [Setting up, .bashrc and checking quotas](lessons/best_practices.md) | 45 min | Upen |
+| [Data utilies with O2](lessons/moving_files.md) | 45 min | Will |
+| [Job Management on O2](lessons/job_managment.md) | 45 min | Upen |
+| Wrap-up | 5 min | Will |
 
 ### Installation Requirements
 
