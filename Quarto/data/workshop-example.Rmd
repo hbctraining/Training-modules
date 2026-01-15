@@ -1,0 +1,87 @@
+---
+title: "Workshop Rmd example"
+author: "HBC Training Team"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# knitr::opts_chunk$set(echo = TRUE, fig.width = 12, fig.height = 12)
+```
+
+## Project details
+In this example report we are using a *toy dataset* to determine the impact of age, genotype and cell type on the average gene expression in mice. This toy study has 12 mice from **2 genotypes** (KO and Wt) and **2 cell types** (typeA and typeB). 
+
+## Setup
+
+### Load Libraries
+
+`knitr` and `ggplot2` are the 2 libraries required to run this report.
+
+```{r load-libraries}
+
+### Bioconductor and CRAN libraries used
+library(knitr)
+library(ggplot2)
+```
+
+### Load data
+
+In addition to the normalized expression data, we need to make sure we have the appropriate metadata information loaded.
+
+```{r load_data}
+data <- read.csv("data/counts.rpkm.csv", header=T, row.names=1) 
+meta <- read.csv("data/mouse_exp_design.csv", header=T, row.names=1)
+kable(meta, format="markdown")
+```
+
+### Modify the metadata data frame
+
+The original metadata file did not have the average expression for each sample. So we will use the counts data to generate that information and add it to the metadata data frame along with the age of the mice (in days).
+
+```{r data-ordering}
+# Ensure that sample names in data columns are in the same order as the sameple names in the meta rows 
+data_ordered <- data[ ,match(rownames(meta), colnames(data))]
+```
+
+```{r}
+# generate samplemeans for the data 
+samplemeans <- apply(data_ordered, 2, mean)
+
+# Create a numeric vector with ages to add to meta (Note that there are 12 elements here)
+age_in_days <- c(40, 32, 38, 35, 41, 32, 34, 26, 28, 28, 30, 32)    
+  
+# Add samplemeans and age to the meta table
+new_meta <- cbind(meta, age_in_days, samplemeans)
+
+# print metadata dataframe
+kable(new_meta, format="markdown")
+```
+
+## Does average expression change with age of mouse?
+
+```{r scatterplot}
+ggplot(new_meta) +
+    geom_point(aes(x=age_in_days, y=samplemeans, color=genotype, shape=celltype), size=rel(3.0)) +
+    theme_bw() +
+    theme(axis.text=element_text(size=rel(1.5)),
+          axis.title=element_text(size=rel(1.5)),
+          plot.title=element_text(hjust=0.5)) +
+    xlab("Age (days)") +
+    ylab("Mean expression") +
+    ggtitle("Expression with Age")
+```
+
+## Distribution of expression in the 2 genotypes
+
+```{r boxplot}
+ggplot(new_meta) +
+    geom_boxplot(aes(x=genotype, y=samplemeans, fill=celltype)) +
+    ggtitle("Genotype differences in average gene expression") +
+    theme(axis.text=element_text(size=rel(1.25)),
+          axis.title=element_text(size=rel(1.5)),
+          plot.title=element_text(hjust=0.5, size=rel(1.25))) +
+    xlab("Genotype") +
+    ylab("Mean expression")
+```
