@@ -13,7 +13,7 @@ Reproducible research is as important for computational analysis as it is at the
 ### Learning Objectives
 
 -  **Implement Quarto syntax and available features:** Exploring the syntax of the Quarto language and different available features.
--  **Utilize `knitr` for report generation:** Practicing with `knitr` and different `knitr` options for customizing reports.
+-  **Utilize Quarto for report generation:** Practice rendering reports and using different code chunk options for customizing reports.
 
 > These materials are developed for a trainer-led workshop, but also amenable to self-guided learning.
 
@@ -23,9 +23,9 @@ Reproducible research is as important for computational analysis as it is at the
 | Lessons            |  Estimated Duration  | 
 |:------------------------:|:------------------------------------------------:|
 | [Introduction to Reproducibility](Reproducibility.pdf) | 10 min |
-| [Quarto Basics](https://hbctraining.github.io/Tools-for-reproducible-research/lessons/01-Rmarkdown_basics.html) | 45 min |
-| [Quarto Intermediate](https://hbctraining.github.io/Tools-for-reproducible-research/lessons/02-Rmarkdown_intermediate.html) | 45 min | 
-| [Practice with Quarto](https://hbctraining.github.io/Tools-for-reproducible-research/activities/Rmd_exercise4.html) | 30 min | 
+| [Quarto Basics](https://hbctraining.github.io/Tools-for-reproducible-research/lessons/01_Quarto_basics.html) | 45 min |
+| [Quarto Intermediate](https://hbctraining.github.io/Tools-for-reproducible-research/lessons/02_Quarto_intermediate.html) | 45 min | 
+| [Practice with Quarto](https://hbctraining.github.io/Tools-for-reproducible-research/activities/Quarto_exercise4.html) | 30 min | 
 
 
 ### Setup and Installation Requirements
