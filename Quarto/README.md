@@ -38,6 +38,7 @@ Download the most recent versions of R and RStudio for your laptop:
 Install the required R package by running the following code in RStudio:
 
 ```
+install.packages("knitr")
 install.packages("tidyverse")
 install.packages("BiocManager")
 BiocManager::install("pheatmap")
@@ -46,6 +47,7 @@ BiocManager::install("pheatmap")
 Load the libraries to make sure the packages installed properly:
 
 ```
+library(knitr)
 library(tidyverse)
 library(pheatmap)
 ```
