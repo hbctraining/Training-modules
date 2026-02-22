@@ -1,7 +1,5 @@
 ---
 title: "Hosting Options for RShiny Apps"
-description: |
-  This lesson introduces participants to various options for hosting RShiny applications. Participants will compare local usage, traditional server hosting (including Posit Connect, HMS RDVP, and Shinyapps.io), and modern serverless approaches using Shinylive. Practical considerations, eligibility, advantages and limitations of each hosting method are discussed to encourage developers to select the best solution for their RShiny app deployment needs.
 author:
   - Will Gammerdinger
   - Meeta Mistry
@@ -21,9 +19,6 @@ keywords:
   - Posit Connect
   - Shinyapps.io
 license: "CC-BY-4.0"
-editor_options: 
-  markdown: 
-    wrap: 72
 ---
 
 ## Learning Objectives
