@@ -1,7 +1,5 @@
 ---
 title: "Arranging Layouts"
-description: |
-  This lesson introduces how to design and organize user interface layouts in Shiny applications. You will learn how to use layout functions such as `sidebarLayout()`, `fluidRow()`, and `column()` to arrange app components, as well as how to create navigation structures with `navbarPage()`, `navlistPanel()`, and `tabsetPanel()`. The lesson also covers how to enhance app appearance using thematic breaks (`hr()`) and the `shinythemes` package.
 author:
   - Will Gammerdinger
   - Meeta Mistry
@@ -25,9 +23,6 @@ keywords:
   - navigation bar
   - UI structure
 license: "CC-BY-4.0"
-editor_options: 
-  markdown: 
-    wrap: 72
 ---
 
 ## Learning Objectives
