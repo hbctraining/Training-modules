@@ -61,7 +61,7 @@ The last option for hosting is to host your app online on a site like GitHub Pag
 
 *Image credit: Joe Cheng "Running Shiny without a server"*
 
-Full documentation for how to host your app using `shinylive` can be found [here](Aside_shinylive.qmd) and an example of a `shinylive` app hosted on our GitHub can be found [here](https://hbctraining.github.io/shinylive_app/).
+Full documentation for how to host your app using `shinylive` can be found [here](shinylive.md) and an example of a `shinylive` app hosted on our GitHub can be found [here](https://hbctraining.github.io/shinylive_app/).
 
 ---
 
