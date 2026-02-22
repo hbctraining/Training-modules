@@ -22,15 +22,23 @@ library(tidyverse)
 # User Interface
 ui <- fluidPage(
   # Upload the file
-  fileInput("input_file", "Upload file"),
+  fileInput(inputId = "input_file",
+            label = "Upload file"),
   # Select from the dropdown menu the column you want on the x-axis
-  selectInput("x_axis_input", "Select x-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+  selectInput(inputId = "x_axis_input",
+              label = "Select x-axis",
+              choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
+  ),
   # Select from the dropdown menu the column you want on the y-axis
-  selectInput("y_axis_input", "Select y-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+  selectInput(inputId = "y_axis_input",
+              label = Select y-axis",
+              choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
+  ),
   # The output plot
-  plotOutput("plot"),
+  plotOutput(outputId = "plot"),
   # The download plot button
-  downloadButton("download_button", "Download the data .png")
+  downloadButton(outputId = "download_button",
+                 label = "Download the data .png")
 )
 
 # Server
@@ -43,7 +51,8 @@ server <- function(input, output) {
   # Reactive expression to create a scatterplot from the uploaded data and user selected axes
   iris_plot <- reactive ({
   ggplot(iris_data()) +
-    geom_point(aes_string(x = input$x_axis_input, y = input$y_axis_input))
+    geom_point(aes(x = .data[[input$x_axis_input]],
+                   y = .data[[input$y_axis_input]]))
   })
   # Render the plot from the iris_plot() reactive expression
   output$plot <- renderPlot({
@@ -57,9 +66,10 @@ server <- function(input, output) {
     },
     # The content of the file will be the contents of the iris_plot() reactive expression
     content = function(file) {
-      png(file)
-      print(iris_plot())
-      dev.off()
+      ggsave(
+        filename = file,
+        plot = iris_plot()
+      )
     }
   )
 }
@@ -83,15 +93,20 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       # Upload the file
-      fileInput("input_file", "Upload file"),
+      fileInput(inputId = "input_file",
+                label = "Upload file"),
       # Select from the dropdown menu the column you want on the x-axis
-      selectInput("x_axis_input", "Select x-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+      selectInput(inputId = "x_axis_input",
+                  label = "Select x-axis",
+                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
       # Select from the dropdown menu the column you want on the y-axis
-      selectInput("y_axis_input", "Select y-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+      selectInput(inputId = "y_axis_input",
+                  label = "Select y-axis",
+                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
     ),
     mainPanel(
       # The output plot
-      plotOutput("plot")
+      plotOutput(outputId = "plot")
     )
   ),
   hr(),
@@ -99,7 +114,8 @@ ui <- fluidPage(
     column(12,
            align = "right",
            # The download plot button
-           downloadButton("download_button", "Download the data .png")
+           downloadButton(outputId = "download_button",
+                          label = "Download the data .png")
     )
   )
 )
@@ -114,7 +130,8 @@ server <- function(input, output) {
   # Reactive expression to create a scatterplot from the uploaded data and user selected axes
   iris_plot <- reactive ({
     ggplot(iris_data()) +
-      geom_point(aes_string(x = input$x_axis_input, y = input$y_axis_input))
+      geom_point(aes(x = .data[[input$x_axis_input]],
+                     y = .data[[input$y_axis_input]]))
   })
   # Render the plot from the iris_plot() reactive expression
   output$plot <- renderPlot({
@@ -128,9 +145,10 @@ server <- function(input, output) {
     },
     # The content of the file will be the contents of the iris_plot() reactive expression
     content = function(file) {
-      png(file)
-      print(iris_plot())
-      dev.off()
+      ggsave(
+        filename = file,
+        plot = iris_plot()
+      )
     }
   )
 }
@@ -149,34 +167,39 @@ library(shiny)
 library(ggplot2)
 library(shinythemes)
 
-ui <- fluidPage(theme = shinytheme("superhero"),
-                ...
+ui <- fluidPage(
+  theme = shinytheme("superhero"),
+  ...
 )
 ```
 
 The final app should look like:
 
-```{r}
-#| label: complete_answer
-#| eval: false
+```
 # Load libraries
 library(shiny)
 library(ggplot2)
 library(shinythemes)
 
-ui <- fluidPage(theme = shinytheme("superhero"),
+ui <- fluidPage(
+  theme = shinytheme("superhero"),
   sidebarLayout(
     sidebarPanel(
       # Upload the file
-      fileInput("input_file", "Upload file"),
+      fileInput(inputId = "input_file",
+                label = "Upload file"),
       # Select from the dropdown menu the column you want on the x-axis
-      selectInput("x_axis_input", "Select x-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+      selectInput(inputId = "x_axis_input",
+                  label = "Select x-axis",
+                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
       # Select from the dropdown menu the column you want on the y-axis
-      selectInput("y_axis_input", "Select y-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+      selectInput(inputId = "y_axis_input",
+                  label = "Select y-axis",
+                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
     ),
     mainPanel(
       # The output plot
-      plotOutput("plot")
+      plotOutput(outputId = "plot")
     )
   ),
   hr(),
@@ -184,7 +207,8 @@ ui <- fluidPage(theme = shinytheme("superhero"),
     column(12,
            align = "right",
            # The download plot button
-           downloadButton("download_button", "Download the data .png")
+           downloadButton(outputId = "download_button",
+                          label = "Download the data .png")
     )
   )
 )
@@ -199,7 +223,8 @@ server <- function(input, output) {
   # Reactive expression to create a scatterplot from the uploaded data and user selected axes
   iris_plot <- reactive ({
     ggplot(iris_data()) +
-      geom_point(aes_string(x = input$x_axis_input, y = input$y_axis_input))
+      geom_point(aes(x = .data[[input$x_axis_input]],
+                     y = .data[[input$y_axis_input]]))
   })
   # Render the plot from the iris_plot() reactive expression
   output$plot <- renderPlot({
@@ -213,13 +238,11 @@ server <- function(input, output) {
     },
     # The content of the file will be the contents of the iris_plot() reactive expression
     content = function(file) {
-      png(file)
-      print(iris_plot())
-      dev.off()
+      ggsave(
+        filename = file,
+        plot = iris_plot()
+      )
     }
   )
 }
-
-# Run the app
-shinyApp(ui = ui, server = server)
 ```
