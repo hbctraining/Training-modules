@@ -1,7 +1,5 @@
 ---
 title: "Input functions in RShiny"
-description: |
-  This lesson explores the wide variety of input widgets available in RShiny for building interactive applications. You’ll learn how to use and customize functions such as `textInput()`, `textAreaInput()`, `sliderInput()`, `selectInput()`, `radioButtons()`, checkboxes and date inputs. The lesson also covers conditional panels, input validation with `req()` and introduces the shinyWidgets package for enhanced user interface options. Practical examples demonstrate how to add, configure and validate user inputs in your Shiny apps.
 author:
   - Will Gammerdinger
   - Meeta Mistry
@@ -29,9 +27,6 @@ keywords:
   - widget arguments
   - UI
 license: "CC-BY-4.0"
-editor_options: 
-  markdown: 
-    wrap: 72
 ---
 
 # Learning Objectives
