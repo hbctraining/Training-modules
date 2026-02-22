@@ -84,9 +84,7 @@ textAreaInput(inputId = "input_text",
 
 To have a third, placeholder, argument:
 
-```{r}
-#| label: text_area_input_explanation
-#| eval: false
+```
 # DO NOT RUN 
 textAreaInput(inputId = "input_text",
               label = "My input text",
@@ -144,7 +142,7 @@ Note that the only line we changed was the `textAreaInput()` line to `sliderInpu
 
 ## Dropdown 
 
-Oftentimes when you are working with input data, you would like to select some of your data from a list of options. One way of doing this is to have a dropdown list of options and `selectInput()` is the function you would use to accomplish this. For this function, the additional argument `choices` is used to specify all the options in the dropdown.
+When you are working with input data, you would oftentimes like to select some of your data from a list of options. One way of doing this is to have a dropdown list of options and `selectInput()` is the function you would use to accomplish this. For this function, the additional argument `choices` is used to specify all the options in the dropdown.
 
 ```
 # Load libraries
@@ -225,9 +223,7 @@ Some additional arguments you might consider when using radio buttons are:
 | inline | Allows you to display the radio buttons horizontally rather than vertically | `inline = TRUE` |
 | selected | Allows you to define the default selection, otherwise the default selection will be the first item in the list | `selected = "Strawberry"` |  
 
-:::{.callout-note}
-You can set `selected` to be `selected = character(0)` and no initial option will be selected, but the documentation recommends against this since users will not be able to return back to this default state.
-:::
+>You can set `selected` to be `selected = character(0)` and no initial option will be selected, but the documentation recommends against this since users will not be able to return back to this default state.
 
 ## Checkboxes
 
@@ -468,8 +464,6 @@ server <- function(input, output) {
 # Run the app
 shinyApp(ui = ui, server = server)
 ```
-
-> When using boolean values with conditional panels, the `<value>` is `0` for `FALSE` and `1` for `TRUE`. Entering the boolean values `TRUE` or `FALSE` for these values will not work.
 
 This would look like:
 
