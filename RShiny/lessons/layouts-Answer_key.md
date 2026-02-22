@@ -31,7 +31,7 @@ ui <- fluidPage(
   ),
   # Select from the dropdown menu the column you want on the y-axis
   selectInput(inputId = "y_axis_input",
-              label = Select y-axis",
+              label = "Select y-axis",
               choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   ),
   # The output plot
