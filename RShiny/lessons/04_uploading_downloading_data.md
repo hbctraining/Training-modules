@@ -1,7 +1,5 @@
 ---
 title: "Uploading and dowloading data in RShiny"
-description: |
-  This lesson introduces methods for handling file uploads and downloads within R Shiny applications. Participants will explore how to use reactive expressions, action buttons and the `isolate()` function to control reactivity. The lesson also covers implementing `fileInput()` for data uploads and `downloadHandler()` for exporting tables and plots. By the end, participants will be able to build interactive apps that allow users to upload their own datasets, visualize results and download outputs dynamically.
 author:
   - Will Gammerdinger
   - Meeta Mistry
@@ -26,9 +24,6 @@ keywords:
   - ggplot2
   - DT tables
 license: "CC-BY-4.0"
-editor_options: 
-  markdown: 
-    wrap: 72
 ---
 
 ## Learning Objectives
