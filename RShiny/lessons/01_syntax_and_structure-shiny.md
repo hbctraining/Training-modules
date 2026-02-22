@@ -1,7 +1,5 @@
 ---
 title: "Structure and Syntax in RShiny"
-description: |
-  This lesson introduces R Shiny and guides you through the basic structure and syntax of Shiny web applications. You'll learn about the main components of a Shiny app: User Interface (UI), Server and the `shinyApp()` function. You'll create your first simple interactive application in R. The lesson covers setting up your R environment, writing and saving an `app.R` file, and understanding how UI and server interact through user inputs and outputs.
 author:
   - Will Gammerdinger
   - Meeta Mistry
@@ -22,9 +20,6 @@ keywords:
   - renderText
   - introduction
 license: "CC-BY-4.0"
-editor_options: 
-  markdown: 
-    wrap: 72
 ---
 
 # Learning Objectives
