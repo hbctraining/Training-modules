@@ -1,74 +1,138 @@
 ---
 title: "Uploading and dowloading data in RShiny"
-author: "Will Gammerdinger"
+description: |
+  This lesson introduces methods for handling file uploads and downloads within R Shiny applications. Participants will explore how to use reactive expressions, action buttons and the `isolate()` function to control reactivity. The lesson also covers implementing `fileInput()` for data uploads and `downloadHandler()` for exporting tables and plots. By the end, participants will be able to build interactive apps that allow users to upload their own datasets, visualize results and download outputs dynamically.
+author:
+  - Will Gammerdinger
+  - Meeta Mistry
+date: "2025-11-07"
+categories: 
+  - R
+  - Shiny
+  - Data Handling
+  - Reactivity
+keywords:
+  - R Shiny
+  - reactive expressions
+  - action buttons
+  - isolate
+  - fileInput
+  - downloadHandler
+  - upload data
+  - download data
+  - reactive programming
+  - user interface
+  - server
+  - ggplot2
+  - DT tables
+license: "CC-BY-4.0"
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ## Learning Objectives
 
 In this lesson, you will:
+
 - Implement reactive expressions
-- Learn how to incorporate data into your Shiny app
-- Add functionality to download table data from Shiny app
-- Download plots created in Shiny app
 - Create action buttons for a Shiny app
+- Read data into your Shiny app
+- Download a data table and plot from Shiny app
 
-# Reactive Expressions
+## Reactive Expressions
 
-Previously, we have seen the case of input being used to directly create outputs. However, there is third tool in the Shiny toolkit and it is called reactive expressions. Reactive expressions are useful because they take inputs and produce outputs and they cache, or store, their output. This can be very useful for three reasons:
+Previously, we have seen the case of input being used to directly create outputs. However, there is another tool in the Shiny toolkit and it is called reactive expressions. Reactive expressions are useful because they take inputs and produce outputs and they cache, or store, their output. This can be very useful for three reasons:
 
 1. When a step is present multiple times in your code and this step that is either computationally intensive or requires interacting with outside databases, Shiny will only need to carry out the task once rather than each time the process is called since the output will be cached for future uses
-2. It makes your code cleaner because you only need to maintain the code for a previosuly repetitive step in a single place
+
+2. It makes your code cleaner because you only need to maintain the code for a previously repetitive step in a single place
+
 3. They are needed to use action buttons (discussed later in this section)
+
+Below we see relationship between input and output that we have seen up to this point:
+
+<p align="center">
+<img src="../img/Reactive_graph_without_reactive_expression.png" width="300">
+</p>
+
+As we see once we add a reactive expression, it functions as a intermediary between inputs and outputs. 
+
+<p align="center">
+<img src="../img/Reactive_graph_with_reactive_expression.png" width="400">
+</p>
 
 When we use a reactive expression, we will wrap it within a `reactive()` function and using a `reactive()` function will be critical for using an action button.
 
-> Note: You can also have multiple reactive expressions that connect to each other in between inputs and outputs. 
-
+>You can also have multiple reactive expressions that connect to each other in between inputs and outputs. 
 
 ## Action Buttons
 
-Action buttons allow the user to tell Shiny when to process data. This can be helpful when you have a computationally heavy task where you don't want R to be trying to carry out the computation for each input value as you drag a a slider across its scale. Rather you'd only like for outputs to be computed when you have all of your input parameters set. The syntax for using an action button looks like:
+Action buttons allow the user to tell Shiny when to process information. This can be helpful when you have a computationally heavy task where you don't want R to be trying to carry out the computation for each input value as you drag a slider across its scale. Rather you'd only like for outputs to be computed when you have all of your input parameters set. The syntax for using an action button looks like:
 
 On the UI side:
 ```
-actionButton("inputID", "Label")
+# DO NOT RUN
+actionButton(inputId = "inputID", 
+             label = "Label")
 ```
 
 On the Server side:
+
 ```
+# DO NOT RUN
 reactive_expression_with_action_button <- bindEvent(reactive(
     <reactive_expression>
   ), input$<action_button_inputID>)
 ```
 
-The `actionButton("inputID", "Label")` line creates our action button in the UI, while `bindEvent(reactive(<reactive_expression>), input$<action_button_inputID>)` wraps a reactive expression within the `bindEvent()` function on the server side. Alternatively, you may see in others' code using a pipe (see below), but this is equivalent code to what is listed above:
+The `actionButton(inputId = "inputID", label = "Label")` line creates our action button in the UI, while `bindEvent(reactive(<reactive_expression>), input$<action_button_inputID>)` wraps a reactive expression within the `bindEvent()` function on the server side. Alternatively, you may see in others' code using a pipe (see below), but this is equivalent code to what is listed above:
 
 On the UI side:
+
 ```
-actionButton("inputID", "Label")
+# DO NOT RUN
+actionButton(inputId = "inputID",
+             label = "Label")
 ```
 
 On the server side:
+
 ```
+# DO NOT RUN
 reactive_expression_with_action_button <- reactive(
     <reactive_expression>
   ) >%>
   bindEvent(input$<action_button_inputID>)
 ```
 
+>In the above action button example with the pipe, we would need to load `magrittr` in order to gain the pipe functionality. Alternatively, you could load `tidyverse`, which contains many useful functions including packages like like `ggplot2`, `dplyr` and `magrittr`. However, when you go to upload the app to a hosting website, it will take much longer to upload if you use `tidyverse` because it needs to install all of the packages that are part of `tidyverse` rather than just the ones you are using. For that reason, it can sometimes be nice to limit the scoop of the packages you need when creating an app that will at some point go to a hosting platform.
+
 Below is example code on how we could implement this:
 
 ```
+# Load libraries
+library(shiny)
+
 # User interface
 ui <- fluidPage(
     # Slider for the user to select a number between 1 and 10
-    sliderInput("slider_input_1", "Select a number", value = 5, min = 1, max = 10),
+    sliderInput(inputId = "slider_input_1",
+                label = "Select a number",
+                value = 5,
+                min = 1,
+                max = 10),
     # Slider for the user to select a number between 1 and 10
-    sliderInput("slider_input_2", "Select a number", value = 5, min = 1, max = 10),
+    sliderInput(inputId = "slider_input_2",
+                label = "Select a number",
+                value = 5,
+                min = 1,
+                max = 10),
     # Action button to tell Shiny to evaluate the multiplication when it is clicked
-    actionButton("calculate", "Multiply!"),
+    actionButton(inputId = "calculate",
+                 label = "Multiply!"),
     # The text output
-    textOutput("product")
+    textOutput(outputId = "product")
 )
 
 # Server
@@ -91,14 +155,17 @@ This app would visualize like:
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_action_button_demo/?showcase=0" width="400px" height="300px" data-external="1"></iframe></p>
 
-A wide variety of action button styles exist by adding the `class` argument to your `actionButton()` function. Such as:
+A wide variety of action button classes exist by adding the `class` argument to your `actionButton()` function. Such as:
 
 ```
-actionButton("inputID", "Label", class = "btn-primary")
+# DO NOT RUN
+actionButton(inputId = "inputID",
+             label = "Label",
+             class = "btn-primary")
 ```
 
 <details>
-<summary><b>Click here if you would like to see a table of availible action button styles</b></summary>
+<summary><b>Click here if you would like to see a table of available action button styles</b></summary>
 <table>
   <tr>
     <th>Class</th>
@@ -163,31 +230,46 @@ actionButton("inputID", "Label", class = "btn-primary")
 </table>
 </details>
 
-> Note: You can have multiple classes for a given action button as long as each class is separated by a space. For example, if you wanted a large, dark blue action button that goes across the entire browser, then you could use: `class = "btn-primary btn-lg btn-block"`. However, whichever non-white color you put last in your list of classes will be the color of the button.
+>You can have multiple classes for a given action button as long as each class is separated by a space. For example, if you wanted a large, dark blue action button that goes across the entire browser, then you could use: `class = "btn-primary btn-lg btn-block"`. However, whichever non-white color you put last in your list of classes will be the color of the button.
+>
+>If you want to edit the button more than combining classes, it is recommended that you consider editing the CSS file.
 
-> Note: `bindEvent()` is a newer function and when coupled with `observe()` and `reactive()` functions, it replaces `observeEvent()` and `eventReactive()` functions, respectively. It is recommended to use `bindEvent()` moving forward as it is more flexible, but you may still run across code that utilizes `observeEvent()` and `eventReactive()`. 
+>`bindEvent()` is a newer function and when coupled with `observe()` and `reactive()` functions, it replaces `observeEvent()` and `eventReactive()` functions, respectively. It is recommended to use `bindEvent()` moving forward as it is more flexible, but you may still run across code that utilizes `observeEvent()` and `eventReactive()`. 
 
 ## Isolate
 
 In Shiny, you may find that you will want to limit the reactivity. However, you might want only partial reactivity and this is where the `isolate()` feature can be quite helpful. You can create a non-reactive scope around an expression using `isolate`. The syntax for using `isolate()` is:
 
 ```
+# DO NOT RUN
 isolate(<non_reactive_expression>)
 ```
 
-We can create a similar app to the one above but edit the code to use isolate. In this example, we will see that the first slider is completely reactive, however the second slider is only reacts once the action button has been clicked:
+We can create a similar app to the one above but edit the code to use `isolate()`. In this example, we will see that the first slider is completely reactive, however the second slider is only reacts once the action button has been clicked:
 
 ```
+# Load libraries
+library(shiny)
+
 # User interface
 ui <- fluidPage(
     # Slider for the user to select a number between 1 and 10
-    sliderInput("slider_input_1", "Select a number", value = 5, min = 1, max = 10),
+    sliderInput(inputId = "slider_input_1",
+                label = "Select a number",
+                value = 5,
+                min = 1,
+                max = 10),
     # Slider for the user to select a number between 1 and 10
-    sliderInput("slider_input_2", "Select a number", value = 5, min = 1, max = 10),
+    sliderInput(inputId = "slider_input_2",
+                label = "Select a number",
+                value = 5,
+                min = 1,
+                max = 10),
     # The button that will re-process the calculation containing elements within the isolate function after it has been clicked
-    actionButton("calculate", "Multiply!"),
+    actionButton(inputId = "calculate",
+                 label = "Multiply!"),
     # The output text
-    textOutput("product")
+    textOutput(outputId = "product")
 )
 
 # Server
@@ -208,18 +290,19 @@ This app would look like:
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Input_isolate_demo/?showcase=0" width="400px" height="300px" data-external="1"></iframe></p>
 
+>If we had used `isolate(input$slider_input_1 * input$slider_input_2)` instead of `input$slider_input_1 * isolate(input$slider_input_2)`, then this app would function similarly to the app from the previous section since there are now two sliders' widget inputs are within the `isolate()` function.
 
-> Note: If we had used `isolate(input$slider_input_1 * input$slider_input_2)` instead of `input$slider_input_1 * isolate(input$slider_input_2)`, then this app would function similarly to the app from the previous section since there are now two sliders' widget inputs are within the `isolate()` function.
-
-# Uploads and Downloads
+## Uploads and Downloads
 
 Transferring files to and from an app is a common feature of Shiny apps. You can use it to upload data for analysis, download the results of an analysis or a figure you generated. Now we will introduce you to functions that help with file handling in addition to some other advanced topics which tie in nicely (and are helpful when running these functions).
 
-## Uploading data
+### Uploading data
 Often apps are created such that one can explore their own data in some way. To allows users to upload their own data into the app we use the `fileInput()` function on the UI side:
 
 ```
-fileInput("<input_fileID>", "<Text_above_file_upload>")
+# DO NOT RUN
+fileInput(inputId = "<input_fileID>",
+          label = "<Text_above_file_upload>")
 ```
 
 There are some additional options that you might want to consider when using the `fileInput()` function. 
@@ -231,31 +314,37 @@ There are some additional options that you might want to consider when using the
 | placeholder | Text to be entered as a placeholder instead of the "No file selected" default | `placeholder = "Waiting for file selection"` |
 | buttonLabel | Text to be entered onto the upload button instead of "Browse..." default | `buttonLabel = "Select File..."` |
 
-_\* Uploading multiple files can be a bit tricky and is outside of the scope of this workshop, but it can be done._
+_\* Uploading multiple files can be a bit tricky and is outside of the scope of this workshop._
 
 On the server side it would look like:
 
 ```
+# DO NOT RUN
   uploaded_file <- reactive({
     req(input$<input_fileID>)
-    read.table(input$<input_fileID>$datapath)
+    read.table(file = input$<input_fileID>$datapath)
   })
   output$table <- renderDT(
     uploaded_file()
   )
 ```
 
-The first part of this code is **creating the reactive expression `uploaded_file()`**. We require that the file exist with `req(input$<input_fileID>)`, otherwise Shiny will return an error until we upload a file. Then we read in the file with a function from the `read.table()` family of functions. 
+The first part of this code is **creating the reactive expression `uploaded_file()`**. We require that the file exist with `req(input$<input_fileID>)`, otherwise Shiny will return an error until we upload a file. Then, we read in the file with a function from the `read.table()` family of functions. 
 
 The example app for this would look like:
 
 ```
+# Load libraries
+library(shiny)
+library(DT)
+
 # User interface
 ui <- fluidPage(
     # File upload button
-    fileInput("input_file", "Upload your file"),
+    fileInput(inputId = "input_file",
+              label = "Upload your file"),
     # The output table
-    DTOutput("table")
+    DTOutput(outputId = "table")
 )
 
 # Server
@@ -263,7 +352,9 @@ server <- function(input, output) {
     # Create a reactive expression that requires a file have been uploaded and reads in the CSV file that was uploaded
     uploaded_file <- reactive({
         req(input$input_file)
-        read.csv(input$input_file$datapath, header = TRUE, row.names = 1)
+        read.csv(file = input$input_file$datapath,
+                 header = TRUE,
+                 row.names = 1)
     })
     # Renders the reactive expression as a table
     output$table <- renderDT(
@@ -279,17 +370,19 @@ This app would look like:
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/File_upload_demo/?showcase=0" width="300" height="150px" data-external="1"></iframe></p>
 
-## Downloading Analysis
+### Downloading Analysis
 In the course of doing your analyses, it is likely that you will get to a point where you want to download data stored in a data frame or a plot that you've created. Shiny also provides functionality to do this. When you are interested in downloading data or plots, you are going to want to use the `downloadButton()` (UI side) and `downloadHandler()` (server side) functions.
 
-### Downloading a Data Frame
+#### Downloading a Data Frame
 
 If you have a data frame that you want to download then the important pieces of syntax are:
 
 On the UI side:
 
 ```
-downloadButton("<download_buttonID>", "Download the data .csv")
+# DO NOT RUN
+downloadButton(outputId = "<download_buttonID>",
+               label = "Download the data .csv")
 ```
 
 The download button is very similar to the `actionButton()` function that we've recently explored. In fact, it also accepts the `class` argument(s) similar to the `actionButton()` function. 
@@ -297,13 +390,14 @@ The download button is very similar to the `actionButton()` function that we've 
 On the server side:
 
 ```
-  output$<download_buttonID> <- downloadHandler(
-    filename = function() {
-      "<your_placeholder_filename>.csv"
-    },
-    content = function(file) {
-      write.csv(<your_data_frame>, file, quote = FALSE)
-    }
+# DO NOT RUN
+output$<download_buttonID> <- downloadHandler(
+  filename = function() {
+    "<your_placeholder_filename>.csv"
+  },
+  content = function(file) {
+    write.csv(<your_data_frame>, file, quote = FALSE)
+  }
 )
 ```
 
@@ -315,14 +409,20 @@ On the server side, we need to use the `downloadHandler()` function. The `downlo
 An example app using this is similar to the brushed points example we used previously:
 
 ```
+# Load libraries
+library(shiny)
+library(DT)
+
 # User interface
 ui <- fluidPage(
     #  Plot the output with an interactive brushing argument
-    plotOutput("plot", brush = "plot_brush"),
+    plotOutput(outputId = "plot",
+               brush = "plot_brush"),
     # The output table
-    DTOutput("table"),
+    DTOutput(outputId = "table"),
     # Download button
-    downloadButton("download_button", "Download the data .csv")
+    downloadButton(outputId = "download_button",
+                   label = "Download the data .csv")
 )
 
 # Server
@@ -330,11 +430,15 @@ server <- function(input, output) {
     # Render a plot from the built-in mtcars dataset
     output$plot <- renderPlot(
         ggplot(mtcars) +
-            geom_point(aes(x = mpg, y = disp))
+            geom_point(aes(x = mpg,
+                           y = disp))
     )
     # Reactive expression to hold the brushed points
     brushed_points <- reactive(
-        brushedPoints(mtcars, input$plot_brush)
+        brushedPoints(df = mtcars,
+                      brush = input$plot_brush,
+                      xvar = "mpg",
+                      yvar = "disp")
     )
     # Render a table from brushed points the reactive expression is caching
     output$table <- renderDT({
@@ -360,7 +464,9 @@ shinyApp(ui = ui, server = server)
 In the above script, we tweaked our script to allow us to download the table containing the brushed points. 
 
 - We added a download button to our UI with `downloadButton("download_button", "Download the data .csv")`
+
 - We moved our `brushedPoints()` function out of `renderDT()` and placed it within a `reactive()` function since we will be calling it twice, once in the `renderDT()` function and again when we write our data in the `downloadHandler()` function
+
 - Within the `downloadHandler()` function we provided a filename to use as a placeholder (`"mtcars_subset.csv"`) as well as defining the content of our `.csv` file (`write.csv(brushed_points(), file, quote = FALSE)`)
 
 This app looks like:
@@ -372,37 +478,52 @@ This app looks like:
 Downloading a plot is similiar to downloading a table. It also uses the `downloadButton()` and `downloadHandler()` functions and the arguments are largely similar. The syntax looks like:
 
 On the UI side:
+
 ```
-downloadButton("<download_buttonID>", "Download the data .png")
+# DO NOT RUN
+downloadButton(outputId = "<download_buttonID>",
+               label = "Download the data .png")
 ```
 
 On the server side:
+
 ```
-  output$<download_buttonID> <- downloadHandler(
-    filename = function() {
-      "<your_placeholder_filename>.png"
-    },
-    content = function(file) {
-      png(file)
-      print(<your_plot>)
-      dev.off()
-    }
-  )
+# DO NOT RUN
+output$<download_buttonID> <- downloadHandler(
+  filename = function() {
+    "<your_placeholder_filename>.png"
+  },
+  content = function(file) {
+    png(file)
+    print(<your_plot>)
+    dev.off()
+  }
+)
 ```
 
 We can modify our first plot app to allow us to download the plot:
 
 ```
+# Load libraries
+library(shiny)
+library(ggplot2)
+
 # User Interface
 ui <- fluidPage(
     # Dropdown menu to select the column of data to put on the x-axis
-    selectInput("x_axis_input", "Select x-axis", choices = colnames(mtcars)),
+    selectInput(inputId = "x_axis_input",
+                label = "Select x-axis",
+                choices = colnames(mtcars)),
     # Dropdown menu to select the column of data to put on the y-axis
-    selectInput("y_axis_input", "Select y-axis", choices = colnames(mtcars), selected = "disp"),
+    selectInput(inputId = "y_axis_input",
+                label = "Select y-axis",
+                choices = colnames(mtcars),
+                selected = "disp"),
     # The output plot
-    plotOutput("plot"),
+    plotOutput(outputId = "plot"),
     # Download button
-    downloadButton("download_button", "Download the data .png")
+    downloadButton(outputId = "download_button",
+                   label = "Download the data .png")
 )
 
 # Server
@@ -410,7 +531,8 @@ server <- function(input, output) {
     # Reactive expression to hold the scatter plot
     mtcars_plot <- reactive({
         ggplot(mtcars) +
-            geom_point(aes_string(x = input$x_axis_input, y = input$y_axis_input))
+            geom_point(aes(x = .data[[input$x_axis_input]],
+                           y = .data[[input$y_axis_input]]))
     })
     # Render plot from the reactive expression
     output$plot <- renderPlot({
@@ -438,89 +560,38 @@ shinyApp(ui = ui, server = server)
 ```
 
 Some key aspects of this app are:
+
 - Similarly to when we downloaded the data frame, we have moved our plot function to be within a `reactive()` function (called `mtcars_plot`).
+
 - Our `renderPlot()` function called the `mtcars_plot()` reactive expression.
+
 - We call our `downloadHandler()` function and provide it a default file name of `"mtcars_plot.png"` and for `content`, we call it mostly the same way as we would write a plot out in R; calling the `png()` function, plotting our plot, then closing the device with the `dev.off()` function. The only thing of note here is that we go need to wrap the `mtcars_plot()` reactive expression within a `print()` function.
 
 This app looks like:
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_download_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
 
-# Exercise
+---
 
-Create an app in R Shiny that lets users upload the iris dataset that can be found [here](https://raw.githubusercontent.com/hbctraining/Training-modules/master/RShiny/data/iris.csv). Then create a scatterplot where the user selects x-axis and y-axis from separate `selectInput()` menus, containing the values `Sepal.Length`, `Sepal.Width`, `Petal.Length` and `Petal.Width`. Lastly, allow the user to be able to download the boxplot to a `.png`.
+## [**Exercise 1**](04_uploading_downloading_data-Answer_key.md#exercise-1)
 
-Step 1. Write the UI with the appriopriate `fileInput()`, `selectInput()`, `plotOutput` and `downloadButton()` functions
-
-Step 2. Write the server side with:
-
-1. A `reactive()` function for reading in the CSV file
-2. A `reactive()` function to create the ggplot figure
-3. A `renderPlot()` function to render the ggplot figure from the reactive expression
-4. A `downloadHandler()` function for downloading the image
+Create an app in R Shiny that lets users upload the `iris` dataset that can be found [here](https://www.dropbox.com/scl/fi/tvjyczwcn7flfn5b5t5wq/iris.csv?rlkey=oclp1f8f4scuqh2k43xv5p57p&st=yzjbe11s&dl=1). Then create a scatterplot where the user selects x-axis and y-axis from separate `selectInput()` menus, containing the values `Sepal.Length`, `Sepal.Width`, `Petal.Length` and `Petal.Width`. Lastly, allow the user to be able to download the scatterplot to a `.png`.
 
 The app will look like:
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Plot_upload_download_exercise/?showcase=0" width="800" height="700px" data-external="1"></iframe></p>
 
-<details>
-  <summary><b>Click here to see the solution</b></summary> 
-<pre>
-&#35; User Interface
-ui <- fluidPage(
-&#9;&#35; Upload the file
-&#9;fileInput("input_file", "Upload file"),
-&#9;&#35; Select from the dropdown menu the column you want on the x-axis
-&#9;selectInput("x_axis_input", "Select x-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
-&#9;&#35; Select from the dropdown menu the column you want on the y-axis
-&#9;selectInput("y_axis_input", "Select y-axis", choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
-&#9;&#35; The output plot
-&#9;plotOutput("plot"),
-&#9;&#35; The download plot button
-&#9;downloadButton("download_button", "Download the data .png")
-)<br/>
-&#35; Server
-server <- function(input, output) {
-&#9;&#35; Reactive expression to hold the uploaded data 
-&#9;iris_data <- reactive({
-&#9;&#9;req(input$input_file)
-&#9;&#9;read.csv(input$input_file$datapath)
-&#9;})
-&#9;&#35; Reactive expression to create a scatterplot from the uploaded data and user selected axes
-&#9;iris_plot <- reactive ({
-&#9;ggplot(iris_data()) +
-&#9;&#9;geom_point(aes_string(x = input$x_axis_input, y = input$y_axis_input))
-&#9;})
-&#9;&#35; Render the plot from the iris_plot() reactive expression
-&#9;output$plot <- renderPlot({
-&#9;&#9;iris_plot()
-&#9;})
-&#9;&#35; Download the data
-&#9;output$download_button <- downloadHandler(
-&#9;&#9;&#35; The placeholder name for the file will be called iris_plot.png
-&#9;&#9;filename = function() {
-&#9;&#9;&#9;"iris_plot.png"
-&#9;&#9;},
-&#9;&#9;&#35; The content of the file will be the contents of the iris_plot() reactive expression
-&#9;&#9;content = function(file) {
-&#9;&#9;&#9;png(file)
-&#9;&#9;&#9;print(iris_plot())
-&#9;&#9;&#9;dev.off()
-&#9;&#9;}
-&#9;)
-}<br/>
-&#35; Run the app
-shinyApp(ui = ui, server = server)
-</pre>
-</details>
+1. Write the UI with the appropriate `fileInput()`, `selectInput()`, `plotOutput` and `downloadButton()` functions
 
-***
+2. Write the server side with, a `reactive()` function for reading in the CSV file
 
-[Next Lesson >>](05_hosting.md)
+3. Add a `reactive()` function to create the ggplot figure to the server side
 
-[Back to Schedule](..)
+4. Add a `renderPlot()` function to render the ggplot figure from the reactive expression  to the server side
 
-*** 
+5. Add a `downloadHandler()` function for downloading the image  to the server side
 
-*This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
+---
 
+[Next Lesson >>](05_layouts.md)
 
+[Back to Schedule](../README.qmd)
