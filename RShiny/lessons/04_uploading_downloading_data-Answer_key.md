@@ -9,14 +9,6 @@ editor_options:
     wrap: 72
 ---
 
-```{r}
-#| label: load_libraries_data
-#| echo: false
-# Load libraries
-library(shiny)
-library(ggplot2)
-```
-
 # Exercise 1
 
 Create an app in R Shiny that lets users upload the `iris` dataset that can be found [here](https://www.dropbox.com/scl/fi/tvjyczwcn7flfn5b5t5wq/iris.csv?rlkey=oclp1f8f4scuqh2k43xv5p57p&st=yzjbe11s&dl=1). Then create a scatterplot where the user selects x-axis and y-axis from separate `selectInput()` menus, containing the values `Sepal.Length`, `Sepal.Width`, `Petal.Length` and `Petal.Width`. Lastly, allow the user to be able to download the scatterplot to a `.png`.
@@ -26,9 +18,7 @@ The app will look like:
 
 1. Write the UI with the appropriate `fileInput()`, `selectInput()`, `plotOutput` and `downloadButton()` functions
 
-```{r}
-#| label: UI_set_up
-#| eval: false
+```
 # Load libraries
 library(shiny)
 library(ggplot2)
@@ -56,9 +46,7 @@ ui <- fluidPage(
 
 2. Write the server side with, a `reactive()` function for reading in the CSV file
 
-```{r}
-#| label: reading_CSV
-#| eval: false
+```
 # Server
 server <- function(input, output) {
   # Reactive expression to hold the uploaded data 
@@ -71,9 +59,7 @@ server <- function(input, output) {
 
 3. Add a `reactive()` function to create the ggplot figure to the server side
 
-```{r}
-#| label: ggplot_reactive
-#| eval: false
+```
 # Server
 server <- function(input, output) {
   ...
@@ -88,9 +74,7 @@ server <- function(input, output) {
 
 4. Add a `renderPlot()` function to render the ggplot figure from the reactive expression  to the server side
 
-```{r}
-#| label: ggplot_render
-#| eval: false
+```
 # Server
 server <- function(input, output) {
   ...
@@ -103,9 +87,7 @@ server <- function(input, output) {
 
 5. Add a `downloadHandler()` function for downloading the image  to the server side
 
-```{r}
-#| label: downloadHandler
-#| eval: false
+```
 # Server
 server <- function(input, output) {
   ...
@@ -127,9 +109,7 @@ server <- function(input, output) {
 
 All together the code should look like:
 
-```{r}
-#| label: full_answer
-#| eval: false
+```
 # Load libraries
 library(shiny)
 library(ggplot2)
