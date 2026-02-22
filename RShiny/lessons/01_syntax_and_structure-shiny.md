@@ -49,7 +49,7 @@ As you can see, there are a wide array of use cases for apps made with Shiny.
 
 ---
 
-## [**Exercise 1**](01_syntax_and_structure_shiny-Answer_key.qmd#exercise-1)
+## [**Exercise 1**](01_syntax_and_structure_shiny-Answer_key.md#exercise-1)
 
 After browsing the [gallery of Shiny Apps that have been made by others](https://shiny.posit.co/r/gallery/), what apps do you think you could develop to analyze your own data?
 
@@ -228,7 +228,7 @@ Now that we have created our first Shiny app in R, we will explore various input
 
 ---
 
-## [**Exercise 2**](01_syntax_and_structure_shiny-Answer_key.qmd#exercise-2)
+## [**Exercise 2**](01_syntax_and_structure_shiny-Answer_key.md#exercise-2)
 
 1. Name the three parts of an RShiny app and give a brief explanation of each part.
 
