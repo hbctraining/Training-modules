@@ -263,6 +263,6 @@ Describe what information `input$input_text` and `output$output_text` holds.
 
 ---
 
-[Next Lesson >>](27_inputs.qmd)
+[Next Lesson >>](02_inputs.qmd)
 
-[Back to Schedule](../schedule/schedule.qmd)
+[Back to Schedule](../README.md)
