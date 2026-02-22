@@ -151,7 +151,7 @@ textInput(inputId = "input_text",
           label = "My input text"),
 ```
 
-There are many types of input and output types in RShiny, we will discuss these types at length in the upcoming lessons. In this example, we are **creating a text input** using the `textInput()` function. There are two arguments:
+There are many types of input and output in RShiny, we will discuss these types at length in the upcoming lessons. In this example, we are **creating a text input** using the `textInput()` function. There are two arguments:
 
 1. The first argument, `inputId`, is the variable name for the user input to be stored to.
 2. The second argument, `label`, is a character string representing the text which will be placed above the input text box.
@@ -191,10 +191,10 @@ Inside the function we place the following code:
 
 ```
 # DO NOT RUN 
-    # Render the text
-    output$output_text <- renderText({
-        input$input_text
-    })
+# Render the text
+output$output_text <- renderText({
+  input$input_text
+})
 ```
 
 Here, we are using the `renderText()` function to take the object from `textInput()` render it as output. We then take that rendering and assign it to `output$output_text` which ties back to the  `textOutput()` function we had in the UI section of code. 
@@ -207,7 +207,7 @@ Now that we've gone through each line, let's talk about what happens when we run
 
 1. The input text is entered into the box created by `textInput()` and saved as `input$input_text`
 2. This `input$input_text` object is sent to the server which sees that `input$input_text` is used to create the rendered text for `output$output_text`.
-3. This `output$output_text` output is then sent back to the UI where it is displayed in the `textOutput()` fucntion
+3. This `output$output_text` output is then sent back to the UI where it is displayed in the `textOutput()` function
 
 The diagram below illustrates how this works.
 
@@ -258,6 +258,6 @@ Describe what information `input$input_text` and `output$output_text` holds.
 
 ---
 
-[Next Lesson >>](02_inputs.qmd)
+[Next Lesson >>](02_inputs.md)
 
 [Back to Schedule](../README.md)
