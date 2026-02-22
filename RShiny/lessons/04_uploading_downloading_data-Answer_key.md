@@ -99,9 +99,10 @@ server <- function(input, output) {
     },
     # The content of the file will be the contents of the iris_plot() reactive expression
     content = function(file) {
-      png(file)
-      print(iris_plot())
-      dev.off()
+      ggsave(
+        filename = file,
+        plot = iris_plot()
+      )
     }
   )
 }
@@ -159,9 +160,10 @@ server <- function(input, output) {
     },
     # The content of the file will be the contents of the iris_plot() reactive expression
     content = function(file) {
-      png(file)
-      print(iris_plot())
-      dev.off()
+      ggsave(
+        filename = file,
+        plot = iris_plot()
+      )
     }
   )
 }
