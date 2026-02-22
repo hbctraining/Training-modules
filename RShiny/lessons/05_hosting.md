@@ -37,7 +37,7 @@ One option for distributing your app is for it to be run on people's own compute
 
 ### Server Hosting
 
-As we previously mentioned, the most common way for apps to hosted is via servers. One nice aspect of hosting an app within a server is that the version concerns of running an app locally disappears because the developer's versions of the loaded packages are the ones that are used on the server. There are two ways that you might choose to host your apps on a server:
+As we previously mentioned, the most common way for apps to hosted is via servers. One nice aspect of hosting an app within a server is that the version concerns of running an app locally disappear because the developer's versions of the loaded packages are the ones that are used on the server. There are two ways that you might choose to host your apps on a server:
 
 #### Posit Connect / HMS Research Data Visualization Platform (RDVP)
 
@@ -53,7 +53,7 @@ If you aren't eligible for Posit Connect or the HMS Research Data Visualization 
 
 ### Serverless with Shinylive
 
-The last option for hosting is to host your app online on a site like GitHub Pages in a serverless manner. This can work because at the heart of R, it uses C/C++ and modern web browsers can interpret C/C++ code. While there are some limitations to this approach, what it means is that you can host the code for your Shiny app on a website and it is interpretted locally in the user's web browser. To the user it feels like a traditional, server-hosted app, but under the hood it is actually being run from their own web browser. Due to it being running locally from the user's web browser, the user is limited by their local memory constraints. The image below contrasts the more traditional server-hosted approach with this server-less shinylive approach:
+The last option for hosting is to host your app online on a site like GitHub Pages in a serverless manner. This can work because at the heart of R, it uses C/C++ and modern web browsers can interpret C/C++ code. While there are some limitations to this approach, what it means is that you can host the code for your Shiny app on a website and it is interpretted locally in the user's web browser. To the user it feels like a traditional, server-hosted app, but under the hood it is actually being run from their own web browser. Due to it being run locally from the user's web browser, the user is limited by their local memory constraints. The image below contrasts the more traditional server-hosted approach with this server-less Shinylive approach:
 
 <p align="center">
 <img src="../img/shinylive-webr.png" width="600">
