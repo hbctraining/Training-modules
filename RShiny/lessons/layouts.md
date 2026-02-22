@@ -38,11 +38,11 @@ Until now most of our work has focused on server side implementations of concept
 
 ## Sidebars
 
-It is common in many apps to have the user defined input control on a sidebar to the left and the rendered plots and tables on the right. In the image below we have highlighted what a sidebar panel and mainpanel might like in a Shiny App. 
+It is common in many apps to have the user defined input control on a sidebar to the left and the rendered plots and tables on the right. In the image below we have highlighted what a sidebar panel and main panel might look like in a Shiny App. 
 
 <p align="center"><img src="../img/Sidebar_layout.png" width="700"></p>
 
-Creating this structure within a Shiny app utilizes the `sidebarLayout()` function. The `sidebarLayout()` function in your UI defines that this region of your app is using a sidebar panel defined by `sidebarPanel()` and a main panel defined by `mainPanel()`. The `sidebarPanel()` and `mainPanel()` function are nested inside of your `sidebarLayout()`. Let's look at the syntax for how to implement this:
+Creating this structure within a Shiny app utilizes the `sidebarLayout()` function. The `sidebarLayout()` function in your UI defines that your app is using a sidebar panel defined by `sidebarPanel()` and a main panel defined by `mainPanel()`. The `sidebarPanel()` and `mainPanel()` functions are nested inside of your `sidebarLayout()` function. Let's look at the syntax for how to implement this:
 
 ```
 # DO NOT RUN
@@ -60,9 +60,7 @@ ui <- fluidPage(
 
 A sample app demostrating this syntax would look like:
 
-```{r}
-#| label: sidebar_example
-#| eval: false
+```
 # Load libraries
 library(shiny)
 library(ggplot2)
@@ -95,6 +93,7 @@ This app would look like:
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Sidepanel_demo/?showcase=0" width="800px" height="425px" data-external="1"></iframe></p>
 
+> If your sidebar panel appears on top of your main panel, you may need to increase the size of the window your app is in a bit.
 
 ## Adding a title
 
@@ -154,7 +153,7 @@ This app would now look like:
 
 ## Creating columns
 
-We have shown how to use the `sidebarLayout()` function, but we may want to have multiple columns in our app and the `sidebarLayout()` function can't help to much with that. Fortunately, there is the `fluidRow()` function that allows us to divide up the row into columns using the `column()` function nested within it. The first argument within the `column()` function defines the width of the column and the sum of all of the widths of a column for a given `fluidRow()` function should sum to 12. If the width value in `fluidRow()` is left undefined then it defaults to 12. An example of this syntax would be:
+We have shown how to use the `sidebarLayout()` function, but we may want to have multiple columns in our app and the `sidebarLayout()` function can't help to much with that. Fortunately, there is the `fluidRow()` function that allows us to divide up the row into columns using the `column()` function nested within it. The first argument within the `column()` function defines the width of the column and the sum of all of the widths of the columns for a given `fluidRow()` function should sum to 12. An example of this syntax would be:
 
 ```
 # DO NOT RUN
@@ -180,15 +179,15 @@ ui <- fluidPage(
     h1("My iris Shiny App", align = "center")
   ),
   fluidRow(
-    column(6,
-      h3("First column"),
-      selectInput(inputId = "y_axis_input",
-                  label = "Select y-axis",
-                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+    column(width = 6,
+           h3("First column"),
+           selectInput(inputId = "y_axis_input",
+                       label = "Select y-axis",
+                       choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
     ),
-    column(6,
-      h3("Second column"),
-      plotOutput(outputId = "plot")
+    column(width = 6,
+           h3("Second column"),
+           plotOutput(outputId = "plot")
     )
   )
 )
@@ -211,29 +210,30 @@ This app would look like:
 >Within the `column()` function, you can also specify the alignment within the column by using the `align` option. When using the `align` option, you can specify the alignment be `"left"`, `"right"` or `"center"`. The syntax for this would look like:
 >
 >```
->column(<width_of_column>,
+>column(width = <width_of_column>,
 >       align = "center",
 >       <content_of_column>)
 >```
 
 ### Nested columns
 
-You can also nest `fluidRow()` functions within the `column()` function of another `fluidRow()` function. Once again, the important rule when using `fluidRow()` is that the sum of the `column()`'s width value within *each* `fluidRow()` sums to 12. Let's take a look at some example syntax of how this would look:
+You can also nest `fluidRow()` functions within the `column()` function of another `fluidRow()` function. Once again, the important rule when using `fluidRow()` is that the sum of the `column()`s' width value within *each* `fluidRow()` sums to 12. Let's take a look at some example syntax of how this would look:
 
 ```
 # DO NOT RUN
 fluidRow(
-  column(<width_of_first_main_column>,
-    fluidRow(
-      column(<width_of_first_subcolumn_of_the_first_main_column>,
-        <objects_in_first_column_first_subcolumn>
-      ),
-      column(<width_of_second_subcolumn_of_the_first_main_column>,
-        <objects_in_first_column_second_subcolumn>        )
-    )
+  column(width = <width_of_first_main_column>,
+         fluidRow(
+           column(width = <width_of_first_subcolumn_of_the_first_main_column>,
+                  <objects_in_first_column_first_subcolumn>
+           ),
+           column(width = <width_of_second_subcolumn_of_the_first_main_column>,
+                  <objects_in_first_column_second_subcolumn>
+           )
+         )
   ),
-  column(<width_of_second_main_column>,
-    <objects_in_second_column>
+  column(width = <width_of_second_main_column>,
+         <objects_in_second_column>
   )
 )
 ```
@@ -250,25 +250,25 @@ ui <- fluidPage(
     h1("My iris Shiny App", align = "center")
   ),
   fluidRow(
-    column(7,
-      fluidRow(
-        column(6,
-        h3("First column: First subcolumn"),
-        selectInput(inputId = "x_axis_input",
-                    label = "Select x-axis",
-                    choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
-        ),
-        column(6,
-        h3("First column: Second subcolumn"),
-        selectInput(inputId = "y_axis_input",
-                    label = "Select y-axis",
-                    choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
-        )
-      )
+    column(width = 7,
+           fluidRow(
+              column(width = 6,
+                     h3("First column: First subcolumn"),
+                     selectInput(inputId = "x_axis_input",
+                                 label = "Select x-axis",
+                                 choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+              ),
+              column(width = 6,
+                     h3("First column: Second subcolumn"),
+                     selectInput(inputId = "y_axis_input",
+                                 label = "Select y-axis",
+                                 choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+              )
+           )
     ),
-    column(5,
-      h3("Second column"),
-      plotOutput(outputId = "plot")
+    column(width = 5,
+           h3("Second column"),
+           plotOutput(outputId = "plot")
     )
   )
 )
@@ -295,19 +295,19 @@ Now that we've seen how to make multiple columns, let's briefly talk about multi
 ```
 # DO NOT RUN
 fluidRow(
-  column(<width_of_first_column_in_the_first_row>,
-    <objects_in_first_column_first_row>
+  column(width = <width_of_first_column_in_the_first_row>,
+         <objects_in_first_column_first_row>
   ),
-  column(<width_of_second_column_in_the_first_row>,
-    <objects_in_second_column_first_row>
+  column(width = <width_of_second_column_in_the_first_row>,
+         <objects_in_second_column_first_row>
   )
 ),
 fluidRow(
-  column(<width_of_first_column_in_the_second_row>,
-    <objects_in_first_column_second_row>
+  column(width = <width_of_first_column_in_the_second_row>,
+         <objects_in_first_column_second_row>
   ),
-  column(<width_of_second_column_in_the_second_row>,
-    <objects_in_second_column_second_row>
+  column(width = <width_of_second_column_in_the_second_row>,
+         <objects_in_second_column_second_row>
   )
 )
 ```
@@ -324,17 +324,17 @@ ui <- fluidPage(
     h1("My iris Shiny App", align = "center")
   ),
   fluidRow(
-    column(6,
-      h3("First Row: First column"),
-      selectInput(inputId = "x_axis_input",
-                  label = "Select x-axis",
-                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+    column(width = 6,
+           h3("First Row: First column"),
+           selectInput(inputId = "x_axis_input",
+                       label = "Select x-axis",
+                       choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
     ),
-      column(6,
-      h3("First Row: Second column"),
-      selectInput(inputId = "y_axis_input",
-                  label = "Select y-axis",
-                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+      column(width = 6,
+             h3("First Row: Second column"),
+             selectInput(inputId = "y_axis_input",
+                         label = "Select y-axis",
+                         choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
     )
   ),
   fluidRow(
@@ -379,13 +379,13 @@ ui <- fluidPage(
     h1("My iris Shiny App", align = "center")
   ),
   fluidRow(
-    column(6,
+    column(width = 6,
            h3("First Row: First column"),
            selectInput(inputId = "x_axis_input",
                        label = "Select x-axis",
                        choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
     ),
-    column(6,
+    column(width = 6,
            h3("First Row: Second column"),
            selectInput(inputId = "y_axis_input",
                        label = "Select y-axis",
@@ -421,12 +421,12 @@ Within an app, adding a navigation bar can help users more easily move around an
 ```
 # DO NOT RUN
 navbarPage(title = "<title_of_navigation_bar>",
-  tabPanel(title = "<title_of_tab_1>",
-    <content_of_tab_1>
-  ),
-  tabPanel(title = "<title_of_tab_2>",
-    <content_of_tab_2>
-  ),
+           tabPanel(title = "<title_of_tab_1>",
+                    <content_of_tab_1>
+           ),
+           tabPanel(title = "<title_of_tab_2>",
+                    <content_of_tab_2>
+           ),
 )
 ```
 
@@ -439,17 +439,17 @@ library(ggplot2)
 
 ui <- fluidPage(
   navbarPage(title = "My iris dataset",
-    tabPanel(title = "Inputs",
-      selectInput(inputId = "x_axis_input",
-                  label = "Select x-axis",
-                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
-      selectInput(inputId = "y_axis_input",
-                  label = "Select y-axis",
-                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
-    ),
-    tabPanel(title = "Output Plot",
-      plotOutput(outputId = "plot")
-    ),
+             tabPanel(title = "Inputs",
+                      selectInput(inputId = "x_axis_input",
+                                  label = "Select x-axis",
+                                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+                      selectInput(inputId = "y_axis_input",
+                                  label = "Select y-axis",
+                                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+             ),
+             tabPanel(title = "Output Plot",
+                      plotOutput(outputId = "plot")
+             ),
   )
 )
 
@@ -483,14 +483,14 @@ Within the navigation bar, we can have a dropdown menu that gives us more option
 ```
 # DO NOT RUN
 navbarPage(title = "<title_of_navigation_bar>",
-  navbarMenu(title = "<name_for_dropdown_menu>",
-    tabPanel(title = "<title_of_option_1_in_menu>",
-      <content_of_option_1_in_menu>
-    ),
-    tabPanel(title = "<title_of_option_2_in_menu>",
-      <content_of_option_2_in_menu>
-    )
-  )
+           navbarMenu(title = "<name_for_dropdown_menu>",
+                      tabPanel(title = "<title_of_option_1_in_menu>",
+                               <content_of_option_1_in_menu>
+                      ),
+                      tabPanel(title = "<title_of_option_2_in_menu>",
+                               <content_of_option_2_in_menu>
+                      )
+           )
 )
 ```
 
@@ -504,22 +504,22 @@ library(DT)
 
 ui <- fluidPage(
   navbarPage(title = "My iris dataset",
-    tabPanel(title = "Inputs",
-      selectInput(inputId = "x_axis_input",
-                  label = "Select x-axis",
-                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
-      selectInput(inputId = "y_axis_input",
-                  label = "Select y-axis",
-                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
-    ),
-    navbarMenu(title = "Outputs",
-      tabPanel(title = "Plot",
-        plotOutput(outputId = "plot")
-      ),
-      tabPanel(title = "Table",
-        DTOutput(outputId = "table")   
-      )
-    )
+             tabPanel(title = "Inputs",
+                      selectInput(inputId = "x_axis_input",
+                                  label = "Select x-axis",
+                                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+                      selectInput(inputId = "y_axis_input",
+                                  label = "Select y-axis",
+                                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+             ),
+             navbarMenu(title = "Outputs",
+                        tabPanel(title = "Plot",
+                                 plotOutput(outputId = "plot")
+                        ),
+                        tabPanel(title = "Table",
+                                 DTOutput(outputId = "table")   
+                        )
+             )
   )
 )
 
@@ -548,12 +548,12 @@ In place of of a navigation bar along the top of the window, you can also opt fo
 ```
 # DO NOT RUN
 navlistPanel("<title_of_navigation_list>",
-  tabPanel(title = "<title_of_tab_1>",
-    <content_of_tab_1>
-  ),
-  tabPanel(title = "<title_of_tab_2>",
-    <content_of_tab_2>
-  ),
+             tabPanel(title = "<title_of_tab_1>",
+                      <content_of_tab_1>
+             ),
+             tabPanel(title = "<title_of_tab_2>",
+                      <content_of_tab_2>
+             ),
 )
 ```
 
@@ -567,13 +567,142 @@ library(DT)
 
 ui <- fluidPage(
   navlistPanel("My iris dataset",
+               tabPanel(title = "Inputs",
+                        selectInput(inputId = "x_axis_input", 
+                                    label = "Select x-axis",
+                                    choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+                        selectInput(inputId = "y_axis_input",
+                                    label = "Select y-axis",
+                                    choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+               ),
+               navbarMenu(title = "Outputs",
+                          tabPanel(title = "Plot",
+                                   plotOutput(outputId = "plot")
+                          ),
+                          tabPanel(title = "Table",
+                                 DTOutput(outputId = "table")   
+                          )
+               )
+  )
+)
+
+server <- function(input, output) {
+  output$plot <- renderPlot({
+    ggplot(iris) +
+      geom_point(aes(x = .data[[input$x_axis_input]],
+                     y = .data[[input$y_axis_input]]))
+  })
+  output$table <- renderDT({
+    iris[,c(input$x_axis_input, input$y_axis_input), drop = FALSE]
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This would create an app that looks like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Nav_list_panel_demo/?showcase=0" width="800" height="550px" data-external="1"></iframe></p>
+
+> The `navbarMenu()` function also works within `navlistPanel()` just like it works within `navbarPage()`.
+
+## Creating tabs without a navigation bar
+
+An app might require that the user can click on various tabs on a single page. While this could be accomplished with the navigation bar, this can be accomplished by providing different tabs that can easily be embedded within parts of an app using `tabsetPanel()`. The syntax looks like:
+
+```
+# DO NOT RUN
+tabsetPanel(
+  tabPanel(title = "<title_of_tab_1>",
+           <content_of_tab_1>
+  ),
+  tabPanel(title = "<title_of_tab_2>",
+           <content_of_tab_2>
+  ),
+)
+```
+
+We will embed this within `mainPanel()` function below, but it doesn't necessarily need to be that way:
+
+```
+# Load libraries
+library(shiny)
+library(ggplot2)
+library(DT)
+
+ui <- fluidPage(
+  sidebarLayout(
+    sidebarPanel(
+      selectInput(inputId = "x_axis_input",
+                  label = "Select x-axis",
+                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+      selectInput(inputId = "y_axis_input",
+                  label = "Select y-axis",
+                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+    ),
+    mainPanel(
+      tabsetPanel(
+        tabPanel(title = "Plot", 
+                 plotOutput(outputId = "plot")
+        ),
+        tabPanel(title = "Table",
+                 DTOutput(outputId = "table")
+        )
+      )
+    )
+  )
+)
+
+server <- function(input, output) {
+  output$plot <- renderPlot({
+    ggplot(iris) +
+      geom_point(aes(x = .data[[input$x_axis_input]],
+                     y = .data[[input$y_axis_input]]))
+  })
+  output$table <- renderDT({
+    iris[,c(input$x_axis_input, input$y_axis_input), drop = FALSE]
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This app would look like:
+
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Tabset_panel_demo/?showcase=0" width="800" height="650px" data-external="1"></iframe></p>
+
+> The `navbarPage()` function can also be embedded within `mainPanel()`. However, traditionally you will see `navbarPage()` be used to as the banner at the top of the app while `tabsetPanel()` will be used as different tabs within a single tab of `navbarPage()`.
+
+## Shiny Themes
+
+Until now we have used the default UI color scheme within Shiny. However, that is not the only option. There is a package of preset themes that app developers can choose from to make their apps more visually appealing. This package is called `shinythemes` and it has over a [dozen different themes](https://rstudio.github.io/shinythemes/) that app developers can choose from. Implementing a theme is straightforward once you've loaded the `shinythemes` package:
+
+```
+ui <- fluidPage(
+  theme = shinytheme("<name_of_shiny_theme>"),
+  <rest_of_the_ui>
+)
+```
+
+We can add this to the previous app we made:
+
+```
+# Load libraries
+library(shiny)
+library(ggplot2)
+library(DT)
+library(shinythemes)
+
+ui <- fluidPage(
+  theme = shinytheme("cerulean"),
+  navbarPage(title = "My iris dataset",
              tabPanel(title = "Inputs",
-                      selectInput(inputId = "x_axis_input", 
-                                  label = "Select x-axis",
-                                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
-                      selectInput(inputId = "y_axis_input",
-                                  label = "Select y-axis",
-                                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
+             selectInput(inputId = "x_axis_input",
+                         label = "Select x-axis",
+                         choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+             selectInput(inputId = "y_axis_input",
+                         label = "Select y-axis",
+                         choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
              ),
              navbarMenu(title = "Outputs",
                         tabPanel(title = "Plot",
@@ -600,133 +729,6 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-This would create an app that looks like:
-
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Nav_list_panel_demo/?showcase=0" width="800" height="550px" data-external="1"></iframe></p>
-
-> Note that the `navbarMenu()` function also works within `navlistPanel()` just like it works within `navbarPage()`.
-
-## Creating tabs without a navigation bar
-
-An app might require that the user can click on various tabs on a single page. While this could be accomplished with the navigation bar, this can be accomplished by providing different tabs that can easily be embedded within parts of an app using `tabsetPanel()`. The syntax looks like:
-
-```
-# DO NOT RUN
-tabsetPanel(
-  tabPanel(title = "<title_of_tab_1>",
-    <content_of_tab_1>
-  ),
-  tabPanel(title = "<title_of_tab_2>",
-    <content_of_tab_2>
-  ),
-)
-```
-
-We will embed this within `mainPanel()` function below, but it doesn't necessarily need to be that way:
-
-```
-# Load libraries
-library(shiny)
-library(ggplot2)
-library(DT)
-
-ui <- fluidPage(
-  sidebarLayout(
-    sidebarPanel(
-      selectInput(inputId = "x_axis_input",
-                  label = "Select x-axis",
-                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
-      selectInput(inputId = "y_axis_input",
-                  label = "Select y-axis",
-                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
-    ),
-    mainPanel(
-      tabsetPanel(
-        tabPanel(title = "Plot", 
-          plotOutput(outputId = "plot")
-        ),
-        tabPanel(title = "Table",
-          DTOutput(outputId = "table")
-        )
-      )
-    )
-  )
-)
-
-server <- function(input, output) {
-  output$plot <- renderPlot({
-    ggplot(iris) +
-      geom_point(aes(x = .data[[input$x_axis_input]],
-                     y = .data[[input$y_axis_input]]))
-  })
-  output$table <- renderDT({
-    iris[,c(input$x_axis_input, input$y_axis_input), drop = FALSE]
-  })
-}
-
-shinyApp(ui = ui, server = server)
-```
-
-This app would look like:
-
-<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Tabset_panel_demo/?showcase=0" width="800" height="650px" data-external="1"></iframe></p>
-
-> Note: `navbarPage()` can also be embedded within `mainPanel()`. However, traditionally you will see `navbarPage()` be used to as the banner at the top of the app while `tabsetPanel()` will be used as different tabs within a single tab of `navbarPage()`.
-
-## Shiny Themes
-
-Until now we have used the default UI color scheme within Shiny. However, that is not the only option. There is a package of preset themes that app developers can choose from to make their app more visually appealing. This package is called `shinythemes` and it has over a [dozen different themes](https://rstudio.github.io/shinythemes/) that app developers can choose from. Implementing a theme is straightforward once you've loaded the `shinythemes` package:
-
-```
-ui <- fluidPage(theme = shinytheme("<name_of_shiny_theme>")
-  <rest_of_the_ui>
-)
-```
-
-We can add this to the previous app we made:
-
-```
-# Load libraries
-library(shiny)
-library(ggplot2)
-library(DT)
-library(shinythemes)
-
-ui <- fluidPage(theme = shinytheme("cerulean"),
-  navbarPage(title = "My iris dataset",
-    tabPanel(title = "Inputs",
-      selectInput(inputId = "x_axis_input",
-                  label = "Select x-axis",
-                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
-      selectInput(inputId = "y_axis_input",
-                  label = "Select y-axis",
-                  choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"))
-    ),
-    navbarMenu(title = "Outputs",
-      tabPanel(title = "Plot",
-        plotOutput(outputId = "plot")
-      ),
-      tabPanel(title = "Table",
-        DTOutput(outputId = "table")   
-      )
-    )
-  )
-)
-
-server <- function(input, output) {
-  output$plot <- renderPlot({
-    ggplot(iris) +
-      geom_point(aes(x = .data[[input$x_axis_input]],
-                     y = .data[[input$y_axis_input]]))
-  })
-  output$table <- renderDT({
-    iris[,c(input$x_axis_input, input$y_axis_input), drop = FALSE]
-  })
-}
-
-shinyApp(ui = ui, server = server)
-```
-
 This app would look like:
 
 <p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/Shiny_themes_demo/?showcase=0" width="800" height="600px" data-external="1"></iframe></p>
@@ -735,7 +737,8 @@ If you wanted to see how various themes might look on your specific app, instead
 
 ```
 # DO NOT RUN
-ui <- fluidPage(themeSelector(),
+ui <- fluidPage(
+  themeSelector(),
   <rest_of_the_ui>
 )
 ```
@@ -744,7 +747,7 @@ ui <- fluidPage(themeSelector(),
 
 ## [**Exercise 1**](layouts-Answer_key.md#exercise-1)
 
-Lets add a layout to the R Shiny app from the exercise in the previous lesson. That app should look like:
+Lets add a layout to the R Shiny app from the exercise a previous lesson. That app should look like:
 
 ```
 # Load libraries
@@ -821,4 +824,4 @@ We are going to try to create an app that looks like:
 
 ---
 
-[Back to Schedule](../README.md.qmd)
+[Back to Schedule](../README.md)
