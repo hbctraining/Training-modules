@@ -606,6 +606,6 @@ The app will look like:
 
 ---
 
-[Next Lesson >>](05_layouts.md)
+[Next Lesson >>](05_hosting.md)
 
-[Back to Schedule](../README.qmd)
+[Back to Schedule](../README.md)
