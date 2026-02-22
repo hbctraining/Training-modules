@@ -4,27 +4,13 @@ author:
   - Will Gammerdinger
 date: "2025-11-05"
 license: "CC-BY-4.0"
-editor_options: 
-  markdown: 
-    wrap: 72
 ---
-
-```{r}
-#| label: load_libraries_data
-#| echo: false
-# Load libraries and data
-library(shiny)
-library(DT)
-library(ggplot2)
-```
 
 # Exercise 1
 
 Modify the app we just created that prints our output to a table to use a `selectInput()` menu to choose which column(s) we would like to see in our output table. 
 
-```{r}
-#| label: DT_mtcars_exercise
-#| eval: false
+```
 # Load libraries
 library(shiny)
 library(DT)
@@ -58,9 +44,7 @@ Modify the above app to creates a boxplot with the number of cylinders on the x-
 
 _Hint: You will need to set `x = "factor(cyl)"` in order for the `aes_string()` function to treat `cyl` as a column coming from the `mtcars` dataset rather than looking for a variable in your R environment called `cyl`._
 
-```{r}
-#| label: boxplot_mtcars_exercise
-#| eval: false
+```
 # Load libraries
 library(shiny)
 library(ggplot2)
@@ -96,9 +80,7 @@ shinyApp(ui = ui, server = server)
 
 Edit the above app so that the fill of the brushed area is crimson (#A51C30) and the border is a nice blue (#3E6F7D).
 
-```{r}
-#| label: brush_plot_example
-#| eval: false
+```
 # Load libraries
 library(shiny)
 library(ggplot2)
