@@ -49,6 +49,7 @@ Prior to the workshop please install the following R packages:
 ## Additional Resources
 
 - [Arranging Layouts](lessons/layouts.md)
+- [Shinylive](lessons/shinylive.md)
 - [Mastering Shiny](https://mastering-shiny.org/)
 
 ## Interesting Input Widgets
