@@ -233,7 +233,7 @@ actionButton(inputId = "inputID",
 
 ## Isolate
 
-In Shiny, you may find that you will want to limit the reactivity. However, you might want only partial reactivity and this is where the `isolate()` feature can be quite helpful. You can create a non-reactive scope around an expression using `isolate`. The syntax for using `isolate()` is:
+In Shiny, you may find that you will want to limit the reactivity. For example, you might want only partial reactivity and this is where the `isolate()` feature can be quite helpful. You can create a non-reactive scope around an expression using `isolate`. The syntax for using `isolate()` is:
 
 ```
 # DO NOT RUN
@@ -289,10 +289,10 @@ This app would look like:
 
 ## Uploads and Downloads
 
-Transferring files to and from an app is a common feature of Shiny apps. You can use it to upload data for analysis, download the results of an analysis or a figure you generated. Now we will introduce you to functions that help with file handling in addition to some other advanced topics which tie in nicely (and are helpful when running these functions).
+Transferring files to and from an app is a common feature of Shiny apps. You can use it to upload data for analysis, download the results of an analysis or a figure you generated. Now, we will introduce you to functions that help with file handling.
 
 ### Uploading data
-Often apps are created such that one can explore their own data in some way. To allows users to upload their own data into the app we use the `fileInput()` function on the UI side:
+Apps are oftentimes created such that one can explore their own data in some way. To allows users to upload their own data into the app we use the `fileInput()` function on the UI side:
 
 ```
 # DO NOT RUN
@@ -360,6 +360,8 @@ server <- function(input, output) {
 # Run the app
 shinyApp(ui = ui, server = server)
 ```
+
+An example CSV file of the `iris` dataset that you can use to test out this app can be downloaded from [here](https://www.dropbox.com/scl/fi/tvjyczwcn7flfn5b5t5wq/iris.csv?rlkey=oclp1f8f4scuqh2k43xv5p57p&dl=1).
 
 This app would look like:
 
@@ -540,12 +542,11 @@ server <- function(input, output) {
             "mtcars_plot.png"
         },
         # The content of the file will be the contents of the mtcars_plot() reactive expression
-        # Note how we need to encapsulate the plot in png() and dev.off() functions
-        # The syntax also demands that we put print() around our plot
         content = function(file) {
-            png(file)
-            print(mtcars_plot())
-            dev.off()
+          ggsave(
+            filename = file,
+            plot = mtcars_plot()
+          )
         }
     )
 }
@@ -560,7 +561,25 @@ Some key aspects of this app are:
 
 - Our `renderPlot()` function called the `mtcars_plot()` reactive expression.
 
-- We call our `downloadHandler()` function and provide it a default file name of `"mtcars_plot.png"` and for `content`, we call it mostly the same way as we would write a plot out in R; calling the `png()` function, plotting our plot, then closing the device with the `dev.off()` function. The only thing of note here is that we go need to wrap the `mtcars_plot()` reactive expression within a `print()` function.
+- We call our `downloadHandler()` function and provide it a default file name of `"mtcars_plot.png"` and for `content`, we save it the same way would would normally save a figure using `ggsave`. If we wanted to use the base R device syntax, we would call it mostly the same way as we would make a plot in R; calling the `png()` function, plotting our plot, then closing the device with the `dev.off()` function. The only thing of note here is that we would go need to wrap the `mtcars_plot()` reactive expression within a `print()` function. That would look like:
+
+```
+# Download the data
+output$download_button <- downloadHandler(
+  # The placeholder name for the file will be called mtcars_plot.png
+  filename = function() {
+    "mtcars_plot.png"
+  },
+  # The content of the file will be the contents of the mtcars_plot() reactive expression
+  # Note how we need to encapsulate the plot in png() and dev.off() functions
+  # The syntax also demands that we put print() around our plot
+  content = function(file) {
+    png(file)
+    print(mtcars_plot())
+    dev.off()
+  }
+)
+```
 
 This app looks like:
 
