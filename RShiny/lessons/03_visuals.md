@@ -1,7 +1,5 @@
 ---
 title: "Visualization and Interactive Visuals in RShiny"
-description: |
-  This lesson covers how to create and customize visualizations and interactive data tables in R Shiny applications. You will learn to use the DT package for table outputs, render static and interactive plots with ggplot2, and implement user interactions including clicking, hovering, and brushing for deeper data exploration. Practical code examples are provided using the mtcars dataset.
 author:
   - Will Gammerdinger
   - Meeta Mistry
@@ -28,9 +26,6 @@ keywords:
   - hover
   - brush
 license: "CC-BY-4.0"
-editor_options: 
-  markdown: 
-    wrap: 72
 ---
 
 # Learning Objectives
