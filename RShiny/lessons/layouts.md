@@ -753,7 +753,7 @@ Lets add a layout to the R Shiny app from the exercise a previous lesson. That a
 # Load libraries
 library(shiny)
 library(DT)
-library(ggplot2)
+library(tidyverse)
 
 # User Interface
 ui <- fluidPage(
@@ -763,11 +763,13 @@ ui <- fluidPage(
   # Select from the dropdown menu the column you want on the x-axis
   selectInput(inputId = "x_axis_input",
               label = "Select x-axis",
-              choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+              choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
+  ),
   # Select from the dropdown menu the column you want on the y-axis
   selectInput(inputId = "y_axis_input",
               label = "Select y-axis",
-              choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")),
+              choices = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
+  ),
   # The output plot
   plotOutput(outputId = "plot"),
   # The download plot button
@@ -801,8 +803,8 @@ server <- function(input, output) {
     # The content of the file will be the contents of the iris_plot() reactive expression
     content = function(file) {
       ggsave(
-      filename = file,
-      plot = iris_plot()
+        filename = file,
+        plot = iris_plot()
       )
     }
   )
