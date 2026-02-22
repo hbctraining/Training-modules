@@ -45,7 +45,7 @@ Shiny has some native data table functions, however using the `DT` package is re
 library(DT)
 ```
 
-To dispaly a data table on the UI side you would use:
+To display a data table on the UI side you would use:
 
 ```
 # DO NOT RUN
@@ -94,11 +94,11 @@ shinyApp(ui = ui, server = server)
 On the UI side:
 
 - We are using the input function described earlier `checkboxGroupInput()`, which will allow users to select which columns to display in the table.
-- We are using the `DTOutput()` funtion with "table" as the ID to correspond with the output object in the server side code
+- We are using the `DTOutput()` function with "table" as the ID to correspond with the output object in the server side code
 
 On the server side:
 
-- We use `renderDT()` and providing the mtcars dataframe, while using square brackets to subset the columns selected.
+- We use `renderDT()` and providing the `mtcars` dataframe, while using square brackets to subset the columns selected.
 
 This will visualize in the app as:
 
@@ -141,7 +141,7 @@ output$<outputID> <- renderPlot({
 
 In the example below we are using the `selectInput()` function to allow users to select which columns to display on the x-axis and y-axis. The choices given are the column names of the dataframe.
 
-On the server side, we place ggplot2 code inside the `renderPlot()` function, specifying what type of plot we want to draw. For the most part, your `ggplot` code should stay relatively familiar except that now the `x` and `y` variables will now need to be placed within `.data[[input$var]]` structure. This structure is more explicit and tells `ggplot2` to treat the Shiny input, which is a string, as the name of a column in the data.
+On the server side, we place `ggplot2` code inside the `renderPlot()` function, specifying what type of plot we want to draw. For the most part, your `ggplot2` code should stay relatively familiar except that now the `x` and `y` variables will now need to be placed within `.data[[input$var]]` structure. This structure is more explicit and tells `ggplot2` to treat the Shiny input, which is a string, as the name of a column in the data.
 
 ```
 # Load libraries
@@ -230,17 +230,17 @@ On the server side, we have a few new functions as well:
 
 ```
 # DO NOT RUN
-  output$table <- renderDT({
-    nearPoints(df = <dataframe_used_in_plotting>,
-               coordinfo = input$<plot_clickID>,
-               xvar = <xvar_string>,
-               yvar = <yvar_string>)
-  })
+output$table <- renderDT({
+  nearPoints(df = <dataframe_used_in_plotting>,
+             coordinfo = input$<plot_clickID>,
+             xvar = <xvar_string>,
+             yvar = <yvar_string>)
+})
 ```
 
 The `nearPoints()` function creates a dataframe of points near where the cursor clicked on the plot. You can adjust how close (in pixels) you'd like the `threshold` to be such that when a click is made on the plot which nearby points would register as the selected data point. 
 
->When using the `nearPoints()` function in the app below when the axes are static, it is not required that you provide `xvar` and `yvar`, but we would encourage the practice, because when they are dynamic it will be required, so it is best to get in the habit of doing it.
+>When using the `nearPoints()` function in the app below and the axes are static, it is not required that you provide `xvar` and `yvar`, but we would encourage the practice, because when they are dynamic it will be required, so it is best to get in the habit of doing it.
 > 
 Importantly, `xvar` and `yvar` are expecting *strings*, so in the case of static input like in the app below, you will need to place the columns of data used in the plot in double quotes like `"mpg"` and `"disp"`. However, in the case where the input dynamic, we can recall that `input` variables are strings, so we just need to set `xvar` and `yvar` equal to the input variable like:
 > 
@@ -301,14 +301,14 @@ This app would look like:
 >```
 ># DO NOT RUN
 >ggplot(mtcars) +
->            geom_point(aes(x = mpg,
->                           y = disp))
+>  geom_point(aes(x = mpg,
+>                 y = disp))
 >```
 >
 >This works because `mpg` and `disp` are fixed column names written directly in the code and they are not coming from Shiny input variables, which are **strings**, like `input$x_axis_input`. So the rule is:
 >
 > - *If the `x` or `y` variable is coming from an `input` variable, which is a string, then it needs to have the `.data[[input$var]]` format*
-> - *If the `x` or `y` variable are fixed column names in the app, then you can use the normal `ggplot` syntax*.
+> - *If the `x` or `y` variable are fixed column names in the app, then you can use the normal `ggplot2` syntax*.
 
 ## Hover
 
@@ -371,7 +371,7 @@ This app would look like:
 
 ## Brush
 
-The last way that you can make your plots interactive is with brushing. Perhaps you notice a cluster of points in one part of your scatter plot that you'd like to investigate further. Brushing allows you to **use a rectangle to select the points that you would like to interact with**. We need a make a few changes to our UI to accommodate brushing:
+The last way that you can make your plots interactive is with brushing. Perhaps you notice a cluster of points in one part of your scatterplot that you'd like to investigate further. Brushing allows you to **use a rectangle to select the points that you would like to interact with**. We need a make a few changes to our UI to accommodate brushing:
 
 On the UI side:
 
