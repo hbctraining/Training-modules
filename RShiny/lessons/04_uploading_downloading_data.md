@@ -97,11 +97,11 @@ On the server side:
 # DO NOT RUN
 reactive_expression_with_action_button <- reactive(
     <reactive_expression>
-  ) >%>
+  ) %>%
   bindEvent(input$<action_button_inputID>)
 ```
 
->In the above action button example with the pipe, we would need to load `magrittr` in order to gain the pipe functionality. Alternatively, you could load `tidyverse`, which contains many useful functions including packages like like `ggplot2`, `dplyr` and `magrittr`. However, when you go to upload the app to a hosting website, it will take much longer to upload if you use `tidyverse` because it needs to install all of the packages that are part of `tidyverse` rather than just the ones you are using. For that reason, it can sometimes be nice to limit the scoop of the packages you need when creating an app that will at some point go to a hosting platform.
+>In the above action button example with the pipe, we would need to load `magrittr` in order to gain the pipe functionality. Alternatively, you could load `tidyverse`, which contains many useful functions including packages like like `ggplot2`, `dplyr` and `magrittr`. However, when you go to upload the app to a hosting website, it will take much longer to upload if you use `tidyverse` because it needs to install all of the packages that are part of `tidyverse` rather than just the ones you are using. For that reason, it can sometimes be nice to limit the scope of the packages you need when creating an app that will at some point go to a hosting platform.
 
 Below is example code on how we could implement this:
 
