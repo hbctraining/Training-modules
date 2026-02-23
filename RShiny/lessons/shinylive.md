@@ -14,7 +14,7 @@ Oftentimes when you are distributing an app, you will need to upload it to a ser
 
 # Pre-requisites
 
-In order to do the following steps you will need a GitHub account. If you do not have a GitHub account, instructions to doingin so can be found [here](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github). You will also need two packages, `shinylive` and `httpuv`. You can install these with the following commands in your console:
+In order to do the following steps you will need a GitHub account. If you do not have a GitHub account, instructions for doing so can be found [here](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github). You will also need two packages, `shinylive` and `httpuv`. You can install these with the following commands in your console:
 
 ```
 install.packages("shinylive")
@@ -39,7 +39,7 @@ If you have done all of this, then you are ready to upload your app to GitHub Pa
 The first step in the process is to create an RStudio project. In order to do this:
 
 1. Go to your RStudio toolbar and select "**File**" and then select "**New Project**"
-2. A pop-up window should appear where you can select "**New Directory**" and the window should progress to a allow you to choose "**Shiny Application**". One benefit of selecting **Shiny Application** here is that it will automatically create an R script called "app.R".
+2. A pop-up window should appear where you can select "**New Directory**" and the window should progress to allow you to choose "**Shiny Application**". One benefit of selecting **Shiny Application** here is that it will automatically create an R script called "app.R".
 3. Enter the name of your RStudio project, in this case we are going to call ours "mtcars_demo"
 4. (Optional) You can select where you would like this project to be saved to by clicking the "**Browse...**". However, we are happy saving it to our **Desktop**.
 5. Click "**Create Project**"
@@ -55,7 +55,7 @@ These steps are shown in the GIF below:
 The next step in this process is likely the longest step because you now need to make your app! However, we are going to take a shortcut here and use an app that we have already created for this demonstration.
 
 1. Highlight and delete the default app that came along with create your Shiny application RStudio project
-2. Copy the RShiny App below by highlighting it and right-clicking the highliughted text and selecting "**Copy**"
+2. Copy the RShiny App below by highlighting it and right-clicking the highlighted text and selecting "**Copy**"
 
 ```
 library(shiny)
@@ -63,17 +63,20 @@ library(ggplot2)
 library(DT)
 
 ui <- fluidPage(
-  plotOutput("plot", brush = "plot_brush"),
-  DTOutput("table")
+  plotOutput(outputId = "plot",
+             brush = "plot_brush"),
+  DTOutput(outputId = "table")
 )
 
 server <- function(input, output) {
   output$plot <- renderPlot(
     ggplot(mtcars) +
-      geom_point(aes(x = mpg, y = disp))
+      geom_point(aes(x = mpg,
+                     y = disp))
   )
   output$table <- renderDT({
-    brushedPoints(mtcars, input$plot_brush)
+    brushedPoints(df = mtcars,
+                  brush = input$plot_brush)
   })
 }
 
@@ -94,7 +97,7 @@ These steps are shown in the GIF below:
 In order for GitHub Pages to be able to render your Shiny app, you will need to have a specifically named directory called "docs", which will hold the files output from Shinylive. 
 
 1. Click the "Create a new folder" icon in RStudio
-2. Named the new directory "docs"
+2. Name the new directory "docs"
 3. Within the console type the following command:
 
 ```
@@ -117,7 +120,7 @@ These steps are shown in the GIF below:
 
 ## View with httpuv (Optional; but strongly encouraged)
 
-Once you have created your app with `shinylive` you will likely want to inspect your app locally to be sure that it is how you want it. This is an optional step, but we recommend visualizing your app at this point as a check to make sure the app was rendered correctly. However, one issue with visualizing your app at this point is that it can't be visualized through tradional methods of looking at your app. You will instead need to emulate the static webpage and visualize it in there. The `httpuv` package allows you to visualize static webpages in R.
+Once you have created your app with `shinylive` you will likely want to inspect your app locally to be sure that it is how you want it. This is an optional step, but we recommend visualizing your app at this point as a check to make sure the app was rendered correctly. However, one issue with visualizing your app at this point is that it can't be visualized through traditional methods of looking at your app. You will instead need to emulate the static webpage and visualize it in there. The `httpuv` package allows you to visualize static webpages in R.
 
 1. In the console enter:
 ```
@@ -205,7 +208,7 @@ These steps are shown in the GIF below:
 
 ## View your app on GitHub Pages
 
-You have now uploaded your app to GitHub, so we can look at what it 
+You have now uploaded your app to GitHub, so we can look at it 
 
 1. In your web browser's URL enter:
 
