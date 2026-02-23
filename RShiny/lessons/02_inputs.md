@@ -358,12 +358,12 @@ Additional arguments that you might want to use with `dateInput()` are:
 
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
-| value | Allows you to set the default day to open the calendar on. If not set, then it will default to the current day in yyyy-mm-dd format |  value = "2024-07-24"|
+| value | Allows you to set the default day to open the calendar on. If not set, then it will default to the current day in yyyy-mm-dd format |  `value = "2024-07-24"`|
 | min | Allows you to set the _earliest_ date that can be selected | `min = "2024-07-20"` |
 | max | Allows you to set the _latest_ date that can be selected | `max = "2024-07-28"` |
 | weekstart | Allows you to select which day of the week the calendar should start on with Sunday being 0 and incrementing to Saturday being 6 | `weekstart = 1` |
 | language | Allows you to set the language for the calendar | `language = "de"` |
-| daysofweekdisabled | Allows you to make certain days of the week unavailible for selection with Sunday being 0 and incrementing to Saturday being 6. You can also make a vector of values to block out multiple days of the week. | `daysofweekdisabled = c(0,6)` |
+| daysofweekdisabled | Allows you to make certain days of the week unavailable for selection with Sunday being 0 and incrementing to Saturday being 6. You can also make a vector of values to block out multiple days of the week. | `daysofweekdisabled = c(0,6)` |
 
 ### Date Range
 
