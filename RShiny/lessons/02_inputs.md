@@ -153,7 +153,7 @@ ui <- fluidPage(
   # Dropdown select menu of options
   selectInput(inputId = "input_select",
               label = "My favorite game",
-              choices = c("Pick a game" = "", "Catan", "Carcassonne", "Caverna", "Twillight Imperium")),
+              choices = c("Pick a game" = "", "Catan", "Carcassonne", "Caverna", "Twilight Imperium")),
   # The output text
   textOutput(outputId = "output_text")
 )
@@ -178,7 +178,7 @@ Some additional arguments for `selectInput()` are provided below:
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
 | multiple | Allows you to select multiple options from the selection dropdown menu | `multiple = TRUE` |
-| selected | Allows you to define the default selection, otherwise the default selection will be the first item in the list, unless the `multiple` argument is `TRUE`, then it will default to no selection | `selected = "Twillight Imperium"` |
+| selected | Allows you to define the default selection, otherwise the default selection will be the first item in the list, unless the `multiple` argument is `TRUE`, then it will default to no selection | `selected = "Twilight Imperium"` |
 
 > You can alternatively use `selectizeInput()` instead of `selectInput()` to have more control over the dropdown. While this is outside of the scope of this lesson, the documentation for this can be found [here](https://selectize.dev/docs/usage). `selectizeInput()` can be really nice because it allows you to have a search bar and autocomplete for your list.
 
