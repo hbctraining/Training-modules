@@ -67,7 +67,7 @@ server <- function(input, output) {
     # Scatter plot creation
     ggplot(mtcars) +
       geom_boxplot(aes(x = factor(cyl),
-                       y = .data[[input$y_axis_input]])) + +
+                       y = .data[[input$y_axis_input]])) +
       xlab("Cylinders")
   })
 }
