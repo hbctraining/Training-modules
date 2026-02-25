@@ -491,9 +491,10 @@ output$<download_buttonID> <- downloadHandler(
     "<your_placeholder_filename>.png"
   },
   content = function(file) {
-    png(file)
-    print(<your_plot>)
-    dev.off()
+    ggsave(
+      filename = file,
+      plot = mtcars_plot()
+    )
   }
 )
 ```
