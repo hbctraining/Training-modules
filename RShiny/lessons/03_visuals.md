@@ -381,7 +381,7 @@ plotOutput(outputId = "plot",
            brush = "<plot_brushID>")
 ```
 
-We can change `brush = "<plot_brushID>"` to `brush = brushOpt(id = "<plot_brushID>")`, which will give us access to a few more arguments in the table below:
+We can change `brush = "<plot_brushID>"` to `brush = brushOpts(id = "<plot_brushID>")`, which will give us access to a few more arguments in the table below:
 
 | Argument | Description |  Example  |
 |----------|-------------|-----------|
