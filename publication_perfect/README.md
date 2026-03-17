@@ -37,15 +37,15 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 
 | Time | Topic | Instructor |
 :-----------------------|:-------------|:----------|
-| 13:00 - 13:10	| [Workshop Introduction](https://github.com/hbctraining/Training-modules/blob/master/lectures/Intro_current_topics_online_2024.pdf) | Will |
-| 13:10 - 14:00	| [Customization of scales and color palettes](https://hbctraining.github.io/publication_perfect/lessons/05_custom_plot_scales_colors.html) | Elizabeth |
-| 14:00 - 14:30	| [Aligning and labeling plots with cowplot](https://hbctraining.github.io/publication_perfect/lessons/06_aligning_plots_using_cowplot.html) | Elizabeth |
-| 14:30 - 14:35	| Break
-| 14:35 - 15:15	| [Adding annotations and including statistical comparisons with ggpubr](https://hbctraining.github.io/publication_perfect/lessons/07_adding_text_annotations.html) | Will |
-| 15:15 - 15:45	| [Incorporating external packages to extend plotting functionality](https://hbctraining.github.io/publication_perfect/lessons/08_figure_specific_packages.html) | Will |
-| 15:45 - 15:50	| [Creating final figure](https://hbctraining.github.io/publication_perfect/lessons/09_final_figure.html) | Will |
-| 15:50 - 15:55	| [Pivoting publications](https://hbctraining.github.io/publication_perfect/lessons/10_pivoting_publications.html) | Will |
-| 15:55 - 16:00	| [Wrap-up and exit survey](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2021.pdf) | Will |
+| 9:30 - 9:40	| [Workshop Introduction](https://github.com/hbctraining/Training-modules/blob/master/lectures/Intro_current_topics_online_2024.pdf) | Will |
+| 9:40 - 10:30	| [Customization of scales and color palettes](https://hbctraining.github.io/publication_perfect/lessons/05_custom_plot_scales_colors.html) | Elizabeth |
+| 10:30 - 11:00	| [Aligning and labeling plots with cowplot](https://hbctraining.github.io/publication_perfect/lessons/06_aligning_plots_using_cowplot.html) | Elizabeth |
+| 11:00 - 11:05	| Break
+| 11:05 - 11:45	| [Adding annotations and including statistical comparisons with ggpubr](https://hbctraining.github.io/publication_perfect/lessons/07_adding_text_annotations.html) | Will |
+| 11:45 - 12:15	| [Incorporating external packages to extend plotting functionality](https://hbctraining.github.io/publication_perfect/lessons/08_figure_specific_packages.html) | Will |
+| 12:15 - 12:20	| [Creating final figure](https://hbctraining.github.io/publication_perfect/lessons/09_final_figure.html) | Will |
+| 12:20 - 12:25	| [Pivoting publications](https://hbctraining.github.io/publication_perfect/lessons/10_pivoting_publications.html) | Will |
+| 12:25 - 12:30	| [Wrap-up and exit survey](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2021.pdf) | Will |
 
 ### Dataset
 
