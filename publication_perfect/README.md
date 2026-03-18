@@ -26,7 +26,7 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 
 | Time | Topic | Instructor |
 :-----------------------|:-------------|:----------|
-| 13:00 - 13:10	| [Workshop Introduction](https://github.com/hbctraining/Training-modules/blob/master/lectures/Intro_current_topics_online_2024.pdf) | Heather |
+| 13:00 - 13:10	| [Workshop Introduction](https://github.com/hbctraining/Training-modules/blob/master/lectures/Current_topics_in_Bioinformatics.pdf) | Heather |
 | 13:10 - 13:30	| [Introduction to dataset and considerations for choosing appropriate plotting methods](https://hbctraining.github.io/publication_perfect/lessons/01_intro_to_dataset.html) | Upen |
 | 13:30 - 14:15 | [Visualization package ggplot2 basic syntax and plot types](https://hbctraining.github.io/publication_perfect/lessons/02_ggplot2_syntax.html) | Heather |
 | 14:15 - 14:20	| Break | |
@@ -37,7 +37,7 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 
 | Time | Topic | Instructor |
 :-----------------------|:-------------|:----------|
-| 9:30 - 9:40	| [Workshop Introduction](https://github.com/hbctraining/Training-modules/blob/master/lectures/Intro_current_topics_online_2024.pdf) | Will |
+| 9:30 - 9:40	| [Workshop Introduction](https://github.com/hbctraining/Training-modules/blob/master/lectures/Current_topics_in_Bioinformatics.pdf) | Will |
 | 9:40 - 10:30	| [Customization of scales and color palettes](https://hbctraining.github.io/publication_perfect/lessons/05_custom_plot_scales_colors.html) | Elizabeth |
 | 10:30 - 11:00	| [Aligning and labeling plots with cowplot](https://hbctraining.github.io/publication_perfect/lessons/06_aligning_plots_using_cowplot.html) | Elizabeth |
 | 11:00 - 11:05	| Break
@@ -45,7 +45,7 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 | 11:45 - 12:15	| [Incorporating external packages to extend plotting functionality](https://hbctraining.github.io/publication_perfect/lessons/08_figure_specific_packages.html) | Will |
 | 12:15 - 12:20	| [Creating final figure](https://hbctraining.github.io/publication_perfect/lessons/09_final_figure.html) | Will |
 | 12:20 - 12:25	| [Pivoting publications](https://hbctraining.github.io/publication_perfect/lessons/10_pivoting_publications.html) | Will |
-| 12:25 - 12:30	| [Wrap-up and exit survey](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2021.pdf) | Will |
+| 12:25 - 12:30	| [Wrap-up and exit survey](https://github.com/hbctraining/Training-modules/raw/master/Current_topics_in_Bioinformatics.pdf) | Will |
 
 ### Dataset
 
