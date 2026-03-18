@@ -45,7 +45,7 @@ This is a hands-on tutorial in which the data and code will be distributed to pa
 | 11:45 - 12:15	| [Incorporating external packages to extend plotting functionality](https://hbctraining.github.io/publication_perfect/lessons/08_figure_specific_packages.html) | Will |
 | 12:15 - 12:20	| [Creating final figure](https://hbctraining.github.io/publication_perfect/lessons/09_final_figure.html) | Will |
 | 12:20 - 12:25	| [Pivoting publications](https://hbctraining.github.io/publication_perfect/lessons/10_pivoting_publications.html) | Will |
-| 12:25 - 12:30	| [Wrap-up and exit survey](https://github.com/hbctraining/Training-modules/raw/master/Current_topics_in_Bioinformatics.pdf) | Will |
+| 12:25 - 12:30	| [Wrap-up and exit survey](https://github.com/hbctraining/Training-modules/blob/master/lectures/Current_topics_in_Bioinformatics.pdf) | Will |
 
 ### Dataset
 
