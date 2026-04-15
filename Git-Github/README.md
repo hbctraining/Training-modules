@@ -10,14 +10,14 @@ This repository has teaching materials for a two part 3-hour Introduction to Git
 
 Git and GitHub provide an easy way to track changes in documents over time, while facilitating collaboration with other team members. Git allows for saving changes and creating new versions of documents, while GitHub allows for public access to the different versions, as well as collaboration among individuals on a team. Together, Git and GitHub allow for project development between multiple individuals while being able to retrieve all previous versions of the tracked documents. 
 
-While these tools were initially designed for saving and developing code collaboratively, there are many advantages for using version control with Git and/or GitHub for other text files and substantial works such as articles, books, and dissertations. Also, since GitHub hosts the documents online, you never need to worry about losing your priceless work due to your computer crashing. Join us in the workshop to learn the simple bash commands needed to save versions of files on your local computer, as well as how to make them accessible online on GitHub.
+While these tools were initially designed for saving and developing code collaboratively, there are many advantages for using version control with Git and/or GitHub for other text files and substantial works such as articles, books, and dissertations. Also, since GitHub hosts the documents online, you never need to worry about losing your priceless work due to your computer crashing. Join us in the workshop to learn how to use GitHub Desktop to save versions of files on your local computer, as well as how to make them accessible online on GitHub.
 
 > These materials were developed for a trainer-led workshop, but are also amenable to self-guided learning.
 
 ## Learning Objectives
 
 * Describe the benefits of an automated version control system
-* Configure and use Git locally
+* Configure and use Git locally using GitHub Desktop
 * Link local Git repositories to remote GitHub account
 * Collaborate using Git and GitHub
 
