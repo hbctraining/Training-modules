@@ -44,7 +44,7 @@ While these tools were initially designed for saving and developing code collabo
 
 ### Dataset
 
-Download the [workshop sample files zipped folder](https://github.com/hbctraining/reproducibility-tools/raw/master/data/example_files.zip) and unzip it.
+Download the [workshop sample files zipped folder](https://www.dropbox.com/scl/fi/tc5oeqezoljkh1rwxovku/githubdesktop_workshop_materials.zip?rlkey=104xg3i6ttok5gh9dsagxsbb6&st=o938spb2&dl=1) and unzip it.
 
 ### Installation Requirements
 
