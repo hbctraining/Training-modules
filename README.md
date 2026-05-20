@@ -18,7 +18,7 @@ This repository has teaching materials for **2-3 hour**, hands-on workshops cove
 | Making Sense of Single-Cell Data: Practical Exploration and Interpretation with Loupe Browser | None | 7/15/26	| [Register here](https://harvard.zoom.us/meeting/register/H4HZC3G6SESrk5ZPbq2F_w) |
 | Machine Learning for Biologists | None | 4/16/2025	| [Register here](https://harvard.zoom.us/meeting/register/f9-ZwHmgQqKqV7V8d6OGfQ) |
 | The cBioPortal for Cancer Genomics | None | 5/21/2025	| [Register here](https://harvard.zoom.us/meeting/register/lp61mTnCRMyFeKcZn8odGQ#/registration) |
-| Single Cell RNA-seq Analysis Using Cellenics | None | 6/18/2025	| [Register here](https://harvard.zoom.us/meeting/register/Quk277ftT7Odl33GKBilLQ) |
+| Single Cell RNA-seq Analysis Using Cellenics | HarvardKey Credentials | 6/18/2025	| [Register here](https://harvard.zoom.us/meeting/register/Quk277ftT7Odl33GKBilLQ) |
 
 ***
 
