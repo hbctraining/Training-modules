@@ -16,9 +16,9 @@ This repository has teaching materials for **2-3 hour**, hands-on workshops cove
 |:---------------|:-------------:|:-------------:|:-------------:|
 | Getting Started with Nextflow Workflow Development | Basic experience with command line and scripting concepts (e.g. bash, python, R or equivalent) | 6/10/26	| [Register here](https://harvard.zoom.us/meeting/register/NzUiO0SYTfq1lOpjWnVR6Q) |
 | Making Sense of Single-Cell Data: Practical Exploration and Interpretation with Loupe Browser | None | 7/15/26	| [Register here](https://harvard.zoom.us/meeting/register/H4HZC3G6SESrk5ZPbq2F_w) |
-| Machine Learning for Biologists | None | 4/16/2025	| [Register here](https://harvard.zoom.us/meeting/register/f9-ZwHmgQqKqV7V8d6OGfQ) |
-| The cBioPortal for Cancer Genomics | None | 5/21/2025	| [Register here](https://harvard.zoom.us/meeting/register/lp61mTnCRMyFeKcZn8odGQ#/registration) |
-| Single Cell RNA-seq Analysis Using Cellenics | HarvardKey Credentials | 6/18/2025	| [Register here](https://harvard.zoom.us/meeting/register/Quk277ftT7Odl33GKBilLQ) |
+| Machine Learning for Biologists | None | 8/19/26	| [Register here](https://harvard.zoom.us/meeting/register/f9-ZwHmgQqKqV7V8d6OGfQ) |
+| The cBioPortal for Cancer Genomics | None | 9/23/26	| [Register here](https://harvard.zoom.us/meeting/register/lp61mTnCRMyFeKcZn8odGQ#/registration) |
+| Single Cell RNA-seq Analysis Using Cellenics | HarvardKey Credentials | 10/21/26	| [Register here](https://harvard.zoom.us/meeting/register/Quk277ftT7Odl33GKBilLQ) |
 
 ***
 
