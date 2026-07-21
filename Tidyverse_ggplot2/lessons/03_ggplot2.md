@@ -148,10 +148,9 @@ Now we can start updating the plot to suit our preferences for how we want the d
 
 * Axis label aesthetics
 * Plot background
-* Facet label backround
 * Legend appearance
 
-There are built-in themes that we can use (i.e. `theme_bw()`) that mostly change the background/foreground colours, by adding it as additional layer. Alternatively, we can adjust specific elements of the current default theme by adding a `theme()` layer and passing in arguments for the things we wish to change. Or we can use both, a built-in theme layer and a custom theme layer!
+There are built-in themes that we can use (i.e. `theme_bw()`) that mostly change the background/foreground colors, by adding it as additional layer. Alternatively, we can adjust specific elements of the current default theme by adding a `theme()` layer and passing in arguments for the things we wish to change. Or we can use both, a built-in theme layer and a custom theme layer!
 
 Let's add a built-in theme layer `theme_bw()` first. 
 
