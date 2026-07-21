@@ -125,7 +125,7 @@ We have decided that we want to change the size of all the data point to a unifo
 
 ```
 ggplot(bp_plot) +
-  geom_point(aes(x = gene_ratio, y = GO_term, , color = p.value), 
+  geom_point(aes(x = gene_ratio, y = GO_term, color = p.value), 
              size = 2)
 ```
 
