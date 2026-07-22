@@ -295,6 +295,8 @@ ggplot(bp_plot) +
 </p>
 
 ***
+
+<!--
 **Exercises**
 
 1. Arrange `bp_oe` by `term_percent` in descending order.
@@ -302,6 +304,8 @@ ggplot(bp_plot) +
 3. [Optional] Color the plot using the palette of your choice.
 
 ***
+
+-->
 
 So far we have explored many layers that can be added to any plot with the ggplot2 package. However, we haven't explored the different `geom`s available. The type of data you are plotting will determine the type of `geom` needed, but a nice summary of the main `geom`s is available on the [RStudio ggplot2 cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf).
 
@@ -445,6 +449,8 @@ ggplot(bp_plot) +
 ```
 
 ***
+
+<!--
 **Exercises**
 
 Based on the number of genes associated with each GO term ("term.size" column) we can categorize them into "small", "large" or "medium" categories. Once we have done that, we want to determine what the spread of p-values is for each category; we can do this by drawing a boxplot.
@@ -467,6 +473,7 @@ Based on the number of genes associated with each GO term ("term.size" column) w
 4. Add appropriate labels and `theme()` layers to your liking.
 
 ***
+--> 
 
 ## Resources
 
